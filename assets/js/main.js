@@ -11,17 +11,17 @@ let heroTimer = null;
 const heroData = {
     1: { 
         title: "常識の枠を超え、<br>大胆な挑戦を。", 
-        desc: "クレスティックスには、メンバー全員の手に社会を本質的に前進させるミッションがあります。失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。",
+        desc: "クレスティックスには、メンバー全員の手に<br>社会を本質的に前進させるミッションがあります。<br>失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。",
         content: `<div class="flex justify-between items-start"><span class="text-[11px] bg-white/20 border border-white/30 px-6 py-2.5 rounded-2xl font-mono font-black tracking-widest uppercase">Phase 01 / Go Bold</span><i class="fa-solid fa-bolt text-4xl text-yellow-300 drop-shadow-[0_0_20px_rgba(253,224,71,0.8)] animate-pulse"></i></div><div class="text-center py-10"><svg class="w-1/2 mx-auto h-40" viewBox="0 0 200 100" fill="none"><rect x="20" y="30" width="30" height="50" rx="10" fill="white" fill-opacity="0.9"/><path d="M10 80 Q100 0 190 60" stroke="#FFE600" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="35" r="14" fill="#FFE600" class="animate-ping shadow-2xl"/></svg></div><div class="text-[11px] text-white/70 font-mono flex justify-between tracking-[0.5em] uppercase font-black opacity-60"><span>Market Optimization</span><span>Ver. 2026.05</span></div>`
     },
     2: { 
-        title: "個人の意志が、<br>未来をハックする。", 
-        desc: "データとテクノロジーを武器に、まだ見ぬ価値を創出する。一人ひとりが主体者として意思決定し、最高の熱量でコトに向き合える環境がここにあります。",
+        title: "多様な才能が、<br>最高速度で共鳴する。", 
+        desc: "SaaS営業代行、新卒特化HR、Web制作・広告。<br>異なるフィールドのプロが集い、<br>最高のシナジーを無限に拡張し続けます。",
         content: `<div class="flex justify-between items-start"><span class="text-[11px] bg-white/20 border border-white/30 px-6 py-2.5 rounded-2xl font-mono font-black tracking-widest uppercase">Phase 02 / Synergy</span><i class="fa-solid fa-users text-4xl text-white drop-shadow-2xl"></i></div><div class="py-10 text-center"><svg class="w-1/2 mx-auto h-40" viewBox="0 0 200 100" fill="none"><circle cx="60" cy="50" r="25" fill="white" fill-opacity="0.4"/><circle cx="100" cy="50" r="35" fill="white" fill-opacity="0.9"/><circle cx="140" cy="50" r="25" fill="white" fill-opacity="0.4"/></svg></div><div class="text-[11px] text-white/70 font-mono flex justify-between tracking-[0.5em] uppercase font-black opacity-60"><span>One Piece Strategy</span><span>Unity</span></div>`
     },
     3: { 
-        title: "プロとして自律し、<br>最高速度で走る。", 
-        desc: "自らの限界を決めず、常に高い視座で挑戦し続ける。専門性を磨き、仲間と共鳴しながら、21世紀を代表する挑戦の物語を一緒に創り出しましょう。",
+        title: "世界屈指の、<br>挑戦し続けるチームへ。", 
+        desc: "私たちのゴールは、現状維持を壊し続けること。<br>自律したプロが個の限界を超え、<br>圧倒的スピードで新規市場をハックします。",
         content: `<div class="flex justify-between items-start"><span class="text-[11px] bg-white/20 border border-white/30 px-6 py-2.5 rounded-2xl font-mono font-black tracking-widest uppercase">Phase 03 / Professional</span><i class="fa-solid fa-rocket text-4xl text-white drop-shadow-2xl"></i></div><div class="py-10 text-center"><svg class="w-1/2 mx-auto h-40" viewBox="0 0 200 100" fill="none"><path d="M100 10 L140 90 L100 75 L60 90 Z" fill="white" fill-opacity="0.9"/><circle cx="100" cy="45" r="8" fill="#FFE600"/></svg></div><div class="text-[11px] text-white/70 font-mono flex justify-between tracking-[0.5em] uppercase font-black opacity-60"><span>Autonomy & Speed</span><span>Global Scale</span></div>`
     }
 };
@@ -46,7 +46,7 @@ function updateHeroUI() {
                 slide.innerHTML = heroData[i].content;
                 slide.classList.remove('hidden', 'opacity-0', 'scale-95');
                 slide.classList.add('opacity-100', 'scale-100');
-                dot.className = "w-16 h-2 rounded-full bg-white cursor-pointer transition-all shadow-2xl";
+                dot.className = "w-14 h-2 rounded-full bg-white cursor-pointer transition-all shadow-xl";
             } else {
                 slide.classList.add('hidden', 'opacity-0', 'scale-95');
                 slide.classList.remove('opacity-100', 'scale-100');
@@ -68,7 +68,7 @@ function updateHeroUI() {
         descEl.style.opacity = 0;
         descEl.style.transform = "translateY(10px)";
         setTimeout(() => {
-            descEl.innerText = heroData[currentHeroSlide].desc;
+            descEl.innerHTML = heroData[currentHeroSlide].desc;
             descEl.style.opacity = 1;
             descEl.style.transform = "translateY(0)";
         }, 400);
@@ -106,7 +106,6 @@ function updateCarouselUI() {
     for (let i = 1; i <= 3; i++) {
         const card = document.getElementById(`vcard-${i}`);
         if (card) {
-            // Re-render content inside card to ensure it's high-fidelity
             const data = videoContentData[i];
             card.innerHTML = `
                 <div class="relative w-full aspect-video rounded-[2.5rem] overflow-hidden bg-gray-900 border border-white/10 group-hover:border-crestix-orange/50 transition-all duration-700">

@@ -191,7 +191,7 @@ body {
 /* 10. Custom Hero Background */
 .hero-bg-custom {
     background-image: 
-        linear-gradient(135deg, rgba(255, 92, 0, 0.85) 0%, rgba(230, 82, 0, 0.9) 100%),
+        linear-gradient(135deg, rgba(255, 92, 0, 0.5) 0%, rgba(230, 82, 0, 0.6) 100%),
         url('../images/office/crestix.png');
     background-size: cover;
     background-position: center;
