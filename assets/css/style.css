@@ -1,0 +1,181 @@
+/* ══════════════════════════════════════════════════════════════
+   Crestix Careers - High-Fidelity Design System (CSS)
+   ══════════════════════════════════════════════════════════════ */
+
+/* 1. Reset & Base */
+body {
+    font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+    color: #333333;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+/* 2. Layout Utils */
+.preview-scroll { scroll-behavior: smooth; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #F7F9FA; }
+::-webkit-scrollbar-thumb { background: #FF5C00; border-radius: 3px; }
+
+/* 3. Hero Visuals (Mercari Style) */
+.mercari-watermark {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15vw;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: rgba(255, 255, 255, 0.12);
+    user-select: none;
+    pointer-events: none;
+}
+
+.mercari-unleash-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: -0.45em;
+    left: 0;
+    z-index: 25;
+    white-space: nowrap;
+    color: #FFFFFF;
+    text-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* 4. 3D Carousel (Black Corporation Style) */
+.bc-carousel-viewport { perspective: 1500px; }
+.bc-card-3d { transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.bc-card-3d.active {
+    transform: translate3d(0, 0, 80px) scale(1.05);
+    z-index: 10;
+    opacity: 1;
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.4);
+}
+.bc-card-3d.inactive-left {
+    transform: translate3d(-25%, 0, -150px) rotateY(25deg) scale(0.8);
+    opacity: 0.4;
+    z-index: 5;
+    filter: blur(2px);
+}
+.bc-card-3d.inactive-right {
+    transform: translate3d(25%, 0, -150px) rotateY(-25deg) scale(0.8);
+    opacity: 0.4;
+    z-index: 5;
+    filter: blur(2px);
+}
+
+/* 5. Infinite Marquee (16.12.13.jpg style) */
+.marquee-wrapper { display: flex; overflow: hidden; user-select: none; gap: 1.5rem; width: 100%; }
+.marquee-content {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: 1.5rem;
+    animation: scroll-left 40s linear infinite;
+}
+.marquee-content-reverse {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: 1.5rem;
+    animation: scroll-right 45s linear infinite;
+}
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(calc(-100% - 1.5rem)); } }
+@keyframes scroll-right { from { transform: translateX(calc(-100% - 1.5rem)); } to { transform: translateX(0); } }
+
+.marquee-wrapper:hover .marquee-content, 
+.marquee-wrapper:hover .marquee-content-reverse { 
+    animation-play-state: paused; 
+}
+
+/* Grayscale to Color transition */
+.culture-snap-img {
+    filter: grayscale(100%);
+    transition: all 0.6s ease;
+    transform: scale(1);
+}
+.culture-snap-card:hover .culture-snap-img {
+    filter: grayscale(0%);
+    transform: scale(1.08);
+}
+
+/* 6. Aurora Background (HERP Style) */
+.herp-aurora {
+    position: absolute;
+    width: 150%;
+    height: 300px;
+    background: linear-gradient(90deg, 
+        rgba(255,154,158,0.7) 0%, 
+        rgba(254,207,239,0.7) 20%, 
+        rgba(161,196,253,0.7) 50%, 
+        rgba(194,233,251,0.7) 80%, 
+        rgba(253,251,251,0.7) 100%
+    );
+    filter: blur(80px);
+    transform: rotate(-15deg) translateY(-50%);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+    animation: aurora-flow 20s infinite alternate ease-in-out;
+}
+@keyframes aurora-flow {
+    0% { transform: rotate(-15deg) translateY(-50%) translateX(-10%); }
+    100% { transform: rotate(-10deg) translateY(-40%) translateX(10%); }
+}
+
+/* 7. Cinemagraph Animations (Goodpatch Style) */
+@keyframes cinemagraph-wave { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(15deg); } }
+@keyframes cinemagraph-nod { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+@keyframes cinemagraph-clap { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(0.85); } }
+
+.animate-wave { transform-origin: bottom right; animation: cinemagraph-wave 1.5s ease-in-out infinite; }
+.animate-nod { transform-origin: center; animation: cinemagraph-nod 1.2s ease-in-out infinite; }
+.animate-clap { transform-origin: center; animation: cinemagraph-clap 0.5s ease-in-out infinite; }
+
+/* 8. Mega Modal Animation */
+.modal-overlay {
+    transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+}
+.modal-content-anim {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+.modal-hidden { opacity: 0; pointer-events: none; }
+.modal-hidden .modal-content-anim { transform: translateY(30px) scale(0.98); }
+
+/* 9. Service Card Hover Bar (LayerX Style) */
+.service-list-item {
+    position: relative;
+    overflow: hidden;
+}
+.service-list-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--item-color, #FF5C00);
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+    opacity: 0.05;
+}
+.service-list-item:hover::before { width: 100%; }
+.service-list-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background-color: var(--item-color, #FF5C00);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+.service-list-item:hover::after { transform: scaleY(1); }

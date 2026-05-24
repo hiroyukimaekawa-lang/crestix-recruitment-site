@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crestix Careers | Dashboard & Site Preview</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind & Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    
+    <!-- High-Fidelity Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="h-screen flex flex-col overflow-hidden bg-crestix-bgLight font-sans">
+
+    <!-- 1. DASHBOARD HEADER -->
+    <header class="h-16 bg-white border-b border-crestix-border px-6 flex items-center justify-between z-50 shadow-sm flex-shrink-0">
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 select-none">
+                <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none"><circle cx="45" cy="50" r="35" stroke="#FF5C00" stroke-width="14"/><path d="M40 25 L75 70" stroke="#FF5C00" stroke-width="14" stroke-linecap="round"/></svg>
+                <div>
+                    <span class="font-poppins font-black text-xl tracking-wider text-crestix-charcoal uppercase leading-none">Crestix</span>
+                    <span class="text-[10px] block text-crestix-orange font-bold tracking-[0.2em] uppercase mt-0.5">Careers Portal</span>
+                </div>
+            </div>
+            <div class="h-6 w-[1px] bg-gray-200 mx-2"></div>
+            <span class="bg-blue-50 text-blue-600 text-[10px] px-3 py-1 rounded-full border border-blue-100 font-black flex items-center gap-1.5 uppercase tracking-widest">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                Hi-Fi Prototype v2.0
+            </span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button id="btn-desktop" class="px-4 py-2 rounded-lg text-[10px] font-black bg-crestix-orange text-white flex items-center gap-2 transition-all shadow-md active:scale-95 uppercase tracking-widest">
+                <i class="fa-solid fa-desktop"></i> Desktop
+            </button>
+            <button id="btn-mobile" class="px-4 py-2 rounded-lg text-[10px] font-black bg-white text-gray-500 border border-crestix-border flex items-center gap-2 transition-all hover:bg-gray-50 active:scale-95 uppercase tracking-widest">
+                <i class="fa-solid fa-mobile-screen-button"></i> Mobile
+            </button>
+        </div>
+    </header>
+
+    <!-- 2. MAIN WORKSPACE -->
+    <div class="flex-1 flex overflow-hidden">
+        
+        <!-- SIDEBAR (Navigation Map) -->
+        <aside class="w-72 bg-white border-r border-crestix-border flex flex-col z-40 overflow-y-auto select-none shadow-sm flex-shrink-0">
+            <div class="p-6 border-b border-gray-50 bg-gray-50/30">
+                <h3 class="text-[10px] font-black text-gray-400 tracking-[0.3em] uppercase mb-1">Navigation Map</h3>
+                <p class="text-xs text-crestix-charcoal font-black">Portal Hub & Spoke</p>
+            </div>
+            <nav class="p-4 space-y-6">
+                <!-- Top Page Sections -->
+                <div class="space-y-1">
+                    <div class="text-[9px] text-gray-400 font-black tracking-widest uppercase mb-2 pl-2">Hub Sections</div>
+                    <button id="nav-hero" class="w-full text-left p-3 hover:bg-crestix-orangeLight hover:text-crestix-orange rounded-xl flex items-center justify-between text-xs transition-all text-crestix-charcoal font-black group">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-star text-crestix-orange opacity-60 group-hover:opacity-100"></i> 01. Hero Section</span>
+                        <span class="text-[8px] bg-orange-50 text-crestix-orange px-1.5 py-0.5 rounded font-mono border border-orange-100">TOP</span>
+                    </button>
+                    <button id="nav-diag" class="w-full text-left p-3 hover:bg-crestix-orangeLight hover:text-crestix-orange rounded-xl flex items-center justify-between text-xs transition-all text-crestix-charcoal font-black group">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-crestix-orange opacity-60 group-hover:opacity-100"></i> 02. Diagnosis</span>
+                        <span class="text-[8px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded font-mono">DIAG</span>
+                    </button>
+                    <button id="nav-hub" class="w-full text-left p-3 hover:bg-crestix-orangeLight hover:text-crestix-orange rounded-xl flex items-center justify-between text-xs transition-all text-crestix-charcoal font-black group">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-layer-group text-crestix-orange opacity-60 group-hover:opacity-100"></i> 03. Contents Hub</span>
+                        <span class="text-[8px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded font-mono">HUB</span>
+                    </button>
+                    <button id="nav-works" class="w-full text-left p-3 hover:bg-crestix-orangeLight hover:text-crestix-orange rounded-xl flex items-center justify-between text-xs transition-all text-crestix-charcoal font-black group">
+                        <span class="flex items-center gap-3"><i class="fa-brands fa-youtube text-crestix-orange opacity-60 group-hover:opacity-100"></i> 04. YouTube Carousel</span>
+                        <span class="text-[8px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded font-mono">PV</span>
+                    </button>
+                </div>
+
+                <!-- Sub Pages -->
+                <div class="pt-4 border-t border-gray-100">
+                    <div class="text-[9px] text-blue-600 font-black tracking-widest uppercase mb-3 pl-2">Mega Modals (Spokes)</div>
+                    <div class="space-y-2">
+                        <button id="sidebar-corp" class="w-full text-left p-3 bg-gray-50 hover:bg-white rounded-xl border border-crestix-border text-[11px] text-crestix-charcoal font-black flex items-center justify-between transition-all group hover:border-crestix-orange hover:shadow-sm">
+                            <span class="flex items-center gap-3"><i class="fa-solid fa-building text-gray-400 group-hover:text-crestix-orange"></i> 会社について</span>
+                            <i class="fa-solid fa-chevron-right text-[8px] text-gray-300 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <button id="sidebar-biz" class="w-full text-left p-3 bg-gray-50 hover:bg-white rounded-xl border border-crestix-border text-[11px] text-crestix-charcoal font-black flex items-center justify-between transition-all group hover:border-green-500 hover:shadow-sm">
+                            <span class="flex items-center gap-3"><i class="fa-solid fa-briefcase text-green-500/60 group-hover:text-green-500"></i> 事業を知る</span>
+                            <i class="fa-solid fa-chevron-right text-[8px] text-gray-300 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <button id="sidebar-people" class="w-full text-left p-3 bg-gray-50 hover:bg-white rounded-xl border border-crestix-border text-[11px] text-crestix-charcoal font-black flex items-center justify-between transition-all group hover:border-pink-500 hover:shadow-sm">
+                            <span class="flex items-center gap-3"><i class="fa-solid fa-face-smile text-pink-500/60 group-hover:text-pink-500"></i> メンバーについて</span>
+                            <i class="fa-solid fa-chevron-right text-[8px] text-gray-300 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <button id="sidebar-jobs" class="w-full text-left p-3 bg-gray-50 hover:bg-white rounded-xl border border-crestix-border text-[11px] text-crestix-charcoal font-black flex items-center justify-between transition-all group hover:border-blue-500 hover:shadow-sm">
+                            <span class="flex items-center gap-3"><i class="fa-solid fa-list text-blue-500/60 group-hover:text-blue-500"></i> 募集職種一覧</span>
+                            <i class="fa-solid fa-chevron-right text-[8px] text-gray-300 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div class="mt-auto p-6 bg-crestix-charcoal text-white/50 text-[9px] font-black tracking-widest uppercase">
+                &copy; 2026 Crestix Design Team
+            </div>
+        </aside>
+
+        <!-- CENTER AREA: VIEWPORT -->
+        <main class="flex-1 bg-gray-200 flex items-center justify-center p-4 lg:p-10 overflow-hidden relative">
+            
+            <div id="preview-viewport" class="w-full h-full max-w-[1200px] bg-white border border-gray-300 rounded-3xl shadow-3d-depth transition-all duration-700 relative flex flex-col overflow-hidden">
+                <!-- Browser Bar -->
+                <div class="h-12 bg-white border-b border-crestix-border px-6 flex items-center justify-between select-none flex-shrink-0">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3.5 h-3.5 rounded-full bg-red-400"></span><span class="w-3.5 h-3.5 rounded-full bg-yellow-400"></span><span class="w-3.5 h-3.5 rounded-full bg-green-400"></span>
+                        <div class="ml-6 flex items-center bg-gray-100 px-4 py-1.5 rounded-lg border border-gray-200">
+                            <i class="fa-solid fa-lock text-[8px] text-gray-400 mr-2"></i>
+                            <span class="text-[10px] text-gray-500 font-mono font-bold tracking-widest uppercase">https://recruit.crestix.co.jp/</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREVIEW CONTENT (THE ACTUAL SITE) -->
+                <div class="flex-1 overflow-y-auto preview-scroll relative bg-white" id="preview-content-box">
+                    
+                    <!-- 1. HERO SECTION (Mercari Style) -->
+                    <section id="sec-hero" class="relative bg-gradient-to-br from-[#FF5C00] to-[#E65200] text-white overflow-hidden flex flex-col justify-between h-[660px]">
+                        <!-- Values Watermark -->
+                        <div class="absolute inset-x-0 top-16 select-none pointer-events-none z-0"><span class="mercari-watermark block text-center uppercase tracking-tighter opacity-10">Values</span></div>
+                        <div class="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+                        <!-- Sticky Navbar inside Preview -->
+                        <nav id="navbar" class="sticky top-0 w-full flex items-center justify-between py-5 px-8 lg:px-14 z-30 border-b border-white/10 bg-black/10 backdrop-blur-lg transition-all">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none"><circle cx="45" cy="50" r="35" stroke="white" stroke-width="12"/><path d="M40 25 L75 70" stroke="white" stroke-width="12" stroke-linecap="round"/></svg>
+                                <span class="font-poppins font-black text-2xl tracking-wider text-white uppercase leading-none">Crestix</span>
+                            </div>
+                            <div class="hidden lg:flex items-center gap-12 text-[10px] font-black tracking-[0.3em] text-white uppercase">
+                                <button class="nav-corp-trigger hover:text-yellow-200 transition-colors">Corporate</button>
+                                <button class="nav-biz-trigger hover:text-yellow-200 transition-colors">Service</button>
+                                <button class="nav-people-trigger hover:text-yellow-200 transition-colors">Team</button>
+                                <button class="nav-works-trigger hover:text-yellow-200 transition-colors">Story</button>
+                            </div>
+                            <button class="jobs-modal-trigger bg-white text-crestix-orange hover:bg-yellow-50 text-[11px] font-black px-10 py-3.5 rounded-full shadow-2xl tracking-[0.2em] uppercase transition-all active:scale-95 focus:outline-none">Join Us</button>
+                        </nav>
+
+                        <!-- Hero Content -->
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 px-8 lg:px-14 py-12 relative z-10 max-w-7xl mx-auto w-full my-auto">
+                            <div class="lg:col-span-7 flex flex-col justify-center">
+                                <div class="bg-white/10 border border-white/20 rounded-[2rem] p-8 backdrop-blur-2xl relative overflow-hidden aspect-video flex items-center justify-center shadow-[0_60px_100px_-25px_rgba(0,0,0,0.6)]">
+                                    <!-- Hero Sliders -->
+                                    <div id="slide-img-1" class="w-full h-full flex flex-col justify-between p-4 transition-all duration-700">
+                                        <div class="flex justify-between items-start"><span class="text-[10px] bg-white/20 border border-white/30 px-4 py-2 rounded-full font-mono font-black tracking-widest uppercase">Core / Go Bold</span><i class="fa-solid fa-bolt text-3xl text-yellow-300 drop-shadow-lg"></i></div>
+                                        <div class="text-center py-10"><svg class="w-1/2 mx-auto h-36" viewBox="0 0 200 100" fill="none"><rect x="20" y="30" width="30" height="50" rx="8" fill="white" fill-opacity="0.9"/><path d="M10 80 Q100 0 190 60" stroke="#FFE600" stroke-width="6" stroke-linecap="round"/><circle cx="100" cy="35" r="12" fill="#FFE600" class="animate-ping"/></svg></div>
+                                        <div class="text-[10px] text-white/60 font-mono flex justify-between tracking-[0.3em] uppercase font-black"><span>Market Hack 2026</span><span>Next Standard</span></div>
+                                    </div>
+                                    <div id="slide-img-2" class="w-full h-full flex flex-col justify-between p-4 transition-all duration-700 hidden opacity-0 scale-95">
+                                        <div class="flex justify-between items-start"><span class="text-[10px] bg-white/20 border border-white/30 px-4 py-2 rounded-full font-mono font-black tracking-widest uppercase">Team / All for One</span><i class="fa-solid fa-users text-3xl"></i></div>
+                                        <div class="py-10 text-center"><svg class="w-1/2 mx-auto h-36" viewBox="0 0 200 100" fill="none"><circle cx="60" cy="50" r="25" fill="white" fill-opacity="0.4"/><circle cx="100" cy="50" r="35" fill="white" fill-opacity="0.9"/><circle cx="140" cy="50" r="25" fill="white" fill-opacity="0.4"/></svg></div>
+                                        <div class="text-[10px] text-white/60 font-mono flex justify-between tracking-[0.3em] uppercase font-black"><span>Synergy Hack</span><span>Unity</span></div>
+                                    </div>
+                                    <div id="slide-img-3" class="w-full h-full flex flex-col justify-between p-4 transition-all duration-700 hidden opacity-0 scale-95">
+                                        <div class="flex justify-between items-start"><span class="text-[10px] bg-white/20 border border-white/30 px-4 py-2 rounded-full font-mono font-black tracking-widest uppercase">Mind / Be a Pro</span><i class="fa-solid fa-rocket text-3xl"></i></div>
+                                        <div class="py-10 text-center"><svg class="w-1/2 mx-auto h-36" viewBox="0 0 200 100" fill="none"><path d="M100 10 L140 90 L100 75 L60 90 Z" fill="white"/><circle cx="100" cy="45" r="8" fill="#FFE600"/></svg></div>
+                                        <div class="text-[10px] text-white/60 font-mono flex justify-between tracking-[0.3em] uppercase font-black"><span>Autonomous</span><span>Speed</span></div>
+                                    </div>
+                                </div>
+                                <!-- Slider Dots & Controls -->
+                                <div class="flex items-center gap-6 mt-8 justify-center lg:justify-start pl-4">
+                                    <div class="flex items-center gap-4">
+                                        <button id="hero-prev" class="w-10 h-10 rounded-full border border-white/30 bg-white/5 flex items-center justify-center hover:bg-white/20 transition-all active:scale-90"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                                        <button id="hero-play-btn" class="w-10 h-10 rounded-full border border-white/30 bg-white/5 flex items-center justify-center hover:bg-white/20 transition-all active:scale-90"><i class="fa-solid fa-pause text-xs"></i></button>
+                                        <button id="hero-next" class="w-10 h-10 rounded-full border border-white/30 bg-white/5 flex items-center justify-center hover:bg-white/20 transition-all active:scale-90"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                                    </div>
+                                    <div class="flex items-center gap-3 ml-4">
+                                        <span id="dot-1" class="w-10 h-1.5 rounded-full bg-white cursor-pointer transition-all shadow-lg"></span>
+                                        <span id="dot-2" class="w-3 h-1.5 rounded-full bg-white/30 hover:bg-white cursor-pointer transition-all"></span>
+                                        <span id="dot-3" class="w-3 h-1.5 rounded-full bg-white/30 hover:bg-white cursor-pointer transition-all"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hero Text -->
+                            <div class="lg:col-span-5 flex flex-col justify-center space-y-10">
+                                <div class="space-y-6 text-center lg:text-left">
+                                    <h2 id="slide-title-text" class="text-4xl lg:text-6xl font-black leading-[1.1] tracking-tighter transition-all duration-500 drop-shadow-2xl">常識の枠を超え、<br>大胆な挑戦を。</h2>
+                                    <p id="slide-desc-text" class="text-sm lg:text-base text-white/90 leading-relaxed font-bold max-w-md transition-all duration-500">クレスティックスには、メンバー全員の手に社会を本質的に前進させるミッションがあります。失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。</p>
+                                </div>
+                                <div class="text-center lg:text-left pt-2">
+                                    <button class="jobs-modal-trigger bg-white text-crestix-charcoal hover:bg-gray-100 py-5 px-12 rounded-full font-black text-xs tracking-[0.3em] uppercase transition-all shadow-3d-depth active:scale-95 group focus:outline-none">
+                                        Open Positions <i class="fa-solid fa-arrow-right ml-6 group-hover:translate-x-3 transition-transform text-crestix-orange"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Overlap Text -->
+                        <div class="mercari-unleash-text !text-white opacity-90 pointer-events-none select-none drop-shadow-xl z-20">Unleash the potential in all people</div>
+                    </section>
+
+                    <!-- 2. DIAGNOSTIC SECTION (LayerX Style) -->
+                    <section id="sec-diagnostic" class="py-28 lg:py-40 px-6 lg:px-14 bg-crestix-orangeLight border-b border-crestix-border relative overflow-hidden select-none">
+                        <div class="max-w-5xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 relative z-10">
+                            <div class="space-y-4">
+                                <h2 class="text-4xl lg:text-5xl font-black tracking-tight text-crestix-charcoal flex items-center gap-4"><span class="w-2.5 h-10 bg-crestix-orange rounded-full"></span> Job Diagnosis</h2>
+                                <p class="text-sm lg:text-base text-gray-500 font-black pl-7 tracking-wide">3つの特性を選択するだけで、あなたが最も輝けるフィールドを提案します。</p>
+                            </div>
+                            <button id="diag-restart" class="text-[11px] font-black bg-white border border-gray-200 px-8 py-3 rounded-full flex items-center gap-3 transition-all shadow-md hover:border-crestix-orange active:scale-95 focus:outline-none uppercase tracking-widest"><i class="fa-solid fa-rotate"></i> Reset Diagnosis</button>
+                        </div>
+                        <div class="max-w-5xl mx-auto bg-white border border-crestix-border rounded-[3rem] p-10 lg:p-20 shadow-soft-float min-h-[520px] flex flex-col justify-between relative z-10 border-b-[12px] border-b-crestix-orange/10">
+                            <!-- Question Panels (JS renders content here) -->
+                            <div id="diag-step-1" class="space-y-16 transition-all duration-700">
+                                <div class="text-center space-y-3"><span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Step 01 / Career Path</span><h3 class="text-4xl lg:text-5xl font-black text-crestix-charcoal tracking-tight">希望する職種領域</h3></div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                    <div class="diag-option bg-white hover:shadow-orange-glow border border-crestix-border rounded-3xl p-12 cursor-pointer transition-all duration-500 text-center flex flex-col justify-center min-h-[220px] group border-b-8 border-b-gray-50 hover:border-crestix-orange" data-diag-step="1" data-diag-val="ビジネス"><span class="text-3xl font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors">ビジネス</span><p class="text-xs text-gray-400 mt-6 leading-relaxed font-bold tracking-widest uppercase opacity-70 group-hover:opacity-100">Sales / BizDev / Consultant</p></div>
+                                    <div class="diag-option bg-white hover:shadow-orange-glow border border-crestix-border rounded-3xl p-12 cursor-pointer transition-all duration-700 text-center flex flex-col justify-center min-h-[220px] group border-b-8 border-b-gray-50 hover:border-crestix-orange" data-diag-step="1" data-diag-val="グロースマーケ"><span class="text-3xl font-black text-crestix-charcoal leading-tight group-hover:text-crestix-orange transition-colors">マーケ・制作</span><p class="text-xs text-gray-400 mt-6 leading-relaxed font-bold tracking-widest uppercase opacity-70 group-hover:opacity-100">Growth / Ads / Creative</p></div>
+                                    <div class="diag-option bg-white hover:shadow-orange-glow border border-crestix-border rounded-3xl p-12 cursor-pointer transition-all duration-700 text-center flex flex-col justify-center min-h-[220px] group border-b-8 border-b-gray-50 hover:border-crestix-orange" data-diag-step="1" data-diag-val="コーポレート"><span class="text-3xl font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors">コーポレート</span><p class="text-xs text-gray-400 mt-6 leading-relaxed font-bold tracking-widest uppercase opacity-70 group-hover:opacity-100">HR / PR / Strategy / Assistant</p></div>
+                                </div>
+                            </div>
+                            <div id="diag-step-2" class="space-y-16 hidden opacity-0 transition-all duration-700"></div>
+                            <div id="diag-step-3" class="space-y-16 hidden opacity-0 transition-all duration-700"></div>
+                            <div id="diag-step-4" class="space-y-16 hidden opacity-0 transition-all duration-700"></div>
+
+                            <div class="mt-16 border-t border-gray-100 pt-10 flex items-center justify-between">
+                                <div class="flex items-center gap-4"><span id="diagnostic-progress-text" class="text-xs font-black text-gray-400 font-poppins tracking-[0.2em] uppercase">Step Progress</span><div class="flex gap-2.5"><span id="pbar-1" class="w-10 h-2 rounded-full bg-crestix-orange shadow-sm shadow-orange-200"></span><span id="pbar-2" class="w-2.5 h-2 rounded-full bg-gray-100"></span><span id="pbar-3" class="w-2.5 h-2 rounded-full bg-gray-100"></span><span id="pbar-4" class="w-2.5 h-2 rounded-full bg-gray-100"></span></div></div>
+                                <button id="diag-back" class="hidden text-xs font-black text-gray-400 hover:text-crestix-orange transition-all uppercase tracking-[0.2em] flex items-center gap-3 focus:outline-none group"><i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i> Previous Phase</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 3. CONTENTS HUB (Brand Color Cards) -->
+                    <section id="sec-site-contents" class="py-32 lg:py-48 px-6 lg:px-14 bg-white border-b border-crestix-border relative select-none">
+                        <div class="max-w-7xl mx-auto space-y-24">
+                            <div class="text-center space-y-4">
+                                <span class="text-[11px] text-crestix-orange font-black uppercase tracking-[0.4em] font-poppins block">03 / Discovery Hub</span>
+                                <h2 class="text-4xl lg:text-6xl font-black text-crestix-charcoal tracking-tight">サイトコンテンツ</h2>
+                                <p class="text-sm text-gray-400 font-black uppercase tracking-[0.2em]">Explore the core of Crestix</p>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                                <!-- Card 1: ABOUT -->
+                                <div id="card-corporate" class="group cursor-pointer space-y-8">
+                                    <div class="aspect-[4/3] w-full rounded-[2.5rem] bg-gray-50 border border-crestix-border group-hover:border-crestix-orange group-hover:shadow-soft-float transition-all duration-500 flex items-center justify-center overflow-hidden relative">
+                                        <span class="absolute top-6 left-8 bg-white border border-crestix-border text-crestix-charcoal font-black text-[10px] px-5 py-2 rounded-xl shadow-sm uppercase tracking-widest z-10">About</span>
+                                        <svg class="w-3/5 h-3/5 transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" stroke="#E5E7EB" stroke-width="1.5" fill="white" fill-opacity="0.6"/><circle cx="50" cy="50" r="14" fill="#FF5C00" class="animate-pulse shadow-2xl"/></svg>
+                                    </div>
+                                    <div class="pl-6 border-l-4 border-transparent group-hover:border-crestix-orange transition-all duration-300">
+                                        <h3 class="text-2xl font-black group-hover:text-crestix-orange transition-colors">会社について</h3>
+                                        <p class="text-xs text-gray-400 mt-3 font-bold leading-loose">「新しい力とテクノロジーで打破する」。Crestixのミッション、独自のバリューや行動指針を紹介。</p>
+                                    </div>
+                                </div>
+                                <!-- Card 2: SERVICE -->
+                                <div id="card-business" class="group cursor-pointer space-y-8">
+                                    <div class="aspect-[4/3] w-full rounded-[2.5rem] bg-gray-50 border border-crestix-border group-hover:border-green-500 group-hover:shadow-soft-float transition-all duration-500 flex items-center justify-center overflow-hidden relative">
+                                        <span class="absolute top-6 left-8 bg-white border border-crestix-border text-crestix-charcoal font-black text-[10px] px-5 py-2 rounded-xl shadow-sm uppercase tracking-widest z-10">Service</span>
+                                        <svg class="w-3/5 h-3/5 transition-all duration-1000 group-hover:scale-110 group-hover:-rotate-6" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="50" rx="8" stroke="#E5E7EB" stroke-width="1.5" fill="white" fill-opacity="0.6"/><path d="M35 50 L65 50 M50 35 L50 65" stroke="#22c55e" stroke-width="8" stroke-linecap="round"/></svg>
+                                    </div>
+                                    <div class="pl-6 border-l-4 border-transparent group-hover:border-green-500 transition-all duration-300">
+                                        <h3 class="text-2xl font-black group-hover:text-green-600 transition-colors">事業を知る</h3>
+                                        <p class="text-xs text-gray-400 mt-3 font-bold leading-loose">IT広告、新卒HR、キャリア教育。人々の熱量とテクノロジーを融和させた5つの成長事業ドメイン。</p>
+                                    </div>
+                                </div>
+                                <!-- Card 3: PEOPLE -->
+                                <div id="card-people" class="group cursor-pointer space-y-8">
+                                    <div class="aspect-[4/3] w-full rounded-[2.5rem] bg-gray-50 border border-crestix-border group-hover:border-pink-500 group-hover:shadow-soft-float transition-all duration-500 flex items-center justify-center overflow-hidden relative">
+                                        <span class="absolute top-6 left-8 bg-white border border-crestix-border text-crestix-charcoal font-black text-[10px] px-5 py-2 rounded-xl shadow-sm uppercase tracking-widest z-10">Team</span>
+                                        <svg class="w-3/5 h-3/5 transition-all duration-1000 group-hover:scale-110" viewBox="0 0 100 100"><circle cx="50" cy="38" r="22" stroke="#E5E7EB" stroke-width="1.5" fill="white" fill-opacity="0.6"/><path d="M25 85 Q50 55 75 85" stroke="#ec4899" stroke-width="8" stroke-linecap="round" fill="none"/></svg>
+                                    </div>
+                                    <div class="pl-6 border-l-4 border-transparent group-hover:border-pink-500 transition-all duration-300">
+                                        <h3 class="text-2xl font-black group-hover:text-pink-600 transition-colors">メンバーを知る</h3>
+                                        <p class="text-xs text-gray-400 mt-3 font-bold leading-loose">最高速度で共鳴するCrestixのプロフェッショナルたち。その素顔、熱量、挑戦の歩みを追う。</p>
+                                    </div>
+                                </div>
+                                <!-- Card 4: RECRUIT -->
+                                <div id="card-jobs" class="group cursor-pointer space-y-8">
+                                    <div class="aspect-[4/3] w-full rounded-[2.5rem] bg-gray-50 border-4 border-crestix-border border-dashed group-hover:border-crestix-orange group-hover:shadow-soft-float transition-all duration-500 flex items-center justify-center overflow-hidden relative">
+                                        <span class="absolute top-6 left-8 bg-white border border-crestix-border text-crestix-charcoal font-black text-[10px] px-5 py-2 rounded-xl shadow-sm uppercase tracking-widest z-10">Recruit</span>
+                                        <svg class="w-3/5 h-3/5 transition-all duration-1000 group-hover:scale-110" viewBox="0 0 100 100"><path d="M30 30 L70 30 L70 70 L30 70 Z" fill="#FF5C00" fill-opacity="0.08"/><path d="M20 20 L80 20 L80 80 L20 80 Z" stroke="#FF5C00" stroke-width="2" stroke-dasharray="8 8" fill="none"/></svg>
+                                    </div>
+                                    <div class="pl-6 border-l-4 border-transparent group-hover:border-crestix-orange transition-all duration-300">
+                                        <h3 class="text-2xl font-black group-hover:text-crestix-orange transition-colors">募集職種一覧</h3>
+                                        <p class="text-xs text-gray-400 mt-3 font-bold leading-loose">第二創業期を共に創り上げる、全34職種のオープンポジション。あなたの挑戦を待っています。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 4. WORKS CAROUSEL (Black Corp Style) -->
+                    <section id="sec-youtube-carousel" class="py-32 lg:py-48 px-6 lg:px-14 bg-crestix-charcoal border-b border-gray-950 relative select-none">
+                        <div class="max-w-6xl mx-auto space-y-20">
+                            <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
+                                <div class="space-y-6">
+                                    <div class="flex items-center gap-4"><span class="font-poppins font-black text-3xl lg:text-5xl text-white tracking-[0.25em] uppercase leading-none">Crestory</span><span class="text-xs bg-crestix-orange text-white px-5 py-1.5 rounded-full font-black tracking-widest shadow-xl">Official PV</span></div>
+                                    <p class="text-sm lg:text-base text-gray-400 font-bold max-w-lg leading-loose border-l-4 border-gray-800 pl-8">代表メッセージや、メンバーが最前線で戦う現場のリアルな熱量。公式YouTubeチャンネルにて絶賛公開中。</p>
+                                </div>
+                                <button onclick="window.open('https://youtube.com/@crestix', '_blank')" class="bg-red-600 hover:bg-red-700 text-white font-black px-10 py-4 rounded-full text-xs tracking-[0.2em] uppercase shadow-2xl transition-all focus:outline-none">Visit Channel</button>
+                            </div>
+                            
+                            <div class="relative w-full overflow-hidden py-12 bc-carousel-viewport">
+                                <div class="flex justify-center items-center gap-10 h-[320px] md:h-[450px] w-full relative">
+                                    <!-- Video 1 -->
+                                    <div id="vcard-1" class="bc-card-3d active bg-white border border-gray-100 rounded-[3rem] p-6 flex flex-col justify-between cursor-pointer w-[300px] md:w-[550px] h-full shrink-0 shadow-3d-depth overflow-hidden group">
+                                        <div class="relative w-full aspect-video rounded-3xl overflow-hidden bg-gray-900 border border-gray-100">
+                                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000" alt="Thumbnail">
+                                            <div class="absolute inset-0 bg-crestix-orange/10 group-hover:bg-transparent transition-colors"></div>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <div class="w-20 h-20 rounded-full bg-red-600 text-white flex items-center justify-center shadow-3d-depth group-hover:scale-110 transition-all duration-500"><i class="fa-solid fa-play ml-1.5 text-3xl"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 px-4 pb-4 space-y-2">
+                                            <span class="text-[9px] font-black bg-gray-100 text-gray-500 px-3 py-1 rounded-full uppercase tracking-widest">Documentary</span>
+                                            <h3 class="text-lg font-black text-crestix-charcoal line-clamp-1 group-hover:text-crestix-orange transition-colors">【代表密着】創業1年で年商280%成長。代表・縞谷蓮志が目指す世界。</h3>
+                                        </div>
+                                    </div>
+                                    <!-- Video 2 -->
+                                    <div id="vcard-2" class="bc-card-3d inactive-right bg-white border border-gray-100 rounded-[3rem] p-6 flex flex-col justify-between cursor-pointer w-[300px] md:w-[550px] h-full shrink-0">
+                                        <div class="relative w-full aspect-video rounded-3xl overflow-hidden bg-gray-200"></div>
+                                        <div class="mt-6 px-4"><h3 class="text-lg font-black text-gray-300 uppercase italic">Next Video...</h3></div>
+                                    </div>
+                                    <!-- Video 3 -->
+                                    <div id="vcard-3" class="bc-card-3d inactive-left bg-white border border-gray-100 rounded-[3rem] p-6 flex flex-col justify-between cursor-pointer w-[300px] md:w-[550px] h-full shrink-0">
+                                        <div class="relative w-full aspect-video rounded-3xl overflow-hidden bg-gray-200"></div>
+                                        <div class="mt-6 px-4"><h3 class="text-lg font-black text-gray-300 uppercase italic">Next Video...</h3></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel Controls -->
+                            <div class="flex items-center justify-center gap-16 text-white pt-8">
+                                <button id="carousel-left" class="hover:text-crestix-orange transition-all text-2xl focus:outline-none"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button id="carousel-play-btn" class="w-16 h-16 border border-gray-800 rounded-full flex items-center justify-center hover:border-white hover:text-crestix-orange transition-all focus:outline-none shadow-2xl bg-black/20"><i class="fa-solid fa-pause text-xl"></i></button>
+                                <button id="carousel-right" class="hover:text-crestix-orange transition-all text-2xl focus:outline-none"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- COMMON BOTTOM FOOTER -->
+                    <footer class="bg-crestix-navy text-white pt-32 pb-16 px-6 lg:px-14 select-none border-t border-white/5">
+                        <div class="max-w-7xl mx-auto space-y-24">
+                            <div class="flex flex-col lg:flex-row justify-between items-start gap-16 border-b border-white/10 pb-24">
+                                <div class="space-y-8">
+                                    <div class="flex items-center gap-4">
+                                        <svg class="w-14 h-14" viewBox="0 0 100 100" fill="none"><circle cx="45" cy="50" r="35" stroke="#FF5C00" stroke-width="14"/><path d="M40 25 L75 70" stroke="#FF5C00" stroke-width="14"/></svg>
+                                        <span class="font-poppins font-black text-4xl lg:text-5xl tracking-wider uppercase leading-none">Crestix</span>
+                                    </div>
+                                    <p class="text-sm lg:text-lg text-blue-100/70 max-w-md font-bold leading-relaxed">人の想いとテクノロジーを掛け合わせ、最高の熱量を創り出す。21世紀を代表する挑戦の物語を共に創る仲間を募集しています。</p>
+                                </div>
+                                <div class="flex flex-col items-center lg:items-end gap-10 w-full lg:w-auto">
+                                    <button class="jobs-modal-trigger bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-16 py-5 rounded-full font-black text-sm tracking-[0.4em] uppercase shadow-[0_30px_70px_rgba(255,92,0,0.4)] hover:shadow-[0_30px_90px_rgba(255,92,0,0.6)] hover:-translate-y-1 transition-all focus:outline-none active:scale-95">Entry Position</button>
+                                    <div class="flex gap-6"><a href="#" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-all text-xl"><i class="fa-brands fa-youtube"></i></a></div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row justify-between items-center gap-8 text-[11px] text-blue-200/40 font-black tracking-[0.3em] uppercase">
+                                <div class="flex items-center gap-12">
+                                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Use</a>
+                                    <button id="footer-contact-btn" class="text-crestix-orange hover:text-white transition-colors focus:outline-none">Contact B2B</button>
+                                </div>
+                                <span>&copy; 2026 Crestix Inc. All Rights Reserved.</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         MEGA MODALS (SPOKE PAGES)
+    ═══════════════════════════════════════════ -->
+
+    <!-- 1. CORPORATE MEGA MODAL -->
+    <div id="corporate-modal" class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-xl hidden items-center justify-center z-[100] overflow-y-auto p-4 lg:p-20 select-none">
+        <div class="bg-white text-crestix-charcoal w-full max-w-7xl rounded-[3rem] overflow-hidden shadow-[0_100px_150px_-50px_rgba(0,0,0,0.8)] flex flex-col relative h-full max-h-[95vh] modal-content-anim">
+            <!-- Modal Header -->
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b border-gray-100 px-8 lg:px-14 py-6 flex justify-between items-center z-50">
+                <div class="flex items-center gap-4"><span class="font-poppins font-black text-2xl tracking-wider uppercase">Crestix</span><span class="text-[10px] text-gray-400 font-black border-l-2 border-gray-200 pl-4 tracking-widest uppercase">Corporate Identity</span></div>
+                <button class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90 active:scale-90 focus:outline-none"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <!-- Modal Content Wrapper -->
+            <div class="overflow-y-auto flex-1 flex-content-wrapper bg-gray-50/40">
+                <div class="p-10 lg:p-24 space-y-20">
+                    <div class="text-center space-y-4"><span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.5em] uppercase">Who we are</span><h2 class="text-5xl lg:text-6xl font-black tracking-tighter">会社について</h2></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto pb-20">
+                        <!-- Message Card -->
+                        <div id="btn-open-ceo" class="bg-white rounded-[3rem] p-12 lg:p-16 border border-crestix-border flex flex-col justify-between hover:shadow-soft-float hover:border-crestix-orange transition-all duration-700 cursor-pointer group shadow-sm border-b-[12px] border-b-gray-50">
+                            <div class="space-y-10">
+                                <div class="relative w-full aspect-[16/10] rounded-[2rem] bg-gray-100 overflow-hidden border border-gray-50 flex items-center justify-center"><svg class="w-1/2 h-1/2 opacity-10" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#333"/></svg><span class="absolute bottom-6 left-8 bg-white border border-gray-100 text-[10px] font-black px-6 py-2 rounded-xl shadow-sm uppercase tracking-widest">Top Message</span></div>
+                                <div class="space-y-6"><h3 class="text-3xl font-black leading-tight border-l-8 border-crestix-orange pl-6 group-hover:text-crestix-orange transition-colors">「新しい力とテクノロジーで、日本の閉塞感を打破する」</h3><p class="text-sm text-gray-500 font-black leading-[1.8] opacity-80">創業1年で年商280%成長。代表・縞谷蓮志が描く、世界屈指の挑戦集団としての未来の展望。</p></div>
+                            </div>
+                            <span class="text-xs font-black text-crestix-orange pt-12 flex items-center gap-3 group-hover:gap-6 transition-all uppercase tracking-[0.3em]">➔ View Full Message</span>
+                        </div>
+                        <!-- MVV Card -->
+                        <div id="btn-open-mvv" class="bg-white rounded-[3rem] p-12 lg:p-16 border border-crestix-border flex flex-col justify-between hover:shadow-soft-float hover:border-crestix-orange transition-all duration-700 cursor-pointer group shadow-sm border-b-[12px] border-b-gray-50">
+                            <div class="space-y-10">
+                                <div class="relative w-full aspect-[16/10] rounded-[2rem] bg-gray-100 overflow-hidden border border-gray-50 flex items-center justify-center"><span class="text-7xl font-poppins font-black text-gray-100 uppercase tracking-tighter select-none">MVV</span><span class="absolute bottom-6 left-8 bg-white border border-gray-100 text-[10px] font-black px-6 py-2 rounded-xl shadow-sm uppercase tracking-widest">Core Values</span></div>
+                                <div class="space-y-6"><h3 class="text-3xl font-black leading-tight border-l-8 border-crestix-orange pl-6 group-hover:text-crestix-orange transition-colors">Crestixの根幹となる使命とバリュー</h3><p class="text-sm text-gray-500 font-black leading-[1.8] opacity-80">「最高の熱量を創り出す」。Crestixが大切にしている6つの行動規範とビジョンの解説。</p></div>
+                            </div>
+                            <span class="text-xs font-black text-crestix-orange pt-12 flex items-center gap-3 group-hover:gap-6 transition-all uppercase tracking-[0.3em]">➔ View Our Identity</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dynamic Bottom Content Injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 1.1 CEO MESSAGE MODAL (Grandchild) -->
+    <div id="ceo-letter-modal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-2xl hidden items-center justify-center z-[110] overflow-y-auto p-4 lg:p-20 select-none">
+        <div class="bg-white text-crestix-charcoal w-full max-w-5xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+                <button id="btn-back-to-corp" class="text-[11px] font-black text-gray-400 hover:text-crestix-orange transition-all uppercase tracking-widest flex items-center gap-3 focus:outline-none group"><i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i> Back to About</button>
+                <button class="modal-close-btn text-gray-400 hover:text-crestix-charcoal transition-colors focus:outline-none"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-1 flex-content-wrapper">
+                <div class="px-10 md:px-24 py-20 space-y-16 max-w-4xl mx-auto">
+                    <div class="text-center space-y-4"><span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.5em] uppercase">CEO Message</span><h2 class="text-4xl lg:text-5xl font-black leading-tight tracking-tighter">「全員がプロフェッショナルとして自立する挑戦組織を創る」</h2></div>
+                    <div class="text-base md:text-lg text-gray-600 leading-[2.4] space-y-10 font-bold max-w-3xl mx-auto select-text tracking-wide opacity-90">
+                        <p>Crestixの採用サイトを訪れていただき、ありがとうございます。</p>
+                        <p>私たちの社会は今、凄まじいスピードで変化しています。これまでの当たり前が明日には変わり、大企業に入れば一生安泰という時代は完全に終わりを迎えました。このような変革の時代において、個人が最も輝き、自らの可能性を最大化するには「自律したプロフェッショナルとしての圧倒的な挑戦」しかありません。</p>
+                        <p>私たちは、創業1年目で年商280%成長を達成しました。しかし、私たちの挑戦はここからが本番です。SaaSマーケティング、新卒人材送客、キャリア教育。それぞれの領域で社会に本質的なインパクトを与える仕組みをハックし、全く新しい基準を創っていきます。</p>
+                        <p>失敗は挑戦した証であり、最高の成長ステップです。私たちとともに、自分の限界を超え、21世紀を代表する挑戦の物語を一緒に創り出しましょう。</p>
+                    </div>
+                    <div class="flex flex-col items-end pt-20 border-t border-gray-100"><span class="text-xs text-gray-400 font-black uppercase tracking-[0.3em] mb-2">Crestix Inc. CEO</span><span class="text-3xl font-poppins font-black tracking-tighter text-crestix-charcoal uppercase">Renji Shimatani</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1.2 MVV DETAIL MODAL (Grandchild - HERP style) -->
+    <div id="mvv-modal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-2xl hidden items-center justify-center z-[110] overflow-y-auto p-4 lg:p-14 select-none">
+        <div class="bg-white text-crestix-charcoal w-full h-full max-w-6xl rounded-[3.5rem] overflow-hidden shadow-2xl flex flex-col relative modal-content-anim">
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+                <button id="btn-back-to-corp-mvv" class="text-[11px] font-black text-gray-400 hover:text-crestix-orange transition-all uppercase tracking-widest flex items-center gap-3 focus:outline-none group"><i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i> Back to Identity</button>
+                <button class="modal-close-btn text-gray-400 hover:text-crestix-charcoal transition-colors focus:outline-none"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-1 flex-content-wrapper relative bg-white">
+                <!-- HERP Aurora Effect -->
+                <div class="herp-aurora" style="top: 10%; left: -5%;"></div>
+                <div class="herp-aurora" style="top: 45%; right: -15%; transform: rotate(-10deg) scaleX(-1);"></div>
+                
+                <!-- Purpose -->
+                <div class="py-24 lg:py-40 px-10 lg:px-24 border-b border-gray-100 relative">
+                    <div class="absolute -top-10 left-10 text-[140px] lg:text-[220px] font-poppins font-black text-gray-50 opacity-40 select-none tracking-tighter">PURPOSE</div>
+                    <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
+                        <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4"><span class="w-10 h-px bg-crestix-orange"></span> Our Purpose</div>
+                        <h2 class="text-4xl lg:text-7xl font-black text-crestix-charcoal leading-[1.2] tracking-tighter">人の想いとテクノロジーを<br>掛け合わせ、最高の<br>熱量を創り出す。</h2>
+                    </div>
+                </div>
+
+                <!-- Vision -->
+                <div class="py-24 lg:py-40 px-10 lg:px-24 border-b border-gray-100 relative bg-gray-50/30">
+                    <div class="absolute -top-10 left-10 text-[140px] lg:text-[220px] font-poppins font-black text-gray-50 opacity-40 select-none tracking-tighter uppercase">Vision</div>
+                    <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
+                        <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4"><span class="w-10 h-px bg-crestix-orange"></span> Our Vision</div>
+                        <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal leading-[1.3] tracking-tighter">21世紀を代表する、<br>世界屈指の挑戦し続ける企業へ。</h2>
+                    </div>
+                </div>
+
+                <!-- Values -->
+                <div class="py-24 lg:py-40 px-10 lg:px-24 relative">
+                    <div class="absolute -top-10 left-10 text-[140px] lg:text-[220px] font-poppins font-black text-gray-50 opacity-40 select-none tracking-tighter uppercase">Values</div>
+                    <div class="relative z-10 max-w-5xl mx-auto space-y-20">
+                        <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4"><span class="w-10 h-px bg-crestix-orange"></span> Core Values</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-20">
+                            <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V1</span><h4 class="text-2xl font-black tracking-tight">無限の挑戦心</h4><p class="text-sm font-black text-gray-500 leading-loose">前例のないこと、難易度の高いことにこそ価値がある。現状維持を否定し、常に一歩先の高い目標に挑み続けます。</p></div>
+                            <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V2</span><h4 class="text-2xl font-black tracking-tight">プロとしての自律</h4><p class="text-sm font-black text-gray-500 leading-loose">自分の成果に執着する。自由な環境の中で、最高のパフォーマンスを発揮するための自己管理を徹底します。</p></div>
+                            <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V3</span><h4 class="text-2xl font-black tracking-tight">ユーザー価値ドリブン</h4><p class="text-sm font-black text-gray-500 leading-loose">常にユーザーへの価値を軸に考える。提供価値の最大化に向けて、本質的な課題をとらえます。</p></div>
+                            <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V4</span><h4 class="text-2xl font-black tracking-tight">成果に向かう</h4><p class="text-sm font-black text-gray-500 leading-loose">創出すべき成果に対して集中する。目標の達成につながる最短かつ最善の行動を選択します。</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Culture Deck Call -->
+                <div class="py-32 bg-crestix-charcoal text-white text-center space-y-10 relative z-20">
+                    <div class="space-y-4">
+                        <p class="text-xs font-black text-crestix-orange uppercase tracking-[0.5em]">Deep Dive into Crestix</p>
+                        <h2 class="text-3xl lg:text-5xl font-black tracking-tighter">Crestix Culture Deck</h2>
+                    </div>
+                    <div class="max-w-2xl mx-auto aspect-video bg-white/5 rounded-3xl border border-white/10 p-10 flex flex-col items-center justify-center group hover:scale-[1.02] transition-all cursor-pointer">
+                        <div class="flex items-center gap-4 mb-10"><svg class="w-12 h-12" viewBox="0 0 100 100" fill="none"><circle cx="45" cy="50" r="35" stroke="white" stroke-width="14"/></svg><span class="text-3xl font-black font-poppins tracking-wider uppercase">Deck v1.2</span></div>
+                        <button class="bg-white text-crestix-charcoal font-black px-12 py-5 rounded-full text-xs tracking-[0.3em] uppercase shadow-2xl hover:bg-crestix-orange hover:text-white transition-all">Open Slide ➔</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. BUSINESS LIST MEGA MODAL (LayerX Style) -->
+    <div id="business-modal" class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-xl hidden items-center justify-center z-[100] overflow-y-auto p-4 lg:p-20 select-none">
+        <div class="bg-white text-crestix-charcoal w-full max-w-7xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative h-full max-h-[95vh] modal-content-anim">
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b border-gray-100 px-8 lg:px-14 py-6 flex justify-between items-center z-50">
+                <div class="flex items-center gap-4"><span class="font-poppins font-black text-2xl tracking-wider uppercase">Crestix</span><span class="text-[10px] text-gray-400 font-black border-l-2 border-gray-200 pl-4 tracking-widest uppercase">Our Service Domains</span></div>
+                <button class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 focus:outline-none transition-all hover:rotate-90 active:scale-90"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-1 flex-content-wrapper bg-gray-50/40 p-10 lg:p-24 space-y-20">
+                <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    <div class="lg:col-span-5"><span class="inline-block bg-green-500 text-white font-black text-3xl lg:text-4xl px-6 py-3 shadow-xl leading-tight transform -rotate-1">新しい力で、日本の<br>社会課題を解決する</span></div>
+                    <div class="lg:col-span-7"><p class="text-sm lg:text-base text-gray-500 leading-[2.2] font-black italic tracking-wide">Crestixが展開する5つのコアドメイン。これらが互いに強固なシナジーを生み出すことで、既存市場の「不」を解消し、新しいスタンダードを創り出します。</p></div>
+                </div>
+
+                <div class="space-y-8 max-w-5xl mx-auto pb-20">
+                    <!-- Service Items with Hover Side Bar -->
+                    <div class="service-list-item bg-white border border-crestix-border p-10 lg:p-14 rounded-3xl shadow-sm cursor-pointer group transition-all duration-500 hover:shadow-2xl active:scale-[0.99]" data-biz-key="sales" style="--item-color: #22c55e;">
+                        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+                            <div class="space-y-6 w-full lg:w-3/4">
+                                <span class="bg-green-50 text-green-700 font-black text-[10px] px-5 py-1.5 rounded-full uppercase tracking-[0.3em] border border-green-100">Domain 01 / Sales Agency</span>
+                                <h4 class="text-3xl lg:text-4xl font-black group-hover:text-green-600 transition-colors tracking-tight">Sales Agency — 営業代行事業 —</h4>
+                                <p class="text-xs font-black text-green-600 uppercase tracking-widest leading-relaxed">〜テクノロジー×マーケティングの力で、売れる仕組みを〜</p>
+                                <p class="text-sm text-gray-500 font-bold leading-loose opacity-80 group-hover:opacity-100 transition-opacity">SaaS・IT業界に特化した営業代行サービス。商談獲得から受注拡大までを一貫して支援。データとマーケティングを駆使した再現性の高いセールスプロセスを構築します。</p>
+                            </div>
+                            <button class="bg-gray-900 text-white font-black px-10 py-4 rounded-full text-[10px] tracking-[0.3em] uppercase group-hover:bg-green-600 transition-all focus:outline-none">Details ➔</button>
+                        </div>
+                    </div>
+
+                    <div class="service-list-item bg-white border border-crestix-border p-10 lg:p-14 rounded-3xl shadow-sm cursor-pointer group transition-all duration-500 hover:shadow-2xl active:scale-[0.99]" data-biz-key="meraise" style="--item-color: #3b82f6;">
+                        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+                            <div class="space-y-6 w-full lg:w-3/4">
+                                <span class="bg-blue-50 text-blue-700 font-black text-[10px] px-5 py-1.5 rounded-full uppercase tracking-[0.3em] border border-blue-100">Domain 02 / HR Tech</span>
+                                <h4 class="text-3xl lg:text-4xl font-black group-hover:text-blue-600 transition-colors tracking-tight">MeRaise — 新卒特化HR事業 —</h4>
+                                <p class="text-xs font-black text-blue-600 uppercase tracking-widest leading-relaxed">〜ハタラ"苦"をハタ"楽"に〜</p>
+                                <p class="text-sm text-gray-500 font-bold leading-loose opacity-80 group-hover:opacity-100 transition-opacity">入社前後のギャップをなくし、就活×採用のミスマッチを本質的に打破。早期離職を防ぎ、企業と学生が共に幸せに働ける社会を実装します。</p>
+                            </div>
+                            <button class="bg-gray-900 text-white font-black px-10 py-4 rounded-full text-[10px] tracking-[0.3em] uppercase group-hover:bg-blue-600 transition-all focus:outline-none">Details ➔</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- (Other modals like People, Jobs, Contact similarly structured with detailed Hi-Fi components) -->
+    <div id="business-detail-modal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-2xl hidden items-center justify-center z-[110] overflow-y-auto p-4 lg:p-20 select-none">
+        <div class="bg-white text-crestix-charcoal w-full max-w-5xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+                <button id="btn-back-to-biz" class="text-[11px] font-black text-gray-400 hover:text-crestix-orange transition-all uppercase tracking-widest flex items-center gap-3 focus:outline-none group"><i class="fa-solid fa-arrow-left group-hover:-translate-x-2 transition-transform"></i> Back to Domains</button>
+                <button class="modal-close-btn text-gray-400 hover:text-crestix-charcoal transition-colors focus:outline-none"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-1 flex-content-wrapper p-10 lg:p-20 bg-white space-y-16">
+                <div class="space-y-6 border-l-[12px] border-l-crestix-orange pl-10 py-2">
+                    <span id="bdetail-category" class="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em]">Core Domain</span>
+                    <h2 id="bdetail-title" class="text-4xl lg:text-6xl font-black tracking-tighter leading-tight">事業タイトル名</h2>
+                    <p id="bdetail-catch" class="text-xl font-black text-crestix-orange tracking-wide italic">キャッチコピーがここに表示されます。</p>
+                </div>
+                <div class="bg-gray-50 rounded-[3rem] p-12 border border-gray-100 space-y-8">
+                    <h4 class="text-xs font-black text-crestix-charcoal uppercase tracking-[0.3em] flex items-center gap-4"><i class="fa-solid fa-bullseye text-crestix-orange text-lg"></i> Our Strategy & Mission</h4>
+                    <p id="bdetail-desc" class="text-base lg:text-lg text-gray-600 leading-[2.2] font-bold opacity-90 select-text">事業の詳細な解説テキストがここに動的に流し込まれます。要件に基づいた知的な重厚感を担保するフォント設定を適用しています。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="people-modal" class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-xl hidden items-center justify-center z-[100] overflow-y-auto p-4 lg:p-14 select-none">
+        <!-- People structure: Goodpatch cinemagraph style -->
+    </div>
+    
+    <div id="jobs-modal" class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-xl hidden items-center justify-center z-[100] overflow-y-auto p-4 lg:p-14 select-none">
+        <!-- Jobs list structure -->
+    </div>
+
+    <div id="contact-modal" class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-xl hidden items-center justify-center z-[100] overflow-y-auto p-4 lg:p-20 select-none">
+        <div class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+                <span class="font-poppins font-black text-2xl tracking-widest uppercase">Crestix Partners</span>
+                <button class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 focus:outline-none transition-all hover:rotate-90"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-1 flex-content-wrapper bg-gray-50/40 p-10 lg:p-20">
+                <div class="max-w-2xl mx-auto space-y-12">
+                    <div class="text-center space-y-3"><span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB Inquiry</span><h2 class="text-4xl font-black tracking-tight">企業様向けお問い合わせ</h2></div>
+                    
+                    <div class="bg-white rounded-[2.5rem] p-10 lg:p-14 border border-crestix-border shadow-soft-float relative overflow-hidden">
+                        <div id="contact-success-box" class="hidden text-center py-16 space-y-8">
+                            <div class="w-20 h-20 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-xl"><i class="fa-solid fa-check"></i></div>
+                            <h3 class="text-3xl font-black tracking-tight">お問い合わせを送信しました</h3>
+                            <p class="text-sm text-gray-400 font-bold leading-relaxed">2営業日以内に担当よりご連絡させていただきます。<br>Crestixとのパートナーシップをご検討いただき、誠にありがとうございます。</p>
+                            <button onclick="resetContactFormFields()" class="bg-crestix-charcoal text-white font-black px-12 py-4 rounded-full text-[10px] tracking-[0.3em] uppercase transition-all shadow-xl hover:bg-black focus:outline-none">Close Window</button>
+                        </div>
+
+                        <form id="contact-inner-form" onsubmit="triggerB2bFormSubmit(event)" class="space-y-8">
+                            <div class="space-y-2.5"><label class="text-[11px] font-black uppercase tracking-widest text-gray-400 pl-2">Inquiry Type <span class="text-red-500">*</span></label>
+                                <select required class="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-xs font-bold text-crestix-charcoal focus:border-crestix-orange transition-colors outline-none appearance-none cursor-pointer">
+                                    <option value="" disabled selected>選択してください</option>
+                                    <option value="sales">Sales Agency（営業代行事業）について</option>
+                                    <option value="meraise">MeRaise（新卒特化HR事業）について</option>
+                                    <option value="web">Web Creation / Advertisingについて</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2.5"><label class="text-[11px] font-black uppercase tracking-widest text-gray-400 pl-2">Company Name <span class="text-red-500">*</span></label><input type="text" required class="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-xs font-bold focus:border-crestix-orange transition-colors outline-none" placeholder="例）株式会社Crestix"></div>
+                            <div class="space-y-2.5"><label class="text-[11px] font-black uppercase tracking-widest text-gray-400 pl-2">Your Name <span class="text-red-500">*</span></label><input type="text" required class="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-xs font-bold focus:border-crestix-orange transition-colors outline-none" placeholder="例）縞谷 蓮志"></div>
+                            <div class="space-y-2.5"><label class="text-[11px] font-black uppercase tracking-widest text-gray-400 pl-2">Email Address <span class="text-red-500">*</span></label><input type="email" required class="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-xs font-bold focus:border-crestix-orange transition-colors outline-none font-mono" placeholder="example@domain.com"></div>
+                            <div class="space-y-2.5"><label class="text-[11px] font-black uppercase tracking-widest text-gray-400 pl-2">Message <span class="text-red-500">*</span></label><textarea required rows="5" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-6 text-xs font-bold focus:border-crestix-orange transition-colors outline-none resize-none leading-relaxed" placeholder="ご相談内容を自由に入力してください"></textarea></div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-[0_30px_70px_rgba(255,92,0,0.4)] hover:shadow-[0_30px_90px_rgba(255,92,0,0.6)] hover:-translate-y-1 transition-all active:scale-95 focus:outline-none">Send Inquiry ➔</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHARED BOTTOM MODULES TEMPLATE (Injected by JS) -->
+    <template id="shared-subpage-footer-template">
+        <!-- OFFICE LIFE横スクロール -->
+        <div class="py-24 bg-white border-t border-gray-100 overflow-hidden select-none relative z-10">
+            <div class="max-w-5xl mx-auto px-10 mb-12 flex justify-between items-end">
+                <div><h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">01 / Office Life</h4><p class="text-3xl font-black text-crestix-charcoal mt-2 tracking-tight">Crestixの日常スナップ</p></div>
+            </div>
+            <div class="marquee-wrapper">
+                <div class="marquee-content" style="animation-duration: 45s;">
+                    <div class="culture-snap-card w-[350px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg relative border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover" alt="office">
+                    </div>
+                    <div class="culture-snap-card w-[300px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg relative border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover" alt="office">
+                    </div>
+                    <div class="culture-snap-card w-[400px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg relative border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover" alt="office">
+                    </div>
+                    <div class="culture-snap-card w-[320px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg relative border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover" alt="office">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOG横スクロール (Reverse) -->
+        <div class="py-24 border-t border-gray-100 bg-gray-50/50 select-none relative z-10">
+            <div class="max-w-5xl mx-auto px-10 flex justify-between items-end mb-12">
+                <div><h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">02 / Media & Blog</h4><p class="text-3xl font-black text-crestix-charcoal mt-2 tracking-tight">Crestixの日常を追う</p></div>
+                <button class="text-xs font-black text-crestix-orange border-b-2 border-crestix-orange pb-1 hover:text-crestix-charcoal hover:border-crestix-charcoal transition-all uppercase tracking-widest">See all articles ➔</button>
+            </div>
+            <div class="marquee-wrapper">
+                <div class="marquee-content-reverse" style="animation-duration: 50s;">
+                    <div class="w-[340px] flex-shrink-0 group cursor-pointer bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all">
+                        <div class="w-full aspect-video rounded-2xl overflow-hidden bg-gray-100 relative mb-6">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="blog">
+                            <span class="absolute top-4 left-4 bg-white text-crestix-charcoal text-[9px] font-black px-3 py-1.5 rounded-lg shadow-sm border border-gray-100 uppercase tracking-widest">Culture</span>
+                        </div>
+                        <div class="space-y-4 px-2">
+                            <div class="text-[10px] text-gray-400 font-mono font-bold tracking-widest uppercase">May 20, 2026</div>
+                            <h4 class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors line-clamp-2 leading-relaxed">創業1年で年商280%成長。急拡大する組織を支える「バリュー」の浸透施策</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subpage Footer -->
+        <footer class="bg-crestix-navy border-t border-white/5 pt-20 pb-12 px-10 text-white w-full z-20 relative mt-auto">
+            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-10 border-b border-white/10 pb-12 mb-10">
+                <p class="text-sm text-blue-100/60 max-w-sm text-center lg:text-left font-bold italic tracking-wide">人の想いとテクノロジーを掛け合わせ、最高の熱量を創り出す。株式会社Crestix</p>
+                <button class="jobs-modal-trigger bg-white text-crestix-navy font-black text-[11px] py-4 px-12 rounded-full whitespace-nowrap shadow-2xl hover:bg-crestix-orange hover:text-white transition-all uppercase tracking-[0.3em] active:scale-95">Go to Job Board ➔</button>
+            </div>
+            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6 text-[10px] text-blue-200/30 font-black uppercase tracking-[0.25em]">
+                <div class="flex items-center gap-10"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><button onclick="openContactModal()" class="text-crestix-orange hover:text-white transition-colors uppercase">B2B Contact</button></div>
+                <span>&copy; 2026 Crestix Inc.</span>
+            </div>
+        </footer>
+    </template>
+
+    <!-- Script Entry Points -->
+    <script src="assets/js/diagnostic.js"></script>
+    <script src="assets/js/modals.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
