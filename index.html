@@ -69,96 +69,80 @@
 
     /* ─── NAVBAR ──────────────────────────────────────────── */
     #navbar {
-        background: rgba(0,0,0,0.05);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        transition: background 0.5s ease, padding 0.4s ease;
+        background: transparent;
+        border-color: transparent;
+        transition: background 0.6s ease, border-color 0.6s ease;
     }
     #navbar.scrolled {
-        background: rgba(10,15,30,0.75);
+        background: rgba(10,15,30,0.72);
         backdrop-filter: blur(28px);
         -webkit-backdrop-filter: blur(28px);
+        border-color: rgba(255,255,255,0.08);
     }
 
-    /* MENU button (left of logo) */
-    #hamburger-btn {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+    /* ロゴ: 常時表示 */
+    #nav-logo-wrap {
         cursor: pointer;
-        background: none;
-        border: none;
-        color: white;
-        font-family: 'Poppins', sans-serif;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        padding: 6px 0;
-        z-index: 100;
-        transition: opacity 0.4s ease;
-    }
-    /* Nav links group */
-    .nav-links-group {
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition: opacity 0.5s ease;
         opacity: 1;
-        transform: translateX(0);
     }
+
+    /* ── 初期状態: navリンク・CTAは全て表示、MENUピル・dividerは非表示 ── */
+    .nav-links-group {
+        transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1),
+                    transform 0.4s cubic-bezier(0.16,1,0.3,1);
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    .nav-cta-btn {
+        transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1),
+                    transform 0.35s cubic-bezier(0.16,1,0.3,1);
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    #nav-divider,
+    #hamburger-btn {
+        opacity: 0;
+        transform: scale(0.8);
+        pointer-events: none;
+        transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1),
+                    transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    /* ── スクロール後: navリンク・CTAが消えてMENUが浮き出る ── */
     #navbar.scrolled .nav-links-group {
         opacity: 0;
-        transform: translateX(-16px);
+        transform: translateY(-8px) scale(0.92);
         pointer-events: none;
+        transition-delay: 0s;
     }
-    /* スクロール時MENUピルは薄く残す（ロゴの横でクリック可） */
-    #navbar.scrolled #hamburger-btn {
-        opacity: 0.6;
-        transform: scale(0.94);
-    }
-
-    /* Logo */
-    #nav-logo-wrap {
-        transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), filter 0.4s ease;
-        cursor: pointer;
-        position: relative;
-    }
-    #navbar.scrolled #nav-logo-wrap {
-        transform: scale(1.06);
-        filter: drop-shadow(0 0 10px rgba(255,92,0,0.35));
-    }
-    /* MENU tooltip under logo when scrolled */
-    #nav-logo-wrap::after {
-        content: 'MENU';
-        position: absolute;
-        bottom: -20px;
-        left: 50%;
-        transform: translateX(-50%) translateY(4px);
-        font-family: 'Poppins', sans-serif;
-        font-size: 7px;
-        font-weight: 900;
-        letter-spacing: 0.35em;
-        color: rgba(255,255,255,0.4);
+    #navbar.scrolled .nav-cta-btn {
         opacity: 0;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        white-space: nowrap;
+        transform: translateY(-8px) scale(0.92);
         pointer-events: none;
+        transition-delay: 0.04s;
     }
-    #navbar.scrolled #nav-logo-wrap::after {
+    #navbar.scrolled #nav-divider {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: scale(1);
+        pointer-events: auto;
+        transition-delay: 0.12s;
     }
-
-    /* CTA — ALWAYS VISIBLE, right corner */
-    .nav-cta-btn {
-        /* never hidden */
-        transition: background 0.2s ease, box-shadow 0.2s ease;
+    #navbar.scrolled #hamburger-btn {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+        transition-delay: 0.18s;
     }
 
     /* Hamburger lines */
-    .hamburger-lines { display: flex; flex-direction: column; gap: 5px; width: 24px; }
+    .hamburger-lines { display: flex; flex-direction: column; gap: 4px; width: 16px; }
     .hamburger-lines span { display: block; height: 1.5px; background: white; border-radius: 2px; transition: all 0.4s cubic-bezier(0.76,0,0.24,1); transform-origin: center; }
-    .hamburger-lines.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger-lines.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
     .hamburger-lines.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger-lines.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .hamburger-lines.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
     /* ─── Fullscreen Menu ──────────────────────────────────── */
     #fullscreen-menu {
@@ -472,34 +456,33 @@
     <!-- ═══ NAVIGATION ═══ -->
     <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-3 px-8 lg:px-14 z-50 border-b border-white/10">
 
-        <!-- LEFT: Logo + MENU button side by side -->
+        <!-- LEFT: Logo (常時) + divider + MENU pill (スクロール後に出現) -->
         <div class="flex items-center gap-4">
 
-            <!-- Logo (home link when at top) -->
+            <!-- ロゴ: 常時表示 -->
             <div id="nav-logo-wrap" onclick="handleLogoClick()" role="button" aria-label="ホーム / メニュー"
-                 style="display:flex;align-items:center;gap:10px;">
+                 style="display:flex;align-items:center;">
                 <img src="assets/images/office/crestix-header.png" alt="Crestix"
                      style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);"
                      onerror="this.style.display='none'">
-                <span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:1.05rem;color:white;letter-spacing:-0.02em;white-space:nowrap;">CRESTIX</span>
             </div>
 
-            <!-- Divider -->
-            <span style="width:1px;height:18px;background:rgba(255,255,255,0.2);display:block;flex-shrink:0;"></span>
+            <!-- 区切り線 (スクロール後に出現) -->
+            <span id="nav-divider" style="width:1px;height:18px;background:rgba(255,255,255,0.2);display:block;flex-shrink:0;"></span>
 
-            <!-- MENU button — right next to logo, pill shape -->
+            <!-- MENU ピルボタン (スクロール後に出現) -->
             <button id="hamburger-btn" onclick="toggleMenu()" aria-label="メニューを開く"
-                    style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:9999px;padding:7px 16px 7px 14px;cursor:pointer;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;transition:background 0.2s ease,border-color 0.2s ease;"
-                    onmouseover="this.style.background='rgba(255,255,255,0.16)';this.style.borderColor='rgba(255,255,255,0.35)'"
-                    onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">
-                <div class="hamburger-lines" id="ham-lines" style="width:18px;gap:4px;">
+                    style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:7px 16px 7px 12px;cursor:pointer;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;transition:background 0.2s ease,border-color 0.2s ease;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.borderColor='rgba(255,255,255,0.4)'"
+                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'">
+                <div class="hamburger-lines" id="ham-lines">
                     <span></span><span></span><span></span>
                 </div>
                 MENU
             </button>
         </div>
 
-        <!-- CENTER: Nav links (desktop only, hides on scroll) -->
+        <!-- CENTER: Nav links — スクロール後に出現 -->
         <div class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
             <a href="corporate.html" class="hover:text-orange-400 transition-colors">Corporate</a>
             <a href="members.html"   class="hover:text-orange-400 transition-colors">Members</a>
@@ -507,10 +490,10 @@
             <a href="#sec-youtube-carousel" class="hover:text-orange-400 transition-colors">Crestory</a>
         </div>
 
-        <!-- RIGHT: CTA — ALWAYS VISIBLE -->
+        <!-- RIGHT: CTA — スクロール後に出現 -->
         <a href="jobs.html"
-           class="nav-cta-btn bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-black px-7 py-3 rounded-full tracking-[0.2em] uppercase transition-colors active:scale-95 focus:outline-none whitespace-nowrap shadow-lg"
-           style="font-family:'Poppins',sans-serif;">
+           class="nav-cta-btn bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-black px-7 py-3 rounded-full tracking-[0.2em] uppercase active:scale-95 focus:outline-none whitespace-nowrap shadow-lg"
+           style="font-family:'Poppins',sans-serif;transition:background 0.2s ease,opacity 0.55s cubic-bezier(0.16,1,0.3,1),transform 0.55s cubic-bezier(0.16,1,0.3,1);">
             応募はこちらから
         </a>
     </nav>
