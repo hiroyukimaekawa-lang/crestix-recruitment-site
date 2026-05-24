@@ -14,6 +14,94 @@
     <style>
         .ca-border { border-top: 1px solid #e5e7eb; }
         .ca-link-hover:hover { opacity: 0.7; }
+
+        .corp-hero {
+            background-image:
+                linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.3) 60%, rgba(255,255,255,0) 100%),
+                url('assets/images/office/crestix.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 480px;
+        }
+
+        .msg-card {
+            background: #fff;
+            border-radius: 1.25rem;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .msg-card:hover {
+            box-shadow: 0 12px 40px -8px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+        }
+        .msg-card-body {
+            padding: 1.5rem 1.75rem;
+            border-top: 1px solid #f3f4f6;
+        }
+        .msg-card-label {
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            color: #9ca3af;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .msg-card-title {
+            font-size: 1rem;
+            font-weight: 900;
+            color: #1f2937;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+        .msg-card-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: #333;
+            letter-spacing: 0.02em;
+        }
+        .msg-card-link .arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.1rem;
+            height: 1.1rem;
+            background: #FF5C00;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 0.55rem;
+            flex-shrink: 0;
+        }
+        .msg-card:hover .msg-card-link { color: #FF5C00; }
+
+        .msg-card-text-only {
+            flex: 1;
+        }
+        .msg-card-text-only .msg-card-body {
+            padding: 2rem 1.75rem 1.5rem;
+            border-top: none;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .msg-card-text-only .msg-card-title {
+            font-size: 1.05rem;
+            flex: 1;
+        }
+        .msg-card-text-only .msg-card-link {
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #f3f4f6;
+        }
     </style>
 </head>
 <body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
@@ -32,78 +120,76 @@
         <a href="jobs.html" class="bg-crestix-charcoal text-white hover:bg-black text-[11px] font-black px-12 py-4 rounded-full shadow-2xl tracking-[0.25em] uppercase transition-all active:scale-95">応募はこちらから</a>
     </nav>
 
-    <!-- MAIN CONTENT -->
-    <main class="pt-40">
-        <!-- 1. Page Title Area (CyberAgent Style) -->
-        <section class="max-w-7xl mx-auto px-6 lg:px-14 pb-20">
-            <div class="flex flex-col md:flex-row justify-between items-baseline gap-4">
-                <h1 class="text-6xl lg:text-8xl font-black font-poppins tracking-tighter uppercase leading-none">Corporate</h1>
-                <span class="text-lg font-bold text-gray-400">会社について</span>
-            </div>
-            <!-- Sub-Navigation Tabs -->
-            <nav class="mt-20 border-b border-gray-200">
-                <ul class="flex flex-wrap gap-x-12 text-sm font-black text-gray-400 uppercase tracking-widest">
-                    <li><a href="#message" class="inline-block pb-6 border-b-4 border-crestix-orange text-crestix-charcoal">Message</a></li>
-                    <li><a href="about.html" class="inline-block pb-6 hover:text-crestix-orange transition-colors">Philosophy</a></li>
-                    <li><a href="#profile" class="inline-block pb-6 hover:text-crestix-orange transition-colors">Profile</a></li>
-                    <li><a href="#officers" class="inline-block pb-6 hover:text-crestix-orange transition-colors">Officers</a></li>
-                    <li><a href="#history" class="inline-block pb-6 hover:text-crestix-orange transition-colors">History</a></li>
-                </ul>
-            </nav>
-        </section>
+    <main>
 
-        <!-- 2. Message Section -->
-        <section id="message" class="ca-border py-24 lg:py-40 bg-white">
+        <!-- ① HERO -->
+        <div class="corp-hero flex flex-col justify-end pt-40">
+            <div class="max-w-7xl mx-auto px-6 lg:px-14 pb-12 w-full">
+                <p class="text-white/70 text-xs font-black tracking-[0.4em] uppercase mb-4 font-poppins">Crestix / Corporate</p>
+                <h1 class="text-5xl lg:text-7xl font-black font-poppins tracking-tighter uppercase leading-none text-white drop-shadow-lg">Corporate</h1>
+                <p class="text-white/80 text-base font-bold mt-3">会社について</p>
+            </div>
+        </div>
+
+        <!-- ② MESSAGE CARD HUB -->
+        <section class="py-20 lg:py-32 bg-white">
             <div class="max-w-7xl mx-auto px-6 lg:px-14">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-                    <div class="lg:col-span-4">
-                        <h2 class="text-4xl font-black font-poppins tracking-tighter uppercase">Top Message</h2>
-                        <p class="text-sm font-bold text-gray-400 mt-2">トップメッセージ</p>
-                    </div>
-                    <div class="lg:col-span-8">
-                        <div class="space-y-12">
-                            <h3 class="text-3xl lg:text-5xl font-black leading-tight tracking-tight">「新しい力とテクノロジーで、日本の閉塞感を打破する」</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                                <div class="text-base text-gray-600 leading-loose space-y-6 font-medium select-text">
-                                    <p>Crestixの採用サイトを訪れていただき、ありがとうございます。</p>
-                                    <p>私たちの社会は今、凄まじいスピードで変化しています。これまでの当たり前が明日には変わり、大企業に入れば一生安泰という時代は完全に終わりを迎えました。このような変革の時代において、個人が最も輝き、自らの可能性を最大化するには「自律したプロフェッショナルとしての圧倒的な挑戦」しかありません。</p>
-                                </div>
-                                <div class="text-base text-gray-600 leading-loose space-y-6 font-medium select-text">
-                                    <p>私たちは、創業1年目で年商280%成長を達成しました。しかし、私たちの挑戦はここからが本番です。それぞれの領域で社会に本質的なインパクトを与える仕組みをハックし、全く新しい基準を創っていきます。</p>
-                                    <p>私たちとともに、自分の限界を超え、21世紀を代表する挑戦の物語を一緒に創り出しましょう。</p>
-                                </div>
-                            </div>
-                            <div class="pt-12 flex flex-col items-end border-t border-gray-100">
-                                <span class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-2">Crestix Inc. CEO</span>
-                                <span class="text-4xl font-black font-poppins tracking-tighter">Renji Shimatani</span>
-                                <p class="text-xl font-black mt-1">代表取締役 縞谷 蓮志</p>
+
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-black font-poppins tracking-tighter">Message</h2>
+                    <p class="text-sm font-bold text-gray-400 mt-2">メッセージ</p>
+                </div>
+
+                <!-- 3カード -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <!-- Card 1: トップメッセージ（画像付き → message.html へ遷移） -->
+                    <a href="message.html" class="msg-card group">
+                        <div style="overflow:hidden; height:220px; background:#f3f4f6;">
+                            <img src="assets/images/office/crestix.png" alt="代表メッセージ"
+                                 style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s ease;">
+                        </div>
+                        <div class="msg-card-body">
+                            <div class="msg-card-link">
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                                トップメッセージ
                             </div>
                         </div>
-                    </div>
+                    </a>
+
+                    <!-- Card 2: Purpose -->
+                    <a href="about.html#purpose" class="msg-card msg-card-text-only group flex flex-col">
+                        <div class="msg-card-body flex flex-col flex-1" style="border-top:none;">
+                            <div class="flex-1">
+                                <p class="msg-card-label">Purpose</p>
+                                <p class="msg-card-title">新しい力とテクノロジーで、<br>日本の閉塞感を打破する</p>
+                            </div>
+                            <div class="msg-card-link" style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #f3f4f6;">
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                                パーパス
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: MVV -->
+                    <a href="about.html#mvv" class="msg-card msg-card-text-only group flex flex-col">
+                        <div class="msg-card-body flex flex-col flex-1" style="border-top:none;">
+                            <div class="flex-1">
+                                <p class="msg-card-label">MVV</p>
+                                <p class="msg-card-title">人の想いとテクノロジーを掛け合わせ、<br>最高の熱量を創り出す</p>
+                            </div>
+                            <div class="msg-card-link" style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #f3f4f6;">
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                                MVV
+                            </div>
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </section>
 
-        <!-- 3. Philosophy Section (Link to MVV) -->
-        <section id="philosophy" class="ca-border py-24 lg:py-40 bg-gray-50/50">
-            <div class="max-w-7xl mx-auto px-6 lg:px-14">
-                <a href="about.html" class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center group ca-link-hover">
-                    <div class="lg:col-span-4">
-                        <h2 class="text-4xl font-black font-poppins tracking-tighter uppercase">Philosophy</h2>
-                        <p class="text-sm font-bold text-gray-400 mt-2">企業理念</p>
-                    </div>
-                    <div class="lg:col-span-8 flex justify-between items-center">
-                        <div class="space-y-6">
-                            <h3 class="text-3xl lg:text-5xl font-black leading-tight tracking-tight group-hover:text-crestix-orange transition-colors">人の想いとテクノロジーを掛け合わせ、<br>最高の熱量を創り出す。</h3>
-                            <p class="text-sm text-gray-500 font-bold">パーパス、ビジョン、バリューを詳しく見る ➔</p>
-                        </div>
-                        <i class="fa-solid fa-arrow-right text-4xl text-gray-200 group-hover:text-crestix-orange transition-all transform group-hover:translate-x-4 hidden md:block"></i>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- 4. Profile Section (Corporate Overview) -->
+        <!-- ③ PROFILE -->
         <section id="profile" class="ca-border py-24 lg:py-40">
             <div class="max-w-7xl mx-auto px-6 lg:px-14">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
@@ -135,35 +221,15 @@
             </div>
         </section>
 
-        <!-- 5. Officers Section -->
-        <section id="officers" class="ca-border py-24 lg:py-40 bg-gray-50/50">
-            <div class="max-w-7xl mx-auto px-6 lg:px-14">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-                    <div class="lg:col-span-4">
-                        <h2 class="text-4xl font-black font-poppins tracking-tighter uppercase">Officers</h2>
-                        <p class="text-sm font-bold text-gray-400 mt-2">役員紹介</p>
-                    </div>
-                    <div class="lg:col-span-8">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                            <div class="space-y-6">
-                                <div class="aspect-[4/5] bg-gray-200 rounded-2xl"></div>
-                                <div class="space-y-2">
-                                    <span class="text-xs font-bold text-crestix-orange tracking-widest uppercase">CEO / Founder</span>
-                                    <h4 class="text-2xl font-black">縞谷 蓮志</h4>
-                                </div>
-                            </div>
-                            <!-- 必要に応じて他の役員を追加 -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- SHARED CONTENT (Culture Snaps) -->
+    <!-- CULTURE SNAPS -->
     <div class="ca-border py-40 bg-white select-none overflow-hidden relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-14 mb-16 flex justify-between items-end">
-            <div><h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Culture Snaps</h4><p class="text-4xl font-black text-crestix-charcoal mt-2 tracking-tighter">Crestixの日常スナップ</p></div>
+            <div>
+                <h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Culture Snaps</h4>
+                <p class="text-4xl font-black text-crestix-charcoal mt-2 tracking-tighter">Crestixの日常スナップ</p>
+            </div>
         </div>
         <div class="marquee-wrapper">
             <div class="marquee-content" style="animation-duration: 45s;">

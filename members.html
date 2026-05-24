@@ -3,120 +3,782 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet Our Team | Crestix Careers — 最高速度で共鳴するプロフェッショナルたち</title>
+    <title>Members | Crestix Careers — 最高速度で共鳴するプロフェッショナルたち</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/js/tailwind-config.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    crestix: {
+                        orange: '#FF5C00',
+                        orangeDark: '#E65200',
+                        charcoal: '#333333',
+                        navy: '#1A2B4C',
+                        border: '#E5E7EB',
+                    }
+                },
+                fontFamily: {
+                    sans: ['Noto Sans JP', 'sans-serif'],
+                    poppins: ['Poppins', 'sans-serif']
+                },
+                boxShadow: {
+                    '3d-depth': '0 30px 60px -12px rgba(0,0,0,0.45)',
+                }
+            }
+        }
+    }
+    </script>
+    <style>
+    /* ── Global ── */
+    body {
+        font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+        color: #333333;
+        background: #fff;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+
+    /* ── Navbar (white, light) ── */
+    #navbar {
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid #E5E7EB;
+        transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    /* ── Member cards — Goodpatch cutout style ── */
+    .member-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #fff;
+        border-radius: 1.5rem;
+        border: 1.5px solid #E5E7EB;
+        overflow: hidden;
+        transition: box-shadow 0.45s cubic-bezier(0.16,1,0.3,1),
+                    transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                    border-color 0.3s ease;
+        cursor: pointer;
+    }
+    .member-card:hover {
+        box-shadow: 0 24px 56px -8px rgba(255,92,0,0.15), 0 8px 16px -4px rgba(0,0,0,0.06);
+        transform: translateY(-6px);
+        border-color: rgba(255,92,0,0.3);
+    }
+
+    /* Photo container — light warm-grey bg like reference screenshot */
+    .member-photo-wrap {
+        position: relative;
+        width: 100%;
+        /* portrait ratio matching the screenshot */
+        aspect-ratio: 3/4;
+        background: linear-gradient(160deg, #f2ede8 0%, #e8e0d8 100%);
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    /* Role badge — top-center pill like reference */
+    .member-role {
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #FF5C00;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 99px;
+        white-space: nowrap;
+        z-index: 10;
+    }
+
+    /* Person photo — bottom-anchored, slightly overshoots top */
+    .member-photo {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 90%;
+        width: auto;
+        object-fit: contain;
+        object-position: bottom center;
+        transition: transform 0.65s cubic-bezier(0.16,1,0.3,1);
+        filter: drop-shadow(0 -8px 24px rgba(0,0,0,0.06));
+    }
+    .member-card:hover .member-photo {
+        transform: translateX(-50%) scale(1.04) translateY(-6px);
+    }
+
+    /* Placeholder person (when no real photo) — SVG-based silhouette */
+    .member-photo-placeholder {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 72%;
+        height: 88%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        transition: transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+    .member-card:hover .member-photo-placeholder {
+        transform: translateX(-50%) scale(1.04) translateY(-6px);
+    }
+
+    /* Card info section */
+    .member-info {
+        width: 100%;
+        padding: 20px 20px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Name */
+    .member-name {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 18px;
+        font-weight: 900;
+        color: #333;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+    }
+
+    /* Tagline */
+    .member-tagline {
+        font-size: 11px;
+        color: #888;
+        font-weight: 600;
+        line-height: 1.7;
+        letter-spacing: 0.01em;
+    }
+
+    /* Entry button — matches reference: filled orange pill */
+    .member-entry-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #FF5C00;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding: 11px 18px;
+        border-radius: 99px;
+        text-decoration: none;
+        transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+        box-shadow: 0 6px 20px rgba(255,92,0,0.25);
+    }
+    .member-entry-btn:hover {
+        background: #E65200;
+        transform: scale(1.02);
+        box-shadow: 0 10px 28px rgba(255,92,0,0.38);
+    }
+
+    /* "この職種の魅力" link */
+    .member-charm-link {
+        font-size: 11px;
+        color: #FF5C00;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-align: center;
+        transition: color 0.2s ease;
+    }
+    .member-charm-link:hover { color: #E65200; }
+
+    /* ── All Roles card (wide, bottom of grid) ── */
+    .allroles-card {
+        background: linear-gradient(135deg, #FF5C00 0%, #FF7A1F 40%, #FFB870 100%);
+        border-radius: 1.5rem;
+        border: none;
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+        transition: box-shadow 0.45s cubic-bezier(0.16,1,0.3,1), transform 0.45s cubic-bezier(0.16,1,0.3,1);
+    }
+    .allroles-card:hover {
+        box-shadow: 0 32px 64px -12px rgba(255,92,0,0.4);
+        transform: translateY(-4px);
+    }
+
+    /* ── Culture Snaps marquee ── */
+    .marquee-wrapper { display: flex; overflow: hidden; user-select: none; width: 100%; }
+    .marquee-content {
+        display: flex;
+        flex-shrink: 0;
+        min-width: 100%;
+        gap: 1.5rem;
+        animation: marquee-left 45s linear infinite;
+    }
+    @keyframes marquee-left {
+        from { transform: translateX(0); }
+        to   { transform: translateX(calc(-100% - 1.5rem)); }
+    }
+    .marquee-wrapper:hover .marquee-content { animation-play-state: paused; }
+
+    .snap-card {
+        flex-shrink: 0;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        background: #f0ebe5;
+        height: 220px;
+        transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+        cursor: pointer;
+    }
+    .snap-card:hover { transform: translateY(-8px) scale(1.02); }
+    .snap-card img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        filter: grayscale(30%);
+        transition: filter 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .snap-card:hover img { filter: grayscale(0%); transform: scale(1.08); }
+
+    /* ── Fullscreen menu (reused from index) ── */
+    #fullscreen-menu {
+        position: fixed; inset: 0; z-index: 9000;
+        display: flex; flex-direction: column;
+        background: #1A2B4C;
+        pointer-events: none;
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1);
+    }
+    #fullscreen-menu.is-open { pointer-events: all; clip-path: inset(0 0 0% 0); }
+    .fm-nav-item {
+        opacity: 0; transform: translateY(30px);
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900;
+        letter-spacing: -0.04em; color: rgba(255,255,255,0.2);
+        text-decoration: none; line-height: 1.1; display: block;
+        transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fm-nav-item:hover { color: #FF5C00; }
+    #fullscreen-menu.is-open .fm-nav-item { opacity: 1; transform: translateY(0); }
+    #fullscreen-menu.is-open .fm-item-1 { transition-delay: 0.15s; }
+    #fullscreen-menu.is-open .fm-item-2 { transition-delay: 0.22s; }
+    #fullscreen-menu.is-open .fm-item-3 { transition-delay: 0.29s; }
+    #fullscreen-menu.is-open .fm-item-4 { transition-delay: 0.36s; }
+    .fm-cta-btn { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s; }
+    #fullscreen-menu.is-open .fm-cta-btn { opacity: 1; transform: translateY(0); }
+
+    /* Hamburger */
+    #hamburger-btn {
+        display: flex; align-items: center; gap: 10px;
+        cursor: pointer; background: none; border: none;
+        color: #333; font-family: 'Poppins', sans-serif;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.25em;
+        text-transform: uppercase; padding: 6px 0; z-index: 100; position: relative;
+    }
+    .hamburger-lines { display: flex; flex-direction: column; gap: 5px; width: 24px; }
+    .hamburger-lines span { display: block; height: 1.5px; background: #333; border-radius: 2px; transition: all 0.4s cubic-bezier(0.76,0,0.24,1); transform-origin: center; }
+    .hamburger-lines.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger-lines.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger-lines.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Section headline accent bar */
+    .section-accent { display: inline-block; width: 12px; height: 12px; background: #FF5C00; border-radius: 3px; vertical-align: middle; margin-right: 12px; }
+    </style>
 </head>
-<body class="bg-white text-crestix-charcoal font-sans">
+<body>
 
-    <!-- SITE HEADER -->
-    <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-6 px-10 lg:px-16 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-xl transition-all duration-500">
-        <a href="index.html" class="flex items-center gap-4 group">
-            <img src="assets/images/office/crestix1.png" alt="Crestix" class="w-12 h-12 lg:w-20 lg:h-20 drop-shadow-2xl transition-transform group-hover:rotate-12 object-contain">
+<!-- ═══ FULLSCREEN MENU ═══ -->
+<div id="fullscreen-menu">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
+        <div style="display:flex;align-items:center;cursor:pointer;" onclick="location.href='index.html'">
+            <img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+        </div>
+        <button onclick="toggleMenu()" style="display:flex;align-items:center;gap:10px;background:none;border:none;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;padding:6px 0;">
+            CLOSE
+            <span style="display:flex;flex-direction:column;gap:5px;width:24px;">
+                <i style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(6.5px) rotate(45deg);"></i>
+                <i style="display:block;height:1.5px;background:white;border-radius:2px;opacity:0;"></i>
+                <i style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(-6.5px) rotate(-45deg);"></i>
+            </span>
+        </button>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 2rem 0 2.5rem;gap:0.5rem;">
+        <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="toggleMenu()">Corporate</a>
+        <a href="members.html"   class="fm-nav-item fm-item-2" onclick="toggleMenu()">Members</a>
+        <a href="business.html"  class="fm-nav-item fm-item-3" onclick="toggleMenu()">Service</a>
+        <a href="index.html#sec-youtube-carousel" class="fm-nav-item fm-item-4" onclick="toggleMenu()">Crestory</a>
+    </div>
+    <div class="fm-cta-btn" style="padding:0 2.5rem 2.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+        <a href="jobs.html" onclick="toggleMenu()" style="display:inline-block;background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:9999px;text-decoration:none;">応募はこちらから</a>
+        <span style="font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.3em;text-transform:uppercase;">&copy; 2026 Crestix Inc.</span>
+    </div>
+</div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-3 px-8 lg:px-16 z-50 transition-all duration-400">
+    <div class="flex items-center gap-5">
+        <a href="index.html" class="flex items-center">
+            <img src="assets/images/office/crestix-header.png" alt="Crestix"
+                 class="h-8 lg:h-10 w-auto object-contain transition-opacity hover:opacity-70"
+                 style="filter: none;">
         </a>
-        <div class="hidden lg:flex items-center gap-14 text-[11px] font-black tracking-[0.35em] text-crestix-charcoal uppercase">
-            <a href="corporate.html" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">Corporate</a>
-            <a href="members.html" class="text-crestix-orange focus:outline-none">News</a>
-            <a href="business.html" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">Service</a>
-            <a href="index.html#sec-youtube-carousel" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">Crestory</a>
-        </div>
-        <a href="jobs.html" class="bg-crestix-charcoal text-white hover:bg-black text-[11px] font-black px-12 py-4 rounded-full shadow-2xl tracking-[0.25em] uppercase transition-all active:scale-95">応募はこちらから</a>
-    </nav>
-
-    <!-- MAIN CONTENT -->
-    <main class="pt-32">
-        <section class="py-20 lg:py-32 bg-gray-50/30">
-            <div class="max-w-7xl mx-auto px-6 lg:px-14 space-y-24">
-                <div class="text-center space-y-4">
-                    <span class="text-[12px] font-black text-crestix-orange font-poppins tracking-[0.6em] uppercase block">Human Synergy</span>
-                    <h2 class="text-5xl lg:text-7xl font-black text-crestix-charcoal tracking-tighter">メンバーについて</h2>
-                    <p class="text-xs text-gray-400 font-black uppercase tracking-widest opacity-60 italic">Hover cards to activate cinemagraph animations</p>
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
-                    <!-- Member Card 1 -->
-                    <div class="flex flex-col items-center group bg-white p-6 rounded-[3rem] border border-crestix-border hover:shadow-3d-depth transition-all duration-700 hover:-translate-y-4">
-                        <div class="w-full aspect-[4/5] bg-blue-50 rounded-[2rem] overflow-hidden relative border border-gray-100 shadow-inner">
-                            <span class="absolute top-6 left-0 right-0 text-center text-blue-600 font-black text-[11px] tracking-[0.3em] font-poppins uppercase">Growth Marketer</span>
-                            <svg class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" viewBox="0 0 200 250">
-                                <path d="M40 250 Q100 150 160 250" fill="#334155" opacity="0.9"/>
-                                <circle cx="100" cy="110" r="35" fill="#FCD34D"/>
-                                <g class="origin-[130px_160px] group-hover:animate-wave transition-all">
-                                    <path d="M130 160 L175 120" stroke="#FCD34D" stroke-width="16" stroke-linecap="round" fill="none"/>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="text-center mt-8 w-full space-y-6 px-4">
-                            <div><h4 class="text-2xl font-black text-crestix-charcoal tracking-tight">大野 翔太</h4><p class="text-xs text-gray-400 font-bold leading-relaxed pt-3 opacity-80 italic">「表層ではなく、データの奥にある本質をハックする」</p></div>
-                            <a href="jobs.html" class="bg-crestix-charcoal hover:bg-crestix-orange text-white font-black text-[10px] py-3.5 px-8 rounded-full w-full flex justify-between items-center shadow-lg transition-all uppercase tracking-widest"><span>Entry Phase</span> <i class="fa-solid fa-arrow-trend-up"></i></a>
-                        </div>
-                    </div>
-                    <!-- Member Card 2 -->
-                    <div class="flex flex-col items-center group bg-white p-6 rounded-[3rem] border border-crestix-border hover:shadow-3d-depth transition-all duration-700 hover:-translate-y-4">
-                        <div class="w-full aspect-[4/5] bg-pink-50 rounded-[2rem] overflow-hidden relative border border-gray-100 shadow-inner">
-                            <span class="absolute top-6 left-0 right-0 text-center text-pink-600 font-black text-[11px] tracking-[0.3em] font-poppins uppercase">Partner Sales</span>
-                            <svg class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" viewBox="0 0 200 250">
-                                <path d="M40 250 Q100 140 160 250" fill="#0F172A"/>
-                                <circle cx="100" cy="110" r="30" fill="#FCA5A5"/>
-                                <g class="origin-[100px_110px] group-hover:animate-nod"><path d="M90 115 Q100 125 110 115" stroke="#B91C1C" stroke-width="2" fill="none"/></g>
-                            </svg>
-                        </div>
-                        <div class="text-center mt-8 w-full space-y-6 px-4">
-                            <div><h4 class="text-2xl font-black text-crestix-charcoal tracking-tight">佐藤 里奈</h4><p class="text-xs text-gray-400 font-bold leading-relaxed pt-3 opacity-80 italic">「事業課題と人の体験を接続し、確実な受注拡大を築く」</p></div>
-                            <a href="jobs.html" class="bg-crestix-charcoal hover:bg-crestix-orange text-white font-black text-[10px] py-3.5 px-8 rounded-full w-full flex justify-between items-center shadow-lg transition-all uppercase tracking-widest"><span>Entry Phase</span> <i class="fa-solid fa-arrow-trend-up"></i></a>
-                        </div>
-                    </div>
-                    <!-- Allroles Big Card -->
-                    <div class="lg:col-span-2 flex flex-col items-center group bg-[#EBF0F8] p-10 rounded-[3rem] border border-blue-100 hover:shadow-3d-depth transition-all duration-700">
-                        <div class="w-full h-full flex flex-col justify-between">
-                            <div class="space-y-4">
-                                <span class="text-blue-600 font-black text-[12px] uppercase tracking-[0.3em]">All Our Roles</span>
-                                <h4 class="text-3xl lg:text-4xl font-black text-crestix-charcoal tracking-tighter leading-tight">全34職種の募集を見る</h4>
-                                <p class="text-sm text-gray-500 font-bold leading-loose opacity-80">Crestixには、エンジニア、セールス、マーケター、人事など、多種多様なプロフェッショナルが最高速度で共鳴し合っています。</p>
-                            </div>
-                            <a href="jobs.html" class="bg-blue-600 text-white font-black px-12 py-5 rounded-full text-xs tracking-[0.4em] uppercase shadow-2xl hover:bg-crestix-orange transition-all text-center mt-10">Exploration All Jobs ➔</a>
-                        </div>
-                    </div>
-                </div>
+        <button id="hamburger-btn" onclick="toggleMenu()" aria-label="メニュー">
+            MENU
+            <div class="hamburger-lines" id="ham-lines">
+                <span></span><span></span><span></span>
             </div>
-        </section>
-    </main>
-
-    <!-- SHARED CONTENT TEMPLATE -->
-    <div class="py-40 bg-white border-t border-gray-100 select-none overflow-hidden relative">
-        <div class="max-w-5xl mx-auto px-10 mb-16 flex justify-between items-end relative z-10">
-            <div><h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Culture Snaps</h4><p class="text-4xl font-black text-crestix-charcoal mt-2 tracking-tighter">Crestixの日常スナップ</p></div>
-        </div>
-        <div class="marquee-wrapper relative z-10">
-            <div class="marquee-content" style="animation-duration: 45s;">
-                <div class="culture-snap-card w-[350px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-                <div class="culture-snap-card w-[300px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-                <div class="culture-snap-card w-[400px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-            </div>
-        </div>
+        </button>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-crestix-navy text-white pt-24 pb-12 px-10 lg:px-24 border-t border-white/5 relative z-10">
-        <div class="max-w-7xl mx-auto space-y-16">
-            <div class="flex flex-col lg:flex-row justify-between items-center gap-12 border-b border-white/10 pb-16">
-                <div class="flex items-center gap-6">
-                    <img src="assets/images/office/crestix1.png" alt="Crestix" class="w-12 h-12 drop-shadow-2xl">
-                    <span class="font-poppins font-black text-4xl lg:text-6xl tracking-tighter uppercase leading-none">Crestix</span>
-                </div>
-                <a href="jobs.html" class="bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-14 py-4 rounded-full font-black text-xs tracking-[0.3em] uppercase shadow-3d-depth active:scale-95">Open Positions</a>
+    <!-- Desktop nav links -->
+    <div class="hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-crestix-charcoal uppercase">
+        <a href="corporate.html" class="hover:text-crestix-orange transition-colors">Corporate</a>
+        <a href="members.html"   class="text-crestix-orange">Members</a>
+        <a href="business.html"  class="hover:text-crestix-orange transition-colors">Service</a>
+        <a href="index.html#sec-youtube-carousel" class="hover:text-crestix-orange transition-colors">Crestory</a>
+    </div>
+
+    <a href="jobs.html"
+       class="hidden lg:flex bg-crestix-charcoal text-white hover:bg-crestix-orange text-[11px] font-black px-10 py-3 rounded-full tracking-[0.25em] uppercase transition-colors active:scale-95 whitespace-nowrap">
+        応募はこちらから
+    </a>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<main class="pt-24">
+
+    <!-- ── HERO SECTION ── -->
+    <section class="bg-white pt-16 pb-0 px-8 lg:px-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <!-- Eyebrow -->
+            <div class="mb-8">
+                <span class="inline-block font-poppins text-[11px] font-black tracking-[0.5em] text-crestix-orange uppercase mb-4">Human Synergy</span>
+                <h1 class="text-5xl lg:text-8xl font-black text-crestix-charcoal tracking-tighter leading-none">
+                    We're Hiring<br>
+                    <span class="text-crestix-orange">For 34 Roles.</span>
+                </h1>
             </div>
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-8 text-[10px] text-blue-200/30 font-black tracking-[0.2em] uppercase">
-                <span>&copy; 2026 Crestix Inc. All Rights Reserved.</span>
+            <!-- Subtitle -->
+            <p class="text-sm lg:text-base text-gray-500 font-bold leading-relaxed max-w-2xl mb-16">
+                Crestixでは、ビジネス職だけではなく<br>
+                マーケターやコーポレートスタッフも多く在籍し、活躍しています
+            </p>
+
+            <!-- ── MEMBER CARDS GRID ── -->
+            <!-- 4 cards per row on desktop, matches the reference screenshot exactly -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+
+                <!-- ── Card 1: Growth Marketer ── -->
+                <div class="member-card">
+                    <div class="member-photo-wrap">
+                        <div class="member-role">Growth Marketer</div>
+                        <!-- Person placeholder with warm tones -->
+                        <div class="member-photo-placeholder">
+                            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                                <!-- body -->
+                                <ellipse cx="80" cy="185" rx="52" ry="38" fill="#d4a574" opacity="0.9"/>
+                                <rect x="34" y="148" width="92" height="50" rx="18" fill="#c9935a"/>
+                                <!-- neck -->
+                                <rect x="68" y="118" width="24" height="34" rx="8" fill="#e8b88a"/>
+                                <!-- head -->
+                                <ellipse cx="80" cy="106" rx="34" ry="38" fill="#f0c89a"/>
+                                <!-- hair -->
+                                <ellipse cx="80" cy="78" rx="36" ry="22" fill="#5c3d1e"/>
+                                <ellipse cx="46" cy="96" rx="10" ry="18" fill="#5c3d1e"/>
+                                <ellipse cx="114" cy="96" rx="10" ry="18" fill="#5c3d1e"/>
+                                <!-- face features -->
+                                <ellipse cx="68" cy="108" rx="5" ry="6" fill="#fff" opacity="0.9"/>
+                                <ellipse cx="92" cy="108" rx="5" ry="6" fill="#fff" opacity="0.9"/>
+                                <circle cx="69" cy="109" r="3" fill="#3d2b1a"/>
+                                <circle cx="93" cy="109" r="3" fill="#3d2b1a"/>
+                                <path d="M72 120 Q80 126 88 120" stroke="#c97a50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                                <!-- arm wave -->
+                                <path d="M34 160 Q10 140 18 118 Q22 108 30 112" stroke="#c9935a" stroke-width="16" stroke-linecap="round" fill="none"/>
+                                <circle cx="28" cy="113" r="8" fill="#f0c89a"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <div>
+                            <div class="member-name">大野 翔太</div>
+                            <div class="member-tagline">「データの奥にある本質をハックし、<br>事業成長を最速で駆動する」</div>
+                        </div>
+                        <a href="jobs.html" class="member-entry-btn">
+                            <span>Entry</span>
+                            <i class="fa-solid fa-arrow-up-right" style="font-size:10px;"></i>
+                        </a>
+                        <a href="jobs.html" class="member-charm-link">この職種の魅力</a>
+                    </div>
+                </div>
+
+                <!-- ── Card 2: Partner Sales ── -->
+                <div class="member-card">
+                    <div class="member-photo-wrap" style="background: linear-gradient(160deg, #ede8f2 0%, #ddd4ea 100%);">
+                        <div class="member-role">Partner Sales</div>
+                        <div class="member-photo-placeholder">
+                            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                                <!-- body dark outfit -->
+                                <rect x="30" y="145" width="100" height="55" rx="20" fill="#1a1a2e"/>
+                                <ellipse cx="80" cy="200" rx="56" ry="22" fill="#141424" opacity="0.8"/>
+                                <!-- neck -->
+                                <rect x="68" y="116" width="24" height="32" rx="8" fill="#e0a882"/>
+                                <!-- head -->
+                                <ellipse cx="80" cy="103" rx="32" ry="36" fill="#e8b090"/>
+                                <!-- hair short bob -->
+                                <ellipse cx="80" cy="74" rx="34" ry="20" fill="#1a0a00"/>
+                                <rect x="46" y="72" width="12" height="30" rx="6" fill="#1a0a00"/>
+                                <rect x="102" y="72" width="12" height="30" rx="6" fill="#1a0a00"/>
+                                <!-- face features -->
+                                <ellipse cx="68" cy="105" rx="5" ry="6" fill="#fff" opacity="0.95"/>
+                                <ellipse cx="92" cy="105" rx="5" ry="6" fill="#fff" opacity="0.95"/>
+                                <circle cx="68.5" cy="106" r="3.2" fill="#2a1800"/>
+                                <circle cx="92.5" cy="106" r="3.2" fill="#2a1800"/>
+                                <path d="M73 118 Q80 123 87 118" stroke="#c06040" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                                <!-- collar / blazer lapels -->
+                                <path d="M55 145 L70 130 L80 140 L90 130 L105 145" fill="#2a2a4a" stroke="#2a2a4a" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <div>
+                            <div class="member-name">佐藤 里奈</div>
+                            <div class="member-tagline">「事業課題と人の体験を接続し<br>確実な受注拡大を築く」</div>
+                        </div>
+                        <a href="jobs.html" class="member-entry-btn">
+                            <span>Entry</span>
+                            <i class="fa-solid fa-arrow-up-right" style="font-size:10px;"></i>
+                        </a>
+                        <a href="jobs.html" class="member-charm-link">この職種の魅力</a>
+                    </div>
+                </div>
+
+                <!-- ── Card 3: BizDev ── -->
+                <div class="member-card">
+                    <div class="member-photo-wrap" style="background: linear-gradient(160deg, #e8f0e8 0%, #d5e5d5 100%);">
+                        <div class="member-role">BizDev</div>
+                        <div class="member-photo-placeholder">
+                            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                                <!-- body suit -->
+                                <rect x="28" y="142" width="104" height="58" rx="20" fill="#2c4a6e"/>
+                                <ellipse cx="80" cy="200" rx="58" ry="22" fill="#1e3352" opacity="0.8"/>
+                                <!-- shirt & tie -->
+                                <rect x="72" y="142" width="16" height="36" fill="#f0f0f0"/>
+                                <path d="M78 144 L80 158 L82 144" fill="#FF5C00"/>
+                                <path d="M80 158 L77 175 L80 172 L83 175 Z" fill="#FF5C00"/>
+                                <!-- neck -->
+                                <rect x="69" y="118" width="22" height="28" rx="7" fill="#dba882"/>
+                                <!-- head -->
+                                <ellipse cx="80" cy="106" rx="30" ry="34" fill="#e0a870"/>
+                                <!-- hair -->
+                                <ellipse cx="80" cy="76" rx="31" ry="18" fill="#3d2010"/>
+                                <!-- face -->
+                                <ellipse cx="69" cy="106" rx="4.5" ry="5.5" fill="#fff" opacity="0.9"/>
+                                <ellipse cx="91" cy="106" rx="4.5" ry="5.5" fill="#fff" opacity="0.9"/>
+                                <circle cx="69.5" cy="107" r="2.8" fill="#2a1400"/>
+                                <circle cx="91.5" cy="107" r="2.8" fill="#2a1400"/>
+                                <path d="M74 118 Q80 123 86 118" stroke="#b06040" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                                <!-- hands holding something (tablet-ish) -->
+                                <rect x="48" y="155" width="30" height="20" rx="4" fill="#e0e8f0" opacity="0.7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <div>
+                            <div class="member-name">田中 健一</div>
+                            <div class="member-tagline">「多様な事業の成長に関与できる<br>ゼロイチの面白さがある」</div>
+                        </div>
+                        <a href="jobs.html" class="member-entry-btn">
+                            <span>Entry</span>
+                            <i class="fa-solid fa-arrow-up-right" style="font-size:10px;"></i>
+                        </a>
+                        <a href="jobs.html" class="member-charm-link">この職種の魅力</a>
+                    </div>
+                </div>
+
+                <!-- ── Card 4: HR / Talent ── -->
+                <div class="member-card">
+                    <div class="member-photo-wrap" style="background: linear-gradient(160deg, #f5eee5 0%, #ecddd0 100%);">
+                        <div class="member-role">HR / Talent</div>
+                        <div class="member-photo-placeholder">
+                            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                                <!-- body warm outfit -->
+                                <rect x="32" y="145" width="96" height="55" rx="18" fill="#e8935a"/>
+                                <ellipse cx="80" cy="200" rx="54" ry="20" fill="#d47840" opacity="0.8"/>
+                                <!-- neck -->
+                                <rect x="69" y="118" width="22" height="30" rx="7" fill="#f0c090"/>
+                                <!-- head -->
+                                <ellipse cx="80" cy="104" rx="32" ry="36" fill="#f8d0a8"/>
+                                <!-- longer hair -->
+                                <ellipse cx="80" cy="74" rx="34" ry="22" fill="#4a2010"/>
+                                <path d="M46 80 Q40 120 50 145" stroke="#4a2010" stroke-width="14" stroke-linecap="round" fill="none"/>
+                                <path d="M114 80 Q120 120 110 145" stroke="#4a2010" stroke-width="14" stroke-linecap="round" fill="none"/>
+                                <!-- face features -->
+                                <ellipse cx="68" cy="104" rx="5" ry="6" fill="#fff" opacity="0.92"/>
+                                <ellipse cx="92" cy="104" rx="5" ry="6" fill="#fff" opacity="0.92"/>
+                                <circle cx="68.5" cy="105" r="3.2" fill="#2a1000"/>
+                                <circle cx="92.5" cy="105" r="3.2" fill="#2a1000"/>
+                                <path d="M72 117 Q80 124 88 117" stroke="#c05030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <div>
+                            <div class="member-name">山本 愛子</div>
+                            <div class="member-tagline">「人の可能性を最大化する<br>採用と組織づくりが私の使命」</div>
+                        </div>
+                        <a href="jobs.html" class="member-entry-btn">
+                            <span>Entry</span>
+                            <i class="fa-solid fa-arrow-up-right" style="font-size:10px;"></i>
+                        </a>
+                        <a href="jobs.html" class="member-charm-link">この職種の魅力</a>
+                    </div>
+                </div>
+
+                <!-- ── Card 5: Web Creative ── -->
+                <div class="member-card">
+                    <div class="member-photo-wrap" style="background: linear-gradient(160deg, #e5ecf5 0%, #d0dcea 100%);">
+                        <div class="member-role">Web Creative</div>
+                        <div class="member-photo-placeholder">
+                            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                                <!-- hoodie casual -->
+                                <rect x="28" y="140" width="104" height="60" rx="22" fill="#4a5568"/>
+                                <ellipse cx="80" cy="200" rx="56" ry="22" fill="#3a4458" opacity="0.8"/>
+                                <!-- hoodie pocket + strings -->
+                                <rect x="62" y="162" width="36" height="24" rx="8" fill="#3a4458" opacity="0.6"/>
+                                <path d="M74 142 L72 155" stroke="#6a7588" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M86 142 L88 155" stroke="#6a7588" stroke-width="2" stroke-linecap="round"/>
+                                <!-- neck -->
+                                <rect x="70" y="116" width="20" height="28" rx="6" fill="#d4905e"/>
+                                <!-- head -->
+                                <ellipse cx="80" cy="103" rx="30" ry="34" fill="#dea070"/>
+                                <!-- curly/textured hair -->
+                                <ellipse cx="80" cy="72" rx="35" ry="24" fill="#1a0800"/>
+                                <circle cx="58" cy="80" r="10" fill="#1a0800"/>
+                                <circle cx="102" cy="80" r="10" fill="#1a0800"/>
+                                <circle cx="70" cy="70" r="9" fill="#1a0800"/>
+                                <circle cx="90" cy="70" r="9" fill="#1a0800"/>
+                                <!-- face -->
+                                <ellipse cx="68.5" cy="104" rx="5" ry="5.5" fill="#fff" opacity="0.9"/>
+                                <ellipse cx="91.5" cy="104" rx="5" ry="5.5" fill="#fff" opacity="0.9"/>
+                                <circle cx="69" cy="105" r="3" fill="#1a0800"/>
+                                <circle cx="92" cy="105" r="3" fill="#1a0800"/>
+                                <path d="M73 117 Q80 122 87 117" stroke="#b07040" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <div>
+                            <div class="member-name">中村 拓海</div>
+                            <div class="member-tagline">「デザインとコードを横断し<br>体験を価値に変える」</div>
+                        </div>
+                        <a href="jobs.html" class="member-entry-btn">
+                            <span>Entry</span>
+                            <i class="fa-solid fa-arrow-up-right" style="font-size:10px;"></i>
+                        </a>
+                        <a href="jobs.html" class="member-charm-link">この職種の魅力</a>
+                    </div>
+                </div>
+
+                <!-- ── Card 6: Corporate Strategy ── -->
+                <div class="member-card">
+                    <div class="member-photo-wrap" style="background: linear-gradient(160deg, #f0ebe8 0%, #e5ddd8 100%);">
+                        <div class="member-role">Corp. Strategy</div>
+                        <div class="member-photo-placeholder">
+                            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                                <!-- smart casual -->
+                                <rect x="30" y="142" width="100" height="58" rx="20" fill="#8b6f4e"/>
+                                <ellipse cx="80" cy="200" rx="55" ry="22" fill="#6b5038" opacity="0.8"/>
+                                <!-- button-up shirt collar -->
+                                <path d="M65 142 L74 130 L80 138 L86 130 L95 142" fill="#f0e8d8" stroke="#e0d8c8"/>
+                                <!-- neck -->
+                                <rect x="70" y="118" width="20" height="27" rx="6" fill="#c8885a"/>
+                                <!-- head -->
+                                <ellipse cx="80" cy="105" rx="29" ry="33" fill="#d4905a"/>
+                                <!-- short neat hair -->
+                                <ellipse cx="80" cy="77" rx="30" ry="17" fill="#2a1800"/>
+                                <rect x="50" y="75" width="9" height="26" rx="4" fill="#2a1800"/>
+                                <rect x="101" y="75" width="9" height="26" rx="4" fill="#2a1800"/>
+                                <!-- glasses -->
+                                <rect x="60" y="101" width="17" height="12" rx="5" fill="none" stroke="#888" stroke-width="1.5"/>
+                                <rect x="83" y="101" width="17" height="12" rx="5" fill="none" stroke="#888" stroke-width="1.5"/>
+                                <line x1="77" y1="107" x2="83" y2="107" stroke="#888" stroke-width="1.5"/>
+                                <!-- eyes behind glasses -->
+                                <circle cx="68.5" cy="107" r="2.5" fill="#1a0800"/>
+                                <circle cx="91.5" cy="107" r="2.5" fill="#1a0800"/>
+                                <path d="M73 117 Q80 122 87 117" stroke="#905030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <div>
+                            <div class="member-name">伊藤 慎二</div>
+                            <div class="member-tagline">「戦略の立案から実行まで<br>組織全体をドライブする」</div>
+                        </div>
+                        <a href="jobs.html" class="member-entry-btn">
+                            <span>Entry</span>
+                            <i class="fa-solid fa-arrow-up-right" style="font-size:10px;"></i>
+                        </a>
+                        <a href="jobs.html" class="member-charm-link">この職種の魅力</a>
+                    </div>
+                </div>
+
+                <!-- ── Card 7: Digital Ads ── -->
+                <div class="member-card">
+                    <div class="member-photo-wrap" style="background: linear-gradient(160deg, #eaf0e8 0%, #d8e8d5 100%);">
+                        <div class="member-role">Digital Ads</div>
+                        <div class="member-photo-placeholder">
+                            <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                                <!-- sporty jacket -->
+                                <rect x="28" y="140" width="104" height="60" rx="22" fill="#2d6a4f"/>
+                                <ellipse cx="80" cy="200" rx="56" ry="22" fill="#1b4a38" opacity="0.8"/>
+                                <!-- zipper line -->
+                                <line x1="80" y1="140" x2="80" y2="190" stroke="#40916c" stroke-width="2" opacity="0.5"/>
+                                <!-- neck -->
+                                <rect x="70" y="117" width="20" height="27" rx="6" fill="#f0c090"/>
+                                <!-- head -->
+                                <ellipse cx="80" cy="104" rx="30" ry="34" fill="#f8d0a8"/>
+                                <!-- hair pulled back -->
+                                <ellipse cx="80" cy="75" rx="32" ry="19" fill="#4a2810"/>
+                                <ellipse cx="108" cy="86" rx="8" ry="14" fill="#4a2810"/>
+                                <!-- face -->
+                                <ellipse cx="68.5" cy="105" rx="5" ry="6" fill="#fff" opacity="0.92"/>
+                                <ellipse cx="91.5" cy="105" rx="5" ry="6" fill="#fff" opacity="0.92"/>
+                                <circle cx="69" cy="106" r="3.2" fill="#1a0800"/>
+                                <circle cx="92" cy="106" r="3.2" fill="#1a0800"/>
+                                <path d="M72 118 Q80 124 88 118" stroke="#c06040" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <div>
+                            <div class="member-name">小林 明日香</div>
+                            <div class="member-tagline">「数字の奥にある人の行動を<br>広告で動かすのが好き」</div>
+                        </div>
+                        <a href="jobs.html" class="member-entry-btn">
+                            <span>Entry</span>
+                            <i class="fa-solid fa-arrow-up-right" style="font-size:10px;"></i>
+                        </a>
+                        <a href="jobs.html" class="member-charm-link">この職種の魅力</a>
+                    </div>
+                </div>
+
+                <!-- ── Card 8 → All Roles (wide spanning 1 col on mobile, 1 on desktop) ── -->
+                <a href="jobs.html" class="allroles-card block" style="text-decoration:none;">
+                    <div>
+                        <span class="inline-block font-poppins text-[10px] font-black tracking-[0.4em] text-white/70 uppercase mb-4">All Our Roles</span>
+                        <h3 class="text-2xl lg:text-3xl font-black text-white tracking-tight leading-tight">
+                            そのほか、全34種類の<br>募集職種を見る
+                        </h3>
+                        <p class="text-sm text-white/80 font-bold leading-relaxed mt-4">
+                            ここに載せきれない仕事がたくさんあります。Crestixが募集しているすべてのポジションをご覧ください。
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center gap-3 bg-white text-crestix-orange font-black text-[11px] tracking-[0.3em] uppercase px-8 py-4 rounded-full shadow-lg transition-all hover:shadow-xl" style="font-family:'Poppins',sans-serif;">
+                            Explore All Jobs
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                        <span class="font-poppins font-black text-5xl text-white/20">34</span>
+                    </div>
+                </a>
+
+            </div><!-- /grid -->
+        </div>
+    </section>
+
+    <!-- ── CULTURE SNAPS ── -->
+    <section class="py-32 bg-white overflow-hidden border-t border-gray-100 mt-24">
+        <div class="max-w-7xl mx-auto px-8 lg:px-20 mb-12">
+            <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase block mb-3">Culture Snaps</span>
+            <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal tracking-tighter">Crestixの日常スナップ</h2>
+        </div>
+
+        <!-- Marquee row 1 -->
+        <div class="marquee-wrapper mb-5">
+            <div class="marquee-content">
+                <div class="snap-card" style="width:360px;"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" alt="office"></div>
+                <div class="snap-card" style="width:290px;"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="team"></div>
+                <div class="snap-card" style="width:400px;"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop" alt="work"></div>
+                <div class="snap-card" style="width:330px;"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop" alt="meeting"></div>
+                <div class="snap-card" style="width:380px;"><img src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?q=80&w=800&auto=format&fit=crop" alt="collab"></div>
+                <!-- duplicated for seamless loop -->
+                <div class="snap-card" style="width:360px;"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" alt="office"></div>
+                <div class="snap-card" style="width:290px;"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="team"></div>
+                <div class="snap-card" style="width:400px;"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop" alt="work"></div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="assets/js/main.js"></script>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="background:#1A2B4C;" class="text-white pt-20 pb-10 px-10 lg:px-24 border-t border-white/5">
+    <div class="max-w-7xl mx-auto space-y-16">
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-12 border-b border-white/10 pb-16">
+            <div class="flex items-center gap-6">
+                <img src="assets/images/office/crestix1.png" alt="Crestix" class="w-12 h-12 drop-shadow-2xl">
+                <span class="font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase leading-none">Crestix</span>
+            </div>
+            <a href="jobs.html"
+               class="bg-gradient-to-r from-[#FF5C00] to-[#E65200] text-white px-14 py-4 rounded-full font-black text-xs tracking-[0.3em] uppercase shadow-2xl hover:-translate-y-1 transition-transform active:scale-95">
+                Join the Narrative
+            </a>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-8 text-[10px] text-blue-200/30 font-black tracking-[0.2em] uppercase">
+            <div class="flex items-center gap-10">
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+            </div>
+            <span>&copy; 2026 Crestix Inc. All Rights Reserved.</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Hamburger / fullscreen menu
+(function () {
+    const menu = document.getElementById('fullscreen-menu');
+    const hamLines = document.getElementById('ham-lines');
+    let menuOpen = false;
+
+    window.toggleMenu = function () {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+            menu.classList.add('is-open');
+            if (hamLines) hamLines.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        } else {
+            menu.classList.remove('is-open');
+            if (hamLines) hamLines.classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+    };
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menuOpen) window.toggleMenu();
+    });
+
+    // Navbar shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+})();
+</script>
 </body>
 </html>
