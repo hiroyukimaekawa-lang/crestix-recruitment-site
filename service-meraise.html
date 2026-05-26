@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeRaise | Crestix Careers — 新卒特化HR事業</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .hero-service {
+            background: linear-gradient(135deg, #0c1a3d 0%, #1e3a7a 40%, #3b82f620 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-service::before {
+            content: 'HR';
+            font-family: 'Poppins', sans-serif;
+            font-size: 28vw;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: rgba(255,255,255,0.03);
+            position: absolute;
+            bottom: -0.1em;
+            right: -0.05em;
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+        .feature-card {
+            border-left: 4px solid #3b82f6;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(59,130,246,0.15);
+        }
+        .accordion-item { border-bottom: 1px solid #E5E7EB; }
+        .accordion-header { cursor: pointer; transition: color 0.3s; }
+        .accordion-header:hover { color: #3b82f6; }
+        .accordion-body { display: none; }
+        .accordion-body.open { display: block; }
+        .accordion-icon { transition: transform 0.3s; }
+        .accordion-icon.open { transform: rotate(45deg); }
+        .person-card {
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            border: 1.5px solid #E5E7EB;
+        }
+        .person-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 48px -8px rgba(59,130,246,0.15);
+            border-color: rgba(59,130,246,0.4);
+        }
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .meraise-badge {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+    </style>
+</head>
+<body class="bg-white text-crestix-charcoal font-sans">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-6 px-10 lg:px-16 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-xl transition-all duration-500">
+        <a href="index.html" class="flex items-center gap-4 group">
+            <img src="assets/images/office/crestix1.png" alt="Crestix" class="w-12 h-12 lg:w-20 lg:h-20 drop-shadow-2xl transition-transform group-hover:rotate-12 object-contain">
+        </a>
+        <div class="hidden lg:flex items-center gap-14 text-[11px] font-black tracking-[0.35em] text-crestix-charcoal uppercase">
+            <a href="corporate.html" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">Corporate</a>
+            <a href="members.html" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">News</a>
+            <a href="business.html" class="text-crestix-orange focus:outline-none">Service</a>
+            <a href="index.html#sec-youtube-carousel" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">Crestory</a>
+        </div>
+        <a href="jobs.html" class="bg-crestix-charcoal text-white hover:bg-black text-[11px] font-black px-12 py-4 rounded-full shadow-2xl tracking-[0.25em] uppercase transition-all active:scale-95">応募はこちらから</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-service pt-32 min-h-[70vh] flex flex-col justify-end pb-20 px-10 lg:px-20">
+        <div class="max-w-5xl mx-auto w-full relative z-10">
+            <a href="business.html" class="inline-flex items-center gap-2 text-blue-400/70 text-[11px] font-black tracking-[0.3em] uppercase mb-8 hover:text-blue-400 transition-colors">
+                <i class="fa fa-arrow-left text-xs"></i> Back to Services
+            </a>
+            <div class="space-y-6">
+                <span class="inline-block bg-blue-500/20 text-blue-400 font-black text-[10px] px-5 py-1.5 rounded-full uppercase tracking-[0.3em] border border-blue-500/30">Domain 02 / HR Tech</span>
+                <h1 class="text-white font-black text-5xl lg:text-7xl tracking-tighter leading-none">MeRaise<br><span class="text-blue-400">新卒特化HR事業</span></h1>
+                <p class="text-blue-300/80 text-sm font-black uppercase tracking-widest">〜 ハタラ"苦"をハタ"楽"に 〜</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-6 lg:px-14">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-[11px] font-black text-blue-600 font-poppins tracking-[0.4em] uppercase block mb-3">About</span>
+                        <h2 class="text-4xl lg:text-5xl font-black tracking-tighter leading-tight text-crestix-charcoal">事業内容</h2>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-[2.4] font-bold">
+                        MeRaiseは、入社前後のギャップをなくし、就活×採用のミスマッチを本質的に打破する新卒特化HRサービスです。
+                    </p>
+                    <p class="text-gray-500 text-sm leading-[2.4] font-bold">
+                        学生に対しては自己分析・キャリア教育のカウンセリングを、企業側に対しては採用戦略の設計から内定者フォローまでを一気通貫で支援します。
+                    </p>
+                    <p class="text-gray-500 text-sm leading-[2.4] font-bold">
+                        「ハタラ苦をハタ楽に」というコアメッセージのもと、働くことがポジティブな体験になる世界を目指しています。
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-blue-50 rounded-3xl p-8 text-center border border-blue-100">
+                        <p class="stat-number text-5xl text-blue-600">1000<span class="text-2xl">+</span></p>
+                        <p class="text-[11px] font-black text-gray-400 tracking-widest uppercase mt-2">カウンセリング実績</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-3xl p-8 text-center border border-gray-100">
+                        <p class="stat-number text-5xl text-crestix-charcoal">92<span class="text-2xl">%</span></p>
+                        <p class="text-[11px] font-black text-gray-400 tracking-widest uppercase mt-2">内定後満足度</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-3xl p-8 text-center border border-gray-100">
+                        <p class="stat-number text-5xl text-crestix-charcoal">80<span class="text-2xl">社+</span></p>
+                        <p class="text-[11px] font-black text-gray-400 tracking-widest uppercase mt-2">導入企業数</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-3xl p-8 text-center border border-blue-100">
+                        <p class="stat-number text-5xl text-blue-600">0</p>
+                        <p class="text-[11px] font-black text-gray-400 tracking-widest uppercase mt-2">ミスマッチ目標</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-6 lg:px-14 space-y-16">
+            <div class="text-center space-y-3">
+                <span class="text-[11px] font-black text-blue-600 font-poppins tracking-[0.4em] uppercase">Features</span>
+                <h2 class="text-4xl lg:text-5xl font-black tracking-tighter text-crestix-charcoal">私たちの強み</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white rounded-3xl p-10 shadow-sm">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-magnifying-glass text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black tracking-tight mb-3">本質的な自己分析</h3>
+                    <p class="text-sm text-gray-400 font-bold leading-loose">学生一人ひとりの価値観・強み・キャリアビジョンを深掘りするカウンセリングプログラムで、表層的な就活ではなく本質的なマッチングを実現。</p>
+                </div>
+                <div class="feature-card bg-white rounded-3xl p-10 shadow-sm">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-handshake text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black tracking-tight mb-3">採用企業との橋渡し</h3>
+                    <p class="text-sm text-gray-400 font-bold leading-loose">企業側の採用課題を把握した上で、双方にとってベストなマッチングを設計。入社後のギャップをゼロに近づけます。</p>
+                </div>
+                <div class="feature-card bg-white rounded-3xl p-10 shadow-sm">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-graduation-cap text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black tracking-tight mb-3">キャリア教育プログラム</h3>
+                    <p class="text-sm text-gray-400 font-bold leading-loose">ワークショップ形式のキャリア教育を通じ、「働く意味」を自分の言葉で語れる学生を育てます。大学との連携も積極的に推進中。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PEOPLE / 人について -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-6 lg:px-14 space-y-16">
+            <div class="space-y-3">
+                <span class="text-[11px] font-black text-blue-600 font-poppins tracking-[0.4em] uppercase">People</span>
+                <h2 class="text-4xl lg:text-5xl font-black tracking-tighter text-crestix-charcoal">人について</h2>
+                <p class="text-sm text-gray-400 font-bold max-w-xl leading-loose">MeRaiseを構成するメンバーは、人事・教育・カウンセリングのプロが集結。学生と企業、双方の課題を理解したチームです。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Person Card 1 -->
+                <div class="person-card bg-white rounded-3xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-50 h-52 flex items-end justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-28 h-28 rounded-full bg-blue-200/50 flex items-center justify-center">
+                                <i class="fa-solid fa-user text-blue-600/50 text-5xl"></i>
+                            </div>
+                        </div>
+                        <span class="relative z-10 bg-blue-600 text-white text-[9px] font-black tracking-widest uppercase px-4 py-1.5 mb-4 rounded-full">HR Lead</span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <p class="font-black text-lg tracking-tight">山田 花音</p>
+                        <p class="text-[11px] text-blue-600 font-black tracking-widest uppercase">Career Education Lead</p>
+                        <p class="text-xs text-gray-400 font-bold leading-relaxed pt-2">教育学修士取得後、就活支援NPOを経てCrestixへ。学生に向き合う姿勢がメンバーの鑑。</p>
+                    </div>
+                </div>
+                <!-- Person Card 2 -->
+                <div class="person-card bg-white rounded-3xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-50 h-52 flex items-end justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-28 h-28 rounded-full bg-gray-200/50 flex items-center justify-center">
+                                <i class="fa-solid fa-user text-gray-400/50 text-5xl"></i>
+                            </div>
+                        </div>
+                        <span class="relative z-10 bg-crestix-charcoal text-white text-[9px] font-black tracking-widest uppercase px-4 py-1.5 mb-4 rounded-full">Counseling</span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <p class="font-black text-lg tracking-tight">中村 陽太</p>
+                        <p class="text-[11px] text-blue-600 font-black tracking-widest uppercase">Career Counselor</p>
+                        <p class="text-xs text-gray-400 font-bold leading-relaxed pt-2">年間300人超の学生をカウンセリング。自己分析メソッドを独自開発し、内定率に直結させている。</p>
+                    </div>
+                </div>
+                <!-- Person Card 3 -->
+                <div class="person-card bg-white rounded-3xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-50 h-52 flex items-end justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-28 h-28 rounded-full bg-blue-200/50 flex items-center justify-center">
+                                <i class="fa-solid fa-user text-blue-600/50 text-5xl"></i>
+                            </div>
+                        </div>
+                        <span class="relative z-10 bg-blue-600 text-white text-[9px] font-black tracking-widest uppercase px-4 py-1.5 mb-4 rounded-full">Biz Dev</span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <p class="font-black text-lg tracking-tight">小林 彩夏</p>
+                        <p class="text-[11px] text-blue-600 font-black tracking-widest uppercase">Partner Development</p>
+                        <p class="text-xs text-gray-400 font-bold leading-relaxed pt-2">大手人材会社出身。企業側のHR課題に精通し、MeRaiseの導入企業開拓を牽引している。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOBS / 募集職種 -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-6 lg:px-14 space-y-16">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
+                <div class="space-y-3">
+                    <span class="text-[11px] font-black text-blue-600 font-poppins tracking-[0.4em] uppercase">Positions</span>
+                    <h2 class="text-4xl lg:text-5xl font-black tracking-tighter text-crestix-charcoal">募集職種</h2>
+                </div>
+                <a href="jobs.html" class="text-[11px] font-black text-blue-600 tracking-widest uppercase border-b border-blue-600 pb-0.5 hover:text-blue-800 transition-colors">すべての職種を見る ➔</a>
+            </div>
+            <div class="space-y-0 border border-gray-200 rounded-3xl overflow-hidden">
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item bg-white">
+                    <div class="accordion-header flex items-center justify-between p-8 lg:p-10 gap-6" onclick="toggleAccordion(this)">
+                        <div class="space-y-2">
+                            <span class="bg-blue-50 text-blue-700 border border-blue-100 font-black text-[10px] px-4 py-1 rounded-full uppercase tracking-widest">新卒・中途</span>
+                            <h4 class="text-xl lg:text-2xl font-black tracking-tight">MeRaise専属 キャリア教育アドバイザー</h4>
+                            <p class="text-xs text-gray-400 font-bold">東京本社 / フルタイム</p>
+                        </div>
+                        <i class="accordion-icon fa-solid fa-plus text-gray-400 text-lg flex-shrink-0"></i>
+                    </div>
+                    <div class="accordion-body px-8 lg:px-10 pb-8">
+                        <div class="pt-4 border-t border-gray-100 space-y-4">
+                            <p class="text-sm text-gray-500 font-bold leading-loose">学生の自己分析カウンセリング、キャリア教育ワークショップの企画・運営を担当します。年間300名以上の学生に寄り添い、就活×採用のミスマッチをゼロにすることをミッションとします。</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 rounded-2xl p-5">
+                                    <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase mb-2">求めるスキル</p>
+                                    <ul class="text-xs text-gray-500 font-bold space-y-1">
+                                        <li>・人と話すことが好き</li>
+                                        <li>・教育・HR領域への興味</li>
+                                        <li>・共感力・傾聴力</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 rounded-2xl p-5">
+                                    <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase mb-2">待遇</p>
+                                    <ul class="text-xs text-gray-500 font-bold space-y-1">
+                                        <li>・月給 25万円〜（経験考慮）</li>
+                                        <li>・フレックス制</li>
+                                        <li>・カウンセラー資格支援あり</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="jobs.html" class="inline-block mt-4 bg-blue-600 text-white font-black text-[11px] px-10 py-4 rounded-full tracking-[0.2em] uppercase hover:bg-blue-700 transition-all active:scale-95">Apply Now ➔</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item bg-white">
+                    <div class="accordion-header flex items-center justify-between p-8 lg:p-10 gap-6" onclick="toggleAccordion(this)">
+                        <div class="space-y-2">
+                            <span class="bg-blue-50 text-blue-700 border border-blue-100 font-black text-[10px] px-4 py-1 rounded-full uppercase tracking-widest">中途</span>
+                            <h4 class="text-xl lg:text-2xl font-black tracking-tight">HR事業 法人営業 / パートナー開拓</h4>
+                            <p class="text-xs text-gray-400 font-bold">東京本社 / フルタイム</p>
+                        </div>
+                        <i class="accordion-icon fa-solid fa-plus text-gray-400 text-lg flex-shrink-0"></i>
+                    </div>
+                    <div class="accordion-body px-8 lg:px-10 pb-8">
+                        <div class="pt-4 border-t border-gray-100 space-y-4">
+                            <p class="text-sm text-gray-500 font-bold leading-loose">MeRaiseを導入する企業の開拓・営業・アカウントマネジメントを担当します。採用側の課題を深く理解し、最適なHRソリューションを提案するコンサルタント的ポジションです。</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 rounded-2xl p-5">
+                                    <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase mb-2">求めるスキル</p>
+                                    <ul class="text-xs text-gray-500 font-bold space-y-1">
+                                        <li>・法人営業経験2年以上</li>
+                                        <li>・人材・HR業界の知識（尚可）</li>
+                                        <li>・課題解決型提案力</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 rounded-2xl p-5">
+                                    <p class="text-[10px] font-black text-blue-600 tracking-widest uppercase mb-2">待遇</p>
+                                    <ul class="text-xs text-gray-500 font-bold space-y-1">
+                                        <li>・月給 28万円〜（経験考慮）</li>
+                                        <li>・フレックス制</li>
+                                        <li>・インセンティブ制度あり</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="jobs.html" class="inline-block mt-4 bg-blue-600 text-white font-black text-[11px] px-10 py-4 rounded-full tracking-[0.2em] uppercase hover:bg-blue-700 transition-all active:scale-95">Apply Now ➔</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6 lg:px-14 space-y-12">
+            <div class="space-y-3">
+                <span class="text-[11px] font-black text-blue-600 font-poppins tracking-[0.4em] uppercase">News</span>
+                <h2 class="text-4xl lg:text-5xl font-black tracking-tighter text-crestix-charcoal">関連ニュース</h2>
+            </div>
+            <div class="space-y-6">
+                <a href="#" class="group flex flex-col md:flex-row justify-between items-start gap-6 p-8 lg:p-10 bg-white border border-gray-100 rounded-3xl hover:border-blue-200 hover:shadow-lg transition-all duration-400">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-blue-50 text-blue-700 font-black text-[10px] px-3 py-1 rounded-full border border-blue-100 uppercase tracking-widest">Press Release</span>
+                            <span class="text-[11px] text-gray-400 font-bold">2026.01.20</span>
+                        </div>
+                        <h4 class="text-lg font-black tracking-tight group-hover:text-blue-700 transition-colors">MeRaise、累計カウンセリング実績1,000名突破を発表</h4>
+                        <p class="text-xs text-gray-400 font-bold leading-relaxed">新卒就活支援において国内最高水準の内定後満足度92%を記録。</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors flex-shrink-0 mt-1"></i>
+                </a>
+                <a href="#" class="group flex flex-col md:flex-row justify-between items-start gap-6 p-8 lg:p-10 bg-white border border-gray-100 rounded-3xl hover:border-blue-200 hover:shadow-lg transition-all duration-400">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-gray-100 text-gray-600 font-black text-[10px] px-3 py-1 rounded-full border border-gray-200 uppercase tracking-widest">Collaboration</span>
+                            <span class="text-[11px] text-gray-400 font-bold">2025.11.05</span>
+                        </div>
+                        <h4 class="text-lg font-black tracking-tight group-hover:text-blue-700 transition-colors">国内5大学とキャリア教育プログラムの正式連携を開始</h4>
+                        <p class="text-xs text-gray-400 font-bold leading-relaxed">大学教育の中でのキャリア教育カリキュラム提供により、就活のミスマッチ解消に向けた取り組みを加速。</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors flex-shrink-0 mt-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 bg-gradient-to-br from-gray-900 to-[#0c1a3d] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 pointer-events-none select-none flex items-center justify-center">
+            <span class="font-poppins font-black text-[20vw] text-white leading-none tracking-tighter">JOIN</span>
+        </div>
+        <div class="max-w-3xl mx-auto text-center px-6 relative z-10 space-y-8">
+            <h2 class="text-white font-black text-4xl lg:text-6xl tracking-tighter leading-tight">MeRaiseで<br><span class="text-blue-400">ハタ"楽"を届ける</span></h2>
+            <p class="text-blue-300/70 text-sm font-bold leading-loose">就活×採用のミスマッチをゼロにする挑戦を、共に続けてくれる仲間を求めています。</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="jobs.html" class="bg-blue-600 hover:bg-blue-500 text-white font-black px-14 py-5 rounded-full text-[11px] tracking-[0.3em] uppercase transition-all active:scale-95 shadow-lg">Apply Now ➔</a>
+                <a href="business.html" class="border border-white/20 text-white/70 hover:text-white hover:border-white/50 font-black px-14 py-5 rounded-full text-[11px] tracking-[0.3em] uppercase transition-all">← Back to Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-crestix-navy text-white pt-24 pb-12 px-10 lg:px-24 border-t border-white/5 relative z-10">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-12 border-b border-white/10 pb-16">
+                <div class="flex items-center gap-6">
+                    <img src="assets/images/office/crestix1.png" alt="Crestix" class="w-12 h-12 drop-shadow-2xl">
+                    <span class="font-poppins font-black text-4xl lg:text-6xl tracking-tighter uppercase leading-none">Crestix</span>
+                </div>
+                <a href="jobs.html" class="bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-14 py-4 rounded-full font-black text-xs tracking-[0.3em] uppercase shadow-3d-depth active:scale-95">Open Positions</a>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-8 text-[10px] text-blue-200/30 font-black tracking-[0.2em] uppercase">
+                <span>&copy; 2026 Crestix Inc. All Rights Reserved.</span>
+                <div class="flex gap-8">
+                    <a href="privacy.html" class="hover:text-white/50 transition-colors">Privacy</a>
+                    <a href="terms.html" class="hover:text-white/50 transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        function toggleAccordion(header) {
+            const body = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+            const isOpen = body.classList.contains('open');
+
+            document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+            document.querySelectorAll('.accordion-icon').forEach(i => i.classList.remove('open'));
+
+            if (!isOpen) {
+                body.classList.add('open');
+                icon.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>
