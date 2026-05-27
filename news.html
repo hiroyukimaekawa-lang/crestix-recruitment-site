@@ -3,35 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Service Domains | Crestix Careers — 新しい力で、日本の社会課題を解決する</title>
+    <title>News | Crestix — 新しい力で、社会を加速させる。</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/js/tailwind-config.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    crestix: {
+                        orange: '#FF5C00',
+                        orangeDark: '#E65200',
+                        orangeLight: '#FFF5EE',
+                        charcoal: '#333333',
+                        navy: '#1A2B4C',
+                        bgLight: '#F7F9FA',
+                        white: '#FFFFFF',
+                        border: '#E5E7EB',
+                        textDim: '#6B7280',
+                    }
+                },
+                fontFamily: {
+                    sans: ['Noto Sans JP', 'sans-serif'],
+                    poppins: ['Poppins', 'sans-serif']
+                },
+            }
+        }
+    }
+    </script>
 
-    <!-- ═══ LOADER ═══ -->
-    <div id="cx-loader" aria-hidden="true">
-        <div id="cx-panel-top"    class="cx-panel cx-panel--top"></div>
-        <div id="cx-panel-bottom" class="cx-panel cx-panel--bottom"></div>
-        <div id="cx-loader-inner" class="cx-loader-inner">
-            <div class="cx-loader-logo">
-                <span class="cx-loader-brand">Crestix</span>
-            </div>
-            <div class="cx-loader-counter-wrap">
-                <span id="cx-loader-count" class="cx-loader-count">0</span>
-                <span class="cx-loader-pct">%</span>
-            </div>
-            <div class="cx-loader-bar-track">
-                <div id="cx-loader-bar" class="cx-loader-bar-fill"></div>
-            </div>
-            <p class="cx-loader-tagline">Unleash the potential in all people</p>
-        </div>
-    </div>
+    <style>
+    body {
+        font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+        color: #333333;
+        background-color: #FFFFFF;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR - index.htmlのスタイルを継承 */
+    #navbar {
+        background: rgba(10,15,30,0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* FULLSCREEN MENU */
+    #fullscreen-menu {
+        position: fixed; inset: 0; z-index: 9000;
+        display: flex; flex-direction: column;
+        background: #1A2B4C;
+        pointer-events: none;
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1);
+    }
+    #fullscreen-menu.is-open { pointer-events: all; clip-path: inset(0 0 0% 0); }
+    .fm-nav-item {
+        opacity: 0; transform: translateY(30px);
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(2.5rem, 8vw, 6rem);
+        font-weight: 900; letter-spacing: -0.04em;
+        color: rgba(255,255,255,0.2); cursor: pointer;
+        text-decoration: none; line-height: 1.1; display: block;
+        transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fm-nav-item:hover { color: #FF5C00; }
+    #fullscreen-menu.is-open .fm-nav-item { opacity: 1; transform: translateY(0); }
+    
+    /* Blog Cards */
+    .news-card {
+        transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .news-card:hover {
+        transform: translateY(-8px);
+    }
+    .news-card img {
+        transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .news-card:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Fade Up Animation */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.8s ease both; }
+    </style>
+</head>
+<body class="bg-crestix-bgLight">
 
     <!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
@@ -95,9 +160,9 @@
         <!-- CENTER: Nav links — スクロール後に出現 -->
         <div class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
             <a href="corporate.html" class="hover:text-orange-400 transition-colors">Corporate</a>
-            <a href="business.html"  class="text-orange-400">Service</a>
+            <a href="business.html"  class="hover:text-orange-400 transition-colors">Service</a>
             <a href="members.html"   class="hover:text-orange-400 transition-colors">Members</a>
-            <a href="news.html"      class="hover:text-orange-400 transition-colors">Crestory</a>
+            <a href="news.html"      class="text-orange-400">Crestory</a>
         </div>
 
         <!-- RIGHT: CTA — スクロール後に出現 -->
@@ -108,58 +173,103 @@
         </a>
     </nav>
 
-    <!-- MAIN CONTENT -->
-    <main class="pt-32">
-        <section class="py-20 lg:py-32 bg-gray-50/50">
-            <div class="max-w-5xl mx-auto px-6 lg:px-14 space-y-24">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                    <div class="lg:col-span-5"><span class="inline-block bg-green-500 text-white font-black text-3xl lg:text-4xl px-6 py-3 shadow-xl leading-tight transform -rotate-1">新しい力で、日本の<br>社会課題を解決する</span></div>
-                    <div class="lg:col-span-7"><p class="text-sm lg:text-base text-gray-500 leading-[2.2] font-black italic tracking-wide">Crestixが展開する5つのコアドメイン。これらが互いに強固なシナジーを生み出すことで、既存市場の「不」を解消し、新しいスタンダードを創り出します。</p></div>
-                </div>
-
-                <div class="space-y-8 max-w-5xl mx-auto pb-20">
-                    <!-- Service Items -->
-                    <div class="service-list-item bg-white border border-crestix-border p-10 lg:p-14 rounded-3xl shadow-sm cursor-pointer group transition-all duration-500 hover:shadow-2xl active:scale-[0.99]" style="--item-color: #22c55e;">
-                        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-                            <div class="space-y-6 w-full lg:w-3/4">
-                                <span class="bg-green-50 text-green-700 font-black text-[10px] px-5 py-1.5 rounded-full uppercase tracking-[0.3em] border border-green-100">Domain 01 / Sales Agency</span>
-                                <h4 class="text-3xl lg:text-4xl font-black group-hover:text-green-600 transition-colors tracking-tight">Sales Agency — 営業代行事業 —</h4>
-                                <p class="text-xs font-black text-green-600 uppercase tracking-widest leading-relaxed">〜テクノロジー×マーケティングの力で、売れる仕組みを〜</p>
-                                <p class="text-sm text-gray-500 font-bold leading-loose opacity-80 group-hover:opacity-100 transition-opacity">SaaS・IT業界に特化した営業代行サービス。商談獲得から受注拡大までを一貫して支援。</p>
-                            </div>
-                            <button class="bg-gray-900 text-white font-black px-10 py-4 rounded-full text-[10px] tracking-[0.3em] uppercase group-hover:bg-green-600 transition-all focus:outline-none">Details ➔</button>
-                        </div>
-                    </div>
-
-                    <div class="service-list-item bg-white border border-crestix-border p-10 lg:p-14 rounded-3xl shadow-sm cursor-pointer group transition-all duration-500 hover:shadow-2xl active:scale-[0.99]" style="--item-color: #3b82f6;">
-                        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-                            <div class="space-y-6 w-full lg:w-3/4">
-                                <span class="bg-blue-50 text-blue-700 font-black text-[10px] px-5 py-1.5 rounded-full uppercase tracking-[0.3em] border border-blue-100">Domain 02 / HR Tech</span>
-                                <h4 class="text-3xl lg:text-4xl font-black group-hover:text-blue-600 transition-colors tracking-tight">MeRaise — 新卒特化HR事業 —</h4>
-                                <p class="text-xs font-black text-blue-600 uppercase tracking-widest leading-relaxed">〜ハタラ"苦"をハタ"楽"に〜</p>
-                                <p class="text-sm text-gray-500 font-bold leading-loose opacity-80 group-hover:opacity-100 transition-opacity">入社前後のギャップをなくし、就活×採用のミスマッチを本質的に打破。</p>
-                            </div>
-                            <button class="bg-gray-900 text-white font-black px-10 py-4 rounded-full text-[10px] tracking-[0.3em] uppercase group-hover:bg-blue-600 transition-all focus:outline-none">Details ➔</button>
-                        </div>
-                    </div>
-                </div>
+    <!-- ═══ HERO ═══ -->
+    <section class="pt-40 pb-20 px-8 lg:px-14 bg-crestix-navy text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex items-center gap-4 mb-6 fade-up">
+                <span class="w-12 h-0.5 bg-crestix-orange"></span>
+                <span class="font-poppins text-xs font-bold tracking-[0.4em] uppercase text-crestix-orange">Updates</span>
             </div>
-        </section>
+            <h1 class="font-poppins text-5xl lg:text-7xl font-black tracking-tighter mb-8 fade-up" style="animation-delay: 0.1s;">News</h1>
+            <p class="text-white/50 font-bold max-w-xl leading-loose fade-up" style="animation-delay: 0.2s;">
+                Crestixの最新情報、プレスリリース、そして現場の熱量を伝えるブログコンテンツをお届けします。
+            </p>
+        </div>
+        <!-- Watermark -->
+        <div class="absolute bottom-0 right-0 font-poppins text-[15rem] font-black text-white/[0.03] leading-none pointer-events-none select-none translate-y-1/4">NEWS</div>
+    </section>
+
+    <!-- ═══ BLOG FEED ═══ -->
+    <main class="py-24 px-8 lg:px-14">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap gap-4 mb-16 fade-up" style="animation-delay: 0.3s;">
+                <button class="bg-crestix-navy text-white px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase shadow-lg">All</button>
+                <button class="bg-white text-crestix-charcoal/40 hover:text-crestix-orange px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase transition-all">Press Release</button>
+                <button class="bg-white text-crestix-charcoal/40 hover:text-crestix-orange px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase transition-all">Inside Story</button>
+                <button class="bg-white text-crestix-charcoal/40 hover:text-crestix-orange px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase transition-all">Event</button>
+            </div>
+
+            <!-- News Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Article 1 -->
+                <article class="news-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl border border-crestix-border/50 flex flex-col fade-up" style="animation-delay: 0.4s;">
+                    <div class="relative aspect-[16/10] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
+                        <span class="absolute top-6 left-6 bg-crestix-orange text-white text-[9px] font-black tracking-widest uppercase px-4 py-1.5 rounded-lg shadow-lg">Inside Story</span>
+                    </div>
+                    <div class="p-10 flex-1 flex flex-col">
+                        <time class="font-poppins text-[10px] font-bold text-crestix-charcoal/30 tracking-widest mb-4">2026.05.25</time>
+                        <h2 class="text-xl font-black text-crestix-charcoal leading-snug mb-6 group-hover:text-crestix-orange transition-colors">
+                            「個の力を、組織の加速に変える」Crestixが目指す2026年の採用戦略
+                        </h2>
+                        <div class="mt-auto pt-6 border-t border-crestix-border flex items-center justify-between">
+                            <span class="text-[10px] font-black tracking-widest uppercase text-crestix-charcoal/60">Read More</span>
+                            <i class="fa-solid fa-arrow-right-long text-crestix-orange"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="news-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl border border-crestix-border/50 flex flex-col fade-up" style="animation-delay: 0.5s;">
+                    <div class="relative aspect-[16/10] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
+                        <span class="absolute top-6 left-6 bg-crestix-navy text-white text-[9px] font-black tracking-widest uppercase px-4 py-1.5 rounded-lg shadow-lg">Press Release</span>
+                    </div>
+                    <div class="p-10 flex-1 flex flex-col">
+                        <time class="font-poppins text-[10px] font-bold text-crestix-charcoal/30 tracking-widest mb-4">2026.05.20</time>
+                        <h2 class="text-xl font-black text-crestix-charcoal leading-snug mb-6">
+                            飲食店特化型IS支援システム「G-Restaurant Scraper」を大幅アップデート
+                        </h2>
+                        <div class="mt-auto pt-6 border-t border-crestix-border flex items-center justify-between">
+                            <span class="text-[10px] font-black tracking-widest uppercase text-crestix-charcoal/60">Read More</span>
+                            <i class="fa-solid fa-arrow-right-long text-crestix-orange"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="news-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl border border-crestix-border/50 flex flex-col fade-up" style="animation-delay: 0.6s;">
+                    <div class="relative aspect-[16/10] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
+                        <span class="absolute top-6 left-6 bg-crestix-orange text-white text-[9px] font-black tracking-widest uppercase px-4 py-1.5 rounded-lg shadow-lg">Inside Story</span>
+                    </div>
+                    <div class="p-10 flex-1 flex flex-col">
+                        <time class="font-poppins text-[10px] font-bold text-crestix-charcoal/30 tracking-widest mb-4">2026.05.15</time>
+                        <h2 class="text-xl font-black text-crestix-charcoal leading-snug mb-6">
+                            未経験からISリーダーへ。最速でキャリアを駆け上がるための思考法
+                        </h2>
+                        <div class="mt-auto pt-6 border-t border-crestix-border flex items-center justify-between">
+                            <span class="text-[10px] font-black tracking-widest uppercase text-crestix-charcoal/60">Read More</span>
+                            <i class="fa-solid fa-arrow-right-long text-crestix-orange"></i>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="mt-24 flex justify-center gap-3 fade-up" style="animation-delay: 0.7s;">
+                <button class="w-12 h-12 rounded-xl bg-crestix-navy text-white flex items-center justify-center font-bold shadow-lg shadow-crestix-navy/20">1</button>
+                <button class="w-12 h-12 rounded-xl bg-white text-crestix-charcoal/40 hover:text-crestix-orange flex items-center justify-center font-bold transition-all">2</button>
+                <button class="w-12 h-12 rounded-xl bg-white text-crestix-charcoal/40 hover:text-crestix-orange flex items-center justify-center font-bold transition-all">
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+        </div>
     </main>
-
-    <!-- SHARED CONTENT TEMPLATE -->
-    <div class="py-40 bg-white border-t border-gray-100 select-none overflow-hidden relative">
-        <div class="max-w-5xl mx-auto px-10 mb-16 flex justify-between items-end relative z-10">
-            <div><h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Culture Snaps</h4><p class="text-4xl font-black text-crestix-charcoal mt-2 tracking-tighter">Crestixの日常スナップ</p></div>
-        </div>
-        <div class="marquee-wrapper relative z-10">
-            <div class="marquee-content" style="animation-duration: 45s;">
-                <div class="culture-snap-card w-[350px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-                <div class="culture-snap-card w-[300px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-                <div class="culture-snap-card w-[400px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-            </div>
-        </div>
-    </div>
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="bg-crestix-navy text-white select-none border-t border-white/5 relative z-10">
@@ -324,7 +434,6 @@
                     loader.style.display = 'none';
                     document.body.style.overflow = '';
                     document.body.classList.add('cx-page-ready');
-                    // No initHeroSlideshow here
                 }, 820);
             }, 100);
         }

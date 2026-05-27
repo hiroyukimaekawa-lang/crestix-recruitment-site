@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Service Domains | Crestix Careers — 新しい力で、日本の社会課題を解決する</title>
+    <title>Top Message | Crestix — トップメッセージ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -11,6 +11,55 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="assets/js/tailwind-config.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .ca-border { border-top: 1px solid #e5e7eb; }
+
+        /* Hero */
+        .msg-hero {
+            background-image:
+                linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 60%, rgba(255,255,255,0) 100%),
+                url('assets/images/office/crestix.png');
+            background-size: cover;
+            background-position: center top;
+            min-height: 520px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb a { color: #9ca3af; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: #FF5C00; }
+        .breadcrumb span { color: #d1d5db; margin: 0 0.5rem; font-size: 0.65rem; }
+
+        /* Signature underline */
+        .sig-line { width: 3rem; height: 3px; background: #FF5C00; border-radius: 2px; margin-bottom: 1rem; }
+
+        /* Fade-in animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.8s ease both; }
+        .fade-up-d1 { animation-delay: 0.1s; }
+        .fade-up-d2 { animation-delay: 0.25s; }
+        .fade-up-d3 { animation-delay: 0.4s; }
+        .fade-up-d4 { animation-delay: 0.55s; }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: #FF5C00; }
+        .back-link i { transition: transform 0.2s; }
+        .back-link:hover i { transform: translateX(-4px); }
+    </style>
 </head>
 <body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
 
@@ -94,8 +143,8 @@
 
         <!-- CENTER: Nav links — スクロール後に出現 -->
         <div class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
-            <a href="corporate.html" class="hover:text-orange-400 transition-colors">Corporate</a>
-            <a href="business.html"  class="text-orange-400">Service</a>
+            <a href="corporate.html" class="text-orange-400">Corporate</a>
+            <a href="business.html"  class="hover:text-orange-400 transition-colors">Service</a>
             <a href="members.html"   class="hover:text-orange-400 transition-colors">Members</a>
             <a href="news.html"      class="hover:text-orange-400 transition-colors">Crestory</a>
         </div>
@@ -108,58 +157,94 @@
         </a>
     </nav>
 
-    <!-- MAIN CONTENT -->
-    <main class="pt-32">
-        <section class="py-20 lg:py-32 bg-gray-50/50">
-            <div class="max-w-5xl mx-auto px-6 lg:px-14 space-y-24">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                    <div class="lg:col-span-5"><span class="inline-block bg-green-500 text-white font-black text-3xl lg:text-4xl px-6 py-3 shadow-xl leading-tight transform -rotate-1">新しい力で、日本の<br>社会課題を解決する</span></div>
-                    <div class="lg:col-span-7"><p class="text-sm lg:text-base text-gray-500 leading-[2.2] font-black italic tracking-wide">Crestixが展開する5つのコアドメイン。これらが互いに強固なシナジーを生み出すことで、既存市場の「不」を解消し、新しいスタンダードを創り出します。</p></div>
+    <main>
+
+        <!-- ① HERO -->
+        <div class="msg-hero flex flex-col justify-end pt-40">
+            <div class="max-w-7xl mx-auto px-6 lg:px-14 pb-12 w-full">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb mb-6 fade-up fade-up-d1">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="corporate.html">Corporate</a>
+                    <span>/</span>
+                    <a href="message.html" style="color:#fff;">Top Message</a>
+                </nav>
+                <h1 class="text-5xl lg:text-7xl font-black font-poppins tracking-tighter uppercase leading-none text-white drop-shadow-lg fade-up fade-up-d2">
+                    Top Message
+                </h1>
+                <p class="text-white/80 text-base font-bold mt-3 fade-up fade-up-d3">トップメッセージ</p>
+            </div>
+        </div>
+
+        <!-- ② MESSAGE BODY -->
+        <section class="py-24 lg:py-40 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-14">
+
+                <!-- Back link -->
+                <div class="mb-16 fade-up fade-up-d1">
+                    <a href="corporate.html" class="back-link">
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                        Corporate に戻る
+                    </a>
                 </div>
 
-                <div class="space-y-8 max-w-5xl mx-auto pb-20">
-                    <!-- Service Items -->
-                    <div class="service-list-item bg-white border border-crestix-border p-10 lg:p-14 rounded-3xl shadow-sm cursor-pointer group transition-all duration-500 hover:shadow-2xl active:scale-[0.99]" style="--item-color: #22c55e;">
-                        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-                            <div class="space-y-6 w-full lg:w-3/4">
-                                <span class="bg-green-50 text-green-700 font-black text-[10px] px-5 py-1.5 rounded-full uppercase tracking-[0.3em] border border-green-100">Domain 01 / Sales Agency</span>
-                                <h4 class="text-3xl lg:text-4xl font-black group-hover:text-green-600 transition-colors tracking-tight">Sales Agency — 営業代行事業 —</h4>
-                                <p class="text-xs font-black text-green-600 uppercase tracking-widest leading-relaxed">〜テクノロジー×マーケティングの力で、売れる仕組みを〜</p>
-                                <p class="text-sm text-gray-500 font-bold leading-loose opacity-80 group-hover:opacity-100 transition-opacity">SaaS・IT業界に特化した営業代行サービス。商談獲得から受注拡大までを一貫して支援。</p>
-                            </div>
-                            <button class="bg-gray-900 text-white font-black px-10 py-4 rounded-full text-[10px] tracking-[0.3em] uppercase group-hover:bg-green-600 transition-all focus:outline-none">Details ➔</button>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+
+                    <!-- Left: Heading + signature -->
+                    <div class="lg:col-span-4 fade-up fade-up-d2">
+                        <p class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.5em] uppercase mb-4">Crestix Inc. CEO</p>
+                        <h2 class="text-3xl lg:text-4xl font-black font-poppins tracking-tighter leading-tight mb-10">
+                            仕事とは、人生を豊かにする<br>挑戦である。
+                        </h2>
+
+                        <!-- CEO portrait placeholder -->
+                        <div class="aspect-[3/4] bg-gray-100 rounded-2xl overflow-hidden mb-8 max-w-[260px]">
+                            <img src="assets/images/office/crestix.png" alt="代表取締役 縞谷 蓮志"
+                                 class="w-full h-full object-cover object-top">
+                        </div>
+
+                        <div class="sig-line"></div>
+                        <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Representative Director</p>
+                        <p class="text-2xl font-black font-poppins tracking-tighter">Renji Shimatani</p>
+                        <p class="text-lg font-black mt-1">代表取締役 縞谷 蓮志</p>
+                    </div>
+
+                    <!-- Right: Message text -->
+                    <div class="lg:col-span-8 fade-up fade-up-d3">
+                        <div class="space-y-10 text-base text-gray-600 leading-[2.2] font-medium select-text">
+
+                            <p class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-relaxed tracking-tight border-l-4 border-crestix-orange pl-6">
+                                「仕事とは、自分の可能性を広げ、<br>人生を豊かにしていく挑戦です。」
+                            </p>
+
+                            <p>仕事は、ただお金を稼ぐためのものではありません。仕事とは、自分の可能性を広げ、人生を豊かにしていく挑戦です。</p>
+
+                            <p>仕事は一人では成り立ちません。クライアントがいる。共に働く仲間がいる。誰かの期待があり、誰かの支えがあり、誰かと共に価値を生み出している。</p>
+
+                            <p>そしてCrestixは、まずここで働く人を幸せにしたいと考えています。ここで本気で仕事をし、挑戦し、成長することで、働く人自身の人生が豊かになっていく。その豊かさは、家族、友人、周りの人へと広がっていく。</p>
+
+                            <p>仕事も人生も、決して一人では成り立ちません。だから私たちは、仕事を通じて人の可能性を広げ、関わる人の人生をより豊かなものにしていきます。</p>
+
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="mt-16 pt-16 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-6 fade-up fade-up-d4">
+                            <a href="jobs.html" class="inline-flex items-center gap-4 bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-10 py-4 rounded-full font-black text-xs tracking-[0.3em] uppercase shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">
+                                Open Positions
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                            </a>
+                            <a href="about.html" class="inline-flex items-center gap-3 text-xs font-black text-gray-400 hover:text-crestix-orange transition-colors uppercase tracking-widest">
+                                MVV を見る <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="service-list-item bg-white border border-crestix-border p-10 lg:p-14 rounded-3xl shadow-sm cursor-pointer group transition-all duration-500 hover:shadow-2xl active:scale-[0.99]" style="--item-color: #3b82f6;">
-                        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-                            <div class="space-y-6 w-full lg:w-3/4">
-                                <span class="bg-blue-50 text-blue-700 font-black text-[10px] px-5 py-1.5 rounded-full uppercase tracking-[0.3em] border border-blue-100">Domain 02 / HR Tech</span>
-                                <h4 class="text-3xl lg:text-4xl font-black group-hover:text-blue-600 transition-colors tracking-tight">MeRaise — 新卒特化HR事業 —</h4>
-                                <p class="text-xs font-black text-blue-600 uppercase tracking-widest leading-relaxed">〜ハタラ"苦"をハタ"楽"に〜</p>
-                                <p class="text-sm text-gray-500 font-bold leading-loose opacity-80 group-hover:opacity-100 transition-opacity">入社前後のギャップをなくし、就活×採用のミスマッチを本質的に打破。</p>
-                            </div>
-                            <button class="bg-gray-900 text-white font-black px-10 py-4 rounded-full text-[10px] tracking-[0.3em] uppercase group-hover:bg-blue-600 transition-all focus:outline-none">Details ➔</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- SHARED CONTENT TEMPLATE -->
-    <div class="py-40 bg-white border-t border-gray-100 select-none overflow-hidden relative">
-        <div class="max-w-5xl mx-auto px-10 mb-16 flex justify-between items-end relative z-10">
-            <div><h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Culture Snaps</h4><p class="text-4xl font-black text-crestix-charcoal mt-2 tracking-tighter">Crestixの日常スナップ</p></div>
-        </div>
-        <div class="marquee-wrapper relative z-10">
-            <div class="marquee-content" style="animation-duration: 45s;">
-                <div class="culture-snap-card w-[350px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-                <div class="culture-snap-card w-[300px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-                <div class="culture-snap-card w-[400px] h-[240px] rounded-[2.5rem] overflow-hidden bg-gray-100 flex-shrink-0 shadow-lg border border-gray-100"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop" class="culture-snap-img w-full h-full object-cover"></div>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="bg-crestix-navy text-white select-none border-t border-white/5 relative z-10">

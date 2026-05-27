@@ -9,23 +9,203 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/js/tailwind-config.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body class="bg-white text-crestix-charcoal font-sans">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    crestix: {
+                        orange: '#FF5C00',
+                        orangeDark: '#E65200',
+                        orangeLight: '#FFF5EE',
+                        charcoal: '#333333',
+                        navy: '#1A2B4C',
+                        bgLight: '#F7F9FA',
+                        white: '#FFFFFF',
+                        border: '#E5E7EB',
+                        textDim: '#6B7280',
+                    }
+                },
+                fontFamily: {
+                    sans: ['Noto Sans JP', 'sans-serif'],
+                    poppins: ['Poppins', 'sans-serif']
+                },
+            }
+        }
+    }
+    </script>
+    <style>
+    /* ─── Global ─────────────────────────────────────────── */
+    body {
+        font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+        color: #333333;
+        background-color: #FFFFFF;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
 
-    <!-- SITE HEADER -->
-    <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-6 px-10 lg:px-16 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-xl transition-all duration-500">
-        <a href="index.html" class="flex items-center gap-4 group">
-            <img src="assets/images/office/crestix1.png" alt="Crestix" class="w-12 h-12 lg:w-20 lg:h-20 drop-shadow-2xl transition-transform group-hover:rotate-12 object-contain">
-        </a>
-        <div class="hidden lg:flex items-center gap-14 text-[11px] font-black tracking-[0.35em] text-crestix-charcoal uppercase">
-            <a href="corporate.html" class="text-crestix-orange focus:outline-none">Corporate</a>
-            <a href="members.html" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">News</a>
-            <a href="business.html" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">Service</a>
-            <a href="index.html#sec-youtube-carousel" class="hover:text-crestix-orange transition-colors uppercase focus:outline-none">Crestory</a>
+    /* ─── Loader ──────────────────────────────────────────── */
+    #cx-loader { position: fixed; inset: 0; z-index: 9999; pointer-events: all; }
+    .cx-panel { position: absolute; left: 0; width: 100%; height: 50%; background: #1A2B4C; transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1); will-change: transform; }
+    .cx-panel--top { top: 0; }
+    .cx-panel--bottom { bottom: 0; }
+    .cx-panel--top::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #FF5C00; opacity: 0.6; }
+    .cx-loader-inner { position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.75rem; pointer-events: none; }
+    .cx-loader-logo { display: flex; align-items: center; gap: 1rem; animation: cxFadeIn 0.7s ease 0.25s both; }
+    .cx-loader-brand { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 900; letter-spacing: -0.04em; color: #ffffff; text-transform: uppercase; }
+    .cx-loader-counter-wrap { display: flex; align-items: baseline; gap: 3px; line-height: 1; animation: cxFadeIn 0.6s ease 0.45s both; }
+    .cx-loader-count { font-family: 'Poppins', sans-serif; font-size: clamp(5rem, 14vw, 10rem); font-weight: 900; letter-spacing: -0.06em; color: #ffffff; min-width: 3ch; text-align: right; font-variant-numeric: tabular-nums; transition: color 0.3s ease; }
+    .cx-loader-count.cx-done { color: #FF5C00; }
+    .cx-loader-pct { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 3.5vw, 3rem); font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: -0.02em; align-self: flex-end; margin-bottom: 0.6rem; }
+    .cx-loader-bar-track { width: min(340px, 65vw); height: 1px; background: rgba(255,255,255,0.1); border-radius: 1px; overflow: hidden; animation: cxFadeIn 0.6s ease 0.55s both; }
+    .cx-loader-bar-fill { height: 100%; width: 0%; background: #FF5C00; border-radius: 1px; transition: width 0.08s linear; }
+    .cx-loader-tagline { font-family: 'Poppins', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.35em; color: rgba(255,255,255,0.18); text-transform: uppercase; animation: cxFadeIn 0.6s ease 0.7s both; white-space: nowrap; }
+    @keyframes cxFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    body:not(.cx-page-ready) #sec-hero, body:not(.cx-page-ready) #navbar { opacity: 0; }
+    body.cx-page-ready #sec-hero { opacity: 1; transition: opacity 0.7s ease 0.05s; }
+    body.cx-page-ready #navbar { opacity: 1; transition: opacity 0.5s ease 0.2s; }
+
+    /* ─── NAVBAR ──────────────────────────────────────────── */
+    #navbar {
+        background: transparent;
+        border-color: transparent;
+        transition: background 0.6s ease, border-color 0.6s ease;
+    }
+    #navbar.scrolled {
+        background: rgba(10,15,30,0.72);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        border-color: rgba(255,255,255,0.08);
+    }
+    #nav-logo-wrap { cursor: pointer; transition: opacity 0.5s ease; opacity: 1; }
+    .nav-links-group { transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .nav-cta-btn { transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1); opacity: 1; transform: translateY(0); pointer-events: auto; }
+    #nav-divider, #hamburger-btn { opacity: 0; transform: scale(0.8); pointer-events: none; transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+    #navbar.scrolled .nav-links-group { opacity: 0; transform: translateY(-8px) scale(0.92); pointer-events: none; }
+    #navbar.scrolled .nav-cta-btn { opacity: 0; transform: translateY(-8px) scale(0.92); pointer-events: none; }
+    #navbar.scrolled #nav-divider { opacity: 1; transform: scale(1); pointer-events: auto; transition-delay: 0.12s; }
+    #navbar.scrolled #hamburger-btn { opacity: 1; transform: scale(1); pointer-events: auto; transition-delay: 0.18s; }
+    .hamburger-lines { display: flex; flex-direction: column; gap: 4px; width: 16px; }
+    .hamburger-lines span { display: block; height: 1.5px; background: white; border-radius: 2px; transition: all 0.4s cubic-bezier(0.76,0,0.24,1); transform-origin: center; }
+    .hamburger-lines.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .hamburger-lines.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger-lines.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+    /* ─── Fullscreen Menu ──────────────────────────────────── */
+    #fullscreen-menu { position: fixed; inset: 0; z-index: 9000; display: flex; flex-direction: column; background: #1A2B4C; pointer-events: none; clip-path: inset(0 0 100% 0); transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1); }
+    #fullscreen-menu.is-open { pointer-events: all; clip-path: inset(0 0 0% 0); }
+    .fm-nav-item { opacity: 0; transform: translateY(30px); font-family: 'Poppins', sans-serif; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900; letter-spacing: -0.04em; color: rgba(255,255,255,0.2); cursor: pointer; text-decoration: none; line-height: 1.1; display: block; transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease; }
+    .fm-nav-item:hover { color: #FF5C00; }
+    #fullscreen-menu.is-open .fm-nav-item { opacity: 1; transform: translateY(0); }
+    #fullscreen-menu.is-open .fm-item-1 { transition-delay: 0.15s; }
+    #fullscreen-menu.is-open .fm-item-2 { transition-delay: 0.22s; }
+    #fullscreen-menu.is-open .fm-item-3 { transition-delay: 0.29s; }
+    #fullscreen-menu.is-open .fm-item-4 { transition-delay: 0.36s; }
+    .fm-cta-btn { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s; }
+    #fullscreen-menu.is-open .fm-cta-btn { opacity: 1; transform: translateY(0); }
+
+    /* ─── Misc ────────────────────────────────────────────── */
+    .modal-overlay { transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), backdrop-filter 0.5s ease; }
+    .modal-content-anim { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease; }
+    .modal-hidden { opacity: 0; pointer-events: none; }
+    .modal-hidden .modal-content-anim { transform: translateY(60px) scale(0.96); }
+    input:focus, select:focus, textarea:focus { border-color: #FF5C00 !important; box-shadow: 0 0 0 4px rgba(255,92,0,0.1); }
+    </style>
+</head>
+<body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
+
+    <!-- ═══ LOADER ═══ -->
+    <div id="cx-loader" aria-hidden="true">
+        <div id="cx-panel-top"    class="cx-panel cx-panel--top"></div>
+        <div id="cx-panel-bottom" class="cx-panel cx-panel--bottom"></div>
+        <div id="cx-loader-inner" class="cx-loader-inner">
+            <div class="cx-loader-logo">
+                <span class="cx-loader-brand">Crestix</span>
+            </div>
+            <div class="cx-loader-counter-wrap">
+                <span id="cx-loader-count" class="cx-loader-count">0</span>
+                <span class="cx-loader-pct">%</span>
+            </div>
+            <div class="cx-loader-bar-track">
+                <div id="cx-loader-bar" class="cx-loader-bar-fill"></div>
+            </div>
+            <p class="cx-loader-tagline">Unleash the potential in all people</p>
         </div>
-        <a href="jobs.html" class="bg-crestix-charcoal text-white hover:bg-black text-[11px] font-black px-12 py-4 rounded-full shadow-2xl tracking-[0.25em] uppercase transition-all active:scale-95">応募はこちらから</a>
+    </div>
+
+    <!-- ═══ FULLSCREEN MENU ═══ -->
+    <div id="fullscreen-menu">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
+            <div style="display:flex;align-items:center;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:900;font-size:1.25rem;color:white;letter-spacing:-0.03em;" onclick="location.href='index.html'">
+                CRESTIX
+            </div>
+            <button onclick="toggleMenu()" style="display:flex;align-items:center;gap:10px;background:none;border:none;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;padding:6px 0;">
+                CLOSE
+                <span style="display:flex;flex-direction:column;gap:5px;width:24px;">
+                    <i style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(6.5px) rotate(45deg);"></i>
+                    <i style="display:block;height:1.5px;background:white;border-radius:2px;opacity:0;"></i>
+                    <i style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(-6.5px) rotate(-45deg);"></i>
+                </span>
+            </button>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 2rem 0 2.5rem;gap:0.5rem;">
+            <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="toggleMenu()">Corporate</a>
+            <a href="business.html"  class="fm-nav-item fm-item-2" onclick="toggleMenu()">Service</a>
+            <a href="members.html"   class="fm-nav-item fm-item-3" onclick="toggleMenu()">Members</a>
+            <a href="news.html"      class="fm-nav-item fm-item-4" onclick="toggleMenu()">Crestory</a>
+        </div>
+        <div class="fm-cta-btn" style="padding:0 2.5rem 2.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+            <a href="jobs.html" onclick="toggleMenu()"
+               style="display:inline-block;background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:9999px;text-decoration:none;">
+                応募はこちらから
+            </a>
+            <span style="font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.3em;text-transform:uppercase;">&copy; 2026 Crestix Inc.</span>
+        </div>
+    </div>
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-3 px-8 lg:px-14 z-50 border-b border-white/10">
+
+        <!-- LEFT: Logo (常時) + divider + MENU pill (スクロール後に出現) -->
+        <div class="flex items-center gap-4">
+
+            <!-- ロゴ: 常時表示 -->
+            <div id="nav-logo-wrap" onclick="handleLogoClick()" role="button" aria-label="ホーム / メニュー"
+                 style="display:flex;align-items:center;">
+                <img src="assets/images/office/crestix-header.png" alt="Crestix"
+                     style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);"
+                     onerror="this.style.display='none'">
+            </div>
+
+            <!-- 区切り線 (スクロール後に出現) -->
+            <span id="nav-divider" style="width:1px;height:18px;background:rgba(255,255,255,0.2);display:block;flex-shrink:0;"></span>
+
+            <!-- MENU ピルボタン (スクロール後に出現) -->
+            <button id="hamburger-btn" onclick="toggleMenu()" aria-label="メニューを開く"
+                    style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:7px 16px 7px 12px;cursor:pointer;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;transition: background 0.2s ease, border-color 0.2s ease;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.borderColor='rgba(255,255,255,0.4)'"
+                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'">
+                <div class="hamburger-lines" id="ham-lines">
+                    <span></span><span></span><span></span>
+                </div>
+                MENU
+            </button>
+        </div>
+
+        <!-- CENTER: Nav links — スクロール後に出現 -->
+        <div class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
+            <a href="corporate.html" class="text-orange-400">Corporate</a>
+            <a href="business.html"  class="hover:text-orange-400 transition-colors">Service</a>
+            <a href="members.html"   class="hover:text-orange-400 transition-colors">Members</a>
+            <a href="news.html"      class="hover:text-orange-400 transition-colors">Crestory</a>
+        </div>
+
+        <!-- RIGHT: CTA — スクロール後に出現 -->
+        <a href="jobs.html"
+           class="nav-cta-btn bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-black px-7 py-3 rounded-full tracking-[0.2em] uppercase active:scale-95 focus:outline-none whitespace-nowrap shadow-lg"
+           style="font-family: 'Poppins', sans-serif; transition: background 0.2s ease, opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);">
+            応募はこちらから
+        </a>
     </nav>
 
     <!-- MAIN CONTENT -->
@@ -35,13 +215,15 @@
             <div class="max-w-4xl mx-auto space-y-16">
                 <div class="text-center space-y-4">
                     <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.5em] uppercase block">Top Message</span>
-                    <h2 class="text-4xl lg:text-6xl font-black leading-tight tracking-tighter">「全員がプロフェッショナルとして<br>自律する挑戦組織を創る」</h2>
+                    <h2 class="text-4xl lg:text-6xl font-black leading-tight tracking-tighter">「仕事とは、人生を豊かにする<br>挑戦である。」</h2>
                 </div>
                 <div class="text-base md:text-xl text-gray-600 leading-[2.4] space-y-10 font-bold select-text tracking-wide">
-                    <p>私たちは、創業1年目で年商280%成長を達成しました。しかし、私たちの挑戦はここからが本番です。SaaSマーケティング、新卒人材送客、キャリア教育。それぞれの領域で社会に本質的なインパクトを与える仕組みをハックし、全く新しい基準を創っていきます。</p>
-                    <p>Crestixには指示を待つだけの人はいません。全員が1つの事業の当事者として意思決定を下し、大胆に打席に立っています。失敗は挑戦した証であり、最高の成長ステップです。私たちとともに、自分の限界を超え、21世紀を代表する挑戦の物語を一緒に創り出しましょう。</p>
+                    <p>仕事は、ただお金を稼ぐためのものではありません。仕事とは、自分の可能性を広げ、人生を豊かにしていく挑戦です。</p>
+                    <p>仕事は一人では成り立ちません。クライアントがいる。共に働く仲間がいる。誰かの期待があり、誰かの支えがあり、誰かと共に価値を生み出している。</p>
+                    <p>そしてCrestixは、まずここで働く人を幸せにしたいと考えています。ここで本気で仕事をし、挑戦し、成長することで、働く人自身の人生が豊かになっていく。その豊かさは、家族、友人、周りの人へと広がっていく。</p>
+                    <p>仕事も人生も、決して一人では成り立ちません。だから私たちは、仕事を通じて人の可能性を広げ、関わる人の人生をより豊かなものにしていきます。</p>
                 </div>
-                <div class="flex flex-col items-end pt-12"><span class="text-xs text-gray-400 font-black uppercase tracking-[0.3em] mb-2">Crestix Inc. CEO</span><span class="text-3xl font-poppins font-black tracking-tighter text-crestix-charcoal uppercase">Renji Shimatani</span></div>
+                <div class="flex flex-col items-end pt-12"><span class="text-xs text-gray-400 font-black uppercase tracking-[0.3em] mb-2">Crestix Inc. CEO</span><span class="text-3xl font-poppins font-black tracking-tighter text-crestix-charcoal uppercase">Renji Shimatani</span><span class="text-lg font-black mt-1">代表取締役 縞谷 蓮志</span></div>
             </div>
         </section>
 
@@ -52,8 +234,12 @@
             <div class="py-24 lg:py-40 px-10 lg:px-24 border-b border-gray-100 relative">
                 <div class="absolute -top-10 left-10 text-[140px] lg:text-[220px] font-poppins font-black text-gray-50 opacity-40 select-none tracking-tighter">MISSION</div>
                 <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
-                    <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4"><span class="w-10 h-px bg-crestix-orange"></span> Our Purpose</div>
-                    <h2 class="text-4xl lg:text-7xl font-black text-crestix-charcoal leading-[1.2] tracking-tighter">人の想いとテクノロジーを<br>掛け合わせ、最高の<br>熱量を創り出す。</h2>
+                    <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4"><span class="w-10 h-px bg-crestix-orange"></span> Our Mission</div>
+                    <h2 class="text-4xl lg:text-7xl font-black text-crestix-charcoal leading-[1.2] tracking-tighter">Pricelessを届ける</h2>
+                    <div class="pt-8 border-t border-gray-100">
+                        <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4 mb-4"><span class="w-10 h-px bg-crestix-orange"></span> Our Principle</div>
+                        <p class="text-2xl lg:text-3xl font-black text-crestix-charcoal tracking-tight">本気の挑戦がPricelessを届ける</p>
+                    </div>
                 </div>
             </div>
 
@@ -62,19 +248,35 @@
                 <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
                     <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4"><span class="w-10 h-px bg-crestix-orange"></span> Our Vision</div>
                     <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal leading-[1.3] tracking-tighter uppercase italic">21st Century's Most<br>Challenging Company.</h2>
-                    <p class="text-lg font-black text-gray-400 mt-4 tracking-widest">21世紀を代表する、世界屈指の挑戦し続ける企業へ。</p>
+                    <p class="text-lg font-black text-gray-400 mt-4 tracking-widest">世界一、挑戦し続ける会社へ</p>
                 </div>
             </div>
 
             <div class="py-24 lg:py-40 px-10 lg:px-24 relative">
                 <div class="absolute -top-10 left-10 text-[140px] lg:text-[220px] font-poppins font-black text-gray-50 opacity-40 select-none tracking-tighter uppercase">Values</div>
                 <div class="relative z-10 max-w-5xl mx-auto space-y-20">
-                    <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4"><span class="w-10 h-px bg-crestix-orange"></span> Core Values</div>
+                    <div>
+                        <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4 mb-4"><span class="w-10 h-px bg-crestix-orange"></span> Crestix Value</div>
+                        <p class="text-sm font-black text-gray-400 tracking-widest">Pricelessな人材</p>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-20">
-                        <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V1</span><h4 class="text-2xl font-black tracking-tight">無限の挑戦心</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">前例のないこと、難易度の高いことにこそ価値がある。現状維持を否定し、常に一歩先の高い目標に挑み続けます。</p></div>
-                        <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V2</span><h4 class="text-2xl font-black tracking-tight">プロとしての自律</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">自分の成果に執着する。自由な環境の中で、最高のパフォーマンスを発揮するための自己管理を徹底します。</p></div>
-                        <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V3</span><h4 class="text-2xl font-black tracking-tight">ユーザー価値ドリブン</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">どんなときでも、ユーザーへの価値を軸に考える。提供価値の最大化に向けて、本質的な課題をとらえます。</p></div>
-                        <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V4</span><h4 class="text-2xl font-black tracking-tight">成果に向かう</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">創出すべき成果に対して集中する。目標の達成につながる最短かつ最善の行動を選択します。</p></div>
+                        <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V1</span><h4 class="text-2xl font-black tracking-tight">可能性を広げ続ける</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">どんな小さな可能性でも見逃さない。自分・仲間・顧客の可能性を広げ続ける。</p></div>
+                        <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V2</span><h4 class="text-2xl font-black tracking-tight">リスペクトを持て、そして当事者であれ</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">仕事は遊びではない。発言・行動・結果に責任を持ち、すべてを自分ごととして向き合う。ただし、リスペクトなき当事者はただの独善。</p></div>
+                        <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V3</span><h4 class="text-2xl font-black tracking-tight">時間は有限、本質で決断。</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">すべてはできない。重要なものを見極め、やること・やらないことを決める。</p></div>
+                        <div class="space-y-6"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V4</span><h4 class="text-2xl font-black tracking-tight">どこよりも考え抜き、どこよりも速く遠くへ</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">浅く動かない。誰よりも考え抜き、その上で誰よりも速く動く。</p></div>
+                        <div class="space-y-6 md:col-span-2"><span class="text-5xl font-poppins font-black text-gray-100 border-b-4 border-crestix-orange pb-3 w-16 block">V5</span><h4 class="text-2xl font-black tracking-tight">成果を科学し、再現せよ</h4><p class="text-sm font-black text-gray-500 leading-loose opacity-80">成果は偶然ではない。なぜうまくいったのかを分解し、言語化し、仕組みに落とす。誰でも同じ成果を出せる状態まで再現せよ。</p></div>
+                    </div>
+
+                    <!-- Closing Statement -->
+                    <div class="border-t border-gray-100 pt-20 text-center space-y-6">
+                        <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center justify-center gap-4 mb-8"><span class="w-10 h-px bg-crestix-orange"></span> Crestixが信じていること <span class="w-10 h-px bg-crestix-orange"></span></div>
+                        <p class="text-3xl lg:text-5xl font-black text-crestix-charcoal leading-[1.5] tracking-tighter">挑戦することで、可能性は広がる。<br><span class="text-gray-400">可能性が広がることで、人は成長する。</span><br>その先に、Pricelessな価値が生まれる。</p>
+                        <p class="text-base font-black text-gray-400 leading-loose pt-6">Crestixは、挑戦を通じて可能性を広げ続ける。</p>
+                        <div class="pt-10">
+                            <a href="jobs.html" class="inline-flex items-center gap-4 bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-14 py-5 rounded-full font-black text-xs tracking-[0.3em] uppercase shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">
+                                Open Positions — 挑戦する <i class="fa-solid fa-arrow-right-long"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
