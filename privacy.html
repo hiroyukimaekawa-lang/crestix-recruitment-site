@@ -10,31 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    crestix: {
-                        orange: '#FF5C00',
-                        orangeDark: '#E65200',
-                        orangeLight: '#FFF5EE',
-                        charcoal: '#333333',
-                        navy: '#1A2B4C',
-                        bgLight: '#F7F9FA',
-                        white: '#FFFFFF',
-                        border: '#E5E7EB',
-                        textDim: '#6B7280',
-                    }
-                },
-                fontFamily: {
-                    sans: ['Noto Sans JP', 'sans-serif'],
-                    poppins: ['Poppins', 'sans-serif']
-                },
-            }
-        }
-    }
-    </script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
     body {
@@ -44,24 +21,6 @@
         -webkit-font-smoothing: antialiased;
     }
 
-    /* Loader */
-    #cx-loader { position: fixed; inset: 0; z-index: 9999; pointer-events: all; }
-    .cx-panel { position: absolute; left: 0; width: 100%; height: 50%; background: #1A2B4C; transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1); will-change: transform; }
-    .cx-panel--top { top: 0; }
-    .cx-panel--bottom { bottom: 0; }
-    .cx-loader-inner { position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.75rem; pointer-events: none; }
-    .cx-loader-brand { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 900; letter-spacing: -0.04em; color: #ffffff; text-transform: uppercase; }
-    .cx-loader-count { font-family: 'Poppins', sans-serif; font-size: clamp(5rem, 14vw, 10rem); font-weight: 900; color: #ffffff; }
-    .cx-loader-bar-track { width: min(340px, 65vw); height: 1px; background: rgba(255,255,255,0.1); }
-    .cx-loader-bar-fill { height: 100%; width: 0%; background: #FF5C00; }
-
-    /* Navbar */
-    #navbar {
-        background: rgba(10,15,30,0.85);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
     #fullscreen-menu {
         position: fixed; inset: 0; z-index: 9000;
         display: flex; flex-direction: column;
@@ -82,26 +41,74 @@
     }
     .fm-nav-item:hover { color: #FF5C00; }
     #fullscreen-menu.is-open .fm-nav-item { opacity: 1; transform: translateY(0); }
-    </style>
+    
+        /* ═══ NAVBAR SCROLL BEHAVIOR ═══ */
+        #navbar { transition: background 0.6s ease, border-color 0.6s ease; }
+        #navbar.scrolled {
+            background: rgba(10,15,30,0.72);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border-color: rgba(255,255,255,0.08);
+        }
+
+        .nav-links-group, .nav-cta-btn {
+            transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1);
+            opacity: 1; transform: translateY(0);
+        }
+        #navbar.scrolled .nav-links-group, 
+        #navbar.scrolled .nav-cta-btn {
+            opacity: 0; transform: translateY(-8px) scale(0.92); pointer-events: none;
+        }
+
+        #nav-divider, #hamburger-btn {
+            opacity: 0; transform: scale(0.8); pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        #navbar.scrolled #nav-divider, 
+        #navbar.scrolled #hamburger-btn {
+            opacity: 1; transform: scale(1); pointer-events: auto;
+        }
+
+        /* ═══ HAMBURGER ANIMATION ═══ */
+        .hamburger-lines { display: flex; flex-direction: column; gap: 4px; width: 16px; }
+        .hamburger-lines span { 
+            display: block; height: 1.5px; background: white; border-radius: 2px; 
+            transition: all 0.4s cubic-bezier(0.76,0,0.24,1); transform-origin: center; 
+        }
+        .hamburger-lines.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+        .hamburger-lines.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger-lines.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+        /* ═══ FULLSCREEN MENU ═══ */
+        #fullscreen-menu {
+            position: fixed; inset: 0; z-index: 9000;
+            display: flex; flex-direction: column;
+            background: #1A2B4C;
+            pointer-events: none;
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1);
+        }
+        #fullscreen-menu.is-open { pointer-events: all; clip-path: inset(0 0 0% 0); }
+        .fm-nav-item {
+            opacity: 0; transform: translateY(30px);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900; letter-spacing: -0.04em;
+            color: rgba(255,255,255,0.2); cursor: pointer;
+            text-decoration: none; line-height: 1.1; display: block;
+            transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fm-nav-item:hover { color: #FF5C00; }
+        #fullscreen-menu.is-open .fm-nav-item { opacity: 1; transform: translateY(0); }
+        #fullscreen-menu.is-open .fm-item-1 { transition-delay: 0.15s; }
+        #fullscreen-menu.is-open .fm-item-2 { transition-delay: 0.22s; }
+        #fullscreen-menu.is-open .fm-item-3 { transition-delay: 0.29s; }
+        #fullscreen-menu.is-open .fm-item-4 { transition-delay: 0.36s; }
+        .fm-cta-btn { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s; }
+        #fullscreen-menu.is-open .fm-cta-btn { opacity: 1; transform: translateY(0); }
+\n    </style>
 </head>
-<body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
-
-    <!-- ═══ LOADER ═══ -->
-    <div id="cx-loader" aria-hidden="true">
-        <div id="cx-panel-top"    class="cx-panel cx-panel--top"></div>
-        <div id="cx-panel-bottom" class="cx-panel cx-panel--bottom"></div>
-        <div id="cx-loader-inner" class="cx-loader-inner">
-            <div class="cx-loader-brand">Crestix</div>
-            <div class="flex items-baseline gap-1">
-                <span id="cx-loader-count" class="cx-loader-count">0</span>
-                <span class="text-white/30 font-bold text-xl">%</span>
-            </div>
-            <div class="cx-loader-bar-track">
-                <div id="cx-loader-bar" class="cx-loader-bar-fill"></div>
-            </div>
-        </div>
-    </div>
-
+<body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">\n
     <!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
@@ -110,6 +117,11 @@
             </div>
             <button onclick="toggleMenu()" style="display:flex;align-items:center;gap:10px;background:none;border:none;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;padding:6px 0;">
                 CLOSE
+                <span style="display:flex;flex-direction:column;gap:5px;width:24px;">
+                    <i style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(6.5px) rotate(45deg);"></i>
+                    <i style="display:block;height:1.5px;background:white;border-radius:2px;opacity:0;"></i>
+                    <i style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(-6.5px) rotate(-45deg);"></i>
+                </span>
             </button>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 2rem 0 2.5rem;gap:0.5rem;">
@@ -126,25 +138,49 @@
             <span style="font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.3em;text-transform:uppercase;">&copy; 2026 Crestix Inc.</span>
         </div>
     </div>
-
+\n
     <!-- ═══ NAVIGATION ═══ -->
-    <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-4 px-8 lg:px-14 z-50">
+    <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-3 px-8 lg:px-14 z-50 border-b border-white/10">
+
+        <!-- LEFT: Logo (常時) + divider + MENU pill (スクロール後に出現) -->
         <div class="flex items-center gap-4">
-            <div onclick="location.href='index.html'" class="cursor-pointer">
-                <img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:28px; filter:brightness(0) invert(1);">
+
+            <!-- ロゴ: 常時表示 -->
+            <div id="nav-logo-wrap" onclick="handleLogoClick()" role="button" aria-label="ホーム / メニュー"
+                 style="display:flex;align-items:center;">
+                <img src="assets/images/office/crestix-header.png" alt="Crestix"
+                     style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);"
+                     onerror="this.style.display='none'">
             </div>
-            <button onclick="toggleMenu()" class="text-white text-[11px] font-black tracking-[0.3em] uppercase flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full border border-white/20">
-                Menu
+
+            <!-- 区切り線 (スクロール後に出現) -->
+            <span id="nav-divider" style="width:1px;height:18px;background:rgba(255,255,255,0.2);display:block;flex-shrink:0;"></span>
+
+            <!-- MENU ピルボタン (スクロール後に出現) -->
+            <button id="hamburger-btn" onclick="toggleMenu()" aria-label="メニューを開く"
+                    style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:7px 16px 7px 12px;cursor:pointer;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;transition: background 0.2s ease, border-color 0.2s ease;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.borderColor='rgba(255,255,255,0.4)'"
+                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'">
+                <div class="hamburger-lines" id="ham-lines">
+                    <span></span><span></span><span></span>
+                </div>
+                MENU
             </button>
         </div>
-        <div class="hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white/70 uppercase">
-            <a href="corporate.html" class="hover:text-white transition-colors">Corporate</a>
-            <a href="business.html"  class="hover:text-white transition-colors">Service</a>
-            <a href="members.html"   class="hover:text-white transition-colors">Members</a>
-            <a href="news.html"      class="hover:text-white transition-colors">Crestory</a>
+
+        <!-- CENTER: Nav links — スクロール後に出現 -->
+        <div class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
+            <a href="corporate.html" class="hover:text-orange-400 transition-colors">Corporate</a>\n            <a href="business.html"  class="hover:text-orange-400 transition-colors">Service</a>\n            <a href="members.html"   class="hover:text-orange-400 transition-colors">Members</a>\n            <a href="news.html"      class="hover:text-orange-400 transition-colors">Crestory</a>
         </div>
-        <a href="jobs.html" class="bg-crestix-orange text-white text-[11px] font-black px-8 py-2.5 rounded-full tracking-[0.2em] uppercase">Entry</a>
+
+        <!-- RIGHT: CTA — スクロール後に出現 -->
+        <a href="jobs.html"
+           class="nav-cta-btn bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-black px-7 py-3 rounded-full tracking-[0.2em] uppercase active:scale-95 focus:outline-none whitespace-nowrap shadow-lg"
+           style="font-family: 'Poppins', sans-serif; transition: background 0.2s ease, opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);">
+            応募はこちらから
+        </a>
     </nav>
+
 
     <!-- CONTENT -->
     <main class="pt-32 pb-20">
@@ -185,42 +221,45 @@
     </footer>
 
     <script src="assets/js/modals.js"></script>
+
+    <!-- Navbar -->
     <script>
     (function () {
-        const loader = document.getElementById('cx-loader');
-        const counter = document.getElementById('cx-loader-count');
-        const bar = document.getElementById('cx-loader-bar');
-        const panelTop = document.getElementById('cx-panel-top');
-        const panelBottom = document.getElementById('cx-panel-bottom');
-        if (!loader) return;
-        document.body.style.overflow = 'hidden';
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += Math.random() * 15;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(interval);
-                setTimeout(startWipe, 200);
+        const navbar   = document.getElementById('navbar');
+        const menu     = document.getElementById('fullscreen-menu');
+        const hamLines = document.getElementById('ham-lines');
+        let menuOpen   = false;
+        let ticking    = false;
+        let isScrolled = false;
+
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    isScrolled = window.scrollY > 60;
+                    navbar.classList.toggle('scrolled', isScrolled);
+                    ticking = false;
+                });
+                ticking = true;
             }
-            counter.textContent = Math.floor(progress);
-            if (bar) bar.style.width = progress + '%';
-        }, 100);
-
-        function startWipe() {
-            panelTop.style.transform = 'translateY(-100%)';
-            panelBottom.style.transform = 'translateY(100%)';
-            setTimeout(() => {
-                loader.style.display = 'none';
-                document.body.style.overflow = '';
-            }, 800);
         }
+        window.addEventListener('scroll', onScroll, { passive: true });
 
-        window.toggleMenu = function() {
-            const menu = document.getElementById('fullscreen-menu');
-            menu.classList.toggle('is-open');
-            document.body.style.overflow = menu.classList.contains('is-open') ? 'hidden' : '';
+        window.handleLogoClick = function () {
+            if (isScrolled) window.toggleMenu();
+            else location.href = 'index.html';
         };
+
+        window.toggleMenu = function () {
+            menuOpen = !menuOpen;
+            menu.classList.toggle('is-open', menuOpen);
+            if (hamLines) hamLines.classList.toggle('is-open', menuOpen);
+            document.body.style.overflow = menuOpen ? 'hidden' : '';
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menuOpen) window.toggleMenu();
+        });
     })();
     </script>
-</body>
+\n</body>
 </html>

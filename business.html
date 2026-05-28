@@ -11,28 +11,73 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="assets/js/tailwind-config.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
+    <style>
+        /* ═══ NAVBAR SCROLL BEHAVIOR ═══ */
+        #navbar { transition: background 0.6s ease, border-color 0.6s ease; }
+        #navbar.scrolled {
+            background: rgba(10,15,30,0.72);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border-color: rgba(255,255,255,0.08);
+        }
 
-    <!-- ═══ LOADER ═══ -->
-    <div id="cx-loader" aria-hidden="true">
-        <div id="cx-panel-top"    class="cx-panel cx-panel--top"></div>
-        <div id="cx-panel-bottom" class="cx-panel cx-panel--bottom"></div>
-        <div id="cx-loader-inner" class="cx-loader-inner">
-            <div class="cx-loader-logo">
-                <span class="cx-loader-brand">Crestix</span>
-            </div>
-            <div class="cx-loader-counter-wrap">
-                <span id="cx-loader-count" class="cx-loader-count">0</span>
-                <span class="cx-loader-pct">%</span>
-            </div>
-            <div class="cx-loader-bar-track">
-                <div id="cx-loader-bar" class="cx-loader-bar-fill"></div>
-            </div>
-            <p class="cx-loader-tagline">Unleash the potential in all people</p>
-        </div>
-    </div>
+        .nav-links-group, .nav-cta-btn {
+            transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1);
+            opacity: 1; transform: translateY(0);
+        }
+        #navbar.scrolled .nav-links-group, 
+        #navbar.scrolled .nav-cta-btn {
+            opacity: 0; transform: translateY(-8px) scale(0.92); pointer-events: none;
+        }
 
+        #nav-divider, #hamburger-btn {
+            opacity: 0; transform: scale(0.8); pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        #navbar.scrolled #nav-divider, 
+        #navbar.scrolled #hamburger-btn {
+            opacity: 1; transform: scale(1); pointer-events: auto;
+        }
+
+        /* ═══ HAMBURGER ANIMATION ═══ */
+        .hamburger-lines { display: flex; flex-direction: column; gap: 4px; width: 16px; }
+        .hamburger-lines span { 
+            display: block; height: 1.5px; background: white; border-radius: 2px; 
+            transition: all 0.4s cubic-bezier(0.76,0,0.24,1); transform-origin: center; 
+        }
+        .hamburger-lines.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+        .hamburger-lines.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger-lines.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+        /* ═══ FULLSCREEN MENU ═══ */
+        #fullscreen-menu {
+            position: fixed; inset: 0; z-index: 9000;
+            display: flex; flex-direction: column;
+            background: #1A2B4C;
+            pointer-events: none;
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1);
+        }
+        #fullscreen-menu.is-open { pointer-events: all; clip-path: inset(0 0 0% 0); }
+        .fm-nav-item {
+            opacity: 0; transform: translateY(30px);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900; letter-spacing: -0.04em;
+            color: rgba(255,255,255,0.2); cursor: pointer;
+            text-decoration: none; line-height: 1.1; display: block;
+            transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fm-nav-item:hover { color: #FF5C00; }
+        #fullscreen-menu.is-open .fm-nav-item { opacity: 1; transform: translateY(0); }
+        #fullscreen-menu.is-open .fm-item-1 { transition-delay: 0.15s; }
+        #fullscreen-menu.is-open .fm-item-2 { transition-delay: 0.22s; }
+        #fullscreen-menu.is-open .fm-item-3 { transition-delay: 0.29s; }
+        #fullscreen-menu.is-open .fm-item-4 { transition-delay: 0.36s; }
+        .fm-cta-btn { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s; }
+        #fullscreen-menu.is-open .fm-cta-btn { opacity: 1; transform: translateY(0); }
+    </style>\n</head>
+<body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">\n
     <!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
@@ -62,7 +107,7 @@
             <span style="font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.3em;text-transform:uppercase;">&copy; 2026 Crestix Inc.</span>
         </div>
     </div>
-
+\n
     <!-- ═══ NAVIGATION ═══ -->
     <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-3 px-8 lg:px-14 z-50 border-b border-white/10">
 
@@ -94,10 +139,7 @@
 
         <!-- CENTER: Nav links — スクロール後に出現 -->
         <div class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
-            <a href="corporate.html" class="hover:text-orange-400 transition-colors">Corporate</a>
-            <a href="business.html"  class="text-orange-400">Service</a>
-            <a href="members.html"   class="hover:text-orange-400 transition-colors">Members</a>
-            <a href="news.html"      class="hover:text-orange-400 transition-colors">Crestory</a>
+            <a href="corporate.html" class="hover:text-orange-400 transition-colors">Corporate</a>\n            <a href="business.html"  class="text-orange-400">Service</a>\n            <a href="members.html"   class="hover:text-orange-400 transition-colors">Members</a>\n            <a href="news.html"      class="hover:text-orange-400 transition-colors">Crestory</a>
         </div>
 
         <!-- RIGHT: CTA — スクロール後に出現 -->
@@ -107,6 +149,7 @@
             応募はこちらから
         </a>
     </nav>
+
 
     <!-- MAIN CONTENT -->
     <main class="pt-32">
@@ -290,46 +333,6 @@
     <script src="assets/js/diagnostic.js"></script>
     <script src="assets/js/modals.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <!-- Loader -->
-    <script>
-    (function () {
-        'use strict';
-        const loader = document.getElementById('cx-loader');
-        const counter = document.getElementById('cx-loader-count');
-        const bar = document.getElementById('cx-loader-bar');
-        const panelTop = document.getElementById('cx-panel-top');
-        const panelBottom = document.getElementById('cx-panel-bottom');
-        if (!loader) return;
-        document.body.style.overflow = 'hidden';
-        const DURATION = 2000;
-        const START = performance.now();
-        function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
-        function tick(now) {
-            const raw = Math.min((now - START) / DURATION, 1);
-            const progress = Math.round(ease(raw) * 100);
-            counter.textContent = progress;
-            if (bar) bar.style.width = progress + '%';
-            if (progress === 100) { counter.classList.add('cx-done'); setTimeout(startWipe, 180); }
-            else requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-        function startWipe() {
-            const inner = document.getElementById('cx-loader-inner');
-            if (inner) { inner.style.transition = 'opacity 0.3s ease'; inner.style.opacity = '0'; }
-            setTimeout(() => {
-                if (panelTop)    panelTop.style.transform    = 'translateY(-100%)';
-                if (panelBottom) panelBottom.style.transform = 'translateY(100%)';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    document.body.style.overflow = '';
-                    document.body.classList.add('cx-page-ready');
-                    // No initHeroSlideshow here
-                }, 820);
-            }, 100);
-        }
-    })();
-    </script>
 
     <!-- Navbar -->
     <script>

@@ -44,57 +44,69 @@
         overflow-x: hidden;
     }
 
-    /* ─── Loader ──────────────────────────────────────────── */
-    #cx-loader { position: fixed; inset: 0; z-index: 9999; pointer-events: all; }
-    .cx-panel { position: absolute; left: 0; width: 100%; height: 50%; background: #1A2B4C; transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1); will-change: transform; }
-    .cx-panel--top { top: 0; }
-    .cx-panel--bottom { bottom: 0; }
-    .cx-panel--top::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #FF5C00; opacity: 0.6; }
-    .cx-loader-inner { position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.75rem; pointer-events: none; }
-    .cx-loader-logo { display: flex; align-items: center; gap: 1rem; animation: cxFadeIn 0.7s ease 0.25s both; }
-    .cx-loader-brand { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 900; letter-spacing: -0.04em; color: #ffffff; text-transform: uppercase; }
-    .cx-loader-counter-wrap { display: flex; align-items: baseline; gap: 3px; line-height: 1; animation: cxFadeIn 0.6s ease 0.45s both; }
-    .cx-loader-count { font-family: 'Poppins', sans-serif; font-size: clamp(5rem, 14vw, 10rem); font-weight: 900; letter-spacing: -0.06em; color: #ffffff; min-width: 3ch; text-align: right; font-variant-numeric: tabular-nums; transition: color 0.3s ease; }
-    .cx-loader-count.cx-done { color: #FF5C00; }
-    .cx-loader-pct { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 3.5vw, 3rem); font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: -0.02em; align-self: flex-end; margin-bottom: 0.6rem; }
-    .cx-loader-bar-track { width: min(340px, 65vw); height: 1px; background: rgba(255,255,255,0.1); border-radius: 1px; overflow: hidden; animation: cxFadeIn 0.6s ease 0.55s both; }
-    .cx-loader-bar-fill { height: 100%; width: 0%; background: #FF5C00; border-radius: 1px; transition: width 0.08s linear; }
-    .cx-loader-tagline { font-family: 'Poppins', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.35em; color: rgba(255,255,255,0.18); text-transform: uppercase; animation: cxFadeIn 0.6s ease 0.7s both; white-space: nowrap; }
-    @keyframes cxFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    body:not(.cx-page-ready) #sec-hero, body:not(.cx-page-ready) #navbar { opacity: 0; }
-    body.cx-page-ready #sec-hero { opacity: 1; transition: opacity 0.7s ease 0.05s; }
-    body.cx-page-ready #navbar { opacity: 1; transition: opacity 0.5s ease 0.2s; }
-
-    /* ─── NAVBAR ──────────────────────────────────────────── */
-    #navbar {
-        background: transparent;
-        border-color: transparent;
-        transition: background 0.6s ease, border-color 0.6s ease;
-    }
+    /* ─── Misc ────────────────────────────────────────────── */
+    .modal-overlay { transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), backdrop-filter 0.5s ease; }
+    .modal-content-anim { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease; }
+    .modal-hidden { opacity: 0; pointer-events: none; }
+    .modal-hidden .modal-content-anim { transform: translateY(60px) scale(0.96); }
+    input:focus, select:focus, textarea:focus { border-color: #FF5C00 !important; box-shadow: 0 0 0 4px rgba(255,92,0,0.1); }
+    
+    /* ═══ NAVBAR SCROLL BEHAVIOR ═══ */
+    #navbar { transition: background 0.6s ease, border-color 0.6s ease; }
     #navbar.scrolled {
         background: rgba(10,15,30,0.72);
         backdrop-filter: blur(28px);
         -webkit-backdrop-filter: blur(28px);
         border-color: rgba(255,255,255,0.08);
     }
-    #nav-logo-wrap { cursor: pointer; transition: opacity 0.5s ease; opacity: 1; }
-    .nav-links-group { transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .nav-cta-btn { transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1); opacity: 1; transform: translateY(0); pointer-events: auto; }
-    #nav-divider, #hamburger-btn { opacity: 0; transform: scale(0.8); pointer-events: none; transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-    #navbar.scrolled .nav-links-group { opacity: 0; transform: translateY(-8px) scale(0.92); pointer-events: none; }
-    #navbar.scrolled .nav-cta-btn { opacity: 0; transform: translateY(-8px) scale(0.92); pointer-events: none; }
-    #navbar.scrolled #nav-divider { opacity: 1; transform: scale(1); pointer-events: auto; transition-delay: 0.12s; }
-    #navbar.scrolled #hamburger-btn { opacity: 1; transform: scale(1); pointer-events: auto; transition-delay: 0.18s; }
+
+    .nav-links-group, .nav-cta-btn {
+        transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1);
+        opacity: 1; transform: translateY(0);
+    }
+    #navbar.scrolled .nav-links-group, 
+    #navbar.scrolled .nav-cta-btn {
+        opacity: 0; transform: translateY(-8px) scale(0.92); pointer-events: none;
+    }
+
+    #nav-divider, #hamburger-btn {
+        opacity: 0; transform: scale(0.8); pointer-events: none;
+        transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    #navbar.scrolled #nav-divider, 
+    #navbar.scrolled #hamburger-btn {
+        opacity: 1; transform: scale(1); pointer-events: auto;
+    }
+
+    /* ═══ HAMBURGER ANIMATION ═══ */
     .hamburger-lines { display: flex; flex-direction: column; gap: 4px; width: 16px; }
-    .hamburger-lines span { display: block; height: 1.5px; background: white; border-radius: 2px; transition: all 0.4s cubic-bezier(0.76,0,0.24,1); transform-origin: center; }
+    .hamburger-lines span { 
+        display: block; height: 1.5px; background: white; border-radius: 2px; 
+        transition: all 0.4s cubic-bezier(0.76,0,0.24,1); transform-origin: center; 
+    }
     .hamburger-lines.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
     .hamburger-lines.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .hamburger-lines.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
-    /* ─── Fullscreen Menu ──────────────────────────────────── */
-    #fullscreen-menu { position: fixed; inset: 0; z-index: 9000; display: flex; flex-direction: column; background: #1A2B4C; pointer-events: none; clip-path: inset(0 0 100% 0); transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1); }
+    /* ═══ FULLSCREEN MENU ═══ */
+    #fullscreen-menu {
+        position: fixed; inset: 0; z-index: 9000;
+        display: flex; flex-direction: column;
+        background: #1A2B4C;
+        pointer-events: none;
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1);
+    }
     #fullscreen-menu.is-open { pointer-events: all; clip-path: inset(0 0 0% 0); }
-    .fm-nav-item { opacity: 0; transform: translateY(30px); font-family: 'Poppins', sans-serif; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900; letter-spacing: -0.04em; color: rgba(255,255,255,0.2); cursor: pointer; text-decoration: none; line-height: 1.1; display: block; transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease; }
+    .fm-nav-item {
+        opacity: 0; transform: translateY(30px);
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(2.5rem, 8vw, 6rem);
+        font-weight: 900; letter-spacing: -0.04em;
+        color: rgba(255,255,255,0.2); cursor: pointer;
+        text-decoration: none; line-height: 1.1; display: block;
+        transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+    }
     .fm-nav-item:hover { color: #FF5C00; }
     #fullscreen-menu.is-open .fm-nav-item { opacity: 1; transform: translateY(0); }
     #fullscreen-menu.is-open .fm-item-1 { transition-delay: 0.15s; }
@@ -103,35 +115,9 @@
     #fullscreen-menu.is-open .fm-item-4 { transition-delay: 0.36s; }
     .fm-cta-btn { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s; }
     #fullscreen-menu.is-open .fm-cta-btn { opacity: 1; transform: translateY(0); }
-
-    /* ─── Misc ────────────────────────────────────────────── */
-    .modal-overlay { transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), backdrop-filter 0.5s ease; }
-    .modal-content-anim { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease; }
-    .modal-hidden { opacity: 0; pointer-events: none; }
-    .modal-hidden .modal-content-anim { transform: translateY(60px) scale(0.96); }
-    input:focus, select:focus, textarea:focus { border-color: #FF5C00 !important; box-shadow: 0 0 0 4px rgba(255,92,0,0.1); }
     </style>
 </head>
 <body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
-
-    <!-- ═══ LOADER ═══ -->
-    <div id="cx-loader" aria-hidden="true">
-        <div id="cx-panel-top"    class="cx-panel cx-panel--top"></div>
-        <div id="cx-panel-bottom" class="cx-panel cx-panel--bottom"></div>
-        <div id="cx-loader-inner" class="cx-loader-inner">
-            <div class="cx-loader-logo">
-                <span class="cx-loader-brand">Crestix</span>
-            </div>
-            <div class="cx-loader-counter-wrap">
-                <span id="cx-loader-count" class="cx-loader-count">0</span>
-                <span class="cx-loader-pct">%</span>
-            </div>
-            <div class="cx-loader-bar-track">
-                <div id="cx-loader-bar" class="cx-loader-bar-fill"></div>
-            </div>
-            <p class="cx-loader-tagline">Unleash the potential in all people</p>
-        </div>
-    </div>
 
     <!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
@@ -288,9 +274,6 @@
         </div>
     </main>
 
-    <!-- RE-USE SHARED MODULES IN SEPARATE FILE -->
-    <section id="common-bottom"></section>
-
     <!-- FOOTER -->
     <footer class="bg-crestix-navy text-white pt-24 pb-12 px-10 lg:px-24 border-t border-white/5 relative z-10">
         <div class="max-w-7xl mx-auto space-y-16">
@@ -311,7 +294,7 @@
         </div>
     </footer>
 
-    <!-- SHARED CONTENT TEMPLATE (Copied for separate page context) -->
+    <!-- CULTURE SNAPS (Shared Content) -->
     <div class="py-40 bg-white border-t border-gray-100 select-none overflow-hidden relative">
         <div class="max-w-5xl mx-auto px-10 mb-16 flex justify-between items-end relative z-10">
             <div><h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Culture Snaps</h4><p class="text-4xl font-black text-crestix-charcoal mt-2 tracking-tighter">Crestixの日常スナップ</p></div>
@@ -326,5 +309,45 @@
     </div>
 
     <script src="assets/js/main.js"></script>
+
+    <!-- Navbar -->
+    <script>
+    (function () {
+        const navbar   = document.getElementById('navbar');
+        const menu     = document.getElementById('fullscreen-menu');
+        const hamLines = document.getElementById('ham-lines');
+        let menuOpen   = false;
+        let ticking    = false;
+        let isScrolled = false;
+
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    isScrolled = window.scrollY > 60;
+                    navbar.classList.toggle('scrolled', isScrolled);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        window.handleLogoClick = function () {
+            if (isScrolled) window.toggleMenu();
+            else location.href = 'index.html';
+        };
+
+        window.toggleMenu = function () {
+            menuOpen = !menuOpen;
+            menu.classList.toggle('is-open', menuOpen);
+            if (hamLines) hamLines.classList.toggle('is-open', menuOpen);
+            document.body.style.overflow = menuOpen ? 'hidden' : '';
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menuOpen) window.toggleMenu();
+        });
+    })();
+    </script>
 </body>
 </html>
