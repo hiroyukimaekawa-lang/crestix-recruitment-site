@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,474 +8,716 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    crestix: {
-                        orange: '#FF5C00',
-                        orangeDark: '#E65200',
-                        orangeLight: '#FFF5EE',
-                        charcoal: '#333333',
-                        navy: '#1A2B4C',
-                        bgLight: '#F7F9FA',
-                        white: '#FFFFFF',
-                        border: '#E5E7EB',
-                        textDim: '#6B7280',
-                    }
-                },
-                fontFamily: {
-                    sans: ['Noto Sans JP', 'sans-serif'],
-                    poppins: ['Poppins', 'sans-serif']
-                },
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crestix: {
+                            orange: '#FF5C00',
+                            orangeDark: '#E65200',
+                            orangeLight: '#FFF5EE',
+                            charcoal: '#333333',
+                            navy: '#1A2B4C',
+                            bgLight: '#F7F9FA',
+                            white: '#FFFFFF',
+                            border: '#E5E7EB',
+                            textDim: '#6B7280',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif']
+                    },
+                }
             }
         }
-    }
     </script>
 
     <style>
-    /* ─── Global ─────────────────────────────────────────── */
-    body {
-        font-family: 'Noto Sans JP', 'Poppins', sans-serif;
-        color: #333333;
-        background-color: #FFFFFF;
-        -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
-    }
+        /* ─── Global ─────────────────────────────────────────── */
+        body {
+            font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+            color: #333333;
+            background-color: #FFFFFF;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
 
-    /* ─── Loader ──────────────────────────────────────────── */
-    #cx-loader { position: fixed; inset: 0; z-index: 9999; pointer-events: all; }
-    .cx-panel { position: absolute; left: 0; width: 100%; height: 50%; background: #1A2B4C; transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1); will-change: transform; }
-    .cx-panel--top { top: 0; }
-    .cx-panel--bottom { bottom: 0; }
-    .cx-panel--top::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #FF5C00; opacity: 0.6; }
-    .cx-loader-inner { position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.75rem; pointer-events: none; }
-    .cx-loader-logo { display: flex; align-items: center; gap: 1rem; animation: cxFadeIn 0.7s ease 0.25s both; }
-    .cx-loader-brand { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 900; letter-spacing: -0.04em; color: #ffffff; text-transform: uppercase; }
-    .cx-loader-counter-wrap { display: flex; align-items: baseline; gap: 3px; line-height: 1; animation: cxFadeIn 0.6s ease 0.45s both; }
-    .cx-loader-count { font-family: 'Poppins', sans-serif; font-size: clamp(5rem, 14vw, 10rem); font-weight: 900; letter-spacing: -0.06em; color: #ffffff; min-width: 3ch; text-align: right; font-variant-numeric: tabular-nums; transition: color 0.3s ease; }
-    .cx-loader-count.cx-done { color: #FF5C00; }
-    .cx-loader-pct { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 3.5vw, 3rem); font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: -0.02em; align-self: flex-end; margin-bottom: 0.6rem; }
-    .cx-loader-bar-track { width: min(340px, 65vw); height: 1px; background: rgba(255,255,255,0.1); border-radius: 1px; overflow: hidden; animation: cxFadeIn 0.6s ease 0.55s both; }
-    .cx-loader-bar-fill { height: 100%; width: 0%; background: #FF5C00; border-radius: 1px; transition: width 0.08s linear; }
-    .cx-loader-tagline { font-family: 'Poppins', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.35em; color: rgba(255,255,255,0.18); text-transform: uppercase; animation: cxFadeIn 0.6s ease 0.7s both; white-space: nowrap; }
-    @keyframes cxFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    body:not(.cx-page-ready) #sec-hero, body:not(.cx-page-ready) #navbar { opacity: 0; }
-    body.cx-page-ready #sec-hero { opacity: 1; transition: opacity 0.7s ease 0.05s; }
-    body.cx-page-ready #navbar { opacity: 1; transition: opacity 0.5s ease 0.2s; }
+        /* ─── Loader ──────────────────────────────────────────── */
+        #cx-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: all;
+        }
 
-    /* ─── NAVBAR ──────────────────────────────────────────── */
-    #navbar {
-        background: transparent;
-        border-color: transparent;
-        transition: background 0.6s ease, border-color 0.6s ease;
-    }
-    #navbar.scrolled {
-        background: rgba(10,15,30,0.72);
-        backdrop-filter: blur(28px);
-        -webkit-backdrop-filter: blur(28px);
-        border-color: rgba(255,255,255,0.08);
-    }
+        .cx-panel {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #1A2B4C;
+            transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+            will-change: transform;
+        }
 
-    /* ロゴ: 常時表示 */
-    #nav-logo-wrap {
-        cursor: pointer;
-        transition: opacity 0.5s ease;
-        opacity: 1;
-    }
+        .cx-panel--top {
+            top: 0;
+        }
 
-    /* ── 初期状態: navリンク・CTAは全て表示、MENUピル・dividerは非表示 ── */
-    .nav-links-group {
-        transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1),
-                    transform 0.4s cubic-bezier(0.16,1,0.3,1);
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-    .nav-cta-btn {
-        transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1),
-                    transform 0.35s cubic-bezier(0.16,1,0.3,1);
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-    #nav-divider,
-    #hamburger-btn {
-        opacity: 0;
-        transform: scale(0.8);
-        pointer-events: none;
-        transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1),
-                    transform 0.5s cubic-bezier(0.16,1,0.3,1);
-    }
+        .cx-panel--bottom {
+            bottom: 0;
+        }
 
-    /* ── スクロール後: navリンク・CTAが消えてMENUが浮き出る ── */
-    #navbar.scrolled .nav-links-group {
-        opacity: 0;
-        transform: translateY(-8px) scale(0.92);
-        pointer-events: none;
-        transition-delay: 0s;
-    }
-    #navbar.scrolled .nav-cta-btn {
-        opacity: 0;
-        transform: translateY(-8px) scale(0.92);
-        pointer-events: none;
-        transition-delay: 0.04s;
-    }
-    #navbar.scrolled #nav-divider {
-        opacity: 1;
-        transform: scale(1);
-        pointer-events: auto;
-        transition-delay: 0.12s;
-    }
-    #navbar.scrolled #hamburger-btn {
-        opacity: 1;
-        transform: scale(1);
-        pointer-events: auto;
-        transition-delay: 0.18s;
-    }
+        .cx-panel--top::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #FF5C00;
+            opacity: 0.6;
+        }
 
-    /* Hamburger lines */
-    .hamburger-lines { display: flex; flex-direction: column; gap: 4px; width: 16px; }
-    .hamburger-lines span { display: block; height: 1.5px; background: white; border-radius: 2px; transition: all 0.4s cubic-bezier(0.76,0,0.24,1); transform-origin: center; }
-    .hamburger-lines.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
-    .hamburger-lines.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger-lines.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+        .cx-loader-inner {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.75rem;
+            pointer-events: none;
+        }
 
-    /* ─── Fullscreen Menu ──────────────────────────────────── */
-    #fullscreen-menu {
-        position: fixed; inset: 0; z-index: 9000;
-        display: flex; flex-direction: column;
-        background: #1A2B4C;
-        pointer-events: none;
-        clip-path: inset(0 0 100% 0);
-        transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1);
-    }
-    #fullscreen-menu.is-open { pointer-events: all; clip-path: inset(0 0 0% 0); }
-    .fm-nav-item {
-        opacity: 0; transform: translateY(30px);
-        font-family: 'Poppins', sans-serif;
-        font-size: clamp(2.5rem, 8vw, 6rem);
-        font-weight: 900; letter-spacing: -0.04em;
-        color: rgba(255,255,255,0.2); cursor: pointer;
-        text-decoration: none; line-height: 1.1; display: block;
-        transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
-    }
-    .fm-nav-item:hover { color: #FF5C00; }
-    #fullscreen-menu.is-open .fm-nav-item { opacity: 1; transform: translateY(0); }
-    #fullscreen-menu.is-open .fm-item-1 { transition-delay: 0.15s; }
-    #fullscreen-menu.is-open .fm-item-2 { transition-delay: 0.22s; }
-    #fullscreen-menu.is-open .fm-item-3 { transition-delay: 0.29s; }
-    #fullscreen-menu.is-open .fm-item-4 { transition-delay: 0.36s; }
-    .fm-cta-btn { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s; }
-    #fullscreen-menu.is-open .fm-cta-btn { opacity: 1; transform: translateY(0); }
+        .cx-loader-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: cxFadeIn 0.7s ease 0.25s both;
+        }
 
-    /* ─── HERO FULLSCREEN SLIDESHOW (Mercari-style) ──────── */
-    #sec-hero {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-        background: #1A2B4C;
-    }
+        .cx-loader-brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
 
-    /* Background slides */
-    .hero-slide {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        opacity: 0;
-        transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 8s ease-out;
-        transform: scale(1.08);
-        z-index: 1;
-    }
-    .hero-slide.active {
-        opacity: 1;
-        transform: scale(1.0);
-        z-index: 2;
-    }
-    .hero-slide.prev {
-        opacity: 0;
-        transform: scale(1.04);
-        z-index: 1;
-    }
+        .cx-loader-counter-wrap {
+            display: flex;
+            align-items: baseline;
+            gap: 3px;
+            line-height: 1;
+            animation: cxFadeIn 0.6s ease 0.45s both;
+        }
 
-    /* Hero content overlay */
-    .hero-overlay {
-        position: absolute;
-        inset: 0;
-        z-index: 5;
-        background: linear-gradient(
-            to bottom,
-            rgba(10,18,35,0.2) 0%,
-            rgba(10,18,35,0.1) 40%,
-            rgba(10,18,35,0.55) 80%,
-            rgba(10,18,35,0.85) 100%
-        );
-    }
+        .cx-loader-count {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(5rem, 14vw, 10rem);
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            color: #ffffff;
+            min-width: 3ch;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            transition: color 0.3s ease;
+        }
 
-    /* Slide counter dots (Mercari style) */
-    .slide-dot {
-        width: 32px; height: 2px;
-        background: rgba(255,255,255,0.3);
-        border-radius: 2px;
-        cursor: pointer;
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    .slide-dot.active {
-        width: 64px;
-        background: rgba(255,255,255,0.5);
-    }
-    .slide-dot-fill {
-        position: absolute;
-        inset: 0;
-        background: #FF5C00;
-        transform: scaleX(0);
-        transform-origin: left;
-        border-radius: 2px;
-    }
-    .slide-dot.active .slide-dot-fill {
-        animation: fillDot 5s linear forwards;
-    }
-    @keyframes fillDot {
-        from { transform: scaleX(0); }
-        to { transform: scaleX(1); }
-    }
+        .cx-loader-count.cx-done {
+            color: #FF5C00;
+        }
 
-    /* Giant watermark text behind slides */
-    .hero-watermark {
-        position: absolute;
-        bottom: 5%;
-        left: 50%;
-        transform: translateX(-50%);
-        font-family: 'Poppins', sans-serif;
-        font-size: clamp(2.5rem, 7vw, 9rem);
-        font-weight: 900;
-        letter-spacing: -0.03em;
-        white-space: nowrap;
-        color: rgba(255,255,255,0.06);
-        pointer-events: none;
-        user-select: none;
-        z-index: 3;
-    }
+        .cx-loader-pct {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 3.5vw, 3rem);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.35);
+            letter-spacing: -0.02em;
+            align-self: flex-end;
+            margin-bottom: 0.6rem;
+        }
 
-    /* "Unleash" text at very bottom */
-    .hero-unleash {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        font-size: clamp(1.8rem, 5vw, 7rem);
-        font-weight: 900;
-        letter-spacing: -0.04em;
-        color: #fff;
-        text-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        pointer-events: none;
-        user-select: none;
-        z-index: 6;
-        line-height: 0.85;
-        padding-bottom: 0;
-        transform: translateY(30%);
-        white-space: nowrap;
-        font-style: italic;
-    }
+        .cx-loader-bar-track {
+            width: min(340px, 65vw);
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1px;
+            overflow: hidden;
+            animation: cxFadeIn 0.6s ease 0.55s both;
+        }
 
-    /* Hero content (text + buttons) */
-    .hero-content {
-        position: absolute;
-        z-index: 10;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 0 3rem 6rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
+        .cx-loader-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #FF5C00;
+            border-radius: 1px;
+            transition: width 0.08s linear;
+        }
 
-    /* Slide text animation */
-    .slide-text-wrap { overflow: hidden; }
-    .slide-text {
-        display: block;
-        transform: translateY(100%);
-        transition: transform 0.9s cubic-bezier(0.16,1,0.3,1);
-    }
-    .slide-text.visible { transform: translateY(0); }
+        .cx-loader-tagline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            color: rgba(255, 255, 255, 0.18);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
 
-    /* ─── Diagnostic Section ─────────────────────────────── */
-    .diag-gradient-bg {
-        background: linear-gradient(135deg,
-            #FF5C00 0%, #FF7A1F 15%, #FF9A4A 30%,
-            #FFB870 45%, #FFD49A 60%, #FFE8C0 75%,
-            #FFF4E0 88%, #FFFFFF 100%
-        );
-    }
-    .diag-card-layerx {
-        background: rgba(255,255,255,0.92);
-        backdrop-filter: blur(12px);
-        border: 2px solid rgba(255,255,255,0.8);
-        border-radius: 1.5rem;
-        padding: 2.5rem 2rem;
-        cursor: pointer;
-        transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
-        text-align: center;
-        display: flex; flex-direction: column;
-        align-items: center; justify-content: center;
-        min-height: 220px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    }
-    .diag-card-layerx:hover {
-        border-color: #FF5C00;
-        box-shadow: 0 16px 48px rgba(255,92,0,0.2);
-        transform: translateY(-4px);
-    }
+        /* ─── NAVBAR ──────────────────────────────────────────── */
+        #navbar {
+            background: transparent;
+            border-color: transparent;
+            transition: background 0.6s ease, border-color 0.6s ease;
+        }
 
-    /* ─── YouTube Section ────────────────────────────────── */
-    .yt-card {
-        position: relative;
-        border-radius: 1.5rem;
-        overflow: hidden;
-        background: #0a0f1e;
-        transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-    .yt-card:hover {
-        transform: translateY(-8px) scale(1.01);
-        box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-    }
-    .yt-card iframe {
-        display: block;
-        width: 100%;
-        aspect-ratio: 16/9;
-        border: none;
-    }
-    .yt-card-label {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        background: #FF5C00;
-        color: white;
-        font-family: 'Poppins', sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        padding: 5px 14px;
-        border-radius: 99px;
-        z-index: 10;
-    }
+        #navbar.scrolled {
+            background: rgba(10, 15, 30, 0.72);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
 
-    /* ─── Site Contents Cards ────────────────────────────── */
-    .cx-content-card { text-decoration: none; }
-    .cx-card-tag {
-        position: absolute; top: 16px; left: 16px; z-index: 10;
-        font-family: 'Noto Sans JP', sans-serif;
-        font-size: 13px; font-weight: 900; line-height: 1.2;
-        padding: 5px 14px; border-radius: 4px;
-        letter-spacing: 0.02em; white-space: nowrap;
-    }
-    .cx-card-img { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-    .cx-content-card:hover .cx-card-img { transform: scale(1.06); }
+        /* ロゴ: 常時表示 */
+        #nav-logo-wrap {
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
 
-    /* ─── Marquee ─────────────────────────────────────────── */
-    .marquee-wrapper { display: flex; overflow: hidden; user-select: none; gap: 2rem; width: 100%; }
-    .marquee-content { display: flex; flex-shrink: 0; justify-content: space-around; min-width: 100%; gap: 2.5rem; animation: scroll-left 50s linear infinite; }
-    .marquee-content-reverse { display: flex; flex-shrink: 0; justify-content: space-around; min-width: 100%; gap: 2.5rem; animation: scroll-right 55s linear infinite; }
-    @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(calc(-100% - 2.5rem)); } }
-    @keyframes scroll-right { from { transform: translateX(calc(-100% - 2.5rem)); } to { transform: translateX(0); } }
-    .marquee-wrapper:hover .marquee-content, .marquee-wrapper:hover .marquee-content-reverse { animation-play-state: paused; }
+        /* ── 初期状態: navリンク・CTAは全て表示、MENUピル・dividerは非表示 ── */
+        .nav-links-group {
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
 
-    /* ─── Misc ────────────────────────────────────────────── */
-    .modal-overlay { transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), backdrop-filter 0.5s ease; }
-    .modal-content-anim { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease; }
-    .modal-hidden { opacity: 0; pointer-events: none; }
-    .modal-hidden .modal-content-anim { transform: translateY(60px) scale(0.96); }
-    input:focus, select:focus, textarea:focus { border-color: #FF5C00 !important; box-shadow: 0 0 0 4px rgba(255,92,0,0.1); }
-    .preview-scroll { scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; }
-    .preview-scroll::-webkit-scrollbar { display: none; }
+        .nav-cta-btn {
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        #nav-divider,
+        #hamburger-btn {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ── スクロール後: navリンク・CTAが消えてMENUが浮き出る ── */
+        #navbar.scrolled .nav-links-group {
+            opacity: 0;
+            transform: translateY(-8px) scale(0.92);
+            pointer-events: none;
+            transition-delay: 0s;
+        }
+
+        #navbar.scrolled .nav-cta-btn {
+            opacity: 0;
+            transform: translateY(-8px) scale(0.92);
+            pointer-events: none;
+            transition-delay: 0.04s;
+        }
+
+        #navbar.scrolled #nav-divider {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+            transition-delay: 0.12s;
+        }
+
+        #navbar.scrolled #hamburger-btn {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+            transition-delay: 0.18s;
+        }
+
+        /* Hamburger lines */
+        .hamburger-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 16px;
+        }
+
+        .hamburger-lines span {
+            display: block;
+            height: 1.5px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+            transform-origin: center;
+        }
+
+        .hamburger-lines.is-open span:nth-child(1) {
+            transform: translateY(5.5px) rotate(45deg);
+        }
+
+        .hamburger-lines.is-open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-lines.is-open span:nth-child(3) {
+            transform: translateY(-5.5px) rotate(-45deg);
+        }
+
+        /* ─── Fullscreen Menu ──────────────────────────────────── */
+        #fullscreen-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            display: flex;
+            flex-direction: column;
+            background: #1A2B4C;
+            pointer-events: none;
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        #fullscreen-menu.is-open {
+            pointer-events: all;
+            clip-path: inset(0 0 0% 0);
+        }
+
+        .fm-nav-item {
+            opacity: 0;
+            transform: translateY(30px);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            text-decoration: none;
+            line-height: 1.1;
+            display: block;
+            transition: color 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fm-nav-item:hover {
+            color: #FF5C00;
+        }
+
+        #fullscreen-menu.is-open .fm-nav-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #fullscreen-menu.is-open .fm-item-1 {
+            transition-delay: 0.15s;
+        }
+
+        #fullscreen-menu.is-open .fm-item-2 {
+            transition-delay: 0.22s;
+        }
+
+        #fullscreen-menu.is-open .fm-item-3 {
+            transition-delay: 0.29s;
+        }
+
+        #fullscreen-menu.is-open .fm-item-4 {
+            transition-delay: 0.36s;
+        }
+
+        .fm-cta-btn {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s;
+        }
+
+        #fullscreen-menu.is-open .fm-cta-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── HERO FULLSCREEN SLIDESHOW (Mercari-style) ──────── */
+        #sec-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: #1A2B4C;
+        }
+
+        /* Background slides */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 8s ease-out;
+            transform: scale(1.08);
+            z-index: 1;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1.0);
+            z-index: 2;
+        }
+
+        .hero-slide.prev {
+            opacity: 0;
+            transform: scale(1.04);
+            z-index: 1;
+        }
+
+        /* Hero content overlay */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            background: linear-gradient(to bottom,
+                    rgba(10, 18, 35, 0.2) 0%,
+                    rgba(10, 18, 35, 0.1) 40%,
+                    rgba(10, 18, 35, 0.55) 80%,
+                    rgba(10, 18, 35, 0.85) 100%);
+        }
+
+        /* Slide counter dots (Mercari style) */
+        .slide-dot {
+            width: 32px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-dot.active {
+            width: 64px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .slide-dot-fill {
+            position: absolute;
+            inset: 0;
+            background: #FF5C00;
+            transform: scaleX(0);
+            transform-origin: left;
+            border-radius: 2px;
+        }
+
+        .slide-dot.active .slide-dot-fill {
+            animation: fillDot 5s linear forwards;
+        }
+
+        @keyframes fillDot {
+            from {
+                transform: scaleX(0);
+            }
+
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+
+
+        /* Hero content (text + buttons) */
+        .hero-content {
+            position: absolute;
+            z-index: 10;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0 3rem 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Slide text animation */
+        .slide-text-wrap {
+            overflow: hidden;
+        }
+
+        .slide-text {
+            display: block;
+            transform: translateY(100%);
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide-text.visible {
+            transform: translateY(0);
+        }
+
+        /* ─── Diagnostic Section ─────────────────────────────── */
+        .diag-gradient-bg {
+            background: linear-gradient(135deg,
+                    #FF5C00 0%, #FF7A1F 15%, #FF9A4A 30%,
+                    #FFB870 45%, #FFD49A 60%, #FFE8C0 75%,
+                    #FFF4E0 88%, #FFFFFF 100%);
+        }
+
+        .diag-card-layerx {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .diag-card-layerx:hover {
+            border-color: #FF5C00;
+            box-shadow: 0 16px 48px rgba(255, 92, 0, 0.2);
+            transform: translateY(-4px);
+        }
+
+        /* ─── YouTube Section ────────────────────────────────── */
+        .yt-card {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background: #0a0f1e;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .yt-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .yt-card iframe {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        .yt-card-label {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: #FF5C00;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 99px;
+            z-index: 10;
+        }
+
+        /* ─── Site Contents Cards ────────────────────────────── */
+        .cx-content-card {
+            text-decoration: none;
+        }
+
+        .cx-card-tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 10;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            line-height: 1.2;
+            padding: 5px 14px;
+            border-radius: 4px;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .cx-card-img {
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cx-content-card:hover .cx-card-img {
+            transform: scale(1.06);
+        }
+
+        /* ─── Marquee ─────────────────────────────────────────── */
+        .marquee-wrapper {
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            justify-content: space-around;
+            min-width: 100%;
+            gap: 2.5rem;
+            animation: scroll-left 50s linear infinite;
+        }
+
+        .marquee-content-reverse {
+            display: flex;
+            flex-shrink: 0;
+            justify-content: space-around;
+            min-width: 100%;
+            gap: 2.5rem;
+            animation: scroll-right 55s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(calc(-100% - 2.5rem));
+            }
+        }
+
+        @keyframes scroll-right {
+            from {
+                transform: translateX(calc(-100% - 2.5rem));
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .marquee-wrapper:hover .marquee-content,
+        .marquee-wrapper:hover .marquee-content-reverse {
+            animation-play-state: paused;
+        }
+
+        /* ─── Misc ────────────────────────────────────────────── */
+        .modal-overlay {
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.5s ease;
+        }
+
+        .modal-content-anim {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+        }
+
+        .modal-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modal-hidden .modal-content-anim {
+            transform: translateY(60px) scale(0.96);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #FF5C00 !important;
+            box-shadow: 0 0 0 4px rgba(255, 92, 0, 0.1);
+        }
+
+        .preview-scroll {
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .preview-scroll::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 </head>
+
 <body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
 
-    <!-- ═══ LOADER ═══ -->
-    <div id="cx-loader" aria-hidden="true">
-        <div id="cx-panel-top"    class="cx-panel cx-panel--top"></div>
-        <div id="cx-panel-bottom" class="cx-panel cx-panel--bottom"></div>
-        <div id="cx-loader-inner" class="cx-loader-inner">
-            <div class="cx-loader-logo">
-                <span class="cx-loader-brand">Crestix</span>
-            </div>
-            <div class="cx-loader-counter-wrap">
-                <span id="cx-loader-count" class="cx-loader-count">0</span>
-                <span class="cx-loader-pct">%</span>
-            </div>
-            <div class="cx-loader-bar-track">
-                <div id="cx-loader-bar" class="cx-loader-bar-fill"></div>
-            </div>
-            <p class="cx-loader-tagline">Unleash the potential in all people</p>
-        </div>
-    </div>
+
 
     <!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
-            <div style="display:flex;align-items:center;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:900;font-size:1.25rem;color:white;letter-spacing:-0.03em;" onclick="location.href='index.html'">
+        <div
+            style="display:flex;align-items:center;justify-content:space-between;padding:14px 2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
+            <div style="display:flex;align-items:center;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:900;font-size:1.25rem;color:white;letter-spacing:-0.03em;"
+                onclick="location.href='index.html'">
                 CRESTIX
             </div>
-            <button onclick="toggleMenu()" style="display:flex;align-items:center;gap:10px;background:none;border:none;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;padding:6px 0;">
+            <button onclick="toggleMenu()"
+                style="display:flex;align-items:center;gap:10px;background:none;border:none;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;padding:6px 0;">
                 CLOSE
                 <span style="display:flex;flex-direction:column;gap:5px;width:24px;">
-                    <i style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(6.5px) rotate(45deg);"></i>
+                    <i
+                        style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(6.5px) rotate(45deg);"></i>
                     <i style="display:block;height:1.5px;background:white;border-radius:2px;opacity:0;"></i>
-                    <i style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(-6.5px) rotate(-45deg);"></i>
+                    <i
+                        style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(-6.5px) rotate(-45deg);"></i>
                 </span>
             </button>
         </div>
-        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 2rem 0 2.5rem;gap:0.5rem;">
+        <div
+            style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 2rem 0 2.5rem;gap:0.5rem;">
             <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="toggleMenu()">Corporate</a>
-            <a href="business.html"  class="fm-nav-item fm-item-2" onclick="toggleMenu()">Service</a>
-            <a href="members.html"   class="fm-nav-item fm-item-3" onclick="toggleMenu()">Members</a>
-            <a href="news.html"      class="fm-nav-item fm-item-4" onclick="toggleMenu()">Crestory</a>
+            <a href="business.html" class="fm-nav-item fm-item-2" onclick="toggleMenu()">Service</a>
+            <a href="members.html" class="fm-nav-item fm-item-3" onclick="toggleMenu()">Members</a>
+            <a href="news.html" class="fm-nav-item fm-item-4" onclick="toggleMenu()">Crestory</a>
         </div>
-        <div class="fm-cta-btn" style="padding:0 2.5rem 2.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+        <div class="fm-cta-btn"
+            style="padding:0 2.5rem 2.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
             <a href="jobs.html" onclick="toggleMenu()"
-               style="display:inline-block;background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:9999px;text-decoration:none;">
+                style="display:inline-block;background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:9999px;text-decoration:none;">
                 応募はこちらから
             </a>
-            <span style="font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.3em;text-transform:uppercase;">&copy; 2026 Crestix Inc.</span>
+            <span
+                style="font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.3em;text-transform:uppercase;">&copy;
+                2026 Crestix Inc.</span>
         </div>
     </div>
 
     <!-- ═══ NAVIGATION ═══ -->
-    <nav id="navbar" class="fixed top-0 w-full flex items-center justify-between py-3 px-8 lg:px-14 z-50 border-b border-white/10">
+    <nav id="navbar"
+        class="fixed top-0 w-full flex items-center justify-between py-3 px-8 lg:px-14 z-50 border-b border-white/10">
 
         <!-- LEFT: Logo (常時) + divider + MENU pill (スクロール後に出現) -->
         <div class="flex items-center gap-4">
 
             <!-- ロゴ: 常時表示 -->
             <div id="nav-logo-wrap" onclick="handleLogoClick()" role="button" aria-label="ホーム / メニュー"
-                 style="display:flex;align-items:center;">
+                style="display:flex;align-items:center;">
                 <img src="assets/images/office/crestix-header.png" alt="Crestix"
-                     style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);"
-                     onerror="this.style.display='none'">
+                    style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);"
+                    onerror="this.style.display='none'">
             </div>
 
             <!-- 区切り線 (スクロール後に出現) -->
-            <span id="nav-divider" style="width:1px;height:18px;background:rgba(255,255,255,0.2);display:block;flex-shrink:0;"></span>
+            <span id="nav-divider"
+                style="width:1px;height:18px;background:rgba(255,255,255,0.2);display:block;flex-shrink:0;"></span>
 
             <!-- MENU ピルボタン (スクロール後に出現) -->
             <button id="hamburger-btn" onclick="toggleMenu()" aria-label="メニューを開く"
-                    style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:7px 16px 7px 12px;cursor:pointer;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;transition: background 0.2s ease, border-color 0.2s ease;"
-                    onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.borderColor='rgba(255,255,255,0.4)'"
-                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'">
+                style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:7px 16px 7px 12px;cursor:pointer;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;transition: background 0.2s ease, border-color 0.2s ease;"
+                onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.borderColor='rgba(255,255,255,0.4)'"
+                onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'">
                 <div class="hamburger-lines" id="ham-lines">
                     <span></span><span></span><span></span>
                 </div>
@@ -483,17 +726,18 @@
         </div>
 
         <!-- CENTER: Nav links — スクロール後に出現 -->
-        <div class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
+        <div
+            class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
             <a href="corporate.html" class="hover:text-orange-400 transition-colors">Corporate</a>
-            <a href="business.html"  class="hover:text-orange-400 transition-colors">Service</a>
-            <a href="members.html"   class="hover:text-orange-400 transition-colors">Members</a>
-            <a href="news.html"      class="hover:text-orange-400 transition-colors">Crestory</a>
+            <a href="business.html" class="hover:text-orange-400 transition-colors">Service</a>
+            <a href="members.html" class="hover:text-orange-400 transition-colors">Members</a>
+            <a href="news.html" class="hover:text-orange-400 transition-colors">Crestory</a>
         </div>
 
         <!-- RIGHT: CTA — スクロール後に出現 -->
         <a href="entry.html"
-        class="nav-cta-btn bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-black px-7 py-3 rounded-full tracking-[0.2em] uppercase active:scale-95 focus:outline-none whitespace-nowrap shadow-lg"
-        style="font-family: 'Poppins', sans-serif; transition: background 0.2s ease, opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);">
+            class="nav-cta-btn bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-black px-7 py-3 rounded-full tracking-[0.2em] uppercase active:scale-95 focus:outline-none whitespace-nowrap shadow-lg"
+            style="font-family: 'Poppins', sans-serif; transition: background 0.2s ease, opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);">
             Entry
         </a>
     </nav>
@@ -507,29 +751,31 @@
             <!-- Background slides: 実際の画像がない場合はグラデーションで代替 -->
             <!-- Slide 0: Crestixロゴ背景（最初） -->
             <div class="hero-slide active" id="slide-0"
-                 style="background-image: url('assets/images/office/crestix.png'); background-color:#1A2B4C;">
+                style="background-image: url('assets/images/office/crestix.png'); background-color:#1A2B4C;">
             </div>
             <!-- Slide 1 -->
             <div class="hero-slide" id="slide-1"
-                 style="background-image: url('assets/images/office/crestix1.png'); background-color:#0f1a2e;">
+                style="background-image: url('assets/images/office/crestix1.png'); background-color:#0f1a2e;">
             </div>
             <!-- Slide 2 -->
             <div class="hero-slide" id="slide-2"
-                 style="background-color:#0c1624; background-image: linear-gradient(135deg,#1a2b4c 0%,#0c1624 100%);">
+                style="background-color:#0c1624; background-image: linear-gradient(135deg,#1a2b4c 0%,#0c1624 100%);">
             </div>
 
             <!-- Gradient overlay -->
             <div class="hero-overlay"></div>
 
             <!-- Watermark -->
-            <div class="hero-watermark">Unleash</div>
+
 
             <!-- Main content — bottom left -->
             <div class="hero-content">
                 <!-- Tag -->
                 <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:4px;">
                     <span style="width:32px;height:2px;background:#FF5C00;border-radius:2px;display:block;"></span>
-                    <span id="slide-tag" style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Careers 2026</span>
+                    <span id="slide-tag"
+                        style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Careers
+                        2026</span>
                 </div>
 
                 <!-- Headline -->
@@ -541,15 +787,16 @@
                 </div>
 
                 <!-- Sub + CTA row -->
-                <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:2rem;padding-top:0.5rem;">
+                <div
+                    style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:2rem;padding-top:0.5rem;">
                     <p id="slide-sub"
-                       style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(0.75rem,1.2vw,1rem);color:rgba(255,255,255,0.65);max-width:440px;line-height:1.9;font-weight:500;border-left:2px solid #FF5C00;padding-left:1.25rem;">
+                        style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(0.75rem,1.2vw,1rem);color:rgba(255,255,255,0.65);max-width:440px;line-height:1.9;font-weight:500;border-left:2px solid #FF5C00;padding-left:1.25rem;">
                         メンバー全員の手に社会を本質的に前進させるミッションがあります。失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。
                     </p>
                     <a href="jobs.html"
-                       style="display:inline-flex;align-items:center;gap:1rem;background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;padding:1.1rem 2.5rem;border-radius:9999px;text-decoration:none;box-shadow:0 20px 40px rgba(255,92,0,0.3);transition:all 0.2s ease;white-space:nowrap;"
-                       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 28px 50px rgba(255,92,0,0.45)'"
-                       onmouseout="this.style.transform='';this.style.boxShadow='0 20px 40px rgba(255,92,0,0.3)'">
+                        style="display:inline-flex;align-items:center;gap:1rem;background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;padding:1.1rem 2.5rem;border-radius:9999px;text-decoration:none;box-shadow:0 20px 40px rgba(255,92,0,0.3);transition:all 0.2s ease;white-space:nowrap;"
+                        onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 28px 50px rgba(255,92,0,0.45)'"
+                        onmouseout="this.style.transform='';this.style.boxShadow='0 20px 40px rgba(255,92,0,0.3)'">
                         Open Positions
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </a>
@@ -558,33 +805,45 @@
                 <!-- Slide indicators + counter -->
                 <div style="display:flex;align-items:center;gap:1.5rem;padding-top:1rem;">
                     <div id="slide-dots" style="display:flex;gap:10px;align-items:center;">
-                        <div class="slide-dot active" data-idx="0"><div class="slide-dot-fill"></div></div>
-                        <div class="slide-dot" data-idx="1"><div class="slide-dot-fill"></div></div>
-                        <div class="slide-dot" data-idx="2"><div class="slide-dot-fill"></div></div>
+                        <div class="slide-dot active" data-idx="0">
+                            <div class="slide-dot-fill"></div>
+                        </div>
+                        <div class="slide-dot" data-idx="1">
+                            <div class="slide-dot-fill"></div>
+                        </div>
+                        <div class="slide-dot" data-idx="2">
+                            <div class="slide-dot-fill"></div>
+                        </div>
                     </div>
                     <span id="slide-counter"
-                          style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:0.2em;">
+                        style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:0.2em;">
                         01 / 03
                     </span>
                 </div>
             </div>
 
-            <!-- Unleash tagline at very bottom -->
-            <div class="hero-unleash">Unleash the potential in all people</div>
         </section>
 
         <!-- ═══ JOB DIAGNOSIS ═══ -->
-        <section id="sec-diagnostic" class="diag-gradient-bg py-32 lg:py-48 px-10 lg:px-24 relative overflow-hidden select-none">
-            <div style="position:absolute;top:-80px;right:-120px;width:500px;height:500px;border-radius:9999px;background:radial-gradient(circle,rgba(255,255,255,0.25),transparent 70%);pointer-events:none;"></div>
-            <div style="position:absolute;bottom:-100px;left:-80px;width:400px;height:400px;border-radius:9999px;background:radial-gradient(circle,rgba(255,220,180,0.3),transparent 70%);pointer-events:none;"></div>
+        <section id="sec-diagnostic"
+            class="diag-gradient-bg py-32 lg:py-48 px-10 lg:px-24 relative overflow-hidden select-none">
+            <div
+                style="position:absolute;top:-80px;right:-120px;width:500px;height:500px;border-radius:9999px;background:radial-gradient(circle,rgba(255,255,255,0.25),transparent 70%);pointer-events:none;">
+            </div>
+            <div
+                style="position:absolute;bottom:-100px;left:-80px;width:400px;height:400px;border-radius:9999px;background:radial-gradient(circle,rgba(255,220,180,0.3),transparent 70%);pointer-events:none;">
+            </div>
 
-            <div class="max-w-6xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 relative z-10">
+            <div
+                class="max-w-6xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 relative z-10">
                 <div class="space-y-4">
-                    <h2 class="text-4xl lg:text-6xl font-black tracking-tighter text-crestix-charcoal flex items-center gap-6">
+                    <h2
+                        class="text-4xl lg:text-6xl font-black tracking-tighter text-crestix-charcoal flex items-center gap-6">
                         <span class="w-3 h-12 bg-crestix-orange rounded-full shadow-lg shadow-orange-300"></span>
                         Job Diagnosis
                     </h2>
-                    <p class="text-sm lg:text-base text-gray-600 font-bold pl-12 tracking-wider leading-loose max-w-2xl">
+                    <p
+                        class="text-sm lg:text-base text-gray-600 font-bold pl-12 tracking-wider leading-loose max-w-2xl">
                         特性を選択するだけで、あなたが最も輝けるフィールドを自動提案します。
                     </p>
                 </div>
@@ -595,24 +854,33 @@
             </div>
 
             <div id="diagnostic-container"
-                 class="max-w-6xl mx-auto bg-white/60 backdrop-blur-xl border border-white/70 rounded-[3rem] p-10 lg:p-20 shadow-[0_20px_80px_rgba(0,0,0,0.12)] min-h-[500px] flex flex-col justify-between relative z-10">
+                class="max-w-6xl mx-auto bg-white/60 backdrop-blur-xl border border-white/70 rounded-[3rem] p-10 lg:p-20 shadow-[0_20px_80px_rgba(0,0,0,0.12)] min-h-[500px] flex flex-col justify-between relative z-10">
                 <div id="diag-step-1" class="space-y-16 transition-all duration-800">
                     <div class="text-center space-y-4">
-                        <span class="text-[13px] font-black text-crestix-orange font-poppins tracking-[0.6em] uppercase block">Step 01 / Career Expertise</span>
+                        <span
+                            class="text-[13px] font-black text-crestix-orange font-poppins tracking-[0.6em] uppercase block">Step
+                            01 / Career Expertise</span>
                         <h3 class="text-4xl lg:text-6xl font-black text-crestix-charcoal tracking-tighter">希望する職種領域</h3>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="diag-card-layerx" onclick="selectDiagnosticOption(1, 'ビジネス')">
                             <span class="text-3xl font-black text-crestix-charcoal tracking-tight">ビジネス</span>
-                            <p class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">Sales Agency / BizDev / Consultant</p>
+                            <p
+                                class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">
+                                Sales Agency / BizDev / Consultant</p>
                         </div>
                         <div class="diag-card-layerx" onclick="selectDiagnosticOption(1, 'グロースマーケ')">
-                            <span class="text-3xl font-black text-crestix-charcoal leading-tight tracking-tight">マーケ・制作</span>
-                            <p class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">Ads / Web Design / Creative</p>
+                            <span
+                                class="text-3xl font-black text-crestix-charcoal leading-tight tracking-tight">マーケ・制作</span>
+                            <p
+                                class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">
+                                Ads / Web Design / Creative</p>
                         </div>
                         <div class="diag-card-layerx" onclick="selectDiagnosticOption(1, 'コーポレート')">
                             <span class="text-3xl font-black text-crestix-charcoal tracking-tight">コーポレート</span>
-                            <p class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">HR / Strategy / Assistant</p>
+                            <p
+                                class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">
+                                HR / Strategy / Assistant</p>
                         </div>
                     </div>
                 </div>
@@ -622,94 +890,156 @@
 
                 <div class="mt-16 border-t border-white/50 pt-12 flex items-center justify-between">
                     <div class="flex items-center gap-6">
-                        <span class="text-[11px] font-black text-gray-500 font-poppins tracking-[0.4em] uppercase opacity-60">Session Progress</span>
+                        <span
+                            class="text-[11px] font-black text-gray-500 font-poppins tracking-[0.4em] uppercase opacity-60">Session
+                            Progress</span>
                         <div class="flex gap-3">
-                            <span id="pbar-1" class="w-12 h-2 rounded-full" style="background:#FF5C00;box-shadow:0 3px 8px rgba(255,92,0,0.4)"></span>
+                            <span id="pbar-1" class="w-12 h-2 rounded-full"
+                                style="background:#FF5C00;box-shadow:0 3px 8px rgba(255,92,0,0.4)"></span>
                             <span id="pbar-2" class="w-3 h-2 rounded-full bg-white/60"></span>
                             <span id="pbar-3" class="w-3 h-2 rounded-full bg-white/60"></span>
                             <span id="pbar-4" class="w-3 h-2 rounded-full bg-white/60"></span>
                         </div>
                     </div>
-                    <button id="diag-back" class="hidden text-xs font-black text-gray-500 hover:text-crestix-orange transition-all uppercase tracking-[0.4em] flex items-center gap-4 focus:outline-none group">
-                        <i class="fa-solid fa-arrow-left-long group-hover:-translate-x-3 transition-transform"></i> Return
+                    <button id="diag-back"
+                        class="hidden text-xs font-black text-gray-500 hover:text-crestix-orange transition-all uppercase tracking-[0.4em] flex items-center gap-4 focus:outline-none group">
+                        <i class="fa-solid fa-arrow-left-long group-hover:-translate-x-3 transition-transform"></i>
+                        Return
                     </button>
                 </div>
             </div>
         </section>
 
         <!-- ═══ SITE CONTENTS ═══ -->
-        <section id="sec-site-contents" class="py-24 lg:py-40 px-10 lg:px-24 bg-white border-b border-crestix-border relative select-none">
+        <section id="sec-site-contents"
+            class="py-24 lg:py-40 px-10 lg:px-24 bg-white border-b border-crestix-border relative select-none">
             <div class="max-w-[1400px] mx-auto space-y-16 lg:space-y-20">
                 <div class="space-y-3">
-                    <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal tracking-tight leading-tight">サイトコンテンツ</h2>
+                    <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal tracking-tight leading-tight">
+                        サイトコンテンツ</h2>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
                     <!-- Card 1 -->
                     <a href="corporate.html" class="cx-content-card group cursor-pointer block">
                         <div class="relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#f0f4f8]">
                             <span class="cx-card-tag" style="background:#FF5C00;color:#fff;">Crestixを知る</span>
-                            <img src="assets/images/office/crestix.png" alt="Crestixを知る" class="cx-card-img w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500"></div>
+                            <img src="assets/images/office/crestix.png" alt="Crestixを知る"
+                                class="cx-card-img w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500">
+                            </div>
                         </div>
                         <div class="mt-5 space-y-2">
-                            <h3 class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">Crestixを知る</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed font-medium">ミッション、ビジョン、6つのバリューを解説。私たちが目指す世界をご紹介します。</p>
+                            <h3
+                                class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">
+                                Crestixを知る</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed font-medium">
+                                ミッション、ビジョン、6つのバリューを解説。私たちが目指す世界をご紹介します。</p>
                         </div>
                     </a>
                     <!-- Card 2 -->
                     <a href="business.html" class="cx-content-card group cursor-pointer block">
                         <div class="relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#fff3ee]">
                             <span class="cx-card-tag" style="background:#E65200;color:#fff;">事業を知る</span>
-                            <img src="assets/images/office/crestix1.png" alt="事業を知る" class="cx-card-img w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500"></div>
+                            <img src="assets/images/office/crestix1.png" alt="事業を知る"
+                                class="cx-card-img w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500">
+                            </div>
                         </div>
                         <div class="mt-5 space-y-2">
-                            <h3 class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">事業を知る</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed font-medium">5つの成長事業ドメイン戦略。セールス・マーケ・プロダクト開発など各領域をご紹介。</p>
+                            <h3
+                                class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">
+                                事業を知る</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed font-medium">
+                                5つの成長事業ドメイン戦略。セールス・マーケ・プロダクト開発など各領域をご紹介。</p>
                         </div>
                     </a>
                     <!-- Card 3 -->
                     <a href="jobs.html" class="cx-content-card group cursor-pointer block">
                         <div class="relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1A2B4C]">
                             <span class="cx-card-tag" style="background:#FFD600;color:#1A2B4C;">ポジションを知る</span>
-                            <img src="assets/images/office/crestix.png" alt="ポジションを知る" class="cx-card-img w-full h-full object-cover opacity-60">
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500"></div>
+                            <img src="assets/images/office/crestix.png" alt="ポジションを知る"
+                                class="cx-card-img w-full h-full object-cover opacity-60">
+                            <div
+                                class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500">
+                            </div>
                         </div>
                         <div class="mt-5 space-y-2">
-                            <h3 class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">ポジションを知る</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed font-medium">現在募集中の全ポジション。ビジネス・マーケ・コーポレートなど幅広い職種で募集中。</p>
+                            <h3
+                                class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">
+                                ポジションを知る</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed font-medium">
+                                現在募集中の全ポジション。ビジネス・マーケ・コーポレートなど幅広い職種で募集中。</p>
                         </div>
                     </a>
                     <!-- Card 4: Members -->
                     <a href="members.html" class="cx-content-card group cursor-pointer block">
-                        <div class="relative overflow-hidden rounded-2xl aspect-[3/4]" style="background:linear-gradient(160deg,#e8edf4 0%,#d4dbe8 100%);">
-                            <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);background:#1A2B4C;color:white;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;padding:5px 16px;border-radius:99px;white-space:nowrap;z-index:10;">Members</div>
+                        <div class="relative overflow-hidden rounded-2xl aspect-[3/4]"
+                            style="background:linear-gradient(160deg,#e8edf4 0%,#d4dbe8 100%);">
+                            <div
+                                style="position:absolute;top:14px;left:50%;transform:translateX(-50%);background:#1A2B4C;color:white;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;padding:5px 16px;border-radius:99px;white-space:nowrap;z-index:10;">
+                                Members</div>
                             <div class="absolute inset-0 flex items-end justify-around px-4">
                                 <div class="flex flex-col items-center" style="transform:translateY(6px)">
-                                    <div style="width:52px;height:52px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;"><div style="width:100%;height:100%;background:linear-gradient(160deg,#b0bbc8,#8a9bb0);"></div></div>
-                                    <div style="width:44px;height:64px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#7a8fa8,#5a7090);"></div>
+                                    <div
+                                        style="width:52px;height:52px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;">
+                                        <div
+                                            style="width:100%;height:100%;background:linear-gradient(160deg,#b0bbc8,#8a9bb0);">
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="width:44px;height:64px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#7a8fa8,#5a7090);">
+                                    </div>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <div style="width:56px;height:56px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;"><div style="width:100%;height:100%;background:linear-gradient(160deg,#b8c4d0,#94a8bc);"></div></div>
-                                    <div style="width:48px;height:72px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#5a7090,#3d5570);"></div>
+                                    <div
+                                        style="width:56px;height:56px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;">
+                                        <div
+                                            style="width:100%;height:100%;background:linear-gradient(160deg,#b8c4d0,#94a8bc);">
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="width:48px;height:72px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#5a7090,#3d5570);">
+                                    </div>
                                 </div>
                                 <div class="flex flex-col items-center" style="transform:translateY(4px)">
-                                    <div style="width:50px;height:50px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;"><div style="width:100%;height:100%;background:linear-gradient(160deg,#aabbc8,#8a9eb5);"></div></div>
-                                    <div style="width:42px;height:60px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#8a9eb5,#6a82a0);"></div>
+                                    <div
+                                        style="width:50px;height:50px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;">
+                                        <div
+                                            style="width:100%;height:100%;background:linear-gradient(160deg,#aabbc8,#8a9eb5);">
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="width:42px;height:60px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#8a9eb5,#6a82a0);">
+                                    </div>
                                 </div>
                                 <div class="flex flex-col items-center" style="transform:translateY(8px)">
-                                    <div style="width:48px;height:48px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;"><div style="width:100%;height:100%;background:linear-gradient(160deg,#b2bfcc,#90a4b8);"></div></div>
-                                    <div style="width:40px;height:56px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#90a4b8,#6e8aa0);"></div>
+                                    <div
+                                        style="width:48px;height:48px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;">
+                                        <div
+                                            style="width:100%;height:100%;background:linear-gradient(160deg,#b2bfcc,#90a4b8);">
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="width:40px;height:56px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#90a4b8,#6e8aa0);">
+                                    </div>
                                 </div>
                             </div>
                             <div class="absolute bottom-5 left-0 right-0 flex justify-center">
-                                <span class="bg-crestix-navy text-white text-[10px] font-black font-poppins px-6 py-2 rounded-full tracking-[0.2em] uppercase flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg">Entry <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></span>
+                                <span
+                                    class="bg-crestix-navy text-white text-[10px] font-black font-poppins px-6 py-2 rounded-full tracking-[0.2em] uppercase flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg">Entry
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></span>
                             </div>
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500"></div>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500">
+                            </div>
                         </div>
                         <div class="mt-5 space-y-2">
-                            <h3 class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">メンバーを知る</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed font-medium">最高速度で共鳴する才能たち。現場で戦うCrestixメンバーのリアルな声とキャリアストーリー。</p>
+                            <h3
+                                class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">
+                                メンバーを知る</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed font-medium">
+                                最高速度で共鳴する才能たち。現場で戦うCrestixメンバーのリアルな声とキャリアストーリー。</p>
                         </div>
                     </a>
                 </div>
@@ -717,29 +1047,38 @@
         </section>
 
         <!-- ═══ CRESTORY — YOUTUBE ═══ -->
-        <section id="sec-youtube-carousel" class="py-24 lg:py-32 bg-crestix-charcoal text-white relative select-none overflow-hidden">
+        <section id="sec-youtube-carousel"
+            class="py-24 lg:py-32 bg-crestix-charcoal text-white relative select-none overflow-hidden">
 
             <!-- Background texture -->
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,92,0,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(26,43,76,0.8) 0%,transparent 60%);pointer-events:none;z-index:0;"></div>
+            <div
+                style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,92,0,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(26,43,76,0.8) 0%,transparent 60%);pointer-events:none;z-index:0;">
+            </div>
 
             <div class="max-w-[1400px] mx-auto px-10 lg:px-16 relative z-10">
 
                 <!-- Header -->
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
                     <div class="flex items-center gap-3">
-                        <span style="width:3px;height:2.5rem;background:#FF5C00;border-radius:2px;display:block;flex-shrink:0;"></span>
+                        <span
+                            style="width:3px;height:2.5rem;background:#FF5C00;border-radius:2px;display:block;flex-shrink:0;"></span>
                         <div>
                             <div class="flex items-center gap-4 flex-wrap">
-                                <span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-0.04em;line-height:1;color:white;">Crestory</span>
-                                <span style="background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;padding:4px 14px;border-radius:99px;text-transform:uppercase;white-space:nowrap;">Official PR</span>
+                                <span
+                                    style="font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-0.04em;line-height:1;color:white;">Crestory</span>
+                                <span
+                                    style="background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;padding:4px 14px;border-radius:99px;text-transform:uppercase;white-space:nowrap;">Official
+                                    PR</span>
                             </div>
-                            <p style="font-family:'Noto Sans JP',sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;line-height:1.8;font-weight:500;">代表メッセージや、現場で戦うメンバーのリアルな熱量。</p>
+                            <p
+                                style="font-family:'Noto Sans JP',sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;line-height:1.8;font-weight:500;">
+                                代表メッセージや、現場で戦うメンバーのリアルな熱量。</p>
                         </div>
                     </div>
                     <a href="https://youtube.com/@crestix" target="_blank"
-                       style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;padding:0.7rem 1.6rem;border-radius:9999px;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;"
-                       onmouseover="this.style.borderColor='#FF5C00';this.style.color='#FF5C00'"
-                       onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.6)'">
+                        style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;padding:0.7rem 1.6rem;border-radius:9999px;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;"
+                        onmouseover="this.style.borderColor='#FF5C00';this.style.color='#FF5C00'"
+                        onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.6)'">
                         <i class="fa-brands fa-youtube"></i>
                         チャンネルを見る
                     </a>
@@ -750,21 +1089,28 @@
 
                     <!-- Video 1 -->
                     <div class="yt-card group">
-                        <div style="position:absolute;top:0;left:0;right:0;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;">
-                            <span style="font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;color:rgba(255,255,255,0.6);text-transform:uppercase;">#01</span>
-                            <span style="background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.2em;padding:3px 10px;border-radius:99px;text-transform:uppercase;">CEO Message</span>
+                        <div
+                            style="position:absolute;top:0;left:0;right:0;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;">
+                            <span
+                                style="font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;color:rgba(255,255,255,0.6);text-transform:uppercase;">#01</span>
+                            <span
+                                style="background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.2em;padding:3px 10px;border-radius:99px;text-transform:uppercase;">CEO
+                                Message</span>
                         </div>
-                        <iframe
-                            src="https://www.youtube.com/embed/uVyNfP5gTZA?si=kD2ycOh4NxDqIqWU&start=20"
+                        <iframe src="https://www.youtube.com/embed/uVyNfP5gTZA?si=kD2ycOh4NxDqIqWU&start=20"
                             title="Crestix CEO Message"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
-                        <div style="padding:12px 16px;background:#111827;display:flex;align-items:center;justify-content:space-between;">
+                        <div
+                            style="padding:12px 16px;background:#111827;display:flex;align-items:center;justify-content:space-between;">
                             <div>
-                                <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:white;letter-spacing:-0.01em;">CEOメッセージ</p>
-                                <p style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;">代表からCrestixの未来へのビジョン</p>
+                                <p
+                                    style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:white;letter-spacing:-0.01em;">
+                                    CEOメッセージ</p>
+                                <p
+                                    style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;">
+                                    代表からCrestixの未来へのビジョン</p>
                             </div>
                             <i class="fa-brands fa-youtube" style="font-size:1.1rem;color:rgba(255,255,255,0.15);"></i>
                         </div>
@@ -772,45 +1118,67 @@
 
                     <!-- Video 2 -->
                     <div class="yt-card group">
-                        <div style="position:absolute;top:0;left:0;right:0;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;">
-                            <span style="font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;color:rgba(255,255,255,0.6);text-transform:uppercase;">#02</span>
-                            <span style="background:#1A2B4C;border:1px solid rgba(255,255,255,0.2);color:white;font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.2em;padding:3px 10px;border-radius:99px;text-transform:uppercase;">Member Story</span>
+                        <div
+                            style="position:absolute;top:0;left:0;right:0;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;">
+                            <span
+                                style="font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;color:rgba(255,255,255,0.6);text-transform:uppercase;">#02</span>
+                            <span
+                                style="background:#1A2B4C;border:1px solid rgba(255,255,255,0.2);color:white;font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.2em;padding:3px 10px;border-radius:99px;text-transform:uppercase;">Member
+                                Story</span>
                         </div>
-                        <iframe
-                            src="https://www.youtube.com/embed/-3YIEpd3fVE?si=CFlNzWb6R6YQHuIa&start=11"
+                        <iframe src="https://www.youtube.com/embed/-3YIEpd3fVE?si=CFlNzWb6R6YQHuIa&start=11"
                             title="Crestix Member Story"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
-                        <div style="padding:12px 16px;background:#111827;display:flex;align-items:center;justify-content:space-between;">
+                        <div
+                            style="padding:12px 16px;background:#111827;display:flex;align-items:center;justify-content:space-between;">
                             <div>
-                                <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:white;letter-spacing:-0.01em;">メンバーストーリー</p>
-                                <p style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;">現場で戦うメンバーのリアルな声</p>
+                                <p
+                                    style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:white;letter-spacing:-0.01em;">
+                                    メンバーストーリー</p>
+                                <p
+                                    style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;">
+                                    現場で戦うメンバーのリアルな声</p>
                             </div>
                             <i class="fa-brands fa-youtube" style="font-size:1.1rem;color:rgba(255,255,255,0.15);"></i>
                         </div>
                     </div>
 
                     <!-- Video 3 — Placeholder (チャンネルリンク) -->
-                    <div class="yt-card group cursor-pointer" onclick="window.open('https://youtube.com/@crestix','_blank')">
-                        <div style="position:absolute;top:0;left:0;right:0;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;">
-                            <span style="font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;color:rgba(255,255,255,0.6);text-transform:uppercase;">#03</span>
-                            <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:white;font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.2em;padding:3px 10px;border-radius:99px;text-transform:uppercase;">Coming Soon</span>
+                    <div class="yt-card group cursor-pointer"
+                        onclick="window.open('https://youtube.com/@crestix','_blank')">
+                        <div
+                            style="position:absolute;top:0;left:0;right:0;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;">
+                            <span
+                                style="font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;color:rgba(255,255,255,0.6);text-transform:uppercase;">#03</span>
+                            <span
+                                style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:white;font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.2em;padding:3px 10px;border-radius:99px;text-transform:uppercase;">Coming
+                                Soon</span>
                         </div>
                         <!-- 16:9 placeholder -->
-                        <div style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#0a0f1e,#1a2b4c);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
-                            <div style="width:48px;height:48px;border-radius:50%;background:#FF5C00;display:flex;align-items:center;justify-content:center;opacity:0.8;">
+                        <div
+                            style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#0a0f1e,#1a2b4c);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+                            <div
+                                style="width:48px;height:48px;border-radius:50%;background:#FF5C00;display:flex;align-items:center;justify-content:center;opacity:0.8;">
                                 <i class="fa-brands fa-youtube" style="color:white;font-size:1.4rem;"></i>
                             </div>
-                            <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:0.2em;text-transform:uppercase;">More Videos</p>
+                            <p
+                                style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:0.2em;text-transform:uppercase;">
+                                More Videos</p>
                         </div>
-                        <div style="padding:12px 16px;background:#111827;display:flex;align-items:center;justify-content:space-between;">
+                        <div
+                            style="padding:12px 16px;background:#111827;display:flex;align-items:center;justify-content:space-between;">
                             <div>
-                                <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:white;letter-spacing:-0.01em;">公式チャンネル</p>
-                                <p style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;">youtube.com/@crestix</p>
+                                <p
+                                    style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:white;letter-spacing:-0.01em;">
+                                    公式チャンネル</p>
+                                <p
+                                    style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;">
+                                    youtube.com/@crestix</p>
                             </div>
-                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.95rem;color:rgba(255,255,255,0.2);"></i>
+                            <i class="fa-solid fa-arrow-up-right-from-square"
+                                style="font-size:0.95rem;color:rgba(255,255,255,0.2);"></i>
                         </div>
                     </div>
 
@@ -819,9 +1187,9 @@
                 <!-- Bottom CTA -->
                 <div class="mt-14 text-center">
                     <a href="jobs.html"
-                       style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FF5C00,#E65200);color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:9999px;text-decoration:none;box-shadow:0 24px 48px rgba(255,92,0,0.35);transition:all 0.3s ease;"
-                       onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 32px 64px rgba(255,92,0,0.5)'"
-                       onmouseout="this.style.transform='';this.style.boxShadow='0 24px 48px rgba(255,92,0,0.35)'">
+                        style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FF5C00,#E65200);color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:9999px;text-decoration:none;box-shadow:0 24px 48px rgba(255,92,0,0.35);transition:all 0.3s ease;"
+                        onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 32px 64px rgba(255,92,0,0.5)'"
+                        onmouseout="this.style.transform='';this.style.boxShadow='0 24px 48px rgba(255,92,0,0.35)'">
                         Join the Narrative
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </a>
@@ -838,12 +1206,16 @@
         <div class="border-b border-white/10 py-14 px-10 lg:px-24">
             <div class="max-w-[1400px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
                 <div class="space-y-2 text-center lg:text-left">
-                    <p class="font-poppins font-black text-3xl lg:text-4xl tracking-tighter text-white leading-none">Crestixで挑戦しませんか？</p>
+                    <p class="font-poppins font-black text-3xl lg:text-4xl tracking-tighter text-white leading-none">
+                        Crestixで挑戦しませんか？</p>
                     <p class="text-sm text-blue-100/50 font-bold">人の想いとテクノロジーを掛け合わせ、最高の熱量を創り出す。</p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="jobs.html" class="bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-10 py-4 rounded-full font-black text-[11px] tracking-[0.35em] uppercase shadow-[0_20px_50px_rgba(255,92,0,0.4)] hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(255,92,0,0.55)] transition-all active:scale-95 text-center">Join the Narrative ➔</a>
-                    <a href="https://youtube.com/@crestix" target="_blank" class="flex items-center justify-center gap-2 border border-white/15 text-white/60 hover:border-red-500 hover:text-red-400 px-8 py-4 rounded-full font-black text-[11px] tracking-[0.25em] uppercase transition-all">
+                    <a href="jobs.html"
+                        class="bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-10 py-4 rounded-full font-black text-[11px] tracking-[0.35em] uppercase shadow-[0_20px_50px_rgba(255,92,0,0.4)] hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(255,92,0,0.55)] transition-all active:scale-95 text-center">Join
+                        the Narrative ➔</a>
+                    <a href="https://youtube.com/@crestix" target="_blank"
+                        class="flex items-center justify-center gap-2 border border-white/15 text-white/60 hover:border-red-500 hover:text-red-400 px-8 py-4 rounded-full font-black text-[11px] tracking-[0.25em] uppercase transition-all">
                         <i class="fa-brands fa-youtube"></i> YouTube
                     </a>
                 </div>
@@ -858,14 +1230,19 @@
                     <!-- Brand column -->
                     <div class="col-span-2 md:col-span-4 lg:col-span-1 space-y-5">
                         <div class="flex items-center gap-3">
-                            <img src="assets/images/office/crestix1.png" alt="Crestix" class="w-10 h-10 object-contain drop-shadow-lg">
-                            <span class="font-poppins font-black text-2xl tracking-tighter uppercase text-white">Crestix</span>
+                            <img src="assets/images/office/crestix1.png" alt="Crestix"
+                                class="w-10 h-10 object-contain drop-shadow-lg">
+                            <span
+                                class="font-poppins font-black text-2xl tracking-tighter uppercase text-white">Crestix</span>
                         </div>
-                        <p class="text-xs text-blue-100/40 font-bold leading-relaxed max-w-[200px]">新しい力で、日本の社会課題を解決する。</p>
+                        <p class="text-xs text-blue-100/40 font-bold leading-relaxed max-w-[200px]">新しい力で、日本の社会課題を解決する。
+                        </p>
                         <div class="pt-2">
-                            <button onclick="openContactModal()" class="group flex items-center gap-2 bg-white/5 hover:bg-crestix-orange/20 border border-white/10 hover:border-crestix-orange/40 rounded-full px-5 py-2.5 transition-all">
+                            <button onclick="openContactModal()"
+                                class="group flex items-center gap-2 bg-white/5 hover:bg-crestix-orange/20 border border-white/10 hover:border-crestix-orange/40 rounded-full px-5 py-2.5 transition-all">
                                 <i class="fa-solid fa-building text-crestix-orange text-xs"></i>
-                                <span class="text-[11px] font-black text-white/60 group-hover:text-crestix-orange tracking-widest uppercase transition-colors">企業様はこちら</span>
+                                <span
+                                    class="text-[11px] font-black text-white/60 group-hover:text-crestix-orange tracking-widest uppercase transition-colors">企業様はこちら</span>
                             </button>
                         </div>
                     </div>
@@ -874,10 +1251,22 @@
                     <div class="space-y-5">
                         <p class="text-[10px] font-black text-crestix-orange tracking-[0.4em] uppercase">Company</p>
                         <ul class="space-y-3">
-                            <li><a href="corporate.html#profile" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>会社概要</a></li>
-                            <li><a href="mvv.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>ミッション・バリュー</a></li>
-                            <li><a href="message.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>代表メッセージ</a></li>
-                            <li><a href="members.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>メンバー一覧</a></li>
+                            <li><a href="corporate.html#profile"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>会社概要</a>
+                            </li>
+                            <li><a href="mvv.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>ミッション・バリュー</a>
+                            </li>
+                            <li><a href="message.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>代表メッセージ</a>
+                            </li>
+                            <li><a href="members.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>メンバー一覧</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -885,10 +1274,22 @@
                     <div class="space-y-5">
                         <p class="text-[10px] font-black text-crestix-orange tracking-[0.4em] uppercase">Service</p>
                         <ul class="space-y-3">
-                            <li><a href="business.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>事業一覧</a></li>
-                            <li><a href="service-sales.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-green-500/60"></i>Sales Agency</a></li>
-                            <li><a href="service-meraise.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-blue-400/60"></i>MeRaise</a></li>
-                            <li><a href="service-division1.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>第1事業部 (バクラク)</a></li>
+                            <li><a href="business.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>事業一覧</a>
+                            </li>
+                            <li><a href="service-sales.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-green-500/60"></i>Sales
+                                    Agency</a></li>
+                            <li><a href="service-meraise.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-blue-400/60"></i>MeRaise</a>
+                            </li>
+                            <li><a href="service-division1.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>第1事業部
+                                    (バクラク)</a></li>
                         </ul>
                     </div>
 
@@ -896,10 +1297,22 @@
                     <div class="space-y-5">
                         <p class="text-[10px] font-black text-crestix-orange tracking-[0.4em] uppercase">Careers</p>
                         <ul class="space-y-3">
-                            <li><a href="jobs.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>募集職種一覧</a></li>
-                            <li><a href="index.html#sec-culture" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>カルチャー</a></li>
-                            <li><a href="members.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>社員インタビュー</a></li>
-                            <li><a href="index.html#sec-youtube-carousel" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>Crestory (動画)</a></li>
+                            <li><a href="jobs.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>募集職種一覧</a>
+                            </li>
+                            <li><a href="index.html#sec-culture"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>カルチャー</a>
+                            </li>
+                            <li><a href="members.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>社員インタビュー</a>
+                            </li>
+                            <li><a href="index.html#sec-youtube-carousel"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>Crestory
+                                    (動画)</a></li>
                         </ul>
                     </div>
 
@@ -907,13 +1320,19 @@
                     <div class="space-y-5">
                         <p class="text-[10px] font-black text-crestix-orange tracking-[0.4em] uppercase">Contact</p>
                         <ul class="space-y-3">
-                            <li><a href="entry.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>採用エントリー</a></li>
+                            <li><a href="entry.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>採用エントリー</a>
+                            </li>
                             <li>
-                                <button onclick="openContactModal()" class="text-xs text-blue-100/50 hover:text-crestix-orange font-bold transition-colors flex items-center gap-2 text-left">
+                                <button onclick="openContactModal()"
+                                    class="text-xs text-blue-100/50 hover:text-crestix-orange font-bold transition-colors flex items-center gap-2 text-left">
                                     <i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>企業様お問い合わせ
                                 </button>
                             </li>
-                            <li><a href="https://youtube.com/@crestix" target="_blank" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-brands fa-youtube text-[9px] text-red-500/50"></i>公式 YouTube</a></li>
+                            <li><a href="https://youtube.com/@crestix" target="_blank"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-brands fa-youtube text-[9px] text-red-500/50"></i>公式 YouTube</a></li>
                         </ul>
                     </div>
 
@@ -927,29 +1346,40 @@
                 <div class="flex items-center gap-8 text-[10px] text-blue-200/25 font-black tracking-[0.3em] uppercase">
                     <a href="privacy.html" class="hover:text-white/50 transition-colors">Privacy Policy</a>
                     <a href="terms.html" class="hover:text-white/50 transition-colors">Terms of Use</a>
-                    <button onclick="openContactModal()" class="text-crestix-orange/50 hover:text-crestix-orange transition-colors focus:outline-none">B2B Inquiry</button>
+                    <button onclick="openContactModal()"
+                        class="text-crestix-orange/50 hover:text-crestix-orange transition-colors focus:outline-none">B2B
+                        Inquiry</button>
                 </div>
-                <span class="text-[10px] text-blue-200/20 font-black tracking-[0.3em] uppercase">&copy; 2026 Crestix Inc. All Rights Reserved.</span>
+                <span class="text-[10px] text-blue-200/20 font-black tracking-[0.3em] uppercase">&copy; 2026 Crestix
+                    Inc. All Rights Reserved.</span>
             </div>
         </div>
     </footer>
 
     <!-- MODAL FOR B2B CONTACT -->
     <div id="contact-modal" class="modal-overlay fixed inset-0 hidden z-[200] overflow-y-auto p-4 lg:p-24 select-none">
-        <div class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
-            <div class="sticky top-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+        <div
+            class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
+            <div
+                class="sticky top-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
                 <span class="font-poppins font-black text-2xl tracking-widest uppercase">Crestix Partners</span>
-                <button class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <button
+                    class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90"><i
+                        class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="overflow-y-auto flex-1 p-10 lg:p-20 bg-gray-50/50">
                 <div class="max-w-2xl mx-auto space-y-12">
                     <div class="text-center space-y-3">
-                        <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB Inquiry</span>
+                        <span
+                            class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB
+                            Inquiry</span>
                         <h2 class="text-4xl font-black tracking-tight">企業様向けお問い合わせ</h2>
                     </div>
                     <div class="bg-white rounded-[2.5rem] p-10 lg:p-14 border border-crestix-border">
                         <form onsubmit="triggerB2bFormSubmit(event)" id="contact-inner-form" class="space-y-8">
-                            <button type="submit" class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all active:scale-95">Send Inquiry ➔</button>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all active:scale-95">Send
+                                Inquiry ➔</button>
                         </form>
                     </div>
                 </div>
@@ -964,184 +1394,154 @@
 
     <!-- Loader -->
     <script>
-    (function () {
-        'use strict';
-        const loader = document.getElementById('cx-loader');
-        const counter = document.getElementById('cx-loader-count');
-        const bar = document.getElementById('cx-loader-bar');
-        const panelTop = document.getElementById('cx-panel-top');
-        const panelBottom = document.getElementById('cx-panel-bottom');
-        if (!loader) return;
-        document.body.style.overflow = 'hidden';
-        const DURATION = 2000;
-        const START = performance.now();
-        function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
-        function tick(now) {
-            const raw = Math.min((now - START) / DURATION, 1);
-            const progress = Math.round(ease(raw) * 100);
-            counter.textContent = progress;
-            if (bar) bar.style.width = progress + '%';
-            if (progress === 100) { counter.classList.add('cx-done'); setTimeout(startWipe, 180); }
-            else requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-        function startWipe() {
-            const inner = document.getElementById('cx-loader-inner');
-            if (inner) { inner.style.transition = 'opacity 0.3s ease'; inner.style.opacity = '0'; }
-            setTimeout(() => {
-                if (panelTop)    panelTop.style.transform    = 'translateY(-100%)';
-                if (panelBottom) panelBottom.style.transform = 'translateY(100%)';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    document.body.style.overflow = '';
-                    document.body.classList.add('cx-page-ready');
-                    initHeroSlideshow();
-                }, 820);
-            }, 100);
-        }
-    })();
+            (function () {
+                'use strict';
+                document.body.classList.add('cx-page-ready');
+                initHeroSlideshow();
+            })();
     </script>
 
     <!-- Navbar -->
     <script>
-    (function () {
-        const navbar   = document.getElementById('navbar');
-        const menu     = document.getElementById('fullscreen-menu');
-        const hamLines = document.getElementById('ham-lines');
-        let menuOpen   = false;
-        let ticking    = false;
-        let isScrolled = false;
+        (function () {
+            const navbar = document.getElementById('navbar');
+            const menu = document.getElementById('fullscreen-menu');
+            const hamLines = document.getElementById('ham-lines');
+            let menuOpen = false;
+            let ticking = false;
+            let isScrolled = false;
 
-        function onScroll() {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    isScrolled = window.scrollY > 60;
-                    navbar.classList.toggle('scrolled', isScrolled);
-                    ticking = false;
-                });
-                ticking = true;
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        isScrolled = window.scrollY > 60;
+                        navbar.classList.toggle('scrolled', isScrolled);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             }
-        }
-        window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('scroll', onScroll, { passive: true });
 
-        window.handleLogoClick = function () {
-            if (isScrolled) window.toggleMenu();
-            else location.href = 'index.html';
-        };
+            window.handleLogoClick = function () {
+                if (isScrolled) window.toggleMenu();
+                else location.href = 'index.html';
+            };
 
-        window.toggleMenu = function () {
-            menuOpen = !menuOpen;
-            menu.classList.toggle('is-open', menuOpen);
-            if (hamLines) hamLines.classList.toggle('is-open', menuOpen);
-            document.body.style.overflow = menuOpen ? 'hidden' : '';
-        };
+            window.toggleMenu = function () {
+                menuOpen = !menuOpen;
+                menu.classList.toggle('is-open', menuOpen);
+                if (hamLines) hamLines.classList.toggle('is-open', menuOpen);
+                document.body.style.overflow = menuOpen ? 'hidden' : '';
+            };
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && menuOpen) window.toggleMenu();
-        });
-    })();
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && menuOpen) window.toggleMenu();
+            });
+        })();
     </script>
 
     <!-- Hero Slideshow -->
     <script>
-    const SLIDES_DATA = [
-        {
-            tag: 'Careers 2026',
-            headline: '常識の枠を超え、<br>大胆な挑戦を。',
-            sub: 'メンバー全員の手に社会を本質的に前進させるミッションがあります。失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。'
-        },
-        {
-            tag: 'Our Mission',
-            headline: '人の可能性を、<br>解き放つ。',
-            sub: '閉塞した日本の産業構造に風穴を開ける。テクノロジーと人の熱量を掛け合わせ、世界と戦える次世代組織へ。'
-        },
-        {
-            tag: 'Join the Team',
-            headline: '共に、世界へ。<br>挑戦集団。',
-            sub: '小手先の改善ではなく、産業の本質的なアップデートを。最前線で闘うメンバーと、ともに歴史を塗り替えよう。'
-        }
-    ];
-
-    const INTERVAL = 5000;
-    let currentSlide = 0;
-    let slideTimer = null;
-    let isAnimating = false;
-
-    function initHeroSlideshow() {
-        const dots = document.querySelectorAll('.slide-dot');
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => goToSlide(i));
-        });
-        startTimer();
-    }
-
-    function goToSlide(idx, dir) {
-        if (isAnimating || idx === currentSlide) return;
-        isAnimating = true;
-
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots   = document.querySelectorAll('.slide-dot');
-        const headline = document.getElementById('slide-headline');
-        const sub      = document.getElementById('slide-sub');
-        const tag      = document.getElementById('slide-tag');
-        const counter  = document.getElementById('slide-counter');
-
-        // Mark old slide as prev
-        slides[currentSlide].classList.remove('active');
-        slides[currentSlide].classList.add('prev');
-
-        // Animate new slide in
-        setTimeout(() => {
-            slides[currentSlide].classList.remove('prev');
-        }, 1400);
-
-        currentSlide = idx;
-        slides[currentSlide].classList.add('active');
-
-        // Update dots
-        dots.forEach((d, i) => {
-            d.classList.toggle('active', i === currentSlide);
-            // Reset fill animation
-            const fill = d.querySelector('.slide-dot-fill');
-            if (fill) {
-                fill.style.animation = 'none';
-                fill.offsetHeight; // reflow
-                fill.style.animation = '';
+        const SLIDES_DATA = [
+            {
+                tag: 'Careers 2026',
+                headline: '常識の枠を超え、<br>大胆な挑戦を。',
+                sub: 'メンバー全員の手に社会を本質的に前進させるミッションがあります。失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。'
+            },
+            {
+                tag: 'Our Mission',
+                headline: '人の可能性を、<br>解き放つ。',
+                sub: '閉塞した日本の産業構造に風穴を開ける。テクノロジーと人の熱量を掛け合わせ、世界と戦える次世代組織へ。'
+            },
+            {
+                tag: 'Join the Team',
+                headline: '共に、世界へ。<br>挑戦集団。',
+                sub: '小手先の改善ではなく、産業の本質的なアップデートを。最前線で闘うメンバーと、ともに歴史を塗り替えよう。'
             }
-        });
+        ];
 
-        // Counter
-        counter.textContent = String(currentSlide + 1).padStart(2,'0') + ' / 0' + slides.length;
+        const INTERVAL = 5000;
+        let currentSlide = 0;
+        let slideTimer = null;
+        let isAnimating = false;
 
-        // Update text with slide animation
-        const data = SLIDES_DATA[currentSlide];
-        tag.textContent = data.tag;
+        function initHeroSlideshow() {
+            const dots = document.querySelectorAll('.slide-dot');
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => goToSlide(i));
+            });
+            startTimer();
+        }
 
-        headline.classList.remove('visible');
-        setTimeout(() => {
-            headline.innerHTML = data.headline;
-            sub.textContent    = data.sub;
-            headline.classList.add('visible');
-        }, 80);
+        function goToSlide(idx, dir) {
+            if (isAnimating || idx === currentSlide) return;
+            isAnimating = true;
 
-        setTimeout(() => { isAnimating = false; }, 900);
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.slide-dot');
+            const headline = document.getElementById('slide-headline');
+            const sub = document.getElementById('slide-sub');
+            const tag = document.getElementById('slide-tag');
+            const counter = document.getElementById('slide-counter');
 
-        clearInterval(slideTimer);
-        startTimer();
-    }
+            // Mark old slide as prev
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].classList.add('prev');
 
-    function nextSlide() {
-        const count = document.querySelectorAll('.hero-slide').length;
-        goToSlide((currentSlide + 1) % count);
-    }
+            // Animate new slide in
+            setTimeout(() => {
+                slides[currentSlide].classList.remove('prev');
+            }, 1400);
 
-    function startTimer() {
-        slideTimer = setInterval(nextSlide, INTERVAL);
-    }
+            currentSlide = idx;
+            slides[currentSlide].classList.add('active');
 
-    // Allow calling from loader callback
-    window.initHeroSlideshow = initHeroSlideshow;
+            // Update dots
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === currentSlide);
+                // Reset fill animation
+                const fill = d.querySelector('.slide-dot-fill');
+                if (fill) {
+                    fill.style.animation = 'none';
+                    fill.offsetHeight; // reflow
+                    fill.style.animation = '';
+                }
+            });
+
+            // Counter
+            counter.textContent = String(currentSlide + 1).padStart(2, '0') + ' / 0' + slides.length;
+
+            // Update text with slide animation
+            const data = SLIDES_DATA[currentSlide];
+            tag.textContent = data.tag;
+
+            headline.classList.remove('visible');
+            setTimeout(() => {
+                headline.innerHTML = data.headline;
+                sub.textContent = data.sub;
+                headline.classList.add('visible');
+            }, 80);
+
+            setTimeout(() => { isAnimating = false; }, 900);
+
+            clearInterval(slideTimer);
+            startTimer();
+        }
+
+        function nextSlide() {
+            const count = document.querySelectorAll('.hero-slide').length;
+            goToSlide((currentSlide + 1) % count);
+        }
+
+        function startTimer() {
+            slideTimer = setInterval(nextSlide, INTERVAL);
+        }
+
+        // Allow calling from loader callback
+        window.initHeroSlideshow = initHeroSlideshow;
     </script>
 
 </body>
+
 </html>

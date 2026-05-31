@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members | Crestix Careers — 最高速度で共鳴するプロフェッショナルたち</title>
+    <title>縞谷 蓮志 | Stories | Crestix Careers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -43,99 +43,98 @@
         overflow-x: hidden;
     }
 
-    /* ── Member Cards — Goodpatch Style ── */
-    .member-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #fafafa;
-        border-radius: 1rem;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none;
-    }
-    .member-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 32px -8px rgba(0,0,0,0.1);
-    }
-    .member-photo-wrap {
+    /* ── Netflix/YouTube style Story Cards ── */
+    .story-card {
         position: relative;
         width: 100%;
-        aspect-ratio: 1/1;
-        background: #edf2f7;
+        aspect-ratio: 16/9;
+        border-radius: 1rem;
         overflow: hidden;
+        cursor: pointer;
+        transform: translateZ(0);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+        transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+        display: block;
     }
-    .member-role-top {
-        position: absolute;
-        top: 24px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        color: #FF5C00;
+    .story-card:hover {
+        transform: scale(1.05) translateY(-4px);
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
         z-index: 10;
     }
-    .member-photo {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        transition: transform 0.5s ease;
+    .story-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition: filter 0.4s ease, transform 0.6s ease;
+        filter: brightness(0.7);
     }
-    .member-card:hover .member-photo {
-        transform: scale(1.05);
+    .story-card:hover .story-bg {
+        filter: brightness(1.1);
+        transform: scale(1.03);
     }
-    .member-info {
-        padding: 24px 24px 32px;
-        width: 100%;
+    .story-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.75) 100%);
+        pointer-events: none;
+    }
+    .story-content {
+        position: absolute;
+        inset: 0;
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        justify-content: flex-end;
+        color: white;
+        pointer-events: none;
     }
-    .member-name {
-        font-family: 'Noto Sans JP', sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        color: #333;
-        margin-bottom: 12px;
-    }
-    .member-tagline {
-        font-size: 12px;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 24px;
-        min-height: 38px;
-    }
-    .member-entry-btn {
-        display: inline-flex;
+    .story-play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        width: 64px;
+        height: 64px;
+        background: rgba(0,0,0,0.5);
+        border: 2px solid rgba(255,255,255,0.8);
+        border-radius: 50%;
+        display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        backdrop-filter: blur(4px);
+        transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), background 0.3s;
+    }
+    .story-play-btn i {
+        color: #fff;
+        font-size: 24px;
+        margin-left: 4px;
+    }
+    .story-card:hover .story-play-btn {
+        transform: translate(-50%, -50%) scale(1.15);
         background: #FF5C00;
-        color: white;
+        border-color: #FF5C00;
+    }
+    .story-ep {
         font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        padding: 10px 40px;
-        border-radius: 99px;
-        margin-bottom: 16px;
-        transition: background 0.2s;
-    }
-    .member-entry-btn:hover {
-        background: #E65200;
-    }
-    .member-charm-link {
-        font-size: 12px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
         color: #FF5C00;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        transition: color 0.2s;
+        margin-bottom: 6px;
     }
-    .member-charm-link:hover {
-        color: #E65200;
+    .story-title {
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .story-meta {
+        font-size: 11px;
+        color: rgba(255,255,255,0.7);
+        font-weight: 600;
+        letter-spacing: 0.05em;
     }
     .corp-hero {
         background-image:
@@ -152,6 +151,56 @@
     .reveal-d3 { transition-delay: 0.3s; }
 
     </style>
+
+    <style>
+    .story-detail-hero {
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        min-height: 600px;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .story-detail-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(10,15,30,0.95) 0%, rgba(10,15,30,0.4) 50%, rgba(10,15,30,0.2) 100%);
+    }
+    .qa-box {
+        border-left: 2px solid #E5E7EB;
+        padding-left: 1.5rem;
+        margin-bottom: 3rem;
+        transition: border-color 0.3s;
+    }
+    .qa-box:hover {
+        border-left-color: #FF5C00;
+    }
+    .qa-q {
+        font-size: 1.25rem;
+        font-weight: 900;
+        color: #111;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    .qa-q::before {
+        content: 'Q.';
+        color: #FF5C00;
+        font-family: 'Poppins', sans-serif;
+    }
+    .qa-a {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #444;
+    }
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    </style>
+
 </head>
 <body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
 
@@ -664,137 +713,169 @@
 </style>
 
 
+
+
 <main>
     <!-- HERO -->
-    <div class="corp-hero flex flex-col justify-end pt-40">
-        <div class="max-w-7xl mx-auto px-6 lg:px-14 pb-12 w-full reveal visible">
-            <p class="text-white/70 text-xs font-black tracking-[0.4em] uppercase mb-4 font-poppins">
-                Crestix / Stories
-            </p>
-            <h1 class="text-5xl lg:text-7xl font-black font-poppins tracking-tighter uppercase leading-none text-white drop-shadow-lg mb-4">
-                Stories
-            </h1>
-            <p class="text-white/90 text-lg font-bold">
-                社員の数だけ、挑戦の物語がある。
-            </p>
-        </div>
-    </div>
-
-    <!-- LEAD -->
-    <section class="py-24 bg-white px-6">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <p class="text-xl md:text-2xl font-bold leading-loose text-gray-800 tracking-wide">
-                Crestixで働くメンバーがどのような意思決定をし、<br class="hidden md:block">
-                どんな挑戦をしているのか。<br>
-                そのリアルなストーリーを紹介します。
-            </p>
-        </div>
-    </section>
-
-    <!-- STORIES GRID -->
-    <section class="pb-32 bg-white px-6 lg:px-14">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="member-card reveal">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">CEO</div>
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="縞谷 蓮志">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">代表取締役 | 縞谷 蓮志</h3>
-                        <p class="member-tagline">日本で最も挑戦できる会社を創る<br>次世代のリーダー</p>
-                        <a href="story-renshi.html" class="member-entry-btn">
-                            Entry <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                        <a href="story-renshi.html" class="member-charm-link">この職種の魅力</a>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="member-card reveal reveal-d1">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">Executive</div>
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="西田 翔">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">役員 | 西田 翔</h3>
-                        <p class="member-tagline">プレイヤーから経営へ<br>事業成長を牽引する</p>
-                        <a href="story-nishida.html" class="member-entry-btn">
-                            Entry <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                        <a href="story-nishida.html" class="member-charm-link">この職種の魅力</a>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="member-card reveal reveal-d2">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">Sales Manager</div>
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="髙原 一真">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">営業IS統括 | 髙原 一真</h3>
-                        <p class="member-tagline">営業を科学する<br>圧倒的成果を創出するプロ</p>
-                        <a href="story-takahara.html" class="member-entry-btn">
-                            Entry <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                        <a href="story-takahara.html" class="member-charm-link">この職種の魅力</a>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="member-card reveal reveal-d3">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">HD Manager</div>
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="魚井 風太">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">HD統括 | 魚井 風太</h3>
-                        <p class="member-tagline">ゼロから組織を創る<br>組織開発のスペシャリスト</p>
-                        <a href="story-uoi.html" class="member-entry-btn">
-                            Entry <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                        <a href="story-uoi.html" class="member-charm-link">この職種の魅力</a>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="member-card reveal">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">Division Manager</div>
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="松岡 龍士">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">第一事業部統括 | 松岡 龍士</h3>
-                        <p class="member-tagline">売上を作る最前線へ<br>クライアントワークの要</p>
-                        <a href="story-matsuoka.html" class="member-entry-btn">
-                            Entry <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                        <a href="story-matsuoka.html" class="member-charm-link">この職種の魅力</a>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="member-card reveal reveal-d1">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">HD FS Member</div>
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="今福 裕也">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">HD FSメンバー | 今福 裕也</h3>
-                        <p class="member-tagline">現場で最速成長する方法<br>プレイヤーとしての矜持</p>
-                        <a href="story-imafuku.html" class="member-entry-btn">
-                            Entry <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                        <a href="story-imafuku.html" class="member-charm-link">この職種の魅力</a>
-                    </div>
+    <section class="story-detail-hero" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1600&auto=format&fit=crop');">
+        <div class="story-detail-overlay"></div>
+        <div class="absolute inset-0 flex flex-col justify-end pb-20 px-6 lg:px-20">
+            <div class="max-w-5xl mx-auto w-full reveal visible">
+                <span class="text-crestix-orange font-poppins font-black text-sm md:text-base tracking-[0.2em] uppercase mb-4 block">
+                    EP.01
+                </span>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-8 text-shadow-lg">
+                    日本で最も挑戦できる会社を創る
+                </h1>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-1 bg-crestix-orange"></div>
+                    <p class="text-white/80 font-bold text-lg md:text-xl tracking-wider">
+                        代表取締役 | 縞谷 蓮志
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- PROFILE -->
+    <section class="py-20 bg-gray-50 border-b border-gray-200 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl font-black mb-10 font-poppins tracking-widest uppercase flex items-center gap-4 reveal">
+                <span class="w-2 h-2 bg-crestix-orange rounded-full block"></span>
+                Profile
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 reveal reveal-d1">
+                <div>
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Name</p>
+                    <p class="text-lg font-black text-gray-800">縞谷 蓮志</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Position</p>
+                    <p class="text-lg font-black text-gray-800">代表取締役</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Career</p>
+                    <p class="text-sm font-medium text-gray-600 leading-relaxed">
+                        大学卒業後、大手企業での営業経験を経てCrestixに参画。
+                        圧倒的な成果を出し続け、現在のポジションに至る。
+                    </p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Strength</p>
+                    <p class="text-sm font-medium text-gray-600 leading-relaxed">
+                        現状に満足しない推進力と、周囲を巻き込むリーダーシップ。
+                        常に逆算思考で事業課題の解決にあたる。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERVIEW -->
+    <section class="py-24 bg-white px-6 lg:px-20">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-crestix-orange font-poppins font-black text-[10px] tracking-[0.4em] uppercase block mb-3">Interview</span>
+                <h2 class="text-3xl md:text-4xl font-black text-crestix-charcoal tracking-tighter">
+                    縞谷 蓮志のストーリー
+                </h2>
+            </div>
+            
+            <div class="qa-box reveal">
+                <h3 class="qa-q">なぜCrestixへ入社を決めたのですか？</h3>
+                <p class="qa-a">
+                    「日本で最も挑戦できる環境」というビジョンに強く共感したからです。前職でもそれなりに成果は出せていましたが、もっと圧倒的なスピードで成長したい、社会に大きなインパクトを残したいという思いがありました。Crestixの面接で代表やメンバーと話す中で、ここならそれが実現できると確信しました。
+                </p>
+            </div>
+
+            <div class="qa-box reveal">
+                <h3 class="qa-q">現在はどんな仕事をしていますか？</h3>
+                <p class="qa-a">
+                    代表取締役として、事業の成長を牽引する役割を担っています。単に目の前の数字を追うだけでなく、仕組み化やメンバーの育成、新規戦略の立案など、経営視点でのアクションが求められます。責任は大きいですが、その分裁量も大きく、毎日が刺激的です。
+                </p>
+            </div>
+
+            <div class="qa-box reveal">
+                <h3 class="qa-q">入社して驚いたことは何ですか？</h3>
+                <p class="qa-a">
+                    意思決定のスピードの速さと、年齢や社歴に関係なく意見がフラットに飛び交うカルチャーです。「誰が言ったか」ではなく「何を言ったか」が純粋に評価されるため、若手でも本質的な提案であれば即日採用されてプロジェクトが動き出します。
+                </p>
+            </div>
+
+            <div class="qa-box reveal">
+                <h3 class="qa-q">今後挑戦したいことは？</h3>
+                <p class="qa-a">
+                    今の事業を業界トップクラスまで引き上げることはもちろんですが、ゆくゆくは新しい事業領域の立ち上げにも挑戦したいです。Crestixにはそれを後押ししてくれる環境があるので、自分自身の限界を決めずに突き進んでいきたいと思っています。
+                </p>
+            </div>
+
+            <div class="qa-box reveal">
+                <h3 class="qa-q">どんな人に来てほしいですか？</h3>
+                <p class="qa-a">
+                    現状維持を嫌い、常に変化と成長を求めている人ですね。未経験でも全く問題ありません。大切なのは「絶対に成し遂げてやる」という覚悟と熱量です。私たちと一緒に、最高の景色を見に行きましょう。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="py-24 bg-gray-900 px-6 lg:px-14">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-crestix-orange font-poppins font-black text-[10px] tracking-[0.4em] uppercase block mb-3">Gallery</span>
+                <h2 class="text-3xl md:text-4xl font-black text-white tracking-tighter">
+                    Work & Life
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="aspect-square bg-gray-800 rounded-2xl overflow-hidden reveal">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity hover:scale-110 duration-700" alt="Work">
+                </div>
+                <div class="aspect-square bg-gray-800 rounded-2xl overflow-hidden reveal reveal-d1">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity hover:scale-110 duration-700" alt="Meeting">
+                </div>
+                <div class="aspect-square bg-gray-800 rounded-2xl overflow-hidden reveal reveal-d2">
+                    <img src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity hover:scale-110 duration-700" alt="Event">
+                </div>
+                <div class="aspect-square bg-gray-800 rounded-2xl overflow-hidden reveal reveal-d1">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity hover:scale-110 duration-700" alt="Daily">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MESSAGE -->
+    <section class="py-24 bg-white px-6">
+        <div class="max-w-4xl mx-auto reveal">
+            <div class="bg-gray-50 rounded-[2rem] p-10 md:p-16 border border-gray-200 relative overflow-hidden">
+                <i class="fa-solid fa-quote-left absolute top-10 left-10 text-6xl text-gray-200 opacity-50"></i>
+                <div class="relative z-10">
+                    <h3 class="text-xl md:text-2xl font-black text-gray-800 leading-relaxed text-center mb-8">
+                        「迷ったら、より困難で挑戦的な道を選んでほしい。<br class="hidden md:block">
+                        Crestixには、その挑戦を最高の仲魔が全力で支える環境があります。」
+                    </h3>
+                    <p class="text-center text-gray-500 font-bold">代表取締役 / 縞谷 蓮志</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200 text-center px-6">
+        <div class="max-w-3xl mx-auto reveal">
+            <h2 class="text-2xl font-black mb-8 tracking-tight">一緒に働く仲間を探しています</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="jobs.html" class="inline-flex items-center justify-center bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-10 py-5 rounded-full font-black text-[11px] tracking-[0.3em] uppercase shadow-[0_20px_50px_rgba(255,92,0,0.4)] hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(255,92,0,0.55)] transition-all">
+                    Entry Now ➔
+                </a>
+                <a href="members.html" class="inline-flex items-center justify-center bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50 px-10 py-5 rounded-full font-black text-[11px] tracking-[0.3em] uppercase transition-all">
+                    View All Stories
+                </a>
+            </div>
+        </div>
+    </section>
 </main>
+
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="bg-crestix-navy text-white select-none border-t border-white/5 relative z-10">

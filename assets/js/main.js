@@ -235,4 +235,16 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Intersection Observer for scroll animations (.reveal -> .visible)
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });

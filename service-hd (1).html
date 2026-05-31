@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>バクラク事業 | Crestix — 第1事業部</title>
+    <title>HD事業部 | Crestix — Homepage Delivery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -343,7 +343,7 @@
             text-transform: uppercase;
         }
 
-        /* ── HERO (corporate.html style) ── */
+        /* ── HERO ── */
         .div-hero {
             background-image:
                 linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 50%, rgba(0, 0, 0, 0.15) 100%),
@@ -368,21 +368,10 @@
             transform: translateY(0);
         }
 
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
-        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* ── SECTION LABEL ── */
         .sec-label {
@@ -394,7 +383,7 @@
             color: var(--orange);
         }
 
-        /* ── PAGE LAYOUT: sidebar + content ── */
+        /* ── PAGE LAYOUT ── */
         .page-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -407,7 +396,7 @@
             }
         }
 
-        /* ── LEFT SIDEBAR (sticky TOC) ── */
+        /* ── LEFT SIDEBAR ── */
         .sidebar {
             display: none;
             padding: 80px 0 80px 0;
@@ -517,7 +506,7 @@
             line-height: 1.2;
         }
 
-        /* ── ABOUT SECTION ── */
+        /* ── ABOUT ── */
         .about-lead {
             font-size: 1.5rem;
             font-weight: 900;
@@ -654,14 +643,8 @@
             align-items: start;
         }
 
-        .step-row:first-child {
-            padding-top: 0;
-        }
-
-        .step-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
+        .step-row:first-child { padding-top: 0; }
+        .step-row:last-child { border-bottom: none; padding-bottom: 0; }
 
         .step-num {
             font-family: 'Poppins', sans-serif;
@@ -709,10 +692,7 @@
             transition: background 0.2s;
         }
 
-        .career-item:first-child {
-            border-radius: 16px 0 0 16px;
-        }
-
+        .career-item:first-child { border-radius: 16px 0 0 16px; }
         .career-item:last-child {
             border-radius: 0 16px 16px 0;
             background: var(--orange);
@@ -720,18 +700,11 @@
         }
 
         @media(max-width: 767px) {
-            .career-item:first-child {
-                border-radius: 16px 16px 0 0;
-            }
-
-            .career-item:last-child {
-                border-radius: 0 0 16px 16px;
-            }
+            .career-item:first-child { border-radius: 16px 16px 0 0; }
+            .career-item:last-child { border-radius: 0 0 16px 16px; }
         }
 
-        .career-item+.career-item {
-            border-left: none;
-        }
+        .career-item+.career-item { border-left: none; }
 
         @media(max-width: 767px) {
             .career-item+.career-item {
@@ -750,9 +723,7 @@
             margin-bottom: 8px;
         }
 
-        .career-item:last-child .career-period {
-            color: rgba(255, 255, 255, 0.7);
-        }
+        .career-item:last-child .career-period { color: rgba(255, 255, 255, 0.7); }
 
         .career-role {
             font-family: 'Poppins', sans-serif;
@@ -762,9 +733,7 @@
             margin-bottom: 6px;
         }
 
-        .career-item:last-child .career-role {
-            color: #fff;
-        }
+        .career-item:last-child .career-role { color: #fff; }
 
         .career-desc {
             font-size: 12px;
@@ -772,9 +741,7 @@
             line-height: 1.7;
         }
 
-        .career-item:last-child .career-desc {
-            color: rgba(255, 255, 255, 0.7);
-        }
+        .career-item:last-child .career-desc { color: rgba(255, 255, 255, 0.7); }
 
         /* ── PERSONA ── */
         .persona-grid {
@@ -965,25 +932,10 @@
             flex-shrink: 0;
         }
 
-        .badge-sales {
-            background: #fff3ed;
-            color: var(--orange);
-        }
-
-        .badge-marketing {
-            background: #eff6ff;
-            color: #2563eb;
-        }
-
-        .badge-cs {
-            background: #f0fdf4;
-            color: #16a34a;
-        }
-
-        .badge-consulting {
-            background: #faf5ff;
-            color: #7c3aed;
-        }
+        .badge-sales { background: #fff3ed; color: var(--orange); }
+        .badge-marketing { background: #eff6ff; color: #2563eb; }
+        .badge-cs { background: #f0fdf4; color: #16a34a; }
+        .badge-consulting { background: #faf5ff; color: #7c3aed; }
 
         .acc-title {
             font-size: 15px;
@@ -1002,9 +954,7 @@
         }
 
         @media(min-width: 640px) {
-            .acc-meta {
-                display: block;
-            }
+            .acc-meta { display: block; }
         }
 
         .acc-icon {
@@ -1046,9 +996,7 @@
         }
 
         @media(min-width: 768px) {
-            .acc-content {
-                grid-template-columns: 1fr 1fr;
-            }
+            .acc-content { grid-template-columns: 1fr 1fr; }
         }
 
         .acc-detail-label {
@@ -1097,9 +1045,7 @@
         }
 
         @media(max-width: 768px) {
-            .cta-section {
-                padding: 60px 1.5rem;
-            }
+            .cta-section { padding: 60px 1.5rem; }
         }
 
         .cta-title {
@@ -1137,9 +1083,7 @@
         }
 
         /* SCROLL LOCK */
-        body.menu-open {
-            overflow: hidden;
-        }
+        body.menu-open { overflow: hidden; }
     </style>
 </head>
 
@@ -1186,18 +1130,18 @@
         </div>
     </nav>
 
-    <!-- ══ HERO (corporate.html style) ══ -->
+    <!-- ══ HERO ══ -->
     <div class="div-hero flex flex-col justify-end pt-40">
         <div style="max-width:1200px; margin:0 auto; padding: 0 2rem 3rem; width:100%;">
             <p
                 style="color:rgba(255,255,255,0.6); font-size:11px; font-family:'Poppins',sans-serif; font-weight:800; letter-spacing:0.35em; text-transform:uppercase; margin-bottom:1rem;">
-                Service / <span style="color:var(--orange);">Division 01</span>
+                Service / <span style="color:var(--orange);">Division HD</span>
             </p>
             <h1
                 style="font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(2.5rem,6vw,5rem); letter-spacing:-0.04em; line-height:1; color:#fff; margin-bottom:1rem;">
-                Division 01
+                Division HD
             </h1>
-            <p style="color:rgba(255,255,255,0.75); font-size:1.05rem; font-weight:700;">医療機関向けマーケティング事業</p>
+            <p style="color:rgba(255,255,255,0.75); font-size:1.05rem; font-weight:700;">飲食店向けホームページ制作・集客支援事業</p>
         </div>
     </div>
 
@@ -1208,10 +1152,13 @@
         <!-- LEFT SIDEBAR -->
         <aside class="sidebar">
             <div class="sidebar-inner">
-                <p class="sidebar-title">Division 01</p>
+                <p class="sidebar-title">Division HD</p>
                 <a href="#about" class="toc-link active">事業について</a>
                 <a href="#service" class="toc-link">提供サービス</a>
-
+                <a href="#numbers" class="toc-link">数字で見る</a>
+                <a href="#how" class="toc-link">仕事の流れ</a>
+                <a href="#career" class="toc-link">キャリアパス</a>
+                <a href="#persona" class="toc-link">求める人物像</a>
                 <a href="#members" class="toc-link">メンバー紹介</a>
                 <div class="toc-divider"></div>
                 <a href="#jobs" class="toc-link" style="color:var(--orange); font-weight:900;">募集中のポジション</a>
@@ -1227,15 +1174,14 @@
             <section id="about" class="content-section">
                 <div class="section-header reveal">
                     <p class="sec-label">Overview</p>
-                    <h2 class="section-title">単なる広告会社<br>ではない。</h2>
+                    <h2 class="section-title">飲食店の成長を、<br>Webから支える。</h2>
                 </div>
                 <p class="about-lead reveal reveal-delay-1">
-                    医療とデータを掛け合わせ、<br>地域の患者と医院をつなぐ。
+                    ホームページとデータを武器に、<br>飲食店の売上を最大化する。
                 </p>
                 <p class="about-body reveal reveal-delay-2">
-                    第1事業部は、医療機関向けマーケティングに特化した事業部です。「Crestix
-                    MEO」によるGoogleマップ集客支援と、マイナビクリニックを通じた記事広告送客サービスを主軸に、クリニック・医院の集患課題を解決しています。<br><br>
-                    私たちのミッションは明確です。地域医療を支えるクリニックの集患課題を解決し、患者と医療機関をつなぐこと。テクノロジーを武器に、地域社会の医療インフラを守る仕事です。
+                    HD事業部は、飲食店向けのホームページ制作・集客支援に特化した事業部です。「ホームページ制作」「MEO対策」「SNS集客支援」を主軸に、飲食店の売上課題を解決しています。<br><br>
+                    私たちのミッションは、地域の飲食店が持続的に成長できる仕組みを作ること。テクノロジーとクリエイティブを武器に、飲食業界のデジタル化を支えます。
                 </p>
             </section>
 
@@ -1248,56 +1194,56 @@
                 <div class="service-grid">
                     <div class="service-card reveal reveal-delay-1">
                         <div class="service-card-icon" style="background:#fff3ed;">
-                            <i class="fa-solid fa-location-dot" style="color:var(--orange); font-size:1.25rem;"></i>
+                            <i class="fa-solid fa-globe" style="color:var(--orange); font-size:1.25rem;"></i>
                         </div>
-                        <p class="service-card-name">Crestix MEO</p>
-                        <p class="service-card-desc">Googleマップ上での医院の露出を最大化し、地域患者との接点を創出。検索上位表示と口コミ管理で集患力を高める。</p>
+                        <p class="service-card-name">ホームページ制作</p>
+                        <p class="service-card-desc">飲食店に特化したデザインと機能を持つホームページを制作。予約導線・メニュー表示・SNS連携まで一括対応。</p>
                     </div>
                     <div class="service-card reveal reveal-delay-2">
                         <div class="service-card-icon" style="background:#eff6ff;">
-                            <i class="fa-solid fa-newspaper" style="color:#2563eb; font-size:1.25rem;"></i>
+                            <i class="fa-solid fa-magnifying-glass-location" style="color:#2563eb; font-size:1.25rem;"></i>
                         </div>
-                        <p class="service-card-name">マイナビ送客</p>
-                        <p class="service-card-desc">クリニックおすすめ記事を通じ、求める患者層へ確実にリーチ。高品質なコンテンツで信頼と認知を同時に獲得。</p>
+                        <p class="service-card-name">MEO・集客支援</p>
+                        <p class="service-card-desc">Googleマップでの上位表示を実現し、近隣ユーザーからの流入を最大化。口コミ管理も含めた継続支援。</p>
                     </div>
                     <div class="service-card reveal reveal-delay-3" style="grid-column: 1 / -1;">
                         <div class="service-card-icon" style="background:#f0fdf4;">
                             <i class="fa-solid fa-chart-line" style="color:#16a34a; font-size:1.25rem;"></i>
                         </div>
-                        <p class="service-card-name">データドリブン戦略</p>
-                        <p class="service-card-desc">単なる広告出稿ではなく、データ分析に基づく継続的な改善サイクルで成果を最大化。KPIを追いながら月次で施策を磨き続ける。</p>
+                        <p class="service-card-name">売上向上コンサルティング</p>
+                        <p class="service-card-desc">データ分析に基づき、来店数・客単価・リピート率を改善。現場に寄り添った継続的な改善サイクルを提供。</p>
                     </div>
                 </div>
             </section>
 
             <!-- ③ NUMBERS -->
-            <!-- <section id="numbers" class="content-section">
+            <section id="numbers" class="content-section">
                 <div class="section-header reveal">
                     <p class="sec-label">Numbers</p>
-                    <h2 class="section-title">数字で見る第1事業部</h2>
+                    <h2 class="section-title">数字で見るHD事業部</h2>
                 </div>
                 <div class="numbers-grid reveal reveal-delay-1">
                     <div class="number-item">
-                        <p class="number-val">12<span class="number-unit" style="font-size:1.2rem;">名</span></p>
+                        <p class="number-val">8<span class="number-unit" style="font-size:1.2rem;">名</span></p>
                         <p class="number-label">事業部メンバー</p>
                     </div>
                     <div class="number-item">
-                        <p class="number-val">24<span class="number-unit" style="font-size:1.2rem;">歳</span></p>
+                        <p class="number-val">25<span class="number-unit" style="font-size:1.2rem;">歳</span></p>
                         <p class="number-label">平均年齢</p>
                     </div>
                     <div class="number-item">
-                        <p class="number-val">200<span class="number-unit" style="font-size:1.2rem;">+</span></p>
-                        <p class="number-label">年間契約クリニック数</p>
+                        <p class="number-val">150<span class="number-unit" style="font-size:1.2rem;">+</span></p>
+                        <p class="number-label">年間契約店舗数</p>
                     </div>
                     <div class="number-item" style="background:#fff8f5; border-color:rgba(255,92,0,0.15);">
-                        <p class="number-val">280<span class="number-unit" style="font-size:1.2rem;">%</span></p>
+                        <p class="number-val">210<span class="number-unit" style="font-size:1.2rem;">%</span></p>
                         <p class="number-label">前年比成長率</p>
                     </div>
                 </div>
-            </section> -->
+            </section>
 
             <!-- ④ HOW WE WORK -->
-            <!-- <section id="how" class="content-section">
+            <section id="how" class="content-section">
                 <div class="section-header reveal">
                     <p class="sec-label">How We Work</p>
                     <h2 class="section-title">仕事の流れ</h2>
@@ -1306,36 +1252,36 @@
                     <div class="step-row reveal">
                         <div class="step-num">01</div>
                         <div>
-                            <p class="step-title">顧客ヒアリング</p>
-                            <p class="step-desc">クリニックの現状・課題・目標を深く理解。患者層や診療科目の特性も把握し、最適な戦略設計の土台を作る。</p>
+                            <p class="step-title">ヒアリング</p>
+                            <p class="step-desc">飲食店のコンセプト・課題・ターゲット客層を深くヒアリング。競合調査も実施。</p>
                         </div>
                     </div>
                     <div class="step-row reveal reveal-delay-1">
                         <div class="step-num">02</div>
                         <div>
-                            <p class="step-title">データ分析</p>
-                            <p class="step-desc">競合クリニックや地域特性を分析。Googleマップの現在地と改善ポイントを可視化し、打ち手の根拠を明確にする。</p>
+                            <p class="step-title">企画・設計</p>
+                            <p class="step-desc">ホームページの構成・デザイン方針・集客戦略を立案。クライアントと方向性を合意する。</p>
                         </div>
                     </div>
                     <div class="step-row reveal reveal-delay-2">
                         <div class="step-num">03</div>
                         <div>
-                            <p class="step-title">戦略提案・導入</p>
-                            <p class="step-desc">MEO施策・記事広告の最適な組み合わせを提案し、迅速に実装・配信開始する。スピードが差別化の鍵。</p>
+                            <p class="step-title">制作・導入</p>
+                            <p class="step-desc">デザイン・コーディング・MEO設定を実施。スピード重視で最短2週間で公開。</p>
                         </div>
                     </div>
                     <div class="step-row reveal reveal-delay-3">
                         <div class="step-num">04</div>
                         <div>
-                            <p class="step-title">継続改善・報告</p>
-                            <p class="step-desc">KPIを追いながら月次レポートを提出。データに基づき継続的に施策を磨き、クライアントと共に成長し続ける。</p>
+                            <p class="step-title">運用・改善</p>
+                            <p class="step-desc">公開後もアクセス解析・口コミ管理・コンテンツ更新で継続改善。成果を数値で報告。</p>
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
 
-
-            <!-- <section id="career" class="content-section">
+            <!-- ⑤ CAREER PATH -->
+            <section id="career" class="content-section">
                 <div class="section-header reveal">
                     <p class="sec-label">Career Path</p>
                     <h2 class="section-title">キャリアパス</h2>
@@ -1363,48 +1309,45 @@
                         <p class="career-desc">事業を創る。次の事業の立ち上げも視野に。</p>
                     </div>
                 </div>
-            </section> -->
+            </section>
 
-            <!-- <section id="persona" class="content-section">
+            <!-- ⑥ PERSONA -->
+            <section id="persona" class="content-section">
                 <div class="section-header reveal">
                     <p class="sec-label">Persona</p>
                     <h2 class="section-title">求める人物像</h2>
                 </div>
                 <div class="persona-grid">
                     <div class="persona-item reveal reveal-delay-1">
-                        <div class="persona-check"><i class="fa-solid fa-check" style="color:#fff; font-size:12px;"></i>
-                        </div>
+                        <div class="persona-check"><i class="fa-solid fa-check" style="color:#fff; font-size:12px;"></i></div>
                         <div>
                             <p class="persona-title">成長意欲が高い</p>
                             <p class="persona-desc">昨日より今日、今日より明日の自分へ。自己成長を楽しめる人。</p>
                         </div>
                     </div>
                     <div class="persona-item reveal reveal-delay-2">
-                        <div class="persona-check"><i class="fa-solid fa-check" style="color:#fff; font-size:12px;"></i>
-                        </div>
+                        <div class="persona-check"><i class="fa-solid fa-check" style="color:#fff; font-size:12px;"></i></div>
                         <div>
-                            <p class="persona-title">数字・データが好き</p>
-                            <p class="persona-desc">KPIを追いながら成果を科学的に最大化することに喜びを感じる人。</p>
+                            <p class="persona-title">クリエイティブへの関心がある</p>
+                            <p class="persona-desc">デザインやコンテンツの力でビジネスを動かすことに興味がある人。</p>
                         </div>
                     </div>
                     <div class="persona-item reveal reveal-delay-1">
-                        <div class="persona-check"><i class="fa-solid fa-check" style="color:#fff; font-size:12px;"></i>
-                        </div>
+                        <div class="persona-check"><i class="fa-solid fa-check" style="color:#fff; font-size:12px;"></i></div>
                         <div>
-                            <p class="persona-title">社会貢献への意識が高い</p>
-                            <p class="persona-desc">医療という社会インフラを支えることに誇りとやりがいを感じる人。</p>
+                            <p class="persona-title">地域貢献への意識が高い</p>
+                            <p class="persona-desc">地域の飲食店を支えることに誇りとやりがいを感じる人。</p>
                         </div>
                     </div>
                     <div class="persona-item reveal reveal-delay-2">
-                        <div class="persona-check"><i class="fa-solid fa-check" style="color:#fff; font-size:12px;"></i>
-                        </div>
+                        <div class="persona-check"><i class="fa-solid fa-check" style="color:#fff; font-size:12px;"></i></div>
                         <div>
                             <p class="persona-title">チームで成果を出せる</p>
                             <p class="persona-desc">個の力をチームに還元し、共に大きな成果を生み出せる人。</p>
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
 
             <!-- ⑦ MEMBERS -->
             <section id="members" class="content-section">
@@ -1419,8 +1362,8 @@
                         </div>
                         <div class="member-body">
                             <p class="member-role">Sales</p>
-                            <p class="member-name">田中 蓮</p>
-                            <p class="member-quote">「数字で結果が出るから達成感が違う。毎月自分の成長を実感できる仕事です」</p>
+                            <p class="member-name">山田 翔</p>
+                            <p class="member-quote">「お店のオーナーさんが喜ぶ顔が見えるから、毎日の仕事が楽しい」</p>
                         </div>
                     </a>
                     <a href="members.html" class="member-card reveal reveal-delay-2">
@@ -1428,9 +1371,9 @@
                             <i class="fa-solid fa-user-circle" style="font-size:4rem; color:rgba(255,255,255,0.3);"></i>
                         </div>
                         <div class="member-body">
-                            <p class="member-role">Marketing</p>
-                            <p class="member-name">鈴木 葵</p>
-                            <p class="member-quote">「地域医療に貢献できているという実感が、毎日の仕事のモチベーションになっています」</p>
+                            <p class="member-role">Web Designer</p>
+                            <p class="member-name">中村 彩</p>
+                            <p class="member-quote">「デザインで飲食店の魅力を最大限に引き出せることが何よりの喜びです」</p>
                         </div>
                     </a>
                     <a href="members.html" class="member-card reveal reveal-delay-3">
@@ -1439,8 +1382,8 @@
                         </div>
                         <div class="member-body">
                             <p class="member-role">CS</p>
-                            <p class="member-name">佐藤 悠</p>
-                            <p class="member-quote">「クライアントの院長先生に感謝されたとき、この仕事を選んで良かったと思います」</p>
+                            <p class="member-name">松本 健</p>
+                            <p class="member-quote">「数字で成果が出たとき、クライアントと一緒に喜べる瞬間が最高です」</p>
                         </div>
                     </a>
                 </div>
@@ -1462,8 +1405,7 @@
                     <p style="font-size:14px; color:var(--text-sub); margin-top:12px;">
                         職種名をクリックすると詳細が開きます。
                         <a href="jobs.html"
-                            style="color:var(--orange); font-weight:700; text-decoration:none; margin-left:12px;">すべての職種を見る
-                            →</a>
+                            style="color:var(--orange); font-weight:700; text-decoration:none; margin-left:12px;">すべての職種を見る →</a>
                     </p>
                 </div>
 
@@ -1483,8 +1425,7 @@
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">
-                                        テレアポ・メール・SNSを駆使したリード獲得。フィールドセールスへのアポイント引き渡しまでを担当し、パイプラインの最上流を支える。</p>
+                                    <p class="acc-detail-text">テレアポ・メール・SNSを駆使したリード獲得。フィールドセールスへのアポイント引き渡しまでを担当し、パイプラインの最上流を支える。</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">求めるスキル</p>
@@ -1513,8 +1454,7 @@
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">
-                                        クリニックへの新規提案からクロージングまで担う。テレアポ・訪問・提案資料作成・受注後の引き継ぎまで一気通貫で携わる。成果に直結する実感が得られる仕事。</p>
+                                    <p class="acc-detail-text">飲食店への新規提案からクロージングまで担う。テレアポ・訪問・提案資料作成・受注後の引き継ぎまで一気通貫で携わる。成果に直結する実感が得られる仕事。</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">求めるスキル</p>
@@ -1543,7 +1483,7 @@
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">既存クライアントの成功を導く。月次報告と改善提案でクリニックの成長を伴走。解約率の低下と追加受注がKPI。</p>
+                                    <p class="acc-detail-text">既存クライアントの成功を導く。月次報告と改善提案で飲食店の成長を伴走。解約率の低下と追加受注がKPI。</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">求めるスキル</p>
@@ -1564,10 +1504,9 @@
     <!-- ══ CTA ══ -->
     <section class="cta-section">
         <div style="max-width:640px; margin:0 auto;">
-            <p class="sec-label reveal" style="color:rgba(255,92,0,0.8); margin-bottom:1rem;">Division 01 — Recruitment
-            </p>
-            <h2 class="cta-title reveal reveal-delay-1">医療と社会を、<br>共に前進させよう。</h2>
-            <p class="cta-sub reveal reveal-delay-2">地域医療のインフラを支えながら、自分自身も急成長できる環境がここにあります。</p>
+            <p class="sec-label reveal" style="color:rgba(255,92,0,0.8); margin-bottom:1rem;">Division HD — Recruitment</p>
+            <h2 class="cta-title reveal reveal-delay-1">飲食業界の未来を、<br>共に創ろう。</h2>
+            <p class="cta-sub reveal reveal-delay-2">地域の飲食店を支えながら、クリエイティブとデータで自分も成長できる環境がここにあります。</p>
             <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;" class="reveal reveal-delay-3">
                 <a href="jobs.html"
                     style="display:inline-flex; align-items:center; gap:10px; background:#fff; color:var(--orange); font-family:'Poppins',sans-serif; font-size:12px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; text-decoration:none; padding:1rem 2.5rem; border-radius:9999px; box-shadow:0 8px 30px rgba(0,0,0,0.15); transition:transform 0.2s;"
@@ -1602,7 +1541,6 @@
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('cx-navbar');
             const sy = window.scrollY;
-            // After hero (≈520px): switch to light mode
             if (sy > 480) {
                 nav.classList.remove('cx-scrolled');
                 nav.classList.add('cx-light');
@@ -1647,7 +1585,6 @@
         function toggleAccordion(btn) {
             const item = btn.closest('.accordion-item');
             const isOpen = item.classList.contains('open');
-            // Close all in same category
             const category = item.closest('.jobs-category');
             category.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
             if (!isOpen) item.classList.add('open');
@@ -1665,23 +1602,15 @@
 
         /* ── Anchor jump from Job Diagnosis ── */
         (function () {
-            const hash = window.location.hash; // e.g. #jobs-is
+            const hash = window.location.hash;
             if (!hash) return;
             const target = document.querySelector(hash);
             if (!target) return;
 
-            // Wait for page paint then scroll + open + highlight
             setTimeout(() => {
-                // Open the accordion
                 target.classList.add('open');
-
-                // Scroll into view
                 target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Highlight
                 target.classList.add('cx-highlight');
-
-                // Remove highlight after 2.2s
                 setTimeout(() => {
                     target.classList.remove('cx-highlight');
                 }, 2200);

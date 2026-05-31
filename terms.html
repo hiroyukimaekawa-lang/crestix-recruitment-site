@@ -259,7 +259,19 @@
 }
 
 /* Arrow */
-.cx-mega-menu::before {
+
+    /* Bridge the hover gap */
+    .cx-mega-menu::after {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: 0;
+      right: 0;
+      height: 24px;
+      background: transparent;
+    }
+
+    .cx-mega-menu::before {
   content: '';
   position: absolute;
   top: -6px;
