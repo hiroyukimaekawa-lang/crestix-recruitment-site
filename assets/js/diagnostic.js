@@ -1,6 +1,12 @@
 /**
  * Crestix — Job Diagnosis Engine
  * 3ステップ診断 → 結果表示 → jobs.html遷移
+ *
+ * UI Changes:
+ *  - Reset Diagnosisボタン削除
+ *  - ProgressドットをSTEPナビゲーション + シーケンスバーへ変更
+ *  - Returnボタンを左端へ移動
+ *  - "Progress"文言削除
  */
 
 'use strict';
@@ -224,13 +230,85 @@ const diagState = {
 function initDiagnostic() {
   renderStep(1);
 
-  /* Reset button */
+  /* Reset button — removed per UI spec.
+     Legacy element in HTML still exists; hide it gracefully if present. */
   const resetBtn = document.getElementById('diag-restart');
-  if (resetBtn) resetBtn.addEventListener('click', resetDiagnostic);
+  if (resetBtn) resetBtn.style.display = 'none';
 
-  /* Back button */
+  /* Back button — now rendered inline, legacy element hidden */
   const backBtn = document.getElementById('diag-back');
-  if (backBtn) backBtn.addEventListener('click', diagGoBack);
+  if (backBtn) backBtn.style.display = 'none';
+}
+
+/* ─────────────────────────────────────────────
+   STEP NAV — builds the 3-step sequence bar
+   stepNum: 1 | 2 | 3  (4 = result screen → returns empty string)
+───────────────────────────────────────────── */
+function buildStepNav(stepNum) {
+  /* Result screen: hide entirely */
+  if (stepNum >= 4) return '';
+
+  const steps = [
+    { num: 1, label: 'STEP 1' },
+    { num: 2, label: 'STEP 2' },
+    { num: 3, label: 'STEP 3' },
+  ];
+
+  const items = steps.map(s => {
+    let barColor, textColor, fontWeight;
+
+    if (s.num < stepNum) {
+      /* Completed */
+      barColor   = '#1A2B4C';
+      textColor  = '#1A2B4C';
+      fontWeight = '700';
+    } else if (s.num === stepNum) {
+      /* Active */
+      barColor   = '#FF5C00';
+      textColor  = '#FF5C00';
+      fontWeight = '700';
+    } else {
+      /* Inactive — lighter bar and much lighter text */
+      barColor   = 'rgba(0,0,0,0.1)';
+      textColor  = 'rgba(0,0,0,0.18)';
+      fontWeight = '600';
+    }
+
+    return `
+      <div style="
+        flex:1;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:6px;
+        cursor:default;
+      ">
+        <div style="
+          width:100%;
+          height:2px;
+          border-radius:99px;
+          background:${barColor};
+          transition:background 0.4s ease;
+        "></div>
+        <span style="
+          font-family:'Poppins',sans-serif;
+          font-size:8px;
+          font-weight:${fontWeight};
+          letter-spacing:0.28em;
+          text-transform:uppercase;
+          color:${textColor};
+          transition:color 0.4s ease;
+          white-space:nowrap;
+        ">${s.label}</span>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div style="display:flex;gap:12px;align-items:flex-start;width:100%;">
+      ${items}
+    </div>
+  `;
 }
 
 /* ─────────────────────────────────────────────
@@ -241,31 +319,64 @@ function renderStep(stepNum) {
   if (!container) return;
 
   diagState.current = stepNum;
-  updateProgressBar(stepNum);
 
   const step = DIAG_STEPS[stepNum - 1];
 
-  /* Build inner HTML */
+  /* Return button — hidden on step 1 */
+  const returnHTML = stepNum > 1
+    ? `<button onclick="diagGoBack()"
+         style="
+           display:flex;align-items:center;gap:8px;
+           background:none;border:none;cursor:pointer;
+           font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;
+           color:#aaa;letter-spacing:0.3em;text-transform:uppercase;
+           transition:color 0.2s;padding:0;
+         "
+         onmouseover="this.style.color='#FF5C00'"
+         onmouseout="this.style.color='#aaa'">
+        <i class="fa-solid fa-arrow-left-long"></i> Return
+      </button>`
+    : ``;
+
   container.innerHTML = `
-    ${buildProgressBar(stepNum)}
-    <div class="diag-step-body" style="flex:1;">
-      <div style="text-align:center;margin-bottom:3rem;">
-        <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.6em;text-transform:uppercase;color:#FF5C00;display:block;margin-bottom:0.75rem;">${step.label}</span>
-        <h3 style="font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,4vw,2.8rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.04em;line-height:1.1;">${step.question}</h3>
+    <div class="diag-step-body" style="flex:1;display:flex;flex-direction:column;gap:2.5rem;">
+
+      <!-- Question + Options -->
+      <div style="text-align:center;margin-bottom:0.5rem;">
+        <span style="
+          font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;
+          letter-spacing:0.6em;text-transform:uppercase;color:#FF5C00;
+          display:block;margin-bottom:0.75rem;
+        ">${step.label}</span>
+        <h3 style="
+          font-family:'Poppins',sans-serif;
+          font-size:clamp(1.6rem,4vw,2.8rem);font-weight:900;
+          color:#1A2B4C;letter-spacing:-0.04em;line-height:1.1;
+        ">${step.question}</h3>
       </div>
+
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;">
         ${step.options.map(opt => buildOptionCard(stepNum, opt)).join('')}
       </div>
+
     </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#bbb;letter-spacing:0.3em;text-transform:uppercase;">Progress</span>
-        <div style="display:flex;gap:6px;">${buildDots(stepNum)}</div>
-      </div>
-      ${stepNum > 1
-        ? `<button onclick="diagGoBack()" style="display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#aaa;letter-spacing:0.3em;text-transform:uppercase;transition:color 0.2s;" onmouseover="this.style.color='#FF5C00'" onmouseout="this.style.color='#aaa'"><i class="fa-solid fa-arrow-left-long"></i> Return</button>`
-        : `<span></span>`
-      }
+
+    <!-- Step sequence nav — above the divider, aligned to card grid -->
+    <div style="margin-top:2.5rem;">
+      ${buildStepNav(stepNum)}
+    </div>
+
+    <!-- Divider + Return button -->
+    <div style="
+      margin-top:1.5rem;
+      padding-top:1rem;
+      border-top:1px solid rgba(0,0,0,0.06);
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      ${stepNum === 1 ? 'min-height:0;' : ''}
+    ">
+      ${returnHTML}
     </div>
   `;
 }
@@ -303,18 +414,6 @@ function buildOptionCard(stepNum, opt) {
   `;
 }
 
-function buildDots(stepNum) {
-  return [1, 2, 3].map(i => {
-    const done   = i < stepNum;
-    const active = i === stepNum;
-    const bg     = done ? '#1A2B4C' : active ? '#FF5C00' : 'rgba(0,0,0,0.1)';
-    const w      = active ? '2.5rem' : '0.6rem';
-    return `<span style="height:6px;width:${w};border-radius:99px;background:${bg};display:inline-block;transition:all 0.4s ease;"></span>`;
-  }).join('');
-}
-
-function buildProgressBar() { return ''; } /* progress is in dots */
-
 /* ─────────────────────────────────────────────
    INTERACTIONS
 ───────────────────────────────────────────── */
@@ -322,7 +421,6 @@ function diagSelect(stepNum, value) {
   diagState.answers[stepNum] = value;
 
   if (stepNum < 3) {
-    /* Animate out, then render next step */
     const container = document.getElementById('diagnostic-container');
     if (container) {
       container.style.opacity = '0';
@@ -338,8 +436,6 @@ function diagSelect(stepNum, value) {
     showDiagResult();
   }
 }
-
-/* Exposed globally for inline onclick in renderStep fallback */
 window.diagSelect = diagSelect;
 
 function diagGoBack() {
@@ -373,7 +469,7 @@ function resetDiagnostic() {
 }
 window.resetDiagnostic = resetDiagnostic;
 
-/* Legacy support — original HTML onclick="selectDiagnosticOption()" */
+/* Legacy support */
 window.selectDiagnosticOption = function(step, value) {
   diagSelect(step, value);
 };
@@ -402,7 +498,6 @@ function showDiagResult() {
     container.style.opacity = '1';
     container.style.transform = 'translateY(0)';
 
-    /* Stagger tag animations */
     const tags = container.querySelectorAll('.result-tag');
     tags.forEach((tag, i) => {
       tag.style.opacity = '0';
@@ -417,7 +512,6 @@ function showDiagResult() {
 }
 
 function buildResultHTML(result, key) {
-  /* Encode answers for URL */
   const params = new URLSearchParams({
     role:  diagState.answers[1] || '',
     style: diagState.answers[2] || '',
@@ -437,7 +531,6 @@ function buildResultHTML(result, key) {
     ">${tag}</span>
   `).join('');
 
-  /* Summary chips of selected answers */
   const answerChips = [1,2,3].map(n => {
     const val = diagState.answers[n];
     if (!val) return '';
@@ -504,25 +597,18 @@ function buildResultHTML(result, key) {
           最初からやり直す
         </button>
       </div>
-
-    </div>
   `;
 }
 
 /* ─────────────────────────────────────────────
-   PROGRESS BAR HELPER (legacy pbar elements)
+   LEGACY PROGRESS BAR HELPER
+   (pbar-1..4 elements still in HTML; keep neutral)
 ───────────────────────────────────────────── */
 function updateProgressBar(stepNum) {
   for (let i = 1; i <= 4; i++) {
     const el = document.getElementById('pbar-' + i);
     if (!el) continue;
-    if (i < stepNum) {
-      el.style.cssText = 'width:3rem;height:8px;border-radius:99px;background:#1A2B4C;';
-    } else if (i === stepNum) {
-      el.style.cssText = 'width:3rem;height:8px;border-radius:99px;background:#FF5C00;box-shadow:0 3px 8px rgba(255,92,0,0.4);';
-    } else {
-      el.style.cssText = 'width:0.75rem;height:8px;border-radius:99px;background:rgba(255,255,255,0.3);';
-    }
+    el.style.display = 'none'; /* hide legacy dots */
   }
 }
 
