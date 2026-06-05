@@ -74,19 +74,19 @@
 
     /* Map: filename keyword → data-page value */
     const pageMap = {
-      'index'          : 'index',
-      'corporate'      : 'corporate',
-      'company'        : 'corporate',   /* company.html → corporate active */
-      'mvv'            : 'corporate',   /* mvv.html → corporate active */
-      'message'        : 'corporate',   /* message.html → corporate active */
-      'business'       : 'business',
-      'service-sales'  : 'business',    /* service pages → business active */
-      'service-meraise': 'business',
-      'members'        : 'members',
-      'news'           : 'news',
-      'jobs'           : 'news',        /* jobs → Crestory section */
-      'privacy'        : '',
-      'terms'          : '',
+      'index'           : 'index',
+      'corporate'       : 'corporate',
+      'company'         : 'corporate',   /* company.html → corporate active */
+      'mvv'             : 'corporate',   /* mvv.html → corporate active */
+      'message'         : 'corporate',   /* message.html → corporate active */
+      'business'        : 'business',
+      'service-hd'      : 'business',   /* service pages → business active */
+      'service-division': 'business',
+      'members'         : 'members',
+      'news'            : 'news',
+      'jobs'            : 'news',        /* jobs → Crestory section */
+      'privacy'         : '',
+      'terms'           : '',
     };
 
     /* Find matching key */

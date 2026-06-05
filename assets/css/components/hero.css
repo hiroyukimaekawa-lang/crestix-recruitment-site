@@ -1,0 +1,8 @@
+.corp-hero {
+    background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.3) 60%, rgba(255,255,255,0) 100%),
+        url('../../images/office/crestix.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 480px;
+}

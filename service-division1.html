@@ -12,6 +12,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         :root {
             --orange: #FF5C00;
@@ -37,310 +40,6 @@
 
         .font-poppins {
             font-family: 'Poppins', sans-serif;
-        }
-
-        /* ── NAVBAR ── */
-        #cx-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 500;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 3rem;
-            background: transparent;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-            transition: background 0.35s, backdrop-filter 0.35s;
-        }
-
-        #cx-navbar.cx-scrolled {
-            background: rgba(10, 15, 30, 0.88);
-            backdrop-filter: blur(28px);
-            border-color: rgba(255, 255, 255, 0.08);
-        }
-
-        #cx-navbar.cx-light {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-color: rgba(0, 0, 0, 0.07);
-        }
-
-        #cx-navbar.cx-light .cx-nav-link {
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        #cx-navbar.cx-light .cx-nav-link:hover {
-            color: #000;
-        }
-
-        #cx-navbar.cx-light .cx-ham-lines span {
-            background: #111;
-        }
-
-        .cx-nav-logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        #cx-nav-logo {
-            height: 28px;
-            width: auto;
-            filter: brightness(0) invert(1);
-        }
-
-        #cx-navbar.cx-light #cx-nav-logo {
-            filter: brightness(0);
-        }
-
-        .cx-nav-center {
-            display: none;
-            align-items: center;
-            gap: 2rem;
-            height: 64px;
-        }
-
-        @media(min-width:1024px) {
-            .cx-nav-center {
-                display: flex;
-            }
-        }
-
-        .cx-nav-link {
-            display: flex;
-            align-items: center;
-            height: 64px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.80);
-            transition: color 0.2s;
-        }
-
-        .cx-nav-link:hover {
-            color: #fff;
-        }
-
-        .cx-nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .cx-nav-entry-btn {
-            display: none;
-            align-items: center;
-            background: var(--orange);
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.20em;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 0.65rem 1.75rem;
-            border-radius: 9999px;
-            box-shadow: 0 8px 24px rgba(255, 92, 0, 0.30);
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .cx-nav-entry-btn:hover {
-            background: #E65200;
-            transform: translateY(-1px);
-        }
-
-        @media(min-width:1024px) {
-            .cx-nav-entry-btn {
-                display: inline-flex;
-            }
-        }
-
-        #cx-hamburger {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .cx-ham-lines {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            width: 16px;
-        }
-
-        .cx-ham-lines span {
-            display: block;
-            height: 1.5px;
-            background: white;
-            border-radius: 2px;
-        }
-
-        /* ── FULLSCREEN MENU ── */
-        #fullscreen-menu {
-            position: fixed;
-            inset: 0;
-            z-index: 9000;
-            display: flex;
-            flex-direction: column;
-            background: #1A2B4C;
-            pointer-events: none;
-            clip-path: inset(0 0 100% 0);
-            transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
-        }
-
-        #fullscreen-menu.cx-fm-open {
-            pointer-events: all;
-            clip-path: inset(0 0 0% 0);
-        }
-
-        .fm-topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-        }
-
-        .fm-logo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 900;
-            font-size: 1.25rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        .fm-close-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: none;
-            border: none;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-
-        .fm-close-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 24px;
-        }
-
-        .fm-close-icon i {
-            display: block;
-            height: 1.5px;
-            background: white;
-            border-radius: 2px;
-        }
-
-        .fm-close-icon i:nth-child(1) {
-            transform: translateY(6.5px) rotate(45deg);
-        }
-
-        .fm-close-icon i:nth-child(2) {
-            opacity: 0;
-        }
-
-        .fm-close-icon i:nth-child(3) {
-            transform: translateY(-6.5px) rotate(-45deg);
-        }
-
-        .fm-nav {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 2rem 0 2.5rem;
-            gap: 0.5rem;
-        }
-
-        .fm-nav-item {
-            opacity: 0;
-            transform: translateY(30px);
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            font-weight: 900;
-            letter-spacing: -0.04em;
-            color: rgba(255, 255, 255, 0.20);
-            text-decoration: none;
-            line-height: 1.1;
-            transition: color 0.3s, opacity 0.5s, transform 0.5s;
-        }
-
-        .fm-nav-item:hover {
-            color: var(--orange);
-        }
-
-        #fullscreen-menu.cx-fm-open .fm-nav-item {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #fullscreen-menu.cx-fm-open .fm-item-1 {
-            transition-delay: 0.15s;
-        }
-
-        #fullscreen-menu.cx-fm-open .fm-item-2 {
-            transition-delay: 0.22s;
-        }
-
-        #fullscreen-menu.cx-fm-open .fm-item-3 {
-            transition-delay: 0.29s;
-        }
-
-        #fullscreen-menu.cx-fm-open .fm-item-4 {
-            transition-delay: 0.36s;
-        }
-
-        .fm-footer {
-            padding: 0 2.5rem 2.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s;
-        }
-
-        #fullscreen-menu.cx-fm-open .fm-footer {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fm-cta-btn {
-            display: inline-block;
-            background: var(--orange);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 900;
-            font-size: 11px;
-            letter-spacing: 0.30em;
-            text-transform: uppercase;
-            padding: 1rem 2.5rem;
-            border-radius: 9999px;
-            text-decoration: none;
-        }
-
-        .fm-copy {
-            font-family: 'Poppins', sans-serif;
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.20);
-            letter-spacing: 0.30em;
-            text-transform: uppercase;
         }
 
         /* ── HERO (corporate.html style) ── */
@@ -1145,46 +844,91 @@
 
 <body>
 
-    <!-- FULLSCREEN MENU -->
-    <div id="fullscreen-menu">
-        <div class="fm-topbar">
-            <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
-            <button class="fm-close-btn" onclick="cxToggleMenu()">CLOSE <span
-                    class="fm-close-icon"><i></i><i></i><i></i></span></button>
-        </div>
-        <nav class="fm-nav">
-            <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Corporate</a>
-            <a href="service.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Service</a>
-            <a href="members.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Members</a>
-            <a href="news.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Crestory</a>
-        </nav>
-        <div class="fm-footer">
-            <a href="jobs.html" onclick="cxToggleMenu()" class="fm-cta-btn">応募はこちらから</a>
-            <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
-        </div>
+  <!--
+  ═══════════════════════════════════════════════════════
+  Crestix — Universal Navigation Header
+  使い方: 全ページの <body> 直下に貼り付ける
+  依存: assets/js/navbar.js (末尾で読み込み)
+  ═══════════════════════════════════════════════════════
+-->
+
+  <!-- ═══ FULLSCREEN MENU ═══ -->
+  <div id="fullscreen-menu">
+    <div class="fm-topbar">
+      <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
+      <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">
+        CLOSE
+        <span class="fm-close-icon">
+          <i></i><i></i><i></i>
+        </span>
+      </button>
+    </div>
+    <nav class="fm-nav">
+      <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Corporate</a>
+      <a href="business.html"  class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Service</a>
+      <a href="members.html"   class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Members</a>
+      <a href="news.html"      class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Crestory</a>
+    </nav>
+    <div class="fm-footer">
+      <a href="jobs.html" onclick="cxToggleMenu()" class="fm-cta-btn">応募はこちらから</a>
+      <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
+    </div>
+  </div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="cx-navbar" aria-label="グローバルナビゲーション">
+
+  <!-- LEFT: Logo -->
+  <div class="cx-nav-left">
+    <a href="index.html" class="cx-nav-logo-link">
+      <img id="cx-nav-logo"
+           src="assets/images/office/crestix-header.png"
+           alt="Crestix"
+           onerror="this.style.display='none'">
+    </a>
+  </div>
+
+  <!-- CENTER: Nav links -->
+  <div class="cx-nav-center" id="cx-nav-links">
+
+    <div class="cx-mega-trigger" data-mega="mega-corporate">
+      <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+      <div class="cx-mega-menu" id="mega-corporate">
+        <span class="cx-mega-label">Company</span>
+        <a href="corporate.html#profile"><i class="fa-solid fa-circle-dot"></i>会社概要</a>
+        <a href="message.html"><i class="fa-solid fa-circle-dot"></i>トップメッセージ</a>
+        <a href="mvv.html"><i class="fa-solid fa-circle-dot"></i>Mission / Vision / Value</a>
+        <div class="cx-mega-divider"></div>
+        <a href="members.html"><i class="fa-solid fa-circle-dot"></i>Members</a>
+      </div>
     </div>
 
-    <!-- NAVBAR -->
-    <nav id="cx-navbar">
-        <div class="cx-nav-left">
-            <a href="index.html" class="cx-nav-logo-link">
-                <img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"
-                    onerror="this.style.display='none'">
-            </a>
-        </div>
-        <div class="cx-nav-center">
-            <a href="corporate.html" class="cx-nav-link">Corporate</a>
-            <a href="service.html" class="cx-nav-link" style="color:var(--orange);">Service</a>
-            <a href="members.html" class="cx-nav-link">Members</a>
-            <a href="news.html" class="cx-nav-link">Crestory</a>
-        </div>
-        <div class="cx-nav-right">
-            <a href="jobs.html" class="cx-nav-entry-btn">Entry</a>
-            <button id="cx-hamburger" onclick="cxToggleMenu()">
-                <span class="cx-ham-lines"><span></span><span></span><span></span></span>
-            </button>
-        </div>
-    </nav>
+    <div class="cx-mega-trigger" data-mega="mega-service">
+      <a href="business.html" class="cx-nav-link" data-page="business" style="color:#FF5C00;">Service</a>
+      <div class="cx-mega-menu" id="mega-service">
+        <span class="cx-mega-label">Business Domains</span>
+        <a href="business.html"><i class="fa-solid fa-circle-dot"></i>事業一覧</a>
+        <a href="service-hd.html"><i class="fa-solid fa-circle-dot"></i>HD事業部</a>
+        <a href="service-division1.html"><i class="fa-solid fa-circle-dot"></i>第1事業部 (バクラク)</a>
+      </div>
+    </div>
+
+    <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+    <a href="news.html"    class="cx-nav-link" data-page="news">Crestory</a>
+
+  </div>
+
+  <!-- RIGHT: CTA + Hamburger -->
+  <div class="cx-nav-right">
+    <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
+    <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+      <span class="cx-ham-lines" id="cx-ham-lines">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+  </div>
+
+</nav>
 
     <!-- ══ HERO (corporate.html style) ══ -->
     <div class="div-hero flex flex-col justify-end pt-40">
@@ -1213,8 +957,6 @@
                 <a href="#service" class="toc-link">提供サービス</a>
 
                 <a href="#members" class="toc-link">メンバー紹介</a>
-                <div class="toc-divider"></div>
-                <a href="#jobs" class="toc-link" style="color:var(--orange); font-weight:900;">募集中のポジション</a>
                 <a href="jobs.html" class="toc-entry-btn">Entry <i class="fa-solid fa-arrow-right"
                         style="font-size:10px;"></i></a>
             </div>
@@ -1454,110 +1196,6 @@
                 </div>
             </section>
 
-            <!-- ⑧ JOBS ACCORDION -->
-            <section id="jobs" class="content-section" style="border-bottom:none;">
-                <div class="section-header reveal">
-                    <p class="sec-label">Roles</p>
-                    <h2 class="section-title">募集中のポジション</h2>
-                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px;">
-                        職種名をクリックすると詳細が開きます。
-                        <a href="jobs.html"
-                            style="color:var(--orange); font-weight:700; text-decoration:none; margin-left:12px;">すべての職種を見る
-                            →</a>
-                    </p>
-                </div>
-
-                <!-- IS -->
-                <div class="jobs-category reveal reveal-delay-1">
-                    <p class="jobs-category-title">Inside Sales / インサイドセールス</p>
-                    <div class="accordion-item" id="jobs-is">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-sales">IS</span>
-                                <span class="acc-title">インサイドセールス</span>
-                            </div>
-                            <span class="acc-meta">正社員 · 東京</span>
-                            <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">
-                                        テレアポ・メール・SNSを駆使したリード獲得。フィールドセールスへのアポイント引き渡しまでを担当し、パイプラインの最上流を支える。</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">求めるスキル</p>
-                                    <p class="acc-detail-text">電話・文章での説明力、継続的にKPIを追える粘り強さ。営業経験不問。</p>
-                                </div>
-                            </div>
-                            <a href="jobs.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FS -->
-                <div class="jobs-category reveal reveal-delay-2">
-                    <p class="jobs-category-title">Field Sales / フィールドセールス</p>
-                    <div class="accordion-item" id="jobs-fs">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-sales">FS</span>
-                                <span class="acc-title">フィールドセールス</span>
-                            </div>
-                            <span class="acc-meta">正社員 · 東京</span>
-                            <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">
-                                        クリニックへの新規提案からクロージングまで担う。テレアポ・訪問・提案資料作成・受注後の引き継ぎまで一気通貫で携わる。成果に直結する実感が得られる仕事。</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">求めるスキル</p>
-                                    <p class="acc-detail-text">コミュニケーション力・論理的思考力・行動力。業界・職種未経験OK。やり遂げる力と素直さを重視。</p>
-                                </div>
-                            </div>
-                            <a href="jobs.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CS -->
-                <div class="jobs-category reveal reveal-delay-3">
-                    <p class="jobs-category-title">Customer Success / カスタマーサクセス</p>
-                    <div class="accordion-item" id="jobs-cs">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-cs">CS</span>
-                                <span class="acc-title">カスタマーサクセス</span>
-                            </div>
-                            <span class="acc-meta">正社員 · 東京</span>
-                            <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">既存クライアントの成功を導く。月次報告と改善提案でクリニックの成長を伴走。解約率の低下と追加受注がKPI。</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">求めるスキル</p>
-                                    <p class="acc-detail-text">ヒアリング力・課題発見力・レポーティング力。顧客と長く信頼関係を築くことが得意な方。</p>
-                                </div>
-                            </div>
-                            <a href="jobs.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </section><!-- /jobs -->
-
         </main>
     </div><!-- /page-grid -->
 
@@ -1575,7 +1213,7 @@
                     onmouseout="this.style.transform='translateY(0)'">
                     エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i>
                 </a>
-                <a href="service.html"
+                <a href="business.html"
                     style="display:inline-flex; align-items:center; gap:10px; color:#fff; font-family:'Poppins',sans-serif; font-size:12px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; text-decoration:none; padding:1rem 2.5rem; border-radius:9999px; border:1px solid rgba(255,255,255,0.35); transition:background 0.2s;"
                     onmouseover="this.style.background='rgba(255,255,255,0.1)'"
                     onmouseout="this.style.background='transparent'">
@@ -1596,31 +1234,36 @@
         </div>
     </footer>
 
+    <!-- MODAL FOR B2B CONTACT -->
+    <div id="contact-modal" class="modal-overlay fixed inset-0 hidden z-[200] overflow-y-auto p-4 lg:p-24 select-none">
+        <div class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
+            <div class="sticky top-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+                <span class="font-poppins font-black text-2xl tracking-widest uppercase">Crestix Partners</span>
+                <button class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-1 p-10 lg:p-20 bg-gray-50/50">
+                <div class="max-w-2xl mx-auto space-y-12">
+                    <div class="text-center space-y-3">
+                        <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB Inquiry</span>
+                        <h2 class="text-4xl font-black tracking-tight">企業様向けお問い合わせ</h2>
+                    </div>
+                    <div class="bg-white rounded-[2.5rem] p-10 lg:p-14 border border-crestix-border">
+                        <form onsubmit="triggerB2bFormSubmit(event)" id="contact-inner-form" class="space-y-8">
+                            <button type="submit" class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all active:scale-95">Send Inquiry ➔</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/diagnostic.js"></script>
+    <script src="assets/js/modals.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/navbar.js"></script>
+
     <script>
-        /* ── Navbar scroll behavior ── */
-        let lastScrollY = 0;
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('cx-navbar');
-            const sy = window.scrollY;
-            // After hero (≈520px): switch to light mode
-            if (sy > 480) {
-                nav.classList.remove('cx-scrolled');
-                nav.classList.add('cx-light');
-            } else {
-                nav.classList.remove('cx-light');
-                if (sy > 50) nav.classList.add('cx-scrolled');
-                else nav.classList.remove('cx-scrolled');
-            }
-            lastScrollY = sy;
-        });
-
-        /* ── Fullscreen menu ── */
-        function cxToggleMenu() {
-            document.getElementById('fullscreen-menu').classList.toggle('cx-fm-open');
-            document.body.classList.toggle('menu-open');
-        }
-        window.cxToggleMenu = cxToggleMenu;
-
         /* ── Scroll reveal ── */
         const ro = new IntersectionObserver(entries => {
             entries.forEach(e => {

@@ -4,14 +4,15 @@
  * 3ステップ診断 → 結果表示 → 各事業部ページへ遷移
  *
  * 遷移マッピング:
- *   Division 01 (service-division01.html) : 医療マーケ / バクラク
- *   Division HD (service-hd.html)         : 飲食店 HP制作・集客
- *   Division LL (service-ll.html)         : 美容・エステ SNS集客
+ *   Division 01 (service-division1.html) : 医療マーケ / バクラク
+ *   Division HD (service-hd.html)        : 飲食店 HP制作・集客
  *
- * アンカー構造:
- *   IS  →  service-xxx.html#jobs-is
- *   FS  →  service-xxx.html#jobs-fs
- *   CS  →  service-xxx.html#jobs-cs
+ * アンカー構造 (service-hd.html のみ):
+ *   IS リーダー  →  service-hd.html#jobs-is-leader
+ *   FS メンバー  →  service-hd.html#jobs-fs
+ *   FS リーダー  →  service-hd.html#jobs-fs-leader
+ *   CS メンバー  →  service-hd.html#jobs-cs
+ *   CS リーダー  →  service-hd.html#jobs-cs-leader
  */
 
 'use strict';
@@ -29,43 +30,43 @@
    ・チーム/自走            → CS/FS へ
    ─────────────────────────────────────────────*/
 const DIVISION_ROUTES = {
-  /* ── ビジネス ────────────────────────────── */
-  'ビジネス|裁量大きく自走|未経験・第二新卒': { page: 'service-division01.html', anchor: 'jobs-is', divisionLabel: 'Division 01 / インサイドセールス' },
-  'ビジネス|裁量大きく自走|3〜5年': { page: 'service-division01.html', anchor: 'jobs-fs', divisionLabel: 'Division 01 / フィールドセールス' },
-  'ビジネス|裁量大きく自走|6年以上': { page: 'service-hd.html', anchor: 'jobs-fs', divisionLabel: 'Division HD / フィールドセールス' },
-  'ビジネス|チームで創る|未経験・第二新卒': { page: 'service-division01.html', anchor: 'jobs-is', divisionLabel: 'Division 01 / インサイドセールス' },
-  'ビジネス|チームで創る|3〜5年': { page: 'service-division01.html', anchor: 'jobs-cs', divisionLabel: 'Division 01 / カスタマーサクセス' },
-  'ビジネス|チームで創る|6年以上': { page: 'service-hd.html', anchor: 'jobs-cs', divisionLabel: 'Division HD / カスタマーサクセス' },
-  'ビジネス|成果報酬で稼ぐ|未経験・第二新卒': { page: 'service-ll.html', anchor: 'jobs-is', divisionLabel: 'Division LL / インサイドセールス' },
-  'ビジネス|成果報酬で稼ぐ|3〜5年': { page: 'service-ll.html', anchor: 'jobs-fs', divisionLabel: 'Division LL / フィールドセールス' },
-  'ビジネス|成果報酬で稼ぐ|6年以上': { page: 'service-division01.html', anchor: 'jobs-fs', divisionLabel: 'Division 01 / フィールドセールス' },
+  /* ── インサイドセールス ────────────────────── */
+  'インサイドセールス|裁量大きく自走|未経験・第二新卒': { page: 'service-hd.html', anchor: 'jobs-is-leader', divisionLabel: 'HD事業部 / インサイドセールスリーダー候補' },
+  'インサイドセールス|裁量大きく自走|3〜5年': { page: 'service-hd.html', anchor: 'jobs-is-leader', divisionLabel: 'HD事業部 / インサイドセールスリーダー候補' },
+  'インサイドセールス|裁量大きく自走|6年以上': { page: 'service-hd.html', anchor: 'jobs-is-leader', divisionLabel: 'HD事業部 / インサイドセールスリーダー候補' },
+  'インサイドセールス|チームで創る|未経験・第二新卒': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / インサイドセールス' },
+  'インサイドセールス|チームで創る|3〜5年': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / インサイドセールス' },
+  'インサイドセールス|チームで創る|6年以上': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / インサイドセールス' },
+  'インサイドセールス|成果報酬で稼ぐ|未経験・第二新卒': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / インサイドセールス' },
+  'インサイドセールス|成果報酬で稼ぐ|3〜5年': { page: 'service-hd.html', anchor: 'jobs-is-leader', divisionLabel: 'HD事業部 / インサイドセールスリーダー候補' },
+  'インサイドセールス|成果報酬で稼ぐ|6年以上': { page: 'service-hd.html', anchor: 'jobs-is-leader', divisionLabel: 'HD事業部 / インサイドセールスリーダー候補' },
 
-  /* ── マーケ・制作 ────────────────────────── */
-  'マーケ・制作|裁量大きく自走|未経験・第二新卒': { page: 'service-hd.html', anchor: 'jobs-is', divisionLabel: 'Division HD / インサイドセールス' },
-  'マーケ・制作|裁量大きく自走|3〜5年': { page: 'service-hd.html', anchor: 'jobs-fs', divisionLabel: 'Division HD / フィールドセールス' },
-  'マーケ・制作|裁量大きく自走|6年以上': { page: 'service-hd.html', anchor: 'jobs-cs', divisionLabel: 'Division HD / カスタマーサクセス' },
-  'マーケ・制作|チームで創る|未経験・第二新卒': { page: 'service-ll.html', anchor: 'jobs-is', divisionLabel: 'Division LL / インサイドセールス' },
-  'マーケ・制作|チームで創る|3〜5年': { page: 'service-ll.html', anchor: 'jobs-cs', divisionLabel: 'Division LL / カスタマーサクセス' },
-  'マーケ・制作|チームで創る|6年以上': { page: 'service-ll.html', anchor: 'jobs-cs', divisionLabel: 'Division LL / カスタマーサクセス' },
-  'マーケ・制作|成果報酬で稼ぐ|未経験・第二新卒': { page: 'service-ll.html', anchor: 'jobs-is', divisionLabel: 'Division LL / インサイドセールス' },
-  'マーケ・制作|成果報酬で稼ぐ|3〜5年': { page: 'service-hd.html', anchor: 'jobs-fs', divisionLabel: 'Division HD / フィールドセールス' },
-  'マーケ・制作|成果報酬で稼ぐ|6年以上': { page: 'service-hd.html', anchor: 'jobs-fs', divisionLabel: 'Division HD / フィールドセールス' },
+  /* ── フィールドセールス ────────────────────── */
+  'フィールドセールス|裁量大きく自走|未経験・第二新卒': { page: 'service-hd.html', anchor: 'jobs-fs', divisionLabel: 'HD事業部 / フィールドセールス メンバー' },
+  'フィールドセールス|裁量大きく自走|3〜5年': { page: 'service-hd.html', anchor: 'jobs-fs', divisionLabel: 'HD事業部 / フィールドセールス メンバー' },
+  'フィールドセールス|裁量大きく自走|6年以上': { page: 'service-hd.html', anchor: 'jobs-fs-leader', divisionLabel: 'HD事業部 / フィールドセールス リーダー候補' },
+  'フィールドセールス|チームで創る|未経験・第二新卒': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / フィールドセールス' },
+  'フィールドセールス|チームで創る|3〜5年': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / フィールドセールス' },
+  'フィールドセールス|チームで創る|6年以上': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / フィールドセールス' },
+  'フィールドセールス|成果報酬で稼ぐ|未経験・第二新卒': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / フィールドセールス' },
+  'フィールドセールス|成果報酬で稼ぐ|3〜5年': { page: 'service-hd.html', anchor: 'jobs-fs', divisionLabel: 'HD事業部 / フィールドセールス メンバー' },
+  'フィールドセールス|成果報酬で稼ぐ|6年以上': { page: 'service-hd.html', anchor: 'jobs-fs-leader', divisionLabel: 'HD事業部 / フィールドセールス リーダー候補' },
 
-  /* ── コーポレート ─────────────────────────── */
-  'コーポレート|裁量大きく自走|未経験・第二新卒': { page: 'service-division01.html', anchor: 'jobs-is', divisionLabel: 'Division 01 / インサイドセールス' },
-  'コーポレート|裁量大きく自走|3〜5年': { page: 'service-division01.html', anchor: 'jobs-cs', divisionLabel: 'Division 01 / カスタマーサクセス' },
-  'コーポレート|裁量大きく自走|6年以上': { page: 'service-hd.html', anchor: 'jobs-cs', divisionLabel: 'Division HD / カスタマーサクセス' },
-  'コーポレート|チームで創る|未経験・第二新卒': { page: 'service-ll.html', anchor: 'jobs-cs', divisionLabel: 'Division LL / カスタマーサクセス' },
-  'コーポレート|チームで創る|3〜5年': { page: 'service-ll.html', anchor: 'jobs-cs', divisionLabel: 'Division LL / カスタマーサクセス' },
-  'コーポレート|チームで創る|6年以上': { page: 'service-division01.html', anchor: 'jobs-cs', divisionLabel: 'Division 01 / カスタマーサクセス' },
-  'コーポレート|成果報酬で稼ぐ|未経験・第二新卒': { page: 'service-ll.html', anchor: 'jobs-is', divisionLabel: 'Division LL / インサイドセールス' },
-  'コーポレート|成果報酬で稼ぐ|3〜5年': { page: 'service-division01.html', anchor: 'jobs-is', divisionLabel: 'Division 01 / インサイドセールス' },
-  'コーポレート|成果報酬で稼ぐ|6年以上': { page: 'service-hd.html', anchor: 'jobs-fs', divisionLabel: 'Division HD / フィールドセールス' },
+  /* ── カスタマーサクセス ────────────────────── */
+  'カスタマーサクセス|裁量大きく自走|未経験・第二新卒': { page: 'service-hd.html', anchor: 'jobs-cs', divisionLabel: 'HD事業部 / カスタマーサクセス メンバー' },
+  'カスタマーサクセス|裁量大きく自走|3〜5年': { page: 'service-hd.html', anchor: 'jobs-cs', divisionLabel: 'HD事業部 / カスタマーサクセス メンバー' },
+  'カスタマーサクセス|裁量大きく自走|6年以上': { page: 'service-hd.html', anchor: 'jobs-cs-leader', divisionLabel: 'HD事業部 / カスタマーサクセス リーダー候補' },
+  'カスタマーサクセス|チームで創る|未経験・第二新卒': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / カスタマーサクセス' },
+  'カスタマーサクセス|チームで創る|3〜5年': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / カスタマーサクセス' },
+  'カスタマーサクセス|チームで創る|6年以上': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / カスタマーサクセス' },
+  'カスタマーサクセス|成果報酬で稼ぐ|未経験・第二新卒': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / カスタマーサクセス' },
+  'カスタマーサクセス|成果報酬で稼ぐ|3〜5年': { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / カスタマーサクセス' },
+  'カスタマーサクセス|成果報酬で稼ぐ|6年以上': { page: 'service-hd.html', anchor: 'jobs-cs-leader', divisionLabel: 'HD事業部 / カスタマーサクセス リーダー候補' },
 };
 
 /* Division meta for display */
 const DIVISION_META = {
-  'service-division01.html': {
+  'service-division1.html': {
     name: 'Division 01',
     sub: '医療機関向けマーケティング事業',
     color: '#FF5C00',
@@ -73,18 +74,11 @@ const DIVISION_META = {
     icon: '🏥',
   },
   'service-hd.html': {
-    name: 'Division HD',
+    name: 'HD事業部',
     sub: '飲食店向けホームページ制作・集客支援',
     color: '#2563eb',
     bg: '#eff6ff',
     icon: '🍽️',
-  },
-  'service-ll.html': {
-    name: 'Division LL',
-    sub: '美容・エステ業界向け集客支援',
-    color: '#9333ea',
-    bg: '#faf5ff',
-    icon: '💅',
   },
 };
 
@@ -97,9 +91,9 @@ const DIAG_STEPS = [
     label: 'Step 01 / Career Expertise',
     question: '希望する職種領域は？',
     options: [
-      { value: 'ビジネス', icon: '💼', title: 'ビジネス', sub: 'Sales / BizDev / Agency' },
-      { value: 'マーケ・制作', icon: '🎨', title: 'マーケ・制作', sub: 'Ads / Web / Creative' },
-      { value: 'コーポレート', icon: '🏢', title: 'コーポレート', sub: 'HR / Strategy / Assist' },
+      { value: 'インサイドセールス', icon: '📞', title: 'インサイドセールス', sub: 'Inside Sales' },
+      { value: 'フィールドセールス', icon: '🤝', title: 'フィールドセールス', sub: 'Field Sales' },
+      { value: 'カスタマーサクセス', icon: '💖', title: 'カスタマーサクセス', sub: 'Customer Success' },
     ],
   },
   {
@@ -128,33 +122,38 @@ const DIAG_STEPS = [
    27-pattern RESULT MAP  (existing content kept)
 ───────────────────────────────────────────── */
 const DIAG_RESULTS = {
-  'ビジネス|裁量大きく自走|未経験・第二新卒': { title: 'セールスインターン / 第二新卒エントリー', desc: '裁量権を持ちながらゼロからビジネスセンスを磨けるポジションです。担当顧客を持ち、早期から実績を積むことができます。', tags: ['インサイドセールス', '第二新卒歓迎', '成果報酬あり'], query: 'sales-junior' },
-  'ビジネス|裁量大きく自走|3〜5年': { title: 'アカウントエグゼクティブ', desc: '中堅として自ら戦略を組み、エンタープライズ顧客を攻略するハイインパクトなポジション。', tags: ['エンタープライズ営業', 'AE', 'OTE 1,000万〜'], query: 'account-executive' },
-  'ビジネス|裁量大きく自走|6年以上': { title: 'セールスマネージャー / Head of Sales', desc: 'チームを束ねながらプロセス設計・採用・育成まで担うリーダーポジション。', tags: ['マネジメント', '採用権限あり', '執行役員候補'], query: 'sales-manager' },
-  'ビジネス|チームで創る|未経験・第二新卒': { title: 'BizDev / 新規事業スタッフ', desc: 'チームで新規事業の仮説検証を回していくポジション。多様なメンバーと共創し、アイデアを形にします。', tags: ['新規事業', '第二新卒OK', 'BizDev'], query: 'bizdev-junior' },
-  'ビジネス|チームで創る|3〜5年': { title: 'ストラテジックパートナーシップ', desc: '大手企業との共同事業やアライアンス交渉をリードするポジション。', tags: ['アライアンス', 'B2B', 'パートナーシップ'], query: 'partnership' },
-  'ビジネス|チームで創る|6年以上': { title: 'VP of Business Development', desc: '事業の成長エンジンとして全社横断の戦略立案から実行まで担います。', tags: ['VP', '経営直結', '全社横断'], query: 'vp-bizdev' },
-  'ビジネス|成果報酬で稼ぐ|未経験・第二新卒': { title: 'インサイドセールス（インセンティブ型）', desc: '成果に応じて青天井の報酬が得られるポジション。3ヶ月で月収100万達成のメンバー多数。', tags: ['インサイドセールス', '青天井報酬', '月収100万実績'], query: 'inside-sales' },
-  'ビジネス|成果報酬で稼ぐ|3〜5年': { title: 'フィールドセールス（エース級）', desc: '数字にコミットし、自分の実力を収入に直結させたい人向けのポジション。トップは年収2,000万超え。', tags: ['フィールドセールス', '年収2,000万実績', '完全実力主義'], query: 'field-sales' },
-  'ビジネス|成果報酬で稼ぐ|6年以上': { title: 'GM / エリアマネージャー（成果連動型）', desc: 'チームの売上責任を持ちながら自分のパフォーマンスも評価される。組織を動かす快感と高収入を両立。', tags: ['GM', 'チームP/L責任', '成果連動ボーナス'], query: 'area-manager' },
-  'マーケ・制作|裁量大きく自走|未経験・第二新卒': { title: 'マーケターアシスタント / クリエイティブ見習い', desc: 'SNS運用や広告クリエイティブ制作を通じてデジタルマーケの基礎を習得するポジション。', tags: ['SNSマーケ', 'クリエイティブ', '未経験歓迎'], query: 'marketer-junior' },
-  'マーケ・制作|裁量大きく自走|3〜5年': { title: 'グロースマーケター', desc: '広告・SEO・CROを横断してKPIオーナーとして数字を動かすポジション。', tags: ['グロース', 'CRO', 'Meta/Google広告'], query: 'growth-marketer' },
-  'マーケ・制作|裁量大きく自走|6年以上': { title: 'CMO / マーケ責任者', desc: 'ブランド戦略から集客・CRM・クリエイティブまで一気通貫で担うポジション。', tags: ['CMO候補', 'ブランド戦略', '組織構築'], query: 'cmo' },
-  'マーケ・制作|チームで創る|未経験・第二新卒': { title: 'コンテンツ・SNSクリエイター', desc: 'チームで企画からシナリオ・撮影・編集まで関わるコンテンツポジション。', tags: ['YouTube', 'TikTok', 'コンテンツ制作'], query: 'content-creator' },
-  'マーケ・制作|チームで創る|3〜5年': { title: 'ブランドデザイナー / クリエイティブディレクター', desc: 'プロダクト・採用・広告のクリエイティブを横断してブランドの世界観を構築するポジション。', tags: ['ブランディング', 'UI/UX', 'Figma'], query: 'brand-designer' },
-  'マーケ・制作|チームで創る|6年以上': { title: 'Head of Creative / クリエイティブ本部長', desc: 'クリエイティブチームのマネジメントから外部代理店折衝まで担うリーダーポジション。', tags: ['Head of Creative', 'チームマネジメント', '採用権限'], query: 'head-creative' },
-  'マーケ・制作|成果報酬で稼ぐ|未経験・第二新卒': { title: 'アフィリエイト・メディア運営スタッフ', desc: '成果に直結するメディア運営でSEOや広告収益の仕組みを学べるポジション。', tags: ['SEO', 'メディア運営', '成果連動'], query: 'media-staff' },
-  'マーケ・制作|成果報酬で稼ぐ|3〜5年': { title: 'パフォーマンスマーケター（高報酬型）', desc: 'ROASを最大化しながら自分の成果が収入に反映されるポジション。広告費数億を動かす経験ができます。', tags: ['パフォーマンスマーケ', 'ROAS最大化', 'インセンティブ'], query: 'performance-marketer' },
-  'マーケ・制作|成果報酬で稼ぐ|6年以上': { title: 'マーケ × ビジネスハイブリッド責任者', desc: 'マーケの知見を持ちながら収益責任も担うユニークなポジション。', tags: ['PL責任', 'マーケ×ビジネス', '高報酬'], query: 'marketer-hybrid' },
-  'コーポレート|裁量大きく自走|未経験・第二新卒': { title: '人事・採用スタッフ（裁量型）', desc: '採用戦略の立案から媒体運用・面接まで一人で回す経験ができるポジション。', tags: ['人事', '採用', '裁量大'], query: 'hr-junior' },
-  'コーポレート|裁量大きく自走|3〜5年': { title: 'HRBPパートナー / 組織開発', desc: '事業部と密接に連携しながら採用・育成・組織設計を推進するポジション。', tags: ['HRBP', '組織開発', '経営直結'], query: 'hrbp' },
-  'コーポレート|裁量大きく自走|6年以上': { title: 'CHRO / 人事責任者', desc: '全社の人事戦略を立案・実行する責任者ポジション。採用・育成・文化醸成まで統括します。', tags: ['CHRO候補', '人事戦略', '執行役員候補'], query: 'chro' },
-  'コーポレート|チームで創る|未経験・第二新卒': { title: '総務・バックオフィスアシスタント', desc: '経理・法務・総務を横断してコーポレートの基礎を学べるポジション。', tags: ['総務', 'バックオフィス', '未経験OK'], query: 'backoffice' },
-  'コーポレート|チームで創る|3〜5年': { title: '経営企画スタッフ', desc: '予算管理・KPI設計・投資家対応などを担う経営の参謀ポジション。', tags: ['経営企画', 'KPI管理', '投資家対応'], query: 'corp-planning' },
-  'コーポレート|チームで創る|6年以上': { title: '経営企画室長 / CFO候補', desc: '財務・経営・法務を横断してIPOや成長戦略を主導するポジション。', tags: ['CFO候補', 'IPO主導', '財務戦略'], query: 'cfo' },
-  'コーポレート|成果報酬で稼ぐ|未経験・第二新卒': { title: '採用エージェント（インセンティブ型）', desc: '採用決定に連動した報酬体系で成果が収入に直結するポジション。', tags: ['リクルーター', 'インセンティブ', '成果報酬型'], query: 'recruiter-junior' },
-  'コーポレート|成果報酬で稼ぐ|3〜5年': { title: 'シニアリクルーター / タレントアクイジション', desc: '採用ブランド構築からスカウト・クロージングまで担うエース採用担当。', tags: ['タレントアクイジション', 'スカウト', '高報酬'], query: 'talent-acquisition' },
-  'コーポレート|成果報酬で稼ぐ|6年以上': { title: 'VP of People / 採用責任者（高報酬型）', desc: '急成長フェーズの採用・人事組織全体をリードしながら成果連動の高報酬を得られるポジション。', tags: ['VP of People', '採用責任者', '組織スケール'], query: 'vp-people' },
+  /* ── インサイドセールス ────────────────────── */
+  'インサイドセールス|裁量大きく自走|未経験・第二新卒': { title: '【HD】インサイドセールス メンバー', desc: '飲食店向けに集客支援サービスの魅力を伝え、関係構築の第一歩を築くポジションです。裁量を持ってアプローチ手法を工夫できます。', tags: ['飲食店支援', 'アポイント獲得', '未経験歓迎'], query: 'hd-is' },
+  'インサイドセールス|裁量大きく自走|3〜5年': { title: '【HD】インサイドセールス メンバー（専任）', desc: '飲食店のオーナー様へ課題解決のきっかけとなるアポイントを獲得する役割です。培った営業スキルを活かし、チームを牽引してください。', tags: ['顧客アプローチ', '即戦力採用', '裁量大'], query: 'hd-is' },
+  'インサイドセールス|裁量大きく自走|6年以上': { title: '【HD】インサイドセールス リーダー候補', desc: 'ISチームの戦略設計やアプローチフローの改善、メンバー育成を担当するリーダー職です。組織の最大化に貢献します。', tags: ['リーダー候補', '戦略設計', 'マネジメント'], query: 'hd-is-leader' },
+  'インサイドセールス|チームで創る|未経験・第二新卒': { title: '【Division 01】インサイドセールス メンバー', desc: 'チーム一丸となって医療機関へのアプローチを行う仕事です。丁寧な研修制度があり、未経験からでも安心して成長できます。', tags: ['医療マーケ', 'チーム体制', '第二新卒歓迎'], query: 'd01-is' },
+  'インサイドセールス|チームで創る|3〜5年': { title: '【Division 01】インサイドセールス アソエイト', desc: 'データとチームワークを活かし、クリニックの課題解決への足がかりを創ります。営業プロセス改善にも携われます。', tags: ['データ活用', 'チーム連携', 'キャリアアップ'], query: 'd01-is' },
+  'インサイドセールス|チームで創る|6年以上': { title: '【Division 01】インサイドセールス リーダー候補', desc: '医療機関向けIS組織のプレイングリーダーとして、アプローチ率向上の仕組み化やメンバー育成を主導します。', tags: ['プレイングリーダー', '仕組み化', '医療業界'], query: 'd01-is' },
+  'インサイドセールス|成果報酬で稼ぐ|未経験・第二新卒': { title: '【Division 01】インサイドセールス（成果連動モデル）', desc: '頑張った成果がダイレクトに評価・還元される環境で、未経験からでも高収入と営業スキルを獲得できます。', tags: ['インセンティブ', '未経験OK', '成果主義'], query: 'd01-is' },
+  'インサイドセールス|成果報酬で稼ぐ|3〜5年': { title: '【HD】インサイドセールス（高歩合）', desc: '成果に対して青天井の評価を行うインサイドセールスです。培った営業力を成果と報酬に直結させたい方に最適です。', tags: ['高歩合', '成果追求', '実力主義'], query: 'hd-is' },
+  'インサイドセールス|成果報酬で稼ぐ|6年以上': { title: '【HD】インサイドセールス リーダー候補（トッププレーヤー）', desc: '自身の高い獲得力でチームを牽引しながら、組織達成に応じたボーナスなど最大級のリターンを得られるポジションです。', tags: ['トッププレイヤー', '組織成果連動', 'キャリアアップ'], query: 'hd-is-leader' },
+
+  /* ── フィールドセールス ────────────────────── */
+  'フィールドセールス|裁量大きく自走|未経験・第二新卒': { title: '【HD】フィールドセールス メンバー', desc: '飲食店のオーナー様に寄り添い、MEOやHP制作などを組み合わせた総合的な集客改善を提案する営業です。', tags: ['集客支援', 'ソリューション営業', '成長環境'], query: 'hd-fs' },
+  'フィールドセールス|裁量大きく自走|3〜5年': { title: '【HD】フィールドセールス メンバー（主戦力）', desc: '飲食店の集客課題に対してMEO、HP、SaaS、広告などを組み合わせた上流の提案をリードするエース営業候補です。', tags: ['ソリューション提案', '複数プロダクト', '主戦力募集'], query: 'hd-fs' },
+  'フィールドセールス|裁量大きく自走|6年以上': { title: '【HD】フィールドセールス リーダー候補', desc: '大規模な飲食店チェーンや複数店舗展開を行う企業に対する提案営業と、自チームの商談設計を行うリーダー職です。', tags: ['リーダー候補', '大口提案', '戦略設計'], query: 'hd-fs-leader' },
+  'フィールドセールス|チームで創る|未経験・第二新卒': { title: '【Division 01】フィールドセールス メンバー', desc: 'チームで医療機関の課題を共有し、マイナビ送客サービスやMEOなどの提案をチーム連携で進める仕事です。', tags: ['医療マーケ', 'チーム提案', '第二新卒歓迎'], query: 'd01-fs' },
+  'フィールドセールス|チームで創る|3〜5年': { title: '【Division 01】フィールドセールス アカウントプランナー', desc: 'クリニックの状況に応じたデータドリブンな提案を、開発担当やCS担当とチームになって実行していくポジションです。', tags: ['医療マーケ', 'データ分析', 'プロジェクト営業'], query: 'd01-fs' },
+  'フィールドセールス|チームで創る|6年以上': { title: '【HD】フィールドセールス リーダー候補（組織開発）', desc: '個人の成果だけでなく、チーム全体の営業ナレッジの共有や成約率向上を組織ぐるみで底上げする推進リーダー。', tags: ['ナレッジ共有', '組織開発', '営業マネジメント'], query: 'hd-fs-leader' },
+  'フィールドセールス|成果報酬で稼ぐ|未経験・第二新卒': { title: '【Division 01】フィールドセールス（ハイキャリア候補）', desc: '成果が正当に評価されるインセンティブ制度のもと、医療マーケティング分野で早期のキャリアアップを目指せます。', tags: ['ハイキャリア', '成果還元', '医療業界'], query: 'd01-fs' },
+  'フィールドセールス|成果報酬で稼ぐ|3〜5年': { title: '【HD】フィールドセールス メンバー（高歩合）', desc: '飲食店の売上アップ・集客課題を解決し、受注した実績が年収に直結する完全成果志向のフィールドセールス。', tags: ['インセンティブ充実', '高収入', '実力主義'], query: 'hd-fs' },
+  'フィールドセールス|成果報酬で稼ぐ|6年以上': { title: '【HD】フィールドセールス リーダー候補（トッププレイヤー）', desc: '自身の高い営業力で成果を上げながら、チーム全体の達成ボーナスによる大きなリターンを得られる責任者。', tags: ['トッププレイヤー', 'ハイリターン', '営業幹部候補'], query: 'hd-fs-leader' },
+
+  /* ── カスタマーサクセス ────────────────────── */
+  'カスタマーサクセス|裁量大きく自走|未経験・第二新卒': { title: '【Division 01】カスタマーサクセス アシスタント', desc: 'クリニックのMEO運用や設定代行、マイナビ送客の原稿入稿管理など、医療機関の成功に自走して伴走する仕事です。', tags: ['医療マーケ', '未経験歓迎', 'サポート'], query: 'd01-cs' },
+  'カスタマーサクセス|裁量大きく自走|3〜5年': { title: '【HD】カスタマーサクセス メンバー（専任担当）', desc: 'ホームページ制作からMEO運用、SaaS活用まで飲食店の成功体験をデザインし、顧客と伴走して課題解決をする役割です。', tags: ['顧客伴走', 'アップセル', '進行管理'], query: 'hd-cs' },
+  'カスタマーサクセス|裁量大きく自走|6年以上': { title: '【HD】カスタマーサクセス リーダー候補', desc: '飲食店の継続率最大化に向けたCS戦略の策定、解約防止プロセスの設計、複数案件の進捗管理を行う責任者ポジション。', tags: ['CSリーダー', 'チャーンレート改善', '戦略設計'], query: 'hd-cs-leader' },
+  'カスタマーサクセス|チームで創る|未経験・第二新卒': { title: '【Division 01】カスタマーサクセス メンバー', desc: 'チームで複数クリニックを分担サポートし、運用課題を共有しながら安定したサービス継続を目指すポジション。', tags: ['医療マーケ', 'チームワーク', '安定成長'], query: 'd01-cs' },
+  'カスタマーサクセス|チームで創る|3〜5年': { title: '【HD】カスタマーサクセス メンバー（連携重視）', desc: '営業や制作チームと密に連携し、飲食店の期待値を超える納品とスムーズなオンボーディングを実現するCS担当です。', tags: ['オンボーディング', 'チーム連携', '顧客満足度'], query: 'hd-cs' },
+  'カスタマーサクセス|チームで創る|6年以上': { title: '【HD】カスタマーサクセス リーダー候補（組織マネジメント）', desc: '制作・営業との連携体制の再設計や、CSメンバーのオンボーディングと育成を担当する組織のマネージャー。', tags: ['組織マネジメント', 'プロセス改善', '採用連携'], query: 'hd-cs-leader' },
+  'カスタマーサクセス|成果報酬で稼ぐ|未経験・第二新卒': { title: '【Division 01】カスタマーサクセス（成果連動モデル）', desc: '担当顧客のアップセル・クロスセル（追加施策提案）による利益から、高インセンティブを得られる仕事です。', tags: ['成果報酬', 'アップセル', '未経験OK'], query: 'd01-cs' },
+  'カスタマーサクセス|成果報酬で稼ぐ|3〜5年': { title: '【Division 01】カスタマーサクセス スペシャリスト', desc: '高い顧客ロイヤルティを構築し、追加提案を通じて自社サービス全体の売上に貢献するCSのスペシャリスト。', tags: ['追加提案', 'ロイヤルティ', '高歩合'], query: 'd01-cs' },
+  'カスタマーサクセス|成果報酬で稼ぐ|6年以上': { title: '【HD】カスタマーサクセス リーダー候補（リテンション責任）', desc: 'アップセル全体のインセンティブとチームの解約防止率を成果指標に持ち、事業貢献度の高いCS組織を創る責任者。', tags: ['リテンション責任', 'アップセル推進', '高報酬'], query: 'hd-cs-leader' },
 };
 
 /* ─────────────────────────────────────────────
@@ -325,8 +324,8 @@ function showDiagResult() {
   };
 
   /* Division routing */
-  const route = DIVISION_ROUTES[key] || { page: 'service-division01.html', anchor: 'jobs-is', divisionLabel: 'Division 01 / インサイドセールス' };
-  const divMeta = DIVISION_META[route.page] || DIVISION_META['service-division01.html'];
+  const route = DIVISION_ROUTES[key] || { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / インサイドセールス' };
+  const divMeta = DIVISION_META[route.page] || DIVISION_META['service-division1.html'];
 
   const container = document.getElementById('diagnostic-container');
   if (!container) return;
@@ -364,7 +363,7 @@ function buildResultHTML(result, key, route, divMeta) {
   const jobsURL = `jobs.html?${params.toString()}`;
 
   /* Primary CTA: service page with anchor */
-  const serviceURL = `${route.page}#${route.anchor}`;
+  const serviceURL = route.anchor ? `${route.page}#${route.anchor}` : route.page;
 
   const tagsHTML = result.tags.map(tag => `
     <span class="result-tag" style="display:inline-block;background:#1A2B4C;color:#fff;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;padding:6px 18px;border-radius:99px;">${tag}</span>
