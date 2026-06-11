@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
     tailwind.config = {
@@ -145,6 +146,13 @@
     </style>
 
     <style>
+    
+    #cx-navbar {
+        background: rgba(10, 15, 30, 0.9) !important;
+        backdrop-filter: blur(28px) !important;
+        -webkit-backdrop-filter: blur(28px) !important;
+    }
+
     .story-detail-hero {
         position: relative;
         width: 100%;
@@ -153,6 +161,7 @@
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
+        margin-top: 64px;
     }
     .story-detail-overlay {
         position: absolute;
@@ -205,82 +214,83 @@
 -->
 
 <!-- ═══ FULLSCREEN MENU ═══ -->
-<div id="fullscreen-menu">
-  <div class="fm-topbar">
-    <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
-    <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">
-      CLOSE
-      <span class="fm-close-icon">
-        <i></i><i></i><i></i>
-      </span>
-    </button>
-  </div>
-  <nav class="fm-nav">
-    <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Corporate</a>
-    <a href="business.html"  class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Service</a>
-    <a href="members.html"   class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Members</a>
-    <a href="news.html"      class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Crestory</a>
-  </nav>
-  <div class="fm-footer">
-    <a href="jobs.html" onclick="cxToggleMenu()" class="fm-cta-btn">応募はこちらから</a>
-    <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
-  </div>
-</div>
-
-<!-- ═══ NAVIGATION ═══ -->
-<nav id="cx-navbar" aria-label="グローバルナビゲーション">
-
-  <!-- LEFT: Logo -->
-  <div class="cx-nav-left">
-    <a href="index.html" class="cx-nav-logo-link">
-      <img id="cx-nav-logo"
-           src="assets/images/office/crestix-header.png"
-           alt="Crestix"
-           onerror="this.style.display='none'">
-    </a>
-  </div>
-
-  <!-- CENTER: Nav links -->
-  <div class="cx-nav-center" id="cx-nav-links">
-
-    <div class="cx-mega-trigger" data-mega="mega-corporate">
-      <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
-      <div class="cx-mega-menu" id="mega-corporate">
-        <span class="cx-mega-label">Company</span>
-        <a href="corporate.html#profile"><i class="fa-solid fa-circle-dot"></i>会社概要</a>
-        <a href="message.html"><i class="fa-solid fa-circle-dot"></i>トップメッセージ</a>
-        <a href="mvv.html"><i class="fa-solid fa-circle-dot"></i>Mission / Vision / Value</a>
-        <div class="cx-mega-divider"></div>
-        <a href="members.html"><i class="fa-solid fa-circle-dot"></i>Members</a>
-      </div>
+    <div id="fullscreen-menu">
+        <div class="fm-topbar">
+            <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
+            <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">
+                CLOSE
+                <span class="fm-close-icon">
+                    <i></i><i></i><i></i>
+                </span>
+            </button>
+        </div>
+        <nav class="fm-nav">
+            <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Corporate</a>
+            <a href="business.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Service</a>
+            <a href="members.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Members</a>
+            <a href="news.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Crestory</a>
+        </nav>
+        <div class="fm-footer">
+            <a href="jobs.html" onclick="cxToggleMenu()" class="fm-cta-btn">応募はこちらから</a>
+            <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
+        </div>
     </div>
 
-    <div class="cx-mega-trigger" data-mega="mega-service">
-      <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
-      <div class="cx-mega-menu" id="mega-service">
-        <span class="cx-mega-label">Business Domains</span>
-        <a href="business.html"><i class="fa-solid fa-circle-dot"></i>事業一覧</a>
-        <a href="service-hd.html"><i class="fa-solid fa-circle-dot"></i>HD事業部</a>
-        <a href="service-division1.html"><i class="fa-solid fa-circle-dot"></i>第1事業部 (バクラク)</a>
-      </div>
-    </div>
+    <!-- ═══ NAVIGATION ═══ -->
+    <nav id="cx-navbar" aria-label="グローバルナビゲーション">
 
-    <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
-    <a href="news.html"    class="cx-nav-link" data-page="news">Crestory</a>
+        <!-- LEFT: Logo -->
+        <div class="cx-nav-left">
+            <a href="index.html" class="cx-nav-logo-link">
+                <img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"
+                    onerror="this.style.display='none'">
+            </a>
+        </div>
 
-  </div>
+        <!-- CENTER: Nav links -->
+        <div class="cx-nav-center" id="cx-nav-links">
 
-  <!-- RIGHT: CTA + Hamburger -->
-  <div class="cx-nav-right">
-    <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
-    <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
-      <span class="cx-ham-lines" id="cx-ham-lines">
-        <span></span><span></span><span></span>
-      </span>
-    </button>
-  </div>
+            <div class="cx-mega-trigger" data-mega="mega-corporate">
+                <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+                <div class="cx-mega-menu" id="mega-corporate">
+                    <span class="cx-mega-label">Company</span>
+                    <a href="corporate.html#profile"><i class="fa-solid fa-circle-dot"></i>会社概要</a>
+                    <a href="message.html"><i class="fa-solid fa-circle-dot"></i>トップメッセージ</a>
+                    <a href="mvv.html"><i class="fa-solid fa-circle-dot"></i>Mission / Vision / Value</a>
+                    <div class="cx-mega-divider"></div>
+                    <a href="members.html"><i class="fa-solid fa-circle-dot"></i>Members</a>
+                </div>
+            </div>
 
-</nav>
+            <div class="cx-mega-trigger" data-mega="mega-service">
+                <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+                <div class="cx-mega-menu" id="mega-service">
+                    <span class="cx-mega-label">Business Domains</span>
+                    <a href="business.html"><i class="fa-solid fa-circle-dot"></i>事業一覧</a>
+                    <a href="service-hd.html"><i class="fa-solid fa-circle-dot"></i>HD事業部</a>
+                    <a href="service-division1.html"><i class="fa-solid fa-circle-dot"></i>Division 01</a>
+                    <a href="#" class="pointer-events-none opacity-50"><i class="fa-solid fa-circle-dot"></i>MeRaise（キャリア教育事業）<span class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming Soon</span></a>
+                    <a href="#" class="pointer-events-none opacity-50"><i class="fa-solid fa-circle-dot"></i>LL事業部（法人向けインフラ）<span class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming Soon</span></a>
+                    <a href="#" class="pointer-events-none opacity-50"><i class="fa-solid fa-circle-dot"></i>CTC（Crestix Tryout Camp）<span class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming Soon</span></a>
+                  </div>
+            </div>
+
+            <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+            <a href="news.html" class="cx-nav-link" data-page="news">Crestory</a>
+
+        </div>
+
+        <!-- RIGHT: CTA + Hamburger -->
+        <div class="cx-nav-right">
+            <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
+            <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+                <span class="cx-ham-lines" id="cx-ham-lines">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
+
+    </nav>
 
 
 
@@ -505,7 +515,7 @@
                         <ul class="space-y-3">
                             <li><a href="business.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>事業一覧</a></li>
                             <li><a href="service-hd.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>HD事業部</a></li>
-                            <li><a href="service-division1.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>第1事業部 (バクラク)</a></li>
+                            <li><a href="service-division1.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>Division 01</a></li>
                         </ul>
                     </div>
 

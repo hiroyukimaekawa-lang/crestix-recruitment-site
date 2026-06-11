@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
     <script>
         tailwind.config = {
             theme: {
@@ -474,26 +475,26 @@
         }
 
         .diag-card-layerx {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 1.5rem;
-            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 220px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            gap: 10px;
+            min-height: 200px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .diag-card-layerx:hover {
             border-color: #FF5C00;
-            box-shadow: 0 16px 48px rgba(255, 92, 0, 0.2);
-            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(255, 92, 0, 0.22);
+            transform: translateY(-6px);
         }
 
         /* ─── YouTube Section ────────────────────────────────── */
@@ -657,89 +658,87 @@
 
     <!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
-        <div
-            style="display:flex;align-items:center;justify-content:space-between;padding:14px 2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
-            <div style="display:flex;align-items:center;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:900;font-size:1.25rem;color:white;letter-spacing:-0.03em;"
-                onclick="location.href='index.html'">
-                CRESTIX
-            </div>
-            <button onclick="toggleMenu()"
-                style="display:flex;align-items:center;gap:10px;background:none;border:none;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;padding:6px 0;">
+        <div class="fm-topbar">
+            <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
+            <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">
                 CLOSE
-                <span style="display:flex;flex-direction:column;gap:5px;width:24px;">
-                    <i
-                        style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(6.5px) rotate(45deg);"></i>
-                    <i style="display:block;height:1.5px;background:white;border-radius:2px;opacity:0;"></i>
-                    <i
-                        style="display:block;height:1.5px;background:white;border-radius:2px;transform:translateY(-6.5px) rotate(-45deg);"></i>
+                <span class="fm-close-icon">
+                    <i></i><i></i><i></i>
                 </span>
             </button>
         </div>
-        <div
-            style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 2rem 0 2.5rem;gap:0.5rem;">
-            <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="toggleMenu()">Corporate</a>
-            <a href="business.html" class="fm-nav-item fm-item-2" onclick="toggleMenu()">Service</a>
-            <a href="members.html" class="fm-nav-item fm-item-3" onclick="toggleMenu()">Members</a>
-            <a href="news.html" class="fm-nav-item fm-item-4" onclick="toggleMenu()">Crestory</a>
-        </div>
-        <div class="fm-cta-btn"
-            style="padding:0 2.5rem 2.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
-            <a href="jobs.html" onclick="toggleMenu()"
-                style="display:inline-block;background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:9999px;text-decoration:none;">
-                応募はこちらから
-            </a>
-            <span
-                style="font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.3em;text-transform:uppercase;">&copy;
-                2026 Crestix Inc.</span>
+        <nav class="fm-nav">
+            <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Corporate</a>
+            <a href="business.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Service</a>
+            <a href="members.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Members</a>
+            <a href="news.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Crestory</a>
+        </nav>
+        <div class="fm-footer">
+            <a href="jobs.html" onclick="cxToggleMenu()" class="fm-cta-btn">応募はこちらから</a>
+            <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
         </div>
     </div>
 
     <!-- ═══ NAVIGATION ═══ -->
-    <nav id="navbar"
-        class="fixed top-0 w-full flex items-center justify-between py-3 px-8 lg:px-14 z-50 border-b border-white/10">
+    <nav id="cx-navbar" aria-label="グローバルナビゲーション">
 
-        <!-- LEFT: Logo (常時) + divider + MENU pill (スクロール後に出現) -->
-        <div class="flex items-center gap-4">
-
-            <!-- ロゴ: 常時表示 -->
-            <div id="nav-logo-wrap" onclick="handleLogoClick()" role="button" aria-label="ホーム / メニュー"
-                style="display:flex;align-items:center;">
-                <img src="assets/images/office/crestix-header.png" alt="Crestix"
-                    style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);"
+        <!-- LEFT: Logo -->
+        <div class="cx-nav-left">
+            <a href="index.html" class="cx-nav-logo-link">
+                <img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"
                     onerror="this.style.display='none'">
+            </a>
+        </div>
+
+        <!-- CENTER: Nav links -->
+        <div class="cx-nav-center" id="cx-nav-links">
+
+            <div class="cx-mega-trigger" data-mega="mega-corporate">
+                <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+                <div class="cx-mega-menu" id="mega-corporate">
+                    <span class="cx-mega-label">Company</span>
+                    <a href="corporate.html#profile"><i class="fa-solid fa-circle-dot"></i>会社概要</a>
+                    <a href="message.html"><i class="fa-solid fa-circle-dot"></i>トップメッセージ</a>
+                    <a href="mvv.html"><i class="fa-solid fa-circle-dot"></i>Mission / Vision / Value</a>
+                    <div class="cx-mega-divider"></div>
+                    <a href="members.html"><i class="fa-solid fa-circle-dot"></i>Members</a>
+                </div>
             </div>
 
-            <!-- 区切り線 (スクロール後に出現) -->
-            <span id="nav-divider"
-                style="width:1px;height:18px;background:rgba(255,255,255,0.2);display:block;flex-shrink:0;"></span>
-
-            <!-- MENU ピルボタン (スクロール後に出現) -->
-            <button id="hamburger-btn" onclick="toggleMenu()" aria-label="メニューを開く"
-                style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:7px 16px 7px 12px;cursor:pointer;color:white;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;transition: background 0.2s ease, border-color 0.2s ease;"
-                onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.borderColor='rgba(255,255,255,0.4)'"
-                onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'">
-                <div class="hamburger-lines" id="ham-lines">
-                    <span></span><span></span><span></span>
+            <div class="cx-mega-trigger" data-mega="mega-service">
+                <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+                <div class="cx-mega-menu" id="mega-service">
+                    <span class="cx-mega-label">Business Domains</span>
+                    <a href="business.html"><i class="fa-solid fa-circle-dot"></i>事業一覧</a>
+                    <a href="service-hd.html"><i class="fa-solid fa-circle-dot"></i>HD事業部</a>
+                    <a href="service-division1.html"><i class="fa-solid fa-circle-dot"></i>Division 01</a>
+                    <a href="#" class="pointer-events-none opacity-50"><i
+                            class="fa-solid fa-circle-dot"></i>MeRaise（キャリア教育事業）<span
+                            class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming Soon</span></a>
+                    <a href="#" class="pointer-events-none opacity-50"><i
+                            class="fa-solid fa-circle-dot"></i>LL事業部（法人向けインフラ）<span
+                            class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming Soon</span></a>
+                    <a href="#" class="pointer-events-none opacity-50"><i class="fa-solid fa-circle-dot"></i>CTC（Crestix
+                        Tryout Camp）<span class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming
+                            Soon</span></a>
                 </div>
-                MENU
+            </div>
+
+            <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+            <a href="news.html" class="cx-nav-link" data-page="news">Crestory</a>
+
+        </div>
+
+        <!-- RIGHT: CTA + Hamburger -->
+        <div class="cx-nav-right">
+            <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
+            <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+                <span class="cx-ham-lines" id="cx-ham-lines">
+                    <span></span><span></span><span></span>
+                </span>
             </button>
         </div>
 
-        <!-- CENTER: Nav links — スクロール後に出現 -->
-        <div
-            class="nav-links-group hidden lg:flex items-center gap-10 text-[11px] font-black tracking-[0.3em] text-white uppercase">
-            <a href="corporate.html" class="hover:text-orange-400 transition-colors">Corporate</a>
-            <a href="business.html" class="hover:text-orange-400 transition-colors">Service</a>
-            <a href="members.html" class="hover:text-orange-400 transition-colors">Members</a>
-            <a href="news.html" class="hover:text-orange-400 transition-colors">Crestory</a>
-        </div>
-
-        <!-- RIGHT: CTA — スクロール後に出現 -->
-        <a href="entry.html"
-            class="nav-cta-btn bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-black px-7 py-3 rounded-full tracking-[0.2em] uppercase active:scale-95 focus:outline-none whitespace-nowrap shadow-lg"
-            style="font-family: 'Poppins', sans-serif; transition: background 0.2s ease, opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);">
-            Entry
-        </a>
     </nav>
 
     <!-- ═══ MAIN ═══ -->
@@ -835,7 +834,7 @@
             </div>
 
             <div
-                class="max-w-6xl mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 relative z-10">
+                class="max-w-[1400px] mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 relative z-10">
                 <div class="space-y-4">
                     <h2
                         class="text-4xl lg:text-6xl font-black tracking-tighter text-crestix-charcoal flex items-center gap-6">
@@ -854,33 +853,33 @@
             </div>
 
             <div id="diagnostic-container"
-                class="max-w-6xl mx-auto bg-white/60 backdrop-blur-xl border border-white/70 rounded-[3rem] p-10 lg:p-20 shadow-[0_20px_80px_rgba(0,0,0,0.12)] min-h-[500px] flex flex-col justify-between relative z-10">
+                class="max-w-[1400px] mx-auto rounded-[3rem] p-10 lg:p-20 min-h-[500px] flex flex-col justify-between relative z-10">
                 <div id="diag-step-1" class="space-y-16 transition-all duration-800">
                     <div class="text-center space-y-4">
                         <span
                             class="text-[13px] font-black text-crestix-orange font-poppins tracking-[0.6em] uppercase block">Step
                             01 / Career Expertise</span>
-                        <h3 class="text-4xl lg:text-6xl font-black text-crestix-charcoal tracking-tighter">希望する職種領域</h3>
+                        <h3 class="text-4xl lg:text-6xl font-black text-crestix-charcoal tracking-tighter"
+                            style="white-space: nowrap;">希望する職種領域は？</h3>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="diag-card-layerx" onclick="selectDiagnosticOption(1, 'ビジネス')">
-                            <span class="text-3xl font-black text-crestix-charcoal tracking-tight">ビジネス</span>
-                            <p
-                                class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">
-                                Sales Agency / BizDev / Consultant</p>
-                        </div>
-                        <div class="diag-card-layerx" onclick="selectDiagnosticOption(1, 'グロースマーケ')">
+                        <div class="diag-card-layerx group" onclick="selectDiagnosticOption(1, 'インサイドセールス')">
                             <span
-                                class="text-3xl font-black text-crestix-charcoal leading-tight tracking-tight">マーケ・制作</span>
-                            <p
-                                class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">
-                                Ads / Web Design / Creative</p>
+                                class="opt-abbr font-poppins text-crestix-navy group-hover:text-crestix-orange transition-colors"
+                                style="font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1;">IS</span>
+                            <span class="font-sans text-[13px] font-bold text-[#555] tracking-[0.05em]">インサイドセールス</span>
                         </div>
-                        <div class="diag-card-layerx" onclick="selectDiagnosticOption(1, 'コーポレート')">
-                            <span class="text-3xl font-black text-crestix-charcoal tracking-tight">コーポレート</span>
-                            <p
-                                class="text-[11px] text-gray-400 mt-6 leading-loose font-bold tracking-[0.2em] uppercase">
-                                HR / Strategy / Assistant</p>
+                        <div class="diag-card-layerx group" onclick="selectDiagnosticOption(1, 'フィールドセールス')">
+                            <span
+                                class="opt-abbr font-poppins text-crestix-navy group-hover:text-crestix-orange transition-colors"
+                                style="font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1;">FS</span>
+                            <span class="font-sans text-[13px] font-bold text-[#555] tracking-[0.05em]">フィールドセールス</span>
+                        </div>
+                        <div class="diag-card-layerx group" onclick="selectDiagnosticOption(1, 'カスタマーサクセス')">
+                            <span
+                                class="opt-abbr font-poppins text-crestix-navy group-hover:text-crestix-orange transition-colors"
+                                style="font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1;">CS</span>
+                            <span class="font-sans text-[13px] font-bold text-[#555] tracking-[0.05em]">カスタマーサクセス</span>
                         </div>
                     </div>
                 </div>
@@ -912,139 +911,119 @@
 
         <!-- ═══ SITE CONTENTS ═══ -->
         <section id="sec-site-contents"
-            class="py-24 lg:py-40 px-10 lg:px-24 bg-white border-b border-crestix-border relative select-none">
-            <div class="max-w-[1400px] mx-auto space-y-16 lg:space-y-20">
+            class="py-24 lg:py-40 bg-white border-b border-crestix-border relative select-none">
+            <!-- Separated Heading block with standard container padding -->
+            <div class="max-w-[1400px] mx-auto px-10 lg:px-24 mb-16 lg:mb-20">
                 <div class="space-y-3">
                     <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal tracking-tight leading-tight">
                         サイトコンテンツ</h2>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-                    <!-- Card 1 -->
-                    <a href="corporate.html" class="cx-content-card group cursor-pointer block">
-                        <div class="relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#f0f4f8]">
-                            <span class="cx-card-tag" style="background:#FF5C00;color:#fff;">Crestixを知る</span>
-                            <img src="assets/images/office/crestix.png" alt="Crestixを知る"
-                                class="cx-card-img w-full h-full object-cover">
-                            <div
-                                class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500">
-                            </div>
-                        </div>
-                        <div class="mt-5 space-y-2">
-                            <h3
-                                class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">
-                                Crestixを知る</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed font-medium">
-                                ミッション、ビジョン、6つのバリューを解説。私たちが目指す世界をご紹介します。</p>
-                        </div>
-                    </a>
-                    <!-- Card 2 -->
-                    <a href="business.html" class="cx-content-card group cursor-pointer block">
-                        <div class="relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#fff3ee]">
-                            <span class="cx-card-tag" style="background:#E65200;color:#fff;">事業を知る</span>
-                            <img src="assets/images/office/crestix1.png" alt="事業を知る"
-                                class="cx-card-img w-full h-full object-cover">
-                            <div
-                                class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500">
-                            </div>
-                        </div>
-                        <div class="mt-5 space-y-2">
-                            <h3
-                                class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">
-                                事業を知る</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed font-medium">
-                                5つの成長事業ドメイン戦略。セールス・マーケ・プロダクト開発など各領域をご紹介。</p>
-                        </div>
-                    </a>
-                    <!-- Card 3 -->
-                    <a href="jobs.html" class="cx-content-card group cursor-pointer block">
-                        <div class="relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1A2B4C]">
-                            <span class="cx-card-tag" style="background:#FFD600;color:#1A2B4C;">ポジションを知る</span>
-                            <img src="assets/images/office/crestix.png" alt="ポジションを知る"
-                                class="cx-card-img w-full h-full object-cover opacity-60">
-                            <div
-                                class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500">
-                            </div>
-                        </div>
-                        <div class="mt-5 space-y-2">
-                            <h3
-                                class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">
-                                ポジションを知る</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed font-medium">
-                                現在募集中の全ポジション。ビジネス・マーケ・コーポレートなど幅広い職種で募集中。</p>
-                        </div>
-                    </a>
-                    <!-- Card 4: Members -->
-                    <a href="members.html" class="cx-content-card group cursor-pointer block">
-                        <div class="relative overflow-hidden rounded-2xl aspect-[3/4]"
-                            style="background:linear-gradient(160deg,#e8edf4 0%,#d4dbe8 100%);">
-                            <div
-                                style="position:absolute;top:14px;left:50%;transform:translateX(-50%);background:#1A2B4C;color:white;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;padding:5px 16px;border-radius:99px;white-space:nowrap;z-index:10;">
-                                Members</div>
-                            <div class="absolute inset-0 flex items-end justify-around px-4">
-                                <div class="flex flex-col items-center" style="transform:translateY(6px)">
-                                    <div
-                                        style="width:52px;height:52px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;">
-                                        <div
-                                            style="width:100%;height:100%;background:linear-gradient(160deg,#b0bbc8,#8a9bb0);">
-                                        </div>
-                                    </div>
-                                    <div
-                                        style="width:44px;height:64px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#7a8fa8,#5a7090);">
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <div
-                                        style="width:56px;height:56px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;">
-                                        <div
-                                            style="width:100%;height:100%;background:linear-gradient(160deg,#b8c4d0,#94a8bc);">
-                                        </div>
-                                    </div>
-                                    <div
-                                        style="width:48px;height:72px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#5a7090,#3d5570);">
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-center" style="transform:translateY(4px)">
-                                    <div
-                                        style="width:50px;height:50px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;">
-                                        <div
-                                            style="width:100%;height:100%;background:linear-gradient(160deg,#aabbc8,#8a9eb5);">
-                                        </div>
-                                    </div>
-                                    <div
-                                        style="width:42px;height:60px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#8a9eb5,#6a82a0);">
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-center" style="transform:translateY(8px)">
-                                    <div
-                                        style="width:48px;height:48px;border-radius:50%;background:#c5cdd8;overflow:hidden;border:2px solid #e0e5ec;margin-bottom:4px;">
-                                        <div
-                                            style="width:100%;height:100%;background:linear-gradient(160deg,#b2bfcc,#90a4b8);">
-                                        </div>
-                                    </div>
-                                    <div
-                                        style="width:40px;height:56px;border-radius:8px 8px 0 0;background:linear-gradient(160deg,#90a4b8,#6e8aa0);">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="absolute bottom-5 left-0 right-0 flex justify-center">
-                                <span
-                                    class="bg-crestix-navy text-white text-[10px] font-black font-poppins px-6 py-2 rounded-full tracking-[0.2em] uppercase flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg">Entry
-                                    <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></span>
-                            </div>
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500">
-                            </div>
-                        </div>
-                        <div class="mt-5 space-y-2">
-                            <h3
-                                class="text-base font-black text-crestix-charcoal group-hover:text-crestix-orange transition-colors tracking-tight leading-snug">
-                                メンバーを知る</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed font-medium">
-                                最高速度で共鳴する才能たち。現場で戦うCrestixメンバーのリアルな声とキャリアストーリー。</p>
-                        </div>
-                    </a>
-                </div>
+            </div>
+            
+            <!-- Full width Grid container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 w-full">
+                <!-- Card 1 -->
+                <a href="corporate.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-[9/14] bg-[#1A2B4C] w-full">
+                    <!-- Background Image -->
+                    <img src="assets/images/office/crestix.png" alt="Crestixを知る"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60">
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity duration-500 group-hover:opacity-95"></div>
+                    <!-- Tag -->
+                    <div class="absolute top-6 left-6">
+                        <span class="bg-[#FF5C00] text-white text-[10px] font-black font-poppins tracking-[0.2em] px-4 py-1.5 rounded-full uppercase">Crestixを知る</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="absolute bottom-8 left-8 right-8 space-y-3 z-10">
+                        <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
+                            Crestixを知る
+                        </h3>
+                        <p class="text-xs text-gray-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            ミッション、ビジョン、6つのバリューを解説。私たちが目指す世界をご紹介します。
+                        </p>
+                        <span class="inline-flex items-center gap-2 text-white text-[10px] font-black tracking-widest uppercase mt-2 group-hover:text-crestix-orange transition-colors">
+                            Read More <i class="fa-solid fa-arrow-right text-[8px] transform group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+                
+                <!-- Card 2 -->
+                <a href="business.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-[9/14] bg-[#E65200] w-full">
+                    <!-- Background Image -->
+                    <img src="assets/images/office/crestix1.png" alt="事業を知る"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-65">
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity duration-500 group-hover:opacity-95"></div>
+                    <!-- Tag -->
+                    <div class="absolute top-6 left-6">
+                        <span class="bg-[#E65200] text-white text-[10px] font-black font-poppins tracking-[0.2em] px-4 py-1.5 rounded-full uppercase">事業を知る</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="absolute bottom-8 left-8 right-8 space-y-3 z-10">
+                        <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
+                            事業を知る
+                        </h3>
+                        <p class="text-xs text-gray-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            5つの成長事業ドメイン戦略。セールス・マーケ・プロダクト開発など各領域をご紹介。
+                        </p>
+                        <span class="inline-flex items-center gap-2 text-white text-[10px] font-black tracking-widest uppercase mt-2 group-hover:text-crestix-orange transition-colors">
+                            Read More <i class="fa-solid fa-arrow-right text-[8px] transform group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+                
+                <!-- Card 3 -->
+                <a href="jobs.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-[9/14] bg-[#0A0F1E] w-full">
+                    <!-- Background Image -->
+                    <img src="assets/images/office/crestix.png" alt="ポジションを知る"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-50">
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent transition-opacity duration-500 group-hover:opacity-95"></div>
+                    <!-- Tag -->
+                    <div class="absolute top-6 left-6">
+                        <span class="bg-[#FFD600] text-[#1A2B4C] text-[10px] font-black font-poppins tracking-[0.2em] px-4 py-1.5 rounded-full uppercase">ポジションを知る</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="absolute bottom-8 left-8 right-8 space-y-3 z-10">
+                        <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
+                            ポジションを知る
+                        </h3>
+                        <p class="text-xs text-gray-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            現在募集中の全ポジション。ビジネス・マーケ・コーポレートなど幅広い職種で募集中。
+                        </p>
+                        <span class="inline-flex items-center gap-2 text-white text-[10px] font-black tracking-widest uppercase mt-2 group-hover:text-crestix-orange transition-colors">
+                            Read More <i class="fa-solid fa-arrow-right text-[8px] transform group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+                
+                <!-- Card 4 -->
+                <a href="members.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-[9/14] bg-[#2E3B5E] w-full">
+                    <!-- Background Image -->
+                    <img src="assets/images/office/crestix-header.png" alt="メンバーを知る"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60">
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity duration-500 group-hover:opacity-95"></div>
+                    <!-- Tag -->
+                    <div class="absolute top-6 left-6">
+                        <span class="bg-[#1A2B4C] text-white text-[10px] font-black font-poppins tracking-[0.2em] px-4 py-1.5 rounded-full uppercase border border-white/20">メンバーを知る</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="absolute bottom-8 left-8 right-8 space-y-3 z-10">
+                        <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
+                            メンバーを知る
+                        </h3>
+                        <p class="text-xs text-gray-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            最高速度で共鳴する才能たち。現場で戦うCrestixメンバーのリアルな声とキャリアストーリー。
+                        </p>
+                        <span class="inline-flex items-center gap-2 text-white text-[10px] font-black tracking-widest uppercase mt-2 group-hover:text-crestix-orange transition-colors">
+                            Read More <i class="fa-solid fa-arrow-right text-[8px] transform group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
             </div>
         </section>
+
 
         <!-- ═══ CRESTORY — YOUTUBE ═══ -->
         <section id="sec-youtube-carousel"
@@ -1278,11 +1257,14 @@
                                     class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
                                         class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>事業一覧</a>
                             </li>
-                            <li><a href="service-hd.html" class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>HD事業部</a></li>
+                            <li><a href="service-hd.html"
+                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>HD事業部</a>
+                            </li>
                             <li><a href="service-division1.html"
                                     class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>第1事業部
-                                    (バクラク)</a></li>
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>Division
+                                    01</a></li>
                         </ul>
                     </div>
 
@@ -1396,43 +1378,8 @@
 
     <!-- Navbar -->
     <script>
-        (function () {
-            const navbar = document.getElementById('navbar');
-            const menu = document.getElementById('fullscreen-menu');
-            const hamLines = document.getElementById('ham-lines');
-            let menuOpen = false;
-            let ticking = false;
-            let isScrolled = false;
-
-            function onScroll() {
-                if (!ticking) {
-                    requestAnimationFrame(() => {
-                        isScrolled = window.scrollY > 60;
-                        navbar.classList.toggle('scrolled', isScrolled);
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }
-            window.addEventListener('scroll', onScroll, { passive: true });
-
-            window.handleLogoClick = function () {
-                if (isScrolled) window.toggleMenu();
-                else location.href = 'index.html';
-            };
-
-            window.toggleMenu = function () {
-                menuOpen = !menuOpen;
-                menu.classList.toggle('is-open', menuOpen);
-                if (hamLines) hamLines.classList.toggle('is-open', menuOpen);
-                document.body.style.overflow = menuOpen ? 'hidden' : '';
-            };
-
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && menuOpen) window.toggleMenu();
-            });
-        })();
     </script>
+    <script src="assets/js/navbar.js"></script>
 
     <!-- Hero Slideshow -->
     <script>

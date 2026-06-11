@@ -169,10 +169,9 @@ function switchView(mode) {
 
 function scrollToSection(id) {
     if (window.closeAllModals) window.closeAllModals();
-    const scrollContainer = document.getElementById('preview-content-box');
     const target = document.getElementById(id);
-    if (scrollContainer && target) {
-        scrollContainer.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+    if (target) {
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
     }
 }
 
@@ -219,22 +218,6 @@ window.addEventListener('DOMContentLoaded', () => {
     if(cRight) cRight.addEventListener('click', rotateCarouselRight);
     if(cPlay) cPlay.addEventListener('click', toggleCarouselAutoPlay);
 
-    // Navbar scroll effect
-    const scrollContainer = document.getElementById('preview-content-box');
-    if (scrollContainer) {
-        scrollContainer.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (navbar) {
-                if (scrollContainer.scrollTop > 50) {
-                    navbar.classList.add('bg-black/60', 'py-4', 'shadow-2xl');
-                    navbar.classList.remove('bg-black/10', 'py-6');
-                } else {
-                    navbar.classList.add('bg-black/10', 'py-6');
-                    navbar.classList.remove('bg-black/60', 'py-4', 'shadow-2xl');
-                }
-            }
-        });
-    }
 
     // Intersection Observer for scroll animations (.reveal -> .visible)
     const revealObserver = new IntersectionObserver((entries, observer) => {

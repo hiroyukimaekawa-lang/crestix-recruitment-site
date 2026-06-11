@@ -4,7 +4,7 @@
  * 3ステップ診断 → 結果表示 → 各事業部ページへ遷移
  *
  * 遷移マッピング:
- *   Division 01 (service-division1.html) : 医療マーケ / バクラク
+ *   Division 01 (service-division1.html) : 医療マーケ
  *   Division HD (service-hd.html)        : 飲食店 HP制作・集客
  *
  * アンカー構造 (service-hd.html のみ):
@@ -91,9 +91,9 @@ const DIAG_STEPS = [
     label: 'Step 01 / Career Expertise',
     question: '希望する職種領域は？',
     options: [
-      { value: 'インサイドセールス', icon: '📞', title: 'インサイドセールス', sub: 'Inside Sales' },
-      { value: 'フィールドセールス', icon: '🤝', title: 'フィールドセールス', sub: 'Field Sales' },
-      { value: 'カスタマーサクセス', icon: '💖', title: 'カスタマーサクセス', sub: 'Customer Success' },
+      { value: 'インサイドセールス', icon: 'IS', title: 'インサイドセールス', sub: 'Inside Sales' },
+      { value: 'フィールドセールス', icon: 'FS', title: 'フィールドセールス', sub: 'Field Sales' },
+      { value: 'カスタマーサクセス', icon: 'CS', title: 'カスタマーサクセス', sub: 'Customer Success' },
     ],
   },
   {
@@ -101,9 +101,9 @@ const DIAG_STEPS = [
     label: 'Step 02 / Work Style',
     question: 'どんな働き方が理想ですか？',
     options: [
-      { value: '裁量大きく自走', icon: '🚀', title: '裁量大きく自走', sub: 'High Autonomy' },
-      { value: 'チームで創る', icon: '🤝', title: 'チームで創る', sub: 'Collaborative' },
-      { value: '成果報酬で稼ぐ', icon: '💰', title: '成果報酬で稼ぐ', sub: 'Performance' },
+      { value: '裁量大きく自走', icon: '自走', title: '裁量大きく自走', sub: 'High Autonomy' },
+      { value: 'チームで創る', icon: 'Team', title: 'チームで創る', sub: 'Collaborative' },
+      { value: '成果報酬で稼ぐ', icon: '成果', title: '成果報酬で稼ぐ', sub: 'Performance' },
     ],
   },
   {
@@ -111,9 +111,9 @@ const DIAG_STEPS = [
     label: 'Step 03 / Experience',
     question: 'あなたの経験年数は？',
     options: [
-      { value: '未経験・第二新卒', icon: '🌱', title: '未経験・第二新卒', sub: '0〜2 years' },
-      { value: '3〜5年', icon: '📈', title: '3〜5年', sub: 'Mid Level' },
-      { value: '6年以上', icon: '⭐', title: '6年以上', sub: 'Senior+' },
+      { value: '未経験・第二新卒', icon: '新卒', title: '未経験・第二新卒', sub: '0〜2 years' },
+      { value: '3〜5年', icon: 'Mid', title: '3〜5年', sub: 'Mid Level' },
+      { value: '6年以上', icon: 'Sr.', title: '6年以上', sub: 'Senior+' },
     ],
   },
 ];
@@ -227,9 +227,9 @@ function renderStep(stepNum) {
     <div class="diag-step-body" style="flex:1;display:flex;flex-direction:column;gap:2.5rem;">
       <div style="text-align:center;margin-bottom:0.5rem;">
         <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.6em;text-transform:uppercase;color:#FF5C00;display:block;margin-bottom:0.75rem;">${step.label}</span>
-        <h3 style="font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,4vw,2.8rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.04em;line-height:1.1;">${step.question}</h3>
+        <h3 style="font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,4vw,3rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.04em;line-height:1.1;white-space:nowrap;">${step.question}</h3>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
         ${step.options.map(opt => buildOptionCard(stepNum, opt)).join('')}
       </div>
     </div>
@@ -244,12 +244,11 @@ function buildOptionCard(stepNum, opt) {
   return `
     <div class="diag-opt-card"
          onclick="diagSelect(${stepNum}, '${opt.value}')"
-         style="background:rgba(255,255,255,0.85);border:2px solid rgba(255,255,255,0.9);border-radius:20px;padding:2rem 1.25rem;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;min-height:160px;justify-content:center;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);box-shadow:0 4px 16px rgba(0,0,0,0.06);"
-         onmouseover="this.style.borderColor='#FF5C00';this.style.boxShadow='0 12px 32px rgba(255,92,0,0.2)';this.style.transform='translateY(-4px)';"
-         onmouseout="this.style.borderColor='rgba(255,255,255,0.9)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)';this.style.transform='translateY(0)';">
-      <span style="font-size:2rem;line-height:1;">${opt.icon}</span>
-      <span style="font-family:'Poppins',sans-serif;font-size:15px;font-weight:900;color:#1A2B4C;letter-spacing:-0.02em;">${opt.title}</span>
-      <span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:#aaa;letter-spacing:0.2em;text-transform:uppercase;">${opt.sub}</span>
+         style="background:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.85);border-radius:20px;padding:2rem 1.5rem;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:200px;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s cubic-bezier(0.16,1,0.3,1);"
+         onmouseover="this.style.borderColor='#FF5C00';this.style.boxShadow='0 12px 36px rgba(255,92,0,0.22)';this.style.transform='translateY(-6px)';this.querySelector('.opt-abbr').style.color='#FF5C00';"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.85)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.transform='translateY(0)';this.querySelector('.opt-abbr').style.color='#1A2B4C';">
+      <span class="opt-abbr" style="font-family:'Poppins',sans-serif;font-size:clamp(2.4rem,5vw,3.5rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.04em;line-height:1;transition:color 0.25s ease;">${opt.icon}</span>
+      <span style="font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;color:#555;letter-spacing:0.05em;">${opt.title}</span>
     </div>`;
 }
 

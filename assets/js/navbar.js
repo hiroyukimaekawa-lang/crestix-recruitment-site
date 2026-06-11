@@ -76,7 +76,6 @@
     const pageMap = {
       'index'           : 'index',
       'corporate'       : 'corporate',
-      'company'         : 'corporate',   /* company.html → corporate active */
       'mvv'             : 'corporate',   /* mvv.html → corporate active */
       'message'         : 'corporate',   /* message.html → corporate active */
       'business'        : 'business',

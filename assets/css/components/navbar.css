@@ -84,7 +84,7 @@
   line-height: 1;
 
   font-family: 'Poppins', sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.30em;
   text-transform: uppercase;
@@ -177,7 +177,7 @@
 
 .cx-mega-label {
   font-family: 'Poppins', sans-serif;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -191,7 +191,7 @@
   gap: 8px;
   padding: 9px 20px;
   font-family: 'Poppins', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: rgba(255,255,255,0.60);
   text-decoration: none;
@@ -228,7 +228,7 @@
   background: #FF5C00;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.20em;
   text-transform: uppercase;
@@ -261,6 +261,9 @@
   cursor: pointer;
   padding: 8px;
   gap: 0;
+}
+@media (min-width: 1024px) {
+  #cx-hamburger { display: none; }
 }
 .cx-ham-lines {
   display: flex;
@@ -298,6 +301,7 @@
   pointer-events: none;
   clip-path: inset(0 0 100% 0);
   transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1);
+  overflow-y: auto;
 }
 #fullscreen-menu.cx-fm-open {
   pointer-events: all;
@@ -316,7 +320,7 @@
 .fm-logo {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
-  font-size: 1.25rem;
+  font-size: 1.85rem;
   letter-spacing: -0.03em;
   color: white;
   cursor: pointer;

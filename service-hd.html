@@ -686,7 +686,7 @@
         }
 
         .accordion-item.open .acc-body {
-            max-height: 600px;
+            max-height: 2000px;
         }
 
         .acc-content {
@@ -845,8 +845,11 @@
                     <span class="cx-mega-label">Business Domains</span>
                     <a href="business.html"><i class="fa-solid fa-circle-dot"></i>事業一覧</a>
                     <a href="service-hd.html"><i class="fa-solid fa-circle-dot"></i>HD事業部</a>
-                    <a href="service-division1.html"><i class="fa-solid fa-circle-dot"></i>第1事業部 (バクラク)</a>
-                </div>
+                    <a href="service-division1.html"><i class="fa-solid fa-circle-dot"></i>Division 01</a>
+                    <a href="#" class="pointer-events-none opacity-50"><i class="fa-solid fa-circle-dot"></i>MeRaise（キャリア教育事業）<span class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming Soon</span></a>
+                    <a href="#" class="pointer-events-none opacity-50"><i class="fa-solid fa-circle-dot"></i>LL事業部（法人向けインフラ）<span class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming Soon</span></a>
+                    <a href="#" class="pointer-events-none opacity-50"><i class="fa-solid fa-circle-dot"></i>CTC（Crestix Tryout Camp）<span class="ml-2 text-xs bg-gray-600 text-white px-2 py-0.5 rounded">Coming Soon</span></a>
+                  </div>
             </div>
 
             <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
@@ -1031,7 +1034,7 @@
                                     <p class="acc-detail-text">HD事業部 / インサイドセールスリーダー候補<br><br>プレーヤーとしての実績を積みながら、早期にチームマネジメントを担える環境です。</p>
                                 </div>
                             </div>
-                            <a href="jobs.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
+                            <a href="entry.html?role=飲食店向け インサイドセールス（IS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
                                     style="font-size:10px;"></i></a>
                         </div>
                     </div>
@@ -1060,7 +1063,7 @@
                                     <p class="acc-detail-text">HD事業部 / フィールドセールスメンバー<br><br>飲食店の集客・売上改善を、複数のプロダクトを組み合わせながら提案する、上流から携わる営業職です。</p>
                                 </div>
                             </div>
-                            <a href="jobs.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
+                            <a href="entry.html?role=飲食店向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
                                     style="font-size:10px;"></i></a>
                         </div>
                     </div>
@@ -1084,7 +1087,7 @@
                                     <p class="acc-detail-text">HD事業部 / フィールドセールスリーダー候補<br><br>現場プレーヤーとして成果を出しながら、組織のマネジメントも担える環境です。</p>
                                 </div>
                             </div>
-                            <a href="jobs.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
+                            <a href="entry.html?role=飲食店向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
                                     style="font-size:10px;"></i></a>
                         </div>
                     </div>
@@ -1113,7 +1116,7 @@
                                     <p class="acc-detail-text">HD事業部 / カスタマーサクセスメンバー<br><br>飲食店の成功体験を一緒につくる、顧客伴走型のポジションです。</p>
                                 </div>
                             </div>
-                            <a href="jobs.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
+                            <a href="entry.html?role=飲食店向け カスタマーサクセス（CS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
                                     style="font-size:10px;"></i></a>
                         </div>
                     </div>
@@ -1137,7 +1140,7 @@
                                     <p class="acc-detail-text">HD事業部 / カスタマーサクセスリーダー候補<br><br>CS組織全体の品質向上と顧客満足度の最大化を担うリーダーポジションです。</p>
                                 </div>
                             </div>
-                            <a href="jobs.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
+                            <a href="entry.html?role=飲食店向け カスタマーサクセス（CS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
                                     style="font-size:10px;"></i></a>
                         </div>
                     </div>
@@ -1238,10 +1241,23 @@
         /* ── Accordion ── */
         function toggleAccordion(btn) {
             const item = btn.closest('.accordion-item');
+            const body = item.querySelector('.acc-body');
             const isOpen = item.classList.contains('open');
+            
+            // Close all in same category
             const category = item.closest('.jobs-category');
-            category.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-            if (!isOpen) item.classList.add('open');
+            category.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('open');
+                const b = i.querySelector('.acc-body');
+                if (b) b.style.maxHeight = null;
+            });
+            
+            if (!isOpen) {
+                item.classList.add('open');
+                if (body) {
+                    body.style.maxHeight = (body.scrollHeight + 80) + "px";
+                }
+            }
         }
         window.toggleAccordion = toggleAccordion;
 
@@ -1263,6 +1279,10 @@
 
             setTimeout(() => {
                 target.classList.add('open');
+                const body = target.querySelector('.acc-body');
+                if (body) {
+                    body.style.maxHeight = (body.scrollHeight + 80) + "px";
+                }
                 target.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 target.classList.add('cx-highlight');
                 setTimeout(() => {
