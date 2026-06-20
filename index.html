@@ -563,6 +563,98 @@
             transform: scale(1.06);
         }
 
+        /* ==========================================================================
+           Site Contents - Horizontal Accordion Animation (PC only / Sooon Style)
+           ========================================================================== */
+        @media (min-width: 1024px) {
+
+            /* ① 親コンテナをFlexboxに上書き・高さ固定 */
+            .cx-contents-flex-wrap {
+                display: flex !important;
+                flex-direction: row !important;
+                height: 620px;
+                overflow: hidden;
+            }
+
+            /* ② 各カードの初期状態 */
+            .cx-accordion-card {
+                flex: 1;
+                width: auto !important;
+                height: 100% !important;
+                transition: flex 0.65s cubic-bezier(0.25, 1, 0.3, 1) !important;
+            }
+
+            /* ③ 親ホバー時：ホバーされていないカードを縮める */
+            .cx-contents-flex-wrap:hover .cx-accordion-card:not(:hover) {
+                flex: 0.55;
+            }
+
+            /* ④ ホバーされているカードを広げる */
+            .cx-accordion-card:hover {
+                flex: 2.35;
+            }
+
+            /* ⑤ 詳細テキスト：通常時は非表示 */
+            .cx-card-detail {
+                max-height: 0;
+                opacity: 0;
+                transform: translateY(15px);
+                visibility: hidden;
+                overflow: hidden;
+                transition:
+                    max-height 0.5s ease,
+                    opacity 0.45s ease,
+                    transform 0.5s cubic-bezier(0.25, 1, 0.3, 1),
+                    visibility 0s linear 0.5s;
+                width: 340px;
+                max-width: 90%;
+            }
+
+            /* ホバー時：詳細テキストをフェード＆スライドインで展開 */
+            .cx-accordion-card:hover .cx-card-detail {
+                max-height: 150px;
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+                transition:
+                    max-height 0.5s ease,
+                    opacity 0.45s ease 0.1s,
+                    transform 0.5s cubic-bezier(0.25, 1, 0.3, 1) 0.05s,
+                    visibility 0s linear 0s;
+                margin-top: 10px;
+            }
+
+            /* ⑥ View more ボタン：通常時は透明枠 */
+            .cx-view-more-box {
+                display: inline-flex;
+                align-items: center;
+                padding: 8px 20px;
+                border: 1px solid rgba(255, 255, 255, 0);
+                transition: border-color 0.4s ease;
+                margin-top: 8px;
+            }
+
+            /* ホバー時：白枠を表示 */
+            .cx-accordion-card:hover .cx-view-more-box {
+                border-color: rgba(255, 255, 255, 0.8);
+            }
+
+            /* 矢印アイコン：ホバー時に右へスライド */
+            .cx-arrow {
+                transition: transform 0.3s ease;
+            }
+
+            .cx-accordion-card:hover .cx-arrow {
+                transform: translateX(5px);
+            }
+
+            /* テキスト領域の最小幅確保（縮小時の折り返し防止） */
+            .cx-accordion-card .absolute.bottom-8 {
+                width: 320px;
+                max-width: 85%;
+            }
+        }
+
         /* ─── Marquee ─────────────────────────────────────────── */
         .marquee-wrapper {
             display: flex;
@@ -921,9 +1013,9 @@
             </div>
             
             <!-- Full width Grid container -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex gap-0 w-full cx-contents-flex-wrap">
                 <!-- Card 1 -->
-                <a href="corporate.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-[9/14] bg-[#1A2B4C] w-full">
+                <a href="corporate.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-auto bg-[#1A2B4C] w-full cx-accordion-card">
                     <!-- Background Image -->
                     <img src="assets/images/office/crestix.png" alt="Crestixを知る"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60">
@@ -938,17 +1030,18 @@
                         <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
                             Crestixを知る
                         </h3>
-                        <p class="text-xs text-gray-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <p class="cx-card-detail text-gray-200 text-xs leading-relaxed">
                             ミッション、ビジョン、6つのバリューを解説。私たちが目指す世界をご紹介します。
                         </p>
-                        <span class="inline-flex items-center gap-2 text-white text-[10px] font-black tracking-widest uppercase mt-2 group-hover:text-crestix-orange transition-colors">
-                            Read More <i class="fa-solid fa-arrow-right text-[8px] transform group-hover:translate-x-1 transition-transform"></i>
-                        </span>
+                        <div class="cx-view-more-box text-white text-xs font-black tracking-widest uppercase mt-2">
+                            <span>Read More</span>
+                            <i class="fa-solid fa-arrow-right text-[8px] cx-arrow ml-2"></i>
+                        </div>
                     </div>
                 </a>
                 
                 <!-- Card 2 -->
-                <a href="business.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-[9/14] bg-[#E65200] w-full">
+                <a href="business.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-auto bg-[#E65200] w-full cx-accordion-card">
                     <!-- Background Image -->
                     <img src="assets/images/office/crestix1.png" alt="事業を知る"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-65">
@@ -963,17 +1056,18 @@
                         <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
                             事業を知る
                         </h3>
-                        <p class="text-xs text-gray-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <p class="cx-card-detail text-gray-200 text-xs leading-relaxed">
                             5つの成長事業ドメイン戦略。セールス・マーケ・プロダクト開発など各領域をご紹介。
                         </p>
-                        <span class="inline-flex items-center gap-2 text-white text-[10px] font-black tracking-widest uppercase mt-2 group-hover:text-crestix-orange transition-colors">
-                            Read More <i class="fa-solid fa-arrow-right text-[8px] transform group-hover:translate-x-1 transition-transform"></i>
-                        </span>
+                        <div class="cx-view-more-box text-white text-xs font-black tracking-widest uppercase mt-2">
+                            <span>Read More</span>
+                            <i class="fa-solid fa-arrow-right text-[8px] cx-arrow ml-2"></i>
+                        </div>
                     </div>
                 </a>
                 
                 <!-- Card 3 -->
-                <a href="jobs.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-[9/14] bg-[#0A0F1E] w-full">
+                <a href="jobs.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-auto bg-[#0A0F1E] w-full cx-accordion-card">
                     <!-- Background Image -->
                     <img src="assets/images/office/crestix.png" alt="ポジションを知る"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-50">
@@ -988,17 +1082,18 @@
                         <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
                             ポジションを知る
                         </h3>
-                        <p class="text-xs text-gray-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <p class="cx-card-detail text-gray-200 text-xs leading-relaxed">
                             現在募集中の全ポジション。ビジネス・マーケ・コーポレートなど幅広い職種で募集中。
                         </p>
-                        <span class="inline-flex items-center gap-2 text-white text-[10px] font-black tracking-widest uppercase mt-2 group-hover:text-crestix-orange transition-colors">
-                            Read More <i class="fa-solid fa-arrow-right text-[8px] transform group-hover:translate-x-1 transition-transform"></i>
-                        </span>
+                        <div class="cx-view-more-box text-white text-xs font-black tracking-widest uppercase mt-2">
+                            <span>Read More</span>
+                            <i class="fa-solid fa-arrow-right text-[8px] cx-arrow ml-2"></i>
+                        </div>
                     </div>
                 </a>
                 
                 <!-- Card 4 -->
-                <a href="members.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-[9/14] bg-[#2E3B5E] w-full">
+                <a href="members.html" class="group cursor-pointer block relative overflow-hidden aspect-[3/4] lg:aspect-auto bg-[#2E3B5E] w-full cx-accordion-card">
                     <!-- Background Image -->
                     <img src="assets/images/office/crestix-header.png" alt="メンバーを知る"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60">
@@ -1013,12 +1108,13 @@
                         <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
                             メンバーを知る
                         </h3>
-                        <p class="text-xs text-gray-300 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                        <p class="cx-card-detail text-gray-200 text-xs leading-relaxed">
                             最高速度で共鳴する才能たち。現場で戦うCrestixメンバーのリアルな声とキャリアストーリー。
                         </p>
-                        <span class="inline-flex items-center gap-2 text-white text-[10px] font-black tracking-widest uppercase mt-2 group-hover:text-crestix-orange transition-colors">
-                            Read More <i class="fa-solid fa-arrow-right text-[8px] transform group-hover:translate-x-1 transition-transform"></i>
-                        </span>
+                        <div class="cx-view-more-box text-white text-xs font-black tracking-widest uppercase mt-2">
+                            <span>Read More</span>
+                            <i class="fa-solid fa-arrow-right text-[8px] cx-arrow ml-2"></i>
+                        </div>
                     </div>
                 </a>
             </div>

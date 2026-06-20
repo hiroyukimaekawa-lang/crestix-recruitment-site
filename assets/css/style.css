@@ -206,3 +206,96 @@ input:focus, select:focus, textarea:focus {
     border-color: #FF5C00 !important;
     box-shadow: 0 0 0 4px rgba(255, 92, 0, 0.1);
 }
+
+/* ─── Site Contents Cards ────────────────────────────── */
+/* ==========================================================================
+   Site Contents - Horizontal Accordion Animation (PC only / Sooon Style)
+   ========================================================================== */
+@media (min-width: 1024px) {
+
+    /* ① 親コンテナをFlexboxに上書き・高さ固定 */
+    .cx-contents-flex-wrap {
+        display: flex !important;
+        flex-direction: row !important;
+        height: 620px;
+        overflow: hidden;
+    }
+
+    /* ② 各カードの初期状態 */
+    .cx-accordion-card {
+        flex: 1;
+        width: auto !important;
+        height: 100% !important;
+        transition: flex 0.65s cubic-bezier(0.25, 1, 0.3, 1) !important;
+    }
+
+    /* ③ 親ホバー時：ホバーされていないカードを縮める */
+    .cx-contents-flex-wrap:hover .cx-accordion-card:not(:hover) {
+        flex: 0.55;
+    }
+
+    /* ④ ホバーされているカードを広げる */
+    .cx-accordion-card:hover {
+        flex: 2.35;
+    }
+
+    /* ⑤ 詳細テキスト：通常時は非表示 */
+    .cx-card-detail {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(15px);
+        visibility: hidden;
+        overflow: hidden;
+        transition:
+            max-height 0.5s ease,
+            opacity 0.45s ease,
+            transform 0.5s cubic-bezier(0.25, 1, 0.3, 1),
+            visibility 0s linear 0.5s;
+        width: 340px;
+        max-width: 90%;
+    }
+
+    /* ホバー時：詳細テキストをフェード＆スライドインで展開 */
+    .cx-accordion-card:hover .cx-card-detail {
+        max-height: 150px;
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        transition:
+            max-height 0.5s ease,
+            opacity 0.45s ease 0.1s,
+            transform 0.5s cubic-bezier(0.25, 1, 0.3, 1) 0.05s,
+            visibility 0s linear 0s;
+        margin-top: 10px;
+    }
+
+    /* ⑥ View more ボタン：通常時は透明枠 */
+    .cx-view-more-box {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 20px;
+        border: 1px solid rgba(255, 255, 255, 0);
+        transition: border-color 0.4s ease;
+        margin-top: 8px;
+    }
+
+    /* ホバー時：白枠を表示 */
+    .cx-accordion-card:hover .cx-view-more-box {
+        border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* 矢印アイコン：ホバー時に右へスライド */
+    .cx-arrow {
+        transition: transform 0.3s ease;
+    }
+
+    .cx-accordion-card:hover .cx-arrow {
+        transform: translateX(5px);
+    }
+
+    /* テキスト領域の最小幅確保（縮小時の折り返し防止） */
+    .cx-accordion-card .absolute.bottom-8 {
+        width: 320px;
+        max-width: 85%;
+    }
+}
