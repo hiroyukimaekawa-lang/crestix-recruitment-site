@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entry | Crestix — 採用エントリー</title>
+    <title>B2B Contact | Crestix — 企業様向けお問い合わせ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -162,30 +162,35 @@
     <div class="corp-hero flex flex-col justify-end pt-40">
         <div class="max-w-7xl mx-auto px-6 lg:px-14 pb-12 w-full">
             <p class="text-white/70 text-xs font-black tracking-[0.4em] uppercase mb-4 font-poppins">
-                Crestix / Entry
+                Crestix / B2B Contact
             </p>
             <h1 class="text-5xl lg:text-7xl font-black font-poppins tracking-tighter uppercase leading-none text-white drop-shadow-lg">
-                Entry
+                B2B Contact
             </h1>
             <p class="text-white/80 text-base font-bold mt-3">
-                採用エントリー
+                企業様向けお問い合わせ
             </p>
         </div>
     </div>
 
-    <!-- ② ENTRY FORM SECTION -->
+    <!-- ② B2B CONTACT FORM SECTION -->
     <section class="py-24 lg:py-40 bg-white">
         <div class="max-w-3xl mx-auto px-6 lg:px-14">
             <div class="space-y-12">
                 <div class="text-center space-y-4">
-                    <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.5em] uppercase block">Recruitment Form</span>
-                    <h2 class="text-3xl lg:text-4xl font-black text-crestix-charcoal tracking-tight">エントリー入力</h2>
-                    <p class="text-sm text-gray-500 font-bold leading-relaxed">Crestixの仲間として、第二創業期を共に走り抜けるプロフェッショナルをお待ちしております。</p>
+                    <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.5em] uppercase block">B2B Inquiry Form</span>
+                    <h2 class="text-3xl lg:text-4xl font-black text-crestix-charcoal tracking-tight">企業様向けお問い合わせ</h2>
+                    <p class="text-sm text-gray-500 font-bold leading-relaxed">営業支援、店舗グロース、クリニック向けマーケティングなど、法人向けサービスのご相談はこちらからお問い合わせください。</p>
                 </div>
 
-                <form onsubmit="event.preventDefault(); alert('エントリーを受け付けました。ご登録のアドレスへ追ってご連絡いたします。'); location.href='index.html';" class="space-y-8 bg-gray-50/50 p-8 lg:p-12 rounded-[2.5rem] border border-crestix-border">
+                <form onsubmit="event.preventDefault(); alert('お問い合わせを受け付けました。担当者より追ってご連絡いたします。'); location.href='index.html';" class="space-y-8 bg-gray-50/50 p-8 lg:p-12 rounded-[2.5rem] border border-crestix-border">
                     <div class="space-y-2">
-                        <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">お名前 (必須)</label>
+                        <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">会社名 (必須)</label>
+                        <input type="text" required placeholder="株式会社Crestix" class="form-input">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">ご担当者名 (必須)</label>
                         <input type="text" required placeholder="山田 太郎" class="form-input">
                     </div>
 
@@ -195,32 +200,31 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">希望職種 (必須)</label>
+                        <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">電話番号 (任意)</label>
+                        <input type="tel" placeholder="03-0000-0000" class="form-input">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">ご相談内容 (必須)</label>
                         <select required class="form-input">
-                            <option value="">希望する職種を選択してください</option>
-                            <option value="医療向け インサイドセールス（IS）">医療向け インサイドセールス（IS）</option>
-                            <option value="医療向け フィールドセールス（FS）">医療向け フィールドセールス（FS）</option>
-                            <option value="医療向け カスタマーサクセス（CS）">医療向け カスタマーサクセス（CS）</option>
-                            <option value="飲食店向け インサイドセールス（IS）">飲食店向け インサイドセールス（IS）</option>
-                            <option value="飲食店向け フィールドセールス（FS）">飲食店向け フィールドセールス（FS）</option>
-                            <option value="飲食店向け カスタマーサクセス（CS）">飲食店向け カスタマーサクセス（CS）</option>
-                            <option value="ソフトウェアエンジニア">ソフトウェアエンジニア</option>
-                            <option value="事業開発（BizDev）">事業開発（BizDev）</option>
-                            <option value="組織開発・人事">組織開発・人事</option>
-                            <option value="マーケティング">マーケティング</option>
-                            <option value="デザイナー">デザイナー</option>
-                            <option value="その他 (オープンエントリー)">その他 (オープンエントリー)</option>
+                            <option value="">ご相談内容を選択してください</option>
+                            <option value="営業代行・営業支援">営業代行・営業支援</option>
+                            <option value="AI・Sales Enablement">AI・Sales Enablement</option>
+                            <option value="店舗グロース支援">店舗グロース支援</option>
+                            <option value="クリニック向けマーケティング支援">クリニック向けマーケティング支援</option>
+                            <option value="Web制作・MEO対策">Web制作・MEO対策</option>
+                            <option value="その他">その他</option>
                         </select>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">自己紹介・アピール内容 (任意)</label>
-                        <textarea rows="5" placeholder="ご経歴やCrestixで挑戦したいことなどを自由にご記入ください。" class="form-input" style="resize: none;"></textarea>
+                        <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">お問い合わせ内容 (必須)</label>
+                        <textarea rows="6" required placeholder="ご相談の背景、課題感、ご希望の支援内容などをご記入ください。" class="form-input" style="resize: none;"></textarea>
                     </div>
 
                     <div class="pt-6">
                         <button type="submit" class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all hover:translate-y-[-2px] active:scale-95">
-                            エントリーを送信する ➔
+                            お問い合わせを送信する ➔
                         </button>
                     </div>
                 </form>

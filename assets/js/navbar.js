@@ -155,7 +155,9 @@
     trigger.addEventListener('focusin', () => {
       menu.style.opacity = '1';
       menu.style.pointerEvents = 'auto';
-      menu.style.transform = 'translateX(-50%) translateY(0)';
+      menu.style.transform = window.matchMedia('(min-width: 1024px)').matches
+        ? 'translateY(0)'
+        : 'translateX(-50%) translateY(0)';
     });
     trigger.addEventListener('focusout', (e) => {
       if (!trigger.contains(e.relatedTarget)) {

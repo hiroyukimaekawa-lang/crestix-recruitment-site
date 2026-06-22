@@ -57,7 +57,7 @@
   text-decoration: none;
 }
 #cx-nav-logo {
-  height: 38px;
+  height: 48px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -249,15 +249,16 @@
     transform: translateY(0);
   }
 
-  /* Inner container: title left / grid right */
+  /* Inner container: title centered / grid full width */
   .cx-mega-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 72px;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 80px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
     box-sizing: border-box;
   }
 
@@ -266,11 +267,12 @@
     display: none;
   }
 
-  /* Large title — left column */
+  /* Large title — centered */
   .cx-mega-header {
-    flex-shrink: 0;
-    width: 200px;
-    padding-top: 6px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .cx-mega-title {
     font-family: 'Poppins', sans-serif;
@@ -282,26 +284,30 @@
     text-transform: uppercase;
     line-height: 1;
     position: relative;
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 18px;
+    text-align: center;
   }
   /* Orange accent line */
   .cx-mega-title::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 36px;
     height: 3px;
     background: #FF5C00;
   }
 
-  /* Link grid — right side */
+  /* Link grid — full width */
   .cx-mega-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 3rem 4rem;
-    flex: 1;
+    width: 100%;
   }
 
   /* Column Groups */
@@ -312,7 +318,7 @@
   }
   .cx-mega-group-label {
     font-family: 'Poppins', sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     color: #FF5C00;
     letter-spacing: 0.20em;
@@ -336,7 +342,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     color: rgba(255, 255, 255, 0.65);
     font-family: 'Poppins', 'Noto Sans JP', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     text-decoration: none;
     transition: color 0.18s ease, border-bottom-color 0.18s ease, padding-left 0.18s ease;
@@ -360,6 +366,17 @@
   .cx-mega-menu a.cx-mega-item:hover .cx-mega-arrow {
     transform: translateX(4px);
     color: #FF5C00;
+  }
+
+  #mega-service .cx-mega-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 48px;
+    width: 100%;
+  }
+
+  #mega-service .cx-mega-group-label {
+    grid-column: 1 / -1;
   }
 
   /* Coming Soon Badge */
