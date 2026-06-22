@@ -917,87 +917,197 @@
 
         <!-- ═══ JOB DIAGNOSIS ═══ -->
         <section id="sec-diagnostic"
-            class="diag-gradient-bg py-32 lg:py-48 px-10 lg:px-24 relative overflow-hidden select-none">
-            <div
-                style="position:absolute;top:-80px;right:-120px;width:500px;height:500px;border-radius:9999px;background:radial-gradient(circle,rgba(255,255,255,0.25),transparent 70%);pointer-events:none;">
-            </div>
-            <div
-                style="position:absolute;bottom:-100px;left:-80px;width:400px;height:400px;border-radius:9999px;background:radial-gradient(circle,rgba(255,220,180,0.3),transparent 70%);pointer-events:none;">
+            class="bg-[#FAF8F6] py-24 lg:py-32 px-10 lg:px-24 relative overflow-hidden select-none">
+
+            <!-- 背景：Crestixロゴ透かし（右側中央） -->
+            <div class="absolute top-1/2 right-[-80px] -translate-y-1/2 pointer-events-none opacity-[0.06] select-none"
+                style="font-family:'Poppins',sans-serif;font-size:28vw;font-weight:900;color:#FF5C00;line-height:1;letter-spacing:-0.05em;user-select:none;">
+                C
             </div>
 
-            <div
-                class="max-w-[1400px] mx-auto mb-16 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 relative z-10">
-                <div class="space-y-4">
-                    <h2
-                        class="text-4xl lg:text-6xl font-black tracking-tighter text-crestix-charcoal flex items-center gap-6">
-                        <span class="w-3 h-12 bg-crestix-orange rounded-full shadow-lg shadow-orange-300"></span>
-                        Job Diagnosis
-                    </h2>
-                    <p
-                        class="text-sm lg:text-base text-gray-600 font-bold pl-12 tracking-wider leading-loose max-w-2xl">
-                        特性を選択するだけで、あなたが最も輝けるフィールドを自動提案します。
-                    </p>
+            <!-- 背景：中央上部オレンジのグラデーション光彩 -->
+            <div style="position:absolute;top:-100px;right:10%;width:700px;height:700px;border-radius:9999px;background:radial-gradient(circle,rgba(255,92,0,0.12),transparent 65%);pointer-events:none;"></div>
+
+            <!-- 背景：左下ドットパターン -->
+            <div style="position:absolute;bottom:0;left:0;width:220px;height:220px;pointer-events:none;opacity:0.35;"
+                class="bg-[radial-gradient(circle,#ccc_1px,transparent_1px)] bg-[length:14px_14px]"></div>
+
+            <!-- ヘッダー（左上） -->
+            <div class="max-w-[1400px] mx-auto mb-12 relative z-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <!-- Crestixロゴ（既存画像を流用） -->
+                    <img src="assets/images/office/crestix1.png" alt="Crestix" class="w-8 h-8 object-contain">
+                    <span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:1rem;letter-spacing:-0.02em;color:#1A2B4C;">Crestix</span>
                 </div>
-                <button id="diag-restart"
-                    class="text-[12px] font-black bg-white/70 backdrop-blur border border-white/80 px-10 py-4 rounded-2xl flex items-center gap-4 transition-all shadow-lg hover:border-crestix-orange hover:shadow-orange-200 active:scale-95 focus:outline-none uppercase tracking-[0.3em]">
-                    <i class="fa-solid fa-rotate-right" style="color:#FF5C00"></i> Reset Diagnosis
-                </button>
+                <!-- 左オレンジライン付きタイトル -->
+                <div class="flex items-start gap-4">
+                    <div style="width:4px;height:72px;background:#FF5C00;border-radius:2px;flex-shrink:0;margin-top:4px;"></div>
+                    <div>
+                        <h2 style="font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:-0.04em;color:#1A2B4C;line-height:1;">
+                            Job Diagnosis
+                        </h2>
+                        <p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.2em;color:#FF5C00;margin-top:4px;">
+                            by CRESTIX
+                        </p>
+                    </div>
+                </div>
+                <p style="font-family:'Noto Sans JP',sans-serif;font-size:0.9rem;color:#555;margin-top:16px;font-weight:500;">
+                    特性を選択するだけで、あなたが最も輝けるフィールドを自動提案します。
+                </p>
             </div>
 
+            <!-- 診断コンテナ -->
             <div id="diagnostic-container"
-                class="max-w-[1400px] mx-auto rounded-[3rem] p-5 sm:p-10 lg:p-20 min-h-[500px] flex flex-col justify-between relative z-10">
-                <div id="diag-step-1" class="space-y-16 transition-all duration-800">
-                    <div class="text-center space-y-4">
-                        <span
-                            class="text-[13px] font-black text-crestix-orange font-poppins tracking-[0.6em] uppercase block">Step
-                            01 / Career Expertise</span>
-                        <h3 class="text-4xl lg:text-6xl font-black text-crestix-charcoal tracking-tighter"
-                            style="white-space: nowrap;">希望する職種領域は？</h3>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="diag-card-layerx group" onclick="selectDiagnosticOption(1, 'インサイドセールス')">
-                            <span
-                                class="opt-abbr font-poppins text-crestix-navy group-hover:text-crestix-orange transition-colors text-4xl md:text-5xl lg:text-[4.5rem] font-black text-center"
-                                style="letter-spacing: -0.04em; line-height: 1;">IS</span>
-                            <span class="font-sans text-[13px] font-bold text-[#555] tracking-[0.05em]">インサイドセールス</span>
-                        </div>
-                        <div class="diag-card-layerx group" onclick="selectDiagnosticOption(1, 'フィールドセールス')">
-                            <span
-                                class="opt-abbr font-poppins text-crestix-navy group-hover:text-crestix-orange transition-colors text-4xl md:text-5xl lg:text-[4.5rem] font-black text-center"
-                                style="letter-spacing: -0.04em; line-height: 1;">FS</span>
-                            <span class="font-sans text-[13px] font-bold text-[#555] tracking-[0.05em]">フィールドセールス</span>
-                        </div>
-                        <div class="diag-card-layerx group" onclick="selectDiagnosticOption(1, 'カスタマーサクセス')">
-                            <span
-                                class="opt-abbr font-poppins text-crestix-navy group-hover:text-crestix-orange transition-colors text-4xl md:text-5xl lg:text-[4.5rem] font-black text-center"
-                                style="letter-spacing: -0.04em; line-height: 1;">CS</span>
-                            <span class="font-sans text-[13px] font-bold text-[#555] tracking-[0.05em]">カスタマーサクセス</span>
-                        </div>
-                    </div>
-                </div>
-                <div id="diag-step-2" class="space-y-16 hidden opacity-0 transition-all duration-800"></div>
-                <div id="diag-step-3" class="space-y-16 hidden opacity-0 transition-all duration-800"></div>
-                <div id="diag-step-4" class="space-y-16 hidden opacity-0 transition-all duration-800"></div>
+                class="max-w-[1400px] mx-auto relative z-10">
 
-                <div class="mt-16 border-t border-white/50 pt-12 flex items-center justify-between">
-                    <div class="flex items-center gap-6">
-                        <span
-                            class="text-[11px] font-black text-gray-500 font-poppins tracking-[0.4em] uppercase opacity-60">Session
-                            Progress</span>
-                        <div class="flex gap-3">
-                            <span id="pbar-1" class="w-12 h-2 rounded-full"
-                                style="background:#FF5C00;box-shadow:0 3px 8px rgba(255,92,0,0.4)"></span>
-                            <span id="pbar-2" class="w-3 h-2 rounded-full bg-white/60"></span>
-                            <span id="pbar-3" class="w-3 h-2 rounded-full bg-white/60"></span>
-                            <span id="pbar-4" class="w-3 h-2 rounded-full bg-white/60"></span>
+                <!-- 所要時間ラベル（右上絶対配置） -->
+                <div style="position:absolute;top:0;right:0;background:white;border:1px solid #E5E7EB;border-radius:9999px;padding:10px 22px;display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:600;color:#1A2B4C;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+                    <i class="fa-regular fa-clock" style="color:#FF5C00;"></i>
+                    所要時間目安：3分
+                </div>
+
+                <!-- STEP 1 -->
+                <div id="diag-step-1" class="transition-all duration-500">
+
+                    <!-- ステップヘッダー（中央） -->
+                    <div class="text-center mb-12" style="padding-top: 10px;">
+                        <span style="font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:800;letter-spacing:0.4em;color:#FF5C00;display:block;margin-bottom:12px;">
+                            STEP 01 / CAREER EXPERTISE
+                        </span>
+                        <h3 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.02em;">
+                            希望する職種領域は？
+                        </h3>
+                        <p style="font-size:0.9rem;color:#777;margin-top:12px;font-weight:500;">
+                            あなたの強みや志向に最もフィットする領域を選択してください。
+                        </p>
+                    </div>
+
+                    <!-- 選択カード 3枚 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+
+                        <!-- Card: IS -->
+                        <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
+                            onclick="selectDiagnosticOption(1,'インサイドセールス')"
+                            data-option="インサイドセールス">
+                            <!-- 選択時チェックタブ（右上） -->
+                            <div class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
+                                <i class="fa-solid fa-check text-white text-xs"></i>
+                            </div>
+                            <!-- スコープ装飾（左上小ドット） -->
+                            <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
+                            <!-- 略称 -->
+                            <span class="diag-abbr font-poppins font-black text-[#1A2B4C] transition-colors duration-300"
+                                style="font-size:clamp(3rem,6vw,5rem);letter-spacing:-0.04em;line-height:1;">IS</span>
+                            <!-- 職種名 -->
+                            <span style="font-family:'Noto Sans JP',sans-serif;font-size:1rem;font-weight:700;color:#1A2B4C;margin-top:16px;">インサイドセールス</span>
+                            <!-- 下線 -->
+                            <div class="diag-underline w-10 h-0.5 bg-gray-300 mt-2 mb-4 transition-colors duration-300"></div>
+                            <!-- 説明テキスト -->
+                            <p style="font-size:0.82rem;color:#666;line-height:1.7;font-weight:500;">
+                                見込み顧客に価値を届け、<br>商談を創出する
+                            </p>
+                        </div>
+
+                        <!-- Card: FS -->
+                        <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
+                            onclick="selectDiagnosticOption(1,'フィールドセールス')"
+                            data-option="フィールドセールス">
+                            <div class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
+                                <i class="fa-solid fa-check text-white text-xs"></i>
+                            </div>
+                            <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
+                            <span class="diag-abbr font-poppins font-black text-[#1A2B4C] transition-colors duration-300"
+                                style="font-size:clamp(3rem,6vw,5rem);letter-spacing:-0.04em;line-height:1;">FS</span>
+                            <span style="font-family:'Noto Sans JP',sans-serif;font-size:1rem;font-weight:700;color:#1A2B4C;margin-top:16px;">フィールドセールス</span>
+                            <div class="diag-underline w-10 h-0.5 bg-gray-300 mt-2 mb-4 transition-colors duration-300"></div>
+                            <p style="font-size:0.82rem;color:#666;line-height:1.7;font-weight:500;">
+                                顧客の課題を深く捉え、<br>最適な提案を実行する
+                            </p>
+                        </div>
+
+                        <!-- Card: CS -->
+                        <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
+                            onclick="selectDiagnosticOption(1,'カスタマーサクセス')"
+                            data-option="カスタマーサクセス">
+                            <div class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
+                                <i class="fa-solid fa-check text-white text-xs"></i>
+                            </div>
+                            <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
+                            <span class="diag-abbr font-poppins font-black text-[#1A2B4C] transition-colors duration-300"
+                                style="font-size:clamp(3rem,6vw,5rem);letter-spacing:-0.04em;line-height:1;">CS</span>
+                            <span style="font-family:'Noto Sans JP',sans-serif;font-size:1rem;font-weight:700;color:#1A2B4C;margin-top:16px;">カスタマーサクセス</span>
+                            <div class="diag-underline w-10 h-0.5 bg-gray-300 mt-2 mb-4 transition-colors duration-300"></div>
+                            <p style="font-size:0.82rem;color:#666;line-height:1.7;font-weight:500;">
+                                顧客の成功に伴走し、<br>長期的な価値を育てる
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- STEP 2〜4（既存構造を維持） -->
+                <div id="diag-step-2" class="hidden opacity-0 transition-all duration-500"></div>
+                <div id="diag-step-3" class="hidden opacity-0 transition-all duration-500"></div>
+                <div id="diag-step-4" class="hidden opacity-0 transition-all duration-500"></div>
+
+                <!-- フッター：プログレスバー＋次へボタン -->
+                <div id="diag-footer" class="mt-16 pt-8 border-t border-gray-200 flex items-end justify-between">
+
+                    <!-- プログレスバー -->
+                    <div class="flex items-start gap-0 relative">
+                        <!-- 線（背景） -->
+                        <div style="position:absolute;top:7px;left:8px;right:8px;height:2px;background:#E5E7EB;z-index:0;"></div>
+                        <!-- 線（進捗） -->
+                        <div id="diag-progress-line" style="position:absolute;top:7px;left:8px;height:2px;background:#FF5C00;z-index:1;width:0%;transition:width 0.5s ease;"></div>
+
+                        <!-- Step 01 -->
+                        <div class="flex flex-col items-center relative z-10" style="width:160px;">
+                            <div id="pbar-dot-1" style="width:16px;height:16px;border-radius:9999px;border:2px solid #FF5C00;background:#FF5C00;transition:all 0.3s;"></div>
+                            <span style="font-family:'Poppins',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.25em;color:#FF5C00;margin-top:10px;">STEP 01</span>
+                            <span style="font-family:'Noto Sans JP',sans-serif;font-size:0.78rem;font-weight:700;color:#FF5C00;margin-top:2px;">領域を選択</span>
+                        </div>
+
+                        <!-- Step 02 -->
+                        <div class="flex flex-col items-center relative z-10" style="width:160px;">
+                            <div id="pbar-dot-2" style="width:16px;height:16px;border-radius:9999px;border:2px solid #D1D5DB;background:white;transition:all 0.3s;"></div>
+                            <span style="font-family:'Poppins',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.25em;color:#9CA3AF;margin-top:10px;">STEP 02</span>
+                            <span style="font-family:'Noto Sans JP',sans-serif;font-size:0.78rem;font-weight:700;color:#9CA3AF;margin-top:2px;">志向を確認</span>
+                        </div>
+
+                        <!-- Step 03 -->
+                        <div class="flex flex-col items-center relative z-10" style="width:160px;">
+                            <div id="pbar-dot-3" style="width:16px;height:16px;border-radius:9999px;border:2px solid #D1D5DB;background:white;transition:all 0.3s;"></div>
+                            <span style="font-family:'Poppins',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.25em;color:#9CA3AF;margin-top:10px;">STEP 03</span>
+                            <span style="font-family:'Noto Sans JP',sans-serif;font-size:0.78rem;font-weight:700;color:#9CA3AF;margin-top:2px;">結果を確認</span>
                         </div>
                     </div>
-                    <button id="diag-back"
-                        class="hidden text-xs font-black text-gray-500 hover:text-crestix-orange transition-all uppercase tracking-[0.4em] flex items-center gap-4 focus:outline-none group">
-                        <i class="fa-solid fa-arrow-left-long group-hover:-translate-x-3 transition-transform"></i>
-                        Return
-                    </button>
+
+                    <!-- ボタン群（戻る＋次へ） -->
+                    <div style="display:flex;align-items:center;gap:12px;">
+
+                        <!-- 戻るボタン（白背景・border・通常時は表示するが非活性に近いスタイル） -->
+                        <button id="diag-back"
+                            onclick="diagGoBack()"
+                            style="background:white;color:#1A2B4C;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:0.95rem;padding:16px 36px;border-radius:9999px;border:1.5px solid #E5E7EB;cursor:default;display:flex;align-items:center;gap:10px;transition:all 0.25s ease;opacity:0.4;pointer-events:none;"
+                            onmouseover="this.style.borderColor='#1A2B4C'"
+                            onmouseout="this.style.borderColor='#E5E7EB'">
+                            <i class="fa-solid fa-arrow-left-long"></i>
+                            戻る
+                        </button>
+
+                        <!-- 次へボタン -->
+                        <button id="diag-next"
+                            onclick="diagGoNext()"
+                            style="background:#FF5C00;color:white;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1rem;padding:18px 48px;border-radius:9999px;border:none;cursor:pointer;display:flex;align-items:center;gap:14px;box-shadow:0 12px 32px rgba(255,92,0,0.35);transition:all 0.25s ease;"
+                            onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 20px 44px rgba(255,92,0,0.45)'"
+                            onmouseout="this.style.transform='';this.style.boxShadow='0 12px 32px rgba(255,92,0,0.35)'">
+                            次へ
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+
+                    </div>
                 </div>
+
             </div>
         </section>
 

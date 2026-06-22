@@ -84,7 +84,7 @@ const DIVISION_META = {
 
 /* ─────────────────────────────────────────────
    DIAG STEPS
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 const DIAG_STEPS = [
   {
     id: 1,
@@ -120,7 +120,7 @@ const DIAG_STEPS = [
 
 /* ─────────────────────────────────────────────
    27-pattern RESULT MAP  (existing content kept)
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 const DIAG_RESULTS = {
   /* ── インサイドセールス ────────────────────── */
   'インサイドセールス|裁量大きく自走|未経験・第二新卒': { title: '【HD】インサイドセールス メンバー', desc: '飲食店向けに集客支援サービスの魅力を伝え、関係構築の第一歩を築くポジションです。裁量を持ってアプローチ手法を工夫できます。', tags: ['飲食店支援', 'アポイント獲得', '未経験歓迎'], query: 'hd-is' },
@@ -150,170 +150,356 @@ const DIAG_RESULTS = {
   'カスタマーサクセス|裁量大きく自走|6年以上': { title: '【HD】カスタマーサクセス リーダー候補', desc: '飲食店の継続率最大化に向けたCS戦略の策定、解約防止プロセスの設計、複数案件の進捗管理を行う責任者ポジション。', tags: ['CSリーダー', 'チャーンレート改善', '戦略設計'], query: 'hd-cs-leader' },
   'カスタマーサクセス|チームで創る|未経験・第二新卒': { title: '【Division 01】カスタマーサクセス メンバー', desc: 'チームで複数クリニックを分担サポートし、運用課題を共有しながら安定したサービス継続を目指すポジション。', tags: ['医療マーケ', 'チームワーク', '安定成長'], query: 'd01-cs' },
   'カスタマーサクセス|チームで創る|3〜5年': { title: '【HD】カスタマーサクセス メンバー（連携重視）', desc: '営業や制作チームと密に連携し、飲食店の期待値を超える納品とスムーズなオンボーディングを実現するCS担当です。', tags: ['オンボーディング', 'チーム連携', '顧客満足度'], query: 'hd-cs' },
-  'カスタマーサクセス|チームで創る|6年以上': { title: '【HD】カスタマーサクセス リーダー候補（組織マネジメント）', desc: '制作・営業との連携体制の再設計や、CSメンバーのオンボーディングと育成を担当する組織のマネージャー。', tags: ['組織マネジメント', 'プロセス改善', '採用連携'], query: 'hd-cs-leader' },
+  'カスタマーサクセス|チームで創る|6年以上': { title: '【HD】カスタマーサクセス リーダー候補（組織マネジメント）', desc: '制作・営業との連携体制の再設計や、CSメンバーのオンボーディング and 育成を担当する組織のマネージャー。', tags: ['組織マネジメント', 'プロセス改善', '採用連携'], query: 'hd-cs-leader' },
   'カスタマーサクセス|成果報酬で稼ぐ|未経験・第二新卒': { title: '【Division 01】カスタマーサクセス（成果連動モデル）', desc: '担当顧客のアップセル・クロスセル（追加施策提案）による利益から、高インセンティブを得られる仕事です。', tags: ['成果報酬', 'アップセル', '未経験OK'], query: 'd01-cs' },
   'カスタマーサクセス|成果報酬で稼ぐ|3〜5年': { title: '【Division 01】カスタマーサクセス スペシャリスト', desc: '高い顧客ロイヤルティを構築し、追加提案を通じて自社サービス全体の売上に貢献するCSのスペシャリスト。', tags: ['追加提案', 'ロイヤルティ', '高歩合'], query: 'd01-cs' },
   'カスタマーサクセス|成果報酬で稼ぐ|6年以上': { title: '【HD】カスタマーサクセス リーダー候補（リテンション責任）', desc: 'アップセル全体のインセンティブとチームの解約防止率を成果指標に持ち、事業貢献度の高いCS組織を創る責任者。', tags: ['リテンション責任', 'アップセル推進', '高報酬'], query: 'hd-cs-leader' },
 };
 
 /* ─────────────────────────────────────────────
-   STATE
-───────────────────────────────────────────── */
+   STATE (Redesigned Design System Version)
+   ───────────────────────────────────────────── */
 const diagState = {
   current: 1,
   answers: {},
 };
 
+// 選択状態を保持するオブジェクト
+const diagSelected = {};
+
 /* ─────────────────────────────────────────────
    INIT
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 function initDiagnostic() {
-  renderStep(1);
-
-  const resetBtn = document.getElementById('diag-restart');
-  if (resetBtn) resetBtn.style.display = 'none';
-
-  const backBtn = document.getElementById('diag-back');
-  if (backBtn) backBtn.style.display = 'none';
+  diagState.current = 1;
+  diagState.answers = {};
+  for (let key in diagSelected) {
+    delete diagSelected[key];
+  }
+  updateProgressBarNew(1);
 }
 
 /* ─────────────────────────────────────────────
-   STEP NAV BAR
-───────────────────────────────────────────── */
-function buildStepNav(stepNum) {
-  if (stepNum >= 4) return '';
-
-  const steps = [
-    { num: 1, label: 'STEP 1' },
-    { num: 2, label: 'STEP 2' },
-    { num: 3, label: 'STEP 3' },
-  ];
-
-  const items = steps.map(s => {
-    let barColor, textColor, fontWeight;
-    if (s.num < stepNum) { barColor = '#1A2B4C'; textColor = '#1A2B4C'; fontWeight = '700'; }
-    else if (s.num === stepNum) { barColor = '#FF5C00'; textColor = '#FF5C00'; fontWeight = '700'; }
-    else { barColor = 'rgba(0,0,0,0.1)'; textColor = 'rgba(0,0,0,0.18)'; fontWeight = '600'; }
-
-    return `
-      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:default;">
-        <div style="width:100%;height:2px;border-radius:99px;background:${barColor};transition:background 0.4s ease;"></div>
-        <span style="font-family:'Poppins',sans-serif;font-size:8px;font-weight:${fontWeight};letter-spacing:0.28em;text-transform:uppercase;color:${textColor};transition:color 0.4s ease;white-space:nowrap;">${s.label}</span>
-      </div>`;
-  }).join('');
-
-  return `<div style="display:flex;gap:12px;align-items:flex-start;width:100%;">${items}</div>`;
+   CARD OPTIONS HELPERS
+   ───────────────────────────────────────────── */
+function getOptionDescription(value) {
+  switch (value) {
+    // Step 1
+    case 'インサイドセールス':
+      return '見込み顧客に価値を届け、<br>商談を創出する';
+    case 'フィールドセールス':
+      return '顧客の課題を深く捉え、<br>最適な提案を実行する';
+    case 'カスタマーサクセス':
+      return '顧客の成功に伴走し、<br>長期的な価値を育てる';
+    // Step 2
+    case '裁量大きく自走':
+      return '主体的に行動し、自身のアイデアや<br>判断でビジネスを推進する';
+    case 'チームで創る':
+      return '仲間とナレッジを共有し、協力して<br>大きな目標を達成する';
+    case '成果報酬で稼ぐ':
+      return '成果に正当な対価を求め、高い<br>モチベーションで目標に挑戦する';
+    // Step 3
+    case '未経験・第二新卒':
+      return '新しい分野に挑戦し、基礎から<br>スキルを身につけて成長する';
+    case '3〜5年':
+      return 'これまでの経験を活かし、チームの<br>主戦力として活躍を広げる';
+    case '6年以上':
+      return '培った高い専門性とリーダーシップで、<br>組織の成長を牽引する';
+    default:
+      return '';
+  }
 }
 
 /* ─────────────────────────────────────────────
-   RENDER STEP
-───────────────────────────────────────────── */
-function renderStep(stepNum) {
-  const container = document.getElementById('diagnostic-container');
-  if (!container) return;
+   STEP RENDERING (DYNAMIC FOR STEPS 2, 3)
+   ───────────────────────────────────────────── */
+function renderStepNew(stepNum) {
+  const stepEl = document.getElementById('diag-step-' + stepNum);
+  if (!stepEl) return;
 
-  diagState.current = stepNum;
   const step = DIAG_STEPS[stepNum - 1];
+  let stepIntroText = '';
+  if (stepNum === 1) {
+    stepIntroText = 'あなたの強みや志向に最もフィットする領域を選択してください。';
+  } else if (stepNum === 2) {
+    stepIntroText = '理想とする仕事の進め方や評価基準を選択してください。';
+  } else if (stepNum === 3) {
+    stepIntroText = 'これまでの実務経験やキャリアの段階を選択してください。';
+  }
 
-  const returnHTML = stepNum > 1
-    ? `<button onclick="diagGoBack()"
-         style="display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#aaa;letter-spacing:0.3em;text-transform:uppercase;transition:color 0.2s;padding:0;"
-         onmouseover="this.style.color='#FF5C00'" onmouseout="this.style.color='#aaa'">
-        <i class="fa-solid fa-arrow-left-long"></i> Return
-      </button>`
-    : '';
-
-  container.innerHTML = `
-    <div class="diag-step-body" style="flex:1;display:flex;flex-direction:column;gap:2.5rem;">
-      <div style="text-align:center;margin-bottom:0.5rem;">
-        <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.6em;text-transform:uppercase;color:#FF5C00;display:block;margin-bottom:0.75rem;">${step.label}</span>
-        <h3 style="font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,4vw,3rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.04em;line-height:1.1;white-space:nowrap;">${step.question}</h3>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-        ${step.options.map(opt => buildOptionCard(stepNum, opt)).join('')}
-      </div>
+  stepEl.innerHTML = `
+    <!-- ステップヘッダー（中央） -->
+    <div class="text-center mb-12" style="padding-top: 10px;">
+        <span style="font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:800;letter-spacing:0.4em;color:#FF5C00;display:block;margin-bottom:12px;">
+            ${step.label.toUpperCase()}
+        </span>
+        <h3 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.02em;">
+            ${step.question}
+        </h3>
+        <p style="font-size:0.9rem;color:#777;margin-top:12px;font-weight:500;">
+            ${stepIntroText}
+        </p>
     </div>
-    <div style="margin-top:2.5rem;">${buildStepNav(stepNum)}</div>
-    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:flex-start;">
-      ${returnHTML}
+
+    <!-- 選択カード 3枚 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        ${step.options.map(opt => `
+        <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
+            onclick="selectDiagnosticOption(${stepNum},'${opt.value}')"
+            data-option="${opt.value}">
+            <!-- 選択時チェックタブ（右上） -->
+            <div class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
+                <i class="fa-solid fa-check text-white text-xs"></i>
+            </div>
+            <!-- スコープ装飾（左上小ドット） -->
+            <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
+            <!-- 略称 -->
+            <span class="diag-abbr font-poppins font-black text-[#1A2B4C] transition-colors duration-300"
+                style="font-size:clamp(3rem,6vw,5rem);letter-spacing:-0.04em;line-height:1;">${opt.icon}</span>
+            <!-- オプション名 -->
+            <span style="font-family:'Noto Sans JP',sans-serif;font-size:1rem;font-weight:700;color:#1A2B4C;margin-top:16px;">${opt.title}</span>
+            <!-- 下線 -->
+            <div class="diag-underline w-10 h-0.5 bg-gray-300 mt-2 mb-4 transition-colors duration-300"></div>
+            <!-- 説明テキスト -->
+            <p style="font-size:0.82rem;color:#666;line-height:1.7;font-weight:500;">
+                ${getOptionDescription(opt.value)}
+            </p>
+        </div>
+        `).join('')}
     </div>
   `;
 }
 
-function buildOptionCard(stepNum, opt) {
-  return `
-    <div class="diag-opt-card"
-         onclick="diagSelect(${stepNum}, '${opt.value}')"
-         style="background:rgba(255,255,255,0.9);border:2px solid rgba(255,255,255,0.85);border-radius:20px;padding:2rem 1.5rem;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:200px;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s cubic-bezier(0.16,1,0.3,1);"
-         onmouseover="this.style.borderColor='#FF5C00';this.style.boxShadow='0 12px 36px rgba(255,92,0,0.22)';this.style.transform='translateY(-6px)';this.querySelector('.opt-abbr').style.color='#FF5C00';"
-         onmouseout="this.style.borderColor='rgba(255,255,255,0.85)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.transform='translateY(0)';this.querySelector('.opt-abbr').style.color='#1A2B4C';">
-      <span class="opt-abbr" style="font-family:'Poppins',sans-serif;font-size:clamp(2.4rem,5vw,3.5rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.04em;line-height:1;transition:color 0.25s ease;">${opt.icon}</span>
-      <span style="font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;color:#555;letter-spacing:0.05em;">${opt.title}</span>
-    </div>`;
+/* ─────────────────────────────────────────────
+   PROGRESS BAR UPDATING
+   ───────────────────────────────────────────── */
+function updateProgressBarNew(step) {
+  const progressLine = document.getElementById('diag-progress-line');
+  if (progressLine) {
+    if (step === 1) progressLine.style.width = '0%';
+    else if (step === 2) progressLine.style.width = '50%';
+    else if (step === 3) progressLine.style.width = '100%';
+  }
+
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('pbar-dot-' + i);
+    const container = dot ? dot.parentElement : null;
+    if (!dot || !container) continue;
+
+    const spans = container.getElementsByTagName('span');
+
+    if (i <= step) {
+      dot.style.borderColor = '#FF5C00';
+      dot.style.backgroundColor = '#FF5C00';
+      for (let span of spans) {
+        span.style.color = '#FF5C00';
+      }
+    } else {
+      dot.style.borderColor = '#D1D5DB';
+      dot.style.backgroundColor = 'white';
+      for (let span of spans) {
+        span.style.color = '#9CA3AF';
+      }
+    }
+  }
 }
 
 /* ─────────────────────────────────────────────
-   INTERACTIONS
-───────────────────────────────────────────── */
-function diagSelect(stepNum, value) {
-  diagState.answers[stepNum] = value;
+   STEP SWITCHING AND ANIMATION
+   ───────────────────────────────────────────── */
+function switchDiagStep(fromStep, toStep) {
+  const fromEl = document.getElementById('diag-step-' + fromStep);
+  const toEl = document.getElementById('diag-step-' + toStep);
+  if (!fromEl || !toEl) return;
 
-  if (stepNum < 3) {
-    const container = document.getElementById('diagnostic-container');
-    if (container) {
-      container.style.opacity = '0';
-      container.style.transform = 'translateY(10px)';
-      container.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-      setTimeout(() => {
-        container.style.opacity = '1';
-        container.style.transform = 'translateY(0)';
-        renderStep(stepNum + 1);
-      }, 220);
+  // Hide old step
+  fromEl.classList.add('opacity-0');
+  setTimeout(() => {
+    fromEl.classList.add('hidden');
+
+    // Render next step dynamically if it's step 2 or 3
+    if (toStep === 2 || toStep === 3) {
+      renderStepNew(toStep);
     }
+
+    // Restore previous selection style if it exists
+    if (diagSelected['step' + toStep]) {
+      selectDiagnosticOption(toStep, diagSelected['step' + toStep]);
+    }
+
+    // Show new step
+    toEl.classList.remove('hidden');
+    setTimeout(() => {
+      toEl.classList.remove('opacity-0');
+    }, 50);
+
+    diagState.current = toStep;
+    updateProgressBarNew(toStep);
+
+    // Back button state styling (active above step 1, inactive/disabled at step 1)
+    const backBtn = document.getElementById('diag-back');
+    if (backBtn) {
+      if (toStep > 1) {
+        backBtn.style.opacity = '1';
+        backBtn.style.pointerEvents = 'auto';
+        backBtn.style.cursor = 'pointer';
+      } else {
+        backBtn.style.opacity = '0.4';
+        backBtn.style.pointerEvents = 'none';
+        backBtn.style.cursor = 'default';
+      }
+    }
+
+    // Next button label
+    const nextBtn = document.getElementById('diag-next');
+    if (nextBtn) {
+      if (toStep === 3) {
+        nextBtn.innerHTML = `結果を見る <i class="fa-solid fa-arrow-right-long"></i>`;
+      } else {
+        nextBtn.innerHTML = `次へ <i class="fa-solid fa-arrow-right-long"></i>`;
+      }
+    }
+  }, 300);
+}
+
+/* ─────────────────────────────────────────────
+   CARD SELECTION INTERACTION
+   ───────────────────────────────────────────── */
+function selectDiagnosticOption(step, option) {
+  diagSelected['step' + step] = option;
+
+  const stepEl = document.getElementById('diag-step-' + step);
+  if (!stepEl) return;
+
+  stepEl.querySelectorAll('.diag-option-card').forEach(card => {
+    card.style.borderColor = '#E5E7EB';
+    card.style.boxShadow = '';
+
+    const check = card.querySelector('.diag-check-tab');
+    if (check) check.style.opacity = '0';
+
+    const abbr = card.querySelector('.diag-abbr');
+    if (abbr) abbr.style.color = '#1A2B4C';
+
+    const underline = card.querySelector('.diag-underline');
+    if (underline) underline.style.backgroundColor = '#D1D5DB';
+  });
+
+  const selected = stepEl.querySelector(`[data-option="${option}"]`);
+  if (!selected) return;
+
+  selected.style.borderColor = '#FF5C00';
+  selected.style.boxShadow = '0 0 0 3px rgba(255,92,0,0.15)';
+
+  const check = selected.querySelector('.diag-check-tab');
+  if (check) check.style.opacity = '1';
+
+  const abbr = selected.querySelector('.diag-abbr');
+  if (abbr) abbr.style.color = '#FF5C00';
+
+  const underline = selected.querySelector('.diag-underline');
+  if (underline) underline.style.backgroundColor = '#FF5C00';
+}
+window.selectDiagnosticOption = selectDiagnosticOption;
+
+/* ─────────────────────────────────────────────
+   NAVIGATION ACTIONS
+   ───────────────────────────────────────────── */
+function diagGoNext() {
+  const currentStep = diagState.current;
+  if (currentStep >= 4) return;
+
+  if (!diagSelected['step' + currentStep]) {
+    alert('選択肢を1つ選んでください。');
+    return;
+  }
+
+  diagState.answers[currentStep] = diagSelected['step' + currentStep];
+
+  if (currentStep < 3) {
+    switchDiagStep(currentStep, currentStep + 1);
   } else {
-    showDiagResult();
+    showDiagResultNew();
   }
 }
-window.diagSelect = diagSelect;
+window.diagGoNext = diagGoNext;
 
 function diagGoBack() {
-  if (diagState.current <= 1) return;
-  delete diagState.answers[diagState.current - 1];
-  const container = document.getElementById('diagnostic-container');
-  if (container) {
-    container.style.opacity = '0';
-    container.style.transform = 'translateY(-10px)';
-    container.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-    setTimeout(() => {
-      container.style.opacity = '1';
-      container.style.transform = 'translateY(0)';
-      renderStep(diagState.current - 1);
-    }, 180);
-  }
+  const currentStep = diagState.current;
+  if (currentStep <= 1 || currentStep >= 4) return;
+
+  switchDiagStep(currentStep, currentStep - 1);
 }
 window.diagGoBack = diagGoBack;
 
 function resetDiagnostic() {
   diagState.answers = {};
-  const container = document.getElementById('diagnostic-container');
-  if (container) {
-    container.style.opacity = '0';
-    container.style.transition = 'opacity 0.2s ease';
-    setTimeout(() => {
-      container.style.opacity = '1';
-      renderStep(1);
-    }, 180);
+  for (let key in diagSelected) {
+    delete diagSelected[key];
   }
+
+  const step4El = document.getElementById('diag-step-4');
+  const step1El = document.getElementById('diag-step-1');
+  const footerEl = document.getElementById('diag-footer');
+
+  if (step4El) {
+    step4El.classList.add('opacity-0');
+  }
+
+  setTimeout(() => {
+    if (step4El) step4El.classList.add('hidden');
+
+    const step2El = document.getElementById('diag-step-2');
+    const step3El = document.getElementById('diag-step-3');
+    if (step2El) {
+      step2El.innerHTML = '';
+      step2El.classList.add('hidden', 'opacity-0');
+    }
+    if (step3El) {
+      step3El.innerHTML = '';
+      step3El.classList.add('hidden', 'opacity-0');
+    }
+
+    if (step1El) {
+      step1El.querySelectorAll('.diag-option-card').forEach(card => {
+        card.style.borderColor = '#E5E7EB';
+        card.style.boxShadow = '';
+        const check = card.querySelector('.diag-check-tab');
+        if (check) check.style.opacity = '0';
+        const abbr = card.querySelector('.diag-abbr');
+        if (abbr) abbr.style.color = '#1A2B4C';
+        const underline = card.querySelector('.diag-underline');
+        if (underline) underline.style.backgroundColor = '#D1D5DB';
+      });
+      step1El.classList.remove('hidden');
+      setTimeout(() => {
+        step1El.classList.remove('opacity-0');
+      }, 50);
+    }
+
+    if (footerEl) {
+      footerEl.classList.remove('hidden');
+    }
+    const backBtn = document.getElementById('diag-back');
+    if (backBtn) {
+      backBtn.style.opacity = '0.4';
+      backBtn.style.pointerEvents = 'none';
+      backBtn.style.cursor = 'default';
+    }
+
+    const nextBtn = document.getElementById('diag-next');
+    if (nextBtn) nextBtn.innerHTML = `次へ <i class="fa-solid fa-arrow-right-long"></i>`;
+
+    diagState.current = 1;
+    updateProgressBarNew(1);
+  }, 300);
 }
 window.resetDiagnostic = resetDiagnostic;
 
-/* Legacy support */
-window.selectDiagnosticOption = function (step, value) { diagSelect(step, value); };
-
 /* ─────────────────────────────────────────────
    RESULT SCREEN
-───────────────────────────────────────────── */
-function showDiagResult() {
+   ───────────────────────────────────────────── */
+function showDiagResultNew() {
   const key = [diagState.answers[1], diagState.answers[2], diagState.answers[3]].join('|');
   const result = DIAG_RESULTS[key] || {
     title: 'カスタムポジション',
@@ -322,24 +508,33 @@ function showDiagResult() {
     query: '',
   };
 
-  /* Division routing */
   const route = DIVISION_ROUTES[key] || { page: 'service-division1.html', anchor: '', divisionLabel: 'Division 01 / インサイドセールス' };
   const divMeta = DIVISION_META[route.page] || DIVISION_META['service-division1.html'];
 
-  const container = document.getElementById('diagnostic-container');
-  if (!container) return;
+  const step3El = document.getElementById('diag-step-3');
+  const step4El = document.getElementById('diag-step-4');
+  const footerEl = document.getElementById('diag-footer');
 
-  container.style.opacity = '0';
-  container.style.transform = 'translateY(12px)';
-  container.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+  if (!step3El || !step4El) return;
+
+  step3El.classList.add('opacity-0');
+  if (footerEl) {
+    footerEl.classList.add('hidden');
+  }
 
   setTimeout(() => {
-    container.innerHTML = buildResultHTML(result, key, route, divMeta);
-    container.style.opacity = '1';
-    container.style.transform = 'translateY(0)';
+    step3El.classList.add('hidden');
 
-    /* Stagger tag animation */
-    container.querySelectorAll('.result-tag').forEach((tag, i) => {
+    step4El.innerHTML = buildResultHTML(result, key, route, divMeta);
+
+    step4El.classList.remove('hidden');
+    setTimeout(() => {
+      step4El.classList.remove('opacity-0');
+    }, 50);
+
+    diagState.current = 4;
+
+    step4El.querySelectorAll('.result-tag').forEach((tag, i) => {
       tag.style.opacity = '0';
       tag.style.transform = 'translateY(8px)';
       setTimeout(() => {
@@ -348,11 +543,10 @@ function showDiagResult() {
         tag.style.transform = 'translateY(0)';
       }, 300 + i * 80);
     });
-  }, 220);
+  }, 300);
 }
 
 function buildResultHTML(result, key, route, divMeta) {
-  /* jobs.html fallback URL */
   const params = new URLSearchParams({
     role: diagState.answers[1] || '',
     style: diagState.answers[2] || '',
@@ -361,7 +555,6 @@ function buildResultHTML(result, key, route, divMeta) {
   });
   const jobsURL = `jobs.html?${params.toString()}`;
 
-  /* Primary CTA: service page with anchor */
   const serviceURL = route.anchor ? `${route.page}#${route.anchor}` : route.page;
 
   const tagsHTML = result.tags.map(tag => `
@@ -478,18 +671,8 @@ function buildResultHTML(result, key, route, divMeta) {
 }
 
 /* ─────────────────────────────────────────────
-   LEGACY PROGRESS BAR (hide)
-───────────────────────────────────────────── */
-function updateProgressBar() {
-  for (let i = 1; i <= 4; i++) {
-    const el = document.getElementById('pbar-' + i);
-    if (el) el.style.display = 'none';
-  }
-}
-
-/* ─────────────────────────────────────────────
    BOOT
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initDiagnostic);
 } else {
