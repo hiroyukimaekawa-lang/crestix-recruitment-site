@@ -368,6 +368,67 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
+   Crestix Careers - Job Diagnosis Style System
+   ========================================================================== */
+.diag-step-header {
+    padding-top: 10px;
+}
+.diag-step-subtitle {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #FF5C00;
+    display: block;
+    margin-bottom: 8px;
+}
+.diag-step-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #1A2B4C;
+    display: block;
+    margin-bottom: 12px;
+}
+.diag-step-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: #1A2B4C;
+    letter-spacing: -0.02em;
+}
+.diag-abbr {
+    font-size: clamp(3rem, 6vw, 5rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+.diag-abbr.is-small {
+    font-size: clamp(2.2rem, 8vw, 3.6rem);
+    letter-spacing: -0.05em;
+}
+.diag-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1A2B4C;
+    margin-top: 16px;
+    display: block;
+}
+.diag-underline {
+    width: 40px;
+    height: 2px;
+    background-color: #D1D5DB;
+    margin: 8px auto 16px;
+}
+.diag-desc {
+    font-size: 0.82rem;
+    color: #666;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+/* ==========================================================================
    Mobile readability refinements
    Scope: homepage diagnostic / content cards / Crestory feed / footer
    ========================================================================== */
@@ -377,102 +438,134 @@ input:focus, select:focus, textarea:focus {
         overflow-x: hidden;
     }
 
-    #sec-diagnostic {
-        padding: 56px 20px 64px !important;
+    /* ── Mobile hero layout ─────────────────────────────────── */
+    #sec-hero {
+        height: auto !important;
+        min-height: 100svh !important;
+        overflow: visible !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
-
-    #sec-diagnostic > .absolute {
-        opacity: 0.04 !important;
-    }
-
-    #sec-diagnostic .max-w-\[1400px\] {
-        max-width: 390px !important;
-    }
-
-    #sec-diagnostic .flex.items-start.gap-4 {
-        gap: 14px !important;
-    }
-
-    #sec-diagnostic .flex.items-start.gap-4 > div:first-child {
-        height: 54px !important;
-    }
-
-    #sec-diagnostic h2 {
-        font-size: 32px !important;
-        line-height: 1.18 !important;
-        letter-spacing: -0.015em !important;
-    }
-
-    #sec-diagnostic h3 {
-        font-size: 30px !important;
-        line-height: 1.35 !important;
-        letter-spacing: 0 !important;
-        max-width: 12em;
-        margin-inline: auto;
-    }
-
-    #sec-diagnostic p {
-        font-size: 14px !important;
-        line-height: 1.9 !important;
-        max-width: 24em;
-        margin-inline: auto;
-    }
-
-    #diagnostic-container {
-        max-width: 390px !important;
-    }
-
-    #diagnostic-container > div[style*="position:absolute"] {
-        position: static !important;
-        width: fit-content;
-        margin: 0 auto 28px;
-        padding: 9px 18px !important;
-        font-size: 13px !important;
-    }
-
-    #sec-diagnostic [id^="diag-step-"] > .text-center {
-        margin-bottom: 28px !important;
+    .hero-content {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        z-index: 10;
+        margin-top: auto !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
         padding-top: 0 !important;
+        padding-bottom: max(24px, env(safe-area-inset-bottom)) !important;
     }
 
-    #sec-diagnostic [id^="diag-step-"] > .grid {
+    /* ── Diagnostic header spacing ──────────────────────────── */
+    /* ヘッダー余白圧縮 */
+    .diag-step-header {
+        padding-top: 0 !important;
+        margin-bottom: 20px !important;
+    }
+    .diag-step-subtitle {
+        margin-bottom: 4px !important;
+    }
+    .diag-step-number {
+        margin-bottom: 6px !important;
+        font-size: 0.85rem !important;
+    }
+    .diag-step-title {
+        font-size: 1.8rem !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    /* Grids for steps */
+    .diag-step--categories > .grid,
+    .diag-step--stages > .grid {
         display: grid !important;
         grid-template-columns: 1fr !important;
-        gap: 24px !important;
+        gap: 12px !important;
         max-width: 365px;
         margin: 0 auto;
     }
 
-    #sec-diagnostic .diag-option-card {
+    .diag-step--roles > .grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        max-width: 100% !important;
+        margin: 0 auto;
+    }
+
+    /* Card standard styles on mobile (Step 1 and Step 3) */
+    .diag-step--categories .diag-option-card,
+    .diag-step--stages .diag-option-card {
         width: 100% !important;
-        min-height: 166px;
-        padding: 28px 26px !important;
-        border-radius: 22px !important;
+        min-height: auto !important;
+        padding: 16px 20px !important;
+        border-radius: 16px !important;
+    }
+    .diag-step--categories .diag-abbr,
+    .diag-step--stages .diag-abbr {
+        font-size: 2.2rem !important;
+    }
+    .diag-step--categories .diag-title,
+    .diag-step--stages .diag-title {
+        font-size: 0.95rem !important;
+        margin-top: 8px !important;
+    }
+    .diag-step--categories .diag-underline,
+    .diag-step--stages .diag-underline {
+        margin: 4px auto 8px !important;
+    }
+    .diag-step--categories .diag-desc,
+    .diag-step--stages .diag-desc {
+        font-size: 0.8rem !important;
+        line-height: 1.5 !important;
     }
 
-    #sec-diagnostic .diag-abbr {
-        font-size: 54px !important;
-        line-height: 0.95 !important;
-        letter-spacing: -0.02em !important;
+    /* Card Step 2 compact layout on mobile */
+    .diag-step--roles .diag-option-card {
+        width: 100% !important;
+        height: 72px !important;
+        min-height: 72px !important;
+        padding: 12px 10px !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .diag-step--roles .diag-abbr {
+        font-size: 0.75rem !important;
+        margin-bottom: 2px !important;
+    }
+    .diag-step--roles .diag-title {
+        font-size: 0.9rem !important;
+        margin-top: 0 !important;
+        line-height: 1.2 !important;
+    }
+    .diag-step--roles .diag-underline {
+        display: none !important;
+    }
+    .diag-step--roles .diag-desc {
+        display: none !important;
+    }
+    .diag-step--roles .diag-check-tab {
+        width: 24px !important;
+        height: 24px !important;
+        border-bottom-left-radius: 8px !important;
+        border-top-right-radius: 12px !important;
+    }
+    .diag-step--roles .diag-check-tab i {
+        font-size: 9px !important;
     }
 
-    #sec-diagnostic .diag-option-card span:not(.diag-abbr) {
-        font-size: 20px !important;
-        line-height: 1.45 !important;
-        margin-top: 14px !important;
-    }
-
-    #sec-diagnostic .diag-option-card p {
-        font-size: 14px !important;
-        line-height: 1.85 !important;
-    }
-
+    /* Footer and Progress Bar mobile adjustments */
     #diag-footer {
-        margin-top: 36px !important;
-        padding-top: 26px !important;
+        margin-top: 24px !important;
+        padding-top: 16px !important;
         flex-direction: column !important;
         align-items: stretch !important;
-        gap: 28px !important;
+        gap: 20px !important;
     }
 
     #diag-footer > .flex.items-start {
@@ -482,68 +575,78 @@ input:focus, select:focus, textarea:focus {
     }
 
     #diag-footer > .flex.items-start > .flex {
-        width: 33.333% !important;
+        width: 25% !important;
         min-width: 0;
     }
 
     #diag-footer > .flex.items-start span:first-of-type {
-        font-size: 10px !important;
-        letter-spacing: 0.12em !important;
-        white-space: nowrap;
+        display: none !important;
     }
 
     #diag-footer > .flex.items-start span:nth-of-type(2) {
-        display: none !important;
+        display: block !important;
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        font-family: 'Poppins', sans-serif !important;
+        margin-top: 6px !important;
     }
 
     #diag-footer > div:last-child {
         width: 100% !important;
         justify-content: center !important;
-        gap: 10px !important;
+        gap: 12px !important;
     }
 
-    #diag-back,
-    #diag-next {
-        min-height: 56px !important;
-        justify-content: center !important;
-        font-size: 15px !important;
-        line-height: 1.3 !important;
-    }
-
+    /* display controlled by JS — do NOT set display on #diag-back */
     #diag-back {
-        width: 42% !important;
-        padding: 15px 20px !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        padding: 0 24px !important;
+        border-radius: 9999px !important;
+        font-size: 0.9rem !important;
+        font-weight: 800 !important;
+        width: 140px !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     #diag-next {
-        width: 58% !important;
-        padding: 16px 22px !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        padding: 0 24px !important;
+        border-radius: 9999px !important;
+        font-size: 0.9rem !important;
+        font-weight: 800 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 168px !important;
     }
 
     #diag-step-4 > div {
-        gap: 24px !important;
+        gap: 20px !important;
     }
 
     #diag-step-4 h3 {
         text-align: left;
         margin-inline: 0;
         max-width: 100%;
-        font-size: 28px !important;
-        line-height: 1.35 !important;
+        font-size: 24px !important;
+        line-height: 1.3 !important;
     }
 
     #diag-step-4 p {
         max-width: 100%;
         font-size: 14px !important;
-        line-height: 1.9 !important;
+        line-height: 1.8 !important;
     }
 
     #diag-step-4 a,
     #diag-step-4 button {
         width: 100%;
-        min-height: 54px;
+        min-height: 48px;
         justify-content: center;
-        padding: 15px 20px !important;
+        padding: 12px 20px !important;
         white-space: normal !important;
         text-align: center;
     }
@@ -753,14 +856,5 @@ input:focus, select:focus, textarea:focus {
 
     #sec-site-contents .cx-accordion-card h3 {
         font-size: 16px !important;
-    }
-
-    #diag-footer > div:last-child {
-        flex-direction: column !important;
-    }
-
-    #diag-back,
-    #diag-next {
-        width: 100% !important;
     }
 }

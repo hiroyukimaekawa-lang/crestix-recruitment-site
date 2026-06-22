@@ -36,29 +36,58 @@
 -->
 
 <!-- ═══ FULLSCREEN MENU ═══ -->
-<div id="fullscreen-menu">
-  <div class="fm-topbar">
-    <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
-    <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">
-      CLOSE
-      <span class="fm-close-icon">
-        <i></i><i></i><i></i>
-      </span>
-    </button>
-  </div>
-  <nav class="fm-nav">
-    <a href="corporate.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Corporate</a>
-    <a href="business.html"  class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Service</a>
-    <a href="members.html"   class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Members</a>
-    <a href="news.html"      class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Crestory</a>
-  </nav>
-  <div class="fm-footer">
-    <a href="jobs.html" onclick="cxToggleMenu()" class="fm-cta-btn">応募はこちらから</a>
-    <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
-  </div>
-</div>
+    <div id="fullscreen-menu">
+        <div class="fm-topbar">
+            <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
+            <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">
+                CLOSE
+                <span class="fm-close-icon">
+                    <i></i><i></i><i></i>
+                </span>
+            </button>
+        </div>
+        <nav class="fm-nav">
+            <div class="fm-nav-group">
+                <a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a>
+            </div>
+            
+            <div class="fm-nav-group">
+                <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
+                <div class="fm-nav-sub">
+                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
+                    <a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a>
+                    <a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a>
+                </div>
+            </div>
 
-<!-- ═══ NAVIGATION ═══ -->
+            <div class="fm-nav-group">
+                <a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a>
+                <div class="fm-nav-sub">
+                    <a href="business.html" onclick="cxToggleMenu()">事業一覧</a>
+                    <a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a>
+                    <a href="service-division1.html" onclick="cxToggleMenu()">第1営業部（クリニック特化）</a>
+                    <a href="ai-sales.html" onclick="cxToggleMenu()">AI・Sales Enablement</a>
+                </div>
+            </div>
+
+            <div class="fm-nav-group">
+                <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
+            </div>
+
+            <div class="fm-nav-group">
+                <a href="news.html" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
+            </div>
+
+            <div class="fm-nav-group">
+                <a href="b2b-contact.html" class="fm-nav-item fm-item-6" onclick="cxToggleMenu()">Contact</a>
+            </div>
+        </nav>
+        <div class="fm-footer">
+            <a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">Entry / Careers</a>
+            <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
+        </div>
+    </div>
+    <!-- ═══ NAVIGATION ═══ -->
 <nav id="cx-navbar" aria-label="グローバルナビゲーション">
 
   <!-- LEFT: Logo -->

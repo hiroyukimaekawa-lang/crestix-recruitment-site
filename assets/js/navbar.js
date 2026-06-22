@@ -137,6 +137,13 @@
     if (e.key === 'Escape' && menuOpen) toggleMenu(true);
   });
 
+  /* Close menu on window resize if resized to desktop */
+  window.addEventListener('resize', function () {
+    if (menuOpen && window.innerWidth >= 1024) {
+      toggleMenu(true);
+    }
+  });
+
   /* Close when clicking outside fullscreen menu on desktop */
   if (fmenu) {
     fmenu.addEventListener('click', function (e) {
