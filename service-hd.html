@@ -93,7 +93,7 @@
 
         @media(min-width: 1024px) {
             .page-grid {
-                grid-template-columns: 260px 1fr;
+                grid-template-columns: 200px 1fr;
             }
         }
 
@@ -112,7 +112,7 @@
         .sidebar-inner {
             position: sticky;
             top: 80px;
-            padding: 0 2rem 0 3rem;
+            padding: 0 1.5rem 0 1.5rem;
             border-right: 1px solid var(--gray-line);
         }
 
@@ -183,13 +183,13 @@
 
         /* ── SECTION BASE ── */
         .content-section {
-            padding: 80px 3rem 80px 4rem;
+            padding: 60px 2rem 60px 2.5rem;
             border-bottom: 1px solid var(--gray-line);
         }
 
         @media(max-width: 768px) {
             .content-section {
-                padding: 60px 1.5rem;
+                padding: 48px 1.25rem;
             }
         }
 
@@ -881,7 +881,7 @@
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="service-division1.html" class="cx-mega-item">
-                                    <span>Division 01 (インフラ構築)</span>
+                                    <span>第一営業部 (インフラ構築)</span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                             </div>
@@ -933,7 +933,7 @@
                 style="font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(2.5rem,6vw,5rem); letter-spacing:-0.04em; line-height:1; color:#fff; margin-bottom:1rem;">
                 Division HD
             </h1>
-            <p style="color:rgba(255,255,255,0.75); font-size:1.05rem; font-weight:700;">飲食店向けホームページ制作・集客支援事業</p>
+            <p style="color:rgba(255,255,255,0.75); font-size:1.05rem; font-weight:700;">店舗グロース事業</p>
         </div>
     </div>
 
@@ -962,45 +962,82 @@
             <section id="about" class="content-section">
                 <div class="section-header reveal">
                     <p class="sec-label">Overview</p>
-                    <h2 class="section-title">飲食店の成長を、<br>Webから支える。</h2>
+                    <h2 class="section-title">地域の店舗を、<br>選ばれるブランドへ</h2>
                 </div>
-                <p class="about-lead reveal reveal-delay-1">
-                    ホームページとデータを武器に、<br>飲食店の売上を最大化する。
-                </p>
                 <p class="about-body reveal reveal-delay-2">
-                    HD事業部は、飲食店向けのホームページ制作・集客支援に特化した事業部です。「ホームページ制作」「MEO対策」「SNS集客支援」を主軸に、飲食店の売上課題を解決しています。<br><br>
-                    私たちのミッションは、地域の飲食店が持続的に成長できる仕組みを作ること。テクノロジーとクリエイティブを武器に、飲食業界のデジタル化を支えます。
+                    飲食業界・美容業界・宿泊業界など、地域で事業を展開する企業・店舗に対して、店舗ブランディング、HP制作、MEO対策、SNS集客支援などを組み合わせ、集客から売上成長までを一気通貫で支援します。
                 </p>
             </section>
+
+            <!-- HD IMAGE -->
+            <div class="reveal">
+                <img src="assets/images/HD/hd-sales.png" alt="HD事業部" class="w-full object-cover">
+            </div>
 
             <!-- ② SERVICE -->
             <section id="service" class="content-section">
                 <div class="section-header reveal">
                     <p class="sec-label">Service</p>
                     <h2 class="section-title">提供サービス</h2>
+                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px; font-weight:700;">地域密着型ビジネスの成長を支援する実践型ソリューション</p>
                 </div>
-                <div class="service-grid">
-                    <div class="service-card reveal reveal-delay-1">
-                        <div class="service-card-icon" style="background:#fff3ed;">
-                            <i class="fa-solid fa-globe" style="color:var(--orange); font-size:1.25rem;"></i>
+
+                <div class="divide-y divide-gray-100">
+
+                    <!-- HP制作 -->
+                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-1 group">
+                        <div class="w-full md:w-56 lg:w-64 flex-shrink-0">
+                            <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100">
+                                <img src="assets/images/HD/hd-sales.png" alt="HP制作"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            </div>
                         </div>
-                        <p class="service-card-name">ホームページ制作</p>
-                        <p class="service-card-desc">飲食店に特化したデザインと機能を持つホームページを制作。予約導線・メニュー表示・SNS連携まで一括対応。</p>
-                    </div>
-                    <div class="service-card reveal reveal-delay-2">
-                        <div class="service-card-icon" style="background:#eff6ff;">
-                            <i class="fa-solid fa-magnifying-glass-location" style="color:#2563eb; font-size:1.25rem;"></i>
+                        <div class="flex-1 min-w-0 py-1">
+                            <span class="inline-block text-[10px] font-black tracking-widest uppercase text-orange-500 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full mb-4">Web</span>
+                            <h3 class="text-xl font-black text-gray-900 mb-4 tracking-tight">HP制作</h3>
+                            <p class="text-sm text-gray-500 leading-loose font-bold">
+                                店舗や企業の魅力、サービス内容、強みが正しく伝わるホームページを制作します。<br><br>
+                                見た目のデザインだけでなく、問い合わせ・予約・来店につながる導線設計まで行い、Web上の営業拠点として機能するサイトづくりを支援します。
+                            </p>
                         </div>
-                        <p class="service-card-name">MEO・集客支援</p>
-                        <p class="service-card-desc">Googleマップでの上位表示を実現し、近隣ユーザーからの流入を最大化。口コミ管理も含めた継続支援。</p>
                     </div>
-                    <div class="service-card reveal reveal-delay-3" style="grid-column: 1 / -1;">
-                        <div class="service-card-icon" style="background:#f0fdf4;">
-                            <i class="fa-solid fa-chart-line" style="color:#16a34a; font-size:1.25rem;"></i>
+
+                    <!-- MEO対策 -->
+                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-2 group">
+                        <div class="w-full md:w-56 lg:w-64 flex-shrink-0">
+                            <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100">
+                                <img src="assets/images/HD/hd-sales.png" alt="MEO対策"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            </div>
                         </div>
-                        <p class="service-card-name">売上向上コンサルティング</p>
-                        <p class="service-card-desc">データ分析に基づき、来店数・客単価・リピート率を改善。現場に寄り添った継続的な改善サイクルを提供。</p>
+                        <div class="flex-1 min-w-0 py-1">
+                            <span class="inline-block text-[10px] font-black tracking-widest uppercase text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-4">MEO</span>
+                            <h3 class="text-xl font-black text-gray-900 mb-4 tracking-tight">MEO対策</h3>
+                            <p class="text-sm text-gray-500 leading-loose font-bold">
+                                Googleマップなどの地図検索で、店舗や施設が見つかりやすくなるように支援します。<br><br>
+                                店舗情報の整備、口コミ対策、検索キーワードの最適化などを行い、地域でサービスを探しているユーザーからの来店・問い合わせ増加を目指します。
+                            </p>
+                        </div>
                     </div>
+
+                    <!-- SNS集客支援 -->
+                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-3 group">
+                        <div class="w-full md:w-56 lg:w-64 flex-shrink-0">
+                            <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100">
+                                <img src="assets/images/HD/hd-sales.png" alt="SNS集客支援"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0 py-1">
+                            <span class="inline-block text-[10px] font-black tracking-widest uppercase text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-full mb-4">SNS</span>
+                            <h3 class="text-xl font-black text-gray-900 mb-4 tracking-tight">SNS集客支援</h3>
+                            <p class="text-sm text-gray-500 leading-loose font-bold">
+                                Instagram・TikTok・公式LINEなどのSNSを活用し、店舗やサービスの認知拡大を支援します。<br><br>
+                                投稿内容の企画、運用方針の設計、発信内容の改善を通じて、ファンづくりや来店・問い合わせにつながる集客導線を構築します。
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
@@ -1054,41 +1091,45 @@
 
             <!-- ④ JOBS ACCORDION -->
             <section id="jobs" class="content-section" style="border-bottom:none;">
-                <div class="section-header reveal">
+                <div class="section-header reveal" style="margin-bottom:64px;">
                     <p class="sec-label">Roles</p>
-                    <h2 class="section-title">募集職種</h2>
-                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px;">
+                    <h2 style="font-family:'Poppins',sans-serif; font-size:clamp(2.25rem,5vw,3.75rem); font-weight:900; letter-spacing:-0.04em; color:var(--text-main); margin-top:8px; line-height:1.15;">募集職種</h2>
+                    <p style="font-size:1.125rem; color:var(--text-sub); margin-top:28px; line-height:1.7; font-weight:500;">
                         職種名をクリックすると詳細が開きます。
-                        <a href="jobs.html"
-                            style="color:var(--orange); font-weight:700; text-decoration:none; margin-left:12px;">すべての職種を見る →</a>
                     </p>
+                    <a href="jobs.html"
+                        style="display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-size:1.125rem; font-weight:600; text-decoration:none; margin-top:20px;"
+                        onmouseover="this.querySelector('.link-arrow').style.transform='translateX(5px)'"
+                        onmouseout="this.querySelector('.link-arrow').style.transform='translateX(0)'">
+                        すべての職種を見る
+                        <span class="link-arrow" style="display:inline-block; transition:transform 0.2s ease;">→</span>
+                    </a>
                 </div>
 
                 <!-- IS -->
                 <div class="jobs-category reveal reveal-delay-1">
                     <p class="jobs-category-title">Inside Sales / インサイドセールス</p>
                     <div class="accordion-item" id="jobs-is-leader">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
                             <div class="acc-left">
                                 <span class="acc-badge badge-consulting">IS</span>
-                                <span class="acc-title">HD ISリーダー候補</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD ISリーダー候補</span>
                             </div>
-                            <span class="acc-meta">正社員 · 東京</span>
-                            <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
                         </button>
-                        <div class="acc-body pb-8">
+                        <div class="acc-body">
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">HD事業部のインサイドセールス組織のリーダー候補として、まずはプレーヤーとして飲食店へのアプローチ業務を理解していただきながら、徐々にメンバー育成や数値管理、チームマネジメントをお任せしていきます。<br><br>・飲食店への電話、メール等によるアプローチ<br>・MEO、SaaS、広告、HP、その他新規プロダクト等に関する商談アポイントの獲得<br>・有効商談率、有効商談数の最大化に向けた改善活動<br>・トークスクリプト、架電リスト、営業フローの改善<br>・メンバーの架電内容のフィードバック<br>・新人メンバーの育成、オンボーディング支援<br>・日次、週次でのKPI管理および改善施策の実行<br>・フィールドセールスとの連携による商談品質の向上<br>・成果が出るアプローチ方法の型化、再現性の構築<br>・組織拡大に向けたインサイドセールス体制の整備</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のインサイドセールス組織のリーダー候補として、まずはプレーヤーとして飲食店へのアプローチ業務を理解していただきながら、徐々にメンバー育成や数値管理、チームマネジメントをお任せしていきます。<br><br>・飲食店への電話、メール等によるアプローチ<br>・MEO、SaaS、広告、HP、その他新規プロダクト等に関する商談アポイントの獲得<br>・有効商談率、有効商談数の最大化に向けた改善活動<br>・トークスクリプト、架電リスト、営業フローの改善<br>・メンバーの架電内容のフィードバック<br>・新人メンバーの育成、オンボーディング支援<br>・日次、週次でのKPI管理および改善施策の実行<br>・フィールドセールスとの連携による商談品質の向上<br>・成果が出るアプローチ方法の型化、再現性の構築<br>・組織拡大に向けたインサイドセールス体制の整備</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">HD事業部 / インサイドセールスリーダー候補<br><br>プレーヤーとしての実績を積みながら、早期にチームマネジメントを担える環境です。</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / インサイドセールスリーダー候補<br><br>プレーヤーとしての実績を積みながら、早期にチームマネジメントを担える環境です。</p>
                                 </div>
                             </div>
-                            <a href="entry.html?role=飲食店向け インサイドセールス（IS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
+                            <a href="entry.html?role=飲食店向け インサイドセールス（IS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1097,51 +1138,49 @@
                 <div class="jobs-category reveal reveal-delay-2">
                     <p class="jobs-category-title">Field Sales / フィールドセールス</p>
                     <div class="accordion-item" id="jobs-fs">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
                             <div class="acc-left">
                                 <span class="acc-badge badge-sales">FS</span>
-                                <span class="acc-title">HD FSメンバー</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD FSメンバー</span>
                             </div>
-                            <span class="acc-meta">正社員 · 東京</span>
-                            <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
                         </button>
-                        <div class="acc-body pb-8">
+                        <div class="acc-body">
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">HD事業部のフィールドセールスとして、インサイドセールスが獲得した飲食店向け商談に対して、顧客課題のヒアリングから提案、クロージングまでを担っていただきます。<br><br>単に商材を販売するのではなく、飲食店の集客課題・売上課題・リピート促進・口コミ対策・店舗運営上の課題を正しく捉え、MEO、SaaS、広告、HP、その他新規プロダクト等を組み合わせながら、店舗にとって最適な提案を行うポジションです。<br><br>・インサイドセールスが獲得した飲食店向け商談への対応<br>・飲食店の集客課題、売上課題、口コミ課題、リピート課題のヒアリング<br>・MEO、SaaS、広告、HP等を組み合わせた課題解決提案<br>・掲載情報、口コミ、Googleビジネスプロフィール、Web導線などの改善提案<br>・商談資料の活用および改善提案<br>・受注率、受注単価向上に向けた商談プロセスの改善<br>・顧客要望の収集および社内へのフィードバック<br>・インサイドセールス、カスタマーサクセスとの連携による受注後のスムーズな引き継ぎ<br>・再現性のある商談パターンの構築</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のフィールドセールスとして、インサイドセールスが獲得した飲食店向け商談に対して、顧客課題のヒアリングから提案、クロージングまでを担っていただきます。<br><br>単に商材を販売するのではなく、飲食店の集客課題・売上課題・リピート促進・口コミ対策・店舗運営上の課題を正しく捉え、MEO、SaaS、広告、HP、その他新規プロダクト等を組み合わせながら、店舗にとって最適な提案を行うポジションです。<br><br>・インサイドセールスが獲得した飲食店向け商談への対応<br>・飲食店の集客課題、売上課題、口コミ課題、リピート課題のヒアリング<br>・MEO、SaaS、広告、HP等を組み合わせた課題解決提案<br>・掲載情報、口コミ、Googleビジネスプロフィール、Web導線などの改善提案<br>・商談資料の活用および改善提案<br>・受注率、受注単価向上に向けた商談プロセスの改善<br>・顧客要望の収集および社内へのフィードバック<br>・インサイドセールス、カスタマーサクセスとの連携による受注後のスムーズな引き継ぎ<br>・再現性のある商談パターンの構築</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">HD事業部 / フィールドセールスメンバー<br><br>飲食店の集客・売上改善を、複数のプロダクトを組み合わせながら提案する、上流から携わる営業職です。</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / フィールドセールスメンバー<br><br>飲食店の集客・売上改善を、複数のプロダクトを組み合わせながら提案する、上流から携わる営業職です。</p>
                                 </div>
                             </div>
-                            <a href="entry.html?role=飲食店向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
+                            <a href="entry.html?role=飲食店向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                     <div class="accordion-item" id="jobs-fs-leader">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
                             <div class="acc-left">
                                 <span class="acc-badge badge-consulting">FS</span>
-                                <span class="acc-title">HD FSリーダー候補</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD FSリーダー候補</span>
                             </div>
-                            <span class="acc-meta">正社員 · 東京</span>
-                            <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
                         </button>
-                        <div class="acc-body pb-8">
+                        <div class="acc-body">
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">HD事業部のフィールドセールス組織のリーダー候補として、まずはプレーヤーとして飲食店向け商談の現場や商材理解を深めていただきながら、徐々にメンバーの育成、商談管理、営業戦略の実行をお任せしていきます。<br><br>業務分担や達成支援などの業務マネジメントに留まらず、飲食店の集客課題・口コミ課題・売上課題を解決するための営業戦略の策定、商談プロセスの改善、チームづくりなどを担っていただきます。<br><br>・インサイドセールスが獲得した飲食店向け商談への対応<br>・MEO、SaaS、広告、HP等を組み合わせた課題解決提案<br>・受注率、受注単価向上に向けた商談設計<br>・商談内容の振り返りおよび改善施策の実行<br>・営業資料、提案資料、トーク内容のブラッシュアップ<br>・メンバーの商談同席、フィードバック、育成<br>・日次、週次、月次での売上・受注KPI管理<br>・インサイドセールス、カスタマーサクセスとの連携強化<br>・再現性のある受注パターンの構築<br>・フィールドセールス組織の拡大に向けたマネジメント体制の整備</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のフィールドセールス組織のリーダー候補として、まずはプレーヤーとして飲食店向け商談の現場や商材理解を深めていただきながら、徐々にメンバーの育成、商談管理、営業戦略の実行をお任せしていきます。<br><br>業務分担や達成支援などの業務マネジメントに留まらず、飲食店の集客課題・口コミ課題・売上課題を解決するための営業戦略の策定、商談プロセスの改善、チームづくりなどを担っていただきます。<br><br>・インサイドセールスが獲得した飲食店向け商談への対応<br>・MEO、SaaS、広告、HP等を組み合わせた課題解決提案<br>・受注率、受注単価向上に向けた商談設計<br>・商談内容の振り返りおよび改善施策の実行<br>・営業資料、提案資料、トーク内容のブラッシュアップ<br>・メンバーの商談同席、フィードバック、育成<br>・日次、週次、月次での売上・受注KPI管理<br>・インサイドセールス、カスタマーサクセスとの連携強化<br>・再現性のある受注パターンの構築<br>・フィールドセールス組織の拡大に向けたマネジメント体制の整備</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">HD事業部 / フィールドセールスリーダー候補<br><br>現場プレーヤーとして成果を出しながら、組織のマネジメントも担える環境です。</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / フィールドセールスリーダー候補<br><br>現場プレーヤーとして成果を出しながら、組織のマネジメントも担える環境です。</p>
                                 </div>
                             </div>
-                            <a href="entry.html?role=飲食店向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
+                            <a href="entry.html?role=飲食店向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1150,51 +1189,49 @@
                 <div class="jobs-category reveal reveal-delay-3">
                     <p class="jobs-category-title">Customer Success / カスタマーサクセス</p>
                     <div class="accordion-item" id="jobs-cs">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
                             <div class="acc-left">
                                 <span class="acc-badge badge-cs">CS</span>
-                                <span class="acc-title">HD CSメンバー</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD CSメンバー</span>
                             </div>
-                            <span class="acc-meta">正社員 · 東京</span>
-                            <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
                         </button>
-                        <div class="acc-body pb-8">
+                        <div class="acc-body">
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">HD事業部のカスタマーサクセスとして、受注後の飲食店に対して、サービス導入から運用、課金開始、継続利用までを支援していただきます。<br><br>単なる納品対応や事務作業に留まらず、飲食店がサービス価値を実感し、集客・口コミ・リピート促進・売上改善につながる状態をつくることがミッションです。<br><br>・受注後の飲食店への導入サポートおよび運用支援<br>・HP制作、MEO、口コミ施策、各種ツール導入に関する進行管理<br>・店舗情報、メニュー情報、写真素材、口コミ導線などの必要情報回収<br>・サービス開始、課金開始までのスケジュール管理<br>・店舗集客や口コミ改善に向けたフォロー対応<br>・顧客要望や不満点の収集および社内へのフィードバック<br>・営業、制作、運用担当との連携による納品品質の向上<br>・アップセル、クロスセルにつながる店舗課題の発見<br>・継続率向上に向けた運用改善</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のカスタマーサクセスとして、受注後の飲食店に対して、サービス導入から運用、課金開始、継続利用までを支援していただきます。<br><br>単なる納品対応や事務作業に留まらず、飲食店がサービス価値を実感し、集客・口コミ・リピート促進・売上改善につながる状態をつくることがミッションです。<br><br>・受注後の飲食店への導入サポートおよび運用支援<br>・HP制作、MEO、口コミ施策、各種ツール導入に関する進行管理<br>・店舗情報、メニュー情報、写真素材、口コミ導線などの必要情報回収<br>・サービス開始、課金開始までのスケジュール管理<br>・店舗集客や口コミ改善に向けたフォロー対応<br>・顧客要望や不満点の収集および社内へのフィードバック<br>・営業、制作、運用担当との連携による納品品質の向上<br>・アップセル、クロスセルにつながる店舗課題の発見<br>・継続率向上に向けた運用改善</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">HD事業部 / カスタマーサクセスメンバー<br><br>飲食店の成功体験を一緒につくる、顧客伴走型のポジションです。</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / カスタマーサクセスメンバー<br><br>飲食店の成功体験を一緒につくる、顧客伴走型のポジションです。</p>
                                 </div>
                             </div>
-                            <a href="entry.html?role=飲食店向け カスタマーサクセス（CS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
+                            <a href="entry.html?role=飲食店向け カスタマーサクセス（CS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                     <div class="accordion-item" id="jobs-cs-leader">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
                             <div class="acc-left">
                                 <span class="acc-badge badge-consulting">CS</span>
-                                <span class="acc-title">HD CSリーダー候補</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD CSリーダー候補</span>
                             </div>
-                            <span class="acc-meta">正社員 · 東京</span>
-                            <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
                         </button>
-                        <div class="acc-body pb-8">
+                        <div class="acc-body">
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">HD事業部のカスタマーサクセス組織のリーダー候補として、まずはプレーヤーとして飲食店への顧客対応やサービス導入の現場を理解していただきながら、徐々にメンバー育成、進行管理、顧客満足度向上に向けた組織づくりをお任せしていきます。<br><br>単なる納品管理ではなく、飲食店がサービス価値を実感し、集客改善・口コミ改善・リピート促進・追加提案につながる状態をつくることがミッションです。<br><br>・受注後の飲食店への導入支援、運用支援、進行管理<br>・課金開始までのスケジュール管理および遅延防止<br>・店舗情報、メニュー情報、写真素材、口コミ導線などの必要情報回収<br>・集客改善、口コミ改善、リピート促進に向けたフォロー体制の構築<br>・メンバーの顧客対応品質の確認、フィードバック、育成<br>・HP制作、MEO、口コミ施策、各種ツール導入に関する業務管理<br>・営業、制作、運用担当との連携による納品品質の向上<br>・顧客要望、不満、解約リスクの収集および改善施策の実行<br>・アップセル、クロスセルにつながる店舗課題の発見<br>・業務フロー、管理シート、Sales Opsの改善<br>・継続率向上に向けたCS体制の構築<br>・CS組織の拡大に向けたマネジメント体制の整備</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のカスタマーサクセス組織のリーダー候補として、まずはプレーヤーとして飲食店への顧客対応やサービス導入の現場を理解していただきながら、徐々にメンバー育成、進行管理、顧客満足度向上に向けた組織づくりをお任せしていきます。<br><br>単なる納品管理ではなく、飲食店がサービス価値を実感し、集客改善・口コミ改善・リピート促進・追加提案につながる状態をつくることがミッションです。<br><br>・受注後の飲食店への導入支援、運用支援、進行管理<br>・課金開始までのスケジュール管理および遅延防止<br>・店舗情報、メニュー情報、写真素材、口コミ導線などの必要情報回収<br>・集客改善、口コミ改善、リピート促進に向けたフォロー体制の構築<br>・メンバーの顧客対応品質の確認、フィードバック、育成<br>・HP制作、MEO、口コミ施策、各種ツール導入に関する業務管理<br>・営業、制作、運用担当との連携による納品品質の向上<br>・顧客要望、不満、解約リスクの収集および改善施策の実行<br>・アップセル、クロスセルにつながる店舗課題の発見<br>・業務フロー、管理シート、Sales Opsの改善<br>・継続率向上に向けたCS体制の構築<br>・CS組織の拡大に向けたマネジメント体制の整備</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">HD事業部 / カスタマーサクセスリーダー候補<br><br>CS組織全体の品質向上と顧客満足度の最大化を担うリーダーポジションです。</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / カスタマーサクセスリーダー候補<br><br>CS組織全体の品質向上と顧客満足度の最大化を担うリーダーポジションです。</p>
                                 </div>
                             </div>
-                            <a href="entry.html?role=飲食店向け カスタマーサクセス（CS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
+                            <a href="entry.html?role=飲食店向け カスタマーサクセス（CS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                 </div>
