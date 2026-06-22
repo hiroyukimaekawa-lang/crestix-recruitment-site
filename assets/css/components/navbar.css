@@ -475,6 +475,28 @@
   .cx-nav-center { display: flex; }
 }
 
+@media (max-width: 768px) {
+  #cx-navbar {
+    height: 64px;
+    padding: 0 20px;
+  }
+
+  #cx-nav-logo {
+    height: 44px;
+  }
+
+  #cx-hamburger {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+
+  .cx-ham-lines {
+    width: 18px;
+    gap: 5px;
+  }
+}
+
 /* ── Fullscreen Menu ──────────────────────────────────── */
 #fullscreen-menu {
   position: fixed;

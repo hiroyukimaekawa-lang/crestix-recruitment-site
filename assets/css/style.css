@@ -9,6 +9,73 @@ body {
     background-color: #FFFFFF;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: break-word;
+    font-feature-settings: "palt";
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+main p,
+main li,
+main dd {
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+main p:not([class*="font-poppins"]):not([class*="uppercase"]):not([class*="tracking-"]) {
+    max-width: 44rem;
+}
+
+main .text-center p,
+main [class*="text-center"] p,
+main footer p,
+footer p {
+    max-width: none;
+}
+
+main h1,
+main h2,
+main h3,
+main h4 {
+    text-wrap: balance;
+    line-break: strict;
+}
+
+main h1.tracking-tighter,
+main h2.tracking-tighter,
+main h3.tracking-tighter,
+main h4.tracking-tighter,
+main p.tracking-tighter {
+    letter-spacing: -0.015em;
+}
+
+@media (max-width: 640px) {
+    body {
+        line-height: 1.85;
+        letter-spacing: 0;
+    }
+
+    main p,
+    main li,
+    main dd {
+        line-height: 1.9;
+    }
+
+    main h1.tracking-tighter,
+    main h2.tracking-tighter,
+    main h3.tracking-tighter,
+    main h4.tracking-tighter,
+    main p.tracking-tighter {
+        letter-spacing: 0;
+    }
 }
 
 /* 2. Overlap & Typography (Mercari Style) */
@@ -297,5 +364,403 @@ input:focus, select:focus, textarea:focus {
     .cx-accordion-card .absolute.bottom-8 {
         width: 320px;
         max-width: 85%;
+    }
+}
+
+/* ==========================================================================
+   Mobile readability refinements
+   Scope: homepage diagnostic / content cards / Crestory feed / footer
+   ========================================================================== */
+@media (max-width: 768px) {
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    #sec-diagnostic {
+        padding: 56px 20px 64px !important;
+    }
+
+    #sec-diagnostic > .absolute {
+        opacity: 0.04 !important;
+    }
+
+    #sec-diagnostic .max-w-\[1400px\] {
+        max-width: 390px !important;
+    }
+
+    #sec-diagnostic .flex.items-start.gap-4 {
+        gap: 14px !important;
+    }
+
+    #sec-diagnostic .flex.items-start.gap-4 > div:first-child {
+        height: 54px !important;
+    }
+
+    #sec-diagnostic h2 {
+        font-size: 32px !important;
+        line-height: 1.18 !important;
+        letter-spacing: -0.015em !important;
+    }
+
+    #sec-diagnostic h3 {
+        font-size: 30px !important;
+        line-height: 1.35 !important;
+        letter-spacing: 0 !important;
+        max-width: 12em;
+        margin-inline: auto;
+    }
+
+    #sec-diagnostic p {
+        font-size: 14px !important;
+        line-height: 1.9 !important;
+        max-width: 24em;
+        margin-inline: auto;
+    }
+
+    #diagnostic-container {
+        max-width: 390px !important;
+    }
+
+    #diagnostic-container > div[style*="position:absolute"] {
+        position: static !important;
+        width: fit-content;
+        margin: 0 auto 28px;
+        padding: 9px 18px !important;
+        font-size: 13px !important;
+    }
+
+    #sec-diagnostic [id^="diag-step-"] > .text-center {
+        margin-bottom: 28px !important;
+        padding-top: 0 !important;
+    }
+
+    #sec-diagnostic [id^="diag-step-"] > .grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        max-width: 365px;
+        margin: 0 auto;
+    }
+
+    #sec-diagnostic .diag-option-card {
+        width: 100% !important;
+        min-height: 166px;
+        padding: 28px 26px !important;
+        border-radius: 22px !important;
+    }
+
+    #sec-diagnostic .diag-abbr {
+        font-size: 54px !important;
+        line-height: 0.95 !important;
+        letter-spacing: -0.02em !important;
+    }
+
+    #sec-diagnostic .diag-option-card span:not(.diag-abbr) {
+        font-size: 20px !important;
+        line-height: 1.45 !important;
+        margin-top: 14px !important;
+    }
+
+    #sec-diagnostic .diag-option-card p {
+        font-size: 14px !important;
+        line-height: 1.85 !important;
+    }
+
+    #diag-footer {
+        margin-top: 36px !important;
+        padding-top: 26px !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 28px !important;
+    }
+
+    #diag-footer > .flex.items-start {
+        width: 100% !important;
+        justify-content: space-between !important;
+        overflow: hidden;
+    }
+
+    #diag-footer > .flex.items-start > .flex {
+        width: 33.333% !important;
+        min-width: 0;
+    }
+
+    #diag-footer > .flex.items-start span:first-of-type {
+        font-size: 10px !important;
+        letter-spacing: 0.12em !important;
+        white-space: nowrap;
+    }
+
+    #diag-footer > .flex.items-start span:nth-of-type(2) {
+        display: none !important;
+    }
+
+    #diag-footer > div:last-child {
+        width: 100% !important;
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+
+    #diag-back,
+    #diag-next {
+        min-height: 56px !important;
+        justify-content: center !important;
+        font-size: 15px !important;
+        line-height: 1.3 !important;
+    }
+
+    #diag-back {
+        width: 42% !important;
+        padding: 15px 20px !important;
+    }
+
+    #diag-next {
+        width: 58% !important;
+        padding: 16px 22px !important;
+    }
+
+    #diag-step-4 > div {
+        gap: 24px !important;
+    }
+
+    #diag-step-4 h3 {
+        text-align: left;
+        margin-inline: 0;
+        max-width: 100%;
+        font-size: 28px !important;
+        line-height: 1.35 !important;
+    }
+
+    #diag-step-4 p {
+        max-width: 100%;
+        font-size: 14px !important;
+        line-height: 1.9 !important;
+    }
+
+    #diag-step-4 a,
+    #diag-step-4 button {
+        width: 100%;
+        min-height: 54px;
+        justify-content: center;
+        padding: 15px 20px !important;
+        white-space: normal !important;
+        text-align: center;
+    }
+
+    #sec-site-contents {
+        padding: 56px 0 64px !important;
+    }
+
+    #sec-site-contents > .max-w-\[1400px\] {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        margin-bottom: 28px !important;
+    }
+
+    #sec-site-contents h2 {
+        font-size: 28px !important;
+        line-height: 1.35 !important;
+    }
+
+    #sec-site-contents .cx-contents-flex-wrap {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        padding: 0 20px;
+    }
+
+    #sec-site-contents .cx-accordion-card {
+        aspect-ratio: 1 / 1;
+        border-radius: 18px;
+        min-height: 132px;
+    }
+
+    #sec-site-contents .cx-accordion-card .absolute.top-6 {
+        top: 14px !important;
+        left: 14px !important;
+    }
+
+    #sec-site-contents .cx-accordion-card .absolute.top-6 span {
+        font-size: 9px !important;
+        letter-spacing: 0.12em !important;
+        padding: 5px 9px !important;
+    }
+
+    #sec-site-contents .cx-accordion-card .absolute.bottom-8 {
+        left: 16px !important;
+        right: 16px !important;
+        bottom: 16px !important;
+        width: auto !important;
+        max-width: none !important;
+    }
+
+    #sec-site-contents .cx-accordion-card h3 {
+        font-size: 17px !important;
+        line-height: 1.45 !important;
+        letter-spacing: 0 !important;
+    }
+
+    #sec-site-contents .cx-card-detail,
+    #sec-site-contents .cx-view-more-box {
+        display: none !important;
+    }
+
+    #sec-youtube-carousel {
+        padding: 58px 0 68px !important;
+    }
+
+    #sec-youtube-carousel .max-w-\[1400px\] {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    #sec-youtube-carousel .grid {
+        grid-template-columns: 1fr !important;
+        gap: 22px !important;
+        max-width: 390px !important;
+        margin-inline: auto;
+    }
+
+    #sec-youtube-carousel a.group {
+        aspect-ratio: 16 / 12 !important;
+        border-radius: 24px !important;
+    }
+
+    #sec-youtube-carousel a.group .absolute.bottom-8 {
+        left: 22px !important;
+        right: 22px !important;
+        bottom: 22px !important;
+    }
+
+    #sec-youtube-carousel h3 {
+        font-size: 20px !important;
+        line-height: 1.45 !important;
+    }
+
+    .news-feed-main {
+        padding: 58px 20px 72px !important;
+    }
+
+    .news-feed-main > .max-w-7xl {
+        max-width: 390px !important;
+    }
+
+    .news-feed-main h2 {
+        font-size: 30px !important;
+        line-height: 1.35 !important;
+        letter-spacing: 0 !important;
+    }
+
+    .news-feed-main p {
+        font-size: 14px !important;
+        line-height: 1.9 !important;
+    }
+
+    .news-feed-main [data-news-tab] {
+        min-height: 46px;
+        flex: 1 1 0;
+        padding: 12px 14px !important;
+        font-size: 12px !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    .news-feed-main [data-all-grid],
+    .news-feed-main [data-youtube-grid],
+    .news-feed-main [data-note-rss-grid] {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        max-width: 390px !important;
+        margin-inline: auto;
+    }
+
+    .news-media-card {
+        border-radius: 24px !important;
+        max-width: 390px;
+        margin-inline: auto;
+    }
+
+    .news-media-card > div:first-child {
+        aspect-ratio: 16 / 9 !important;
+    }
+
+    .news-media-card > div:last-child {
+        min-height: auto !important;
+        padding: 24px !important;
+    }
+
+    .news-media-card time {
+        font-size: 12px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .news-media-card h3 {
+        font-size: 18px !important;
+        line-height: 1.55 !important;
+        letter-spacing: 0 !important;
+        margin-bottom: 14px !important;
+    }
+
+    .news-media-card p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 14px !important;
+        line-height: 1.85 !important;
+        margin-bottom: 22px !important;
+    }
+
+    footer .py-14,
+    footer .py-16 {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+    }
+
+    footer .px-10 {
+        padding-left: 22px !important;
+        padding-right: 22px !important;
+    }
+
+    footer .grid {
+        gap: 30px 22px !important;
+    }
+
+    footer a,
+    footer button {
+        min-height: 36px;
+        line-height: 1.5;
+    }
+
+    footer li a,
+    footer li button {
+        font-size: 13px !important;
+    }
+
+    footer .tracking-\[0\.3em\] {
+        letter-spacing: 0.14em !important;
+    }
+}
+
+@media (max-width: 430px) {
+    #sec-site-contents .cx-contents-flex-wrap {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    #sec-site-contents .cx-accordion-card {
+        min-height: 118px;
+    }
+
+    #sec-site-contents .cx-accordion-card h3 {
+        font-size: 16px !important;
+    }
+
+    #diag-footer > div:last-child {
+        flex-direction: column !important;
+    }
+
+    #diag-back,
+    #diag-next {
+        width: 100% !important;
     }
 }

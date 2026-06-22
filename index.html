@@ -655,6 +655,295 @@
             }
         }
 
+        /* ─── Mobile readability refinements (scoped) ───────── */
+        @media (max-width: 768px) {
+            html,
+            body {
+                overflow-x: hidden;
+            }
+
+            #sec-diagnostic {
+                padding: 56px 20px 64px !important;
+            }
+
+            #sec-diagnostic > .absolute {
+                opacity: 0.04 !important;
+            }
+
+            #sec-diagnostic .max-w-\[1400px\],
+            #diagnostic-container {
+                max-width: 390px !important;
+            }
+
+            #diagnostic-container > div[style*="position:absolute"] {
+                position: static !important;
+                width: fit-content;
+                margin: 0 auto 28px;
+                padding: 9px 18px !important;
+                font-size: 13px !important;
+            }
+
+            #sec-diagnostic h2 {
+                font-size: 32px !important;
+                line-height: 1.18 !important;
+                letter-spacing: -0.015em !important;
+            }
+
+            #sec-diagnostic h3 {
+                font-size: 30px !important;
+                line-height: 1.35 !important;
+                letter-spacing: 0 !important;
+                max-width: 12em;
+                margin-inline: auto;
+            }
+
+            #sec-diagnostic p {
+                font-size: 14px !important;
+                line-height: 1.9 !important;
+                max-width: 24em;
+                margin-inline: auto;
+            }
+
+            #sec-diagnostic [id^="diag-step-"] > .text-center {
+                margin-bottom: 28px !important;
+                padding-top: 0 !important;
+            }
+
+            #sec-diagnostic [id^="diag-step-"] > .grid {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+                max-width: 365px;
+                margin: 0 auto;
+            }
+
+            #sec-diagnostic .diag-option-card {
+                width: 100% !important;
+                min-height: 166px;
+                padding: 28px 26px !important;
+                border-radius: 22px !important;
+            }
+
+            #sec-diagnostic .diag-abbr {
+                font-size: 54px !important;
+                line-height: 0.95 !important;
+                letter-spacing: -0.02em !important;
+            }
+
+            #sec-diagnostic .diag-option-card span:not(.diag-abbr) {
+                font-size: 20px !important;
+                line-height: 1.45 !important;
+                margin-top: 14px !important;
+            }
+
+            #sec-diagnostic .diag-option-card p {
+                font-size: 14px !important;
+                line-height: 1.85 !important;
+            }
+
+            #diag-footer {
+                margin-top: 36px !important;
+                padding-top: 26px !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 28px !important;
+            }
+
+            #diag-footer > .flex.items-start {
+                width: 100% !important;
+                justify-content: space-between !important;
+                overflow: hidden;
+            }
+
+            #diag-footer > .flex.items-start > .flex {
+                width: 33.333% !important;
+                min-width: 0;
+            }
+
+            #diag-footer > .flex.items-start span:first-of-type {
+                font-size: 10px !important;
+                letter-spacing: 0.12em !important;
+                white-space: nowrap;
+            }
+
+            #diag-footer > .flex.items-start span:nth-of-type(2) {
+                display: none !important;
+            }
+
+            #diag-footer > div:last-child {
+                width: 100% !important;
+                justify-content: center !important;
+                gap: 10px !important;
+            }
+
+            #diag-back,
+            #diag-next {
+                min-height: 56px !important;
+                justify-content: center !important;
+                font-size: 15px !important;
+                line-height: 1.3 !important;
+            }
+
+            #diag-back {
+                width: 42% !important;
+                padding: 15px 20px !important;
+            }
+
+            #diag-next {
+                width: 58% !important;
+                padding: 16px 22px !important;
+            }
+
+            #diag-step-4 a,
+            #diag-step-4 button {
+                width: 100%;
+                min-height: 54px;
+                justify-content: center;
+                padding: 15px 20px !important;
+                white-space: normal !important;
+                text-align: center;
+            }
+
+            #sec-site-contents {
+                padding: 56px 0 64px !important;
+            }
+
+            #sec-site-contents > .max-w-\[1400px\] {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+                margin-bottom: 28px !important;
+            }
+
+            #sec-site-contents h2 {
+                font-size: 28px !important;
+                line-height: 1.35 !important;
+            }
+
+            #sec-site-contents .cx-contents-flex-wrap {
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 12px !important;
+                padding: 0 20px;
+            }
+
+            #sec-site-contents .cx-accordion-card {
+                aspect-ratio: 1 / 1 !important;
+                border-radius: 18px;
+                min-height: 132px;
+            }
+
+            #sec-site-contents .cx-accordion-card .absolute.top-6 {
+                top: 14px !important;
+                left: 14px !important;
+            }
+
+            #sec-site-contents .cx-accordion-card .absolute.top-6 span {
+                font-size: 9px !important;
+                letter-spacing: 0.12em !important;
+                padding: 5px 9px !important;
+            }
+
+            #sec-site-contents .cx-accordion-card .absolute.bottom-8 {
+                left: 16px !important;
+                right: 16px !important;
+                bottom: 16px !important;
+                width: auto !important;
+                max-width: none !important;
+            }
+
+            #sec-site-contents .cx-accordion-card h3 {
+                font-size: 17px !important;
+                line-height: 1.45 !important;
+                letter-spacing: 0 !important;
+            }
+
+            #sec-site-contents .cx-card-detail,
+            #sec-site-contents .cx-view-more-box {
+                display: none !important;
+            }
+
+            #sec-youtube-carousel {
+                padding: 58px 0 68px !important;
+            }
+
+            #sec-youtube-carousel .max-w-\[1400px\] {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            #sec-youtube-carousel .grid {
+                grid-template-columns: 1fr !important;
+                gap: 22px !important;
+                max-width: 390px !important;
+                margin-inline: auto;
+            }
+
+            #sec-youtube-carousel a.group {
+                aspect-ratio: 16 / 12 !important;
+                border-radius: 24px !important;
+            }
+
+            #sec-youtube-carousel a.group .absolute.bottom-8 {
+                left: 22px !important;
+                right: 22px !important;
+                bottom: 22px !important;
+            }
+
+            #sec-youtube-carousel h3 {
+                font-size: 20px !important;
+                line-height: 1.45 !important;
+            }
+
+            footer .py-14,
+            footer .py-16 {
+                padding-top: 48px !important;
+                padding-bottom: 48px !important;
+            }
+
+            footer .px-10 {
+                padding-left: 22px !important;
+                padding-right: 22px !important;
+            }
+
+            footer .grid {
+                gap: 30px 22px !important;
+            }
+
+            footer a,
+            footer button {
+                min-height: 36px;
+                line-height: 1.5;
+            }
+
+            footer li a,
+            footer li button {
+                font-size: 13px !important;
+            }
+        }
+
+        @media (max-width: 430px) {
+            #sec-site-contents .cx-contents-flex-wrap {
+                gap: 10px !important;
+            }
+
+            #sec-site-contents .cx-accordion-card {
+                min-height: 118px;
+            }
+
+            #sec-site-contents .cx-accordion-card h3 {
+                font-size: 16px !important;
+            }
+
+            #diag-footer > div:last-child {
+                flex-direction: column !important;
+            }
+
+            #diag-back,
+            #diag-next {
+                width: 100% !important;
+            }
+        }
+
         /* ─── Marquee ─────────────────────────────────────────── */
         .marquee-wrapper {
             display: flex;
@@ -1458,8 +1747,7 @@
                             </li>
                             <li><a href="service-division1.html"
                                     class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>Division
-                                    01</a></li>
+                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>第1営業部</a></li>
                         </ul>
                     </div>
 
@@ -1564,7 +1852,11 @@
             (function () {
                 'use strict';
                 document.body.classList.add('cx-page-ready');
-                initHeroSlideshow();
+                document.addEventListener('DOMContentLoaded', function () {
+                    if (typeof window.initHeroSlideshow === 'function') {
+                        window.initHeroSlideshow();
+                    }
+                });
             })();
     </script>
 

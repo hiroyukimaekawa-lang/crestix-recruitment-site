@@ -171,81 +171,101 @@
   </div>
 
   <!-- ═══ BLOG FEED ═══ -->
-  <main class="py-24 px-8 lg:px-14">
+  <main class="news-feed-main py-24 px-8 lg:px-14">
     <div class="max-w-7xl mx-auto">
 
-      <!-- Category Filter -->
-      <div class="flex flex-wrap gap-4 mb-16 fade-up" style="animation-delay: 0.3s;">
-        <button
-          class="bg-crestix-navy text-white px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase shadow-lg">All</button>
-        <button
+      <div class="mb-12 fade-up" style="animation-delay: 0.3s;">
+        <p class="font-poppins text-[11px] font-black text-crestix-orange tracking-[0.35em] uppercase mb-4">Crestory</p>
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div class="space-y-4 max-w-3xl">
+            <h2 class="text-4xl lg:text-6xl font-black text-crestix-charcoal tracking-tight leading-tight">Crestory</h2>
+            <p class="text-base lg:text-lg font-bold text-gray-500 leading-loose">
+              YouTubeとnoteで発信しているCrestixの思想、メンバーの熱量、事業づくりの裏側をまとめて届けます。
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://youtube.com/@crestix" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-3 border border-gray-200 hover:border-crestix-orange text-gray-500 hover:text-crestix-orange px-7 py-3 rounded-full text-[11px] font-black tracking-[0.28em] uppercase transition-all">
+              YouTube <i class="fa-brands fa-youtube text-[12px]"></i>
+            </a>
+            <a href="https://note.com/crestory_crestix" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-3 border border-gray-200 hover:border-crestix-orange text-gray-500 hover:text-crestix-orange px-7 py-3 rounded-full text-[11px] font-black tracking-[0.28em] uppercase transition-all">
+              note <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Tabs -->
+      <div class="flex flex-wrap gap-4 mb-12 fade-up" style="animation-delay: 0.36s;" aria-label="Crestory content tabs">
+        <button type="button" data-news-tab="all"
+          class="bg-crestix-navy text-white px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase shadow-lg transition-all">All</button>
+        <button type="button" data-news-tab="youtube"
           class="bg-white text-crestix-charcoal/40 hover:text-crestix-orange px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase transition-all">YouTube</button>
-        <button
+        <button type="button" data-news-tab="note"
           class="bg-white text-crestix-charcoal/40 hover:text-crestix-orange px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase transition-all">note</button>
       </div>
 
-      <!-- News Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/watch?v=uVyNfP5gTZA&t=20s" target="_blank"
-          class="news-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl border border-crestix-border/50 flex flex-col fade-up"
-          style="animation-delay: 0.4s;">
-          <div class="relative aspect-[16/10] overflow-hidden">
-            <img src="https://img.youtube.com/vi/uVyNfP5gTZA/hqdefault.jpg"
-              class="w-full h-full object-cover">
-            <span
-              class="absolute top-6 left-6 bg-crestix-orange text-white text-[9px] font-black tracking-widest uppercase px-4 py-1.5 rounded-lg shadow-lg">YouTube</span>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-16 h-16 rounded-full bg-crestix-orange text-white flex items-center justify-center shadow-[0_20px_50px_rgba(255,92,0,0.35)]">
-                <i class="fa-brands fa-youtube text-2xl"></i>
+      <!-- All: latest 2x2 -->
+      <section data-news-panel="all" class="fade-up" style="animation-delay: 0.42s;">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <div class="space-y-3">
+            <div class="flex items-center gap-4">
+              <span class="w-10 h-px bg-crestix-orange"></span>
+              <p class="font-poppins text-[11px] font-black text-gray-400 tracking-[0.35em] uppercase">Latest</p>
+            </div>
+            <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal tracking-tight leading-tight">最新コンテンツ</h2>
+          </div>
+        </div>
+        <div data-all-grid class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
+          <div class="bg-white border border-gray-100 rounded-[2rem] overflow-hidden shadow-[0_18px_50px_rgba(15,23,42,0.06)] animate-pulse">
+            <div class="aspect-[16/10] bg-gray-100"></div>
+            <div class="p-8 space-y-5">
+              <div class="h-3 w-28 bg-gray-100 rounded-full"></div>
+              <div class="h-5 w-full bg-gray-100 rounded-full"></div>
+              <div class="h-5 w-4/5 bg-gray-100 rounded-full"></div>
+              <div class="space-y-3 pt-2">
+                <div class="h-3 w-full bg-gray-100 rounded-full"></div>
+                <div class="h-3 w-5/6 bg-gray-100 rounded-full"></div>
               </div>
             </div>
           </div>
-          <div class="p-10 flex-1 flex flex-col">
-            <time
-              class="font-poppins text-[10px] font-bold text-crestix-charcoal/30 tracking-widest mb-4">YouTube</time>
-            <h2
-              class="text-xl font-black text-crestix-charcoal leading-snug mb-6 group-hover:text-crestix-orange transition-colors">
-              CEOメッセージ
-            </h2>
-            <p class="text-sm font-bold text-gray-500 leading-loose mb-8">
-              代表からCrestixの未来へのビジョン。創業背景や、これから目指す組織の姿を語ります。
-            </p>
-            <div class="mt-auto pt-6 border-t border-crestix-border flex items-center justify-between">
-              <span class="text-[10px] font-black tracking-widest uppercase text-crestix-charcoal/60">Watch More</span>
-              <i class="fa-solid fa-arrow-right-long text-crestix-orange"></i>
-            </div>
-          </div>
-        </a>
+        </div>
+      </section>
 
-        <!-- note -->
-        <a href="https://note.com/crestory_crestix/n/n96793bbaa7ed" target="_blank"
-          class="news-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl border border-crestix-border/50 flex flex-col fade-up"
-          style="animation-delay: 0.5s;">
-          <div class="relative aspect-[16/10] overflow-hidden">
-            <img src="https://assets.st-note.com/production/uploads/images/287837610/rectangle_large_type_2_7550fd6fcc3b69c8b1fd7ed5244f5799.png?width=800"
-              class="w-full h-full object-cover">
-            <span
-              class="absolute top-6 left-6 bg-crestix-navy text-white text-[9px] font-black tracking-widest uppercase px-4 py-1.5 rounded-lg shadow-lg">note</span>
-          </div>
-          <div class="p-10 flex-1 flex flex-col">
-            <time
-              class="font-poppins text-[10px] font-bold text-crestix-charcoal/30 tracking-widest mb-4">2026.06.22</time>
-            <h2 class="text-xl font-black text-crestix-charcoal leading-snug mb-6">
-              大きすぎる旗を、本気で掲げる。
-            </h2>
-            <p class="text-sm font-bold text-gray-500 leading-loose mb-8">
-              Crestixが「世界一挑戦し続ける会社」を目指す理由。代表の想いと、今Crestixに入る意味を届けます。
-            </p>
-            <div class="mt-auto pt-6 border-t border-crestix-border flex items-center justify-between">
-              <span class="text-[10px] font-black tracking-widest uppercase text-crestix-charcoal/60">Read More</span>
-              <i class="fa-solid fa-arrow-right-long text-crestix-orange"></i>
+      <!-- YouTube -->
+      <section data-news-panel="youtube" class="hidden fade-up" style="animation-delay: 0.42s;">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <div class="space-y-3">
+            <div class="flex items-center gap-4">
+              <span class="w-10 h-px bg-crestix-orange"></span>
+              <p class="font-poppins text-[11px] font-black text-gray-400 tracking-[0.35em] uppercase">YouTube</p>
             </div>
+            <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal tracking-tight leading-tight">YouTube</h2>
+            <p class="text-sm lg:text-base font-bold text-gray-500 leading-loose max-w-2xl">
+              今後アップされる動画はこのタブに追加されます。カードクリックでYouTubeを別タブで開きます。
+            </p>
           </div>
-        </a>
+        </div>
+        <div data-youtube-grid class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10"></div>
+      </section>
 
-      </div>
+      <!-- note RSS -->
+      <section id="note-feed" data-news-panel="note" class="hidden fade-up" style="animation-delay: 0.42s;">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <div class="space-y-3">
+            <div class="flex items-center gap-4">
+              <span class="w-10 h-px bg-crestix-orange"></span>
+              <p class="font-poppins text-[11px] font-black text-gray-400 tracking-[0.35em] uppercase">note RSS</p>
+            </div>
+            <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal tracking-tight leading-tight">note記事一覧</h2>
+            <p class="text-sm lg:text-base font-bold text-gray-500 leading-loose max-w-2xl">
+              RSSから最新記事のタイトル、サムネイル、投稿日、本文冒頭を取得して表示します。
+            </p>
+          </div>
+        </div>
+        <div data-note-rss-grid class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10"></div>
+      </section>
     </div>
   </main>
 
@@ -416,6 +436,7 @@
   <script src="assets/js/diagnostic.js"></script>
   <script src="assets/js/modals.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/note-rss.js"></script>
 
   <script src="assets/js/navbar.js"></script>
 </body>
