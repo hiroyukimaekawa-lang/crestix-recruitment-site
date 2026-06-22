@@ -57,11 +57,15 @@
   text-decoration: none;
 }
 #cx-nav-logo {
-  height: 28px;
+  height: 38px;
   width: auto;
   object-fit: contain;
   display: block;
   filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+.cx-nav-logo-link:hover #cx-nav-logo {
+  transform: scale(1.05);
 }
 
 /* ── Center nav ───────────────────────────────────────── */
@@ -127,13 +131,13 @@
   top: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%) translateY(-6px);
-  min-width: 220px;
+  min-width: 320px;
   background: rgba(10,15,30,0.97);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 16px;
-  padding: 14px 0;
+  padding: 16px 0;
   opacity: 0;
   pointer-events: none;
   transition:
@@ -188,8 +192,8 @@
 .cx-mega-menu a {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 20px;
+  gap: 10px;
+  padding: 12px 24px;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -211,6 +215,167 @@
   height: 1px;
   background: rgba(255,255,255,0.07);
   margin: 6px 16px;
+}
+
+/* ── Mega Menu Desktop Redesign (>= 1024px) ───────────── */
+@media (min-width: 1024px) {
+  .cx-mega-menu {
+    position: fixed;
+    top: 64px;                   /* Align to bottom of navbar */
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    width: 100vw;
+    min-width: unset;
+    background: rgba(10, 15, 30, 0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: 0 0 24px 24px;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    padding: 48px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 600;
+  }
+
+  /* Show on trigger hover */
+  .cx-mega-trigger:hover .cx-mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Inner container: centered */
+  .cx-mega-container {
+    max-width: 1140px;           /* Ultra-wide for full spacious layout */
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;         /* Horizontal centering */
+    box-sizing: border-box;
+  }
+
+  /* Hide the top small arrow */
+  .cx-mega-menu::before {
+    display: none;
+  }
+
+  /* Header Centered at the top */
+  .cx-mega-header {
+    text-align: center;
+    margin-bottom: 32px;
+    width: 100%;
+  }
+  .cx-mega-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+  }
+  /* Decorative line under title */
+  .cx-mega-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #FF5C00;         /* Crestix Orange underline */
+  }
+
+  /* Grid directly below the title */
+  .cx-mega-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Responsive 50/50 split */
+    gap: 8rem;                             /* Generous column gap */
+    width: 100%;
+  }
+
+  /* Column Groups */
+  .cx-mega-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cx-mega-group-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #FF5C00;              /* Crestix Orange */
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
+    display: block;
+    text-align: left;
+  }
+
+  /* Links Styling */
+  .cx-mega-menu a.cx-mega-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;                      /* Stretch to full column width */
+    padding: 10px 16px;
+    background: transparent;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.75); /* Bright light grey */
+    font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: normal;
+    text-align: left;
+    box-sizing: border-box;
+  }
+  .cx-mega-menu a.cx-mega-item:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    padding-left: 18px;
+  }
+  .cx-mega-menu a.cx-mega-item .cx-mega-arrow {
+    font-size: 11px;
+    color: #FF5C00;
+    opacity: 0.8;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .cx-mega-menu a.cx-mega-item:hover .cx-mega-arrow {
+    transform: translateX(4px);
+    opacity: 1;
+  }
+
+  /* Coming Soon Badge */
+  .cx-mega-badge {
+    display: inline-block;
+    font-size: 9px;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  
+  .cx-mega-item.cx-mega-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
 }
 
 /* ── Right side ───────────────────────────────────────── */
