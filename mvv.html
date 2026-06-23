@@ -153,6 +153,31 @@
             min-height: 440px;
         }
 
+        .mvv-hero-title {
+            font-size: clamp(2.8rem, 6vw, 5.5rem) !important;
+            line-height: 1.05 !important;
+            letter-spacing: -0.03em;
+            max-width: 1000px;
+            word-break: keep-all;
+            overflow-wrap: normal;
+            line-break: strict;
+        }
+
+        .sp-hero-break {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mvv-hero-title {
+                font-size: clamp(2.5rem, 11vw, 3.5rem) !important;
+                line-height: 1.12 !important;
+                max-width: 9em;
+            }
+            .sp-hero-break {
+                display: block;
+            }
+        }
+
         .mvv-hero-simple p:first-child {
             font-size: clamp(2.8rem, 6vw, 5.5rem) !important;
             line-height: 1.05 !important;
@@ -167,13 +192,13 @@
 
         .mvv-body {
             width: 100%;
-            max-width: 1120px;
+            max-width: 1360px;
             margin: 0 auto;
         }
 
         .mvv-body-wide {
             width: 100%;
-            max-width: 1280px;
+            max-width: 1520px;
             margin: 0 auto;
         }
 
@@ -195,7 +220,10 @@
         .mvv-page main h2 {
             font-size: clamp(2.5rem, 4.2vw, 4.25rem) !important;
             line-height: 1.25 !important;
-            max-width: 1060px;
+            max-width: none;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            line-break: strict;
         }
 
         .mvv-copy {
@@ -281,6 +309,116 @@
                 padding: 1.75rem;
             }
         }
+
+        /* ── Canva Embed (new) ───────────────────────────────── */
+        .mvv-canva-section {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 72px 24px;
+            overflow: visible;
+            background: rgba(255, 255, 255, 0.94) !important;
+        }
+        .mvv-canva-container {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .mvv-canva-embed {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            min-height: 420px;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+            background: #000;
+        }
+        .mvv-canva-embed iframe {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+        .mvv-canva-credit {
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #333;
+        }
+        .mvv-canva-credit a {
+            color: #ff5c00;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+        @media (max-width: 768px) {
+            .mvv-canva-section { padding: 48px 20px; }
+            .mvv-canva-embed { min-height: 220px; border-radius: 12px; }
+        }
+
+        /* ── Value Grid (1-column, large text) ──────────────── */
+        .mvv-value-grid {
+            border-top: 1px solid #e5e7eb;
+        }
+        .mvv-value-row {
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 0 1.75rem;
+            padding: 2.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            align-items: start;
+        }
+        @media (min-width: 1024px) {
+            .mvv-value-row {
+                grid-template-columns: 80px 1fr;
+                gap: 0 2.5rem;
+                padding: 3.5rem 0;
+            }
+        }
+        .mvv-value-num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 900;
+            color: #d1d5db;
+            line-height: 1;
+            padding-top: 8px;
+        }
+        .mvv-value-title {
+            font-size: clamp(2.2rem, 3vw, 3.2rem);
+            font-weight: 900;
+            color: #111827;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            line-break: strict;
+        }
+        .mvv-value-text {
+            font-size: 1.25rem;
+            color: #6b7280;
+            line-height: 1.9;
+        }
+        @media (max-width: 768px) {
+            .mvv-value-row {
+                grid-template-columns: 48px 1fr;
+                gap: 0 1.25rem;
+                padding: 2.25rem 0;
+            }
+            .mvv-value-title {
+                font-size: clamp(1.6rem, 6vw, 2.2rem);
+                line-height: 1.3;
+            }
+            .mvv-value-text {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+        }
     </style>
 </head>
 
@@ -322,12 +460,23 @@
             </div>
 
             <div class="fm-nav-group">
-                <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
-            </div>
+    <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
+    <div class="fm-nav-sub">
+        <a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a>
+        <a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a>
+        <a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a>
+        <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a>
+    </div>
+</div>
 
             <div class="fm-nav-group">
-                <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
-            </div>
+    <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
+    <div class="fm-nav-sub">
+        <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORYトップ</a>
+        <a href="message.html" onclick="cxToggleMenu()">代表メッセージ</a>
+        <a href="members.html" onclick="cxToggleMenu()">メンバーインタビュー</a>
+    </div>
+</div>
 
             <div class="fm-nav-group">
                 <a href="b2b-contact.html" class="fm-nav-item fm-item-6" onclick="cxToggleMenu()">Contact</a>
@@ -352,96 +501,43 @@
         <!-- CENTER: Nav links -->
         <div class="cx-nav-center" id="cx-nav-links">
 
-            <div class="cx-mega-trigger" data-mega="mega-corporate">
-                <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
-                                                <div class="cx-mega-menu" id="mega-corporate">
-                    <div class="cx-mega-container">
-                        <div class="cx-mega-header">
-                            <h3 class="cx-mega-title">Corporate</h3>
-                        </div>
-                        <div class="cx-mega-grid">
-                            <div class="cx-mega-group">
-                                <a href="corporate.html#profile" class="cx-mega-item">
-                                    <span class="cx-mega-item-body">
-                                        <span class="cx-mega-item-title">会社概要</span>
-                                        <span class="cx-mega-item-desc">Crestixの基本情報と会社の輪郭を知る</span>
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
-                                </a>
-                                <a href="message.html" class="cx-mega-item">
-                                    <span class="cx-mega-item-body">
-                                        <span class="cx-mega-item-title">トップメッセージ</span>
-                                        <span class="cx-mega-item-desc">代表が語るCrestixの現在地とこれから</span>
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
-                                </a>
-                            </div>
-                            <div class="cx-mega-group">
-                                <a href="mvv.html" class="cx-mega-item">
-                                    <span class="cx-mega-item-body">
-                                        <span class="cx-mega-item-title">ミッション・ビジョン・バリュー</span>
-                                        <span class="cx-mega-item-desc">私たちが大切にする価値観と行動指針</span>
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
-                                </a>
-                                <a href="members.html" class="cx-mega-item">
-                                    <span class="cx-mega-item-body">
-                                        <span class="cx-mega-item-title">メンバー紹介</span>
-                                        <span class="cx-mega-item-desc">Crestixで働く仲間とチームの雰囲気を知る</span>
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <div class="cx-mega-trigger" data-mega="mega-corporate">
+      <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+      <div class="cx-mega-menu" id="mega-corporate">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">CORPORATE</h3>
+            <p class="cx-mega-subtitle">会社を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <div class="cx-mega-trigger" data-mega="mega-service">
-                <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
-                                                <div class="cx-mega-menu" id="mega-service">
-                    <div class="cx-mega-container">
-                        <div class="cx-mega-header">
-                            <h3 class="cx-mega-title">Service</h3>
-                        </div>
-                        <div class="cx-mega-grid">
-                            <div class="cx-mega-group">
-                                <a href="business.html" class="cx-mega-item">
-                                    <span class="cx-mega-item-body">
-                                        <span class="cx-mega-item-title">事業一覧</span>
-                                        <span class="cx-mega-item-desc">Crestixが展開する事業領域を一覧で見る</span>
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
-                                </a>
-                                <a href="service-hd.html" class="cx-mega-item">
-                                    <span class="cx-mega-item-body">
-                                        <span class="cx-mega-item-title">HD事業部</span>
-                                        <span class="cx-mega-item-desc">店舗グロース事業。地域店舗の集客と売上成長を支援</span>
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
-                                </a>
-                                <a href="service-division1.html" class="cx-mega-item">
-                                    <span class="cx-mega-item-body">
-                                        <span class="cx-mega-item-title">第1営業部</span>
-                                        <span class="cx-mega-item-desc">クリニック特化グロース事業。医療機関の集客と運営進化を支援</span>
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
-                                </a>
-                                <a href="ai-sales.html" class="cx-mega-item">
-                                    <span class="cx-mega-item-body">
-                                        <span class="cx-mega-item-title">AI・Sales Enablement</span>
-                                        <span class="cx-mega-item-desc">営業代行とAI活用で成果が再現される営業組織をつくる</span>
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <div class="cx-mega-trigger" data-mega="mega-service">
+      <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+      <div class="cx-mega-menu" id="mega-service">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">SERVICE</h3>
+            <p class="cx-mega-subtitle">事業を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="business.html" class="cx-mega-item"><span>事業一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="service-division1.html" class="cx-mega-item"><span>第1営業部</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="service-hd.html" class="cx-mega-item"><span>HD事業部</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="ai-sales.html" class="cx-mega-item"><span>AI・Sales Enablement（営業代行 / 営業支援事業）</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
-            <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
+    <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+    <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
 
         </div>
 
@@ -475,8 +571,9 @@
         <!-- ① HERO -->
         <div class="mvv-hero-simple flex items-end pt-36">
             <div class="max-w-[1280px] mx-auto px-6 lg:px-10 pb-16 w-full">
-                <p class="text-white/75 text-xl lg:text-2xl font-black leading-tight">
-                    私たちが目指すもの
+                <p class="mvv-hero-title text-white/75 font-black leading-tight">
+                    <span>私たちが</span><br class="sp-hero-break">
+                    <span>目指すもの</span>
                 </p>
                 <p class="text-white/70 text-sm font-bold mt-2">
                     ミッション・ビジョン・バリュー
@@ -532,31 +629,48 @@
             <div id="value" class="mvv-section-pad px-6 lg:px-10">
                 <div class="mvv-body-wide">
                     <div class="mvv-section-label mb-14">バリュー</div>
-                    <div class="space-y-5 mvv-copy mb-14">
-                        <p>Crestixが大切にしているのは、挑戦を続ける姿勢と、成果に向き合う実行力です。</p>
-                        <p>一人ひとりが自分の可能性を広げながら、仲間とともにより大きな価値を生み出していくことを目指します。</p>
-                    </div>
+                    <p class="mvv-copy mb-14">Valueは会社のOSとして浸透し、常に意識されています。</p>
 
-                    <div class="border-t border-gray-200">
-                        <div class="grid grid-cols-[56px_1fr] lg:grid-cols-[72px_320px_1fr] gap-x-6 lg:gap-x-10 gap-y-4 py-8 border-b border-gray-200 items-start">
-                            <p class="font-poppins text-sm font-black text-gray-300 leading-none pt-2">01</p>
-                            <h3 class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-tight whitespace-nowrap">挑戦を楽しむ</h3>
-                            <p class="mvv-copy col-start-2 lg:col-start-auto">失敗を恐れず、常に一歩先へ進む姿勢を大切にします。</p>
+                    <div class="mvv-value-grid">
+                        <!-- 01 妄想論 -->
+                        <div class="mvv-value-row">
+                            <p class="mvv-value-num">01</p>
+                            <div>
+                                <h3 class="mvv-value-title">妄想論</h3>
+                                <p class="mvv-value-text">"やりたい"で終わらせず、"なれたら最高""できたら面白い"と思える未来を描く。自分の可能性を自由に広げ、ワクワクする理想を言葉にし、挑戦の起点をつくる。</p>
+                            </div>
                         </div>
-                        <div class="grid grid-cols-[56px_1fr] lg:grid-cols-[72px_320px_1fr] gap-x-6 lg:gap-x-10 gap-y-4 py-8 border-b border-gray-200 items-start">
-                            <p class="font-poppins text-sm font-black text-gray-300 leading-none pt-2">02</p>
-                            <h3 class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-tight whitespace-nowrap">成果に向き合う</h3>
-                            <p class="mvv-copy col-start-2 lg:col-start-auto">感覚ではなく、数値と事実をもとに改善し、成果につながる行動を重ねます。</p>
+                        <!-- 02 当事者燃焼論 -->
+                        <div class="mvv-value-row">
+                            <p class="mvv-value-num">02</p>
+                            <div>
+                                <h3 class="mvv-value-title">当事者燃焼論</h3>
+                                <p class="mvv-value-text">すべてのことに自分ごとで向き合い、自分の人生にも仕事にも責任を持つ。自分を裏切らず、目の前の役割に本気で向き合い、命を燃やすように働く。</p>
+                            </div>
                         </div>
-                        <div class="grid grid-cols-[56px_1fr] lg:grid-cols-[72px_320px_1fr] gap-x-6 lg:gap-x-10 gap-y-4 py-8 border-b border-gray-200 items-start">
-                            <p class="font-poppins text-sm font-black text-gray-300 leading-none pt-2">03</p>
-                            <h3 class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-tight whitespace-nowrap">仲間と高め合う</h3>
-                            <p class="mvv-copy col-start-2 lg:col-start-auto">個人だけでなく、チームとして成長し、互いの可能性を引き出します。</p>
+                        <!-- 03 時間有限論 -->
+                        <div class="mvv-value-row">
+                            <p class="mvv-value-num">03</p>
+                            <div>
+                                <h3 class="mvv-value-title">時間有限論</h3>
+                                <p class="mvv-value-text">時間は有限。だからこそ、1分1秒の使い方にこだわる。何をやるかだけでなく、何に時間を使わないかも決めながら、最短で価値を出す。</p>
+                            </div>
                         </div>
-                        <div class="grid grid-cols-[56px_1fr] lg:grid-cols-[72px_320px_1fr] gap-x-6 lg:gap-x-10 gap-y-4 py-8 border-b border-gray-200 items-start">
-                            <p class="font-poppins text-sm font-black text-gray-300 leading-none pt-2">04</p>
-                            <h3 class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-tight whitespace-nowrap">仕組みで強くする</h3>
-                            <p class="mvv-copy col-start-2 lg:col-start-auto">再現性のある成果を生み出すために、属人的ではない仕組みづくりを重視します。</p>
+                        <!-- 04 量前提・光即改善論 -->
+                        <div class="mvv-value-row">
+                            <p class="mvv-value-num">04</p>
+                            <div>
+                                <h3 class="mvv-value-title">量前提・光即改善論</h3>
+                                <p class="mvv-value-text">圧倒的な量は前提。そのうえで、スピードと質を高め続ける。数字と事実をもとに分析し、改善策をすぐ実行し、成果につながる型へ磨き込む。</p>
+                            </div>
+                        </div>
+                        <!-- 05 プロフェッショナル関係 -->
+                        <div class="mvv-value-row">
+                            <p class="mvv-value-num">05</p>
+                            <div>
+                                <h3 class="mvv-value-title">プロフェッショナル関係</h3>
+                                <p class="mvv-value-text">仲良しで終わらない。互いの役割に責任を持ち、高い期待をかけ合いながら、率直に向き合う。信頼の上に厳しさがある、プロ同士の関係をつくる。</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -564,17 +678,25 @@
         </section>
 
         <!-- Canva Embed -->
-        <section class="canva-embed-section bg-white py-14 lg:py-20 px-6 lg:px-10">
-            <div class="max-w-[1280px] mx-auto">
-                <div class="relative w-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
+        <section class="mvv-canva-section">
+            <div class="mvv-canva-container">
+                <div class="mvv-canva-embed">
                     <iframe
-                        src="https://canva.link/gbd667zl0tc1wg0"
-                        title="Crestix 会社紹介資料"
                         loading="lazy"
-                        allowfullscreen
-                        allow="fullscreen"
-                        class="block w-full aspect-video border-0"></iframe>
+                        src="https://www.canva.com/design/DAHNTgLl1cw/lbGY7nZUlCXvvHkfPNNGOg/view?embed"
+                        title="Crestix Deck"
+                        allowfullscreen="allowfullscreen"
+                        allow="fullscreen">
+                    </iframe>
                 </div>
+                <p class="mvv-canva-credit">
+                    前川弘行さんによる
+                    <a href="https://www.canva.com/design/DAHNTgLl1cw/lbGY7nZUlCXvvHkfPNNGOg/view?utm_content=DAHNTgLl1cw&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+                        target="_blank"
+                        rel="noopener">
+                        Crestix Deck (1).pdf
+                    </a>
+                </p>
             </div>
         </section>
 
