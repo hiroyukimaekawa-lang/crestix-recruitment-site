@@ -31,7 +31,7 @@ main dd {
 }
 
 main p:not([class*="font-poppins"]):not([class*="uppercase"]):not([class*="tracking-"]) {
-    max-width: 44rem;
+    max-width: none;
 }
 
 main .text-center p,
@@ -856,5 +856,206 @@ input:focus, select:focus, textarea:focus {
 
     #sec-site-contents .cx-accordion-card h3 {
         font-size: 16px !important;
+    }
+}
+
+
+/* Diagnostic form polish */
+#sec-diagnostic .diag-step-header {
+    margin-bottom: 44px;
+}
+#sec-diagnostic .diag-step-subtitle,
+#sec-diagnostic .diag-step-number,
+#sec-diagnostic .diag-step-title {
+    display: block;
+}
+#sec-diagnostic .diag-step-subtitle {
+    color: #6B7280;
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+}
+#sec-diagnostic .diag-step-number {
+    font-family: Poppins, sans-serif;
+    color: #FF5C00;
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+#sec-diagnostic .diag-step-title {
+    color: #1A2B4C;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+#sec-diagnostic .diag-option-card {
+    min-height: 190px;
+    padding: 34px 32px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-color: #E2E8F0;
+    box-shadow: none;
+}
+#sec-diagnostic .diag-option-card[aria-pressed="true"] {
+    border-color: #FF5C00 !important;
+    box-shadow: 0 0 0 3px rgba(255,92,0,0.15) !important;
+}
+#sec-diagnostic .diag-option-card:not([aria-pressed="true"]):hover {
+    border-color: #CBD5E1 !important;
+}
+#sec-diagnostic .diag-title {
+    display: block;
+    color: #1A2B4C;
+    font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+    font-weight: 900;
+    line-height: 1.42;
+    letter-spacing: 0;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+#sec-diagnostic .diag-underline {
+    width: 34px;
+    height: 3px;
+    border-radius: 999px;
+    margin: 14px auto 16px;
+    background: #D1D5DB;
+}
+#sec-diagnostic .diag-desc {
+    color: #6B7280;
+    font-size: 0.94rem;
+    font-weight: 800;
+    line-height: 1.75;
+    max-width: 320px;
+    margin: 0 auto;
+}
+#sec-diagnostic .diag-step--roles > .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 860px;
+    margin-inline: auto;
+}
+#sec-diagnostic .diag-step--roles .diag-option-card {
+    min-height: 132px;
+    padding: 28px 24px !important;
+}
+#sec-diagnostic .diag-step--roles .diag-title {
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+}
+#sec-diagnostic .diag-step--roles .diag-desc {
+    display: none;
+}
+#sec-diagnostic .diag-step--roles .diag-underline {
+    margin-bottom: 0;
+}
+#sec-diagnostic #diag-footer {
+    margin-top: 52px;
+    padding-top: 28px;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+}
+#sec-diagnostic #diag-footer > .flex.items-start {
+    width: min(860px, 100%);
+    max-width: 100%;
+    flex: 1 1 760px;
+}
+#sec-diagnostic #diag-footer > .flex.items-start > div[style*="position:absolute"] {
+    top: 9px !important;
+    height: 3px !important;
+    left: 10px !important;
+    right: 10px !important;
+}
+#sec-diagnostic [id^="pbar-dot-"] {
+    width: 20px !important;
+    height: 20px !important;
+    border-width: 3px !important;
+}
+#sec-diagnostic #diag-footer span {
+    text-align: center;
+}
+#sec-diagnostic #diag-footer span[style*="font-size:0.65rem"] {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.16em !important;
+    margin-top: 12px !important;
+}
+#sec-diagnostic #diag-footer span[style*="font-size:0.75rem"] {
+    font-size: 0.78rem !important;
+    color: inherit;
+}
+#sec-diagnostic #diag-back {
+    min-height: 42px !important;
+    padding: 0 22px !important;
+    border-radius: 9999px !important;
+    border-color: #E5E7EB !important;
+    background: #fff !important;
+    color: #6B7280 !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    box-shadow: none !important;
+}
+#sec-diagnostic #diag-back:hover {
+    color: #1A2B4C !important;
+    border-color: #CBD5E1 !important;
+}
+@media (max-width: 768px) {
+    #sec-diagnostic .diag-step-header {
+        margin-bottom: 24px !important;
+    }
+    #sec-diagnostic .diag-step-subtitle {
+        font-size: 0.83rem !important;
+        margin-bottom: 7px !important;
+    }
+    #sec-diagnostic .diag-step-number {
+        font-size: 0.82rem !important;
+        margin-bottom: 8px !important;
+    }
+    #sec-diagnostic .diag-step-title {
+        font-size: clamp(1.65rem, 7vw, 2rem) !important;
+        line-height: 1.35 !important;
+    }
+    #sec-diagnostic .diag-option-card {
+        min-height: auto !important;
+        padding: 22px 20px !important;
+        border-radius: 16px !important;
+    }
+    #sec-diagnostic .diag-step--roles > .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        max-width: 390px !important;
+    }
+    #sec-diagnostic .diag-step--roles .diag-option-card {
+        min-height: 96px !important;
+        height: auto !important;
+        padding: 20px 12px !important;
+    }
+    #sec-diagnostic .diag-step--roles .diag-title {
+        font-size: 0.95rem !important;
+        line-height: 1.35 !important;
+    }
+    #sec-diagnostic .diag-step--roles .diag-underline {
+        display: block !important;
+        width: 24px;
+        height: 2px;
+        margin: 10px auto 0 !important;
+    }
+    #sec-diagnostic #diag-footer {
+        margin-top: 28px !important;
+        padding-top: 20px !important;
+        gap: 18px !important;
+    }
+    #sec-diagnostic [id^="pbar-dot-"] {
+        width: 18px !important;
+        height: 18px !important;
+    }
+    #sec-diagnostic #diag-back {
+        width: auto !important;
+        min-width: 112px !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        padding: 0 18px !important;
     }
 }

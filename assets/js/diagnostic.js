@@ -200,13 +200,13 @@ function initDiagnostic() {
    ───────────────────────────────────────────── */
 function buildCardHTML(stepNum, opt) {
   const isSelected = diagSelected['step' + stepNum] === opt.value;
-  const borderStyle = isSelected ? 'border-[#FF5C00] shadow-[0_0_0_3px_rgba(255,92,0,0.15)]' : 'border-gray-200';
+  const borderStyle = isSelected ? 'border-[#FF5C00] shadow-[0_0_0_3px_rgba(255,92,0,0.15)]' : 'border-slate-200';
   const checkOpacity = isSelected ? '1' : '0';
   const titleColor = isSelected ? '#FF5C00' : '#1A2B4C';
   const underlineBg = isSelected ? '#FF5C00' : '#D1D5DB';
 
   return `
-    <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 ${borderStyle} cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
+    <div class="diag-option-card relative bg-white rounded-2xl p-9 lg:p-10 min-h-[190px] flex flex-col items-center justify-center text-center border-2 ${borderStyle} cursor-pointer transition-all duration-300 hover:shadow-[0_16px_38px_rgba(15,23,42,0.08)]"
         onclick="selectDiagnosticOption(${stepNum},'${opt.value}')"
         onkeydown="handleCardKeyDown(event, ${stepNum},'${opt.value}')"
         data-option="${opt.value}"
@@ -217,8 +217,6 @@ function buildCardHTML(stepNum, opt) {
         <div class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center transition-opacity duration-300" style="opacity:${checkOpacity};">
             <i class="fa-solid fa-check text-white text-xs"></i>
         </div>
-        <!-- スコープ装飾（左上小ドット） -->
-        <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
         <!-- 日本語タイトル -->
         <span class="diag-title" style="color:${titleColor};">${opt.title}</span>
         <!-- 下線 -->
@@ -248,11 +246,11 @@ function renderStepNew(stepNum) {
 
   let stepMainTitle = '';
   if (stepNum === 1) {
-    stepMainTitle = '職種カテゴリ';
+    stepMainTitle = '希望する職種カテゴリ';
   } else if (stepNum === 2) {
-    stepMainTitle = '職種';
+    stepMainTitle = '希望職種を選択してください';
   } else if (stepNum === 3) {
-    stepMainTitle = 'キャリアステージ';
+    stepMainTitle = '希望するキャリアステージ';
   }
 
   const selectedCategory = diagSelected['step1'];
@@ -270,11 +268,11 @@ function renderStepNew(stepNum) {
     <div class="diag-step-header text-center mb-12">
         <!-- 1. 小見出し -->
         <span class="diag-step-subtitle">
-            あなたのための採用情報
+            あなたに合う募集職種
         </span>
         <!-- 2. Step表示 -->
         <span class="diag-step-number">
-            ステップ ${stepNum}/4
+            STEP ${stepNum} / 4
         </span>
         <!-- 3. メイン見出し -->
         <h3 class="diag-step-title">
@@ -416,7 +414,7 @@ function selectDiagnosticOption(step, option, advance = true) {
 
   stepEl.querySelectorAll('.diag-option-card').forEach(card => {
     card.classList.remove('border-[#FF5C00]', 'shadow-[0_0_0_3px_rgba(255,92,0,0.15)]');
-    card.classList.add('border-gray-200');
+    card.classList.add('border-slate-200');
     card.setAttribute('aria-pressed', 'false');
 
     const check = card.querySelector('.diag-check-tab');
@@ -432,7 +430,7 @@ function selectDiagnosticOption(step, option, advance = true) {
   const selected = stepEl.querySelector(`[data-option="${option}"]`);
   if (!selected) return;
 
-  selected.classList.remove('border-gray-200');
+  selected.classList.remove('border-gray-200', 'border-slate-200');
   selected.classList.add('border-[#FF5C00]', 'shadow-[0_0_0_3px_rgba(255,92,0,0.15)]');
   selected.setAttribute('aria-pressed', 'true');
 
@@ -527,7 +525,7 @@ function resetDiagnostic() {
       renderStepNew(1);
       step1El.querySelectorAll('.diag-option-card').forEach(card => {
         card.classList.remove('border-[#FF5C00]', 'shadow-[0_0_0_3px_rgba(255,92,0,0.15)]');
-        card.classList.add('border-gray-200');
+        card.classList.add('border-slate-200');
         card.setAttribute('aria-pressed', 'false');
 
         const check = card.querySelector('.diag-check-tab');

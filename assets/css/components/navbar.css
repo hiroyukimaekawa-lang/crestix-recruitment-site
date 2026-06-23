@@ -233,7 +233,7 @@
     border: none;
     border-top: 1px solid rgba(255, 255, 255, 0.10);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-    padding: 60px 0 64px;
+    padding: 64px 0 70px;
     opacity: 0;
     pointer-events: none;
     transition:
@@ -251,9 +251,9 @@
 
   /* Inner container: title centered / grid full width */
   .cx-mega-container {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 72px;
+    padding: 0 96px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -276,7 +276,7 @@
   }
   .cx-mega-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 52px;
+    font-size: clamp(60px, 5.2vw, 78px);
     font-weight: 900;
     color: #ffffff;
     margin: 0;
@@ -287,7 +287,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 18px;
+    padding-bottom: 22px;
     text-align: center;
   }
   /* Orange accent line */
@@ -297,86 +297,88 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 36px;
+    width: 48px;
     height: 3px;
     background: #FF5C00;
   }
 
-  /* Link grid — full width */
+  /* Link grid — 2x2 card panels */
   .cx-mega-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 3rem 4rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
     width: 100%;
   }
 
-  /* Column Groups */
+  /* Keep legacy group wrappers but let cards participate in the parent grid */
   .cx-mega-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: contents;
   }
   .cx-mega-group-label {
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: #FF5C00;
-    letter-spacing: 0.20em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-    display: block;
-    text-align: left;
+    display: none;
   }
 
-  /* Links — border-bottom separator rows */
   .cx-mega-menu a.cx-mega-item {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    padding: 13px 0;
-    background: transparent;
-    border-radius: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    color: rgba(255, 255, 255, 0.65);
+    min-height: 164px;
+    padding: 30px 36px;
+    background: rgba(255, 255, 255, 0.045);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.82);
     font-family: 'Poppins', 'Noto Sans JP', sans-serif;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
+    line-height: 1.45;
     text-decoration: none;
-    transition: color 0.18s ease, border-bottom-color 0.18s ease, padding-left 0.18s ease;
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
     white-space: normal;
     text-align: left;
     box-sizing: border-box;
   }
   .cx-mega-menu a.cx-mega-item:hover {
     color: #ffffff;
-    background: transparent;
-    padding-left: 6px;
-    border-bottom-color: rgba(255, 92, 0, 0.45);
+    background: rgba(255, 92, 0, 0.10);
+    border-color: rgba(255, 92, 0, 0.45);
+    transform: translateY(-3px);
+  }
+  .cx-mega-item-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+  .cx-mega-item-title {
+    display: block;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+  }
+  .cx-mega-item-desc {
+    display: block;
+    color: rgba(255, 255, 255, 0.52);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.85;
+    letter-spacing: 0;
   }
   .cx-mega-menu a.cx-mega-item .cx-mega-arrow {
-    font-size: 10px;
-    color: rgba(255, 92, 0, 0.60);
+    font-size: 20px;
+    color: rgba(255, 92, 0, 0.70);
     transition: transform 0.18s ease, color 0.18s ease;
     flex-shrink: 0;
-    margin-left: 12px;
+    margin-left: 32px;
+    margin-bottom: 6px;
   }
   .cx-mega-menu a.cx-mega-item:hover .cx-mega-arrow {
     transform: translateX(4px);
     color: #FF5C00;
-  }
-
-  #mega-service .cx-mega-group {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 48px;
-    width: 100%;
-  }
-
-  #mega-service .cx-mega-group-label {
-    grid-column: 1 / -1;
   }
 
   /* Coming Soon Badge */

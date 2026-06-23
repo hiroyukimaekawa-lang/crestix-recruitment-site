@@ -102,7 +102,7 @@
 
         @media(min-width: 1024px) {
             .page-grid {
-                grid-template-columns: 200px 1fr;
+                grid-template-columns: 220px minmax(0, 1fr);
             }
         }
 
@@ -192,7 +192,7 @@
 
         /* ── SECTION BASE ── */
         .content-section {
-            padding: 68px clamp(1.5rem, 4vw, 3.5rem) 68px clamp(1.5rem, 4vw, 3.5rem);
+            padding: 76px clamp(2rem, 4.5vw, 4.5rem) 76px clamp(2rem, 4.5vw, 4.5rem);
             border-bottom: 1px solid var(--gray-line);
         }
 
@@ -204,7 +204,7 @@
 
         .section-header {
             margin-bottom: clamp(32px, 5vw, 56px);
-            max-width: 780px;
+            max-width: 980px;
         }
 
         .section-title {
@@ -215,7 +215,7 @@
             color: var(--text-main);
             margin-top: 10px;
             line-height: 1.28;
-            max-width: 820px;
+            max-width: 980px;
             text-wrap: balance;
         }
 
@@ -227,7 +227,7 @@
             line-height: 1.7;
             letter-spacing: 0;
             margin-bottom: 1.75rem;
-            max-width: 780px;
+            max-width: 980px;
         }
 
         .about-body {
@@ -235,7 +235,7 @@
             color: var(--text-sub);
             line-height: 2.05;
             letter-spacing: 0.01em;
-            max-width: 760px;
+            max-width: 840px;
         }
 
         .content-section p,
@@ -276,7 +276,7 @@
         .service-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 24px;
         }
 
         @media(min-width: 640px) {
@@ -531,7 +531,7 @@
         .persona-item {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
+            gap: 24px;
             padding: 1.5rem 1.75rem;
             border: 1px solid var(--gray-line);
             border-radius: 14px;
@@ -572,7 +572,7 @@
         .members-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 24px;
         }
 
         @media(min-width: 640px) {
@@ -598,14 +598,14 @@
         }
 
         .member-img {
-            height: 200px;
+            height: 240px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .member-body {
-            padding: 1.25rem 1.5rem;
+            padding: 1.5rem 1.75rem;
             border-top: 1px solid var(--gray-line);
         }
 
@@ -620,16 +620,16 @@
         }
 
         .member-name {
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 900;
             color: var(--text-main);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .member-quote {
-            font-size: 12px;
+            font-size: 15px;
             color: var(--text-sub);
-            line-height: 1.75;
+            line-height: 1.9;
         }
 
         /* ── ANCHOR HIGHLIGHT ── */
@@ -684,7 +684,7 @@
             justify-content: space-between;
             padding: 20px 0;
             text-align: left;
-            gap: 16px;
+            gap: 24px;
         }
 
         .accordion-trigger:hover .acc-title {
@@ -694,7 +694,7 @@
         .acc-left {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 24px;
             flex: 1;
             min-width: 0;
         }
@@ -797,10 +797,10 @@
         }
 
         .acc-content {
-            padding: 0 0 28px 0;
+            padding: 0 0 34px 0;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 32px;
         }
 
         @media(min-width: 768px) {
@@ -819,9 +819,9 @@
         }
 
         .acc-detail-text {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-sub);
-            line-height: 1.85;
+            line-height: 1.9;
             overflow-wrap: break-word;
             word-break: break-word;
         }
@@ -957,7 +957,7 @@
             </div>
 
             <div class="fm-nav-group">
-                <a href="news.html" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
+                <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
             </div>
 
             <div class="fm-nav-group">
@@ -994,20 +994,34 @@
                         </div>
                         <div class="cx-mega-grid">
                             <div class="cx-mega-group">
-                                <span class="cx-mega-group-label">Company</span>
                                 <a href="corporate.html#profile" class="cx-mega-item">
-                                    <span>会社概要</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">会社概要</span>
+                                        <span class="cx-mega-item-desc">Crestixの基本情報と会社の輪郭を知る</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="message.html" class="cx-mega-item">
-                                    <span>トップメッセージ</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">トップメッセージ</span>
+                                        <span class="cx-mega-item-desc">代表が語るCrestixの現在地とこれから</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                             </div>
                             <div class="cx-mega-group">
-                                <span class="cx-mega-group-label">Philosophy & People</span>
                                 <a href="mvv.html" class="cx-mega-item">
-                                    <span>Vision / Mission / Value</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">ミッション・ビジョン・バリュー</span>
+                                        <span class="cx-mega-item-desc">私たちが大切にする価値観と行動指針</span>
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
+                                </a>
+                                <a href="members.html" class="cx-mega-item">
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">メンバー紹介</span>
+                                        <span class="cx-mega-item-desc">Crestixで働く仲間とチームの雰囲気を知る</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                             </div>
@@ -1025,21 +1039,32 @@
                         </div>
                         <div class="cx-mega-grid">
                             <div class="cx-mega-group">
-                                <span class="cx-mega-group-label">Active Domains</span>
                                 <a href="business.html" class="cx-mega-item">
-                                    <span>事業一覧</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">事業一覧</span>
+                                        <span class="cx-mega-item-desc">Crestixが展開する事業領域を一覧で見る</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="service-hd.html" class="cx-mega-item">
-                                    <span>HD事業部（店舗グロース事業）</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">HD事業部</span>
+                                        <span class="cx-mega-item-desc">店舗グロース事業。地域店舗の集客と売上成長を支援</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="service-division1.html" class="cx-mega-item">
-                                    <span>第1営業部（クリニック特化グロース事業）</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">第1営業部</span>
+                                        <span class="cx-mega-item-desc">クリニック特化グロース事業。医療機関の集客と運営進化を支援</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="ai-sales.html" class="cx-mega-item">
-                                    <span>AI・Sales Enablement（営業代行/営業支援事業）</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">AI・Sales Enablement</span>
+                                        <span class="cx-mega-item-desc">営業代行とAI活用で成果が再現される営業組織をつくる</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                             </div>
@@ -1049,7 +1074,7 @@
     </div>
 
     <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
-    <a href="news.html"    class="cx-nav-link" data-page="news">Crestory</a>
+    <a href="https://crestory.crestix.jp/"    class="cx-nav-link" data-page="news">Crestory</a>
 
   </div>
 
@@ -1067,7 +1092,7 @@
 
     <!-- ══ HERO (corporate.html style) ══ -->
     <div class="div-hero flex flex-col justify-end pt-40">
-        <div style="max-width:1200px; margin:0 auto; padding: 0 2rem 3rem; width:100%;">
+        <div style="max-width:1400px; margin:0 auto; padding: 0 2rem 3rem; width:100%;">
             <p
                 style="color:rgba(255,255,255,0.6); font-size:11px; font-family:'Poppins',sans-serif; font-weight:800; letter-spacing:0.35em; text-transform:uppercase; margin-bottom:1rem;">
                 Service / <span style="color:var(--orange);">第一営業部</span>
@@ -1082,7 +1107,7 @@
 
     <!-- ══ BODY: SIDEBAR + MAIN ══ -->
     <div class="page-grid"
-        style="max-width:1200px; margin:0 auto; border-left:1px solid var(--gray-line); border-right:1px solid var(--gray-line);">
+        style="width:min(100% - 40px, 1400px); margin:0 auto; border-left:1px solid var(--gray-line); border-right:1px solid var(--gray-line);">
 
         <!-- LEFT SIDEBAR -->
         <aside class="sidebar">
@@ -1135,7 +1160,7 @@
 
                     <!-- ① 牛くんずAI -->
                     <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-1">
-                        <div class="w-full md:w-56 lg:w-64 flex-shrink-0">
+                        <div class="w-full md:w-72 lg:w-80 xl:w-96 flex-shrink-0">
                             <div class="w-full aspect-[4/3] rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden flex items-center justify-center">
                                 <img src="assets/images/division1/service-cow.png"
                                     alt="牛くんずAI"
@@ -1144,8 +1169,8 @@
                         </div>
                         <div class="flex-1 min-w-0 py-1">
                             <span class="inline-block text-[10px] font-black tracking-widest uppercase text-orange-500 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full mb-4">AI Agent</span>
-                            <h3 class="text-xl font-black text-gray-900 mb-4 tracking-tight">牛くんずAI</h3>
-                            <p class="text-sm text-gray-500 leading-loose font-bold">
+                            <h3 class="text-2xl lg:text-3xl font-black text-gray-900 mb-4 tracking-tight">牛くんずAI</h3>
+                            <p class="text-base text-gray-500 leading-loose font-bold">
                                 牛くんずAIは、クリニックの集患・集客向上を支援するAIエージェントです。<br><br>
                                 各クリニックの目標に対して、現状分析から戦略設計、施策の実装、運用後の改善提案まで一気通貫でサポートします。<br><br>
                                 Web上の医院情報の整理、口コミ改善、ホームページ導線の見直し、問い合わせ・予約につながる仕組みづくりを通じて、地域の患者様に選ばれるクリニックづくりを支援します。
@@ -1155,7 +1180,7 @@
 
                     <!-- ② Chatbot AI -->
                     <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-2">
-                        <div class="w-full md:w-56 lg:w-64 flex-shrink-0">
+                        <div class="w-full md:w-72 lg:w-80 xl:w-96 flex-shrink-0">
                             <div class="w-full aspect-[4/3] rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden flex items-center justify-center">
                                 <img src="assets/images/division1/service-cow.png"
                                     alt="Chatbot AI"
@@ -1164,8 +1189,8 @@
                         </div>
                         <div class="flex-1 min-w-0 py-1">
                             <span class="inline-block text-[10px] font-black tracking-widest uppercase text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-4">AI Chatbot</span>
-                            <h3 class="text-xl font-black text-gray-900 mb-4 tracking-tight">Chatbot AI</h3>
-                            <p class="text-sm text-gray-500 leading-loose font-bold">
+                            <h3 class="text-2xl lg:text-3xl font-black text-gray-900 mb-4 tracking-tight">Chatbot AI</h3>
+                            <p class="text-base text-gray-500 leading-loose font-bold">
                                 Chatbot AIは、クリニックの問い合わせ対応と来院導線の改善を支援するAIチャットボットサービスです。<br><br>
                                 診療時間、アクセス、予約方法、診療内容、よくある質問などを自動で案内し、患者様が迷わず必要な情報にたどり着ける状態を構築します。<br><br>
                                 現状分析から会話設計、実装、運用後の改善提案まで一気通貫でサポートし、集患向上と業務効率化を支援します。

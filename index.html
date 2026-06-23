@@ -1171,6 +1171,49 @@
         .preview-scroll::-webkit-scrollbar {
             display: none;
         }
+        /* Diagnostic form polish */
+        #sec-diagnostic .diag-step-header { margin-bottom: 44px; }
+        #sec-diagnostic .diag-step-subtitle,
+        #sec-diagnostic .diag-step-number,
+        #sec-diagnostic .diag-step-title { display: block; }
+        #sec-diagnostic .diag-step-subtitle { color:#6B7280; font-size:.95rem; font-weight:900; letter-spacing:.08em; margin-bottom:10px; }
+        #sec-diagnostic .diag-step-number { font-family:Poppins,sans-serif; color:#FF5C00; font-size:.95rem; font-weight:900; letter-spacing:.12em; margin-bottom:12px; text-transform:uppercase; }
+        #sec-diagnostic .diag-step-title { color:#1A2B4C; font-size:clamp(2rem,4vw,3.25rem); font-weight:900; line-height:1.25; letter-spacing:-.02em; }
+        #sec-diagnostic .diag-option-card { min-height:190px; padding:34px 32px !important; align-items:center !important; justify-content:center !important; text-align:center !important; border-color:#E2E8F0; box-shadow:none; }
+        #sec-diagnostic .diag-option-card[aria-pressed="true"] { border-color:#FF5C00 !important; box-shadow:0 0 0 3px rgba(255,92,0,.15) !important; }
+        #sec-diagnostic .diag-option-card:not([aria-pressed="true"]):hover { border-color:#CBD5E1 !important; }
+        #sec-diagnostic .diag-title { display:block; color:#1A2B4C; font-size:clamp(1.15rem,1.7vw,1.45rem); font-weight:900; line-height:1.42; letter-spacing:0; word-break:keep-all; overflow-wrap:anywhere; }
+        #sec-diagnostic .diag-underline { width:34px; height:3px; border-radius:999px; margin:14px auto 16px; background:#D1D5DB; }
+        #sec-diagnostic .diag-desc { color:#6B7280; font-size:.94rem; font-weight:800; line-height:1.75; max-width:320px; margin:0 auto; }
+        #sec-diagnostic .diag-step--roles > .grid { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:860px; margin-inline:auto; }
+        #sec-diagnostic .diag-step--roles .diag-option-card { min-height:132px; padding:28px 24px !important; }
+        #sec-diagnostic .diag-step--roles .diag-title { font-size:clamp(1.05rem,1.8vw,1.35rem); }
+        #sec-diagnostic .diag-step--roles .diag-desc { display:none; }
+        #sec-diagnostic .diag-step--roles .diag-underline { margin-bottom:0; }
+        #sec-diagnostic #diag-footer { margin-top:52px; padding-top:28px; align-items:center; justify-content:center; gap:36px; }
+        #sec-diagnostic #diag-footer > .flex.items-start { width:min(860px,100%); max-width:100%; flex:1 1 760px; }
+        #sec-diagnostic #diag-footer > .flex.items-start > div[style*="position:absolute"] { top:9px !important; height:3px !important; left:10px !important; right:10px !important; }
+        #sec-diagnostic [id^="pbar-dot-"] { width:20px !important; height:20px !important; border-width:3px !important; }
+        #sec-diagnostic #diag-footer span { text-align:center; }
+        #sec-diagnostic #diag-footer span[style*="font-size:0.65rem"] { font-size:.72rem !important; letter-spacing:.16em !important; margin-top:12px !important; }
+        #sec-diagnostic #diag-footer span[style*="font-size:0.75rem"] { font-size:.78rem !important; color:inherit; }
+        #sec-diagnostic #diag-back { min-height:42px !important; padding:0 22px !important; border-radius:9999px !important; border-color:#E5E7EB !important; background:#fff !important; color:#6B7280 !important; font-size:.88rem !important; font-weight:800 !important; box-shadow:none !important; }
+        #sec-diagnostic #diag-back:hover { color:#1A2B4C !important; border-color:#CBD5E1 !important; }
+        @media (max-width:768px) {
+            #sec-diagnostic .diag-step-header { margin-bottom:24px !important; }
+            #sec-diagnostic .diag-step-subtitle { font-size:.83rem !important; margin-bottom:7px !important; }
+            #sec-diagnostic .diag-step-number { font-size:.82rem !important; margin-bottom:8px !important; }
+            #sec-diagnostic .diag-step-title { font-size:clamp(1.65rem,7vw,2rem) !important; line-height:1.35 !important; }
+            #sec-diagnostic .diag-option-card { min-height:auto !important; padding:22px 20px !important; border-radius:16px !important; }
+            #sec-diagnostic .diag-step--roles > .grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:12px !important; max-width:390px !important; }
+            #sec-diagnostic .diag-step--roles .diag-option-card { min-height:96px !important; height:auto !important; padding:20px 12px !important; }
+            #sec-diagnostic .diag-step--roles .diag-title { font-size:.95rem !important; line-height:1.35 !important; }
+            #sec-diagnostic .diag-step--roles .diag-underline { display:block !important; width:24px; height:2px; margin:10px auto 0 !important; }
+            #sec-diagnostic #diag-footer { margin-top:28px !important; padding-top:20px !important; gap:18px !important; }
+            #sec-diagnostic [id^="pbar-dot-"] { width:18px !important; height:18px !important; }
+            #sec-diagnostic #diag-back { width:auto !important; min-width:112px !important; height:42px !important; min-height:42px !important; padding:0 18px !important; }
+        }
+
     </style>
 </head>
 
@@ -1218,7 +1261,7 @@
             </div>
 
             <div class="fm-nav-group">
-                <a href="news.html" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
+                <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
             </div>
 
             <div class="fm-nav-group">
@@ -1253,20 +1296,34 @@
                         </div>
                         <div class="cx-mega-grid">
                             <div class="cx-mega-group">
-                                <span class="cx-mega-group-label">Company</span>
                                 <a href="corporate.html#profile" class="cx-mega-item">
-                                    <span>会社概要</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">会社概要</span>
+                                        <span class="cx-mega-item-desc">Crestixの基本情報と会社の輪郭を知る</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="message.html" class="cx-mega-item">
-                                    <span>トップメッセージ</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">トップメッセージ</span>
+                                        <span class="cx-mega-item-desc">代表が語るCrestixの現在地とこれから</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                             </div>
                             <div class="cx-mega-group">
-                                <span class="cx-mega-group-label">Philosophy & People</span>
                                 <a href="mvv.html" class="cx-mega-item">
-                                    <span>Vision / Mission / Value</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">ミッション・ビジョン・バリュー</span>
+                                        <span class="cx-mega-item-desc">私たちが大切にする価値観と行動指針</span>
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
+                                </a>
+                                <a href="members.html" class="cx-mega-item">
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">メンバー紹介</span>
+                                        <span class="cx-mega-item-desc">Crestixで働く仲間とチームの雰囲気を知る</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                             </div>
@@ -1284,21 +1341,32 @@
                         </div>
                         <div class="cx-mega-grid">
                             <div class="cx-mega-group">
-                                <span class="cx-mega-group-label">Active Domains</span>
                                 <a href="business.html" class="cx-mega-item">
-                                    <span>事業一覧</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">事業一覧</span>
+                                        <span class="cx-mega-item-desc">Crestixが展開する事業領域を一覧で見る</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="service-hd.html" class="cx-mega-item">
-                                    <span>HD事業部（店舗グロース事業）</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">HD事業部</span>
+                                        <span class="cx-mega-item-desc">店舗グロース事業。地域店舗の集客と売上成長を支援</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="service-division1.html" class="cx-mega-item">
-                                    <span>第1営業部（クリニック特化グロース事業）</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">第1営業部</span>
+                                        <span class="cx-mega-item-desc">クリニック特化グロース事業。医療機関の集客と運営進化を支援</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                                 <a href="ai-sales.html" class="cx-mega-item">
-                                    <span>AI・Sales Enablement（営業代行/営業支援事業）</span>
+                                    <span class="cx-mega-item-body">
+                                        <span class="cx-mega-item-title">AI・Sales Enablement</span>
+                                        <span class="cx-mega-item-desc">営業代行とAI活用で成果が再現される営業組織をつくる</span>
+                                    </span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                             </div>
@@ -1308,7 +1376,7 @@
             </div>
 
             <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
-            <a href="news.html" class="cx-nav-link" data-page="news">Crestory</a>
+            <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
 
         </div>
 
@@ -1413,15 +1481,15 @@
                     <div class="diag-step-header text-center mb-12">
                         <!-- 1. 小見出し -->
                         <span class="diag-step-subtitle">
-                            あなたのための採用情報
+                            あなたに合う募集職種
                         </span>
                         <!-- 2. Step表示 -->
                         <span class="diag-step-number">
-                            Step 1/4
+                            STEP 1 / 4
                         </span>
                         <!-- 3. メイン見出し -->
                         <h3 class="diag-step-title">
-                            職種カテゴリ
+                            希望する職種カテゴリ
                         </h3>
                     </div>
 
@@ -1429,7 +1497,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
                         <!-- Card: 営業・事業職 -->
-                        <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
+                        <div class="diag-option-card relative bg-white rounded-2xl p-9 lg:p-10 min-h-[190px] flex flex-col items-center justify-center text-center border-2 border-slate-200 cursor-pointer transition-all duration-300 hover:shadow-[0_16px_38px_rgba(15,23,42,0.08)]"
                             onclick="selectDiagnosticOption(1,'sales')"
                             onkeydown="handleCardKeyDown(event, 1,'sales')"
                             data-option="sales"
@@ -1440,8 +1508,6 @@
                             <div class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
                                 <i class="fa-solid fa-check text-white text-xs"></i>
                             </div>
-                            <!-- スコープ装飾（左上小ドット） -->
-                            <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
                             <!-- 日本語タイトル -->
                             <span class="diag-title">営業・事業職</span>
                             <!-- 下線 -->
@@ -1453,7 +1519,7 @@
                         </div>
 
                         <!-- Card: プロダクト開発職 -->
-                        <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
+                        <div class="diag-option-card relative bg-white rounded-2xl p-9 lg:p-10 min-h-[190px] flex flex-col items-center justify-center text-center border-2 border-slate-200 cursor-pointer transition-all duration-300 hover:shadow-[0_16px_38px_rgba(15,23,42,0.08)]"
                             onclick="selectDiagnosticOption(1,'product')"
                             onkeydown="handleCardKeyDown(event, 1,'product')"
                             data-option="product"
@@ -1463,7 +1529,6 @@
                             <div class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
                                 <i class="fa-solid fa-check text-white text-xs"></i>
                             </div>
-                            <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
                             <span class="diag-title">プロダクト開発職</span>
                             <div class="diag-underline transition-colors duration-300"></div>
                             <p class="diag-desc">
@@ -1472,7 +1537,7 @@
                         </div>
 
                         <!-- Card: コーポレート職 -->
-                        <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
+                        <div class="diag-option-card relative bg-white rounded-2xl p-9 lg:p-10 min-h-[190px] flex flex-col items-center justify-center text-center border-2 border-slate-200 cursor-pointer transition-all duration-300 hover:shadow-[0_16px_38px_rgba(15,23,42,0.08)]"
                             onclick="selectDiagnosticOption(1,'corporate')"
                             onkeydown="handleCardKeyDown(event, 1,'corporate')"
                             data-option="corporate"
@@ -1482,7 +1547,6 @@
                             <div class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
                                 <i class="fa-solid fa-check text-white text-xs"></i>
                             </div>
-                            <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
                             <span class="diag-title">コーポレート職</span>
                             <div class="diag-underline transition-colors duration-300"></div>
                             <p class="diag-desc">
@@ -1785,16 +1849,6 @@
 
                 </div>
 
-                <!-- Bottom CTA -->
-                <div class="mt-14 text-center">
-                    <a href="jobs.html"
-                        style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FF5C00,#E65200);color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:9999px;text-decoration:none;box-shadow:0 24px 48px rgba(255,92,0,0.35);transition:all 0.3s ease;"
-                        onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 32px 64px rgba(255,92,0,0.5)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 24px 48px rgba(255,92,0,0.35)'">
-                        Join the Narrative
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                    </a>
-                </div>
             </div>
         </section>
 
@@ -1803,25 +1857,6 @@
     <!-- ═══ FOOTER ═══ -->
     <footer class="bg-crestix-navy text-white select-none border-t border-white/5 relative z-10">
 
-        <!-- Top CTA strip -->
-        <div class="border-b border-white/10 py-14 px-10 lg:px-24">
-            <div class="max-w-[1400px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
-                <div class="space-y-2 text-center lg:text-left">
-                    <p class="font-poppins font-black text-3xl lg:text-4xl tracking-tighter text-white leading-none">
-                        Crestixで挑戦しませんか？</p>
-                    <p class="text-sm text-blue-100/50 font-bold">人の想いとテクノロジーを掛け合わせ、最高の熱量を創り出す。</p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="jobs.html"
-                        class="bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-10 py-4 rounded-full font-black text-[11px] tracking-[0.35em] uppercase shadow-[0_20px_50px_rgba(255,92,0,0.4)] hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(255,92,0,0.55)] transition-all active:scale-95 text-center">Join
-                        the Narrative ➔</a>
-                    <a href="https://youtube.com/@crestix" target="_blank"
-                        class="flex items-center justify-center gap-2 border border-white/15 text-white/60 hover:border-red-500 hover:text-red-400 px-8 py-4 rounded-full font-black text-[11px] tracking-[0.25em] uppercase transition-all">
-                        <i class="fa-brands fa-youtube"></i> YouTube
-                    </a>
-                </div>
-            </div>
-        </div>
 
         <!-- Sitemap grid -->
         <div class="py-16 px-10 lg:px-24 border-b border-white/5">
@@ -2113,3 +2148,4 @@
 </body>
 
 </html>
+
