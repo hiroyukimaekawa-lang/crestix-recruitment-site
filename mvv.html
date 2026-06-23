@@ -21,6 +21,13 @@
             border-top: 1px solid #e5e7eb;
         }
 
+        ::view-transition-group(*),
+        ::view-transition-old(*),
+        ::view-transition-new(*) {
+            animation-duration: 0.25s;
+            animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
         /* Aurora effect on MVV background */
         .mvv-aurora {
             position: absolute;
@@ -116,8 +123,18 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
             overflow: hidden;
+        }
+
+        #mvv-geometry-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.42;
         }
 
         .mvv-bg-words span {
@@ -236,6 +253,17 @@
             max-width: none;
         }
 
+        #value {
+            padding-left: clamp(1.5rem, 6vw, 7rem);
+            padding-right: clamp(1.5rem, 6vw, 7rem);
+        }
+
+        #value .mvv-body-wide {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         #value h3 {
             font-size: clamp(1.55rem, 2vw, 2.15rem) !important;
             line-height: 1.35 !important;
@@ -248,6 +276,10 @@
             padding-bottom: 2.6rem !important;
         }
         @media (prefers-reduced-motion: reduce) {
+            #mvv-geometry-canvas {
+                opacity: 0.18;
+            }
+
             .mvv-bg-words span {
                 animation: none;
                 opacity: 0.12;
@@ -288,6 +320,15 @@
             #value h3 {
                 font-size: clamp(1.25rem, 6vw, 1.55rem) !important;
                 white-space: normal !important;
+            }
+
+            #value {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            #value .mvv-body-wide {
+                max-width: 100%;
             }
 
             .mvv-hero-simple {
@@ -555,6 +596,8 @@
 
 
 
+    <canvas id="mvv-geometry-canvas" aria-hidden="true"></canvas>
+
     <div class="mvv-bg-words" aria-hidden="true">
         <span>Crestix</span>
         <span>MVV</span>
@@ -626,7 +669,7 @@
                 </div>
             </div>
 
-            <div id="value" class="mvv-section-pad px-6 lg:px-10">
+            <div id="value" class="mvv-section-pad px-6 md:px-10 lg:px-20 xl:px-28">
                 <div class="mvv-body-wide">
                     <div class="mvv-section-label mb-14">バリュー</div>
                     <p class="mvv-copy mb-14">Valueは会社のOSとして浸透し、常に意識されています。</p>
@@ -636,7 +679,7 @@
                         <div class="mvv-value-row">
                             <p class="mvv-value-num">01</p>
                             <div>
-                                <h3 class="mvv-value-title">妄想論</h3>
+                                <h3 class="mvv-value-title !text-lg">妄想論</h3>
                                 <p class="mvv-value-text">"やりたい"で終わらせず、"なれたら最高""できたら面白い"と思える未来を描く。自分の可能性を自由に広げ、ワクワクする理想を言葉にし、挑戦の起点をつくる。</p>
                             </div>
                         </div>
@@ -644,7 +687,7 @@
                         <div class="mvv-value-row">
                             <p class="mvv-value-num">02</p>
                             <div>
-                                <h3 class="mvv-value-title">当事者燃焼論</h3>
+                                <h3 class="mvv-value-title !text-lg">当事者燃焼論</h3>
                                 <p class="mvv-value-text">すべてのことに自分ごとで向き合い、自分の人生にも仕事にも責任を持つ。自分を裏切らず、目の前の役割に本気で向き合い、命を燃やすように働く。</p>
                             </div>
                         </div>
@@ -652,7 +695,7 @@
                         <div class="mvv-value-row">
                             <p class="mvv-value-num">03</p>
                             <div>
-                                <h3 class="mvv-value-title">時間有限論</h3>
+                                <h3 class="mvv-value-title !text-lg">時間有限論</h3>
                                 <p class="mvv-value-text">時間は有限。だからこそ、1分1秒の使い方にこだわる。何をやるかだけでなく、何に時間を使わないかも決めながら、最短で価値を出す。</p>
                             </div>
                         </div>
@@ -660,7 +703,7 @@
                         <div class="mvv-value-row">
                             <p class="mvv-value-num">04</p>
                             <div>
-                                <h3 class="mvv-value-title">量前提・光即改善論</h3>
+                                <h3 class="mvv-value-title !text-lg">量前提・光即改善論</h3>
                                 <p class="mvv-value-text">圧倒的な量は前提。そのうえで、スピードと質を高め続ける。数字と事実をもとに分析し、改善策をすぐ実行し、成果につながる型へ磨き込む。</p>
                             </div>
                         </div>
@@ -668,7 +711,7 @@
                         <div class="mvv-value-row">
                             <p class="mvv-value-num">05</p>
                             <div>
-                                <h3 class="mvv-value-title">プロフェッショナル関係</h3>
+                                <h3 class="mvv-value-title !text-lg">プロフェッショナル関係</h3>
                                 <p class="mvv-value-text">仲良しで終わらない。互いの役割に責任を持ち、高い期待をかけ合いながら、率直に向き合う。信頼の上に厳しさがある、プロ同士の関係をつくる。</p>
                             </div>
                         </div>
@@ -864,6 +907,119 @@
     </div>
 
     <!-- Scripts -->
+    <script>
+        (function () {
+            const canvas = document.getElementById('mvv-geometry-canvas');
+            if (!canvas) return;
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const ctx = canvas.getContext('2d');
+            const palette = [
+                'rgba(255, 92, 0, 0.18)',
+                'rgba(26, 43, 76, 0.12)',
+                'rgba(17, 24, 39, 0.08)',
+                'rgba(255, 255, 255, 0.28)'
+            ];
+            const types = ['circle', 'triangle', 'square', 'line'];
+            let shapes = [];
+            let width = 0;
+            let height = 0;
+            let dpr = 1;
+            let animationFrame = null;
+
+            function resize() {
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = Math.floor(width * dpr);
+                canvas.height = Math.floor(height * dpr);
+                canvas.style.width = width + 'px';
+                canvas.style.height = height + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+                const count = Math.max(18, Math.min(34, Math.round(width / 52)));
+                shapes = Array.from({ length: count }, (_, index) => ({
+                    type: types[index % types.length],
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: 18 + Math.random() * 54,
+                    speed: 0.08 + Math.random() * 0.18,
+                    drift: -0.12 + Math.random() * 0.24,
+                    rotate: Math.random() * Math.PI * 2,
+                    spin: (-0.002 + Math.random() * 0.004),
+                    color: palette[index % palette.length]
+                }));
+                draw();
+            }
+
+            function drawShape(shape) {
+                ctx.save();
+                ctx.translate(shape.x, shape.y);
+                ctx.rotate(shape.rotate);
+                ctx.strokeStyle = shape.color;
+                ctx.lineWidth = 1.2;
+                ctx.globalAlpha = 1;
+
+                if (shape.type === 'circle') {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, shape.size * 0.42, 0, Math.PI * 2);
+                    ctx.stroke();
+                } else if (shape.type === 'triangle') {
+                    const r = shape.size * 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(0, -r);
+                    ctx.lineTo(r * 0.86, r * 0.5);
+                    ctx.lineTo(-r * 0.86, r * 0.5);
+                    ctx.closePath();
+                    ctx.stroke();
+                } else if (shape.type === 'square') {
+                    const s = shape.size * 0.72;
+                    ctx.strokeRect(-s / 2, -s / 2, s, s);
+                } else {
+                    ctx.beginPath();
+                    ctx.moveTo(-shape.size * 0.5, 0);
+                    ctx.lineTo(shape.size * 0.5, 0);
+                    ctx.stroke();
+                }
+
+                ctx.restore();
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                shapes.forEach(drawShape);
+            }
+
+            function tick() {
+                shapes.forEach(shape => {
+                    shape.y -= shape.speed;
+                    shape.x += shape.drift;
+                    shape.rotate += shape.spin;
+
+                    if (shape.y < -shape.size) {
+                        shape.y = height + shape.size;
+                        shape.x = Math.random() * width;
+                    }
+                    if (shape.x < -shape.size) shape.x = width + shape.size;
+                    if (shape.x > width + shape.size) shape.x = -shape.size;
+                });
+
+                draw();
+                animationFrame = window.requestAnimationFrame(tick);
+            }
+
+            resize();
+            window.addEventListener('resize', resize, { passive: true });
+
+            if (!prefersReducedMotion) {
+                tick();
+            }
+
+            window.addEventListener('pagehide', () => {
+                if (animationFrame) window.cancelAnimationFrame(animationFrame);
+            });
+        })();
+    </script>
     <script src="assets/js/diagnostic.js"></script>
     <script src="assets/js/modals.js"></script>
     <script src="assets/js/main.js"></script>

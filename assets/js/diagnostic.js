@@ -14,7 +14,7 @@ const jobCategories = [
     value: "sales",
     shortLabel: "営業・事業職",
     title: "営業・事業職",
-    description: "お客様と向き合い、事業成長を前線から推進する職種です。インサイドセールス、フィールドセールス、カスタマーサクセスなどがあります。"
+    description: "お客様と向き合い、事業成長を前線から推進する職種です。インサイドセールス、フィールドセールス、マーケティングなどがあります。"
   },
   {
     value: "product",
@@ -44,12 +44,6 @@ const jobRoles = {
       shortLabel: "フィールドセールス",
       title: "フィールドセールス",
       description: "顧客の課題を深く捉え、最適な提案を実行する"
-    },
-    {
-      value: "cs",
-      shortLabel: "カスタマーサクセス",
-      title: "カスタマーサクセス",
-      description: "顧客の成功に伴走し、長期的な価値を育てる"
     },
     {
       value: "marketing",
@@ -582,7 +576,7 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
   let divisionLabel = '';
 
   if (category === 'sales') {
-    if (['is', 'fs', 'cs'].includes(roleVal)) {
+    if (['is', 'fs'].includes(roleVal)) {
       if (stageVal === 'new') {
         divName = '第一営業部';
         divSub = '医療機関向けマーケティング事業';
@@ -592,7 +586,7 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
         divName = 'HD事業部';
         divSub = '飲食店向けホームページ制作・集客支援';
         page = 'service-hd.html';
-        const roleLabel = roleVal === 'is' ? 'インサイドセールス' : (roleVal === 'fs' ? 'フィールドセールス' : 'カスタマーサクセス');
+        const roleLabel = roleVal === 'is' ? 'インサイドセールス' : 'フィールドセールス';
         const posSuffix = stageVal === 'senior' ? 'リーダー候補' : 'メンバー';
         divisionLabel = `HD事業部 / ${roleLabel} ${posSuffix}`;
         anchor = `jobs-${roleVal}` + (stageVal === 'senior' ? '-leader' : '');

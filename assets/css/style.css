@@ -275,12 +275,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ─── Site Contents Cards ────────────────────────────── */
-/* ==========================================================================
-   Site Contents - Horizontal Accordion Animation (PC only / Sooon Style)
-   ========================================================================== */
 @media (min-width: 1024px) {
-
-    /* ① 親コンテナをFlexboxに上書き・高さ固定 */
     .cx-contents-flex-wrap {
         display: flex !important;
         flex-direction: row !important;
@@ -288,7 +283,6 @@ input:focus, select:focus, textarea:focus {
         overflow: hidden;
     }
 
-    /* ② 各カードの初期状態 */
     .cx-accordion-card {
         flex: 1;
         width: auto !important;
@@ -296,17 +290,14 @@ input:focus, select:focus, textarea:focus {
         transition: flex 0.65s cubic-bezier(0.25, 1, 0.3, 1) !important;
     }
 
-    /* ③ 親ホバー時：ホバーされていないカードを縮める */
     .cx-contents-flex-wrap:hover .cx-accordion-card:not(:hover) {
         flex: 0.55;
     }
 
-    /* ④ ホバーされているカードを広げる */
     .cx-accordion-card:hover {
         flex: 2.35;
     }
 
-    /* ⑤ 詳細テキスト：通常時は非表示 */
     .cx-card-detail {
         max-height: 0;
         opacity: 0;
@@ -322,7 +313,6 @@ input:focus, select:focus, textarea:focus {
         max-width: 90%;
     }
 
-    /* ホバー時：詳細テキストをフェード＆スライドインで展開 */
     .cx-accordion-card:hover .cx-card-detail {
         max-height: 150px;
         opacity: 1;
@@ -336,7 +326,6 @@ input:focus, select:focus, textarea:focus {
         margin-top: 10px;
     }
 
-    /* ⑥ View more ボタン：通常時は透明枠 */
     .cx-view-more-box {
         display: inline-flex;
         align-items: center;
@@ -346,12 +335,10 @@ input:focus, select:focus, textarea:focus {
         margin-top: 8px;
     }
 
-    /* ホバー時：白枠を表示 */
     .cx-accordion-card:hover .cx-view-more-box {
         border-color: rgba(255, 255, 255, 0.8);
     }
 
-    /* 矢印アイコン：ホバー時に右へスライド */
     .cx-arrow {
         transition: transform 0.3s ease;
     }
@@ -360,10 +347,111 @@ input:focus, select:focus, textarea:focus {
         transform: translateX(5px);
     }
 
-    /* テキスト領域の最小幅確保（縮小時の折り返し防止） */
     .cx-accordion-card .absolute.bottom-8 {
         width: 320px;
         max-width: 85%;
+    }
+}
+
+@media (max-width: 1023px) {
+    #sec-site-contents .cx-contents-flex-wrap {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        padding: 0 20px;
+    }
+
+    #sec-site-contents .cx-accordion-card {
+        aspect-ratio: 1 / 1;
+        min-height: 132px;
+        width: 100% !important;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        background: #fff !important;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    #sec-site-contents .cx-accordion-card img {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.35s ease, transform 0.5s ease;
+    }
+
+    #sec-site-contents .cx-accordion-card:active img {
+        opacity: 0.2;
+        transform: scale(1.04);
+    }
+
+    #sec-site-contents .cx-accordion-card > .absolute.inset-0 {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82)) !important;
+    }
+
+    #sec-site-contents .cx-accordion-card .absolute.top-6 {
+        top: 16px !important;
+        left: 16px !important;
+        right: 16px !important;
+    }
+
+    #sec-site-contents .cx-accordion-card .absolute.top-6 span {
+        background: transparent !important;
+        border: 0 !important;
+        color: #FF5C00 !important;
+        display: block;
+        font-size: 0 !important;
+        letter-spacing: 0 !important;
+        padding: 0 !important;
+    }
+
+    #sec-site-contents .cx-accordion-card:nth-child(1) .absolute.top-6 span::before { content: "CORPORATE"; }
+    #sec-site-contents .cx-accordion-card:nth-child(2) .absolute.top-6 span::before { content: "SERVICE"; }
+    #sec-site-contents .cx-accordion-card:nth-child(3) .absolute.top-6 span::before { content: "JOBS"; }
+    #sec-site-contents .cx-accordion-card:nth-child(4) .absolute.top-6 span::before { content: "MEMBERS"; }
+
+    #sec-site-contents .cx-accordion-card .absolute.top-6 span::before {
+        font-family: 'Poppins', sans-serif;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+    }
+
+    #sec-site-contents .cx-accordion-card .absolute.bottom-8 {
+        left: 16px !important;
+        right: 16px !important;
+        bottom: 16px !important;
+        width: auto !important;
+        max-width: none !important;
+        z-index: 10;
+    }
+
+    #sec-site-contents .cx-accordion-card h3 {
+        color: #111827 !important;
+        font-size: 17px !important;
+        line-height: 1.45 !important;
+        letter-spacing: 0 !important;
+        padding-right: 28px;
+    }
+
+    #sec-site-contents .cx-card-detail {
+        display: none !important;
+    }
+
+    #sec-site-contents .cx-view-more-box {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 12px;
+        color: #FF5C00 !important;
+    }
+
+    #sec-site-contents .cx-view-more-box span {
+        display: none !important;
+    }
+
+    #sec-site-contents .cx-view-more-box i {
+        color: #FF5C00 !important;
+        font-size: 13px !important;
+        margin-left: 0 !important;
     }
 }
 
@@ -684,9 +772,9 @@ input:focus, select:focus, textarea:focus {
     }
 
     #sec-site-contents .cx-accordion-card .absolute.top-6 span {
-        font-size: 9px !important;
-        letter-spacing: 0.12em !important;
-        padding: 5px 9px !important;
+        font-size: 0 !important;
+        letter-spacing: 0 !important;
+        padding: 0 !important;
     }
 
     #sec-site-contents .cx-accordion-card .absolute.bottom-8 {
@@ -703,9 +791,12 @@ input:focus, select:focus, textarea:focus {
         letter-spacing: 0 !important;
     }
 
-    #sec-site-contents .cx-card-detail,
-    #sec-site-contents .cx-view-more-box {
+    #sec-site-contents .cx-card-detail {
         display: none !important;
+    }
+
+    #sec-site-contents .cx-view-more-box {
+        display: flex !important;
     }
 
     #sec-youtube-carousel {

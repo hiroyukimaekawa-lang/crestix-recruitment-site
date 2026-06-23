@@ -5,15 +5,31 @@ function crestix_crestory_setup() {
   add_theme_support("title-tag");
   add_theme_support("post-thumbnails");
   add_theme_support("html5", ["search-form", "comment-form", "comment-list", "gallery", "caption", "style", "script"]);
-  register_nav_menus(["primary" => "Primary Navigation"]);
+  add_theme_support("custom-logo");
+  add_image_size("crestory-hero", 1200, 630, true);
+  add_image_size("crestory-card", 600, 400, true);
+  add_image_size("crestory-thumb", 300, 200, true);
+  register_nav_menus([
+    "primary" => "プライマリーメニュー",
+    "footer" => "フッターメニュー",
+  ]);
 }
 add_action("after_setup_theme", "crestix_crestory_setup");
 
 function crestix_crestory_assets() {
   wp_enqueue_style("crestix-crestory-fonts", "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap", [], null);
-  wp_enqueue_style("crestix-crestory-style", get_template_directory_uri() . "/assets/css/crestory.css", [], "1.1.0");
+  wp_enqueue_style("crestix-crestory-icons", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css", [], "6.5.1");
+  wp_enqueue_style("crestix-crestory-style", get_template_directory_uri() . "/assets/css/main.css", ["crestix-crestory-fonts", "crestix-crestory-icons"], "1.2.0");
+  wp_enqueue_script("crestix-crestory-main", get_template_directory_uri() . "/assets/js/main.js", [], "1.0.0", true);
 }
 add_action("wp_enqueue_scripts", "crestix_crestory_assets");
+
+remove_action("wp_head", "wp_generator");
+remove_action("wp_head", "wlwmanifest_link");
+remove_action("wp_head", "rsd_link");
+add_filter("show_admin_bar", "__return_false");
+add_filter("excerpt_length", fn() => 80);
+add_filter("excerpt_more", fn() => "...");
 
 function crestix_register_crestory() {
   register_post_type("crestory", [
@@ -131,6 +147,29 @@ function crestix_crestory_seed_content() {
   update_option("blogdescription", "Crestixで働く人、事業、カルチャーの裏側を届けるストーリーメディア。");
   update_option("permalink_structure", "/%postname%/");
 
+  $front_page = get_page_by_path("crestory-top", OBJECT, "page");
+  if (!$front_page) {
+    $front_page_id = wp_insert_post([
+      "post_type" => "page",
+      "post_status" => "publish",
+      "post_title" => "CRESTORYトップ",
+      "post_name" => "crestory-top",
+      "post_content" => "",
+    ]);
+  } else {
+    $front_page_id = $front_page->ID;
+  }
+
+  if (!is_wp_error($front_page_id) && $front_page_id) {
+    update_option("show_on_front", "page");
+    update_option("page_on_front", $front_page_id);
+  }
+
+  $sample_page = get_page_by_path("sample-page", OBJECT, "page");
+  if ($sample_page) {
+    wp_delete_post($sample_page->ID, true);
+  }
+
   $categories = ["代表メッセージ", "メンバー", "カルチャー", "事業", "インタビュー", "採用情報"];
   foreach ($categories as $name) {
     if (!term_exists($name, "crestory_category")) wp_insert_term($name, "crestory_category");
@@ -199,3 +238,32 @@ ARTICLE;
   flush_rewrite_rules();
 }
 add_action("after_switch_theme", "crestix_crestory_seed_content");
+
+function crestix_crestory_maybe_finalize_home() {
+  if (!current_user_can("manage_options")) return;
+  if (get_option("crestix_crestory_home_finalized") === "1") return;
+
+  $front_page = get_page_by_path("crestory-top", OBJECT, "page");
+  if (!$front_page) {
+    $front_page_id = wp_insert_post([
+      "post_type" => "page",
+      "post_status" => "publish",
+      "post_title" => "CRESTORYトップ",
+      "post_name" => "crestory-top",
+      "post_content" => "",
+    ]);
+  } else {
+    $front_page_id = $front_page->ID;
+  }
+
+  if (!is_wp_error($front_page_id) && $front_page_id) {
+    update_option("show_on_front", "page");
+    update_option("page_on_front", $front_page_id);
+  }
+
+  $sample_page = get_page_by_path("sample-page", OBJECT, "page");
+  if ($sample_page) wp_delete_post($sample_page->ID, true);
+
+  update_option("crestix_crestory_home_finalized", "1");
+}
+add_action("admin_init", "crestix_crestory_maybe_finalize_home");
