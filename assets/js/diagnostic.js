@@ -12,22 +12,22 @@
 const jobCategories = [
   {
     value: "sales",
-    shortLabel: "SALES",
+    shortLabel: "営業・事業職",
     title: "営業・事業職",
-    description: "お客様と向き合い、事業成長を前線から推進する職種"
+    description: "お客様と向き合い、事業成長を前線から推進する職種です。インサイドセールス、フィールドセールス、カスタマーサクセスなどがあります。"
   },
   {
     value: "product",
-    shortLabel: "PRODUCT",
+    shortLabel: "プロダクト開発職",
     title: "プロダクト開発職",
-    description: "サービスや仕組みをつくり、価値を届ける職種",
+    description: "サービスや仕組みをつくり、価値を届ける職種です。エンジニア、プロダクトマネージャー、デザイナーなどがあります。",
     labelSize: "small"
   },
   {
     value: "corporate",
-    shortLabel: "CORP",
+    shortLabel: "コーポレート職",
     title: "コーポレート職",
-    description: "組織や事業を内側から支える職種"
+    description: "組織や事業を内側から支える職種です。人事、経理、法務、広報、経営企画などがあります。"
   }
 ];
 
@@ -35,38 +35,38 @@ const jobRoles = {
   sales: [
     {
       value: "is",
-      shortLabel: "IS",
+      shortLabel: "インサイドセールス",
       title: "インサイドセールス",
       description: "見込み顧客に価値を届け、商談を創出する"
     },
     {
       value: "fs",
-      shortLabel: "FS",
+      shortLabel: "フィールドセールス",
       title: "フィールドセールス",
       description: "顧客の課題を深く捉え、最適な提案を実行する"
     },
     {
       value: "cs",
-      shortLabel: "CS",
+      shortLabel: "カスタマーサクセス",
       title: "カスタマーサクセス",
       description: "顧客の成功に伴走し、長期的な価値を育てる"
     },
     {
       value: "marketing",
-      shortLabel: "MKT",
+      shortLabel: "マーケティング",
       title: "マーケティング",
       description: "認知拡大やリード獲得に向けて、施策を企画・実行する"
     },
     {
       value: "bizdev",
-      shortLabel: "BizDev",
+      shortLabel: "事業開発",
       title: "事業開発",
       description: "新規事業や提携を推進し、事業成長の機会をつくる",
       labelSize: "small"
     },
     {
       value: "sales_ops",
-      shortLabel: "Sales Ops",
+      shortLabel: "営業企画",
       title: "営業企画",
       description: "営業戦略や数値管理を通じて、組織の成果最大化を支える",
       labelSize: "small"
@@ -75,26 +75,26 @@ const jobRoles = {
   product: [
     {
       value: "engineer",
-      shortLabel: "ENG",
+      shortLabel: "エンジニア",
       title: "エンジニア",
       description: "サービスや社内システムの設計・開発・改善を担う"
     },
     {
       value: "pdm",
-      shortLabel: "PdM",
+      shortLabel: "プロダクトマネージャー",
       title: "プロダクトマネージャー",
       description: "ユーザー課題と事業成長をつなぎ、プロダクトの方向性を設計する"
     },
     {
       value: "designer",
-      shortLabel: "UI/UX",
-      title: "UI/UXデザイナー",
+      shortLabel: "デザイナー",
+      title: "デザイナー",
       description: "使いやすく、伝わりやすい体験や画面を設計する",
       labelSize: "small"
     },
     {
       value: "data",
-      shortLabel: "Data",
+      shortLabel: "データ分析",
       title: "データ分析",
       description: "数値や行動データを分析し、意思決定や改善策につなげる"
     }
@@ -102,32 +102,32 @@ const jobRoles = {
   corporate: [
     {
       value: "hr",
-      shortLabel: "HR",
+      shortLabel: "人事・採用",
       title: "人事・採用",
       description: "採用活動や組織づくりを通じて、会社の成長を支える"
     },
     {
       value: "finance",
-      shortLabel: "Finance",
+      shortLabel: "経理・財務",
       title: "経理・財務",
       description: "会社のお金の流れを管理し、健全な経営基盤を支える",
       labelSize: "small"
     },
     {
       value: "legal",
-      shortLabel: "Legal",
+      shortLabel: "法務",
       title: "法務",
       description: "契約や社内ルールの整備を通じて、事業運営を支える"
     },
     {
       value: "pr",
-      shortLabel: "PR",
+      shortLabel: "広報",
       title: "広報",
       description: "会社の魅力や取り組みを社外に発信し、ブランド形成を担う"
     },
     {
       value: "planning",
-      shortLabel: "Planning",
+      shortLabel: "経営企画",
       title: "経営企画",
       description: "経営戦略や事業計画の策定を通じて、会社全体の成長を支える",
       labelSize: "small"
@@ -138,20 +138,20 @@ const jobRoles = {
 const careerStages = [
   {
     value: "new",
-    shortLabel: "NEW",
+    shortLabel: "新卒・第二新卒",
     title: "新卒・第二新卒",
     description: "新しい分野に挑戦し、基礎からスキルを身につけて成長する"
   },
   {
     value: "middle",
-    shortLabel: "MIDDLE",
+    shortLabel: "若手・中堅",
     title: "若手・中堅",
     description: "これまでの経験を活かし、チームの主戦力として活躍の幅を広げる",
     labelSize: "small"
   },
   {
     value: "senior",
-    shortLabel: "SENIOR",
+    shortLabel: "シニア・リーダー",
     title: "シニア・リーダー",
     description: "培った専門性とリーダーシップで、組織の成長を牽引する",
     labelSize: "small"
@@ -167,6 +167,7 @@ const diagState = {
 };
 
 const diagSelected = {};
+let diagAutoAdvanceTimer = null;
 
 /* ─────────────────────────────────────────────
    INIT
@@ -177,18 +178,31 @@ function initDiagnostic() {
   for (let key in diagSelected) {
     delete diagSelected[key];
   }
+  renderStepNew(1);
   updateProgressBarNew(1);
+
+  const backBtn = document.getElementById('diag-back');
+  if (backBtn) {
+    backBtn.style.display = 'none';
+    backBtn.style.opacity = '0.4';
+    backBtn.style.pointerEvents = 'none';
+    backBtn.style.cursor = 'default';
+  }
+
+  const nextBtn = document.getElementById('diag-next');
+  if (nextBtn) {
+    nextBtn.style.display = 'none';
+  }
 }
 
 /* ─────────────────────────────────────────────
    CARD OPTIONS HELPERS
    ───────────────────────────────────────────── */
 function buildCardHTML(stepNum, opt) {
-  const isSmallClass = opt.labelSize === 'small' ? 'is-small' : '';
   const isSelected = diagSelected['step' + stepNum] === opt.value;
   const borderStyle = isSelected ? 'border-[#FF5C00] shadow-[0_0_0_3px_rgba(255,92,0,0.15)]' : 'border-gray-200';
   const checkOpacity = isSelected ? '1' : '0';
-  const abbrColor = isSelected ? '#FF5C00' : '#1A2B4C';
+  const titleColor = isSelected ? '#FF5C00' : '#1A2B4C';
   const underlineBg = isSelected ? '#FF5C00' : '#D1D5DB';
 
   return `
@@ -205,11 +219,8 @@ function buildCardHTML(stepNum, opt) {
         </div>
         <!-- スコープ装飾（左上小ドット） -->
         <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
-        <!-- 略称 -->
-        <span class="diag-abbr ${isSmallClass} font-poppins font-black transition-colors duration-300"
-            style="color:${abbrColor}; line-height:1;">${opt.shortLabel}</span>
-        <!-- 日本語正式名称 -->
-        <span class="diag-title">${opt.title}</span>
+        <!-- 日本語タイトル -->
+        <span class="diag-title" style="color:${titleColor};">${opt.title}</span>
         <!-- 下線 -->
         <div class="diag-underline transition-colors duration-300" style="background-color:${underlineBg};"></div>
         <!-- 説明テキスト -->
@@ -229,14 +240,16 @@ function handleCardKeyDown(event, step, value) {
 window.handleCardKeyDown = handleCardKeyDown;
 
 /* ─────────────────────────────────────────────
-   STEP RENDERING (DYNAMIC FOR STEPS 2, 3)
+   STEP RENDERING
    ───────────────────────────────────────────── */
 function renderStepNew(stepNum) {
   const stepEl = document.getElementById('diag-step-' + stepNum);
   if (!stepEl) return;
 
   let stepMainTitle = '';
-  if (stepNum === 2) {
+  if (stepNum === 1) {
+    stepMainTitle = '職種カテゴリ';
+  } else if (stepNum === 2) {
     stepMainTitle = '職種';
   } else if (stepNum === 3) {
     stepMainTitle = 'キャリアステージ';
@@ -244,7 +257,9 @@ function renderStepNew(stepNum) {
 
   const selectedCategory = diagSelected['step1'];
   let options = [];
-  if (stepNum === 2) {
+  if (stepNum === 1) {
+    options = jobCategories;
+  } else if (stepNum === 2) {
     options = jobRoles[selectedCategory] || [];
   } else if (stepNum === 3) {
     options = careerStages;
@@ -259,7 +274,7 @@ function renderStepNew(stepNum) {
         </span>
         <!-- 2. Step表示 -->
         <span class="diag-step-number">
-            Step ${stepNum}/4
+            ステップ ${stepNum}/4
         </span>
         <!-- 3. メイン見出し -->
         <h3 class="diag-step-title">
@@ -321,12 +336,10 @@ function switchDiagStep(fromStep, toStep) {
   setTimeout(() => {
     fromEl.classList.add('hidden');
 
-    if (toStep === 2 || toStep === 3) {
-      renderStepNew(toStep);
-    }
+    renderStepNew(toStep);
 
     if (diagSelected['step' + toStep]) {
-      selectDiagnosticOption(toStep, diagSelected['step' + toStep]);
+      selectDiagnosticOption(toStep, diagSelected['step' + toStep], false);
     }
 
     toEl.classList.remove('hidden');
@@ -350,15 +363,10 @@ function switchDiagStep(fromStep, toStep) {
       }
     }
 
-    // Next button state & label
+    // Card click advances the diagnosis; the manual next button is intentionally hidden.
     const nextBtn = document.getElementById('diag-next');
     if (nextBtn) {
-      nextBtn.style.display = 'flex';
-      if (toStep === 3) {
-        nextBtn.innerHTML = `結果を見る <i class="fa-solid fa-arrow-right-long"></i>`;
-      } else {
-        nextBtn.innerHTML = `次へ <i class="fa-solid fa-arrow-right-long"></i>`;
-      }
+      nextBtn.style.display = 'none';
     }
   }, 300);
 }
@@ -366,7 +374,7 @@ function switchDiagStep(fromStep, toStep) {
 /* ─────────────────────────────────────────────
    CARD SELECTION INTERACTION
    ───────────────────────────────────────────── */
-function selectDiagnosticOption(step, option) {
+function selectDiagnosticOption(step, option, advance = true) {
   if (step === 1) {
     if (diagSelected['step1'] !== option) {
       delete diagSelected['step2'];
@@ -414,8 +422,8 @@ function selectDiagnosticOption(step, option) {
     const check = card.querySelector('.diag-check-tab');
     if (check) check.style.opacity = '0';
 
-    const abbr = card.querySelector('.diag-abbr');
-    if (abbr) abbr.style.color = '#1A2B4C';
+    const title = card.querySelector('.diag-title');
+    if (title) title.style.color = '#1A2B4C';
 
     const underline = card.querySelector('.diag-underline');
     if (underline) underline.style.backgroundColor = '#D1D5DB';
@@ -431,11 +439,24 @@ function selectDiagnosticOption(step, option) {
   const check = selected.querySelector('.diag-check-tab');
   if (check) check.style.opacity = '1';
 
-  const abbr = selected.querySelector('.diag-abbr');
-  if (abbr) abbr.style.color = '#FF5C00';
+  const title = selected.querySelector('.diag-title');
+  if (title) title.style.color = '#FF5C00';
 
   const underline = selected.querySelector('.diag-underline');
   if (underline) underline.style.backgroundColor = '#FF5C00';
+
+  diagState.answers[step] = option;
+
+  if (advance) {
+    window.clearTimeout(diagAutoAdvanceTimer);
+    diagAutoAdvanceTimer = window.setTimeout(() => {
+      if (step < 3) {
+        switchDiagStep(step, step + 1);
+      } else {
+        showDiagResultNew();
+      }
+    }, 220);
+  }
 }
 window.selectDiagnosticOption = selectDiagnosticOption;
 
@@ -463,7 +484,7 @@ window.diagGoNext = diagGoNext;
 
 function diagGoBack() {
   const currentStep = diagState.current;
-  if (currentStep <= 1 || currentStep >= 4) return;
+  if (currentStep <= 1) return;
 
   switchDiagStep(currentStep, currentStep - 1);
 }
@@ -472,6 +493,7 @@ window.diagGoBack = diagGoBack;
 function resetDiagnostic() {
   diagState.answers = {};
   diagState.current = 1;
+  window.clearTimeout(diagAutoAdvanceTimer);
   for (let key in diagSelected) {
     delete diagSelected[key];
   }
@@ -502,6 +524,7 @@ function resetDiagnostic() {
     }
 
     if (step1El) {
+      renderStepNew(1);
       step1El.querySelectorAll('.diag-option-card').forEach(card => {
         card.classList.remove('border-[#FF5C00]', 'shadow-[0_0_0_3px_rgba(255,92,0,0.15)]');
         card.classList.add('border-gray-200');
@@ -510,8 +533,8 @@ function resetDiagnostic() {
         const check = card.querySelector('.diag-check-tab');
         if (check) check.style.opacity = '0';
 
-        const abbr = card.querySelector('.diag-abbr');
-        if (abbr) abbr.style.color = '#1A2B4C';
+        const title = card.querySelector('.diag-title');
+        if (title) title.style.color = '#1A2B4C';
 
         const underline = card.querySelector('.diag-underline');
         if (underline) underline.style.backgroundColor = '#D1D5DB';
@@ -540,8 +563,7 @@ function resetDiagnostic() {
 
     const nextBtn = document.getElementById('diag-next');
     if (nextBtn) {
-      nextBtn.style.display = 'flex';
-      nextBtn.innerHTML = `次へ <i class="fa-solid fa-arrow-right-long"></i>`;
+      nextBtn.style.display = 'none';
     }
 
     updateProgressBarNew(1);
@@ -559,7 +581,6 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
   let anchor = '';
   let color = '#FF5C00';
   let bg = '#fff3ed';
-  let icon = '💼';
   let divisionLabel = '';
 
   if (category === 'sales') {
@@ -568,7 +589,6 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
         divName = '第一営業部';
         divSub = '医療機関向けマーケティング事業';
         page = 'service-division1.html';
-        icon = '🏥';
         divisionLabel = '第一営業部 / メンバー';
       } else {
         divName = 'HD事業部';
@@ -580,7 +600,6 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
         anchor = `jobs-${roleVal}` + (stageVal === 'senior' ? '-leader' : '');
         color = '#2563eb';
         bg = '#eff6ff';
-        icon = '🍽️';
       }
     } else {
       // marketing, bizdev, sales_ops
@@ -595,7 +614,6 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
     page = 'business.html';
     color = '#059669';
     bg = '#ecfdf5';
-    icon = '💻';
     divisionLabel = 'プロダクト開発領域 of ポジション';
   } else if (category === 'corporate') {
     divName = 'コーポレート領域';
@@ -603,11 +621,10 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
     page = 'corporate.html';
     color = '#1A2B4C';
     bg = '#f3f4f6';
-    icon = '🏢';
     divisionLabel = 'コーポレート領域 of ポジション';
   }
 
-  return { divName, divSub, page, anchor, color, bg, icon, divisionLabel };
+  return { divName, divSub, page, anchor, color, bg, divisionLabel };
 }
 
 /* ─────────────────────────────────────────────
@@ -663,7 +680,7 @@ function showDiagResultNew() {
 }
 
 function buildResultHTML(category, role, stage) {
-  const { divName, divSub, page, anchor, color, bg, icon, divisionLabel } = resolveDivisionAndRouting(category.value, role.value, stage.value);
+  const { divName, divSub, page, anchor, color, bg, divisionLabel } = resolveDivisionAndRouting(category.value, role.value, stage.value);
 
   const params = new URLSearchParams({
     role: role.value,
@@ -686,8 +703,8 @@ function buildResultHTML(category, role, stage) {
 
       <!-- Match badge + answer chips -->
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-        <span style="display:inline-flex;align-items:center;gap:8px;background:#FF5C00;color:#fff;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;padding:5px 18px;border-radius:99px;">
-          ✦ Your Match
+        <span style="display:inline-flex;align-items:center;gap:8px;background:#FF5C00;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.12em;padding:5px 18px;border-radius:99px;">
+          診断結果
         </span>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">${answerChips}</div>
       </div>
@@ -696,7 +713,7 @@ function buildResultHTML(category, role, stage) {
       <div>
         <h3 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.02em;line-height:1.3;margin-bottom:1rem;">
           あなたに合うポジションは<br>
-          <span style="color:#FF5C00;">${role.title}（${role.shortLabel}）</span> です。
+          <span style="color:#FF5C00;">${role.title}</span> です。
         </h3>
         <p style="font-family:'Noto Sans JP',sans-serif;font-size:0.95rem;color:#555;line-height:1.9;font-weight:500;border-left:3px solid #FF5C00;padding-left:1.25rem;max-width:640px;">
           ${stage.title}として、${role.description}ポジションです。
@@ -715,13 +732,10 @@ function buildResultHTML(category, role, stage) {
         flex-wrap:wrap;
         gap:1rem;
       ">
-        <div style="display:flex;align-items:center;gap:14px;">
-          <span style="font-size:2rem;line-height:1;">${icon}</span>
-          <div>
-            <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.35em;text-transform:uppercase;color:${color};margin-bottom:3px;">${divName}</p>
-            <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;color:#333;">${divSub}</p>
-            <p style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:#888;margin-top:3px;letter-spacing:0.1em;">${divisionLabel}</p>
-          </div>
+        <div style="min-width:0;">
+          <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.35em;text-transform:uppercase;color:${color};margin-bottom:3px;">${divName}</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;color:#333;">${divSub}</p>
+          <p style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:#888;margin-top:3px;letter-spacing:0.1em;">${divisionLabel}</p>
         </div>
         <a href="${serviceURL}"
            style="

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision / Mission / Value | Crestix — 私たちの価値観</title>
+    <title>ミッション・ビジョン・バリュー | Crestix — 私たちの価値観</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -30,6 +30,92 @@
             background: radial-gradient(circle, rgba(255, 92, 0, 0.08) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
+        }
+
+        .mvv-hero-simple {
+            min-height: 360px;
+            background-image:
+                linear-gradient(90deg, rgba(10, 15, 30, 0.58), rgba(10, 15, 30, 0.16)),
+                url('assets/images/office/crestix.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .mvv-section-label {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 18px;
+            font-size: 1.05rem;
+            font-weight: 900;
+            color: #333333;
+            letter-spacing: 0.02em;
+            line-height: 1.4;
+        }
+
+        .mvv-section-label::after {
+            content: '';
+            width: 64px;
+            height: 3px;
+            background: #FF5C00;
+        }
+
+        .mvv-body {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .mvv-body-wide {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .mvv-section-pad {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .mvv-copy {
+            font-size: 0.95rem;
+            line-height: 2.25;
+            font-weight: 700;
+            color: #555555;
+            letter-spacing: 0.02em;
+        }
+
+        .mvv-logo-frame {
+            min-height: 178px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .mvv-logo-frame img {
+            width: min(76%, 260px);
+            height: auto;
+            max-height: 92px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .mvv-hero-simple {
+                min-height: 300px;
+            }
+
+            .mvv-section-pad {
+                padding-top: 3.5rem;
+                padding-bottom: 3.5rem;
+            }
+
+            .mvv-copy {
+                font-size: 0.9rem;
+                line-height: 2;
+            }
+
+            .mvv-logo-frame {
+                min-height: 150px;
+                padding: 1.75rem;
+            }
         }
     </style>
 </head>
@@ -57,7 +143,7 @@
                 <div class="fm-nav-sub">
                     <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
                     <a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a>
-                    <a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a>
+                    <a href="mvv.html" onclick="cxToggleMenu()">ミッション・ビジョン・バリュー</a>
                 </div>
             </div>
 
@@ -84,10 +170,10 @@
             </div>
         </nav>
         <div class="fm-footer">
-            <a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">Entry / Careers</a>
-            <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
-        </div>
+            <a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">MORE</a>
+      <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
     </div>
+  </div>
     <!-- ═══ NAVIGATION ═══ -->
     <nav id="cx-navbar" aria-label="グローバルナビゲーション">
 
@@ -124,7 +210,7 @@
                             <div class="cx-mega-group">
                                 <span class="cx-mega-group-label">Philosophy & People</span>
                                 <a href="mvv.html" class="cx-mega-item">
-                                    <span>Vision / Mission / Value</span>
+                                    <span>ミッション・ビジョン・バリュー</span>
                                     <i class="fa-solid fa-chevron-right cx-mega-arrow"></i>
                                 </a>
                             </div>
@@ -172,7 +258,7 @@
 
         <!-- RIGHT: CTA + Hamburger -->
         <div class="cx-nav-right">
-            <a href="jobs.html" class="cx-nav-entry-btn">Entry</a>
+            <a href="jobs.html" class="cx-nav-entry-btn">MORE</a>
             <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
                 <span class="cx-ham-lines" id="cx-ham-lines">
                     <span></span><span></span><span></span>
@@ -186,145 +272,136 @@
 
     <main>
 
-        <!-- ① HERO (Unified Design) -->
-        <div class="corp-hero flex flex-col justify-end pt-40">
-            <div class="max-w-7xl mx-auto px-6 lg:px-14 pb-12 w-full">
-                <p class="text-white/70 text-xs font-black tracking-[0.4em] uppercase mb-4 font-poppins">
-                    Crestix / Vision
+        <!-- ① HERO -->
+        <div class="mvv-hero-simple flex items-end pt-36">
+            <div class="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16 w-full">
+                <p class="text-white/75 text-xl lg:text-2xl font-black leading-tight">
+                    私たちが目指すもの
                 </p>
-                <h1
-                    class="text-5xl lg:text-7xl font-black font-poppins tracking-tighter uppercase leading-none text-white drop-shadow-lg">
-                    Mission Vision Value
-                </h1>
-                <p class="text-white/80 text-base font-bold mt-3">
-                    私たちの価値観
+                <p class="text-white/70 text-sm font-bold mt-2">
+                    ミッション・ビジョン・バリュー
                 </p>
             </div>
         </div>
 
-        <!-- ② VISION / MISSION / VALUE SECTION -->
-        <section class="relative overflow-hidden bg-white select-none">
-            <div class="mvv-aurora" style="top: 10%; left: -5%;"></div>
-
-            <!-- Vision -->
-            <div id="vision" class="py-24 lg:py-40 px-10 lg:px-24 border-b border-gray-100 relative bg-gray-50/20">
-                <div
-                    class="absolute -top-10 left-10 text-[100px] lg:text-[180px] font-poppins font-black text-gray-50 opacity-40 select-none tracking-tighter uppercase italic">
-                    Vision</div>
-                <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
-                    <div
-                        class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4">
-                        <span class="w-10 h-px bg-crestix-orange"></span> Our Vision</div>
-                    <h2
-                        class="text-3xl lg:text-5xl font-black text-crestix-charcoal leading-[1.3] tracking-tighter uppercase italic">
-                        21st Century's Most<br>Challenging Company.</h2>
-                    <p class="text-lg font-black text-gray-400 mt-4 tracking-widest">世界一、挑戦し続ける会社へ</p>
-                </div>
-            </div>
-
-            <!-- Mission -->
-            <div id="mission" class="py-24 lg:py-40 px-10 lg:px-24 border-b border-gray-100 relative">
-                <div
-                    class="absolute -top-10 left-10 text-[100px] lg:text-[180px] font-poppins font-black text-gray-50 opacity-40 select-none tracking-tighter">
-                    MISSION</div>
-                <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
-                    <div
-                        class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4">
-                        <span class="w-10 h-px bg-crestix-orange"></span> Our Mission</div>
-                    <h2 class="text-4xl lg:text-7xl font-black text-crestix-charcoal leading-[1.2] tracking-tighter">
-                        Pricelessを届ける</h2>
-                </div>
-            </div>
-
-            <!-- Values -->
-            <div id="value" class="py-24 lg:py-40 px-10 lg:px-24 relative">
-                <div
-                    class="absolute -top-10 left-10 text-[100px] lg:text-[180px] font-poppins font-black text-gray-50 opacity-40 select-none tracking-tighter uppercase">
-                    Values</div>
-                <div class="relative z-10 max-w-5xl mx-auto space-y-20">
-                    <div>
-                        <div
-                            class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center gap-4 mb-4">
-                            <span class="w-10 h-px bg-crestix-orange"></span> Crestix Value</div>
-                        <p class="text-sm font-black text-gray-400 tracking-widest">Pricelessな人材</p>
+        <!-- ② COMPANY INTRO -->
+        <section class="bg-white">
+            <div id="about-crestix" class="mvv-section-pad px-6 lg:px-10 border-b border-gray-100">
+                <div class="mvv-body">
+                    <div class="mvv-section-label mb-10">Crestixについて</div>
+                    <h2 class="text-3xl lg:text-4xl font-black text-crestix-charcoal leading-[1.45] tracking-tight mb-8">
+                        挑戦する人と組織の可能性を広げる会社
+                    </h2>
+                    <div class="space-y-5 mvv-copy">
+                        <p>Crestixは、営業支援、AI活用、Web制作、採用広報などを通じて、企業や店舗の成長を支援する会社です。</p>
+                        <p>私たちは、ただサービスを提供するだけではなく、事業の成果につながる仕組みをつくることを大切にしています。</p>
+                        <p>挑戦する人と組織が、より大きな可能性を発揮できるように、テクノロジーと実行力を掛け合わせて価値を届けていきます。</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        <div
-                            class="group rounded-3xl border border-gray-100 bg-white p-8 lg:p-10 shadow-[0_18px_60px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-crestix-orange/30 hover:shadow-[0_24px_70px_rgba(15,23,42,0.10)]">
-                            <span
-                                class="text-5xl font-poppins font-black text-gray-200 border-b-4 border-crestix-orange pb-3 w-16 block transition-colors group-hover:text-crestix-orange/20">V1</span>
-                            <h4 class="text-2xl lg:text-3xl font-black tracking-tight text-crestix-charcoal leading-tight">可能性を広げ続ける</h4>
-                            <p class="text-base font-bold text-gray-500 leading-loose">
-                                どんな小さな可能性でも見逃さない。自分・仲間・顧客の可能性を広げ続ける。</p>
-                        </div>
-                        <div
-                            class="group rounded-3xl border border-gray-100 bg-white p-8 lg:p-10 shadow-[0_18px_60px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-crestix-orange/30 hover:shadow-[0_24px_70px_rgba(15,23,42,0.10)]">
-                            <span
-                                class="text-5xl font-poppins font-black text-gray-200 border-b-4 border-crestix-orange pb-3 w-16 block transition-colors group-hover:text-crestix-orange/20">V2</span>
-                            <h4 class="text-2xl lg:text-3xl font-black tracking-tight text-crestix-charcoal leading-tight">リスペクトを持て、そして当事者であれ</h4>
-                            <p class="text-base font-bold text-gray-500 leading-loose">
-                                仕事は遊びではない。発言・行動・結果に責任を持ち、すべてを自分ごととして向き合う。ただし、リスペクトなき当事者はただの独善。</p>
-                        </div>
-                        <div
-                            class="group rounded-3xl border border-gray-100 bg-white p-8 lg:p-10 shadow-[0_18px_60px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-crestix-orange/30 hover:shadow-[0_24px_70px_rgba(15,23,42,0.10)]">
-                            <span
-                                class="text-5xl font-poppins font-black text-gray-200 border-b-4 border-crestix-orange pb-3 w-16 block transition-colors group-hover:text-crestix-orange/20">V3</span>
-                            <h4 class="text-2xl lg:text-3xl font-black tracking-tight text-crestix-charcoal leading-tight">時間は有限、本質で決断。</h4>
-                            <p class="text-base font-bold text-gray-500 leading-loose">
-                                すべてはできない。重要なものを見極め、やること・やらないことを決める。</p>
-                        </div>
-                        <div
-                            class="group rounded-3xl border border-gray-100 bg-white p-8 lg:p-10 shadow-[0_18px_60px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-crestix-orange/30 hover:shadow-[0_24px_70px_rgba(15,23,42,0.10)]">
-                            <span
-                                class="text-5xl font-poppins font-black text-gray-200 border-b-4 border-crestix-orange pb-3 w-16 block transition-colors group-hover:text-crestix-orange/20">V4</span>
-                            <h4 class="text-2xl lg:text-3xl font-black tracking-tight text-crestix-charcoal leading-tight">どこよりも考え抜き、どこよりも速く遠くへ</h4>
-                            <p class="text-base font-bold text-gray-500 leading-loose">
-                                浅く動かない。誰よりも考え抜き、その上で誰よりも速く動く。</p>
-                        </div>
-                        <div
-                            class="group rounded-3xl border border-gray-100 bg-white p-8 lg:p-10 shadow-[0_18px_60px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-crestix-orange/30 hover:shadow-[0_24px_70px_rgba(15,23,42,0.10)] md:col-span-2">
-                            <span
-                                class="text-5xl font-poppins font-black text-gray-200 border-b-4 border-crestix-orange pb-3 w-16 block transition-colors group-hover:text-crestix-orange/20">V5</span>
-                            <h4 class="text-2xl lg:text-3xl font-black tracking-tight text-crestix-charcoal leading-tight">成果を科学し、再現せよ</h4>
-                            <p class="text-base font-bold text-gray-500 leading-loose">
-                                成果は偶然ではない。なぜうまくいったのかを分解し、言語化し、仕組みに落とす。誰でも同じ成果を出せる状態まで再現せよ。</p>
-                        </div>
-                    </div>
-
-                    <!-- Closing Statement -->
-                    <!-- <div class="border-t border-gray-100 pt-20 text-center space-y-6">
-                    <div class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] flex items-center justify-center gap-4 mb-8"><span class="w-10 h-px bg-crestix-orange"></span> Crestixが信じていること <span class="w-10 h-px bg-crestix-orange"></span></div>
-                    <p class="text-3xl lg:text-5xl font-black text-crestix-charcoal leading-[1.5] tracking-tighter">挑戦することで、可能性は広がる。<br><span class="text-gray-400">可能性が広がることで、人は成長する。</span><br>その先に、Pricelessな価値が生まれる。</p>
-                    <p class="text-base font-black text-gray-400 leading-loose pt-6">Crestixは、挑戦を通じて可能性を広げ続ける。</p>
-                    <div class="pt-10">
-                        <a href="jobs.html" class="inline-flex items-center gap-4 bg-gradient-to-r from-crestix-orange to-[#E65200] text-white px-14 py-5 rounded-full font-black text-xs tracking-[0.3em] uppercase shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">
-                            Open Positions — 挑戦する <i class="fa-solid fa-arrow-right-long"></i>
-                        </a>
-                    </div>
-                </div> -->
                 </div>
             </div>
         </section>
 
-        <!-- Canva Embed -->
-        <section class="py-20 lg:py-28 px-6 lg:px-24 bg-gray-50 border-t border-gray-100">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-10 text-center space-y-3">
-                    <p class="text-[11px] font-black text-crestix-orange uppercase tracking-[0.4em] font-poppins">
-                        Crestix Deck</p>
-                    <h2 class="text-3xl lg:text-5xl font-black text-crestix-charcoal tracking-tight">
-                        会社紹介資料</h2>
+        <!-- ③ MVV -->
+        <section class="bg-white">
+            <div id="vision" class="mvv-section-pad px-6 lg:px-10">
+                <div class="mvv-body">
+                    <div class="mvv-section-label mb-12">ビジョン</div>
+                    <h2 class="text-3xl lg:text-4xl font-black text-crestix-charcoal leading-[1.55] tracking-tight mb-10">
+                        世界一、挑戦し続ける会社へ
+                    </h2>
+                    <div class="space-y-5 mvv-copy">
+                        <p>私たちは、現状維持にとどまらず、常に自分たちの可能性を広げ続ける会社でありたいと考えています。</p>
+                        <p>一人ひとりが挑戦を重ね、仲間や顧客の可能性を広げ、その積み重ねによって社会に新しい価値を届けていきます。</p>
+                    </div>
                 </div>
-                <div
-                    class="relative w-full overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.12)]">
-                    <iframe
-                        src="https://canva.link/jn8pg4pg8f8ml2n"
-                        title="Crestix 会社紹介資料"
-                        loading="lazy"
-                        allowfullscreen
-                        allow="fullscreen"
-                        class="block w-full aspect-video border-0"></iframe>
+            </div>
+
+            <div id="mission" class="mvv-section-pad px-6 lg:px-10">
+                <div class="mvv-body">
+                    <div class="mvv-section-label mb-12">ミッション</div>
+                    <h2 class="text-3xl lg:text-4xl font-black text-crestix-charcoal leading-[1.55] tracking-tight mb-10">
+                        かけがえのない価値を届ける
+                    </h2>
+                    <div class="space-y-5 mvv-copy">
+                        <p>私たちは、事業を通じて人と企業の可能性を広げ、関わるすべての人にとって価値ある成果を生み出します。</p>
+                        <p>ただ便利なサービスを届けるのではなく、挑戦する人が前に進むきっかけや、事業が成長するための力を提供していきます。</p>
+                    </div>
                 </div>
+            </div>
+
+            <div id="value" class="mvv-section-pad px-6 lg:px-10">
+                <div class="mvv-body-wide">
+                    <div class="mvv-section-label mb-14">バリュー</div>
+                    <div class="space-y-5 mvv-copy mb-14">
+                        <p>Crestixが大切にしているのは、挑戦を続ける姿勢と、成果に向き合う実行力です。</p>
+                        <p>一人ひとりが自分の可能性を広げながら、仲間とともにより大きな価値を生み出していくことを目指します。</p>
+                    </div>
+
+                    <div class="border-t border-gray-200">
+                        <div class="grid grid-cols-[56px_1fr] lg:grid-cols-[72px_320px_1fr] gap-x-6 lg:gap-x-10 gap-y-4 py-8 border-b border-gray-200 items-start">
+                            <p class="font-poppins text-sm font-black text-gray-300 leading-none pt-2">01</p>
+                            <h3 class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-tight whitespace-nowrap">挑戦を楽しむ</h3>
+                            <p class="mvv-copy col-start-2 lg:col-start-auto">失敗を恐れず、常に一歩先へ進む姿勢を大切にします。</p>
+                        </div>
+                        <div class="grid grid-cols-[56px_1fr] lg:grid-cols-[72px_320px_1fr] gap-x-6 lg:gap-x-10 gap-y-4 py-8 border-b border-gray-200 items-start">
+                            <p class="font-poppins text-sm font-black text-gray-300 leading-none pt-2">02</p>
+                            <h3 class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-tight whitespace-nowrap">成果に向き合う</h3>
+                            <p class="mvv-copy col-start-2 lg:col-start-auto">感覚ではなく、数値と事実をもとに改善し、成果につながる行動を重ねます。</p>
+                        </div>
+                        <div class="grid grid-cols-[56px_1fr] lg:grid-cols-[72px_320px_1fr] gap-x-6 lg:gap-x-10 gap-y-4 py-8 border-b border-gray-200 items-start">
+                            <p class="font-poppins text-sm font-black text-gray-300 leading-none pt-2">03</p>
+                            <h3 class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-tight whitespace-nowrap">仲間と高め合う</h3>
+                            <p class="mvv-copy col-start-2 lg:col-start-auto">個人だけでなく、チームとして成長し、互いの可能性を引き出します。</p>
+                        </div>
+                        <div class="grid grid-cols-[56px_1fr] lg:grid-cols-[72px_320px_1fr] gap-x-6 lg:gap-x-10 gap-y-4 py-8 border-b border-gray-200 items-start">
+                            <p class="font-poppins text-sm font-black text-gray-300 leading-none pt-2">04</p>
+                            <h3 class="text-xl lg:text-2xl font-black text-crestix-charcoal leading-tight whitespace-nowrap">仕組みで強くする</h3>
+                            <p class="mvv-copy col-start-2 lg:col-start-auto">再現性のある成果を生み出すために、属人的ではない仕組みづくりを重視します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Contents -->
+        <section class="bg-gray-50 py-16 lg:py-20 px-6 lg:px-10">
+            <div class="max-w-[980px] mx-auto">
+                <h2 class="text-2xl font-black text-crestix-charcoal mb-8">関連コンテンツ</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a href="message.html" class="group block">
+                        <div class="aspect-[16/10] overflow-hidden bg-gray-100">
+                            <img src="assets/images/office/crestix.png" alt="代表メッセージ"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        <p class="text-sm font-bold text-crestix-charcoal mt-4">代表メッセージ</p>
+                    </a>
+                    <a href="business.html" class="group block">
+                        <div class="aspect-[16/10] overflow-hidden bg-gray-100">
+                            <img src="assets/images/office/crestix1.png" alt="事業について"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        <p class="text-sm font-bold text-crestix-charcoal mt-4">事業について</p>
+                    </a>
+                    <a href="members.html" class="group block">
+                        <div class="mvv-logo-frame overflow-hidden bg-gray-100">
+                            <img src="assets/images/office/crestix-header.png" alt="社員紹介"
+                                class="transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        <p class="text-sm font-bold text-crestix-charcoal mt-4">社員紹介</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- More -->
+        <section class="bg-white mvv-section-pad px-6 lg:px-10">
+            <div class="max-w-[980px] mx-auto">
+                <h2 class="text-2xl font-black text-crestix-charcoal mb-10">もっと見る</h2>
+                <a href="jobs.html"
+                    class="flex items-center justify-between bg-crestix-orange text-white px-8 lg:px-12 py-6 font-black text-sm tracking-widest transition-all hover:bg-[#E65200]">
+                    募集職種を見る
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
             </div>
         </section>
 

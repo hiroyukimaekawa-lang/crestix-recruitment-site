@@ -1428,9 +1428,10 @@
                     <!-- 選択カード 3枚 -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
-                        <!-- Card: SALES -->
+                        <!-- Card: 営業・事業職 -->
                         <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
                             onclick="selectDiagnosticOption(1,'sales')"
+                            onkeydown="handleCardKeyDown(event, 1,'sales')"
                             data-option="sales"
                             role="button"
                             tabindex="0"
@@ -1441,21 +1442,20 @@
                             </div>
                             <!-- スコープ装飾（左上小ドット） -->
                             <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
-                            <!-- 略称 -->
-                            <span class="diag-abbr font-poppins font-black transition-colors duration-300">SALES</span>
-                            <!-- 日本語正式名称 -->
+                            <!-- 日本語タイトル -->
                             <span class="diag-title">営業・事業職</span>
                             <!-- 下線 -->
                             <div class="diag-underline transition-colors duration-300"></div>
                             <!-- 説明テキスト -->
                             <p class="diag-desc">
-                                お客様と向き合い、<br>事業成長を前線から推進する職種
+                                お客様と向き合い、事業成長を前線から推進する職種です。インサイドセールス、フィールドセールス、カスタマーサクセスなどがあります。
                             </p>
                         </div>
 
-                        <!-- Card: PRODUCT -->
+                        <!-- Card: プロダクト開発職 -->
                         <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
                             onclick="selectDiagnosticOption(1,'product')"
+                            onkeydown="handleCardKeyDown(event, 1,'product')"
                             data-option="product"
                             role="button"
                             tabindex="0"
@@ -1464,17 +1464,17 @@
                                 <i class="fa-solid fa-check text-white text-xs"></i>
                             </div>
                             <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
-                            <span class="diag-abbr is-small font-poppins font-black transition-colors duration-300">PRODUCT</span>
                             <span class="diag-title">プロダクト開発職</span>
                             <div class="diag-underline transition-colors duration-300"></div>
                             <p class="diag-desc">
-                                サービスや仕組みをつくり、<br>価値を届ける職種
+                                サービスや仕組みをつくり、価値を届ける職種です。エンジニア、プロダクトマネージャー、デザイナーなどがあります。
                             </p>
                         </div>
 
-                        <!-- Card: CORP -->
+                        <!-- Card: コーポレート職 -->
                         <div class="diag-option-card relative bg-white rounded-2xl p-10 flex flex-col items-center text-center border-2 border-gray-200 cursor-pointer transition-all duration-300 hover:border-[#FF5C00] hover:shadow-[0_0_0_3px_rgba(255,92,0,0.12)]"
                             onclick="selectDiagnosticOption(1,'corporate')"
+                            onkeydown="handleCardKeyDown(event, 1,'corporate')"
                             data-option="corporate"
                             role="button"
                             tabindex="0"
@@ -1483,11 +1483,10 @@
                                 <i class="fa-solid fa-check text-white text-xs"></i>
                             </div>
                             <div class="absolute top-5 left-5 w-2 h-2 rounded-full bg-[#FF5C00] opacity-40"></div>
-                            <span class="diag-abbr font-poppins font-black transition-colors duration-300">CORP</span>
                             <span class="diag-title">コーポレート職</span>
                             <div class="diag-underline transition-colors duration-300"></div>
                             <p class="diag-desc">
-                                組織や事業を内側から支える職種
+                                組織や事業を内側から支える職種です。人事、経理、法務、広報、経営企画などがあります。
                             </p>
                         </div>
 
@@ -1499,7 +1498,7 @@
                 <div id="diag-step-3" class="diag-step--stages hidden opacity-0 transition-all duration-500"></div>
                 <div id="diag-step-4" class="diag-step--result hidden opacity-0 transition-all duration-500"></div>
 
-                <!-- フッター：プログレスバー＋次へボタン -->
+                <!-- フッター：プログレスバー＋戻るボタン -->
                 <div id="diag-footer" class="mt-16 pt-8 border-t border-gray-200 flex items-end justify-between">
 
                     <!-- プログレスバー -->
@@ -1550,7 +1549,7 @@
                         </div>
                     </div>
 
-                    <!-- ボタン群（戻る＋次へ） -->
+                    <!-- ボタン群（戻る） -->
                     <div id="diag-btn-container" style="display:flex;align-items:center;gap:12px;">
 
                         <!-- 戻るボタン（白背景・border・通常時は表示するが非活性に近いスタイル） -->
@@ -1561,16 +1560,6 @@
                             onmouseout="this.style.borderColor='#E5E7EB'">
                             <i class="fa-solid fa-arrow-left-long"></i>
                             戻る
-                        </button>
-
-                        <!-- 次へボタン -->
-                        <button id="diag-next"
-                            onclick="diagGoNext()"
-                            style="background:#FF5C00;color:white;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1rem;padding:18px 48px;border-radius:9999px;border:none;cursor:pointer;display:flex;align-items:center;gap:14px;box-shadow:0 12px 32px rgba(255,92,0,0.35);transition:all 0.25s ease;"
-                            onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 20px 44px rgba(255,92,0,0.45)'"
-                            onmouseout="this.style.transform='';this.style.boxShadow='0 12px 32px rgba(255,92,0,0.35)'">
-                            次へ
-                            <i class="fa-solid fa-arrow-right-long"></i>
                         </button>
 
                     </div>
@@ -2057,6 +2046,11 @@
             const tag = document.getElementById('slide-tag');
             const counter = document.getElementById('slide-counter');
 
+            if (!slides.length || !headline || !sub || !tag) {
+                isAnimating = false;
+                return;
+            }
+
             // Mark old slide as prev
             slides[currentSlide].classList.remove('active');
             slides[currentSlide].classList.add('prev');
@@ -2082,7 +2076,9 @@
             });
 
             // Counter
-            counter.textContent = String(currentSlide + 1).padStart(2, '0') + ' / 0' + slides.length;
+            if (counter) {
+                counter.textContent = String(currentSlide + 1).padStart(2, '0') + ' / 0' + slides.length;
+            }
 
             // Update text with slide animation
             const data = SLIDES_DATA[currentSlide];
