@@ -5,7 +5,7 @@ const STORY_NOTE_LINKS = {
   'story-takahara.html': 'https://note.com/crestory_crestix',
   'story-uoi.html': 'https://note.com/crestory_crestix',
   'story-mizugaki.html': 'https://note.com/crestory_crestix',
-  'story-matsuoka.html': 'https://note.com/crestory_crestix',
+  'story-matsuoka.html': 'https://crestory.crestix.jp/matsuoka-interview/',
   'story-imafuku.html': 'https://note.com/crestory_crestix'
 };
 

@@ -14,20 +14,20 @@ const jobCategories = [
     value: "sales",
     shortLabel: "営業・事業職",
     title: "営業・事業職",
-    description: "お客様と向き合い、事業成長を前線から推進する職種です。インサイドセールス、フィールドセールス、マーケティングなどがあります。"
+    description: "顧客と向き合い、事業成長を前線から支える職種です。"
   },
   {
     value: "product",
     shortLabel: "プロダクト開発職",
     title: "プロダクト開発職",
-    description: "サービスや仕組みをつくり、価値を届ける職種です。エンジニア、プロダクトマネージャー、デザイナーなどがあります。",
+    description: "サービスや仕組みをつくり、価値を形にする職種です。",
     labelSize: "small"
   },
   {
     value: "corporate",
     shortLabel: "コーポレート職",
     title: "コーポレート職",
-    description: "組織や事業を内側から支える職種です。人事、経理、法務、広報、経営企画などがあります。"
+    description: "組織運営を支え、会社の成長基盤をつくる職種です。"
   }
 ];
 

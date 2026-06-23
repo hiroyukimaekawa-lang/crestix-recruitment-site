@@ -140,6 +140,86 @@ function crestix_crestory_head_meta() {
 }
 add_action("wp_head", "crestix_crestory_head_meta");
 
+function crestix_crestory_seed_matsuoka_interview() {
+  crestix_register_crestory();
+
+  foreach (["インタビュー", "メンバー"] as $name) {
+    if (!term_exists($name, "crestory_category")) wp_insert_term($name, "crestory_category");
+  }
+
+  $interview_tags = ["メンバーインタビュー", "Crestix", "採用", "カルチャー"];
+  foreach ($interview_tags as $name) {
+    if (!term_exists($name, "crestory_tag")) wp_insert_term($name, "crestory_tag");
+  }
+
+  $content = <<<ARTICLE
+<section class="crestory-interview-profile">
+  <p class="crestory-profile-label">Profile</p>
+  <dl>
+    <div><dt>Name</dt><dd>松岡 龍士</dd></div>
+    <div><dt>Position</dt><dd>第一営業部 統括</dd></div>
+    <div><dt>Career</dt><dd>大学卒業後、大手企業での営業経験を経てCrestixに参画。圧倒的な成果を出し続け、現在のポジションに至る。</dd></div>
+    <div><dt>Strength</dt><dd>現状に満足しない推進力と、周囲を巻き込むリーダーシップ。常に逆算思考で事業課題の解決にあたる。</dd></div>
+  </dl>
+</section>
+
+<p class="crestory-question">Q. なぜCrestixへ入社を決めたのですか？</p>
+<p>「日本で最も挑戦できる環境」というビジョンに強く共感したからです。前職でもそれなりに成果は出せていましたが、もっと圧倒的なスピードで成長したい、社会に大きなインパクトを残したいという思いがありました。Crestixの面接で代表やメンバーと話す中で、ここならそれが実現できると確信しました。</p>
+
+<p class="crestory-question">Q. 現在はどんな仕事をしていますか？</p>
+<p>第一営業部（医療機関向けマーケティング事業）の統括として、事業の成長を牽引する役割を担っています。単に目の前の数字を追うだけでなく、仕組み化やメンバーの育成、新規戦略の立案など、経営視点でのアクションが求められます。責任は大きいですが、その分裁量も大きく、毎日が刺激的です。</p>
+
+<p class="crestory-question">Q. 入社して驚いたことは何ですか？</p>
+<p>意思決定のスピードの速さと、年齢や社歴に関係なく意見がフラットに飛び交うカルチャーです。「誰が言ったか」ではなく「何を言ったか」が純粋に評価されるため、若手でも本質的な提案であれば即日採用されてプロジェクトが動き出します。</p>
+
+<p class="crestory-question">Q. 今後挑戦したいことは？</p>
+<p>今の事業を業界トップクラスまで引き上げることはもちろんですが、ゆくゆくは新しい事業領域の立ち上げにも挑戦したいです。Crestixにはそれを後押ししてくれる環境があるので、自分自身の限界を決めずに突き進んでいきたいと思っています。</p>
+
+<p class="crestory-question">Q. どんな人に来てほしいですか？</p>
+<p>現状維持を嫌い、常に変化と成長を求めている人ですね。未経験でも全く問題ありません。大切なのは「絶対に成し遂げてやる」という覚悟と熱量です。私たちと一緒に、最高の景色を見に行きましょう。</p>
+
+<blockquote><p>迷ったら、より困難で挑戦的な道を選んでほしい。Crestixには、その挑戦を最高の仲間が全力で支える環境があります。</p></blockquote>
+
+<figure class="wp-block-gallery has-nested-images columns-4 crestix-interview-gallery">
+  <figure class="wp-block-image"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Work"></figure>
+  <figure class="wp-block-image"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Meeting"></figure>
+  <figure class="wp-block-image"><img src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Event"></figure>
+  <figure class="wp-block-image"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Daily"></figure>
+</figure>
+ARTICLE;
+
+  $existing = get_page_by_path("matsuoka-interview", OBJECT, "crestory");
+  $post_data = [
+    "post_type" => "crestory",
+    "post_status" => "publish",
+    "post_title" => "売上を作る最前線へ。第一営業部統括・松岡龍士の挑戦",
+    "post_name" => "matsuoka-interview",
+    "post_excerpt" => "第一営業部 統括として事業成長を牽引する松岡龍士。Crestixに入社した理由、現在担う役割、そしてこれから挑戦したい未来について聞きました。",
+    "post_content" => $content,
+  ];
+
+  if ($existing) {
+    $post_id = $existing->ID;
+    if (trim((string) $existing->post_content) === "") {
+      $post_data["ID"] = $post_id;
+      wp_update_post($post_data);
+    }
+  } else {
+    $post_id = wp_insert_post($post_data);
+  }
+
+  if (!is_wp_error($post_id) && $post_id) {
+    wp_set_object_terms($post_id, ["インタビュー", "メンバー"], "crestory_category");
+    wp_set_object_terms($post_id, $interview_tags, "crestory_tag");
+    update_post_meta($post_id, "crestory_author_name", "松岡 龍士");
+    update_post_meta($post_id, "crestory_author_title", "第一営業部 統括");
+    update_post_meta($post_id, "crestory_lead", "第一営業部 統括として事業成長を牽引する松岡龍士。Crestixに入社した理由、現在担う役割、そしてこれから挑戦したい未来について聞きました。");
+    update_post_meta($post_id, "crestory_ogp_image", "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1600&auto=format&fit=crop");
+    update_post_meta($post_id, "crestory_seo_title", "売上を作る最前線へ。第一営業部統括・松岡龍士の挑戦");
+    update_post_meta($post_id, "crestory_seo_description", "第一営業部 統括として事業成長を牽引する松岡龍士のメンバーインタビュー。Crestixに入社した理由、仕事のやりがい、これから挑戦したいことを聞きました。");
+  }
+}
+
 function crestix_crestory_seed_content() {
   crestix_register_crestory();
 
@@ -235,12 +315,15 @@ ARTICLE;
     }
   }
 
+  crestix_crestory_seed_matsuoka_interview();
+
   flush_rewrite_rules();
 }
 add_action("after_switch_theme", "crestix_crestory_seed_content");
 
 function crestix_crestory_maybe_finalize_home() {
   if (!current_user_can("manage_options")) return;
+  crestix_crestory_seed_matsuoka_interview();
   if (get_option("crestix_crestory_home_finalized") === "1") return;
 
   $front_page = get_page_by_path("crestory-top", OBJECT, "page");
