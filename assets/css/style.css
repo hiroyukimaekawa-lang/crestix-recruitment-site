@@ -354,43 +354,80 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 1023px) {
+    #sec-site-contents {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
     #sec-site-contents .cx-contents-flex-wrap {
         display: grid !important;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 12px !important;
-        padding: 0 20px;
+        gap: 0 !important;
+        width: calc(100% - 20px) !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        border-top: 1px solid #e5e7eb;
+        border-left: 1px solid #e5e7eb;
     }
 
     #sec-site-contents .cx-accordion-card {
         aspect-ratio: 1 / 1;
-        min-height: 132px;
+        min-height: 160px;
         width: 100% !important;
-        border: 1px solid #e5e7eb;
-        border-radius: 18px;
-        background: #fff !important;
-        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+        border: 0;
+        border-right: 1px solid #e5e7eb;
+        border-bottom: 1px solid #e5e7eb;
+        border-radius: 0;
+        background: #111827 !important;
+        box-shadow: none;
     }
 
     #sec-site-contents .cx-accordion-card img {
         position: absolute;
         inset: 0;
+        z-index: 0;
         opacity: 0;
-        transition: opacity 0.35s ease, transform 0.5s ease;
+        transform: scale(1.08);
+        transition: opacity 0.35s ease, transform 0.45s ease;
     }
 
+    #sec-site-contents .cx-accordion-card:hover img,
     #sec-site-contents .cx-accordion-card:active img {
-        opacity: 0.2;
-        transform: scale(1.04);
+        opacity: 1;
+        transform: scale(1);
     }
 
     #sec-site-contents .cx-accordion-card > .absolute.inset-0 {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82)) !important;
+        z-index: 1;
+        background: #fff !important;
+        transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.35s ease;
+        transform-origin: center;
+    }
+
+    #sec-site-contents .cx-accordion-card > .absolute.inset-0::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(17, 24, 39, 0.35);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+    }
+
+    #sec-site-contents .cx-accordion-card:hover > .absolute.inset-0,
+    #sec-site-contents .cx-accordion-card:active > .absolute.inset-0 {
+        opacity: 0.82;
+        transform: scale(0.94) translateY(4px);
+        background: rgba(255, 255, 255, 0.82) !important;
     }
 
     #sec-site-contents .cx-accordion-card .absolute.top-6 {
-        top: 16px !important;
-        left: 16px !important;
-        right: 16px !important;
+        top: 42px !important;
+        left: 12px !important;
+        right: 12px !important;
+        z-index: 2;
+        text-align: center;
+        transition: opacity 0.35s ease, transform 0.35s ease;
     }
 
     #sec-site-contents .cx-accordion-card .absolute.top-6 span {
@@ -401,27 +438,34 @@ input:focus, select:focus, textarea:focus {
         font-size: 0 !important;
         letter-spacing: 0 !important;
         padding: 0 !important;
+        text-align: center;
     }
 
     #sec-site-contents .cx-accordion-card:nth-child(1) .absolute.top-6 span::before { content: "CORPORATE"; }
     #sec-site-contents .cx-accordion-card:nth-child(2) .absolute.top-6 span::before { content: "SERVICE"; }
-    #sec-site-contents .cx-accordion-card:nth-child(3) .absolute.top-6 span::before { content: "JOBS"; }
+    #sec-site-contents .cx-accordion-card:nth-child(3) .absolute.top-6 span::before { content: "POSITIONS"; }
     #sec-site-contents .cx-accordion-card:nth-child(4) .absolute.top-6 span::before { content: "MEMBERS"; }
 
     #sec-site-contents .cx-accordion-card .absolute.top-6 span::before {
+        display: block;
         font-family: 'Poppins', sans-serif;
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 900;
         letter-spacing: 0.18em;
+        text-align: center;
     }
 
     #sec-site-contents .cx-accordion-card .absolute.bottom-8 {
-        left: 16px !important;
-        right: 16px !important;
-        bottom: 16px !important;
+        top: 50% !important;
+        left: 12px !important;
+        right: 12px !important;
+        bottom: auto !important;
+        transform: translateY(-5%);
         width: auto !important;
         max-width: none !important;
-        z-index: 10;
+        z-index: 2;
+        text-align: center;
+        transition: opacity 0.35s ease, transform 0.35s ease;
     }
 
     #sec-site-contents .cx-accordion-card h3 {
@@ -429,7 +473,8 @@ input:focus, select:focus, textarea:focus {
         font-size: 17px !important;
         line-height: 1.45 !important;
         letter-spacing: 0 !important;
-        padding-right: 28px;
+        padding-right: 0;
+        text-align: center;
     }
 
     #sec-site-contents .cx-card-detail {
@@ -439,7 +484,7 @@ input:focus, select:focus, textarea:focus {
     #sec-site-contents .cx-view-more-box {
         display: flex !important;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
         margin-top: 12px;
         color: #FF5C00 !important;
     }
@@ -452,6 +497,19 @@ input:focus, select:focus, textarea:focus {
         color: #FF5C00 !important;
         font-size: 13px !important;
         margin-left: 0 !important;
+    }
+
+    #sec-site-contents .cx-accordion-card:hover .absolute.top-6,
+    #sec-site-contents .cx-accordion-card:active .absolute.top-6,
+    #sec-site-contents .cx-accordion-card:hover .absolute.bottom-8,
+    #sec-site-contents .cx-accordion-card:active .absolute.bottom-8 {
+        opacity: 0.86;
+        transform: scale(0.94) translateY(4px);
+    }
+
+    #sec-site-contents .cx-accordion-card:hover .absolute.bottom-8,
+    #sec-site-contents .cx-accordion-card:active .absolute.bottom-8 {
+        transform: translateY(-5%) scale(0.94) translateY(4px);
     }
 }
 
@@ -756,19 +814,23 @@ input:focus, select:focus, textarea:focus {
 
     #sec-site-contents .cx-contents-flex-wrap {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 12px !important;
-        padding: 0 20px;
+        gap: 0 !important;
+        width: calc(100% - 20px) !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
     }
 
     #sec-site-contents .cx-accordion-card {
         aspect-ratio: 1 / 1;
-        border-radius: 18px;
-        min-height: 132px;
+        border-radius: 0;
+        min-height: 160px;
     }
 
     #sec-site-contents .cx-accordion-card .absolute.top-6 {
-        top: 14px !important;
-        left: 14px !important;
+        top: 42px !important;
+        left: 12px !important;
+        right: 12px !important;
     }
 
     #sec-site-contents .cx-accordion-card .absolute.top-6 span {
@@ -778,9 +840,8 @@ input:focus, select:focus, textarea:focus {
     }
 
     #sec-site-contents .cx-accordion-card .absolute.bottom-8 {
-        left: 16px !important;
-        right: 16px !important;
-        bottom: 16px !important;
+        left: 12px !important;
+        right: 12px !important;
         width: auto !important;
         max-width: none !important;
     }
@@ -789,6 +850,7 @@ input:focus, select:focus, textarea:focus {
         font-size: 17px !important;
         line-height: 1.45 !important;
         letter-spacing: 0 !important;
+        text-align: center !important;
     }
 
     #sec-site-contents .cx-card-detail {
@@ -938,11 +1000,11 @@ input:focus, select:focus, textarea:focus {
 @media (max-width: 430px) {
     #sec-site-contents .cx-contents-flex-wrap {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 10px !important;
+        gap: 0 !important;
     }
 
     #sec-site-contents .cx-accordion-card {
-        min-height: 118px;
+        min-height: 150px;
     }
 
     #sec-site-contents .cx-accordion-card h3 {
@@ -1093,6 +1155,27 @@ input:focus, select:focus, textarea:focus {
     border-color: #CBD5E1 !important;
 }
 @media (max-width: 768px) {
+    #sec-diagnostic {
+        padding-bottom: 32px !important;
+    }
+    #diagnostic-container,
+    #diag-step-1,
+    #diag-step-2,
+    #diag-step-3,
+    #diag-step-4,
+    #diag-footer,
+    #diag-footer > .flex.items-start {
+        height: auto !important;
+        min-height: 0 !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #diag-step-1.hidden,
+    #diag-step-2.hidden,
+    #diag-step-3.hidden,
+    #diag-step-4.hidden {
+        display: none !important;
+    }
     #sec-diagnostic .diag-step-header {
         margin-bottom: 24px !important;
     }
@@ -1137,6 +1220,14 @@ input:focus, select:focus, textarea:focus {
         margin-top: 28px !important;
         padding-top: 20px !important;
         gap: 18px !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+    }
+    #sec-diagnostic #diag-footer > .flex.items-start {
+        width: min(480px, 100%) !important;
+        max-width: 100% !important;
+        flex: 0 1 auto !important;
+        flex-basis: auto !important;
     }
     #sec-diagnostic [id^="pbar-dot-"] {
         width: 18px !important;

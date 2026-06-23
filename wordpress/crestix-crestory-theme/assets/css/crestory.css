@@ -1,48 +1,43 @@
 :root {
-  --color-orange: #FF5C00;
-  --color-orange-dark: #E65200;
-  --color-navy: #0A1220;
-  --color-navy-mid: #1A2B4C;
-  --color-white: #FFFFFF;
-  --color-gray-100: #F7F8FA;
-  --color-gray-200: #E8EAED;
-  --color-gray-500: #6B7280;
-  --color-gray-800: #1F2937;
-  --color-text: #111827;
+  --color-orange: #ff5c00;
+  --color-orange-dark: #e65200;
+  --color-navy: #0a1e3c;
+  --color-ink: #101828;
+  --color-muted: #667085;
+  --color-line: #e5e7eb;
+  --color-soft: #f7f8fa;
+  --color-white: #ffffff;
   --font-poppins: "Poppins", sans-serif;
   --font-noto: "Noto Sans JP", sans-serif;
-  --radius-card: 16px;
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.15);
-  --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --radius: 14px;
+  --shadow-hover: 0 18px 44px rgba(16, 24, 40, 0.1);
+  --ease: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
-  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-noto);
-  color: var(--color-text);
+  margin: 0;
   background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-noto);
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  line-height: 1.8;
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 a {
@@ -50,26 +45,44 @@ a {
   text-decoration: none;
 }
 
+button {
+  font: inherit;
+}
+
 .crestory-container {
-  width: min(100% - 48px, 1200px);
+  width: min(100% - 48px, 1160px);
   margin-inline: auto;
+}
+
+.crestory-page,
+.crestory-single {
+  padding-top: 72px;
+}
+
+.crestory-kicker {
+  margin: 0 0 10px;
+  color: var(--color-orange);
+  font-family: var(--font-poppins);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
 }
 
 .crestory-site-header {
   position: fixed;
   inset: 0 0 auto;
   z-index: 1000;
-  background: rgba(10, 18, 32, 0.86);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--color-line);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .crestory-header-inner {
-  max-width: 1400px;
-  height: 68px;
+  width: min(100% - 32px, 1360px);
+  height: 72px;
   margin: 0 auto;
-  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -78,23 +91,23 @@ a {
 .crestory-site-logo {
   display: flex;
   flex-direction: column;
+  gap: 1px;
   line-height: 1;
-  gap: 2px;
-  color: #fff;
+  color: var(--color-ink);
 }
 
 .crestory-logo-main {
   font-family: var(--font-poppins);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 900;
   letter-spacing: -0.02em;
 }
 
 .crestory-logo-sub {
+  color: var(--color-orange);
   font-family: var(--font-poppins);
   font-size: 0.55rem;
-  font-weight: 700;
-  color: var(--color-orange);
+  font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -102,52 +115,49 @@ a {
 .crestory-site-nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.8rem;
   margin-left: auto;
 }
 
 .crestory-site-nav a {
+  color: var(--color-muted);
   font-family: var(--font-poppins);
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
   transition: color 0.2s;
 }
 
 .crestory-site-nav a:hover,
 .crestory-site-nav a.is-current {
-  color: #fff;
+  color: var(--color-orange);
 }
 
 .crestory-entry-link,
-.crestory-btn-primary,
 .crestory-entry-cta a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  min-height: 42px;
+  padding: 0 1.35rem;
+  border-radius: 999px;
   background: var(--color-orange);
   color: #fff;
   font-family: var(--font-poppins);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 900;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.8rem 1.55rem;
-  border-radius: 9999px;
-  box-shadow: 0 12px 32px rgba(255, 92, 0, 0.32);
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition: background 0.2s, transform 0.2s;
   white-space: nowrap;
 }
 
 .crestory-entry-link:hover,
-.crestory-btn-primary:hover,
 .crestory-entry-cta a:hover {
   background: var(--color-orange-dark);
   transform: translateY(-2px);
-  box-shadow: 0 18px 42px rgba(255, 92, 0, 0.42);
 }
 
 .crestory-hamburger,
@@ -155,188 +165,167 @@ a {
   display: none;
 }
 
-.crestory-page {
-  overflow: hidden;
-  padding-top: 68px;
+.crestory-profile-hero {
+  background: #fff;
+  border-bottom: 1px solid var(--color-line);
 }
 
-.crestory-hero {
-  position: relative;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: var(--color-navy);
+.crestory-profile-wrap {
+  min-height: 520px;
+  padding: clamp(4rem, 9vw, 7rem) 0 clamp(3.5rem, 7vw, 5rem);
+  display: grid;
+  grid-template-columns: 0.9fr 1.2fr;
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: end;
 }
 
-.crestory-hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    radial-gradient(circle at 78% 18%, rgba(255, 92, 0, 0.2), transparent 35%),
-    linear-gradient(135deg, #0A1220 0%, #1A2B4C 50%, #0A1220 100%);
-}
-
-.crestory-hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.crestory-hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 4rem 2rem;
-  max-width: 860px;
-}
-
-.crestory-kicker {
-  display: inline-block;
+.crestory-profile-mark {
+  color: var(--color-ink);
   font-family: var(--font-poppins);
-  font-size: 0.7rem;
+  font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 900;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--color-orange);
-}
-
-.crestory-hero h1 {
-  font-family: var(--font-poppins);
-  font-size: clamp(4rem, 12vw, 10rem);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: #fff;
+  letter-spacing: -0.06em;
   line-height: 0.9;
-  margin: 1.5rem 0 2rem;
+  overflow-wrap: anywhere;
 }
 
-.crestory-hero-copy {
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.86);
-  margin-bottom: 1rem;
+.crestory-profile-copy {
+  max-width: 660px;
+}
+
+.crestory-profile-copy h1 {
+  margin: 0 0 1.25rem;
+  color: var(--color-ink);
+  font-family: var(--font-poppins);
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.crestory-profile-lead {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.45vw, 1.12rem);
+  font-weight: 700;
+  line-height: 2;
+}
+
+.crestory-profile-tagline {
+  display: inline-flex;
+  margin: 1.6rem 0 0;
+  padding: 0.55rem 0;
+  border-bottom: 2px solid var(--color-orange);
+  color: var(--color-navy);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.crestory-link-section,
+.crestory-featured-section,
+.crestory-content,
+.crestory-magazine-section {
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+}
+
+.crestory-link-section {
+  background: var(--color-soft);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.crestory-link-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.crestory-link-card,
+.crestory-magazine-card,
+.crestory-card,
+.crestory-featured {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+
+.crestory-link-card {
+  position: relative;
+  min-height: 138px;
+  padding: 1.35rem 1.3rem;
+}
+
+.crestory-link-card span,
+.crestory-magazine-name {
+  display: block;
+  color: var(--color-ink);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.crestory-link-card p,
+.crestory-magazine-card p {
+  margin: 0.45rem 2rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.86rem;
+  font-weight: 700;
   line-height: 1.75;
 }
 
-.crestory-hero-sub {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.56);
-  margin-bottom: 2.5rem;
-  line-height: 1.8;
-}
-
-.crestory-hero-actions,
-.crestory-cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.crestory-btn-outline,
-.crestory-entry-cta a.is-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.72);
-  font-family: var(--font-poppins);
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 0.9rem 2rem;
-  border-radius: 9999px;
-  transition: all 0.2s ease;
-  background: transparent;
-}
-
-.crestory-btn-outline:hover,
-.crestory-entry-cta a.is-outline:hover {
-  border-color: #fff;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-.crestory-about {
-  background: var(--color-gray-100);
-  padding: 4rem 2rem;
-  border-bottom: 1px solid var(--color-gray-200);
-}
-
-.crestory-about p {
-  text-align: center;
-  font-size: 1rem;
-  color: var(--color-gray-500);
-  line-height: 2;
-  font-weight: 600;
-}
-
-.crestory-section-label {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.crestory-section-label span {
-  width: 3px;
-  height: 1.5rem;
-  background: var(--color-orange);
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-.crestory-section-label strong {
-  font-family: var(--font-poppins);
-  font-size: 0.75rem;
-  font-weight: 900;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
+.crestory-link-card i {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
   color: var(--color-orange);
 }
 
-.crestory-featured-section {
-  padding: 5rem 2rem;
-  background: #fff;
-}
-
-.crestory-featured {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--color-gray-200);
-  color: inherit;
-  transition: box-shadow var(--transition), transform var(--transition);
-}
-
+.crestory-link-card:hover,
+.crestory-magazine-card:hover,
+.crestory-card:hover,
 .crestory-featured:hover {
+  border-color: rgba(255, 92, 0, 0.34);
   box-shadow: var(--shadow-hover);
   transform: translateY(-4px);
 }
 
-.crestory-featured-image {
-  position: relative;
+.crestory-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.8rem;
+}
+
+.crestory-section-head h2 {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.crestory-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
   overflow: hidden;
-  height: 420px;
+}
+
+.crestory-featured-image,
+.crestory-card-image,
+.crestory-single-image {
+  background: linear-gradient(135deg, #0a1e3c, #1a2b4c);
+  color: rgba(255, 255, 255, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-navy-mid), var(--color-navy));
-  color: rgba(255, 255, 255, 0.32);
   font-family: var(--font-poppins);
   font-weight: 900;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
+}
+
+.crestory-featured-image {
+  min-height: 390px;
 }
 
 .crestory-featured-image img,
@@ -345,22 +334,16 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.55s ease;
 }
 
 .crestory-featured:hover .crestory-featured-image img,
 .crestory-card:hover .crestory-card-image img {
-  transform: scale(1.05);
-}
-
-.crestory-featured-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, transparent 60%, rgba(255, 255, 255, 0.05));
+  transform: scale(1.04);
 }
 
 .crestory-featured-body {
-  padding: 2.5rem 2.5rem 2.5rem 0;
+  padding: clamp(1.8rem, 4vw, 3rem);
 }
 
 .crestory-featured-meta,
@@ -369,56 +352,53 @@ a {
 .crestory-single-meta {
   display: flex;
   align-items: center;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
 .crestory-featured-meta {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
 }
 
 .crestory-card-category {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 0.7rem;
+  border: 1px solid rgba(255, 92, 0, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 92, 0, 0.08);
+  color: var(--color-orange);
   font-family: var(--font-poppins);
   font-size: 0.65rem;
   font-weight: 900;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-orange);
-  background: rgba(255, 92, 0, 0.08);
-  border: 1px solid rgba(255, 92, 0, 0.2);
-  padding: 3px 10px;
-  border-radius: 9999px;
 }
 
 .crestory-featured time,
 .crestory-card-meta,
 .crestory-single-meta {
+  color: var(--color-muted);
   font-family: var(--font-poppins);
   font-size: 0.78rem;
-  color: var(--color-gray-500);
 }
 
-.crestory-featured h2 {
-  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+.crestory-featured h3 {
+  margin: 0 0 1rem;
+  color: var(--color-ink);
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
   font-weight: 900;
-  color: var(--color-gray-800);
-  line-height: 1.4;
-  margin-bottom: 1rem;
+  line-height: 1.45;
   letter-spacing: -0.02em;
 }
 
 .crestory-featured p {
-  font-size: 0.9rem;
-  color: var(--color-gray-500);
-  line-height: 1.9;
-  margin-bottom: 1.5rem;
-}
-
-.crestory-featured-author {
-  font-size: 0.82rem;
-  color: var(--color-gray-500);
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.4rem;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.95;
 }
 
 .crestory-avatar {
@@ -427,435 +407,510 @@ a {
   border-radius: 50%;
 }
 
+.crestory-featured-author {
+  margin-bottom: 1.4rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
 .crestory-read-more {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-poppins);
-  font-size: 0.75rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  gap: 0.55rem;
   color: var(--color-orange);
-  border-bottom: 1.5px solid var(--color-orange);
-  padding-bottom: 2px;
-  transition: gap 0.2s;
-}
-
-.crestory-featured:hover .crestory-read-more {
-  gap: 0.75rem;
+  font-family: var(--font-poppins);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .crestory-content {
-  padding: 5rem 2rem;
-  background: var(--color-gray-100);
+  background: var(--color-soft);
+  border-block: 1px solid var(--color-line);
 }
 
 .crestory-tabs {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid var(--color-gray-200);
-  padding-bottom: 1rem;
+  display: inline-flex;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: #fff;
 }
 
-.crestory-tabs a,
-.crestory-tabs button {
-  font-family: var(--font-noto);
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: var(--color-gray-500);
-  background: none;
-  border: none;
-  padding: 0.5rem 1.25rem;
-  border-radius: 9999px;
+.crestory-tabs button,
+.crestory-tabs a {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted);
   cursor: pointer;
-  transition: all 0.2s;
+  font-size: 0.85rem;
+  font-weight: 900;
+  padding: 0.42rem 1rem;
+  transition: background 0.2s, color 0.2s;
 }
 
-.crestory-tabs a:hover,
+.crestory-tabs .is-active,
 .crestory-tabs button:hover,
-.crestory-tabs .is-active {
-  color: #fff;
+.crestory-tabs a:hover {
   background: var(--color-orange);
-}
-
-.crestory-section-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.crestory-section-head h2 {
-  font-size: 2.1rem;
-  line-height: 1;
+  color: #fff;
 }
 
 .crestory-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
+  gap: 1.35rem;
 }
 
 .crestory-card {
-  background: #fff;
-  border-radius: var(--radius-card);
   overflow: hidden;
-  border: 1px solid var(--color-gray-200);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-
-.crestory-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-  border-color: rgba(255, 92, 0, 0.25);
 }
 
 .crestory-card-link {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
 .crestory-card-image {
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--color-navy-mid), var(--color-navy));
-  color: rgba(255, 255, 255, 0.3);
-  font-family: var(--font-poppins);
-  font-weight: 900;
-  letter-spacing: 0.2em;
 }
 
 .crestory-card-body {
-  padding: 1.5rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.35rem;
 }
 
 .crestory-card h3 {
-  font-size: 1rem;
-  font-weight: 900;
-  color: var(--color-gray-800);
-  line-height: 1.5;
-  margin: 0.75rem 0;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  margin: 0.8rem 0 0.65rem;
   overflow: hidden;
+  color: var(--color-ink);
+  font-size: 1.02rem;
+  font-weight: 900;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .crestory-card p {
-  font-size: 0.82rem;
-  color: var(--color-gray-500);
-  line-height: 1.8;
-  margin-bottom: 1rem;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  margin: 0 0 1rem;
   overflow: hidden;
-}
-
-.crestory-card-meta {
-  justify-content: space-between;
-  padding-top: 0.75rem;
-  margin-top: 1rem;
-  border-top: 1px solid var(--color-gray-200);
+  color: var(--color-muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.85;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .crestory-card-tags,
 .crestory-article-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.38rem;
 }
 
 .crestory-card-tags span,
 .crestory-article-tags span {
-  font-size: 0.7rem;
-  color: var(--color-gray-500);
-  background: var(--color-gray-100);
-  padding: 2px 8px;
-  border-radius: 4px;
+  padding: 0.18rem 0.5rem;
+  border-radius: 7px;
+  background: var(--color-soft);
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.crestory-card-meta {
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.crestory-magazine-section {
+  background: #fff;
+}
+
+.crestory-magazine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.crestory-magazine-card {
+  padding: 1.35rem;
+}
+
+.crestory-magazine-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+  color: var(--color-orange);
+  font-family: var(--font-poppins);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .crestory-empty {
-  color: var(--color-gray-500);
+  color: var(--color-muted);
   font-weight: 800;
 }
 
 .crestory-single {
-  padding-top: 68px;
+  background: #fff;
 }
 
 .crestory-single-hero {
-  padding: 5rem 0 3rem;
-  text-align: center;
+  max-width: 900px;
+  padding-top: clamp(3.5rem, 8vw, 6rem);
+  padding-bottom: 2.5rem;
 }
 
 .crestory-breadcrumb {
   display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  color: var(--color-gray-500);
-  font-size: 0.78rem;
-  font-weight: 800;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin-bottom: 2rem;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
 }
 
 .crestory-single h1 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: 900;
-  color: var(--color-navy-mid);
-  line-height: 1.4;
-  letter-spacing: -0.02em;
   margin: 1rem 0;
+  color: var(--color-ink);
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
 }
 
 .crestory-single-lead {
-  font-size: 1rem;
-  line-height: 1.9;
-  color: var(--color-gray-500);
+  max-width: 780px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
   font-weight: 700;
-  max-width: 800px;
-  margin: 0 auto;
+  line-height: 2;
 }
 
 .crestory-single-meta {
-  justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .crestory-author-title {
-  background: var(--color-gray-100);
-  padding: 2px 10px;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 6px;
+  background: var(--color-soft);
 }
 
 .crestory-single-image {
-  margin-top: 3rem;
-  aspect-ratio: 16 / 8;
-  border-radius: 20px;
+  aspect-ratio: 16 / 8.6;
+  margin-top: 2.4rem;
   overflow: hidden;
-  background: var(--color-navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.32);
-  font-family: var(--font-poppins);
-  font-weight: 900;
-  letter-spacing: 0.2em;
+  border-radius: 18px;
+}
+
+.crestory-placeholder {
+  min-height: 320px;
 }
 
 .crestory-article-body {
-  max-width: 780px;
+  max-width: 800px;
   padding-bottom: 2rem;
-  font-size: 1rem;
-  line-height: 2;
-  color: var(--color-gray-800);
-}
-
-.crestory-article-body h2 {
-  font-size: clamp(1.3rem, 3vw, 1.75rem);
-  font-weight: 900;
-  color: var(--color-navy-mid);
-  margin: 3.5rem 0 1.25rem;
-  padding-left: 1rem;
-  border-left: 4px solid var(--color-orange);
-  line-height: 1.4;
-  letter-spacing: -0.02em;
-}
-
-.crestory-article-body h3 {
-  font-size: 1.15rem;
-  font-weight: 900;
-  margin: 2.5rem 0 1rem;
-  color: var(--color-gray-800);
+  color: #263241;
+  font-size: clamp(1rem, 1.45vw, 1.08rem);
+  line-height: 2.05;
 }
 
 .crestory-article-body p {
-  margin-bottom: 1.6rem;
+  margin: 0 0 1.7rem;
+}
+
+.crestory-article-body h2 {
+  margin: 3.4rem 0 1.25rem;
+  color: var(--color-ink);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 900;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.crestory-article-body h2::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: var(--color-orange);
+}
+
+.crestory-article-body h3 {
+  margin: 2.5rem 0 1rem;
+  color: var(--color-ink);
+  font-size: 1.18rem;
+  font-weight: 900;
+  line-height: 1.5;
 }
 
 .crestory-article-body blockquote {
-  margin: 2rem 0;
-  padding: 1.5rem 2rem;
-  background: var(--color-gray-100);
+  margin: 2.3rem 0;
+  padding: 1.5rem 1.8rem;
   border-left: 4px solid var(--color-orange);
   border-radius: 0 12px 12px 0;
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--color-navy-mid);
-  line-height: 1.8;
+  background: #fff7f2;
+  color: var(--color-navy);
+  font-size: 1.08rem;
+  font-weight: 900;
+  line-height: 1.9;
 }
 
 .crestory-article-body strong {
-  color: var(--color-navy-mid);
+  color: var(--color-navy);
   font-weight: 900;
 }
 
 .crestory-article-body img {
-  border-radius: 12px;
+  border-radius: 14px;
   margin: 2rem 0;
 }
 
 .crestory-article-body ul,
 .crestory-article-body ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.6rem;
+  margin: 0 0 1.7rem;
+  padding-left: 1.35rem;
 }
 
 .crestory-question {
-  font-size: 1rem !important;
-  line-height: 2 !important;
-  color: var(--color-navy-mid) !important;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  background: var(--color-soft);
+  color: var(--color-navy) !important;
   font-weight: 900 !important;
-  background: var(--color-gray-100);
-  border: 1px solid var(--color-gray-200);
-  border-radius: 14px;
-  padding: 1.25rem 1.5rem;
 }
 
 .crestory-article-tags {
-  max-width: 780px;
-  margin: 0 auto 3rem;
+  max-width: 800px;
+  margin: 0 auto 3.5rem;
 }
 
 .crestory-entry-cta {
-  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-mid) 100%);
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+  padding: clamp(2.4rem, 5vw, 4rem) 1.5rem;
   border-radius: 20px;
-  padding: 3rem 2.5rem;
-  margin-bottom: 4.5rem;
+  background: var(--color-navy);
   text-align: center;
 }
 
+.crestory-home-cta {
+  margin-top: 0;
+}
+
 .crestory-entry-cta h2 {
-  font-size: 1.4rem;
-  font-weight: 900;
+  max-width: 720px;
+  margin: 0 auto 0.75rem;
   color: #fff;
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.45rem, 3vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
 }
 
 .crestory-entry-cta p {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.56);
-  margin-bottom: 2rem;
+  margin: 0 0 1.8rem;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.96rem;
+  font-weight: 700;
 }
 
-.crestory-related {
-  padding-bottom: 6rem;
+.crestory-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
 }
 
-.crestory-related h2 {
-  font-size: 2rem;
-  margin-bottom: 1.75rem;
-}
-
-.crestory-tax-hero {
-  padding: 9rem 0 4rem;
-  background: var(--color-navy);
+.crestory-entry-cta a.is-outline {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: transparent;
   color: #fff;
 }
 
-.crestory-tax-hero h1 {
-  font-family: var(--font-poppins);
-  font-size: clamp(3rem, 8vw, 6rem);
-  line-height: 1;
-  margin-top: 1rem;
+.crestory-entry-cta a.is-outline:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.crestory-tax-hero .crestory-hero-copy {
-  max-width: 760px;
-  margin-top: 1.5rem;
+.crestory-related {
+  padding-bottom: 5.5rem;
+}
+
+.crestory-related h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 900;
+}
+
+.crestory-tax-hero {
+  padding: clamp(4rem, 8vw, 6.5rem) 0 3.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.crestory-tax-hero h1 {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.crestory-hero-copy {
+  max-width: 720px;
+  margin: 1.25rem 0 0;
+  color: var(--color-muted);
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+.crestory-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.crestory-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 1.35rem;
+  border-radius: 999px;
+  background: var(--color-orange);
+  color: #fff;
+  font-family: var(--font-poppins);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.crestory-btn-primary:hover {
+  background: var(--color-orange-dark);
+  transform: translateY(-2px);
 }
 
 .crestory-pagination {
   margin-top: 2.5rem;
-  color: var(--color-gray-500);
+  color: var(--color-muted);
+  font-weight: 800;
 }
 
 .crestory-site-footer {
-  background: var(--color-navy);
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 3rem 2rem;
+  padding: 3.2rem 0;
+  border-top: 1px solid var(--color-line);
+  background: #fff;
 }
 
 .crestory-footer-inner {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   gap: 1.5rem;
-  text-align: center;
 }
 
 .crestory-footer-brand strong {
   display: block;
+  color: var(--color-ink);
   font-family: var(--font-poppins);
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 900;
-  color: #fff;
   letter-spacing: -0.02em;
 }
 
-.crestory-footer-brand p {
+.crestory-footer-brand p,
+.crestory-footer-copy {
+  margin: 0;
+  color: var(--color-muted);
+  font-family: var(--font-poppins);
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.3);
-  letter-spacing: 0.2em;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .crestory-footer-nav {
   display: flex;
-  gap: 1.5rem;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 1.2rem;
 }
 
 .crestory-footer-nav a {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--color-muted);
+  font-size: 0.86rem;
+  font-weight: 800;
   transition: color 0.2s;
 }
 
 .crestory-footer-nav a:hover {
-  color: #fff;
-}
-
-.crestory-footer-copy {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.2);
-  letter-spacing: 0.2em;
-  font-family: var(--font-poppins);
+  color: var(--color-orange);
 }
 
 @media (max-width: 1024px) {
-  .crestory-featured,
-  .crestory-grid {
+  .crestory-profile-wrap {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .crestory-link-grid,
+  .crestory-magazine-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .crestory-featured {
     grid-template-columns: 1fr;
-    gap: 0;
   }
 
-  .crestory-featured-body {
-    padding: 2rem;
+  .crestory-featured-image {
+    min-height: 300px;
+  }
+
+  .crestory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .crestory-container {
-    width: min(100% - 40px, 1200px);
+    width: min(100% - 40px, 1160px);
+  }
+
+  .crestory-page,
+  .crestory-single {
+    padding-top: 66px;
   }
 
   .crestory-header-inner {
+    width: min(100% - 28px, 1360px);
     height: 66px;
-    padding: 0 1.25rem;
   }
 
   .crestory-site-nav,
@@ -867,20 +922,20 @@ a {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
     margin-left: auto;
     padding: 8px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
   }
 
   .crestory-hamburger span {
     display: block;
     width: 22px;
     height: 2px;
-    background: #fff;
     border-radius: 2px;
-    transition: all 0.3s ease;
+    background: var(--color-ink);
+    transition: transform 0.25s, opacity 0.25s;
   }
 
   .crestory-hamburger.open span:nth-child(1) {
@@ -898,9 +953,9 @@ a {
   .crestory-drawer {
     display: none;
     flex-direction: column;
-    background: var(--color-navy);
-    padding: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 1.25rem 1.25rem;
+    border-top: 1px solid var(--color-line);
+    background: #fff;
   }
 
   .crestory-drawer.open {
@@ -908,68 +963,98 @@ a {
   }
 
   .crestory-drawer a {
-    padding: 1rem 0;
-    color: rgba(255, 255, 255, 0.75);
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-ink);
     font-family: var(--font-poppins);
     font-size: 0.9rem;
     font-weight: 800;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
   .drawer-entry {
-    margin-top: 1rem;
     color: var(--color-orange) !important;
-    border-bottom: none !important;
   }
 
-  .crestory-page,
-  .crestory-single {
-    padding-top: 66px;
+  .crestory-profile-wrap {
+    min-height: auto;
+    padding: 3.6rem 0 3rem;
+    gap: 1.8rem;
   }
 
-  .crestory-hero {
-    min-height: 76vh;
+  .crestory-profile-mark {
+    font-size: clamp(3.3rem, 18vw, 5rem);
   }
 
-  .crestory-hero h1 {
-    font-size: clamp(3.2rem, 18vw, 5rem);
+  .crestory-profile-lead br {
+    display: none;
   }
 
-  .crestory-about,
+  .crestory-link-section,
   .crestory-featured-section,
-  .crestory-content {
-    padding: 3.5rem 1.25rem;
+  .crestory-content,
+  .crestory-magazine-section {
+    padding: 3.2rem 0;
   }
 
-  .crestory-featured-image {
-    height: 240px;
-  }
-
-  .crestory-featured-body {
-    padding: 1.5rem;
-  }
-
+  .crestory-link-grid,
+  .crestory-magazine-grid,
   .crestory-grid {
     grid-template-columns: 1fr;
+  }
+
+  .crestory-link-card {
+    min-height: 116px;
   }
 
   .crestory-section-head {
     align-items: flex-start;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
+  }
+
+  .crestory-tabs {
+    width: 100%;
+  }
+
+  .crestory-tabs button,
+  .crestory-tabs a {
+    flex: 1;
+  }
+
+  .crestory-featured-image {
+    min-height: 230px;
+  }
+
+  .crestory-featured-body,
+  .crestory-card-body {
+    padding: 1.25rem;
+  }
+
+  .crestory-single-hero {
+    padding-top: 3rem;
   }
 
   .crestory-single-image {
     aspect-ratio: 16 / 11;
+    border-radius: 14px;
+  }
+
+  .crestory-article-body {
+    line-height: 1.95;
   }
 
   .crestory-entry-cta {
-    padding: 2rem 1.5rem;
+    border-radius: 16px;
   }
 
   .crestory-cta-buttons a {
     width: 100%;
+  }
+
+  .crestory-footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
