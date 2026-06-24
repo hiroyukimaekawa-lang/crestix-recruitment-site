@@ -1374,10 +1374,12 @@ button {
 
 .note-card-reactions {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   font-size: 0.68rem;
   color: var(--note-muted);
   margin-top: 4px;
+  line-height: 1.5;
 }
 
 .note-card-reactions span {
@@ -1438,6 +1440,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px 20px;
+  align-items: start;
 }
 
 .note-archive-head {
@@ -1489,7 +1492,7 @@ button {
 /* ── 記事カード ── */
 .note-card {
   border-radius: var(--note-radius);
-  overflow: hidden;
+  overflow: visible;
   transition: box-shadow 0.22s;
 }
 
@@ -1508,8 +1511,12 @@ button {
 .note-card-link {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   text-decoration: none;
+  overflow: visible;
+  border-radius: var(--note-radius);
+  background: #fff;
 }
 
 /* Type A – テキストカード */
@@ -1520,7 +1527,10 @@ button {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
+  border-radius: var(--note-radius);
+  overflow: visible;
 }
 
 .note-card-cat-text {
@@ -1565,6 +1575,8 @@ button {
   flex-direction: column;
   gap: 8px;
   flex: 1;
+  min-height: 0;
+  overflow: visible;
 }
 
 .note-card--image .note-card-title {
@@ -1578,6 +1590,8 @@ button {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  min-height: max-content;
+  padding-bottom: 3px;
 }
 
 .note-card-footer .note-meta-author {
