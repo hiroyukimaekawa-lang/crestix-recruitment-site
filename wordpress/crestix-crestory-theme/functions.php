@@ -321,6 +321,15 @@ ARTICLE;
 }
 add_action("after_switch_theme", "crestix_crestory_seed_content");
 
+function crestix_track_post_views($post_id) {
+  if (!$post_id) return;
+  $count = (int) get_post_meta($post_id, "post_views_count", true);
+  update_post_meta($post_id, "post_views_count", $count + 1);
+}
+add_action("wp", function () {
+  if (is_singular("crestory")) crestix_track_post_views(get_the_ID());
+});
+
 function crestix_crestory_maybe_finalize_home() {
   if (!current_user_can("manage_options")) return;
   crestix_crestory_seed_matsuoka_interview();

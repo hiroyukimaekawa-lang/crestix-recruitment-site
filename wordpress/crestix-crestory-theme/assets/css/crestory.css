@@ -965,6 +965,715 @@ button {
   color: var(--color-orange);
 }
 
+/* ================================================================
+   NOTE.COM スタイル フロントページレイアウト
+   ================================================================ */
+:root {
+  --note-bg-card:   #f5f5f5;
+  --note-border:    #e0e0e0;
+  --note-text:      #1a1a1a;
+  --note-muted:     #888888;
+  --note-link:      #1a7adb;
+  --note-like:      #e0245e;
+  --note-sidebar-w: 280px;
+  --note-gap:       24px;
+  --note-radius:    4px;
+}
+
+/* ── 2カラムラッパー ── */
+.note-wrapper {
+  width: min(100% - 48px, 1200px);
+  margin-inline: auto;
+  display: flex;
+  gap: var(--note-gap);
+  align-items: flex-start;
+  padding: 32px 0 56px;
+}
+
+.note-sidebar {
+  width: var(--note-sidebar-w);
+  flex-shrink: 0;
+  position: sticky;
+  top: 82px;
+}
+
+.note-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── サイドバー：プロフィールブロック ── */
+.note-profile-block { padding: 0; }
+
+.note-profile-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.note-profile-logo-text {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  background: var(--color-navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-poppins);
+  font-size: 1.45rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.note-profile-logo-text + .note-profile-name { flex: 1; }
+
+.note-profile-name strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--note-text);
+  line-height: 1.3;
+}
+
+.note-profile-name span {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--note-muted);
+  margin-top: 2px;
+}
+
+.note-profile-desc {
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 10px;
+}
+
+.note-profile-url {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--note-text);
+  text-decoration: underline;
+  margin-bottom: 14px;
+  word-break: break-all;
+}
+
+.note-profile-url:hover { color: var(--color-orange); }
+
+.note-sns-links {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.note-sns-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #666;
+  font-size: 1rem;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.note-sns-icon:hover { color: #000; }
+
+.note-profile-divider {
+  border: none;
+  border-top: 1px solid var(--note-border);
+  margin: 10px 0 18px;
+}
+
+.note-sidebar-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.note-sidebar-post { display: block; text-decoration: none; }
+
+.note-sidebar-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--note-radius);
+  background: var(--note-bg-card);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-sidebar-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.note-sidebar-post:hover .note-sidebar-thumb img { transform: scale(1.04); }
+
+.note-thumb-placeholder {
+  font-family: var(--font-poppins);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  color: var(--note-muted);
+}
+
+.note-sidebar-post-title {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--note-text);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.note-sidebar-post:hover .note-sidebar-post-title { text-decoration: underline; }
+
+/* ── ヒーローセクション ── */
+.note-hero { margin-bottom: 32px; }
+
+.note-hero-label {
+  margin: 0 0 10px;
+  font-size: 0.76rem;
+  color: var(--note-muted);
+}
+
+.note-hero-grid {
+  display: grid;
+  grid-template-columns: 44fr 37fr 19fr;
+  gap: 8px;
+}
+
+.note-hero-card {
+  position: relative;
+  border-radius: var(--note-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  min-height: 270px;
+  transition: opacity 0.2s;
+}
+
+.note-hero-card:hover { opacity: 0.9; }
+
+/* Card 1 – テキストのみ */
+.note-hero-card--text {
+  background: #f0f0f0;
+  padding: 20px;
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.note-hero-card--text .note-card-cat {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--note-link);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.note-hero-title {
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  color: var(--note-text);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.note-hero-logo-watermark {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  font-family: var(--font-poppins);
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: rgba(0, 0, 0, 0.15);
+  text-transform: uppercase;
+}
+
+.note-hero-card-bottom {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* Card 2 – 画像全面 */
+.note-hero-card--image { background: #222; }
+
+.note-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.note-hero-card--image:hover .note-hero-img { transform: scale(1.04); }
+
+.note-hero-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-poppins);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #0a1e3c, #1a2b4c);
+}
+
+.note-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 16px 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+  z-index: 1;
+}
+
+.note-hero-card--image .note-hero-title {
+  font-size: 0.95rem;
+  color: #fff;
+  -webkit-line-clamp: 3;
+  margin-bottom: 8px;
+}
+
+/* Card 3 – 小テキスト */
+.note-hero-card--small {
+  background: #fafafa;
+  border: 1px solid var(--note-border);
+  padding: 14px;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.note-card-cat--top {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--note-link);
+  background: rgba(255,255,255,0.88);
+  padding: 2px 6px;
+  border-radius: 3px;
+  line-height: 1.4;
+}
+
+.note-play-icon {
+  font-size: 0.68rem;
+  color: var(--note-muted);
+}
+
+.note-hero-title--sm {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--note-text);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  flex: 1;
+}
+
+/* ── ヒーロー共通メタ ── */
+.note-card-cat {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--note-link);
+}
+
+.note-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.note-card-meta--light .note-meta-author,
+.note-card-meta--light .note-meta-date {
+  color: rgba(255,255,255,0.85);
+}
+
+.note-meta-author {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: var(--note-muted);
+}
+
+.note-meta-date {
+  font-size: 0.66rem;
+  color: var(--note-muted);
+  white-space: nowrap;
+}
+
+.note-avatar-xs {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.note-avatar-sm {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.note-meta-from {
+  color: var(--note-muted);
+  font-size: 0.62rem;
+}
+
+.note-card-reactions {
+  display: flex;
+  gap: 10px;
+  font-size: 0.68rem;
+  color: var(--note-muted);
+  margin-top: 4px;
+}
+
+.note-card-reactions span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.note-card-reactions span:hover i.fa-heart {
+  color: var(--note-like);
+}
+
+/* ── 記事タブ ── */
+.note-tabs-row {
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  padding: 3px;
+  border: 1px solid var(--note-border);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.note-tabs-row a {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #666;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+}
+
+.note-tabs-row a.is-active {
+  background: var(--note-text);
+  color: #fff;
+}
+
+.note-tabs-row a:hover:not(.is-active) {
+  background: #f0f0f0;
+  color: var(--note-text);
+}
+
+/* ── ソースラベル ── */
+.note-source-label {
+  margin: 0 0 18px;
+  font-size: 0.74rem;
+  color: var(--note-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── 記事グリッド ── */
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 20px;
+}
+
+.note-archive-head {
+  margin: 0 0 22px;
+}
+
+.note-archive-head h1 {
+  margin: 0;
+  color: var(--note-text);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.note-archive-head p:not(.note-source-label) {
+  max-width: 720px;
+  margin: 10px 0 0;
+  color: #555;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.note-category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 22px;
+}
+
+.note-category-tabs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #f5f5f5;
+  color: #666;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.note-category-tabs a:hover,
+.note-category-tabs a.is-active {
+  background: var(--note-text);
+  color: #fff;
+}
+
+/* ── 記事カード ── */
+.note-card {
+  border-radius: var(--note-radius);
+  overflow: hidden;
+  transition: box-shadow 0.22s;
+}
+
+.note-card-source {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 0 6px;
+  color: var(--note-muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.note-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
+
+.note-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+}
+
+/* Type A – テキストカード */
+.note-card--text .note-card-body--text {
+  background: var(--note-bg-card);
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+
+.note-card-cat-text {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--note-link);
+}
+
+.note-card-title {
+  margin: 0;
+  color: var(--note-text);
+  font-weight: 700;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.note-card--text .note-card-title { font-size: 1rem; }
+
+/* Type B – 画像カード */
+.note-card-thumb {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--note-radius) var(--note-radius) 0 0;
+  background: var(--note-bg-card);
+}
+
+.note-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.note-card--image:hover .note-card-thumb img { transform: scale(1.04); }
+
+.note-card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.note-card--image .note-card-title { font-size: 0.9rem; }
+
+/* カードフッター */
+.note-card-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.note-card-footer .note-meta-author {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.note-card-footer .note-meta-author span:first-of-type {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #333;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.note-card-site-logo {
+  font-family: var(--font-poppins);
+  font-size: 0.52rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── ページネーション ── */
+.note-pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.note-pagination .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: var(--note-radius);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--note-text);
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+  border: 1px solid var(--note-border);
+}
+
+.note-pagination .page-numbers:hover,
+.note-pagination .page-numbers.current {
+  background: var(--note-text);
+  color: #fff;
+  border-color: var(--note-text);
+}
+
+.note-pagination .page-numbers.dots {
+  pointer-events: none;
+  border-color: transparent;
+}
+
+/* ── レスポンシブ ── */
+@media (max-width: 1024px) {
+  .note-hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .note-hero-card--small { display: none; }
+
+  .note-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .note-wrapper {
+    flex-direction: column;
+    gap: 0;
+    padding: 24px 0 40px;
+  }
+
+  .note-sidebar {
+    width: 100%;
+    position: static;
+    border-bottom: 1px solid var(--note-border);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+
+  .note-sidebar-posts { display: none; }
+
+  .note-profile-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    align-items: flex-start;
+  }
+
+  .note-profile-head { flex: 0 0 auto; }
+  .note-profile-desc,
+  .note-profile-url  { flex: 0 0 100%; margin-bottom: 0; }
+  .note-profile-divider { display: none; }
+}
+
+@media (max-width: 767px) {
+  .note-wrapper { width: min(100% - 32px, 1200px); }
+
+  .note-hero-grid { grid-template-columns: 1fr; }
+  .note-hero-card--image,
+  .note-hero-card--small { display: none; }
+  .note-hero-card--text { min-height: 200px; }
+
+  .note-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 1024px) {
   .crestory-profile-wrap {
     grid-template-columns: 1fr;
