@@ -981,13 +981,22 @@ button {
 }
 
 /* ── 2カラムラッパー ── */
+.note-layout {
+  min-height: calc(100vh - 72px);
+  overflow: visible;
+}
+
 .note-wrapper {
-  width: min(100% - 48px, 1200px);
+  width: min(100% - 48px, 1240px);
   margin-inline: auto;
   display: flex;
   gap: var(--note-gap);
   align-items: flex-start;
-  padding: 32px 0 56px;
+  padding: 28px 0 64px;
+  height: auto !important;
+  min-height: calc(100vh - 72px);
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 .note-sidebar {
@@ -1000,6 +1009,10 @@ button {
 .note-main {
   flex: 1;
   min-width: 0;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
 }
 
 /* ── サイドバー：プロフィールブロック ── */
@@ -1045,7 +1058,7 @@ button {
 }
 
 .note-profile-desc {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: #555;
   line-height: 1.7;
   margin: 0 0 10px;
@@ -1161,16 +1174,21 @@ button {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  min-height: 270px;
-  transition: opacity 0.2s;
+  min-height: 292px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  transition: opacity 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
-.note-hero-card:hover { opacity: 0.9; }
+.note-hero-card:hover {
+  opacity: 0.95;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
 
 /* Card 1 – テキストのみ */
 .note-hero-card--text {
-  background: #f0f0f0;
-  padding: 20px;
+  background: #f3f3f3;
+  padding: 24px;
   justify-content: flex-start;
   gap: 0;
 }
@@ -1184,8 +1202,8 @@ button {
 }
 
 .note-hero-title {
-  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
-  font-weight: 700;
+  font-size: clamp(1.18rem, 2.05vw, 1.65rem);
+  font-weight: 800;
   color: var(--note-text);
   line-height: 1.5;
   margin: 0;
@@ -1252,7 +1270,8 @@ button {
 }
 
 .note-hero-card--image .note-hero-title {
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 800;
   color: #fff;
   -webkit-line-clamp: 3;
   margin-bottom: 8px;
@@ -1262,7 +1281,7 @@ button {
 .note-hero-card--small {
   background: #fafafa;
   border: 1px solid var(--note-border);
-  padding: 14px;
+  padding: 16px;
   gap: 8px;
   justify-content: flex-start;
 }
@@ -1286,8 +1305,8 @@ button {
 }
 
 .note-hero-title--sm {
-  font-size: 0.84rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 800;
   color: var(--note-text);
   line-height: 1.55;
   display: -webkit-box;
@@ -1496,7 +1515,7 @@ button {
 /* Type A – テキストカード */
 .note-card--text .note-card-body--text {
   background: var(--note-bg-card);
-  padding: 16px;
+  padding: 18px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1541,14 +1560,17 @@ button {
 .note-card--image:hover .note-card-thumb img { transform: scale(1.04); }
 
 .note-card-body {
-  padding: 12px;
+  padding: 14px 12px 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   flex: 1;
 }
 
-.note-card--image .note-card-title { font-size: 0.9rem; }
+.note-card--image .note-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
 
 /* カードフッター */
 .note-card-footer {
@@ -1638,6 +1660,7 @@ button {
     flex-direction: column;
     gap: 0;
     padding: 24px 0 40px;
+    min-height: 0;
   }
 
   .note-sidebar {

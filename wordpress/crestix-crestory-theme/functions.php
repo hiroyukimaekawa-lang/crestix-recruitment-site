@@ -220,6 +220,80 @@ ARTICLE;
   }
 }
 
+function crestix_crestory_seed_note_style_articles() {
+  crestix_register_crestory();
+
+  $seed_posts = [
+    [
+      "slug" => "culture-speed",
+      "title" => "意思決定の速さが、挑戦の速度をつくる。Crestixのカルチャー",
+      "excerpt" => "Crestixで大切にしているのは、誰が言ったかではなく何を言ったか。挑戦を前に進める組織文化の裏側を紹介します。",
+      "content" => "<p>Crestixでは、役職や年次に関係なく、事業を前に進める提案が歓迎されます。</p><p>意思決定の速さは、単なるスピード感ではありません。顧客や仲間に向き合い、必要な変化を恐れずに実行するための文化です。</p><blockquote><p><strong>挑戦の数だけ、会社の可能性は広がっていく。</strong></p></blockquote><p>まだ完成された会社ではないからこそ、一人ひとりの意思決定が組織の未来を形づくっています。</p>",
+      "categories" => ["カルチャー"],
+      "tags" => ["Crestix", "カルチャー", "採用"],
+      "author" => "Crestix編集部",
+      "author_title" => "採用広報",
+      "image" => "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1600&auto=format&fit=crop",
+    ],
+    [
+      "slug" => "business-growth-story",
+      "title" => "事業成長の最前線で、社会課題に向き合うということ",
+      "excerpt" => "医療、店舗、AI・営業支援。Crestixが複数事業を通じて目指す、社会を前進させる事業づくりについて。",
+      "content" => "<p>Crestixの事業は、現場にある課題から始まります。</p><p>クリニックや店舗、営業組織が抱える課題に向き合い、マーケティング、テクノロジー、AIを組み合わせながら成長を支援しています。</p><p>大切なのは、単なるサービス提供ではなく、顧客の未来に伴走することです。</p>",
+      "categories" => ["事業"],
+      "tags" => ["Crestix", "挑戦", "事業"],
+      "author" => "Crestix編集部",
+      "author_title" => "編集部",
+      "image" => "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600&auto=format&fit=crop",
+    ],
+    [
+      "slug" => "recruit-selection-guide",
+      "title" => "Crestixの選考で大切にしていること",
+      "excerpt" => "スキルや経験だけではなく、挑戦する姿勢や成長への向き合い方を大切にしています。",
+      "content" => "<p>Crestixの選考では、これまでの経験だけでなく、これから何に挑戦したいのかを大切にしています。</p><p>整った環境を待つのではなく、自分から機会をつくる人。そんな仲間と一緒に会社をつくっていきたいと考えています。</p>",
+      "categories" => ["採用情報"],
+      "tags" => ["採用", "Crestix"],
+      "author" => "Crestix編集部",
+      "author_title" => "採用広報",
+      "image" => "",
+    ],
+  ];
+
+  foreach ($seed_posts as $seed) {
+    foreach ($seed["categories"] as $name) {
+      if (!term_exists($name, "crestory_category")) wp_insert_term($name, "crestory_category");
+    }
+    foreach ($seed["tags"] as $name) {
+      if (!term_exists($name, "crestory_tag")) wp_insert_term($name, "crestory_tag");
+    }
+
+    $existing = get_page_by_path($seed["slug"], OBJECT, "crestory");
+    if ($existing) {
+      $post_id = $existing->ID;
+    } else {
+      $post_id = wp_insert_post([
+        "post_type" => "crestory",
+        "post_status" => "publish",
+        "post_title" => $seed["title"],
+        "post_name" => $seed["slug"],
+        "post_excerpt" => $seed["excerpt"],
+        "post_content" => $seed["content"],
+      ]);
+    }
+
+    if (!is_wp_error($post_id) && $post_id) {
+      wp_set_object_terms($post_id, $seed["categories"], "crestory_category");
+      wp_set_object_terms($post_id, $seed["tags"], "crestory_tag");
+      update_post_meta($post_id, "crestory_author_name", $seed["author"]);
+      update_post_meta($post_id, "crestory_author_title", $seed["author_title"]);
+      update_post_meta($post_id, "crestory_lead", $seed["excerpt"]);
+      if ($seed["image"]) update_post_meta($post_id, "crestory_ogp_image", $seed["image"]);
+      update_post_meta($post_id, "like_count", (int) (get_post_meta($post_id, "like_count", true) ?: 0));
+      update_post_meta($post_id, "bookmark_count", (int) (get_post_meta($post_id, "bookmark_count", true) ?: 0));
+    }
+  }
+}
+
 function crestix_crestory_seed_content() {
   crestix_register_crestory();
 
@@ -316,6 +390,7 @@ ARTICLE;
   }
 
   crestix_crestory_seed_matsuoka_interview();
+  crestix_crestory_seed_note_style_articles();
 
   flush_rewrite_rules();
 }
@@ -333,6 +408,7 @@ add_action("wp", function () {
 function crestix_crestory_maybe_finalize_home() {
   if (!current_user_can("manage_options")) return;
   crestix_crestory_seed_matsuoka_interview();
+  crestix_crestory_seed_note_style_articles();
   if (get_option("crestix_crestory_home_finalized") === "1") return;
 
   $front_page = get_page_by_path("crestory-top", OBJECT, "page");
