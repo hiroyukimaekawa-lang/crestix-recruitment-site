@@ -107,14 +107,10 @@ main p.tracking-tighter {
         max-width: 1400px !important;
     }
 
-    .service-page-frame {
-        width: 1400px !important;
-        max-width: 1400px !important;
-    }
-
+    .service-page-frame,
     .page-grid[style*="max-width:1200px"] {
-        width: 1200px !important;
-        max-width: 1200px !important;
+        width: calc(100% - 80px) !important;
+        max-width: none !important;
     }
 
     .page-grid > .sidebar + .main-content .content-section {

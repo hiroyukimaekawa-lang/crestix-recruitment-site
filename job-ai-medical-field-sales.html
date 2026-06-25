@@ -42,6 +42,11 @@
         .job-summary-value { font-weight:900; color:#111827; line-height:1.6; }
         .job-apply { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; min-height:64px; border-radius:999px; background:linear-gradient(135deg,var(--orange),#E65200); color:#fff; text-decoration:none; font-family:'Poppins',sans-serif; font-size:14px; font-weight:900; letter-spacing:.18em; text-transform:uppercase; box-shadow:0 18px 44px rgba(255,92,0,.32); transition:transform .2s, box-shadow .2s; }
         .job-apply:hover { transform:translateY(-2px); box-shadow:0 24px 54px rgba(255,92,0,.42); }
+
+        .job-floating-apply { position:fixed; right:clamp(18px,3vw,42px); bottom:clamp(18px,3vw,38px); z-index:140; display:inline-flex; align-items:center; justify-content:center; gap:12px; min-width:230px; min-height:74px; padding:0 36px; border-radius:999px; background:linear-gradient(135deg,var(--orange),#E65200); color:#fff; text-decoration:none; font-family:'Poppins','Noto Sans JP',sans-serif; font-size:16px; font-weight:900; letter-spacing:.16em; text-transform:uppercase; box-shadow:0 24px 60px rgba(255,92,0,.42); border:1px solid rgba(255,255,255,.28); transition:transform .2s ease, box-shadow .2s ease, filter .2s ease; }
+        .job-floating-apply:hover { transform:translateY(-4px) scale(1.03); box-shadow:0 30px 72px rgba(255,92,0,.5); filter:saturate(1.05); }
+        .job-floating-apply i { font-size:14px; }
+        @media(max-width:640px){ body{padding-bottom:92px;} .job-floating-apply{left:16px; right:16px; bottom:14px; min-width:0; min-height:64px; padding:0 22px; font-size:14px; letter-spacing:.12em;} }
         .job-back { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:48px; border-radius:999px; border:1px solid var(--line); color:#111827; text-decoration:none; font-size:12px; font-weight:900; background:#fff; }
         .job-note { color:#9ca3af; font-size:12px; line-height:1.8; font-weight:700; margin-top:14px; }
         @media(max-width:960px){ .job-layout{grid-template-columns:1fr; padding-top:48px;} .job-side{position:static; order:-1;} .job-hero-inner,.job-layout,.job-related{width:min(calc(100% - 28px), 1180px);} .job-section{padding:24px;} .job-hero{padding-top:120px;} }
@@ -107,6 +112,78 @@
                 <a href="b2b-contact.html" class="fm-nav-item fm-item-6" onclick="cxToggleMenu()">Contact</a>
             </div>
         </nav>
+        <div class="fm-footer">
+            <a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">Entry / Careers</a>
+            <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
+        </div>
+    </div>
+    <!-- ═══ NAVIGATION ═══ -->
+<nav id="cx-navbar" aria-label="グローバルナビゲーション">
+
+  <!-- LEFT: Logo -->
+  <div class="cx-nav-left">
+    <a href="index.html" class="cx-nav-logo-link">
+      <img id="cx-nav-logo"
+           src="assets/images/office/crestix-header.png"
+           alt="Crestix"
+           onerror="this.style.display='none'">
+    </a>
+  </div>
+
+  <!-- CENTER: Nav links -->
+  <div class="cx-nav-center" id="cx-nav-links">
+
+        <div class="cx-mega-trigger" data-mega="mega-corporate">
+      <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+      <div class="cx-mega-menu" id="mega-corporate">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">CORPORATE</h3>
+            <p class="cx-mega-subtitle">会社を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="cx-mega-trigger" data-mega="mega-service">
+      <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+      <div class="cx-mega-menu" id="mega-service">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">SERVICE</h3>
+            <p class="cx-mega-subtitle">事業を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="business.html" class="cx-mega-item"><span>事業一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="service-division1.html" class="cx-mega-item"><span>第1営業部</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="service-hd.html" class="cx-mega-item"><span>HD事業部</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="ai-sales.html" class="cx-mega-item"><span>AI・Sales Enablement（営業代行 / 営業支援事業）</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+    <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
+
+  </div>
+
+  <!-- RIGHT: CTA + Hamburger -->
+  <div class="cx-nav-right">
+    <a href="jobs.html" class="cx-nav-entry-btn">Entry</a>
+    <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+      <span class="cx-ham-lines" id="cx-ham-lines">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+  </div>
+
+</nav>
 <main>
     <section class="job-hero">
         <div class="job-hero-inner">
@@ -170,6 +247,8 @@
         </div>
     </section>
 </main>
+<a class="job-floating-apply" href="entry.html?role=%E5%8C%BB%E7%99%82%E5%90%91%E3%81%91%20%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%EF%BC%88FS%EF%BC%89" aria-label="この職種に応募する">応募する <i class="fa-solid fa-arrow-right"></i></a>
+
 <!-- ═══ FOOTER ═══ -->
 <footer class="bg-black text-white select-none p-0">
     <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">

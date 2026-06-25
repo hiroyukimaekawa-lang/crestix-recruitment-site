@@ -12,14 +12,23 @@
 
 /* ── Navbar Shell ─────────────────────────────────────── */
 #cx-navbar {
-  --cx-nav-logo-height: 40px;
+  /*
+    Header logo size controls
+    ここだけ変更すれば、ヘッダーロゴの高さを調整できます。
+    - PC: 1024px以上
+    - SP: 768px以下
+    例: PCを大きくするなら --cx-nav-logo-height-pc: 52px;
+  */
+  --cx-nav-logo-height-pc: 100px;
+  --cx-nav-logo-height-mobile: 100px;
+  --cx-nav-logo-height: var(--cx-nav-logo-height-mobile);
   --cx-mega-offset: 8px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 500;
-  height: 64px;                         /* ← 全ページ共通の高さ基準 */
+  height: 90px;                         /* ← 全ページ共通の高さ基準 */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -474,7 +483,7 @@
 /* ── PC header sizing ─────────────────────────────────── */
 @media (min-width: 1024px) {
   #cx-navbar {
-    --cx-nav-logo-height: 42px;
+    --cx-nav-logo-height: var(--cx-nav-logo-height-pc);
     --cx-mega-offset: 10px;
     height: 86px;
     min-height: 86px;
@@ -554,7 +563,7 @@
 
 @media (max-width: 768px) {
   #cx-navbar {
-    --cx-nav-logo-height: 40px;
+    --cx-nav-logo-height: var(--cx-nav-logo-height-mobile);
     height: 64px;
     padding: 0 1rem;
   }
