@@ -64,10 +64,8 @@
     return `
       <a class="crestory-thumb-card" href="${link}" target="_blank" rel="noopener noreferrer">
         <div class="crestory-thumb-wrap">
-          <img src="${image}" alt="${title}" loading="lazy">
-          <span class="crestory-thumb-label">Crestory</span>
+          <img src="${image}" alt="${title}" loading="lazy" width="480" height="270">
         </div>
-        <p class="crestory-thumb-title">${title}</p>
       </a>
     `;
   }

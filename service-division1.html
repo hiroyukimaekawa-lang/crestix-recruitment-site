@@ -54,10 +54,20 @@
                 url('assets/images/office/crestix.png');
             background-size: cover;
             background-position: center;
-            min-height: 520px;
+            min-height: 56vh;
+            height: auto;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+        }
+
+        @media(max-width: 640px) {
+            .div-hero {
+                min-height: 320px;
+            }
         }
 
         /* ── REVEAL ── */
@@ -588,19 +598,27 @@
             gap: 24px;
         }
 
-        @media(min-width: 640px) {
+        @media(min-width: 768px) {
             .members-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
+        @media(min-width: 1024px) {
+            .members-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         .member-card {
             border: 1px solid var(--gray-line);
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
             display: block;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border-color 0.2s;
         }
 
@@ -611,14 +629,17 @@
         }
 
         .member-img {
-            height: 240px;
+            aspect-ratio: 4 / 3;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            position: relative;
         }
 
         .member-body {
-            padding: 1.5rem 1.75rem;
+            padding: 16px 20px 20px;
             border-top: 1px solid var(--gray-line);
         }
 
@@ -642,7 +663,13 @@
         .member-quote {
             font-size: 13px;
             color: var(--text-sub);
-            line-height: 1.9;
+            line-height: 1.7;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* ── ANCHOR HIGHLIGHT ── */
@@ -956,8 +983,8 @@
             <div class="fm-nav-group">
                 <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
                 <div class="fm-nav-sub">
-                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
                     <a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a>
+                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
                     <a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a>
                 </div>
             </div>
@@ -966,9 +993,9 @@
                 <a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a>
                 <div class="fm-nav-sub">
                     <a href="business.html" onclick="cxToggleMenu()">事業一覧</a>
-                    <a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a>
                     <a href="service-division1.html" onclick="cxToggleMenu()">第1営業部（クリニック特化）</a>
-                    <a href="ai-sales.html" onclick="cxToggleMenu()">AI・Sales Enablement</a>
+                    <a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a>
+                    <a href="ai-sales.html" onclick="cxToggleMenu()">AI Sales Enablement</a>
                 </div>
             </div>
 
@@ -1025,8 +1052,8 @@
             <p class="cx-mega-subtitle">会社を知る</p>
           </div>
           <div class="cx-mega-grid">
-            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
             <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
             <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
           </div>
         </div>
@@ -1041,11 +1068,28 @@
             <h3 class="cx-mega-title">SERVICE</h3>
             <p class="cx-mega-subtitle">事業を知る</p>
           </div>
-          <div class="cx-mega-grid">
-            <a href="business.html" class="cx-mega-item"><span>事業一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="service-division1.html" class="cx-mega-item"><span>第1営業部</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="service-hd.html" class="cx-mega-item"><span>HD事業部</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="ai-sales.html" class="cx-mega-item"><span>AI・Sales Enablement（営業代行 / 営業支援事業）</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          <div class="mega-service">
+            <div class="mega-service__overview">
+              <a href="business.html" class="mega-service__overview-link">
+                事業一覧
+                <span class="mega-service__arrow">→</span>
+              </a>
+              <div class="mega-service__divider"></div>
+            </div>
+            <div class="mega-service__list">
+              <a href="service-division1.html" class="mega-service__item">
+                <span class="mega-service__item-label">第1営業部</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+              <a href="service-hd.html" class="mega-service__item">
+                <span class="mega-service__item-label">HD事業部</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+              <a href="ai-sales.html" class="mega-service__item">
+                <span class="mega-service__item-label">AI Sales Enablement（営業代行 / 営業支援事業）</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1136,18 +1180,18 @@
                 <div class="divide-y divide-gray-100">
 
                     <!-- ① 牛くんずAI -->
-                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-1">
-                        <div class="w-full md:w-72 lg:w-80 xl:w-96 flex-shrink-0">
+                    <div class="service-detail-section reveal reveal-delay-1">
+                        <div class="service-detail-section__image">
                             <div class="w-full aspect-[4/3] rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden flex items-center justify-center">
                                 <img src="assets/images/division1/service-cow.png"
                                     alt="牛くんずAI"
                                     class="w-full h-full object-cover opacity-80">
                             </div>
                         </div>
-                        <div class="flex-1 min-w-0 py-1">
+                        <div class="service-detail-section__text">
                             <span class="inline-block text-[10px] font-black tracking-widest uppercase text-orange-500 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full mb-4">AI Agent</span>
-                            <h3 class="text-2xl lg:text-3xl font-black text-gray-900 mb-4 tracking-tight">牛くんずAI</h3>
-                            <p class="text-base text-gray-500 leading-loose font-bold">
+                            <h3 class="service-detail-section__title text-2xl lg:text-3xl font-black text-gray-900 mb-4 tracking-tight">牛くんずAI</h3>
+                            <p class="service-detail-section__desc text-base text-gray-500 leading-loose font-bold">
                                 牛くんずAIは、クリニックの集患・集客向上を支援するAIエージェントです。<br><br>
                                 各クリニックの目標に対して、現状分析から戦略設計、施策の実装、運用後の改善提案まで一気通貫でサポートします。<br><br>
                                 Web上の医院情報の整理、口コミ改善、ホームページ導線の見直し、問い合わせ・予約につながる仕組みづくりを通じて、地域の患者様に選ばれるクリニックづくりを支援します。
@@ -1156,18 +1200,18 @@
                     </div>
 
                     <!-- ② Chatbot AI -->
-                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-2">
-                        <div class="w-full md:w-72 lg:w-80 xl:w-96 flex-shrink-0">
+                    <div class="service-detail-section reveal reveal-delay-2">
+                        <div class="service-detail-section__image">
                             <div class="w-full aspect-[4/3] rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden flex items-center justify-center">
                                 <img src="assets/images/division1/service-cow.png"
                                     alt="Chatbot AI"
                                     class="w-full h-full object-contain opacity-80">
                             </div>
                         </div>
-                        <div class="flex-1 min-w-0 py-1">
+                        <div class="service-detail-section__text">
                             <span class="inline-block text-[10px] font-black tracking-widest uppercase text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-4">AI Chatbot</span>
-                            <h3 class="text-2xl lg:text-3xl font-black text-gray-900 mb-4 tracking-tight">Chatbot AI</h3>
-                            <p class="text-base text-gray-500 leading-loose font-bold">
+                            <h3 class="service-detail-section__title text-2xl lg:text-3xl font-black text-gray-900 mb-4 tracking-tight">Chatbot AI</h3>
+                            <p class="service-detail-section__desc text-base text-gray-500 leading-loose font-bold">
                                 Chatbot AIは、クリニックの問い合わせ対応と来院導線の改善を支援するAIチャットボットサービスです。<br><br>
                                 診療時間、アクセス、予約方法、診療内容、よくある質問などを自動で案内し、患者様が迷わず必要な情報にたどり着ける状態を構築します。<br><br>
                                 現状分析から会話設計、実装、運用後の改善提案まで一気通貫でサポートし、集患向上と業務効率化を支援します。
@@ -1460,7 +1504,9 @@
     <!-- ══ FOOTER ══ -->
     <footer class="bg-black text-white select-none p-0">
     <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
-        <a href="index.html" class="inline-block font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline">Crestix</a>
+        <a href="index.html" class="footer-logo" aria-label="CRESTIX トップへ">
+            <img src="assets/images/office/crestix-header.png" alt="CRESTIX" width="160" loading="lazy">
+        </a>
         <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
             <a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
             <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>

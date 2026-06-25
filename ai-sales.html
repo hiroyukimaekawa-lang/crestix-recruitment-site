@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI・Sales Enablement | Crestix</title>
+    <title>AI Sales Enablement | Crestix</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -49,10 +49,20 @@
                 url('assets/images/office/crestix.png');
             background-size: cover;
             background-position: center;
-            min-height: 520px;
+            min-height: 56vh;
+            height: auto;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+        }
+
+        @media(max-width: 640px) {
+            .div-hero {
+                min-height: 320px;
+            }
         }
 
         /* ── REVEAL ── */
@@ -573,10 +583,16 @@
         .members-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 24px;
         }
 
-        @media(min-width: 640px) {
+        @media(min-width: 768px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(min-width: 1024px) {
             .members-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -584,11 +600,13 @@
 
         .member-card {
             border: 1px solid var(--gray-line);
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
             display: block;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border-color 0.2s;
         }
 
@@ -599,14 +617,17 @@
         }
 
         .member-img {
-            height: 200px;
+            aspect-ratio: 4 / 3;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            position: relative;
         }
 
         .member-body {
-            padding: 1.25rem 1.5rem;
+            padding: 16px 20px 20px;
             border-top: 1px solid var(--gray-line);
         }
 
@@ -628,9 +649,15 @@
         }
 
         .member-quote {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-sub);
-            line-height: 1.75;
+            line-height: 1.7;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* ── ANCHOR HIGHLIGHT ── */
@@ -944,8 +971,8 @@
             <div class="fm-nav-group">
                 <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
                 <div class="fm-nav-sub">
-                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
                     <a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a>
+                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
                     <a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a>
                 </div>
             </div>
@@ -954,9 +981,9 @@
                 <a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a>
                 <div class="fm-nav-sub">
                     <a href="business.html" onclick="cxToggleMenu()">事業一覧</a>
-                    <a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a>
                     <a href="service-division1.html" onclick="cxToggleMenu()">第1営業部（クリニック特化）</a>
-                    <a href="ai-sales.html" onclick="cxToggleMenu()">AI・Sales Enablement</a>
+                    <a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a>
+                    <a href="ai-sales.html" onclick="cxToggleMenu()">AI Sales Enablement</a>
                 </div>
             </div>
 
@@ -1013,8 +1040,8 @@
             <p class="cx-mega-subtitle">会社を知る</p>
           </div>
           <div class="cx-mega-grid">
-            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
             <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
             <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
           </div>
         </div>
@@ -1029,11 +1056,28 @@
             <h3 class="cx-mega-title">SERVICE</h3>
             <p class="cx-mega-subtitle">事業を知る</p>
           </div>
-          <div class="cx-mega-grid">
-            <a href="business.html" class="cx-mega-item"><span>事業一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="service-division1.html" class="cx-mega-item"><span>第1営業部</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="service-hd.html" class="cx-mega-item"><span>HD事業部</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="ai-sales.html" class="cx-mega-item"><span>AI・Sales Enablement（営業代行 / 営業支援事業）</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          <div class="mega-service">
+            <div class="mega-service__overview">
+              <a href="business.html" class="mega-service__overview-link">
+                事業一覧
+                <span class="mega-service__arrow">→</span>
+              </a>
+              <div class="mega-service__divider"></div>
+            </div>
+            <div class="mega-service__list">
+              <a href="service-division1.html" class="mega-service__item">
+                <span class="mega-service__item-label">第1営業部</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+              <a href="service-hd.html" class="mega-service__item">
+                <span class="mega-service__item-label">HD事業部</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+              <a href="ai-sales.html" class="mega-service__item">
+                <span class="mega-service__item-label">AI Sales Enablement（営業代行 / 営業支援事業）</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1061,11 +1105,11 @@
         <div style="max-width:1200px; margin:0 auto; padding: 0 2rem 3rem; width:100%;">
             <p
                 style="color:rgba(255,255,255,0.6); font-size:11px; font-family:'Poppins',sans-serif; font-weight:800; letter-spacing:0.35em; text-transform:uppercase; margin-bottom:1rem;">
-                Service / <span style="color:var(--orange);">AI・Sales Enablement</span>
+                Service / <span style="color:var(--orange);">AI Sales Enablement</span>
             </p>
             <h1
                 style="font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(2.5rem,6vw,5rem); letter-spacing:-0.04em; line-height:1; color:#fff; margin-bottom:1rem;">
-                AI・Sales Enablement
+                AI Sales Enablement
             </h1>
             <p style="color:rgba(255,255,255,0.75); font-size:1.05rem; font-weight:700;">営業代行 / 営業支援事業</p>
         </div>
@@ -1078,7 +1122,7 @@
         <!-- LEFT SIDEBAR -->
         <aside class="sidebar">
             <div class="sidebar-inner">
-                <p class="sidebar-title">AI・Sales Enablement</p>
+                <p class="sidebar-title">AI Sales Enablement</p>
                 <a href="#about" class="toc-link active">事業について</a>
                 <a href="#service" class="toc-link">提供サービス</a>
                 <a href="#jobs" class="toc-link">募集職種</a>
@@ -1102,7 +1146,7 @@
                     営業活動プロセスの標準化、業務改善、AI活用を推進し、各事業の成果創出を支える横断的な仕組みと支援を提供します。
                 </p>
                 <p class="about-body reveal reveal-delay-2">
-                    Crestixは、営業代行・AI活用・Sales Enablementを組み合わせ、企業の売上成長を支援しています。<br><br>
+                    Crestixは、営業代行・AI活用・AI Sales Enablementを組み合わせ、企業の売上成長を支援しています。<br><br>
                     私たちが担うのは、ただ営業活動を代行することではありません。<br><br>
                     戦略設計から実行、改善、仕組み化までを行い、クライアントの事業成長に必要な営業体制をつくります。<br><br>
                     AIが作業を支え、人は判断と提案に集中する。<br><br>
@@ -1112,33 +1156,33 @@
 
             <!-- DIVISION IMAGE -->
             <div class="reveal">
-                <img src="assets/images/aisales/ai:sales-enablement.selesflow.png" alt="AI・Sales Enablement サービスフロー" class="w-full object-cover">
+                <img src="assets/images/aisales/ai:sales-enablement.selesflow.png" alt="AI Sales Enablement サービスフロー" class="w-full object-cover">
             </div>
 
             <!-- ② SERVICE -->
             <section id="service" class="content-section">
                 <div class="section-header reveal">
                     <p class="sec-label">Service</p>
-                    <h2 class="section-title">AI・Sales Enablementのここが面白い</h2>
-                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px; font-weight:700;">営業代行・AI活用・Sales Enablementの3つの柱で成果をつくる</p>
+                    <h2 class="section-title">AI Sales Enablementのここが面白い</h2>
+                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px; font-weight:700;">営業代行・AI活用・AI Sales Enablementの3つの柱で成果をつくる</p>
                 </div>
 
                 <!-- 縦積みサービスリスト -->
                 <div class="divide-y divide-gray-100">
 
                     <!-- ① 牛くんずAI -->
-                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-1">
-                        <div class="w-full md:w-56 lg:w-64 flex-shrink-0">
+                    <div class="service-detail-section reveal reveal-delay-1">
+                        <div class="service-detail-section__image">
                             <div class="w-full aspect-[4/3] rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden flex items-center justify-center">
                                 <img src="assets/images/aisales/service1.png"
                                     alt="牛くんずAI"
                                     class="w-full h-full object-cover opacity-80">
                             </div>
                         </div>
-                        <div class="flex-1 min-w-0 py-1">
-                            <span class=”inline-block text-[10px] font-black tracking-widest uppercase text-orange-500 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full mb-4”>営業代行</span>
-                            <h3 class=”text-xl font-black text-gray-900 mb-4 tracking-tight”>営業を”やる”だけでなく、成果が出る仕組みをつくれる</h3>
-                            <p class=”text-sm text-gray-500 leading-loose font-bold”>
+                        <div class="service-detail-section__text">
+                            <span class="inline-block text-[10px] font-black tracking-widest uppercase text-orange-500 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full mb-4">営業代行</span>
+                            <h3 class="service-detail-section__title text-xl font-black text-gray-900 mb-4 tracking-tight">営業を"やる"だけでなく、成果が出る仕組みをつくれる</h3>
+                            <p class="service-detail-section__desc text-sm text-gray-500 leading-loose font-bold">
                                 Crestixの営業代行事業では、ただ決められたリストに架電したり、商談を行ったりするだけではありません。<br><br>
                                 ターゲット選定、営業リスト設計、トークスクリプト改善、商談化率・受注率の分析まで、営業成果を生み出すための仕組みづくりに関わることができます。<br><br>
                                 自分の行動が数値に表れ、その数値をもとに改善し、成果が上がっていく。そのプロセスを現場で体感できることが、この事業の大きな面白さです。
@@ -1147,18 +1191,18 @@
                     </div>
 
                     <!-- ② Chatbot AI -->
-                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 py-12 reveal reveal-delay-2">
-                        <div class="w-full md:w-56 lg:w-64 flex-shrink-0">
+                    <div class="service-detail-section reveal reveal-delay-2">
+                        <div class="service-detail-section__image">
                             <div class="w-full aspect-[4/3] rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden flex items-center justify-center">
                                 <img src="assets/images/aisales/service2.png"
                                     alt="Chatbot AI"
                                     class="w-full h-full object-contain opacity-80">
                             </div>
                         </div>
-                        <div class="flex-1 min-w-0 py-1">
+                        <div class="service-detail-section__text">
                             <span class="inline-block text-[10px] font-black tracking-widest uppercase text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-4">AI活用</span>
-                            <h3 class="text-xl font-black text-gray-900 mb-4 tracking-tight">AIを活用しながら、これからの営業スタイルをつくれる</h3>
-                            <p class="text-sm text-gray-500 leading-loose font-bold">
+                            <h3 class="service-detail-section__title text-xl font-black text-gray-900 mb-4 tracking-tight">AIを活用しながら、これからの営業スタイルをつくれる</h3>
+                            <p class="service-detail-section__desc text-sm text-gray-500 leading-loose font-bold">
                                 Crestixでは、営業活動にAIを積極的に取り入れています。営業リストの整理、メール文面の作成、トークスクリプトの改善、商談内容の分析、CRM入力の効率化など、AIを活用して営業の生産性を高めています。<br><br>
                                 人がすべての作業を抱えるのではなく、AIに任せられる業務は任せ、人は顧客理解や提案、判断に集中する。これからの時代に求められる営業のあり方を、実際の現場でつくっていけることが魅力です。
                             </p>
@@ -1338,7 +1382,7 @@
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">AI・Sales Enablement / 医療向け インサイドセールス（IS）<br><br>医療業界のDX・業務効率化をリードし、顧客の売上最大化のファーストコンタクトを担う重要ポジションです。</p>
+                                    <p class="acc-detail-text">AI Sales Enablement / 医療向け インサイドセールス（IS）<br><br>医療業界のDX・業務効率化をリードし、顧客の売上最大化のファーストコンタクトを担う重要ポジションです。</p>
                                 </div>
                             </div>
                             <a href="job-ai-medical-inside-sales.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
@@ -1369,7 +1413,7 @@
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">AI・Sales Enablement / 医療向け フィールドセールス（FS）<br><br>単なる物売りではなく、クリニックのパートナーとして医療DXを推進し、集患力アップにコミットします。</p>
+                                    <p class="acc-detail-text">AI Sales Enablement / 医療向け フィールドセールス（FS）<br><br>単なる物売りではなく、クリニックのパートナーとして医療DXを推進し、集患力アップにコミットします。</p>
                                 </div>
                             </div>
                             <a href="job-ai-medical-field-sales.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
@@ -1436,7 +1480,7 @@
     <!-- ══ CTA ══ -->
     <section class="cta-section">
         <div style="max-width:640px; margin:0 auto;">
-            <p class="sec-label reveal" style="color:rgba(255,92,0,0.8); margin-bottom:1rem;">AI・Sales Enablement — Recruitment
+            <p class="sec-label reveal" style="color:rgba(255,92,0,0.8); margin-bottom:1rem;">AI Sales Enablement — Recruitment
             </p>
             <h2 class="cta-title reveal reveal-delay-1">営業の力で、<br>事業を前進させよう。</h2>
             <p class="cta-sub reveal reveal-delay-2">営業を仕組みで強くする環境で、AI時代の営業プロフェッショナルとして成長できます。</p>
@@ -1460,7 +1504,9 @@
     <!-- ══ FOOTER ══ -->
     <footer class="bg-black text-white select-none p-0">
     <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
-        <a href="index.html" class="inline-block font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline">Crestix</a>
+        <a href="index.html" class="footer-logo" aria-label="CRESTIX トップへ">
+            <img src="assets/images/office/crestix-header.png" alt="CRESTIX" width="160" loading="lazy">
+        </a>
         <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
             <a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
             <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>

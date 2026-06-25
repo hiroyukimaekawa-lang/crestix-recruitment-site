@@ -4,5 +4,16 @@
         url('../../images/office/crestix.png');
     background-size: cover;
     background-position: center;
-    min-height: 480px;
+    min-height: 56vh;
+    height: auto;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    .corp-hero {
+        min-height: 320px;
+    }
 }

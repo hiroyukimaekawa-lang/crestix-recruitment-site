@@ -710,8 +710,8 @@ function buildResultHTML(category, role, stage) {
       <!-- Title + description -->
       <div>
         <h3 class="diag-result-title" style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.02em;line-height:1.3;margin-bottom:1rem;">
-          あなたに合うポジションは<br>
-          <span class="diag-result-position" style="color:#FF5C00;">${role.title}</span> です。
+          <span class="diag-result-prefix">あなたに合うポジションは</span>
+          <span class="diag-result-position diag-result-value" style="color:#FF5C00;">${role.title}です。</span>
         </h3>
         <p class="diag-result-lead" style="font-family:'Noto Sans JP',sans-serif;font-size:0.95rem;color:#555;line-height:1.9;font-weight:500;border-left:3px solid #FF5C00;padding-left:1.25rem;max-width:640px;">
           ${stage.title}として、${role.description}ポジションです。
@@ -719,7 +719,7 @@ function buildResultHTML(category, role, stage) {
       </div>
 
       <!-- ★ Division card ★ -->
-      <div style="
+      <div class="diag-result-division-card" style="
         background:${bg};
         border:1.5px solid ${color}30;
         border-radius:16px;
@@ -730,12 +730,13 @@ function buildResultHTML(category, role, stage) {
         flex-wrap:wrap;
         gap:1rem;
       ">
-        <div style="min-width:0;">
-          <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.35em;text-transform:uppercase;color:${color};margin-bottom:3px;">${divName}</p>
-          <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;color:#333;">${divSub}</p>
-          <p style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:#888;margin-top:3px;letter-spacing:0.1em;">${divisionLabel}</p>
+        <div class="diag-result-division-text" style="min-width:0;">
+          <p class="diag-result-division-name" style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.35em;text-transform:uppercase;color:${color};margin-bottom:3px;">${divName}</p>
+          <p class="diag-result-division-sub" style="font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;color:#333;">${divSub}</p>
+          <p class="diag-result-division-label" style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:#888;margin-top:3px;letter-spacing:0.1em;">${divisionLabel}</p>
         </div>
         <a href="${serviceURL}"
+           class="diag-result-division-link"
            style="
              display:inline-flex;align-items:center;gap:8px;
              background:${color};color:#fff;

@@ -398,28 +398,53 @@
 
         /* Slide counter dots (Mercari style) */
         .slide-dot {
-            width: 32px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 2px;
+            width: 96px;
+            height: 22px;
+            background: transparent;
+            border-radius: 9999px;
             cursor: pointer;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .slide-dot::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 4px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.34);
+            transform: translateY(-50%);
+            transition: background 0.25s ease, height 0.25s ease;
+        }
+
+        .slide-dot:hover::before {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.55);
         }
 
         .slide-dot.active {
-            width: 64px;
-            background: rgba(255, 255, 255, 0.5);
+            width: 112px;
+            background: transparent;
         }
 
         .slide-dot-fill {
             position: absolute;
-            inset: 0;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 4px;
             background: #FF5C00;
             transform: scaleX(0);
+            translate: 0 -50%;
             transform-origin: left;
-            border-radius: 2px;
+            border-radius: 9999px;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .slide-dot.active .slide-dot-fill {
@@ -1436,6 +1461,32 @@
             padding-left:1.45rem !important;
             border-left-width:4px !important;
         }
+        #sec-diagnostic #diag-step-4 .diag-result-division-card {
+            padding:2.05rem 2.25rem !important;
+            border-radius:22px !important;
+            gap:1.5rem !important;
+        }
+        #sec-diagnostic #diag-step-4 .diag-result-division-name {
+            font-size:clamp(.82rem,1vw,1rem) !important;
+            line-height:1.5 !important;
+            margin-bottom:8px !important;
+        }
+        #sec-diagnostic #diag-step-4 .diag-result-division-sub {
+            font-size:clamp(1.25rem,1.7vw,1.62rem) !important;
+            line-height:1.55 !important;
+            font-weight:900 !important;
+        }
+        #sec-diagnostic #diag-step-4 .diag-result-division-label {
+            font-size:clamp(.9rem,1.05vw,1.05rem) !important;
+            line-height:1.6 !important;
+            margin-top:7px !important;
+        }
+        #sec-diagnostic #diag-step-4 .diag-result-division-link {
+            min-height:56px !important;
+            padding:1rem 2.5rem !important;
+            font-size:.85rem !important;
+            letter-spacing:.2em !important;
+        }
         @media (min-width:1921px) {
             #sec-diagnostic {
                 background-size: 1920px auto;
@@ -1496,6 +1547,28 @@
                 line-height:1.9 !important;
                 padding-left:1rem !important;
             }
+            #sec-diagnostic #diag-step-4 .diag-result-division-card {
+                padding:1.35rem 1.45rem !important;
+                border-radius:18px !important;
+                gap:1rem !important;
+            }
+            #sec-diagnostic #diag-step-4 .diag-result-division-name {
+                font-size:.72rem !important;
+                margin-bottom:5px !important;
+            }
+            #sec-diagnostic #diag-step-4 .diag-result-division-sub {
+                font-size:1.08rem !important;
+                line-height:1.55 !important;
+            }
+            #sec-diagnostic #diag-step-4 .diag-result-division-label {
+                font-size:.86rem !important;
+                margin-top:5px !important;
+            }
+            #sec-diagnostic #diag-step-4 .diag-result-division-link {
+                min-height:50px !important;
+                font-size:.76rem !important;
+                padding:.85rem 1.5rem !important;
+            }
         }
 
     </style>
@@ -1524,8 +1597,8 @@
             <div class="fm-nav-group">
                 <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
                 <div class="fm-nav-sub">
-                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
                     <a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a>
+                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
                     <a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a>
                 </div>
             </div>
