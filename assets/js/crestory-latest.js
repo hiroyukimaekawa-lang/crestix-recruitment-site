@@ -1,0 +1,106 @@
+(function () {
+  const API_URL = 'https://crestory.crestix.jp/wp-json/wp/v2/crestory?_embed=1&per_page=6&orderby=date&order=desc';
+  const FALLBACK_ITEMS = [
+    {
+      title: '大きすぎる旗を、本気で掲げる。',
+      link: 'https://crestory.crestix.jp/',
+      thumbnail: 'https://assets.st-note.com/production/uploads/images/287837610/rectangle_large_type_2_7550fd6fcc3b69c8b1fd7ed5244f5799.png?width=800'
+    },
+    {
+      title: '売上を作る最前線へ。',
+      link: 'https://crestory.crestix.jp/matsuoka-interview/',
+      thumbnail: 'assets/images/office/crestix1.png'
+    },
+    {
+      title: 'Crestixで働く人のリアル',
+      link: 'https://crestory.crestix.jp/',
+      thumbnail: 'assets/images/office/crestix.png'
+    }
+  ];
+
+  function escapeHtml(text) {
+    return String(text || '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }[char]));
+  }
+
+  function stripHtml(text) {
+    const div = document.createElement('div');
+    div.innerHTML = text || '';
+    return div.textContent || div.innerText || '';
+  }
+
+  function getFeaturedImage(post) {
+    const media = post?._embedded?.['wp:featuredmedia']?.[0];
+    return media?.media_details?.sizes?.large?.source_url
+      || media?.media_details?.sizes?.medium_large?.source_url
+      || media?.source_url
+      || post?.meta?.crestory_ogp_image
+      || '';
+  }
+
+  function hasYoutubeCategory(post) {
+    const terms = (post._embedded?.['wp:term'] || []).flat();
+    return terms.some((t) => t.slug === 'youtube');
+  }
+
+  function normalizePost(post) {
+    return {
+      title: stripHtml(post?.title?.rendered || 'CRESTORY'),
+      link: post?.link || 'https://crestory.crestix.jp/',
+      thumbnail: getFeaturedImage(post) || ''
+    };
+  }
+
+  function buildCard(item) {
+    const title = escapeHtml(item.title);
+    const image = escapeHtml(item.thumbnail);
+    const link = escapeHtml(item.link);
+
+    return `
+      <a class="crestory-thumb-card" href="${link}" target="_blank" rel="noopener noreferrer">
+        <div class="crestory-thumb-wrap">
+          <img src="${image}" alt="${title}" loading="lazy">
+          <span class="crestory-thumb-label">Crestory</span>
+        </div>
+        <p class="crestory-thumb-title">${title}</p>
+      </a>
+    `;
+  }
+
+  function render(items) {
+    const grid = document.querySelector('[data-crestory-latest-thumbs]');
+    if (!grid) return;
+    grid.innerHTML = items.slice(0, 3).map(buildCard).join('');
+  }
+
+  async function init() {
+    const grid = document.querySelector('[data-crestory-latest-thumbs]');
+    if (!grid) return;
+
+    try {
+      const res = await fetch(API_URL, { headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error('Failed to load CRESTORY posts');
+      const posts = await res.json();
+
+      const filtered = posts
+        .filter((p) => !hasYoutubeCategory(p))
+        .map(normalizePost)
+        .filter((item) => item.thumbnail);
+
+      render(filtered.length ? filtered : FALLBACK_ITEMS);
+    } catch (error) {
+      render(FALLBACK_ITEMS);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+}());

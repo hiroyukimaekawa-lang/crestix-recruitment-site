@@ -396,6 +396,16 @@ ARTICLE;
 }
 add_action("after_switch_theme", "crestix_crestory_seed_content");
 
+function crestix_crestory_register_rest_meta() {
+  register_post_meta("crestory", "crestory_ogp_image", [
+    "show_in_rest" => true,
+    "single"       => true,
+    "type"         => "string",
+    "auth_callback" => "__return_true",
+  ]);
+}
+add_action("init", "crestix_crestory_register_rest_meta");
+
 function crestix_track_post_views($post_id) {
   if (!$post_id) return;
   $count = (int) get_post_meta($post_id, "post_views_count", true);
@@ -435,3 +445,32 @@ function crestix_crestory_maybe_finalize_home() {
   update_option("crestix_crestory_home_finalized", "1");
 }
 add_action("admin_init", "crestix_crestory_maybe_finalize_home");
+
+// ==========================================
+// YouTube ヘルパー
+// ==========================================
+
+function crestory_create_youtube_category() {
+  if (!term_exists('YouTube', 'crestory_category')) {
+    wp_insert_term('YouTube', 'crestory_category', ['slug' => 'youtube']);
+  }
+}
+add_action('init', 'crestory_create_youtube_category');
+
+function crestory_get_youtube_id($url) {
+  if (empty($url)) return false;
+  if (preg_match('/youtu\.be\/([a-zA-Z0-9_-]+)/', $url, $m))   return $m[1];
+  if (preg_match('/[?&]v=([a-zA-Z0-9_-]+)/', $url, $m))        return $m[1];
+  if (preg_match('/\/embed\/([a-zA-Z0-9_-]+)/', $url, $m))     return $m[1];
+  return false;
+}
+
+function crestory_get_youtube_thumbnail($url) {
+  $id = crestory_get_youtube_id($url);
+  return $id ? 'https://img.youtube.com/vi/' . $id . '/mqdefault.jpg' : '';
+}
+
+function crestory_get_youtube_embed($url) {
+  $id = crestory_get_youtube_id($url);
+  return $id ? 'https://www.youtube.com/embed/' . $id : '';
+}

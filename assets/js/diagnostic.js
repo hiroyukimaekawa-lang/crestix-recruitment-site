@@ -285,6 +285,11 @@ function renderStepNew(stepNum) {
    PROGRESS BAR UPDATING
    ───────────────────────────────────────────── */
 function updateProgressBarNew(step) {
+  const footer = document.getElementById('diag-footer');
+  if (footer) {
+    footer.classList.toggle('diag-footer--result', step === 4);
+  }
+
   const progressLine = document.getElementById('diag-progress-line');
   if (progressLine) {
     if (step === 1) progressLine.style.width = '0%';
@@ -689,7 +694,7 @@ function buildResultHTML(category, role, stage) {
   ].join('');
 
   return `
-    <div style="display:flex;flex-direction:column;gap:2rem;animation:diagFadeUp 0.5s ease both;">
+    <div class="diag-result-shell" style="display:flex;flex-direction:column;gap:2rem;animation:diagFadeUp 0.5s ease both;">
       <style>
         @keyframes diagFadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
       </style>
@@ -704,11 +709,11 @@ function buildResultHTML(category, role, stage) {
 
       <!-- Title + description -->
       <div>
-        <h3 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.02em;line-height:1.3;margin-bottom:1rem;">
+        <h3 class="diag-result-title" style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#1A2B4C;letter-spacing:-0.02em;line-height:1.3;margin-bottom:1rem;">
           あなたに合うポジションは<br>
-          <span style="color:#FF5C00;">${role.title}</span> です。
+          <span class="diag-result-position" style="color:#FF5C00;">${role.title}</span> です。
         </h3>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:0.95rem;color:#555;line-height:1.9;font-weight:500;border-left:3px solid #FF5C00;padding-left:1.25rem;max-width:640px;">
+        <p class="diag-result-lead" style="font-family:'Noto Sans JP',sans-serif;font-size:0.95rem;color:#555;line-height:1.9;font-weight:500;border-left:3px solid #FF5C00;padding-left:1.25rem;max-width:640px;">
           ${stage.title}として、${role.description}ポジションです。
         </p>
       </div>

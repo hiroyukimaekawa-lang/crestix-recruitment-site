@@ -29,6 +29,19 @@ $eyecatch = crestix_crestory_meta("crestory_ogp_image");
       <?php if ($lead): ?><p class="crestory-single-lead"><?php echo esc_html($lead); ?></p><?php endif; ?>
     </header>
 
+    <?php
+    $yt_url   = crestix_crestory_meta('crestory_youtube_url');
+    $yt_embed = $yt_url ? crestory_get_youtube_embed($yt_url) : '';
+    if ($yt_embed): ?>
+      <div class="entry-youtube-embed crestory-container">
+        <iframe src="<?php echo esc_url($yt_embed); ?>?rel=0"
+                title="<?php echo esc_attr(get_the_title()); ?>"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </div>
+    <?php endif; ?>
+
     <div class="crestory-article-body crestory-container"><?php the_content(); ?></div>
     <?php $tags = crestix_crestory_tag_terms(); if ($tags): ?>
       <div class="crestory-article-tags crestory-container">

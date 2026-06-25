@@ -7,28 +7,8 @@ $site_url_display = rtrim(str_replace(['https://', 'http://'], '', $site_url), '
 $sns_x        = get_option('crestory_sns_x', '');
 $sns_facebook = get_option('crestory_sns_facebook', '');
 $sns_youtube  = get_option('crestory_sns_youtube', '');
-
-$sidebar_posts = new WP_Query([
-    'post_type'           => 'crestory',
-    'posts_per_page'      => 3,
-    'meta_key'            => 'crestory_featured',
-    'meta_value'          => '1',
-    'orderby'             => 'date',
-    'order'               => 'DESC',
-    'ignore_sticky_posts' => true,
-]);
-if (!$sidebar_posts->have_posts()) {
-    wp_reset_postdata();
-    $sidebar_posts = new WP_Query([
-        'post_type'           => 'crestory',
-        'posts_per_page'      => 3,
-        'orderby'             => 'date',
-        'order'               => 'DESC',
-        'ignore_sticky_posts' => true,
-    ]);
-}
 ?>
-<aside class="note-sidebar site-profile-sidebar" aria-label="サイト情報">
+<aside class="note-sidebar" aria-label="サイト情報">
   <div class="note-profile-block">
 
     <div class="note-profile-head">
@@ -72,26 +52,55 @@ if (!$sidebar_posts->have_posts()) {
 
     <hr class="note-profile-divider">
 
-    <?php if ($sidebar_posts->have_posts()): ?>
-      <div class="note-sidebar-posts">
-        <?php while ($sidebar_posts->have_posts()): $sidebar_posts->the_post(); ?>
-          <a class="note-sidebar-post" href="<?php the_permalink(); ?>">
-            <div class="note-sidebar-thumb">
-              <?php if (has_post_thumbnail()): ?>
-                <?php the_post_thumbnail('crestory-thumb'); ?>
-              <?php elseif ($ogp = crestix_crestory_meta('crestory_ogp_image')): ?>
-                <img src="<?php echo esc_url($ogp); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" loading="lazy">
-              <?php else: ?>
-                <span class="note-thumb-placeholder">CRESTORY</span>
-              <?php endif; ?>
-            </div>
-            <h4 class="note-sidebar-post-title"><?php the_title(); ?></h4>
-          </a>
-        <?php endwhile; wp_reset_postdata(); ?>
-      </div>
-    <?php else: ?>
-      <?php wp_reset_postdata(); ?>
-    <?php endif; ?>
+    <!-- サイドバー下部：YouTube カテゴリ記事リスト -->
+    <div class="sidebar-youtube">
+      <h3 class="sidebar-youtube__heading">動画</h3>
+
+      <?php
+      $yt_query = new WP_Query([
+          'post_type'      => 'crestory',
+          'posts_per_page' => 3,
+          'orderby'        => 'date',
+          'order'          => 'DESC',
+          'tax_query'      => [[
+              'taxonomy' => 'crestory_category',
+              'field'    => 'slug',
+              'terms'    => 'youtube',
+          ]],
+      ]);
+      ?>
+
+      <?php if ($yt_query->have_posts()): ?>
+        <ul class="sidebar-youtube__list">
+          <?php while ($yt_query->have_posts()): $yt_query->the_post(); ?>
+            <?php
+            if (has_post_thumbnail()) {
+                $thumb = get_the_post_thumbnail_url(get_the_ID(), 'crestory-thumb');
+            } else {
+                $yt_url = crestix_crestory_meta('crestory_youtube_url');
+                $thumb  = $yt_url ? crestory_get_youtube_thumbnail($yt_url) : '';
+            }
+            ?>
+            <li class="sidebar-youtube__item">
+              <a href="<?php the_permalink(); ?>">
+                <div class="sidebar-youtube__thumb">
+                  <?php if ($thumb): ?>
+                    <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" loading="lazy">
+                  <?php else: ?>
+                    <div class="sidebar-youtube__no-thumb"></div>
+                  <?php endif; ?>
+                  <span class="sidebar-youtube__play" aria-hidden="true">▶</span>
+                </div>
+                <p class="sidebar-youtube__title"><?php the_title(); ?></p>
+              </a>
+            </li>
+          <?php endwhile; wp_reset_postdata(); ?>
+        </ul>
+      <?php else: ?>
+        <?php wp_reset_postdata(); ?>
+        <p class="sidebar-youtube__empty">動画はまだありません</p>
+      <?php endif; ?>
+    </div>
 
   </div>
 </aside>

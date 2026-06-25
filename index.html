@@ -1405,6 +1405,37 @@
         #sec-diagnostic #diag-footer span[style*="font-size:0.75rem"] { font-size:.82rem !important; color:inherit; margin-top:7px !important; }
         #sec-diagnostic #diag-back { min-height:42px !important; padding:0 22px !important; border-radius:9999px !important; border-color:#E5E7EB !important; background:#fff !important; color:#6B7280 !important; font-size:.88rem !important; font-weight:800 !important; box-shadow:none !important; }
         #sec-diagnostic #diag-back:hover { color:#1A2B4C !important; border-color:#CBD5E1 !important; }
+        #sec-diagnostic #diag-footer.diag-footer--result {
+            margin-top:32px !important;
+            justify-content:center !important;
+            gap:0 !important;
+        }
+        #sec-diagnostic #diag-footer.diag-footer--result > .flex.items-start {
+            display:none !important;
+        }
+        #sec-diagnostic #diag-footer.diag-footer--result #diag-back {
+            min-width:154px !important;
+        }
+        #sec-diagnostic #diag-step-4 .diag-result-shell {
+            max-width:860px;
+            margin:0 auto;
+        }
+        #sec-diagnostic #diag-step-4 .diag-result-title {
+            font-size:clamp(2.7rem,5.2vw,4.9rem) !important;
+            line-height:1.14 !important;
+            letter-spacing:-0.04em !important;
+            margin-bottom:1.4rem !important;
+        }
+        #sec-diagnostic #diag-step-4 .diag-result-position {
+            font-size:1.05em !important;
+        }
+        #sec-diagnostic #diag-step-4 .diag-result-lead {
+            font-size:clamp(1.05rem,1.35vw,1.32rem) !important;
+            line-height:2 !important;
+            max-width:780px !important;
+            padding-left:1.45rem !important;
+            border-left-width:4px !important;
+        }
         @media (min-width:1921px) {
             #sec-diagnostic {
                 background-size: 1920px auto;
@@ -1450,8 +1481,21 @@
             #sec-diagnostic .diag-step--roles .diag-underline { display:block !important; width:24px; height:2px; margin:10px auto 0 !important; }
             #sec-diagnostic #diag-footer { margin-top:34px !important; padding-top:0 !important; gap:18px !important; align-items:center !important; flex-wrap:wrap !important; }
             #sec-diagnostic #diag-footer > .flex.items-start { width:min(480px,100%) !important; max-width:100% !important; flex:0 1 auto !important; flex-basis:auto !important; }
+            #sec-diagnostic #diag-footer.diag-footer--result { margin-top:22px !important; gap:0 !important; }
+            #sec-diagnostic #diag-footer.diag-footer--result > .flex.items-start { display:none !important; }
             #sec-diagnostic [id^="pbar-dot-"] { width:18px !important; height:18px !important; }
             #sec-diagnostic #diag-back { width:auto !important; min-width:112px !important; height:42px !important; min-height:42px !important; padding:0 18px !important; }
+            #sec-diagnostic #diag-step-4 .diag-result-shell { gap:22px !important; }
+            #sec-diagnostic #diag-step-4 .diag-result-title {
+                font-size:clamp(2.15rem,10vw,3.25rem) !important;
+                line-height:1.16 !important;
+                margin-bottom:1rem !important;
+            }
+            #sec-diagnostic #diag-step-4 .diag-result-lead {
+                font-size:1rem !important;
+                line-height:1.9 !important;
+                padding-left:1rem !important;
+            }
         }
 
     </style>
@@ -1980,71 +2024,20 @@
                                 代表メッセージや、現場で戦うメンバーのリアルな熱量。</p>
                         </div>
                     </div>
-                    <a href="https://youtube.com/@crestix" target="_blank"
+                    <a href="https://crestory.crestix.jp/" target="_blank"
                         style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;padding:0.7rem 1.6rem;border-radius:9999px;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;"
                         onmouseover="this.style.borderColor='#FF5C00';this.style.color='#FF5C00'"
                         onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.6)'">
-                        <i class="fa-brands fa-youtube"></i>
-                        チャンネルを見る
+                        <i class="fa-solid fa-book-open"></i>
+                        CRESTORYを見る
                     </a>
                 </div>
 
-                <!-- Crestory cards — YouTube / note -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
-                    <!-- Video 1 -->
-                    <a href="https://www.youtube.com/watch?v=uVyNfP5gTZA&t=20s" target="_blank"
-                        class="group cursor-pointer block relative overflow-hidden aspect-[3/4] bg-[#0A0F1E] w-full rounded-3xl">
-                        <img src="https://img.youtube.com/vi/uVyNfP5gTZA/hqdefault.jpg" alt="Crestix CEO Message"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/10 transition-opacity duration-500 group-hover:opacity-95"></div>
-                        <div class="absolute top-6 left-6 z-10 flex items-center gap-2">
-                            <span class="bg-[#FF5C00] text-white text-[10px] font-black font-poppins tracking-[0.2em] px-4 py-1.5 rounded-full uppercase">YouTube</span>
-                            <span class="bg-white/10 border border-white/15 text-white/70 text-[10px] font-black font-poppins tracking-[0.2em] px-3 py-1.5 rounded-full uppercase">#01</span>
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center z-10 opacity-90 transition-transform duration-500 group-hover:scale-110">
-                            <div class="w-16 h-16 rounded-full bg-[#FF5C00] text-white flex items-center justify-center shadow-[0_20px_50px_rgba(255,92,0,0.35)]">
-                                <i class="fa-brands fa-youtube text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="absolute bottom-8 left-8 right-8 space-y-3 z-10">
-                            <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
-                                CEOメッセージ
-                            </h3>
-                            <p class="cx-card-detail text-gray-200 text-xs leading-relaxed">
-                                代表からCrestixの未来へのビジョン。創業背景や、これから目指す組織の姿を語ります。
-                            </p>
-                            <div class="cx-view-more-box text-white text-xs font-black tracking-widest uppercase mt-2">
-                                <span>Watch More</span>
-                                <i class="fa-solid fa-arrow-right text-[8px] cx-arrow ml-2"></i>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Note -->
-                    <a href="https://note.com/crestory_crestix/n/n96793bbaa7ed" target="_blank"
-                        class="group cursor-pointer block relative overflow-hidden aspect-[3/4] bg-[#E65200] w-full rounded-3xl">
-                        <img src="https://assets.st-note.com/production/uploads/images/287837610/rectangle_large_type_2_7550fd6fcc3b69c8b1fd7ed5244f5799.png?width=800" alt="大きすぎる旗を、本気で掲げる。Crestixが「世界一挑戦し続ける会社」を目指す理由"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-65">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity duration-500 group-hover:opacity-95"></div>
-                        <div class="absolute top-6 left-6 z-10 flex items-center gap-2">
-                            <span class="bg-white text-[#1A2B4C] text-[10px] font-black font-poppins tracking-[0.2em] px-4 py-1.5 rounded-full uppercase">note</span>
-                            <span class="bg-[#FF5C00] text-white text-[10px] font-black font-poppins tracking-[0.2em] px-3 py-1.5 rounded-full uppercase">Story</span>
-                        </div>
-                        <div class="absolute bottom-8 left-8 right-8 space-y-3 z-10">
-                            <h3 class="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight transition-colors group-hover:text-crestix-orange">
-                                大きすぎる旗を、本気で掲げる。
-                            </h3>
-                            <p class="cx-card-detail text-gray-200 text-xs leading-relaxed">
-                                Crestixが「世界一挑戦し続ける会社」を目指す理由。代表の想いと、今Crestixに入る意味を届けます。
-                            </p>
-                            <div class="cx-view-more-box text-white text-xs font-black tracking-widest uppercase mt-2">
-                                <span>Read More</span>
-                                <i class="fa-solid fa-arrow-right text-[8px] cx-arrow ml-2"></i>
-                            </div>
-                        </div>
-                    </a>
-
+                <!-- CRESTORY latest posts -->
+                <div class="crestory-thumb-grid" data-crestory-latest-thumbs>
+                    <div class="crestory-thumb-skeleton"></div>
+                    <div class="crestory-thumb-skeleton"></div>
+                    <div class="crestory-thumb-skeleton"></div>
                 </div>
 
             </div>
@@ -2106,6 +2099,7 @@
     <script src="assets/js/diagnostic.js"></script>
     <script src="assets/js/modals.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/crestory-latest.js"></script>
 
     <!-- Loader -->
     <script>

@@ -1,42 +1,37 @@
 <?php
 get_header();
 
-$current_feed = (isset($_GET['feed']) && $_GET['feed'] === 'popular') ? 'popular' : 'latest';
-$paged        = max(1, (int) ($_GET['paged'] ?? 1));
+$tab  = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'new';
+if (!in_array($tab, ['new', 'popular', 'youtube'], true)) $tab = 'new';
+$paged = max(1, (int) ($_GET['paged'] ?? 1));
 
-if ($current_feed === 'popular') {
-    $query_args = [
-        'post_type'           => 'crestory',
-        'posts_per_page'      => 9,
-        'paged'               => $paged,
-        'meta_key'            => 'post_views_count',
-        'orderby'             => 'meta_value_num',
-        'order'               => 'DESC',
-        'ignore_sticky_posts' => true,
-    ];
-} else {
-    $query_args = [
-        'post_type'           => 'crestory',
-        'posts_per_page'      => 9,
-        'paged'               => $paged,
-        'orderby'             => 'date',
-        'order'               => 'DESC',
-        'ignore_sticky_posts' => true,
-    ];
+$query_args = [
+    'post_type'           => 'crestory',
+    'posts_per_page'      => 9,
+    'paged'               => $paged,
+    'ignore_sticky_posts' => true,
+    'orderby'             => 'date',
+    'order'               => 'DESC',
+];
+
+if ($tab === 'popular') {
+    $query_args['meta_key'] = 'post_views_count';
+    $query_args['orderby']  = 'meta_value_num';
+    $query_args['order']    = 'DESC';
+} elseif ($tab === 'youtube') {
+    $query_args['tax_query'] = [[
+        'taxonomy' => 'crestory_category',
+        'field'    => 'slug',
+        'terms'    => 'youtube',
+    ]];
 }
 $loop = new WP_Query($query_args);
 
-if ($current_feed === 'popular' && !$loop->have_posts()) {
-    wp_reset_postdata();
-    $loop = new WP_Query([
-        'post_type'           => 'crestory',
-        'posts_per_page'      => 9,
-        'paged'               => $paged,
-        'orderby'             => 'date',
-        'order'               => 'DESC',
-        'ignore_sticky_posts' => true,
-    ]);
-}
+$tabs = [
+    'new'     => '新着',
+    'popular' => '人気',
+    'youtube' => 'YouTube',
+];
 ?>
 <main class="crestory-page note-layout" id="cx-main">
 
@@ -49,12 +44,13 @@ if ($current_feed === 'popular' && !$loop->have_posts()) {
       <section class="note-articles-section" id="articles">
 
         <div class="note-tabs-row" id="cx-tabs" aria-label="記事タブ">
-          <a href="<?php echo esc_url(home_url('/')); ?>"
-             class="<?php echo $current_feed === 'latest' ? 'is-active' : ''; ?>"
-             aria-current="<?php echo $current_feed === 'latest' ? 'page' : 'false'; ?>">新着</a>
-          <a href="<?php echo esc_url(home_url('/?feed=popular')); ?>"
-             class="<?php echo $current_feed === 'popular' ? 'is-active' : ''; ?>"
-             aria-current="<?php echo $current_feed === 'popular' ? 'page' : 'false'; ?>">人気</a>
+          <?php foreach ($tabs as $key => $label): ?>
+            <a href="<?php echo esc_url(home_url('/?tab=' . $key)); ?>"
+               class="<?php echo $tab === $key ? 'is-active' : ''; ?>"
+               aria-current="<?php echo $tab === $key ? 'page' : 'false'; ?>">
+              <?php echo esc_html($label); ?>
+            </a>
+          <?php endforeach; ?>
         </div>
 
         <p class="note-source-label">
@@ -75,11 +71,8 @@ if ($current_feed === 'popular' && !$loop->have_posts()) {
         <?php if ($loop->max_num_pages > 1): ?>
           <div class="note-pagination">
             <?php
-            $paginate_base = $current_feed === 'popular'
-                ? home_url('/') . '?feed=popular&paged=%#%'
-                : home_url('/') . '?paged=%#%';
             echo paginate_links([
-                'base'      => $paginate_base,
+                'base'      => home_url('/') . '?tab=' . $tab . '&paged=%#%',
                 'format'    => '',
                 'total'     => $loop->max_num_pages,
                 'current'   => $paged,
