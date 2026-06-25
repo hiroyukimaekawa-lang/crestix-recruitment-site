@@ -2,6 +2,11 @@
    Crestix Careers - Ultimate Hi-Fidelity Design System (CSS)
    ══════════════════════════════════════════════════════════════ */
 
+/* CSS Custom Properties */
+:root {
+    --text-sub: #6b7280;
+}
+
 /* 1. Global Base */
 body {
     font-family: 'Noto Sans JP', 'Poppins', sans-serif;
@@ -1522,16 +1527,16 @@ input:focus, select:focus, textarea:focus {
         line-height: 1.45 !important;
     }
 
-    #sec-youtube-carousel .crestory-thumb-grid {
-        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-        gap: 16px !important;
+    #sec-youtube-carousel .corp-crestory__grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
         max-width: 480px !important;
         margin-inline: auto !important;
     }
 
-    #sec-youtube-carousel .crestory-thumb-wrap,
-    #sec-youtube-carousel .crestory-thumb-skeleton {
-        border-radius: 18px !important;
+    #sec-youtube-carousel .corp-crestory__thumb,
+    #sec-youtube-carousel .corp-crestory__skeleton {
+        border-radius: 12px !important;
     }
 
     .crestory-thumb-label {
@@ -1916,4 +1921,90 @@ input:focus, select:focus, textarea:focus {
     #sec-diagnostic #diag-step-4 .diag-result-title {
         font-size: clamp(28px, 8vw, 38px) !important;
     }
+}
+
+/* ==========================================
+   CRESTORYセクション 画像カードグリッド
+   ========================================== */
+.corp-crestory__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.corp-crestory__card {
+    display: block;
+    text-decoration: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.corp-crestory__thumb {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #1a2b4c;
+}
+
+.corp-crestory__thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.corp-crestory__card:hover .corp-crestory__thumb img {
+    transform: scale(1.04);
+}
+
+.corp-crestory__skeleton {
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    background:
+        linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.1), rgba(255,255,255,0.04)),
+        #1a2b4c;
+    background-size: 220% 100%;
+    animation: crestoryThumbLoading 1.4s ease-in-out infinite;
+}
+
+@media (max-width: 1024px) {
+    .corp-crestory__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .corp-crestory__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   サービス詳細 画像ラッパー
+   ========================================== */
+.service-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    background: #f9fafb;
+    border: 1px solid #f3f4f6;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.service-img-wrap img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    display: block;
+    opacity: 0.9;
 }

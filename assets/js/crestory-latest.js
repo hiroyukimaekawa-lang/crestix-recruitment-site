@@ -62,9 +62,9 @@
     const link = escapeHtml(item.link);
 
     return `
-      <a class="crestory-thumb-card" href="${link}" target="_blank" rel="noopener noreferrer">
-        <div class="crestory-thumb-wrap">
-          <img src="${image}" alt="${title}" loading="lazy" width="480" height="270">
+      <a class="corp-crestory__card" href="${link}" target="_blank" rel="noopener noreferrer" aria-label="${title}">
+        <div class="corp-crestory__thumb">
+          <img src="${image}" alt="${title}" loading="lazy">
         </div>
       </a>
     `;
