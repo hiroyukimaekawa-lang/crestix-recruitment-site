@@ -506,6 +506,13 @@
   }
 }
 
+@media (min-width: 1921px) {
+  #cx-navbar {
+    padding-left: calc((100vw - 1920px) / 2 + 1.5rem);
+    padding-right: calc((100vw - 1920px) / 2 + 1.5rem);
+  }
+}
+
 /* Hamburger button */
 #cx-hamburger {
   display: flex;

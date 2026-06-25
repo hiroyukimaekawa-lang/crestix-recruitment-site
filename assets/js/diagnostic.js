@@ -581,6 +581,7 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
         divName = '第一営業部';
         divSub = '医療機関向けマーケティング事業';
         page = 'service-division1.html';
+        anchor = `jobs-${roleVal}`;
         divisionLabel = '第一営業部 / メンバー';
       } else {
         divName = 'HD事業部';
@@ -589,7 +590,7 @@ function resolveDivisionAndRouting(category, roleVal, stageVal) {
         const roleLabel = roleVal === 'is' ? 'インサイドセールス' : 'フィールドセールス';
         const posSuffix = stageVal === 'senior' ? 'リーダー候補' : 'メンバー';
         divisionLabel = `HD事業部 / ${roleLabel} ${posSuffix}`;
-        anchor = `jobs-${roleVal}` + (stageVal === 'senior' ? '-leader' : '');
+        anchor = roleVal === 'is' ? 'jobs-is-leader' : `jobs-${roleVal}` + (stageVal === 'senior' ? '-leader' : '');
         color = '#2563eb';
         bg = '#eff6ff';
       }

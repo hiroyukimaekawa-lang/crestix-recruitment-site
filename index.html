@@ -1336,36 +1336,88 @@
             display: none;
         }
         /* Diagnostic form polish */
-        #sec-diagnostic .diag-step-header { margin-bottom: 44px; }
+        #sec-diagnostic {
+            position: relative;
+            overflow: hidden;
+            background-color: #F7F9FA;
+            background-image: url('assets/images/job-diag-bacimage.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 100% auto;
+        }
+        #sec-diagnostic::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 50% 22%, rgba(255,255,255,0.38), rgba(255,255,255,0) 38%),
+                linear-gradient(180deg, rgba(247,249,250,0.4), rgba(247,249,250,0.7));
+        }
+        #diagnostic-container {
+            position: relative;
+            z-index: 1;
+        }
+        #sec-diagnostic .diag-step-header { margin-bottom: 58px; }
         #sec-diagnostic .diag-step-subtitle,
         #sec-diagnostic .diag-step-number,
         #sec-diagnostic .diag-step-title { display: block; }
-        #sec-diagnostic .diag-step-subtitle { color:#6B7280; font-size:.95rem; font-weight:900; letter-spacing:.08em; margin-bottom:10px; }
-        #sec-diagnostic .diag-step-number { font-family:Poppins,sans-serif; color:#FF5C00; font-size:.95rem; font-weight:900; letter-spacing:.12em; margin-bottom:12px; text-transform:uppercase; }
-        #sec-diagnostic .diag-step-title { color:#1A2B4C; font-size:clamp(2rem,4vw,3.25rem); font-weight:900; line-height:1.25; letter-spacing:-.02em; }
-        #sec-diagnostic .diag-option-card { min-height:190px; padding:34px 32px !important; align-items:center !important; justify-content:center !important; text-align:center !important; border-color:#E2E8F0; box-shadow:none; }
-        #sec-diagnostic .diag-option-card[aria-pressed="true"] { border-color:#FF5C00 !important; box-shadow:0 0 0 3px rgba(255,92,0,.15) !important; }
-        #sec-diagnostic .diag-option-card:not([aria-pressed="true"]):hover { border-color:#CBD5E1 !important; }
-        #sec-diagnostic .diag-title { display:block; color:#1A2B4C; font-size:clamp(1.15rem,1.7vw,1.45rem); font-weight:900; line-height:1.42; letter-spacing:0; word-break:keep-all; overflow-wrap:anywhere; }
-        #sec-diagnostic .diag-underline { width:34px; height:3px; border-radius:999px; margin:14px auto 16px; background:#D1D5DB; }
-        #sec-diagnostic .diag-desc { color:#6B7280; font-size:.94rem; font-weight:800; line-height:1.75; max-width:320px; margin:0 auto; }
-        #sec-diagnostic .diag-step--roles > .grid { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:860px; margin-inline:auto; }
-        #sec-diagnostic .diag-step--roles .diag-option-card { min-height:132px; padding:28px 24px !important; }
+        #sec-diagnostic .diag-step-subtitle { color:#56616F; font-size:1rem; font-weight:900; letter-spacing:.12em; margin-bottom:12px; }
+        #sec-diagnostic .diag-step-number { font-family:Poppins,sans-serif; color:#FF5C00; font-size:1.05rem; font-weight:900; letter-spacing:.18em; margin-bottom:16px; text-transform:uppercase; }
+        #sec-diagnostic .diag-step-title { color:#0A1E3C; font-size:clamp(2.6rem,5vw,4.25rem); font-weight:900; line-height:1.12; letter-spacing:0; text-shadow:0 10px 30px rgba(10,30,60,.08); }
+        #sec-diagnostic .diag-step--categories > .grid,
+        #sec-diagnostic .diag-step--stages > .grid,
+        #sec-diagnostic .diag-step--roles > .grid {
+            max-width: 1180px;
+            margin-inline: auto;
+            gap: clamp(1.4rem, 3vw, 2.25rem);
+        }
+        #sec-diagnostic .diag-option-card {
+            min-height:200px;
+            padding:42px 36px !important;
+            align-items:center !important;
+            justify-content:center !important;
+            text-align:center !important;
+            border:1px solid #D6DEE8 !important;
+            border-radius:18px !important;
+            background:rgba(255,255,255,.94) !important;
+            box-shadow:0 18px 42px rgba(15,23,42,.12), inset 0 1px 0 rgba(255,255,255,.9);
+            backdrop-filter:blur(2px);
+        }
+        #sec-diagnostic .diag-option-card[aria-pressed="true"] { border-color:#FF5C00 !important; box-shadow:0 18px 42px rgba(255,92,0,.16), 0 0 0 3px rgba(255,92,0,.16) !important; }
+        #sec-diagnostic .diag-option-card:not([aria-pressed="true"]):hover { border-color:#C6D0DC !important; transform:translateY(-3px); box-shadow:0 24px 52px rgba(15,23,42,.14), inset 0 1px 0 rgba(255,255,255,.9); }
+        #sec-diagnostic .diag-title { display:block; color:#0A1E3C; font-size:clamp(1.3rem,1.75vw,1.65rem); font-weight:900; line-height:1.42; letter-spacing:0; word-break:keep-all; overflow-wrap:anywhere; }
+        #sec-diagnostic .diag-underline { width:34px; height:2px; border-radius:999px; margin:16px auto 18px; background:#C5CDD7; }
+        #sec-diagnostic .diag-desc { color:#596574; font-size:1rem; font-weight:800; line-height:1.85; max-width:340px; margin:0 auto; }
+        #sec-diagnostic .diag-step--roles > .grid { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:900px; margin-inline:auto; }
+        #sec-diagnostic .diag-step--roles .diag-option-card { min-height:142px; padding:30px 26px !important; }
         #sec-diagnostic .diag-step--roles .diag-title { font-size:clamp(1.05rem,1.8vw,1.35rem); }
         #sec-diagnostic .diag-step--roles .diag-desc { display:none; }
         #sec-diagnostic .diag-step--roles .diag-underline { margin-bottom:0; }
-        #sec-diagnostic #diag-footer { margin-top:52px; padding-top:28px; align-items:center; justify-content:center; gap:36px; }
-        #sec-diagnostic #diag-footer > .flex.items-start { width:min(860px,100%); max-width:100%; flex:1 1 760px; }
-        #sec-diagnostic #diag-footer > .flex.items-start > div[style*="position:absolute"] { top:9px !important; height:3px !important; left:10px !important; right:10px !important; }
-        #sec-diagnostic [id^="pbar-dot-"] { width:20px !important; height:20px !important; border-width:3px !important; }
+        #sec-diagnostic #diag-footer { margin-top:84px; padding-top:0; border-top:0 !important; align-items:center; justify-content:center; gap:36px; }
+        #sec-diagnostic #diag-footer > .flex.items-start { width:min(1090px,100%); max-width:100%; flex:1 1 980px; }
+        #sec-diagnostic #diag-footer > .flex.items-start > div[style*="position:absolute"] { top:9px !important; height:2px !important; left:10px !important; right:10px !important; background:#D7DDE5 !important; }
+        #sec-diagnostic #diag-progress-line { top:9px !important; height:2px !important; }
+        #sec-diagnostic [id^="pbar-dot-"] { width:20px !important; height:20px !important; border-width:3px !important; box-shadow:0 0 0 3px rgba(255,255,255,.78); }
         #sec-diagnostic #diag-footer span { text-align:center; }
-        #sec-diagnostic #diag-footer span[style*="font-size:0.65rem"] { font-size:.72rem !important; letter-spacing:.16em !important; margin-top:12px !important; }
-        #sec-diagnostic #diag-footer span[style*="font-size:0.75rem"] { font-size:.78rem !important; color:inherit; }
+        #sec-diagnostic #diag-footer span[style*="font-size:0.65rem"] { font-size:.78rem !important; letter-spacing:.18em !important; margin-top:16px !important; }
+        #sec-diagnostic #diag-footer span[style*="font-size:0.75rem"] { font-size:.82rem !important; color:inherit; margin-top:7px !important; }
         #sec-diagnostic #diag-back { min-height:42px !important; padding:0 22px !important; border-radius:9999px !important; border-color:#E5E7EB !important; background:#fff !important; color:#6B7280 !important; font-size:.88rem !important; font-weight:800 !important; box-shadow:none !important; }
         #sec-diagnostic #diag-back:hover { color:#1A2B4C !important; border-color:#CBD5E1 !important; }
+        @media (min-width:1921px) {
+            #sec-diagnostic {
+                background-size: 1920px auto;
+            }
+            #diagnostic-container {
+                max-width: 1400px !important;
+            }
+        }
         @media (max-width:768px) {
             #sec-diagnostic {
                 padding-bottom:32px !important;
+                background-position:center center;
+                background-size:auto 100%;
             }
             #diagnostic-container,
             #diag-step-1,
@@ -1385,16 +1437,18 @@
             #diag-step-4.hidden {
                 display:none !important;
             }
-            #sec-diagnostic .diag-step-header { margin-bottom:24px !important; }
+            #sec-diagnostic .diag-step-header { margin-bottom:28px !important; }
             #sec-diagnostic .diag-step-subtitle { font-size:.83rem !important; margin-bottom:7px !important; }
             #sec-diagnostic .diag-step-number { font-size:.82rem !important; margin-bottom:8px !important; }
             #sec-diagnostic .diag-step-title { font-size:clamp(1.65rem,7vw,2rem) !important; line-height:1.35 !important; }
-            #sec-diagnostic .diag-option-card { min-height:auto !important; padding:22px 20px !important; border-radius:16px !important; }
+            #sec-diagnostic .diag-step--categories > .grid,
+            #sec-diagnostic .diag-step--stages > .grid { gap:14px !important; }
+            #sec-diagnostic .diag-option-card { min-height:auto !important; padding:24px 20px !important; border-radius:16px !important; box-shadow:0 12px 30px rgba(15,23,42,.1) !important; }
             #sec-diagnostic .diag-step--roles > .grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:12px !important; max-width:390px !important; }
             #sec-diagnostic .diag-step--roles .diag-option-card { min-height:96px !important; height:auto !important; padding:20px 12px !important; }
             #sec-diagnostic .diag-step--roles .diag-title { font-size:.95rem !important; line-height:1.35 !important; }
             #sec-diagnostic .diag-step--roles .diag-underline { display:block !important; width:24px; height:2px; margin:10px auto 0 !important; }
-            #sec-diagnostic #diag-footer { margin-top:28px !important; padding-top:20px !important; gap:18px !important; align-items:center !important; flex-wrap:wrap !important; }
+            #sec-diagnostic #diag-footer { margin-top:34px !important; padding-top:0 !important; gap:18px !important; align-items:center !important; flex-wrap:wrap !important; }
             #sec-diagnostic #diag-footer > .flex.items-start { width:min(480px,100%) !important; max-width:100% !important; flex:0 1 auto !important; flex-basis:auto !important; }
             #sec-diagnostic [id^="pbar-dot-"] { width:18px !important; height:18px !important; }
             #sec-diagnostic #diag-back { width:auto !important; min-width:112px !important; height:42px !important; min-height:42px !important; padding:0 18px !important; }
@@ -1999,133 +2053,23 @@
     </main>
 
     <!-- ═══ FOOTER ═══ -->
-    <footer class="bg-crestix-navy text-white select-none border-t border-white/5 relative z-10">
-
-
-        <!-- Sitemap grid -->
-        <div class="py-16 px-10 lg:px-24 border-b border-white/5">
-            <div class="max-w-[1400px] mx-auto">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 lg:gap-16">
-
-                    <!-- Brand column -->
-                    <div class="col-span-2 md:col-span-4 lg:col-span-1 space-y-5">
-                        <div class="flex items-center gap-3">
-                            <img src="assets/images/office/crestix1.png" alt="Crestix"
-                                class="w-10 h-10 object-contain drop-shadow-lg">
-                            <span
-                                class="font-poppins font-black text-2xl tracking-tighter uppercase text-white">Crestix</span>
-                        </div>
-                        <p class="text-xs text-blue-100/40 font-bold leading-relaxed max-w-[200px]">新しい力で、日本の社会課題を解決する。
-                        </p>
-                        <div class="pt-2">
-                            <a href="b2b-contact.html" class="group flex items-center gap-2 bg-white/5 hover:bg-crestix-orange/20 border border-white/10 hover:border-crestix-orange/40 rounded-full px-5 py-2.5 transition-all">
-                                <i class="fa-solid fa-building text-crestix-orange text-xs"></i>
-                                <span
-                                    class="text-[11px] font-black text-white/60 group-hover:text-crestix-orange tracking-widest uppercase transition-colors">企業様はこちら</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Company -->
-                    <div class="space-y-5">
-                        <p class="text-[10px] font-black text-crestix-orange tracking-[0.4em] uppercase">Company</p>
-                        <ul class="space-y-3">
-                            <li><a href="corporate.html#profile"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>会社概要</a>
-                            </li>
-                            <li><a href="mvv.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>ミッション・バリュー</a>
-                            </li>
-                            <li><a href="message.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>代表メッセージ</a>
-                            </li>
-                            <li><a href="members.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>メンバー一覧</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Service -->
-                    <div class="space-y-5">
-                        <p class="text-[10px] font-black text-crestix-orange tracking-[0.4em] uppercase">Service</p>
-                        <ul class="space-y-3">
-                            <li><a href="business.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>事業一覧</a>
-                            </li>
-                            <li><a href="service-hd.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>HD事業部</a>
-                            </li>
-                            <li><a href="service-division1.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/60"></i>第1営業部</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Careers -->
-                    <div class="space-y-5">
-                        <p class="text-[10px] font-black text-crestix-orange tracking-[0.4em] uppercase">Careers</p>
-                        <ul class="space-y-3">
-                            <li><a href="jobs.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>募集職種一覧</a>
-                            </li>
-                            <li><a href="index.html#sec-culture"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>カルチャー</a>
-                            </li>
-                            <li><a href="members.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>社員インタビュー</a>
-                            </li>
-                            <li><a href="index.html#sec-youtube-carousel"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>Crestory
-                                    (動画)</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Contact -->
-                    <div class="space-y-5">
-                        <p class="text-[10px] font-black text-crestix-orange tracking-[0.4em] uppercase">Contact</p>
-                        <ul class="space-y-3">
-                            <li><a href="entry.html"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>採用エントリー</a>
-                            </li>
-                            <li>
-                                <a href="b2b-contact.html" class="text-xs text-blue-100/50 hover:text-crestix-orange font-bold transition-colors flex items-center gap-2 text-left">
-                                    <i class="fa-solid fa-chevron-right text-[8px] text-crestix-orange/50"></i>企業様お問い合わせ
-                                </a>
-                            </li>
-                            <li><a href="https://youtube.com/@crestix" target="_blank"
-                                    class="text-xs text-blue-100/50 hover:text-white font-bold transition-colors flex items-center gap-2"><i
-                                        class="fa-brands fa-youtube text-[9px] text-red-500/50"></i>公式 YouTube</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
+    <footer class="bg-black text-white select-none p-0">
+    <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
+        <a href="index.html" class="inline-block font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline">Crestix</a>
+        <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
+            <a href="https://www.cyberagent.co.jp/sitemap/" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
+            <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
+            <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
+            <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
+        </nav>
+        <div class="mt-8 flex items-center justify-center gap-4">
+            <a href="https://crestory.crestix.jp/" aria-label="CRESTORY" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-solid fa-book-open text-sm"></i></a>
+            <a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
+            <a href="entry.html" aria-label="Entry" class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
         </div>
-
-        <!-- Bottom bar -->
-        <div class="py-8 px-10 lg:px-24">
-            <div class="max-w-[1400px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-5">
-                <div class="flex items-center gap-8 text-[10px] text-blue-200/25 font-black tracking-[0.3em] uppercase">
-                    <a href="privacy.html" class="hover:text-white/50 transition-colors">Privacy Policy</a>
-                    <a href="terms.html" class="hover:text-white/50 transition-colors">Terms of Use</a>
-                    <a href="b2b-contact.html" class="text-crestix-orange/50 hover:text-crestix-orange transition-colors focus:outline-none">B2B Inquiry</a>
-                </div>
-                <span class="text-[10px] text-blue-200/20 font-black tracking-[0.3em] uppercase">&copy; 2026 Crestix
-                    Inc. All Rights Reserved.</span>
-            </div>
-        </div>
-    </footer>
+        <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p>
+    </div>
+</footer>
 
     <!-- MODAL FOR B2B CONTACT -->
     <div id="contact-modal" class="modal-overlay fixed inset-0 hidden z-[200] overflow-y-auto p-4 lg:p-24 select-none">

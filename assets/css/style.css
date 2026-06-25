@@ -78,6 +78,51 @@ main p.tracking-tighter {
     }
 }
 
+@media (min-width: 1921px) {
+    .corp-hero,
+    .div-hero,
+    .mvv-hero-simple,
+    .hero-bg-custom {
+        background-size: 1920px auto !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-color: #0A1E3C;
+    }
+
+    .mercari-watermark {
+        font-size: 18rem;
+    }
+
+    .mercari-unleash-text {
+        font-size: 7.5rem;
+    }
+
+    .cx-contents-flex-wrap {
+        height: 620px;
+    }
+
+    #sec-site-contents > .max-w-\[1400px\],
+    #sec-youtube-carousel .max-w-\[1400px\],
+    .max-w-\[1400px\] {
+        max-width: 1400px !important;
+    }
+
+    .service-page-frame {
+        width: 1400px !important;
+        max-width: 1400px !important;
+    }
+
+    .page-grid[style*="max-width:1200px"] {
+        width: 1200px !important;
+        max-width: 1200px !important;
+    }
+
+    .page-grid > .sidebar + .main-content .content-section {
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
+    }
+}
+
 /* 2. Overlap & Typography (Mercari Style) */
 .mercari-watermark {
     font-family: 'Poppins', sans-serif;

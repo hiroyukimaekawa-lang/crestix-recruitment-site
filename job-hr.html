@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>組織開発・人事 | Crestix 採用情報</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root { --orange:#FF5C00; --navy:#0A1E3C; --line:#e5e7eb; --text:#111827; --sub:#6b7280; }
+        body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--text); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+        .font-poppins { font-family:'Poppins', sans-serif; }
+        .job-hero { padding: 150px 24px 72px; background: radial-gradient(circle at 12% 20%, rgba(255,92,0,.14), transparent 32%), linear-gradient(135deg,#07152c 0%, #0A1E3C 55%, #111827 100%); color:#fff; }
+        .job-hero-inner, .job-layout, .job-related { width:min(calc(100% - 40px), 1180px); margin:0 auto; }
+        .job-kicker { display:inline-flex; align-items:center; gap:10px; color:rgba(255,255,255,.7); font-size:11px; font-family:'Poppins',sans-serif; font-weight:900; letter-spacing:.28em; text-transform:uppercase; margin-bottom:22px; }
+        .job-title { font-family:'Poppins','Noto Sans JP',sans-serif; font-size:clamp(2.4rem, 6vw, 5.2rem); line-height:1.05; font-weight:900; letter-spacing:-.04em; max-width:960px; }
+        .job-lead { max-width:760px; margin-top:24px; color:rgba(255,255,255,.78); font-size:1.05rem; line-height:1.9; font-weight:700; }
+        .job-meta-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+        .job-pill { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid rgba(255,255,255,.18); border-radius:999px; color:rgba(255,255,255,.84); font-size:12px; font-weight:900; background:rgba(255,255,255,.06); backdrop-filter:blur(10px); }
+        .job-main { background:#f7f9fa; }
+        .job-layout { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:40px; padding:72px 0 88px; align-items:start; }
+        .job-content { display:flex; flex-direction:column; gap:24px; }
+        .job-section { background:#fff; border:1px solid var(--line); border-radius:18px; padding:32px; box-shadow:0 18px 45px rgba(15,23,42,.04); }
+        .job-section-label { font-family:'Poppins',sans-serif; color:var(--orange); font-size:11px; font-weight:900; letter-spacing:.24em; text-transform:uppercase; margin-bottom:10px; }
+        .job-section h2 { font-size:1.5rem; font-weight:900; letter-spacing:-.02em; margin-bottom:16px; }
+        .job-section p { color:var(--sub); line-height:2; font-weight:700; }
+        .job-list { display:grid; gap:12px; margin-top:16px; }
+        .job-list li { list-style:none; position:relative; padding-left:24px; color:#4b5563; line-height:1.9; font-weight:700; }
+        .job-list li::before { content:''; position:absolute; left:0; top:.72em; width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 5px rgba(255,92,0,.1); }
+        .job-side { position:sticky; top:104px; display:flex; flex-direction:column; gap:16px; }
+        .job-summary { background:#fff; border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:0 20px 60px rgba(15,23,42,.08); }
+        .job-summary h2 { font-size:1.05rem; font-weight:900; margin-bottom:20px; }
+        .job-summary-row { padding:16px 0; border-top:1px solid var(--line); }
+        .job-summary-row:first-of-type { border-top:0; padding-top:0; }
+        .job-summary-label { font-size:11px; font-weight:900; letter-spacing:.18em; color:#9ca3af; text-transform:uppercase; margin-bottom:5px; }
+        .job-summary-value { font-weight:900; color:#111827; line-height:1.6; }
+        .job-apply { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; min-height:64px; border-radius:999px; background:linear-gradient(135deg,var(--orange),#E65200); color:#fff; text-decoration:none; font-family:'Poppins',sans-serif; font-size:14px; font-weight:900; letter-spacing:.18em; text-transform:uppercase; box-shadow:0 18px 44px rgba(255,92,0,.32); transition:transform .2s, box-shadow .2s; }
+        .job-apply:hover { transform:translateY(-2px); box-shadow:0 24px 54px rgba(255,92,0,.42); }
+        .job-back { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:48px; border-radius:999px; border:1px solid var(--line); color:#111827; text-decoration:none; font-size:12px; font-weight:900; background:#fff; }
+        .job-note { color:#9ca3af; font-size:12px; line-height:1.8; font-weight:700; margin-top:14px; }
+        @media(max-width:960px){ .job-layout{grid-template-columns:1fr; padding-top:48px;} .job-side{position:static; order:-1;} .job-hero-inner,.job-layout,.job-related{width:min(calc(100% - 28px), 1180px);} .job-section{padding:24px;} .job-hero{padding-top:120px;} }
+        @media(max-width:640px){ .job-title{font-size:2.35rem;} .job-lead{font-size:.98rem;} .job-layout{gap:24px;} }
+</style>
+</head>
+<body>
+<!-- ═══ FULLSCREEN MENU ═══ -->
+    <div id="fullscreen-menu">
+        <div class="fm-topbar">
+            <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
+            <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">
+                CLOSE
+                <span class="fm-close-icon">
+                    <i></i><i></i><i></i>
+                </span>
+            </button>
+        </div>
+        <nav class="fm-nav">
+            <div class="fm-nav-group">
+                <a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a>
+            </div>
+            
+            <div class="fm-nav-group">
+                <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
+                <div class="fm-nav-sub">
+                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
+                    <a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a>
+                    <a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a>
+                </div>
+            </div>
+
+            <div class="fm-nav-group">
+                <a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a>
+                <div class="fm-nav-sub">
+                    <a href="business.html" onclick="cxToggleMenu()">事業一覧</a>
+                    <a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a>
+                    <a href="service-division1.html" onclick="cxToggleMenu()">第1営業部（クリニック特化）</a>
+                    <a href="ai-sales.html" onclick="cxToggleMenu()">AI・Sales Enablement</a>
+                </div>
+            </div>
+
+            <div class="fm-nav-group">
+    <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
+    <div class="fm-nav-sub">
+        <a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a>
+        <a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a>
+        <a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a>
+        <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a>
+    </div>
+</div>
+
+            <div class="fm-nav-group">
+    <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
+    <div class="fm-nav-sub">
+        <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORYトップ</a>
+        <a href="message.html" onclick="cxToggleMenu()">代表メッセージ</a>
+        <a href="members.html" onclick="cxToggleMenu()">メンバーインタビュー</a>
+    </div>
+</div>
+
+            <div class="fm-nav-group">
+                <a href="b2b-contact.html" class="fm-nav-item fm-item-6" onclick="cxToggleMenu()">Contact</a>
+            </div>
+        </nav>
+<main>
+    <section class="job-hero">
+        <div class="job-hero-inner">
+            <p class="job-kicker"><span>HR / Corporate</span></p>
+            <h1 class="job-title">組織開発・人事</h1>
+            <p class="job-lead">採用・組織開発・カルチャーづくりを通じて、Crestixの成長基盤をつくるポジションです。</p>
+            <div class="job-meta-row">
+                <span class="job-pill"><i class="fa-solid fa-building"></i>Corporate</span>
+                <span class="job-pill"><i class="fa-solid fa-location-dot"></i>東京本社</span>
+                <span class="job-pill"><i class="fa-solid fa-briefcase"></i>正社員</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="job-main">
+        <div class="job-layout">
+            <article class="job-content">
+                <section class="job-section">
+                    <p class="job-section-label">Mission</p>
+                    <h2>このポジションについて</h2>
+                    <p>事業成長に必要な人材を惹きつけ、入社後に活躍できる環境を整えます。採用だけでなく、評価・オンボーディング・カルチャー醸成まで幅広く担います。</p>
+                </section>
+                <section class="job-section">
+                    <p class="job-section-label">Responsibilities</p>
+                    <h2>業務内容</h2>
+                    <ul class="job-list"><li>採用戦略の設計、候補者体験の改善</li><li>求人作成、スカウト、面談・面接対応</li><li>採用広報、CRESTORYとの連携</li><li>オンボーディング、育成施策の企画</li><li>組織課題の発見と改善プロジェクト推進</li></ul>
+                </section>
+                <section class="job-section">
+                    <p class="job-section-label">Requirements</p>
+                    <h2>必須要件</h2>
+                    <ul class="job-list"><li>採用、人事、営業、広報いずれかの経験</li><li>人と組織に強い関心があること</li><li>社内外の関係者を巻き込むコミュニケーション力</li></ul>
+                </section>
+                <section class="job-section">
+                    <p class="job-section-label">Welcome</p>
+                    <h2>歓迎要件</h2>
+                    <ul class="job-list"><li>ベンチャー企業での採用経験</li><li>採用広報やSNS運用経験</li><li>制度設計や組織開発の経験</li></ul>
+                </section>
+                <section class="job-section">
+                    <p class="job-section-label">Personality</p>
+                    <h2>こんな方と働きたい</h2>
+                    <ul class="job-list"><li>会社づくりに当事者として関わりたい方</li><li>人の可能性を広げる仕事がしたい方</li><li>丁寧さとスピードを両立できる方</li></ul>
+                </section>
+                <section class="job-section">
+                    <p class="job-section-label">Condition</p>
+                    <h2>勤務条件</h2>
+                    <p>雇用形態は正社員、勤務地は東京本社です。詳細な勤務時間、給与、福利厚生、選考フローについては面談・選考の中で個別にご案内します。</p>
+                </section>
+            </article>
+            <aside class="job-side" aria-label="応募概要">
+                <div class="job-summary">
+                    <h2>募集概要</h2>
+                    <div class="job-summary-row"><p class="job-summary-label">Position</p><p class="job-summary-value">組織開発・人事</p></div>
+                    <div class="job-summary-row"><p class="job-summary-label">Division</p><p class="job-summary-value">Corporate</p></div>
+                    <div class="job-summary-row"><p class="job-summary-label">Location</p><p class="job-summary-value">東京本社</p></div>
+                    <div class="job-summary-row"><p class="job-summary-label">Employment</p><p class="job-summary-value">正社員</p></div>
+                    <a class="job-apply" href="entry.html?role=%E7%B5%84%E7%B9%94%E9%96%8B%E7%99%BA%E3%83%BB%E4%BA%BA%E4%BA%8B">Entry <i class="fa-solid fa-arrow-right"></i></a>
+                    <p class="job-note">応募フォームでは希望職種が自動選択されます。まずはカジュアルに話してみたい方も歓迎です。</p>
+                </div>
+                <a class="job-back" href="jobs.html"><i class="fa-solid fa-arrow-left"></i> 募集職種一覧へ戻る</a>
+            </aside>
+        </div>
+    </section>
+</main>
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-black text-white select-none p-0">
+    <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
+        <a href="index.html" class="inline-block font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline">Crestix</a>
+        <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
+            <a href="https://www.cyberagent.co.jp/sitemap/" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
+            <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
+            <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
+            <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
+        </nav>
+        <div class="mt-8 flex items-center justify-center gap-4">
+            <a href="https://crestory.crestix.jp/" aria-label="CRESTORY" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-solid fa-book-open text-sm"></i></a>
+            <a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
+            <a href="jobs.html" aria-label="Entry" class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
+        </div>
+        <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p>
+    </div>
+</footer>
+
+<!-- MODAL FOR B2B CONTACT -->
+<div id="contact-modal" class="modal-overlay fixed inset-0 hidden z-[200] overflow-y-auto p-4 lg:p-24 select-none">
+    <div class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
+        <div class="sticky top-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+            <span class="font-poppins font-black text-2xl tracking-widest uppercase">Crestix Partners</span>
+            <button class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+        <div class="overflow-y-auto flex-1 p-10 lg:p-20 bg-gray-50/50">
+            <div class="max-w-2xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB Inquiry</span>
+                    <h2 class="text-4xl font-black tracking-tight">企業様向けお問い合わせ</h2>
+                </div>
+                <div class="bg-white rounded-[2.5rem] p-10 lg:p-14 border border-crestix-border">
+                    <form onsubmit="triggerB2bFormSubmit(event)" id="contact-inner-form" class="space-y-8">
+                        <button type="submit" class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all active:scale-95">Send Inquiry ➔</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Scripts -->
+<script src="assets/js/diagnostic.js"></script>
+<script src="assets/js/modals.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/navbar.js"></script>
+</body>
+</html>

@@ -173,7 +173,8 @@
 
         .toc-entry-btn:hover {
             background: #E65200;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 44px rgba(255, 92, 0, 0.36);
         }
 
         /* ── MAIN CONTENT ── */
@@ -589,7 +590,7 @@
         }
 
         .member-name {
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 900;
             color: var(--text-main);
             margin-bottom: 8px;
@@ -679,7 +680,7 @@
         .badge-consulting { background: #faf5ff; color: #7c3aed; }
 
         .acc-title {
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 900;
             color: var(--text-main);
             transition: color 0.2s;
@@ -762,20 +763,27 @@
             background: var(--orange);
             color: #fff;
             font-family: 'Poppins', sans-serif;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.2em;
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
             text-decoration: none;
-            padding: 0.65rem 1.75rem;
+            padding: 1.18rem 3.4rem;
             border-radius: 9999px;
-            transition: background 0.2s, transform 0.15s;
-            margin-top: 8px;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            margin-top: 18px;
+            min-height: 66px;
+            box-shadow: 0 16px 36px rgba(255, 92, 0, 0.28);
         }
 
         .acc-entry-link:hover {
             background: #E65200;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 44px rgba(255, 92, 0, 0.36);
+        }
+
+        .acc-entry-link i {
+            font-size: 14px !important;
         }
 
         /* ── CTA SECTION ── */
@@ -984,8 +992,8 @@
                 <p class="sidebar-title">Division HD</p>
                 <a href="#about" class="toc-link active">事業について</a>
                 <a href="#service" class="toc-link">提供サービス</a>
-                <a href="#members" class="toc-link">メンバー紹介</a>
                 <a href="#jobs" class="toc-link">募集職種</a>
+                <a href="#members" class="toc-link">メンバー紹介</a>
                 <div class="toc-divider"></div>
                 <a href="jobs.html" class="toc-entry-btn">Entry <i class="fa-solid fa-arrow-right"
                         style="font-size:10px;"></i></a>
@@ -1078,8 +1086,158 @@
                 </div>
             </section>
 
+            <!-- ④ JOBS ACCORDION -->
+            <section id="jobs" class="content-section">
+                <div class="section-header reveal" style="margin-bottom:64px;">
+                    <p class="sec-label">Roles</p>
+                    <h2 style="font-family:'Poppins',sans-serif; font-size:clamp(2.25rem,5vw,3.75rem); font-weight:900; letter-spacing:-0.04em; color:var(--text-main); margin-top:8px; line-height:1.15;">募集職種</h2>
+                    <p style="font-size:1.125rem; color:var(--text-sub); margin-top:28px; line-height:1.7; font-weight:500;">
+                        職種名をクリックすると詳細が開きます。
+                    </p>
+                    <a href="jobs.html"
+                        style="display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-size:1.125rem; font-weight:600; text-decoration:none; margin-top:20px;"
+                        onmouseover="this.querySelector('.link-arrow').style.transform='translateX(5px)'"
+                        onmouseout="this.querySelector('.link-arrow').style.transform='translateX(0)'">
+                        すべての職種を見る
+                        <span class="link-arrow" style="display:inline-block; transition:transform 0.2s ease;">→</span>
+                    </a>
+                </div>
+
+                <!-- IS -->
+                <div class="jobs-category reveal reveal-delay-1">
+                    <p class="jobs-category-title">Inside Sales / インサイドセールス</p>
+                    <div class="accordion-item" id="jobs-is-leader">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
+                            <div class="acc-left">
+                                <span class="acc-badge badge-consulting">IS</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD ISリーダー候補</span>
+                            </div>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-content">
+                                <div>
+                                    <p class="acc-detail-label">仕事内容</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のインサイドセールス組織のリーダー候補として、まずはプレーヤーとして飲食店へのアプローチ業務を理解していただきながら、徐々にメンバー育成や数値管理、チームマネジメントをお任せしていきます。<br><br>・飲食店への電話、メール等によるアプローチ<br>・MEO、SaaS、広告、HP、その他新規プロダクト等に関する商談アポイントの獲得<br>・有効商談率、有効商談数の最大化に向けた改善活動<br>・トークスクリプト、架電リスト、営業フローの改善<br>・メンバーの架電内容のフィードバック<br>・新人メンバーの育成、オンボーディング支援<br>・日次、週次でのKPI管理および改善施策の実行<br>・フィールドセールスとの連携による商談品質の向上<br>・成果が出るアプローチ方法の型化、再現性の構築<br>・組織拡大に向けたインサイドセールス体制の整備</p>
+                                </div>
+                                <div>
+                                    <p class="acc-detail-label">ポジション</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / インサイドセールスリーダー候補<br><br>プレーヤーとしての実績を積みながら、早期にチームマネジメントを担える環境です。</p>
+                                </div>
+                            </div>
+                            <a href="job-hd-inside-sales-leader.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FS -->
+                <div class="jobs-category reveal reveal-delay-2">
+                    <p class="jobs-category-title">Field Sales / フィールドセールス</p>
+                    <div class="accordion-item" id="jobs-fs">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
+                            <div class="acc-left">
+                                <span class="acc-badge badge-sales">FS</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD FSメンバー</span>
+                            </div>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-content">
+                                <div>
+                                    <p class="acc-detail-label">仕事内容</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のフィールドセールスとして、インサイドセールスが獲得した飲食店向け商談に対して、顧客課題のヒアリングから提案、クロージングまでを担っていただきます。<br><br>単に商材を販売するのではなく、飲食店の集客課題・売上課題・リピート促進・口コミ対策・店舗運営上の課題を正しく捉え、MEO、SaaS、広告、HP、その他新規プロダクト等を組み合わせながら、店舗にとって最適な提案を行うポジションです。<br><br>・インサイドセールスが獲得した飲食店向け商談への対応<br>・飲食店の集客課題、売上課題、口コミ課題、リピート課題のヒアリング<br>・MEO、SaaS、広告、HP等を組み合わせた課題解決提案<br>・掲載情報、口コミ、Googleビジネスプロフィール、Web導線などの改善提案<br>・商談資料の活用および改善提案<br>・受注率、受注単価向上に向けた商談プロセスの改善<br>・顧客要望の収集および社内へのフィードバック<br>・インサイドセールス、カスタマーサクセスとの連携による受注後のスムーズな引き継ぎ<br>・再現性のある商談パターンの構築</p>
+                                </div>
+                                <div>
+                                    <p class="acc-detail-label">ポジション</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / フィールドセールスメンバー<br><br>飲食店の集客・売上改善を、複数のプロダクトを組み合わせながら提案する、上流から携わる営業職です。</p>
+                                </div>
+                            </div>
+                            <a href="job-hd-field-sales-leader.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="jobs-fs-leader">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
+                            <div class="acc-left">
+                                <span class="acc-badge badge-consulting">FS</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD FSリーダー候補</span>
+                            </div>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-content">
+                                <div>
+                                    <p class="acc-detail-label">仕事内容</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のフィールドセールス組織のリーダー候補として、まずはプレーヤーとして飲食店向け商談の現場や商材理解を深めていただきながら、徐々にメンバーの育成、商談管理、営業戦略の実行をお任せしていきます。<br><br>業務分担や達成支援などの業務マネジメントに留まらず、飲食店の集客課題・口コミ課題・売上課題を解決するための営業戦略の策定、商談プロセスの改善、チームづくりなどを担っていただきます。<br><br>・インサイドセールスが獲得した飲食店向け商談への対応<br>・MEO、SaaS、広告、HP等を組み合わせた課題解決提案<br>・受注率、受注単価向上に向けた商談設計<br>・商談内容の振り返りおよび改善施策の実行<br>・営業資料、提案資料、トーク内容のブラッシュアップ<br>・メンバーの商談同席、フィードバック、育成<br>・日次、週次、月次での売上・受注KPI管理<br>・インサイドセールス、カスタマーサクセスとの連携強化<br>・再現性のある受注パターンの構築<br>・フィールドセールス組織の拡大に向けたマネジメント体制の整備</p>
+                                </div>
+                                <div>
+                                    <p class="acc-detail-label">ポジション</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / フィールドセールスリーダー候補<br><br>現場プレーヤーとして成果を出しながら、組織のマネジメントも担える環境です。</p>
+                                </div>
+                            </div>
+                            <a href="job-hd-field-sales.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CS -->
+                <div class="jobs-category reveal reveal-delay-3">
+                    <p class="jobs-category-title">Customer Success / カスタマーサクセス</p>
+                    <div class="accordion-item" id="jobs-cs">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
+                            <div class="acc-left">
+                                <span class="acc-badge badge-cs">CS</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD CSメンバー</span>
+                            </div>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-content">
+                                <div>
+                                    <p class="acc-detail-label">仕事内容</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のカスタマーサクセスとして、受注後の飲食店に対して、サービス導入から運用、課金開始、継続利用までを支援していただきます。<br><br>単なる納品対応や事務作業に留まらず、飲食店がサービス価値を実感し、集客・口コミ・リピート促進・売上改善につながる状態をつくることがミッションです。<br><br>・受注後の飲食店への導入サポートおよび運用支援<br>・HP制作、MEO、口コミ施策、各種ツール導入に関する進行管理<br>・店舗情報、メニュー情報、写真素材、口コミ導線などの必要情報回収<br>・サービス開始、課金開始までのスケジュール管理<br>・店舗集客や口コミ改善に向けたフォロー対応<br>・顧客要望や不満点の収集および社内へのフィードバック<br>・営業、制作、運用担当との連携による納品品質の向上<br>・アップセル、クロスセルにつながる店舗課題の発見<br>・継続率向上に向けた運用改善</p>
+                                </div>
+                                <div>
+                                    <p class="acc-detail-label">ポジション</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / カスタマーサクセスメンバー<br><br>飲食店の成功体験を一緒につくる、顧客伴走型のポジションです。</p>
+                                </div>
+                            </div>
+                            <a href="job-hd-customer-success-leader.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="jobs-cs-leader">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
+                            <div class="acc-left">
+                                <span class="acc-badge badge-consulting">CS</span>
+                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD CSリーダー候補</span>
+                            </div>
+                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
+                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-content">
+                                <div>
+                                    <p class="acc-detail-label">仕事内容</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のカスタマーサクセス組織のリーダー候補として、まずはプレーヤーとして飲食店への顧客対応やサービス導入の現場を理解していただきながら、徐々にメンバー育成、進行管理、顧客満足度向上に向けた組織づくりをお任せしていきます。<br><br>単なる納品管理ではなく、飲食店がサービス価値を実感し、集客改善・口コミ改善・リピート促進・追加提案につながる状態をつくることがミッションです。<br><br>・受注後の飲食店への導入支援、運用支援、進行管理<br>・課金開始までのスケジュール管理および遅延防止<br>・店舗情報、メニュー情報、写真素材、口コミ導線などの必要情報回収<br>・集客改善、口コミ改善、リピート促進に向けたフォロー体制の構築<br>・メンバーの顧客対応品質の確認、フィードバック、育成<br>・HP制作、MEO、口コミ施策、各種ツール導入に関する業務管理<br>・営業、制作、運用担当との連携による納品品質の向上<br>・顧客要望、不満、解約リスクの収集および改善施策の実行<br>・アップセル、クロスセルにつながる店舗課題の発見<br>・業務フロー、管理シート、Sales Opsの改善<br>・継続率向上に向けたCS体制の構築<br>・CS組織の拡大に向けたマネジメント体制の整備</p>
+                                </div>
+                                <div>
+                                    <p class="acc-detail-label">ポジション</p>
+                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / カスタマーサクセスリーダー候補<br><br>CS組織全体の品質向上と顧客満足度の最大化を担うリーダーポジションです。</p>
+                                </div>
+                            </div>
+                            <a href="job-hd-customer-success.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </section><!-- /jobs -->
+
+
             <!-- ③ MEMBERS -->
-            <section id="members" class="content-section">
+            <section id="members" class="content-section" style="border-bottom:none;">
                 <div class="section-header reveal">
                     <p class="sec-label">Members</p>
                     <h2 class="section-title">この事業部で活躍する仲間</h2>
@@ -1126,155 +1284,6 @@
                 </div>
             </section>
 
-            <!-- ④ JOBS ACCORDION -->
-            <section id="jobs" class="content-section" style="border-bottom:none;">
-                <div class="section-header reveal" style="margin-bottom:64px;">
-                    <p class="sec-label">Roles</p>
-                    <h2 style="font-family:'Poppins',sans-serif; font-size:clamp(2.25rem,5vw,3.75rem); font-weight:900; letter-spacing:-0.04em; color:var(--text-main); margin-top:8px; line-height:1.15;">募集職種</h2>
-                    <p style="font-size:1.125rem; color:var(--text-sub); margin-top:28px; line-height:1.7; font-weight:500;">
-                        職種名をクリックすると詳細が開きます。
-                    </p>
-                    <a href="jobs.html"
-                        style="display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-size:1.125rem; font-weight:600; text-decoration:none; margin-top:20px;"
-                        onmouseover="this.querySelector('.link-arrow').style.transform='translateX(5px)'"
-                        onmouseout="this.querySelector('.link-arrow').style.transform='translateX(0)'">
-                        すべての職種を見る
-                        <span class="link-arrow" style="display:inline-block; transition:transform 0.2s ease;">→</span>
-                    </a>
-                </div>
-
-                <!-- IS -->
-                <div class="jobs-category reveal reveal-delay-1">
-                    <p class="jobs-category-title">Inside Sales / インサイドセールス</p>
-                    <div class="accordion-item" id="jobs-is-leader">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-consulting">IS</span>
-                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD ISリーダー候補</span>
-                            </div>
-                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
-                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のインサイドセールス組織のリーダー候補として、まずはプレーヤーとして飲食店へのアプローチ業務を理解していただきながら、徐々にメンバー育成や数値管理、チームマネジメントをお任せしていきます。<br><br>・飲食店への電話、メール等によるアプローチ<br>・MEO、SaaS、広告、HP、その他新規プロダクト等に関する商談アポイントの獲得<br>・有効商談率、有効商談数の最大化に向けた改善活動<br>・トークスクリプト、架電リスト、営業フローの改善<br>・メンバーの架電内容のフィードバック<br>・新人メンバーの育成、オンボーディング支援<br>・日次、週次でのKPI管理および改善施策の実行<br>・フィールドセールスとの連携による商談品質の向上<br>・成果が出るアプローチ方法の型化、再現性の構築<br>・組織拡大に向けたインサイドセールス体制の整備</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / インサイドセールスリーダー候補<br><br>プレーヤーとしての実績を積みながら、早期にチームマネジメントを担える環境です。</p>
-                                </div>
-                            </div>
-                            <a href="entry.html?role=飲食店向け インサイドセールス（IS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FS -->
-                <div class="jobs-category reveal reveal-delay-2">
-                    <p class="jobs-category-title">Field Sales / フィールドセールス</p>
-                    <div class="accordion-item" id="jobs-fs">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-sales">FS</span>
-                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD FSメンバー</span>
-                            </div>
-                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
-                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のフィールドセールスとして、インサイドセールスが獲得した飲食店向け商談に対して、顧客課題のヒアリングから提案、クロージングまでを担っていただきます。<br><br>単に商材を販売するのではなく、飲食店の集客課題・売上課題・リピート促進・口コミ対策・店舗運営上の課題を正しく捉え、MEO、SaaS、広告、HP、その他新規プロダクト等を組み合わせながら、店舗にとって最適な提案を行うポジションです。<br><br>・インサイドセールスが獲得した飲食店向け商談への対応<br>・飲食店の集客課題、売上課題、口コミ課題、リピート課題のヒアリング<br>・MEO、SaaS、広告、HP等を組み合わせた課題解決提案<br>・掲載情報、口コミ、Googleビジネスプロフィール、Web導線などの改善提案<br>・商談資料の活用および改善提案<br>・受注率、受注単価向上に向けた商談プロセスの改善<br>・顧客要望の収集および社内へのフィードバック<br>・インサイドセールス、カスタマーサクセスとの連携による受注後のスムーズな引き継ぎ<br>・再現性のある商談パターンの構築</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / フィールドセールスメンバー<br><br>飲食店の集客・売上改善を、複数のプロダクトを組み合わせながら提案する、上流から携わる営業職です。</p>
-                                </div>
-                            </div>
-                            <a href="entry.html?role=飲食店向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                    <div class="accordion-item" id="jobs-fs-leader">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-consulting">FS</span>
-                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD FSリーダー候補</span>
-                            </div>
-                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
-                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のフィールドセールス組織のリーダー候補として、まずはプレーヤーとして飲食店向け商談の現場や商材理解を深めていただきながら、徐々にメンバーの育成、商談管理、営業戦略の実行をお任せしていきます。<br><br>業務分担や達成支援などの業務マネジメントに留まらず、飲食店の集客課題・口コミ課題・売上課題を解決するための営業戦略の策定、商談プロセスの改善、チームづくりなどを担っていただきます。<br><br>・インサイドセールスが獲得した飲食店向け商談への対応<br>・MEO、SaaS、広告、HP等を組み合わせた課題解決提案<br>・受注率、受注単価向上に向けた商談設計<br>・商談内容の振り返りおよび改善施策の実行<br>・営業資料、提案資料、トーク内容のブラッシュアップ<br>・メンバーの商談同席、フィードバック、育成<br>・日次、週次、月次での売上・受注KPI管理<br>・インサイドセールス、カスタマーサクセスとの連携強化<br>・再現性のある受注パターンの構築<br>・フィールドセールス組織の拡大に向けたマネジメント体制の整備</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / フィールドセールスリーダー候補<br><br>現場プレーヤーとして成果を出しながら、組織のマネジメントも担える環境です。</p>
-                                </div>
-                            </div>
-                            <a href="entry.html?role=飲食店向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CS -->
-                <div class="jobs-category reveal reveal-delay-3">
-                    <p class="jobs-category-title">Customer Success / カスタマーサクセス</p>
-                    <div class="accordion-item" id="jobs-cs">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-cs">CS</span>
-                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD CSメンバー</span>
-                            </div>
-                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
-                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のカスタマーサクセスとして、受注後の飲食店に対して、サービス導入から運用、課金開始、継続利用までを支援していただきます。<br><br>単なる納品対応や事務作業に留まらず、飲食店がサービス価値を実感し、集客・口コミ・リピート促進・売上改善につながる状態をつくることがミッションです。<br><br>・受注後の飲食店への導入サポートおよび運用支援<br>・HP制作、MEO、口コミ施策、各種ツール導入に関する進行管理<br>・店舗情報、メニュー情報、写真素材、口コミ導線などの必要情報回収<br>・サービス開始、課金開始までのスケジュール管理<br>・店舗集客や口コミ改善に向けたフォロー対応<br>・顧客要望や不満点の収集および社内へのフィードバック<br>・営業、制作、運用担当との連携による納品品質の向上<br>・アップセル、クロスセルにつながる店舗課題の発見<br>・継続率向上に向けた運用改善</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / カスタマーサクセスメンバー<br><br>飲食店の成功体験を一緒につくる、顧客伴走型のポジションです。</p>
-                                </div>
-                            </div>
-                            <a href="entry.html?role=飲食店向け カスタマーサクセス（CS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                    <div class="accordion-item" id="jobs-cs-leader">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)" style="padding:24px 0;">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-consulting">CS</span>
-                                <span class="acc-title" style="font-size:1.25rem; font-weight:700;">HD CSリーダー候補</span>
-                            </div>
-                            <span class="acc-meta" style="font-size:13px;">正社員 · 東京</span>
-                            <span class="acc-icon" style="width:36px; height:36px; border-color:#9ca3af; font-size:14px;"><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部のカスタマーサクセス組織のリーダー候補として、まずはプレーヤーとして飲食店への顧客対応やサービス導入の現場を理解していただきながら、徐々にメンバー育成、進行管理、顧客満足度向上に向けた組織づくりをお任せしていきます。<br><br>単なる納品管理ではなく、飲食店がサービス価値を実感し、集客改善・口コミ改善・リピート促進・追加提案につながる状態をつくることがミッションです。<br><br>・受注後の飲食店への導入支援、運用支援、進行管理<br>・課金開始までのスケジュール管理および遅延防止<br>・店舗情報、メニュー情報、写真素材、口コミ導線などの必要情報回収<br>・集客改善、口コミ改善、リピート促進に向けたフォロー体制の構築<br>・メンバーの顧客対応品質の確認、フィードバック、育成<br>・HP制作、MEO、口コミ施策、各種ツール導入に関する業務管理<br>・営業、制作、運用担当との連携による納品品質の向上<br>・顧客要望、不満、解約リスクの収集および改善施策の実行<br>・アップセル、クロスセルにつながる店舗課題の発見<br>・業務フロー、管理シート、Sales Opsの改善<br>・継続率向上に向けたCS体制の構築<br>・CS組織の拡大に向けたマネジメント体制の整備</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text" style="font-size:15px;">HD事業部 / カスタマーサクセスリーダー候補<br><br>CS組織全体の品質向上と顧客満足度の最大化を担うリーダーポジションです。</p>
-                                </div>
-                            </div>
-                            <a href="entry.html?role=飲食店向け カスタマーサクセス（CS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </section><!-- /jobs -->
-
 
         </main>
     </div><!-- /page-grid -->
@@ -1303,15 +1312,23 @@
     </section>
 
     <!-- ══ FOOTER ══ -->
-    <footer>
-        <div class="footer-inner">
-            <span
-                style="font-family:'Poppins',sans-serif; font-weight:900; font-size:1.75rem; letter-spacing:-0.04em; color:#fff; text-transform:uppercase;">Crestix</span>
-            <p
-                style="font-family:'Poppins',sans-serif; font-size:10px; color:rgba(255,255,255,0.2); font-weight:800; letter-spacing:0.3em; text-transform:uppercase;">
-                &copy; 2026 Crestix Inc. All Rights Reserved.</p>
+    <footer class="bg-black text-white select-none p-0">
+    <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
+        <a href="index.html" class="inline-block font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline">Crestix</a>
+        <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
+            <a href="https://www.cyberagent.co.jp/sitemap/" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
+            <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
+            <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
+            <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
+        </nav>
+        <div class="mt-8 flex items-center justify-center gap-4">
+            <a href="https://crestory.crestix.jp/" aria-label="CRESTORY" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-solid fa-book-open text-sm"></i></a>
+            <a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
+            <a href="entry.html" aria-label="Entry" class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
         </div>
-    </footer>
+        <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p>
+    </div>
+</footer>
 
     <!-- MODAL FOR B2B CONTACT -->
     <div id="contact-modal" class="modal-overlay fixed inset-0 hidden z-[200] overflow-y-auto p-4 lg:p-24 select-none">

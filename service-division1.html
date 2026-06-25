@@ -194,7 +194,8 @@
 
         .toc-entry-btn:hover {
             background: #E65200;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 44px rgba(255, 92, 0, 0.36);
         }
 
         /* ── MAIN CONTENT ── */
@@ -432,7 +433,7 @@
         }
 
         .step-desc {
-            font-size: 15px;
+            font-size: 13px;
             color: var(--text-sub);
             line-height: 1.9;
         }
@@ -639,7 +640,7 @@
         }
 
         .member-quote {
-            font-size: 15px;
+            font-size: 13px;
             color: var(--text-sub);
             line-height: 1.9;
         }
@@ -831,7 +832,7 @@
         }
 
         .acc-detail-text {
-            font-size: 15px;
+            font-size: 13px;
             color: var(--text-sub);
             line-height: 1.9;
             overflow-wrap: break-word;
@@ -849,20 +850,27 @@
             background: var(--orange);
             color: #fff;
             font-family: 'Poppins', sans-serif;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.2em;
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
             text-decoration: none;
-            padding: 0.65rem 1.75rem;
+            padding: 1.18rem 3.4rem;
             border-radius: 9999px;
-            transition: background 0.2s, transform 0.15s;
-            margin-top: 8px;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            margin-top: 18px;
+            min-height: 66px;
+            box-shadow: 0 16px 36px rgba(255, 92, 0, 0.28);
         }
 
         .acc-entry-link:hover {
             background: #E65200;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 44px rgba(255, 92, 0, 0.36);
+        }
+
+        .acc-entry-link i {
+            font-size: 14px !important;
         }
 
         /* ── CTA SECTION ── */
@@ -1084,8 +1092,8 @@
                 <p class="sidebar-title">第一営業部</p>
                 <a href="#about" class="toc-link active">事業について</a>
                 <a href="#service" class="toc-link">提供サービス</a>
-                <a href="#members" class="toc-link">メンバー紹介</a>
                 <a href="#jobs" class="toc-link">募集職種</a>
+                <a href="#members" class="toc-link">メンバー紹介</a>
                 <div class="toc-divider"></div>
                 <a href="jobs.html" class="toc-entry-btn">Entry <i class="fa-solid fa-arrow-right"
                         style="font-size:10px;"></i></a>
@@ -1306,8 +1314,86 @@
                 </div>
             </section> -->
 
+            <!-- ④ JOBS ACCORDION -->
+            <section id="jobs" class="content-section">
+                <div class="section-header reveal">
+                    <p class="sec-label">Roles</p>
+                    <h2 class="section-title">募集職種</h2>
+                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px;">
+                        職種名をクリックすると詳細が開きます。
+                        <a href="jobs.html"
+                            style="color:var(--orange); font-weight:700; text-decoration:none; margin-left:12px;">すべての職種を見る →</a>
+                    </p>
+                </div>
+
+                <!-- IS -->
+                <div class="jobs-category reveal reveal-delay-1">
+                    <p class="jobs-category-title">Inside Sales / インサイドセールス</p>
+                    <div class="accordion-item" id="jobs-is">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-left">
+                                <span class="acc-badge badge-consulting">IS</span>
+                                <span class="acc-title">医療向け インサイドセールス（IS）</span>
+                            </div>
+                            <div class="acc-right">
+                                <span class="acc-meta">正社員 · 東京</span>
+                                <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
+                            </div>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-content">
+                                <div>
+                                    <p class="acc-detail-label">仕事内容</p>
+                                    <p class="acc-detail-text">クリニックや医療機関に対し、Web集客やCRMツール、電子カルテ周辺の業務改善ソリューションの提案機会（商談）を創出するポジションです。</p>
+                                </div>
+                                <div>
+                                    <p class="acc-detail-label">ポジション</p>
+                                    <p class="acc-detail-text">第一営業部 / 医療向け インサイドセールス（IS）<br><br>医療業界のDX・業務効率化をリードし、顧客の売上最大化のファーストコンタクトを担う重要ポジションです。</p>
+                                </div>
+                            </div>
+                            <a href="job-division1-inside-sales.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
+                                    style="font-size:10px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FS -->
+                <div class="jobs-category reveal reveal-delay-2">
+                    <p class="jobs-category-title">Field Sales / フィールドセールス</p>
+                    <div class="accordion-item" id="jobs-fs">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-left">
+                                <span class="acc-badge badge-sales">FS</span>
+                                <span class="acc-title">医療向け フィールドセールス（FS）</span>
+                            </div>
+                            <div class="acc-right">
+                                <span class="acc-meta">正社員 · 東京</span>
+                                <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
+                            </div>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-content">
+                                <div>
+                                    <p class="acc-detail-label">仕事内容</p>
+                                    <p class="acc-detail-text">クローズドな医療業界の課題に深く向き合い、集客最大化や院内運営改善のための具体的なソリューション提案・受注までを一気通貫で牽引します。</p>
+                                </div>
+                                <div>
+                                    <p class="acc-detail-label">ポジション</p>
+                                    <p class="acc-detail-text">第一営業部 / 医療向け フィールドセールス（FS）<br><br>単なる物売りではなく、クリニックのパートナーとして医療DXを推進し、集患力アップにコミットします。</p>
+                                </div>
+                            </div>
+                            <a href="job-division1-field-sales.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
+                                    style="font-size:10px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section><!-- /jobs -->
+
+
             <!-- ⑦ MEMBERS -->
-            <section id="members" class="content-section">
+            <section id="members" class="content-section" style="border-bottom:none;">
                 <div class="section-header reveal">
                     <p class="sec-label">Members</p>
                     <h2 class="section-title">この事業部で活躍する仲間</h2>
@@ -1344,83 +1430,6 @@
                 </div>
             </section>
 
-            <!-- ④ JOBS ACCORDION -->
-            <section id="jobs" class="content-section" style="border-bottom:none;">
-                <div class="section-header reveal">
-                    <p class="sec-label">Roles</p>
-                    <h2 class="section-title">募集職種</h2>
-                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px;">
-                        職種名をクリックすると詳細が開きます。
-                        <a href="jobs.html"
-                            style="color:var(--orange); font-weight:700; text-decoration:none; margin-left:12px;">すべての職種を見る →</a>
-                    </p>
-                </div>
-
-                <!-- IS -->
-                <div class="jobs-category reveal reveal-delay-1">
-                    <p class="jobs-category-title">Inside Sales / インサイドセールス</p>
-                    <div class="accordion-item" id="jobs-is">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-consulting">IS</span>
-                                <span class="acc-title">医療向け インサイドセールス（IS）</span>
-                            </div>
-                            <div class="acc-right">
-                                <span class="acc-meta">正社員 · 東京</span>
-                                <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
-                            </div>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">クリニックや医療機関に対し、Web集客やCRMツール、電子カルテ周辺の業務改善ソリューションの提案機会（商談）を創出するポジションです。</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">第一営業部 / 医療向け インサイドセールス（IS）<br><br>医療業界のDX・業務効率化をリードし、顧客の売上最大化のファーストコンタクトを担う重要ポジションです。</p>
-                                </div>
-                            </div>
-                            <a href="entry.html?role=医療向け インサイドセールス（IS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FS -->
-                <div class="jobs-category reveal reveal-delay-2">
-                    <p class="jobs-category-title">Field Sales / フィールドセールス</p>
-                    <div class="accordion-item" id="jobs-fs">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-sales">FS</span>
-                                <span class="acc-title">医療向け フィールドセールス（FS）</span>
-                            </div>
-                            <div class="acc-right">
-                                <span class="acc-meta">正社員 · 東京</span>
-                                <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
-                            </div>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">クローズドな医療業界の課題に深く向き合い、集客最大化や院内運営改善のための具体的なソリューション提案・受注までを一気通貫で牽引します。</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">第一営業部 / 医療向け フィールドセールス（FS）<br><br>単なる物売りではなく、クリニックのパートナーとして医療DXを推進し、集患力アップにコミットします。</p>
-                                </div>
-                            </div>
-                            <a href="entry.html?role=医療向け フィールドセールス（FS）" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-
-            </section><!-- /jobs -->
-
         </main>
     </div><!-- /page-grid -->
 
@@ -1449,15 +1458,23 @@
     </section>
 
     <!-- ══ FOOTER ══ -->
-    <footer>
-        <div class="footer-inner">
-            <span
-                style="font-family:'Poppins',sans-serif; font-weight:900; font-size:1.75rem; letter-spacing:-0.04em; color:#fff; text-transform:uppercase;">Crestix</span>
-            <p
-                style="font-family:'Poppins',sans-serif; font-size:10px; color:rgba(255,255,255,0.2); font-weight:800; letter-spacing:0.3em; text-transform:uppercase;">
-                &copy; 2026 Crestix Inc. All Rights Reserved.</p>
+    <footer class="bg-black text-white select-none p-0">
+    <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
+        <a href="index.html" class="inline-block font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline">Crestix</a>
+        <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
+            <a href="https://www.cyberagent.co.jp/sitemap/" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
+            <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
+            <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
+            <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
+        </nav>
+        <div class="mt-8 flex items-center justify-center gap-4">
+            <a href="https://crestory.crestix.jp/" aria-label="CRESTORY" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-solid fa-book-open text-sm"></i></a>
+            <a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
+            <a href="entry.html" aria-label="Entry" class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
         </div>
-    </footer>
+        <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p>
+    </div>
+</footer>
 
     <!-- MODAL FOR B2B CONTACT -->
     <div id="contact-modal" class="modal-overlay fixed inset-0 hidden z-[200] overflow-y-auto p-4 lg:p-24 select-none">
