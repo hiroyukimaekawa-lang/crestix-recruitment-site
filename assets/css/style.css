@@ -1044,28 +1044,75 @@ input:focus, select:focus, textarea:focus {
     z-index: 101;
 }
 
-/* ── ホバー時：コンテンツ全体を非表示 ── */
+/* ── ホバー時：コンテンツの重ね順を動画より上に ── */
 .biz-grid__cell:hover .biz-grid__content {
+    z-index: 150;
+}
+
+/* ── ホバー時：タイトルとサブタイトルを薄く＆白文字で表示 ── */
+.biz-grid__cell:hover .biz-grid__title,
+.biz-grid__cell:hover .biz-grid__sub {
+    opacity: 0.25;
+    color: #ffffff !important;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+.biz-grid__cell:hover .biz-grid__desc,
+.biz-grid__cell:hover .biz-grid__link {
     opacity: 0;
     transition: opacity 0.15s ease;
 }
 
-/* ── ホバー時：タグのみ全画面中央に白文字で表示 ── */
+/* ── ホバー時：タグのみ各カード（セル）中央に白文字で大きく表示 ── */
 .biz-grid__cell:hover .biz-grid__tag {
     opacity: 1 !important;
-    position: fixed;
+    position: absolute;  /* 各カード（セル）の中央に表示するためにabsoluteに変更 */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 200;
     color: #fff;
-    border-color: rgba(255, 255, 255, 0.5);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.15);
-    font-size: 1rem;
+    font-size: 1.35rem;  /* サイズを少し大きく表示 */
+    padding: 6px 20px;
     font-weight: 900;
     letter-spacing: 0.2em;
     pointer-events: none;
+    white-space: nowrap;
 }
+
+/* ── ホバー時：4分割の境界線（白線）を表示 ── */
+.biz-grid__dividers {
+    position: absolute;
+    inset: 0;
+    z-index: 120; /* ビデオ(100)やセルホバー(101)より上 */
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+/* グリッドセクションにホバーしている間だけ線を表示 */
+.biz-grid-section:hover .biz-grid__dividers {
+    opacity: 1;
+}
+.biz-grid__divider-v {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-50%);
+}
+.biz-grid__divider-h {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%);
+}
+
 
 /* service-img-wrap SP override */
 @media (max-width: 768px) {
