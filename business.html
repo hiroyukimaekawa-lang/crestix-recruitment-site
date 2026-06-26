@@ -17,6 +17,42 @@
   <link rel="stylesheet" href="assets/css/components/hero.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
+    /* ── ホバー時：テキストをすべて非表示 ── */
+    .biz-grid__cell:hover .biz-grid__content {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    /* 通常時：テキストを表示 */
+    .biz-grid__content {
+      transition: opacity 0.3s ease;
+    }
+
+    /* ── ホバー時：動画を全面表示 ── */
+    .biz-grid__cell-video {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .biz-grid__cell:hover .biz-grid__cell-video {
+      opacity: 1;
+    }
+
+    /* ── ホバー時：オーバーレイを薄くして動画を見やすく ── */
+    .biz-grid__cell-overlay {
+      transition: opacity 0.4s ease;
+    }
+
+    .biz-grid__cell:hover .biz-grid__cell-overlay {
+      opacity: 0.15; /* 通常時より薄くする */
+    }
   </style>
 </head>
 
@@ -196,28 +232,28 @@
 
     <section class="biz-grid-section" aria-label="事業一覧">
       <div class="biz-grid__videos" aria-hidden="true">
-        <img class="biz-grid__video" data-video="division1" src="assets/images/office/crestix.png" alt="">
-        <img class="biz-grid__video" data-video="hd" src="assets/images/office/crestix.png" alt="">
-        <img class="biz-grid__video" data-video="ai-sales" src="assets/images/office/crestix.png" alt="">
-        <img class="biz-grid__video" data-video="future" src="assets/images/office/crestix.png" alt="">
+        <img class="biz-grid__video" data-video="division1" src="assets/images/business/0624_Crestix_1.mp4" alt="">
+        <img class="biz-grid__video" data-video="hd" src="assets/images/business/0624_Crestix_2.mp4" alt="">
+        <img class="biz-grid__video" data-video="ai-sales" src="assets/images/business/0624_Crestix_3.mp4" alt="">
+        <img class="biz-grid__video" data-video="future" src="assets/images/business/0624_Crestix_4.mp4" alt="">
         <div class="biz-grid__overlay"></div>
       </div>
 
       <div class="biz-grid__cells">
         <a href="service-division1.html" class="biz-grid__cell" data-target="division1" style="--poster:url('assets/images/division1/第一事業部.png');">
-          <video class="biz-grid__cell-video" src="assets/videos/division1.mp4" muted loop playsinline preload="none"></video>
+          <video class="biz-grid__cell-video" src="assets/images/business/0624_Crestix_1.mp4" muted loop playsinline preload="none"></video>
           <div class="biz-grid__cell-overlay"></div>
           <div class="biz-grid__content">
             <span class="biz-grid__tag">DIVISION 1</span>
             <h3 class="biz-grid__title">第1営業部</h3>
             <span class="biz-grid__sub">（メイン）</span>
-            <p class="biz-grid__desc">AIとマーケティングの力で、医療機関の集客と運営進化を支援する事業部です。</p>
+            <p class="biz-grid__desc">AI hurdles and marketing power support healthcare organization growth.</p>
             <span class="biz-grid__link">詳しく見る →</span>
           </div>
         </a>
 
         <a href="service-hd.html" class="biz-grid__cell" data-target="hd" style="--poster:url('assets/images/HD/hd-sales.png');">
-          <video class="biz-grid__cell-video" src="assets/videos/hd.mp4" muted loop playsinline preload="none"></video>
+          <video class="biz-grid__cell-video" src="assets/images/business/0624_Crestix_2.mp4" muted loop playsinline preload="none"></video>
           <div class="biz-grid__cell-overlay"></div>
           <div class="biz-grid__content">
             <span class="biz-grid__tag">HD DIVISION</span>
@@ -229,7 +265,7 @@
         </a>
 
         <a href="ai-sales.html" class="biz-grid__cell" data-target="ai-sales" style="--poster:url('assets/images/aisales/ai:sales-enablement.selesflow.png');">
-          <video class="biz-grid__cell-video" src="assets/videos/ai-sales.mp4" muted loop playsinline preload="none"></video>
+          <video class="biz-grid__cell-video" src="assets/images/business/0624_Crestix_3.mp4" muted loop playsinline preload="none"></video>
           <div class="biz-grid__cell-overlay"></div>
           <div class="biz-grid__content">
             <span class="biz-grid__tag">AI AGENT</span>
@@ -241,7 +277,7 @@
         </a>
 
         <div class="biz-grid__cell biz-grid__cell--future" data-target="future" style="--poster:url('assets/images/office/crestix.png');">
-          <video class="biz-grid__cell-video" src="assets/videos/new-biz.mp4" muted loop playsinline preload="none"></video>
+          <video class="biz-grid__cell-video" src="assets/images/business/0624_Crestix_4.mp4" muted loop playsinline preload="none"></video>
           <div class="biz-grid__cell-overlay"></div>
           <div class="biz-grid__content">
             <span class="biz-grid__tag">COMING SOON</span>
@@ -258,31 +294,113 @@
   <div class="py-40 bg-white border-t border-gray-100 select-none overflow-hidden relative">
     <div class="max-w-5xl mx-auto px-10 mb-16 flex justify-between items-end relative z-10">
       <div>
-        <h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Culture Snaps
-        </h4>
+        <h4 class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">Culture Snaps</h4>
         <p class="text-4xl font-black text-crestix-charcoal mt-2 tracking-tighter">Crestixの日常スナップ</p>
       </div>
     </div>
+
     <div class="marquee-wrapper relative z-10">
       <div class="marquee-content" style="animation-duration: 45s;">
-        <div
-          class="culture-snap-card w-[520px] h-[340px] overflow-hidden flex-shrink-0">
+
+        <!-- カード1 -->
+        <div class="culture-snap-card w-[520px] h-[340px] overflow-hidden flex-shrink-0"
+             data-video="assets/images/business/0624_Crestix_1.mp4">
           <img src="assets/images/office/crestix.png"
-            class="culture-snap-img w-full h-full object-cover">
+               class="culture-snap-img w-full h-full object-cover">
         </div>
-        <div
-          class="culture-snap-card w-[460px] h-[340px] overflow-hidden flex-shrink-0">
+
+        <!-- カード2 -->
+        <div class="culture-snap-card w-[460px] h-[340px] overflow-hidden flex-shrink-0"
+             data-video="assets/images/business/0624_Crestix_2.mp4">
           <img src="assets/images/office/crestix1.png"
-            class="culture-snap-img w-full h-full object-cover">
+               class="culture-snap-img w-full h-full object-cover">
         </div>
-        <div
-          class="culture-snap-card w-[560px] h-[340px] overflow-hidden flex-shrink-0">
+
+        <!-- カード3 -->
+        <div class="culture-snap-card w-[560px] h-[340px] overflow-hidden flex-shrink-0"
+             data-video="assets/images/business/0624_Crestix_3.mp4">
           <img src="assets/images/office/crestix-header.png"
-            class="culture-snap-img w-full h-full object-cover">
+               class="culture-snap-img w-full h-full object-cover">
         </div>
+
       </div>
     </div>
+
+    <!-- 全画面動画オーバーレイ -->
+    <div id="snap-video-overlay" style="
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-100%);
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+    ">
+      <video id="snap-video-player"
+        muted loop playsinline
+        style="width:100%; height:100%; object-fit:contain;">
+      </video>
+      <button onclick="closeSnapVideo()" style="
+        position: absolute;
+        top: 1.5rem; right: 1.5rem;
+        background: rgba(255,255,255,0.15);
+        border: none; color: #fff;
+        font-size: 1.25rem;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: background 0.2s;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,0.3)'"
+      onmouseout="this.style.background='rgba(255,255,255,0.15)'">✕</button>
+    </div>
   </div>
+
+  <script>
+  (function() {
+    const overlay = document.getElementById('snap-video-overlay');
+    const player  = document.getElementById('snap-video-player');
+
+    document.querySelectorAll('.culture-snap-card[data-video]').forEach(card => {
+      const videoSrc = card.dataset.video;
+
+      card.addEventListener('mouseenter', () => {
+        player.src = videoSrc;
+        overlay.style.display = 'flex';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            overlay.style.transform = 'translateY(0)';
+            player.play().catch(() => {});
+          });
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        closeSnapVideo();
+      });
+    });
+
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeSnapVideo();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeSnapVideo();
+    });
+
+    window.closeSnapVideo = function() {
+      overlay.style.transform = 'translateY(-100%)';
+      player.pause();
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        player.src = '';
+      }, 450);
+    };
+  })();
+  </script>
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="bg-black text-white select-none p-0">
