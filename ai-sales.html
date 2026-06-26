@@ -616,14 +616,52 @@
             border-color: rgba(255, 92, 0, 0.25);
         }
 
-        .member-img {
-            aspect-ratio: 4 / 3;
+        .page-grid>.sidebar+.main-content #members .member-img {
+            aspect-ratio: 2 / 3 !important;
+            /* 縦幅のサイズを広げて縦長に */
             height: auto;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            /* 上寄せで人物が上部に来るよう */
             justify-content: center;
             overflow: hidden;
             position: relative;
+            background: #f3f4f6;
+        }
+
+        .member-img .img-default,
+        .member-img .img-hover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: opacity 0s, filter 0.2s ease;
+            /* 即座に切り替え */
+        }
+
+        .member-img .img-hover {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+        }
+
+        .member-card:hover .img-default {
+            opacity: 0;
+        }
+
+        .member-card:hover .img-hover {
+            opacity: 1;
+        }
+
+        /* エラー時（ホバー画像がない場合）のフォールバック処理 */
+        .member-img:has(.img-hover.error) .img-hover {
+            display: none;
+        }
+
+        .member-card:hover .member-img:has(.img-hover.error) .img-default {
+            opacity: 1;
+            filter: brightness(1.1) saturate(1.2);
         }
 
         .member-body {
@@ -686,6 +724,7 @@
             align-items: center;
             gap: 1rem;
         }
+
         .jobs-category-title::after {
             content: '';
             flex: 1;
@@ -854,7 +893,7 @@
             word-break: break-word;
         }
 
-        .acc-content > div {
+        .acc-content>div {
             min-width: 0;
         }
 
@@ -944,7 +983,7 @@
 
 <body>
 
-  <!--
+    <!--
   ═══════════════════════════════════════════════════════
   Crestix — Universal Navigation Header
   使い方: 全ページの <body> 直下に貼り付ける
@@ -952,7 +991,7 @@
   ═══════════════════════════════════════════════════════
 -->
 
-<!-- ═══ FULLSCREEN MENU ═══ -->
+    <!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
         <div class="fm-topbar">
             <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
@@ -967,7 +1006,7 @@
             <div class="fm-nav-group">
                 <a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a>
             </div>
-            
+
             <div class="fm-nav-group">
                 <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
                 <div class="fm-nav-sub">
@@ -988,23 +1027,24 @@
             </div>
 
             <div class="fm-nav-group">
-    <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
-    <div class="fm-nav-sub">
-        <a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a>
-        <a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a>
-        <a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a>
-        <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a>
-    </div>
-</div>
+                <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
+                <div class="fm-nav-sub">
+                    <a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a>
+                    <a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a>
+                    <a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a>
+                    <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a>
+                </div>
+            </div>
 
             <div class="fm-nav-group">
-    <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
-    <div class="fm-nav-sub">
-        <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORYトップ</a>
-        <a href="message.html" onclick="cxToggleMenu()">代表メッセージ</a>
-        <a href="members.html" onclick="cxToggleMenu()">メンバーインタビュー</a>
-    </div>
-</div>
+                <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5"
+                    onclick="cxToggleMenu()">Crestory</a>
+                <div class="fm-nav-sub">
+                    <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORYトップ</a>
+                    <a href="message.html" onclick="cxToggleMenu()">代表メッセージ</a>
+                    <a href="members.html" onclick="cxToggleMenu()">メンバーインタビュー</a>
+                </div>
+            </div>
 
             <div class="fm-nav-group">
                 <a href="b2b-contact.html" class="fm-nav-item fm-item-6" onclick="cxToggleMenu()">Contact</a>
@@ -1016,89 +1056,90 @@
         </div>
     </div>
     <!-- ═══ NAVIGATION ═══ -->
-<nav id="cx-navbar" aria-label="グローバルナビゲーション">
+    <nav id="cx-navbar" aria-label="グローバルナビゲーション">
 
-  <!-- LEFT: Logo -->
-  <div class="cx-nav-left">
-    <a href="index.html" class="cx-nav-logo-link">
-      <img id="cx-nav-logo"
-           src="assets/images/office/crestix-header.png"
-           alt="Crestix"
-           onerror="this.style.display='none'">
-    </a>
-  </div>
-
-  <!-- CENTER: Nav links -->
-  <div class="cx-nav-center" id="cx-nav-links">
-
-        <div class="cx-mega-trigger" data-mega="mega-corporate">
-      <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
-      <div class="cx-mega-menu" id="mega-corporate">
-        <div class="cx-mega-container">
-          <div class="cx-mega-header">
-            <h3 class="cx-mega-title">CORPORATE</h3>
-            <p class="cx-mega-subtitle">会社を知る</p>
-          </div>
-          <div class="cx-mega-grid">
-            <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-          </div>
+        <!-- LEFT: Logo -->
+        <div class="cx-nav-left">
+            <a href="index.html" class="cx-nav-logo-link">
+                <img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"
+                    onerror="this.style.display='none'">
+            </a>
         </div>
-      </div>
-    </div>
 
-        <div class="cx-mega-trigger" data-mega="mega-service">
-      <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
-      <div class="cx-mega-menu" id="mega-service">
-        <div class="cx-mega-container">
-          <div class="cx-mega-header">
-            <h3 class="cx-mega-title">SERVICE</h3>
-            <p class="cx-mega-subtitle">事業を知る</p>
-          </div>
-          <div class="mega-service">
-            <div class="mega-service__overview">
-              <a href="business.html" class="mega-service__overview-link">
-                事業一覧
-                <span class="mega-service__arrow">→</span>
-              </a>
-              <div class="mega-service__divider"></div>
+        <!-- CENTER: Nav links -->
+        <div class="cx-nav-center" id="cx-nav-links">
+
+            <div class="cx-mega-trigger" data-mega="mega-corporate">
+                <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+                <div class="cx-mega-menu" id="mega-corporate">
+                    <div class="cx-mega-container">
+                        <div class="cx-mega-header">
+                            <h3 class="cx-mega-title">CORPORATE</h3>
+                            <p class="cx-mega-subtitle">会社を知る</p>
+                        </div>
+                        <div class="cx-mega-grid">
+                            <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i
+                                    class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+                            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i
+                                    class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+                            <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i
+                                    class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mega-service__list">
-              <a href="service-division1.html" class="mega-service__item">
-                <span class="mega-service__item-label">第1営業部</span>
-                <span class="mega-service__item-arrow">→</span>
-              </a>
-              <a href="service-hd.html" class="mega-service__item">
-                <span class="mega-service__item-label">HD事業部</span>
-                <span class="mega-service__item-arrow">→</span>
-              </a>
-              <a href="ai-sales.html" class="mega-service__item">
-                <span class="mega-service__item-label">AI Sales Enablement（営業代行 / 営業支援事業）</span>
-                <span class="mega-service__item-arrow">→</span>
-              </a>
+
+            <div class="cx-mega-trigger" data-mega="mega-service">
+                <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+                <div class="cx-mega-menu" id="mega-service">
+                    <div class="cx-mega-container">
+                        <div class="cx-mega-header">
+                            <h3 class="cx-mega-title">SERVICE</h3>
+                            <p class="cx-mega-subtitle">事業を知る</p>
+                        </div>
+                        <div class="mega-service">
+                            <div class="mega-service__overview">
+                                <a href="business.html" class="mega-service__overview-link">
+                                    事業一覧
+                                    <span class="mega-service__arrow">→</span>
+                                </a>
+                                <div class="mega-service__divider"></div>
+                            </div>
+                            <div class="mega-service__list">
+                                <a href="service-division1.html" class="mega-service__item">
+                                    <span class="mega-service__item-label">第1営業部</span>
+                                    <span class="mega-service__item-arrow">→</span>
+                                </a>
+                                <a href="service-hd.html" class="mega-service__item">
+                                    <span class="mega-service__item-label">HD事業部</span>
+                                    <span class="mega-service__item-arrow">→</span>
+                                </a>
+                                <a href="ai-sales.html" class="mega-service__item">
+                                    <span class="mega-service__item-label">AI Sales Enablement（営業代行 / 営業支援事業）</span>
+                                    <span class="mega-service__item-arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+            <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
+
         </div>
-      </div>
-    </div>
 
-    <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
-    <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
+        <!-- RIGHT: CTA + Hamburger -->
+        <div class="cx-nav-right">
+            <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
+            <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+                <span class="cx-ham-lines" id="cx-ham-lines">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
 
-  </div>
-
-  <!-- RIGHT: CTA + Hamburger -->
-  <div class="cx-nav-right">
-    <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
-    <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
-      <span class="cx-ham-lines" id="cx-ham-lines">
-        <span></span><span></span><span></span>
-      </span>
-    </button>
-  </div>
-
-</nav>
+    </nav>
 
     <!-- ══ HERO (corporate.html style) ══ -->
     <div class="div-hero flex flex-col justify-end pt-40">
@@ -1156,7 +1197,8 @@
 
             <!-- DIVISION IMAGE -->
             <div class="reveal">
-                <img src="assets/images/aisales/ai:sales-enablement.selesflow.png" alt="AI Sales Enablement サービスフロー" class="w-full object-cover">
+                <img src="assets/images/aisales/ai:sales-enablement.selesflow.png" alt="AI Sales Enablement サービスフロー"
+                    class="w-full object-cover">
             </div>
 
             <!-- ② SERVICE -->
@@ -1164,7 +1206,8 @@
                 <div class="section-header reveal">
                     <p class="sec-label">Service</p>
                     <h2 class="section-title">AI Sales Enablementのここが面白い</h2>
-                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px; font-weight:700;">営業代行・AI活用・AI Sales Enablementの3つの柱で成果をつくる</p>
+                    <p style="font-size:14px; color:var(--text-sub); margin-top:12px; font-weight:700;">営業代行・AI活用・AI
+                        Sales Enablementの3つの柱で成果をつくる</p>
                 </div>
 
                 <!-- 縦積みサービスリスト -->
@@ -1173,16 +1216,18 @@
                     <!-- ① 牛くんずAI -->
                     <div class="service-detail-section reveal reveal-delay-1">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap" style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
-                                <img src="assets/images/aisales/service1.png"
-                                    alt="営業代行"
-                                    loading="lazy"
+                            <div class="service-img-wrap"
+                                style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
+                                <img src="assets/images/aisales/service1.png" alt="営業代行" loading="lazy"
                                     style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
                             </div>
                         </div>
                         <div class="service-detail-section__text">
-                            <span class="inline-block text-[10px] font-black tracking-widest uppercase text-orange-500 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full mb-4">営業代行</span>
-                            <h3 class="service-detail-section__title text-xl font-black text-gray-900 mb-4 tracking-tight">営業を"やる"だけでなく、成果が出る仕組みをつくれる</h3>
+                            <span
+                                class="inline-block text-[10px] font-black tracking-widest uppercase text-orange-500 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full mb-4">営業代行</span>
+                            <h3
+                                class="service-detail-section__title text-xl font-black text-gray-900 mb-4 tracking-tight">
+                                営業を"やる"だけでなく、成果が出る仕組みをつくれる</h3>
                             <p class="service-detail-section__desc text-sm text-gray-500 leading-loose font-bold">
                                 Crestixの営業代行事業では、ただ決められたリストに架電したり、商談を行ったりするだけではありません。<br><br>
                                 ターゲット選定、営業リスト設計、トークスクリプト改善、商談化率・受注率の分析まで、営業成果を生み出すための仕組みづくりに関わることができます。<br><br>
@@ -1194,16 +1239,18 @@
                     <!-- ② Chatbot AI -->
                     <div class="service-detail-section reveal reveal-delay-2">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap" style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
-                                <img src="assets/images/aisales/service2.png"
-                                    alt="AI活用"
-                                    loading="lazy"
+                            <div class="service-img-wrap"
+                                style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
+                                <img src="assets/images/aisales/service2.png" alt="AI活用" loading="lazy"
                                     style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
                             </div>
                         </div>
                         <div class="service-detail-section__text">
-                            <span class="inline-block text-[10px] font-black tracking-widest uppercase text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-4">AI活用</span>
-                            <h3 class="service-detail-section__title text-xl font-black text-gray-900 mb-4 tracking-tight">AIを活用しながら、これからの営業スタイルをつくれる</h3>
+                            <span
+                                class="inline-block text-[10px] font-black tracking-widest uppercase text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-4">AI活用</span>
+                            <h3
+                                class="service-detail-section__title text-xl font-black text-gray-900 mb-4 tracking-tight">
+                                AIを活用しながら、これからの営業スタイルをつくれる</h3>
                             <p class="service-detail-section__desc text-sm text-gray-500 leading-loose font-bold">
                                 Crestixでは、営業活動にAIを積極的に取り入れています。営業リストの整理、メール文面の作成、トークスクリプトの改善、商談内容の分析、CRM入力の効率化など、AIを活用して営業の生産性を高めています。<br><br>
                                 人がすべての作業を抱えるのではなく、AIに任せられる業務は任せ、人は顧客理解や提案、判断に集中する。これからの時代に求められる営業のあり方を、実際の現場でつくっていけることが魅力です。
@@ -1358,7 +1405,8 @@
                     <p style="font-size:14px; color:var(--text-sub); margin-top:12px;">
                         職種名をクリックすると詳細が開きます。
                         <a href="jobs.html"
-                            style="color:var(--orange); font-weight:700; text-decoration:none; margin-left:12px;">すべての職種を見る →</a>
+                            style="color:var(--orange); font-weight:700; text-decoration:none; margin-left:12px;">すべての職種を見る
+                            →</a>
                     </p>
                 </div>
 
@@ -1380,15 +1428,17 @@
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">クリニックや医療機関に対し、Web集客やCRMツール、電子カルテ周辺の業務改善ソリューションの提案機会（商談）を創出するポジションです。</p>
+                                    <p class="acc-detail-text">
+                                        クリニックや医療機関に対し、Web集客やCRMツール、電子カルテ周辺の業務改善ソリューションの提案機会（商談）を創出するポジションです。</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">AI Sales Enablement / 医療向け インサイドセールス（IS）<br><br>医療業界のDX・業務効率化をリードし、顧客の売上最大化のファーストコンタクトを担う重要ポジションです。</p>
+                                    <p class="acc-detail-text">AI Sales Enablement / 医療向け
+                                        インサイドセールス（IS）<br><br>医療業界のDX・業務効率化をリードし、顧客の売上最大化のファーストコンタクトを担う重要ポジションです。</p>
                                 </div>
                             </div>
-                            <a href="job-ai-medical-inside-sales.html" class="acc-entry-link">応募詳細ページへ <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
+                            <a href="job-ai-medical-inside-sales.html" class="acc-entry-link">応募詳細ページへ <i
+                                    class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1411,15 +1461,17 @@
                             <div class="acc-content">
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
-                                    <p class="acc-detail-text">クローズドな医療業界の課題に深く向き合い、集客最大化や院内運営改善のための具体的なソリューション提案・受注までを一気通貫で牽引します。</p>
+                                    <p class="acc-detail-text">
+                                        クローズドな医療業界の課題に深く向き合い、集客最大化や院内運営改善のための具体的なソリューション提案・受注までを一気通貫で牽引します。</p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">AI Sales Enablement / 医療向け フィールドセールス（FS）<br><br>単なる物売りではなく、クリニックのパートナーとして医療DXを推進し、集患力アップにコミットします。</p>
+                                    <p class="acc-detail-text">AI Sales Enablement / 医療向け
+                                        フィールドセールス（FS）<br><br>単なる物売りではなく、クリニックのパートナーとして医療DXを推進し、集患力アップにコミットします。</p>
                                 </div>
                             </div>
-                            <a href="job-ai-medical-field-sales.html" class="acc-entry-link">応募詳細ページへ <i class="fa-solid fa-arrow-right"
-                                    style="font-size:10px;"></i></a>
+                            <a href="job-ai-medical-field-sales.html" class="acc-entry-link">応募詳細ページへ <i
+                                    class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1436,8 +1488,12 @@
                 </div>
                 <div class="members-grid">
                     <a href="members.html" class="member-card reveal reveal-delay-1">
-                        <div class="member-img" style="background:linear-gradient(135deg,#1A2B4C,#0A1E3C);">
-                            <i class="fa-solid fa-user-circle" style="font-size:4rem; color:rgba(255,255,255,0.2);"></i>
+                        <div class="member-img">
+                            <!-- 通常画像 -->
+                            <img class="img-default" src="assets/images/aisales/renshi.jpg" alt="縞谷">
+                            <!-- ホバー時画像 -->
+                            <img class="img-hover" src="assets/images/aisales/renshi-hover.jpg" alt="田中 蓮 hover"
+                                onerror="this.classList.add('error')">
                         </div>
                         <div class="member-body">
                             <p class="member-role">Sales</p>
@@ -1446,8 +1502,12 @@
                         </div>
                     </a>
                     <a href="members.html" class="member-card reveal reveal-delay-2">
-                        <div class="member-img" style="background:linear-gradient(135deg,#FF5C00,#E65200);">
-                            <i class="fa-solid fa-user-circle" style="font-size:4rem; color:rgba(255,255,255,0.3);"></i>
+                        <div class="member-img">
+                            <!-- 通常画像 -->
+                            <img class="img-default" src="assets/images/aisales/nishita.jpg" alt="鈴木 葵">
+                            <!-- ホバー時画像 -->
+                            <img class="img-hover" src="assets/images/aisales/nishita-hover.jpg" alt="鈴木 葵 hover"
+                                onerror="this.classList.add('error')">
                         </div>
                         <div class="member-body">
                             <p class="member-role">Marketing</p>
@@ -1456,8 +1516,12 @@
                         </div>
                     </a>
                     <a href="members.html" class="member-card reveal reveal-delay-3">
-                        <div class="member-img" style="background:linear-gradient(135deg,#2D3748,#1A202C);">
-                            <i class="fa-solid fa-user-circle" style="font-size:4rem; color:rgba(255,255,255,0.2);"></i>
+                        <div class="member-img">
+                            <!-- 通常画像 -->
+                            <img class="img-default" src="assets/images/aisales/maekawa.jpg" alt="佐藤 悠">
+                            <!-- ホバー時画像 -->
+                            <img class="img-hover" src="assets/images/aisales/maekawa-hover.jpg" alt="佐藤 悠 hover"
+                                onerror="this.classList.add('error')">
                         </div>
                         <div class="member-body">
                             <p class="member-role">CS</p>
@@ -1482,7 +1546,8 @@
     <!-- ══ CTA ══ -->
     <section class="cta-section">
         <div style="max-width:640px; margin:0 auto;">
-            <p class="sec-label reveal" style="color:rgba(255,92,0,0.8); margin-bottom:1rem;">AI Sales Enablement — Recruitment
+            <p class="sec-label reveal" style="color:rgba(255,92,0,0.8); margin-bottom:1rem;">AI Sales Enablement —
+                Recruitment
             </p>
             <h2 class="cta-title reveal reveal-delay-1">営業の力で、<br>事業を前進させよう。</h2>
             <p class="cta-sub reveal reveal-delay-2">営業を仕組みで強くする環境で、AI時代の営業プロフェッショナルとして成長できます。</p>
@@ -1506,39 +1571,58 @@
     <!-- ══ FOOTER ══ -->
     <!-- ═══ FOOTER ═══ -->
     <footer class="bg-black text-white select-none p-0">
-    <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
-        <a href="index.html" class="footer-logo font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline" style="display:block; text-align:center;"><img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:82px; width:auto; filter:brightness(0) invert(1); display:inline-block;"></a>
-        <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
-            <a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
-            <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
-            <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
-            <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
-        </nav>
-        <div class="mt-8 flex items-center justify-center gap-4">
-            <a href="https://crestory.crestix.jp/" aria-label="CRESTORY" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-solid fa-book-open text-sm"></i></a>
-            <a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
-            <a href="entry.html" aria-label="Entry" class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
+        <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
+            <a href="index.html"
+                class="footer-logo font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline"
+                style="display:block; text-align:center;"><img src="assets/images/office/crestix-header.png"
+                    alt="Crestix"
+                    style="height:82px; width:auto; filter:brightness(0) invert(1); display:inline-block;"></a>
+            <nav
+                class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
+                <a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
+                <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
+                <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
+                <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
+            </nav>
+            <div class="mt-8 flex items-center justify-center gap-4">
+                <a href="https://crestory.crestix.jp/" aria-label="CRESTORY"
+                    class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i
+                        class="fa-solid fa-book-open text-sm"></i></a>
+                <a href="https://www.youtube.com/" aria-label="YouTube"
+                    class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i
+                        class="fa-brands fa-youtube text-sm"></i></a>
+                <a href="entry.html" aria-label="Entry"
+                    class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
+            </div>
+            <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.
+            </p>
         </div>
-        <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p>
-    </div>
-</footer>
+    </footer>
 
     <!-- MODAL FOR B2B CONTACT -->
     <div id="contact-modal" class="modal-overlay fixed inset-0 hidden z-[200] overflow-y-auto p-4 lg:p-24 select-none">
-        <div class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
-            <div class="sticky top-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+        <div
+            class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
+            <div
+                class="sticky top-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
                 <span class="font-poppins font-black text-2xl tracking-widest uppercase">Crestix Partners</span>
-                <button class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <button
+                    class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90"><i
+                        class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="overflow-y-auto flex-1 p-10 lg:p-20 bg-gray-50/50">
                 <div class="max-w-2xl mx-auto space-y-12">
                     <div class="text-center space-y-3">
-                        <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB Inquiry</span>
+                        <span
+                            class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB
+                            Inquiry</span>
                         <h2 class="text-4xl font-black tracking-tight">企業様向けお問い合わせ</h2>
                     </div>
                     <div class="bg-white rounded-[2.5rem] p-10 lg:p-14 border border-crestix-border">
                         <form onsubmit="triggerB2bFormSubmit(event)" id="contact-inner-form" class="space-y-8">
-                            <button type="submit" class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all active:scale-95">Send Inquiry ➔</button>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all active:scale-95">Send
+                                Inquiry ➔</button>
                         </form>
                     </div>
                 </div>

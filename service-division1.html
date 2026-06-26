@@ -604,12 +604,6 @@
             }
         }
 
-        @media(min-width: 1024px) {
-            .members-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
         .member-card {
             border: 1px solid var(--gray-line);
             border-radius: 12px;
@@ -628,14 +622,55 @@
             border-color: rgba(255, 92, 0, 0.25);
         }
 
-        .member-img {
-            aspect-ratio: 4 / 3;
+        /* ── メンバーカード ホバー画像切り替え ── */
+        .page-grid > .sidebar + .main-content #members .member-img {
+            aspect-ratio: 2 / 3 !important;
+            /* 縦幅のサイズを広げて縦長に */
             height: auto;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            /* 上寄せで人物が上部に来るよう */
             justify-content: center;
             overflow: hidden;
             position: relative;
+            background: #f3f4f6;
+        }
+
+        .member-img .img-default,
+        .member-img .img-hover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            /* 上端から顔を配置 */
+            display: block;
+            transition: opacity 0s, filter 0.2s ease;
+            /* 即座に切り替え */
+        }
+
+        .member-img .img-hover {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+        }
+
+        /* ホバー時：即座に切り替え */
+        .member-card:hover .img-default {
+            opacity: 0;
+        }
+
+        .member-card:hover .img-hover {
+            opacity: 1;
+        }
+
+        /* エラー時（ホバー画像がない場合）のフォールバック処理 */
+        .member-img:has(.img-hover.error) .img-hover {
+            display: none;
+        }
+
+        .member-card:hover .member-img:has(.img-hover.error) .img-default {
+            opacity: 1;
+            filter: brightness(1.1) saturate(1.2);
         }
 
         .member-body {
@@ -955,44 +990,51 @@
 
         /* ── SERVICE DETAIL SECTION レイアウト修正 ── */
         .service-detail-section {
-          display: flex;
-          flex-direction: row;        /* 横並びを明示 */
-          align-items: flex-start;    /* 上揃え */
-          gap: 3rem;
-          padding: 3rem 0;
-          border-bottom: 1px solid var(--gray-line);
-          position: relative;         /* position 明示でz-index競合を解消 */
+            display: flex;
+            flex-direction: row;
+            /* 横並びを明示 */
+            align-items: flex-start;
+            /* 上揃え */
+            gap: 3rem;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--gray-line);
+            position: relative;
+            /* position 明示でz-index競合を解消 */
         }
 
         .service-detail-section:last-child {
-          border-bottom: none;
+            border-bottom: none;
         }
 
         /* 画像側：幅を固定してテキストに食い込まないよう */
         .service-detail-section__image {
-          flex-shrink: 0;             /* 縮まないよう固定 */
-          width: 440px;
-          position: relative;         /* absoluteの子がいる場合のコンテナ */
-          z-index: 0;
+            flex-shrink: 0;
+            /* 縮まないよう固定 */
+            width: 440px;
+            position: relative;
+            /* absoluteの子がいる場合のコンテナ */
+            z-index: 0;
         }
 
         /* テキスト側：残り幅を使う */
         .service-detail-section__text {
-          flex: 1;
-          min-width: 0;               /* flexの折り返し防止 */
-          position: relative;
-          z-index: 1;                 /* 画像より前面に */
+            flex: 1;
+            min-width: 0;
+            /* flexの折り返し防止 */
+            position: relative;
+            z-index: 1;
+            /* 画像より前面に */
         }
 
         /* SP対応 */
         @media (max-width: 768px) {
-          .service-detail-section {
-            flex-direction: column;
-          }
+            .service-detail-section {
+                flex-direction: column;
+            }
 
-          .service-detail-section__image {
-            width: 100%;
-          }
+            .service-detail-section__image {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -1228,8 +1270,10 @@
                     <!-- ① 牛くんずAI -->
                     <div class="service-detail-section reveal reveal-delay-1">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap" style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
-                                <img src="assets/images/division1/service-cow.png" alt="牛くんずAI" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
+                            <div class="service-img-wrap"
+                                style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
+                                <img src="assets/images/division1/service-cow.png" alt="牛くんずAI" loading="lazy"
+                                    style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
                             </div>
                         </div>
                         <div class="service-detail-section__text">
@@ -1250,7 +1294,8 @@
                     <!-- ② Chatbot AI -->
                     <div class="service-detail-section reveal reveal-delay-2">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap" style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
+                            <div class="service-img-wrap"
+                                style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
                                 <img src="assets/images/division1/tsunamaru-ai.png" alt="つなまるAI" loading="lazy"
                                     style="width: 100%; height: 100%; object-fit: contain; object-position: center; display: block;">
                             </div>
@@ -1500,8 +1545,12 @@
                 </div>
                 <div class="members-grid">
                     <a href="members.html" class="member-card reveal reveal-delay-1">
-                        <div class="member-img" style="background:linear-gradient(135deg,#1A2B4C,#0A1E3C);">
-                            <i class="fa-solid fa-user-circle" style="font-size:4rem; color:rgba(255,255,255,0.2);"></i>
+                        <div class="member-img">
+                            <!-- 通常画像 -->
+                            <img class="img-default" src="assets/images/division1/division-matuoka.jpg" alt="田中 蓮">
+                            <!-- ホバー時画像 -->
+                            <img class="img-hover" src="assets/images/division1/division-matuoka-hover.jpg"
+                                alt="田中 蓮 hover" onerror="this.classList.add('error')">
                         </div>
                         <div class="member-body">
                             <p class="member-role">Sales</p>
@@ -1510,12 +1559,16 @@
                         </div>
                     </a>
                     <a href="members.html" class="member-card reveal reveal-delay-2">
-                        <div class="member-img" style="background:linear-gradient(135deg,#FF5C00,#E65200);">
-                            <i class="fa-solid fa-user-circle" style="font-size:4rem; color:rgba(255,255,255,0.3);"></i>
+                        <div class="member-img">
+                            <!-- 通常画像 -->
+                            <img class="img-default" src="assets/images/division1/division1-takahara.jpg" alt="鈴木 葵">
+                            <!-- ホバー時画像 -->
+                            <img class="img-hover" src="assets/images/division1/div1-takahara-hover.jpg"
+                                alt="鈴木 葵 hover" onerror="this.classList.add('error')">
                         </div>
                         <div class="member-body">
                             <p class="member-role">Marketing</p>
-                            <p class="member-name">鈴木 葵</p>
+                            <p class="member-name">髙原</p>
                             <p class="member-quote">「地域医療に貢献できているという実感が、毎日の仕事のモチベーションになっています」</p>
                         </div>
                     </a>

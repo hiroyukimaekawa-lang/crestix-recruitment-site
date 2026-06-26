@@ -366,22 +366,8 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            opacity: 0;
-            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 4s ease-out;
-            transform: scale(1.08);
-            z-index: 1;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-            transform: scale(1.0);
-            z-index: 2;
-        }
-
-        .hero-slide.prev {
-            opacity: 0;
-            transform: scale(1.04);
-            z-index: 1;
+            opacity: 0;          /* ← デフォルトは非表示 */
+            z-index: 0;
         }
 
         /* Hero content overlay */
@@ -2545,92 +2531,153 @@
             }
         ];
 
-        const INTERVAL = 4000;
-        let currentSlide = 0;
-        let slideTimer = null;
-        let isAnimating = false;
+        // ── 定数（この2つだけ変更すれば全体に反映）──
+        const DISPLAY_MS  = 5000;  // 各スライドの表示時間
+        const TRANSIT_MS  = 400;   // フェードのトランジション時間（CSSと必ず合わせる）
+
+        // ── 状態 ──
+        let currentSlide  = 0;
+        let transitioning = false;
+        let rafId         = null;
+        let slideStart    = null;  // 現在スライドの表示開始時刻
 
         function initHeroSlideshow() {
-            const dots = document.querySelectorAll('.slide-dot');
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots   = document.querySelectorAll('.slide-dot');
+
+            // ドットクリック
             dots.forEach((dot, i) => {
-                dot.addEventListener('click', () => goToSlide(i));
+                dot.addEventListener('click', () => {
+                    if (!transitioning && i !== currentSlide) {
+                        cancelAnimationFrame(rafId);
+                        doTransition(i);
+                    }
+                });
             });
-            startTimer();
+
+            // 最初のスライドを確実に表示
+            slides.forEach((s, i) => {
+                s.style.transition = 'none';
+                s.style.opacity    = i === 0 ? '1' : '0';
+            });
+            updateDots(0);
+            updateText(0);
+
+            // 少し待ってからtransitionを戻してタイマー開始
+            setTimeout(() => {
+                slides.forEach(s => {
+                    s.style.transition = `opacity ${TRANSIT_MS}ms ease`;
+                });
+                slideStart = performance.now();
+                rafId = requestAnimationFrame(tick);
+            }, 100);
         }
 
-        function goToSlide(idx, dir) {
-            if (isAnimating || idx === currentSlide) return;
-            isAnimating = true;
-
-            const slides = document.querySelectorAll('.hero-slide');
-            const dots = document.querySelectorAll('.slide-dot');
-            const headline = document.getElementById('slide-headline');
-            const sub = document.getElementById('slide-sub');
-            const tag = document.getElementById('slide-tag');
-            const counter = document.getElementById('slide-counter');
-
-            if (!slides.length || !headline || !sub || !tag) {
-                isAnimating = false;
+        // ── メインループ（rAFで毎フレーム時間をチェック）──
+        function tick(now) {
+            if (transitioning) {
+                rafId = requestAnimationFrame(tick);
                 return;
             }
+            // DISPLAY_MS 経過したら次へ
+            if (now - slideStart >= DISPLAY_MS) {
+                const slides = document.querySelectorAll('.hero-slide');
+                const next   = (currentSlide + 1) % slides.length;
+                doTransition(next);
+            }
+            rafId = requestAnimationFrame(tick);
+        }
 
-            // Mark old slide as prev
-            const prevSlide = slides[currentSlide];
-            prevSlide.classList.remove('active');
-            prevSlide.classList.add('prev');
+        // ── スライド切り替え ──
+        function doTransition(idx) {
+            const slides = document.querySelectorAll('.hero-slide');
+            if (transitioning || idx === currentSlide) return;
 
-            // Remove prev class after transition completes
+            transitioning = true;
+
+            // 旧スライドをフェードアウト
+            const oldSlide = slides[currentSlide];
+            oldSlide.style.opacity = '0';
+            oldSlide.style.zIndex  = '1';
+
+            // 新スライドをフェードイン
+            const newSlide = slides[idx];
+            newSlide.style.opacity = '0';
+            newSlide.style.zIndex  = '2';
+
+            // 1フレーム待ってからopacityを変える（確実にトランジションを発火させる）
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    newSlide.style.opacity = '1';
+                });
+            });
+
+            // テキスト・ドット更新
+            updateDots(idx);
+            setTimeout(() => updateText(idx), 80);
+
+            // トランジション完了後に状態を更新
             setTimeout(() => {
-                prevSlide.classList.remove('prev');
-            }, 400);
+                oldSlide.style.zIndex  = '0';
+                newSlide.style.zIndex  = '1';
+                currentSlide  = idx;
+                transitioning = false;
+                slideStart    = performance.now(); // 表示開始時刻をリセット
+            }, TRANSIT_MS);
+        }
 
-            currentSlide = idx;
-            slides[currentSlide].classList.add('active');
+        // ── ドット更新 ──
+        function updateDots(idx) {
+            const dots = document.querySelectorAll('.slide-dot');
+            const counter = document.getElementById('slide-counter');
+            const total = document.querySelectorAll('.hero-slide').length;
 
-            // Update dots
             dots.forEach((d, i) => {
-                d.classList.toggle('active', i === currentSlide);
-                // Reset fill animation
+                d.classList.toggle('active', i === idx);
                 const fill = d.querySelector('.slide-dot-fill');
                 if (fill) {
                     fill.style.animation = 'none';
-                    fill.offsetHeight; // reflow
+                    void fill.offsetWidth;
                     fill.style.animation = '';
                 }
             });
 
-            // Counter
             if (counter) {
-                counter.textContent = String(currentSlide + 1).padStart(2, '0') + ' / 0' + slides.length;
+                counter.textContent =
+                    String(idx + 1).padStart(2, '0') + ' / ' +
+                    String(total).padStart(2, '0');
             }
-
-            // Update text with slide animation
-            const data = SLIDES_DATA[currentSlide];
-            tag.textContent = data.tag;
-
-            headline.classList.remove('visible');
-            setTimeout(() => {
-                headline.innerHTML = data.headline;
-                sub.textContent = data.sub;
-                headline.classList.add('visible');
-            }, 80);
-
-            setTimeout(() => { isAnimating = false; }, 300);
-
-            clearInterval(slideTimer);
-            startTimer();
         }
 
-        function nextSlide() {
-            const count = document.querySelectorAll('.hero-slide').length;
-            goToSlide((currentSlide + 1) % count);
+        // ── テキスト更新 ──
+        function updateText(idx) {
+            const data     = SLIDES_DATA[idx];
+            const tag      = document.getElementById('slide-tag');
+            const headline = document.getElementById('slide-headline');
+            const sub      = document.getElementById('slide-sub');
+
+            if (tag)      tag.textContent  = data.tag;
+            if (headline) {
+                headline.classList.remove('visible');
+                setTimeout(() => {
+                    headline.innerHTML = data.headline;
+                    if (sub) sub.textContent = data.sub;
+                    headline.classList.add('visible');
+                }, 60);
+            }
         }
 
-        function startTimer() {
-            slideTimer = setInterval(nextSlide, INTERVAL);
-        }
+        // タブ非アクティブ時の対策
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                cancelAnimationFrame(rafId);
+            } else {
+                // タブに戻ったときは表示時刻をリセットして再開
+                slideStart = performance.now();
+                rafId = requestAnimationFrame(tick);
+            }
+        });
 
-        // Allow calling from loader callback
         window.initHeroSlideshow = initHeroSlideshow;
     </script>
 
