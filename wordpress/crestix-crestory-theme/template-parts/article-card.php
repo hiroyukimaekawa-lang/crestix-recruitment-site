@@ -9,8 +9,9 @@ $has_thumb      = has_post_thumbnail() || (bool) crestix_crestory_meta('crestory
 $terms          = crestix_crestory_terms();
 $cat_slugs      = implode(' ', array_map(fn($t) => $t->slug, $terms));
 $source_label   = $term ? $term->name : 'CRESTORY';
+$is_featured    = (bool) get_query_var('cx_card_featured', false);
 ?>
-<article class="note-card <?php echo $has_thumb ? 'note-card--image' : 'note-card--text'; ?>" data-cats="<?php echo esc_attr($cat_slugs); ?>">
+<article class="note-card <?php echo $has_thumb ? 'note-card--image' : 'note-card--text'; ?><?php echo $is_featured ? ' note-card--featured' : ''; ?>" data-cats="<?php echo esc_attr($cat_slugs); ?>">
   <p class="note-card-source">
     <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
     「<?php echo esc_html($source_label); ?>」から

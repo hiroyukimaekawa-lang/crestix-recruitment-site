@@ -35,4 +35,12 @@
   section.addEventListener('focusout', (event) => {
     if (!section.contains(event.relatedTarget)) deactivateAll();
   });
+
+  // Per-cell video play/pause
+  cells.forEach((cell) => {
+    const video = cell.querySelector('.biz-grid__cell-video');
+    if (!video) return;
+    cell.addEventListener('mouseenter', () => video.play().catch(() => {}));
+    cell.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+  });
 }());

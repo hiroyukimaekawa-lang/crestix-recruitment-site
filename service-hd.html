@@ -865,7 +865,7 @@
 
 <body>
 
-    <!-- ═══ FULLSCREEN MENU ═══ -->
+<!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
         <div class="fm-topbar">
             <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
@@ -929,20 +929,22 @@
         </div>
     </div>
     <!-- ═══ NAVIGATION ═══ -->
-    <nav id="cx-navbar" aria-label="グローバルナビゲーション">
+<nav id="cx-navbar" aria-label="グローバルナビゲーション">
 
-        <!-- LEFT: Logo -->
-        <div class="cx-nav-left">
-            <a href="index.html" class="cx-nav-logo-link">
-                <img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"
-                    onerror="this.style.display='none'">
-            </a>
-        </div>
+  <!-- LEFT: Logo -->
+  <div class="cx-nav-left">
+    <a href="index.html" class="cx-nav-logo-link">
+      <img id="cx-nav-logo"
+           src="assets/images/office/crestix-header.png"
+           alt="Crestix"
+           onerror="this.style.display='none'">
+    </a>
+  </div>
 
-        <!-- CENTER: Nav links -->
-        <div class="cx-nav-center" id="cx-nav-links">
+  <!-- CENTER: Nav links -->
+  <div class="cx-nav-center" id="cx-nav-links">
 
-                <div class="cx-mega-trigger" data-mega="mega-corporate">
+        <div class="cx-mega-trigger" data-mega="mega-corporate">
       <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
       <div class="cx-mega-menu" id="mega-corporate">
         <div class="cx-mega-container">
@@ -959,7 +961,7 @@
       </div>
     </div>
 
-                <div class="cx-mega-trigger" data-mega="mega-service">
+        <div class="cx-mega-trigger" data-mega="mega-service">
       <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
       <div class="cx-mega-menu" id="mega-service">
         <div class="cx-mega-container">
@@ -997,19 +999,19 @@
     <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
     <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
 
-        </div>
+  </div>
 
-        <!-- RIGHT: CTA + Hamburger -->
-        <div class="cx-nav-right">
-            <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
-            <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
-                <span class="cx-ham-lines" id="cx-ham-lines">
-                    <span></span><span></span><span></span>
-                </span>
-            </button>
-        </div>
+  <!-- RIGHT: CTA + Hamburger -->
+  <div class="cx-nav-right">
+    <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
+    <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+      <span class="cx-ham-lines" id="cx-ham-lines">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+  </div>
 
-    </nav>
+</nav>
 
     <!-- ══ HERO ══ -->
     <div class="div-hero flex flex-col justify-end pt-40">
@@ -1059,8 +1061,8 @@
             </section>
 
             <!-- HD IMAGE -->
-            <div class="reveal">
-                <img src="assets/images/HD/hd-sales.png" alt="HD事業部" class="w-full object-cover">
+            <div class="reveal" style="max-height:480px; overflow:hidden;">
+                <img src="assets/images/HD/hd-sales.png" alt="HD事業部" class="w-full h-full object-cover" style="object-fit:cover;">
             </div>
 
             <!-- ② SERVICE -->
@@ -1076,9 +1078,10 @@
                     <!-- HP制作 -->
                     <div class="service-detail-section reveal reveal-delay-1 group">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap">
+                            <div class="service-img-wrap" style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
                                 <img src="assets/images/HD/hd-sales.png" alt="HP制作"
-                                    loading="lazy" class="transition-transform duration-500 group-hover:scale-105">
+                                    loading="lazy"
+                                    style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
                             </div>
                         </div>
                         <div class="service-detail-section__text">
@@ -1094,17 +1097,18 @@
                     <!-- MEO対策 -->
                     <div class="service-detail-section reveal reveal-delay-2 group">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap">
-                                <img src="assets/images/HD/hd-sales.png" alt="MEO対策"
-                                    loading="lazy" class="transition-transform duration-500 group-hover:scale-105">
+                            <div class="service-img-wrap" style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
+                                <img src="assets/images/HD/hd-sales.png" alt="MEO／SEO／AIO対策"
+                                    loading="lazy"
+                                    style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
                             </div>
                         </div>
                         <div class="service-detail-section__text">
-                            <span class="inline-block text-[10px] font-black tracking-widest uppercase text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-4">MEO</span>
-                            <h3 class="service-detail-section__title text-xl font-black text-gray-900 mb-4 tracking-tight">MEO対策</h3>
+                            <span class="inline-block text-[10px] font-black tracking-widest uppercase text-orange-500 bg-orange-50 border border-orange-100 px-3 py-1 rounded-full mb-4">MEO / SEO / AIO</span>
+                            <h3 class="service-detail-section__title text-xl font-black text-gray-900 mb-4 tracking-tight">MEO／SEO／AIO対策</h3>
                             <p class="service-detail-section__desc text-sm text-gray-500 leading-loose font-bold">
-                                Googleマップなどの地図検索で、店舗や施設が見つかりやすくなるように支援します。<br><br>
-                                店舗情報の整備、口コミ対策、検索キーワードの最適化などを行い、地域でサービスを探しているユーザーからの来店・問い合わせ増加を目指します。
+                                GoogleマップやGoogle検索、AI検索などで、店舗・施設・サービスが見つかりやすくなるように支援します。<br><br>
+                                店舗情報やWebサイトの整備、口コミ対策、検索キーワードの最適化、AIに正しく引用・推薦されるための情報設計などを行い、地域やサービスを検索しているユーザーからの来店・問い合わせ増加を目指します。
                             </p>
                         </div>
                     </div>
@@ -1112,9 +1116,10 @@
                     <!-- SNS集客支援 -->
                     <div class="service-detail-section reveal reveal-delay-3 group">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap">
+                            <div class="service-img-wrap" style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
                                 <img src="assets/images/HD/hd-sales.png" alt="SNS集客支援"
-                                    loading="lazy" class="transition-transform duration-500 group-hover:scale-105">
+                                    loading="lazy"
+                                    style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
                             </div>
                         </div>
                         <div class="service-detail-section__text">
@@ -1170,7 +1175,7 @@
                                     <p class="acc-detail-text" style="font-size:15px;">HD事業部 / インサイドセールスリーダー候補<br><br>プレーヤーとしての実績を積みながら、早期にチームマネジメントを担える環境です。</p>
                                 </div>
                             </div>
-                            <a href="job-hd-inside-sales-leader.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                            <a href="job-hd-inside-sales-leader.html" class="acc-entry-link">応募詳細ページへ <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1198,7 +1203,7 @@
                                     <p class="acc-detail-text" style="font-size:15px;">HD事業部 / フィールドセールスメンバー<br><br>飲食店の集客・売上改善を、複数のプロダクトを組み合わせながら提案する、上流から携わる営業職です。</p>
                                 </div>
                             </div>
-                            <a href="job-hd-field-sales-leader.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                            <a href="job-hd-field-sales-leader.html" class="acc-entry-link">応募詳細ページへ <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                     <div class="accordion-item" id="jobs-fs-leader">
@@ -1221,7 +1226,7 @@
                                     <p class="acc-detail-text" style="font-size:15px;">HD事業部 / フィールドセールスリーダー候補<br><br>現場プレーヤーとして成果を出しながら、組織のマネジメントも担える環境です。</p>
                                 </div>
                             </div>
-                            <a href="job-hd-field-sales.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                            <a href="job-hd-field-sales.html" class="acc-entry-link">応募詳細ページへ <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1249,7 +1254,7 @@
                                     <p class="acc-detail-text" style="font-size:15px;">HD事業部 / カスタマーサクセスメンバー<br><br>飲食店の成功体験を一緒につくる、顧客伴走型のポジションです。</p>
                                 </div>
                             </div>
-                            <a href="job-hd-customer-success-leader.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                            <a href="job-hd-customer-success-leader.html" class="acc-entry-link">応募詳細ページへ <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                     <div class="accordion-item" id="jobs-cs-leader">
@@ -1272,7 +1277,7 @@
                                     <p class="acc-detail-text" style="font-size:15px;">HD事業部 / カスタマーサクセスリーダー候補<br><br>CS組織全体の品質向上と顧客満足度の最大化を担うリーダーポジションです。</p>
                                 </div>
                             </div>
-                            <a href="job-hd-customer-success.html" class="acc-entry-link">エントリーする <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                            <a href="job-hd-customer-success.html" class="acc-entry-link">応募詳細ページへ <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1356,11 +1361,10 @@
     </section>
 
     <!-- ══ FOOTER ══ -->
+    <!-- ═══ FOOTER ═══ -->
     <footer class="bg-black text-white select-none p-0">
     <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
-        <a href="index.html" class="footer-logo" aria-label="CRESTIX トップへ">
-            <img src="assets/images/office/crestix-header.png" alt="CRESTIX" width="160" loading="lazy">
-        </a>
+        <a href="index.html" class="footer-logo font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline" style="display:block; text-align:center;"><img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:82px; width:auto; filter:brightness(0) invert(1); display:inline-block;"></a>
         <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
             <a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
             <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
@@ -1467,18 +1471,18 @@
             const target = document.querySelector(hash);
             if (!target) return;
 
+            target.classList.add('open');
+            const body = target.querySelector('.acc-body');
+            if (body) {
+                body.style.maxHeight = (body.scrollHeight + 80) + "px";
+            }
+
+            window.scrollTo({ top: 0, behavior: 'instant' });
+
+            target.classList.add('cx-highlight');
             setTimeout(() => {
-                target.classList.add('open');
-                const body = target.querySelector('.acc-body');
-                if (body) {
-                    body.style.maxHeight = (body.scrollHeight + 80) + "px";
-                }
-                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                target.classList.add('cx-highlight');
-                setTimeout(() => {
-                    target.classList.remove('cx-highlight');
-                }, 2200);
-            }, 400);
+                target.classList.remove('cx-highlight');
+            }, 2200);
         })();
     </script>
 </body>

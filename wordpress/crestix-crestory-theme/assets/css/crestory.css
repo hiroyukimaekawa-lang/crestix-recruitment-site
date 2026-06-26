@@ -1152,169 +1152,145 @@ button {
 
 .note-sidebar-post:hover .note-sidebar-post-title { text-decoration: underline; }
 
-/* ── ヒーローセクション ── */
-.note-hero { margin-bottom: 32px; }
-
-.note-hero-label {
-  margin: 0 0 10px;
-  font-size: 0.76rem;
-  color: var(--note-muted);
-}
-
-.note-hero-grid {
+/* ── 新ヒーロー ── */
+.cx-hero {
   display: grid;
-  grid-template-columns: 44fr 37fr 19fr;
-  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+  background: #F7F8FA;
+  border-bottom: 1px solid var(--note-border);
+  margin-bottom: 32px;
+  overflow: hidden;
+  border-radius: var(--radius);
 }
 
-.note-hero-card {
-  position: relative;
-  border-radius: var(--note-radius);
-  overflow: hidden;
+.cx-hero__text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding: 3rem 3rem 3rem 4rem;
+}
+
+.cx-hero__kicker {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-poppins);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+
+.cx-hero__catch {
+  margin: 0 0 1rem;
+  font-family: var(--font-noto);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.4;
+  color: #0A1220;
+}
+
+.cx-hero__sub {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.8;
+}
+
+.cx-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 0.65rem 1.5rem;
+  border-radius: 999px;
+  background: var(--color-orange);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 900;
   text-decoration: none;
-  min-height: 292px;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-  transition: opacity 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
-.note-hero-card:hover {
-  opacity: 0.95;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-  transform: translateY(-1px);
+.cx-hero__cta:hover {
+  background: var(--color-orange-dark);
+  transform: translateY(-2px);
 }
 
-/* Card 1 – テキストのみ */
-.note-hero-card--text {
-  background: #f3f3f3;
-  padding: 24px;
-  justify-content: flex-start;
-  gap: 0;
-}
-
-.note-hero-card--text .note-card-cat {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--note-link);
-  margin-bottom: 8px;
-  display: block;
-}
-
-.note-hero-title {
-  font-size: clamp(1.18rem, 2.05vw, 1.65rem);
-  font-weight: 800;
-  color: var(--note-text);
-  line-height: 1.5;
-  margin: 0;
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
+.cx-hero__image {
   overflow: hidden;
 }
 
-.note-hero-logo-watermark {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  font-family: var(--font-poppins);
-  font-size: 0.55rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  color: rgba(0, 0, 0, 0.15);
-  text-transform: uppercase;
-}
-
-.note-hero-card-bottom {
-  margin-top: auto;
-  padding-top: 10px;
-}
-
-/* Card 2 – 画像全面 */
-.note-hero-card--image { background: #222; }
-
-.note-hero-img {
-  position: absolute;
-  inset: 0;
+.cx-hero__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  display: block;
 }
 
-.note-hero-card--image:hover .note-hero-img { transform: scale(1.04); }
-
-.note-hero-img-placeholder {
+.cx-hero__image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  background: linear-gradient(135deg, #0a1e3c, #1a2b4c);
+  color: rgba(255, 255, 255, 0.4);
   font-family: var(--font-poppins);
   font-size: 0.65rem;
   font-weight: 900;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.4);
-  background: linear-gradient(135deg, #0a1e3c, #1a2b4c);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
 }
 
-.note-hero-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 28px 16px 16px;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
-  z-index: 1;
+@media (max-width: 768px) {
+  .cx-hero {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+  }
+
+  .cx-hero__image {
+    order: -1;
+    min-height: 220px;
+  }
+
+  .cx-hero__text {
+    padding: 2rem 1.5rem;
+  }
 }
 
-.note-hero-card--image .note-hero-title {
-  font-size: 1rem;
-  font-weight: 800;
+/* ── サイドバー CTA ── */
+.note-sidebar-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--color-orange);
+  border-radius: 999px;
+  color: var(--color-orange);
+  font-family: var(--font-poppins);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 12px;
+}
+
+.note-sidebar-cta:hover {
+  background: var(--color-orange);
   color: #fff;
-  -webkit-line-clamp: 3;
-  margin-bottom: 8px;
 }
 
-/* Card 3 – 小テキスト */
-.note-hero-card--small {
-  background: #fafafa;
-  border: 1px solid var(--note-border);
-  padding: 16px;
-  gap: 8px;
-  justify-content: flex-start;
+/* ── 先頭カード featured (2カラム幅) ── */
+.note-card--featured {
+  grid-column: span 2;
 }
 
-.note-card-cat--top {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: var(--note-link);
-  background: rgba(255,255,255,0.88);
-  padding: 2px 6px;
-  border-radius: 3px;
-  line-height: 1.4;
-}
-
-.note-play-icon {
-  font-size: 0.68rem;
-  color: var(--note-muted);
-}
-
-.note-hero-title--sm {
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: var(--note-text);
-  line-height: 1.55;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-  flex: 1;
+.note-card--featured .note-card-thumb {
+  aspect-ratio: 16 / 7;
 }
 
 /* ── ヒーロー共通メタ ── */
@@ -1660,13 +1636,9 @@ button {
 
 /* ── レスポンシブ ── */
 @media (max-width: 1024px) {
-  .note-hero-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .note-hero-card--small { display: none; }
-
   .note-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .note-card--featured { grid-column: span 2; }
 }
 
 @media (max-width: 767px) {
@@ -1703,12 +1675,11 @@ button {
 @media (max-width: 767px) {
   .note-wrapper { width: min(100% - 32px, 1200px); }
 
-  .note-hero-grid { grid-template-columns: 1fr; }
-  .note-hero-card--image,
-  .note-hero-card--small { display: none; }
-  .note-hero-card--text { min-height: 200px; }
-
   .note-grid { grid-template-columns: 1fr; }
+
+  .note-card--featured { grid-column: span 1; }
+
+  .note-card--featured .note-card-thumb { aspect-ratio: 16 / 9; }
 }
 
 @media (max-width: 1024px) {

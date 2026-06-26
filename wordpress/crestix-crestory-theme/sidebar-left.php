@@ -50,6 +50,10 @@ $sns_youtube  = get_option('crestory_sns_youtube', '');
       </a>
     </div>
 
+    <a class="note-sidebar-cta" href="<?php echo esc_url(crestix_crestory_recruit_url('entry.html')); ?>">
+      採用情報を見る
+    </a>
+
     <hr class="note-profile-divider">
 
     <!-- サイドバー下部：YouTube カテゴリ記事リスト -->

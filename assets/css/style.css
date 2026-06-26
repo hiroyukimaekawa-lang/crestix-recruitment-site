@@ -989,6 +989,67 @@ input:focus, select:focus, textarea:focus {
     }
 }
 
+/* biz-grid per-cell video + sub-text */
+.biz-grid__sub {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-sub, #6b7280);
+    margin-top: 0.5rem;
+    letter-spacing: 0.05em;
+    transition: color 0.25s ease;
+}
+
+.biz-grid__cell-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.biz-grid__cell-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.biz-grid__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.biz-grid__cell:hover .biz-grid__cell-video {
+    opacity: 1;
+}
+
+.biz-grid__cell:hover .biz-grid__cell-overlay {
+    opacity: 1;
+}
+
+.biz-grid__cell:hover .biz-grid__title,
+.biz-grid__cell:hover .biz-grid__sub {
+    color: #ffffff;
+}
+
+/* service-img-wrap SP override */
+@media (max-width: 768px) {
+    .service-img-wrap {
+        width: 100% !important;
+        height: 220px !important;
+    }
+}
+
 /* ==========================================================================
    CRESTORY latest thumbnail cards
    ========================================================================== */
@@ -1105,56 +1166,53 @@ input:focus, select:focus, textarea:focus {
    Service detail image/text rows
    ========================================================================== */
 .service-detail-section {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 0;
-    align-items: stretch;
-    padding: 0;
-    padding-top: 0;
-    margin-top: 0;
-    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--gray-line);
+}
+
+.service-detail-section:last-child {
+    border-bottom: none;
+}
+
+@media (min-width: 768px) {
+    .service-detail-section {
+        flex-direction: row;
+        align-items: center;
+        gap: 3rem;
+    }
+}
+
+.service-detail-section--reverse {
+    flex-direction: row-reverse;
 }
 
 .service-detail-section__image {
-    position: relative;
+    flex-shrink: 0;
     width: 100%;
-    height: 100%;
-    min-height: 400px;
-    overflow: hidden;
-    padding: 0;
-    padding-top: 0;
-    margin: 0;
-    margin-top: 0;
 }
 
-.service-detail-section__image > div {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: auto;
-    border-radius: 0;
-    padding-top: 0;
-    margin-top: 0;
-}
-
-.service-detail-section__image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover !important;
-    object-position: center;
-    display: block;
-    vertical-align: top;
-    padding-top: 0;
-    margin-top: 0;
+@media (min-width: 768px) {
+    .service-detail-section__image {
+        width: 300px;
+    }
 }
 
 .service-detail-section__text {
+    flex: 1;
     min-width: 0;
-    padding: 48px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .service-detail-section__text {
+        padding: 2rem 0 2rem 2rem;
+    }
 }
 
 .service-detail-section__text > span[class*="inline-block"],
@@ -1177,30 +1235,6 @@ input:focus, select:focus, textarea:focus {
 .service-detail-section__desc {
     word-break: keep-all;
     overflow-wrap: break-word;
-}
-
-.service-detail-section--reverse {
-    direction: rtl;
-}
-
-.service-detail-section--reverse > * {
-    direction: ltr;
-}
-
-@media (max-width: 768px) {
-    .service-detail-section {
-        grid-template-columns: 1fr;
-        min-height: unset;
-    }
-
-    .service-detail-section__image {
-        min-height: 240px;
-        aspect-ratio: 4 / 3;
-    }
-
-    .service-detail-section__text {
-        padding: 32px 20px;
-    }
 }
 
 @keyframes crestoryThumbLoading {
@@ -1987,24 +2021,17 @@ input:focus, select:focus, textarea:focus {
    サービス詳細 画像ラッパー
    ========================================== */
 .service-img-wrap {
-    position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
-    border-radius: 16px;
-    background: #f9fafb;
-    border: 1px solid #f3f4f6;
+    border-radius: 12px;
+    background: #f3f4f6;
     overflow: hidden;
-    padding: 0;
-    margin: 0;
 }
 
 .service-img-wrap img {
-    position: absolute;
-    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
+    object-fit: cover;
+    object-position: center;
     display: block;
-    opacity: 0.9;
 }
