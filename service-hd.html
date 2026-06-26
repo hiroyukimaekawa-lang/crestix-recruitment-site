@@ -860,6 +860,48 @@
 
         /* SCROLL LOCK */
         body.menu-open { overflow: hidden; }
+
+        /* ── SERVICE DETAIL SECTION レイアウト修正 ── */
+        .service-detail-section {
+          display: flex;
+          flex-direction: row;        /* 横並びを明示 */
+          align-items: flex-start;    /* 上揃え */
+          gap: 3rem;
+          padding: 3rem 0;
+          border-bottom: 1px solid var(--gray-line);
+          position: relative;         /* position 明示でz-index競合を解消 */
+        }
+
+        .service-detail-section:last-child {
+          border-bottom: none;
+        }
+
+        /* 画像側：幅を固定してテキストに食い込まないよう */
+        .service-detail-section__image {
+          flex-shrink: 0;             /* 縮まないよう固定 */
+          width: 440px;
+          position: relative;         /* absoluteの子がいる場合のコンテナ */
+          z-index: 0;
+        }
+
+        /* テキスト側：残り幅を使う */
+        .service-detail-section__text {
+          flex: 1;
+          min-width: 0;               /* flexの折り返し防止 */
+          position: relative;
+          z-index: 1;                 /* 画像より前面に */
+        }
+
+        /* SP対応 */
+        @media (max-width: 768px) {
+          .service-detail-section {
+            flex-direction: column;
+          }
+
+          .service-detail-section__image {
+            width: 100%;
+          }
+        }
     </style>
 </head>
 
