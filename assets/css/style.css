@@ -867,8 +867,7 @@ input:focus, select:focus, textarea:focus {
     background: #fff;
     border: 1px solid #e5e7eb;
     cursor: pointer;
-    overflow: hidden;
-    isolation: isolate;
+    overflow: visible;
     transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
@@ -922,7 +921,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .biz-grid__tag {
-    display: none;
+    display: flex;
+    opacity: 0;
     align-items: center;
     align-self: flex-start;
     margin-bottom: 14px;
@@ -936,6 +936,7 @@ input:focus, select:focus, textarea:focus {
     font-weight: 900;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+    transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .biz-grid__title {
@@ -1000,46 +1001,70 @@ input:focus, select:focus, textarea:focus {
     transition: color 0.25s ease;
 }
 
+/* ── 動画：fixed で画面全体を覆う ── */
 .biz-grid__cell-video {
-    position: absolute;
+    position: fixed;
     inset: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
+    z-index: 100;
     opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 0;
     pointer-events: none;
+    transition: opacity 0.4s ease;
 }
 
+/* ── オーバーレイ：非表示（動画があれば不要） ── */
 .biz-grid__cell-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 2;
     opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 1;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
 }
 
+/* ── コンテンツ ── */
 .biz-grid__content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* ── ホバー時：動画を全画面表示 ── */
 .biz-grid__cell:hover .biz-grid__cell-video {
     opacity: 1;
 }
 
-.biz-grid__cell:hover .biz-grid__cell-overlay {
-    opacity: 1;
+/* ── ホバー時：ホバーセルを最前面に ── */
+.biz-grid__cell:hover {
+    z-index: 101;
 }
 
-.biz-grid__cell:hover .biz-grid__title,
-.biz-grid__cell:hover .biz-grid__sub {
-    color: #ffffff;
+/* ── ホバー時：コンテンツ全体を非表示 ── */
+.biz-grid__cell:hover .biz-grid__content {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+/* ── ホバー時：タグのみ全画面中央に白文字で表示 ── */
+.biz-grid__cell:hover .biz-grid__tag {
+    opacity: 1 !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    pointer-events: none;
 }
 
 /* service-img-wrap SP override */
