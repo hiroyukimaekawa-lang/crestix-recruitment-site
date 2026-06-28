@@ -1052,7 +1052,7 @@ input:focus, select:focus, textarea:focus {
 /* ── ホバー時：タイトルとサブタイトルを薄く＆白文字で表示 ── */
 .biz-grid__cell:hover .biz-grid__title,
 .biz-grid__cell:hover .biz-grid__sub {
-    opacity: 0.25;
+    opacity: 0.85;
     color: #ffffff !important;
     transition: opacity 0.3s ease, color 0.3s ease;
 }
