@@ -1838,6 +1838,74 @@
                 padding: .85rem 1.5rem !important;
             }
         }
+
+        /* ─── CRESTORY Grid & Thumbnails ──────────────────────── */
+        .corp-crestory__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .corp-crestory__card {
+            display: block;
+            text-decoration: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .corp-crestory__card:hover {
+            transform: translateY(-4px);
+        }
+
+        .corp-crestory__thumb {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #1a2b4c;
+        }
+
+        .corp-crestory__thumb img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .corp-crestory__card:hover .corp-crestory__thumb img {
+            transform: scale(1.04);
+        }
+
+        .corp-crestory__skeleton {
+            aspect-ratio: 4 / 3;
+            border-radius: 8px;
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.1), rgba(255,255,255,0.04)),
+                #1a2b4c;
+            background-size: 220% 100%;
+            animation: crestoryThumbLoading 1.4s ease-in-out infinite;
+        }
+
+        @keyframes crestoryThumbLoading {
+            0% { background-position: 120% 0; }
+            100% { background-position: -120% 0; }
+        }
+
+        @media (max-width: 1024px) {
+            .corp-crestory__grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .corp-crestory__grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 

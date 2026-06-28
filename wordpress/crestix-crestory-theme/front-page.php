@@ -50,7 +50,7 @@ $categories = get_terms([
     <?php get_sidebar('left'); ?>
 
     <div class="note-main">
-      <?php get_template_part('template-parts/hero'); ?>
+      <?php // get_template_part('template-parts/hero'); ?>
 
       <section class="note-articles-section" id="articles">
 

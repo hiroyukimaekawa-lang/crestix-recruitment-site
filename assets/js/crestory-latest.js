@@ -39,6 +39,8 @@
     return media?.media_details?.sizes?.large?.source_url
       || media?.media_details?.sizes?.medium_large?.source_url
       || media?.source_url
+      || post?.yoast_head_json?.og_image?.[0]?.url
+      || post?.jetpack_featured_media_url
       || post?.meta?.crestory_ogp_image
       || '';
   }
