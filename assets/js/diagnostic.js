@@ -26,13 +26,13 @@ const diagRoles = {
 };
 
 const diagResults = {
-  'division1+is':      { title: '第一 ISリーダー候補',            division: '第一営業部',                page: 'job-division1-is-leader.html', employment: '正社員',            location: '東京（リモート可）' },
-  'division1+fs':      { title: '第一 FSリーダー候補',            division: '第一営業部',                page: 'job-division1-fs-leader.html', employment: '正社員',            location: '東京' },
-  'hd+is':             { title: 'HD ISリーダー候補',              division: 'HD事業部',                  page: 'job-hd-is-leader.html',        employment: '正社員',            location: '東京' },
-  'hd+fs_member':      { title: 'HD FSメンバー',                  division: 'HD事業部',                  page: 'job-hd-fs-member.html',        employment: '正社員・業務委託も可', location: '東京' },
-  'hd+fs_leader':      { title: 'HD FSリーダー候補',              division: 'HD事業部',                  page: 'job-hd-fs-leader.html',        employment: '正社員',            location: '東京' },
-  'hd+cs':             { title: 'HD CSメンバー / CSリーダー候補', division: 'HD事業部',                  page: 'job-hd-cs-member.html',        employment: '正社員・業務委託も可', location: '東京' },
-  'ai_sales+':         { title: 'AI Sales Enablement MG候補',    division: 'AI Sales Enablement事業部', page: 'job-ai-sales-mg.html',         employment: '正社員',            location: '東京' }
+  'division1+is':      { title: '第一 ISリーダー候補',            division: '第一営業部',                page: 'job-division1-is-leader.html', job: 'division1-is', employment: '正社員',            location: '東京（リモート可）' },
+  'division1+fs':      { title: '第一 FSリーダー候補',            division: '第一営業部',                page: 'job-division1-fs-leader.html', job: 'division1-fs', employment: '正社員',            location: '東京' },
+  'hd+is':             { title: 'HD ISリーダー候補',              division: 'HD事業部',                  page: 'job-hd-is-leader.html',        job: 'hd-is-leader', employment: '正社員',            location: '東京' },
+  'hd+fs_member':      { title: 'HD FSメンバー',                  division: 'HD事業部',                  page: 'job-hd-fs-member.html',        job: 'hd-fs-member', employment: '正社員・業務委託も可', location: '東京' },
+  'hd+fs_leader':      { title: 'HD FSリーダー候補',              division: 'HD事業部',                  page: 'job-hd-fs-leader.html',        job: 'hd-fs-leader', employment: '正社員',            location: '東京' },
+  'hd+cs':             { title: 'HD CSメンバー / CSリーダー候補', division: 'HD事業部',                  page: 'job-hd-cs-member.html',        job: 'hd-cs-member', employment: '正社員・業務委託も可', location: '東京' },
+  'ai_sales+':         { title: 'AI Sales Enablement MG候補',    division: 'AI Sales Enablement事業部', page: 'job-ai-sales-mg.html',         job: 'ai-sales-mg', employment: '正社員',            location: '東京' }
 };
 
 /* ─── STATE ─────────────────────────────────────── */
@@ -217,7 +217,7 @@ function buildResult() {
   const r = diagResults[key];
   if (!r) return '<p style="padding:2rem;color:#666;">結果が見つかりませんでした。もう一度お試しください。</p>';
 
-  const entryUrl = 'entry.html?job=' + encodeURIComponent(r.title);
+  const entryUrl = 'entry.html?job=' + encodeURIComponent(r.job);
 
   return `
     <div class="diag-result-shell" style="display:flex;flex-direction:column;gap:2rem;animation:diagFadeUp 0.5s ease both;">

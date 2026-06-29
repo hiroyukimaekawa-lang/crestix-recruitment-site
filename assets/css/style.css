@@ -879,6 +879,11 @@ input:focus, select:focus, textarea:focus {
     transition: background 0.45s ease, border-color 0.45s ease;
 }
 
+.biz-grid__cell-video,
+.biz-grid__cell-overlay {
+    display: none;
+}
+
 /* ホバー時はセル背景を透明にして全体背景を見せる */
 .biz-grid-section.is-hovering .biz-grid__cell {
     background: transparent;
@@ -945,18 +950,123 @@ input:focus, select:focus, textarea:focus {
     color: rgba(255, 255, 255, 0.3);
 }
 
-/* スマホ対応 */
-@media (max-width: 768px) {
+/* タブレット/スマホ: 各カード内に背景動画を内包 */
+@media (max-width: 1024px) {
+    .biz-grid-section {
+        min-height: auto;
+        background: #fff;
+        padding: 72px 32px;
+        overflow: visible;
+    }
+
+    .biz-grid__videos {
+        display: none !important;
+    }
+
     .biz-grid__cells {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        min-height: auto;
     }
 
     .biz-grid__cell {
-        min-height: 38vh;
+        min-height: 420px;
+        width: 100%;
+        border: none;
+        border-radius: 32px;
+        overflow: hidden;
+        background: #111;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 0;
+        box-shadow: 0 18px 48px rgba(15, 23, 42, 0.16);
     }
 
-    .biz-grid__title {
-        font-size: clamp(32px, 11vw, 52px);
+    .biz-grid-section.is-hovering .biz-grid__cell,
+    .biz-grid__cell.is-active,
+    .biz-grid__cell.is-dimmed {
+        opacity: 1;
+        background: #111;
+        border-color: transparent;
+    }
+
+    .biz-grid__cell-video {
+        display: block !important;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+        visibility: visible;
+        z-index: 1;
+    }
+
+    .biz-grid__cell-overlay {
+        display: block !important;
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.16) 0%,
+            rgba(0, 0, 0, 0.68) 100%
+        );
+    }
+
+    .biz-grid__content,
+    .biz-grid__cell.is-active .biz-grid__content,
+    .biz-grid__cell.is-dimmed .biz-grid__content {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        padding: 28px;
+        text-align: left;
+        opacity: 1;
+        transform: none !important;
+    }
+
+    .biz-grid__title,
+    .biz-grid__cell.is-active .biz-grid__title,
+    .biz-grid__cell.is-dimmed .biz-grid__title {
+        color: #fff;
+        opacity: 1;
+        font-size: clamp(32px, 7vw, 48px);
+        line-height: 1.05;
+        text-shadow: 0 8px 24px rgba(0, 0, 0, 0.42);
+        transform: none;
+    }
+
+    .biz-grid__sub,
+    .biz-grid__cell.is-active .biz-grid__sub,
+    .biz-grid__cell.is-dimmed .biz-grid__sub {
+        color: rgba(255, 255, 255, 0.82);
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .biz-grid-section {
+        padding: 56px 18px;
+    }
+
+    .biz-grid__cells {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .biz-grid__cell {
+        min-height: 360px;
+        border-radius: 28px;
+    }
+
+    .biz-grid__title,
+    .biz-grid__cell.is-active .biz-grid__title,
+    .biz-grid__cell.is-dimmed .biz-grid__title {
+        font-size: clamp(32px, 9vw, 48px);
     }
 
     .service-img-wrap {
