@@ -89,7 +89,7 @@ $categories = get_terms([
             <?php $post_index = 0; ?>
             <?php while ($loop->have_posts()): $loop->the_post(); ?>
               <?php
-              set_query_var('cx_card_featured', ($post_index === 0 && $paged === 1));
+              set_query_var('cx_card_featured', false);
               $post_index++;
               ?>
               <?php get_template_part('template-parts/card', 'crestory'); ?>
