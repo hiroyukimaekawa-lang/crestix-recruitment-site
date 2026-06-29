@@ -46,17 +46,18 @@ $categories = get_terms([
 ?>
 <main class="crestory-page note-layout" id="cx-main">
 
+  <section class="crestory-hero">
+    <img
+      src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/priceless-hero.png"
+      alt="本気の挑戦を、Pricelessに変える。"
+      class="crestory-hero__img"
+    >
+  </section>
+
   <div class="note-wrapper">
     <?php get_sidebar('left'); ?>
 
     <div class="note-main">
-      <section class="crestory-hero">
-        <img
-          src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/priceless-hero.png"
-          alt="本気の挑戦を、Pricelessに変える。"
-          class="crestory-hero__img"
-        >
-      </section>
 
       <section class="note-articles-section" id="articles">
 

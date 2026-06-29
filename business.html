@@ -16,123 +16,6 @@
   <link rel="stylesheet" href="assets/css/components/navbar.css">
   <link rel="stylesheet" href="assets/css/components/hero.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    /* ── グリッド全体 ── */
-    .biz-grid-section {
-      position: relative;
-      overflow: hidden;
-    }
-    .biz-grid__cells {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── 各セル ── */
-    .biz-grid__cell {
-      position: relative;
-      overflow: visible; /* fixedが機能するようvisibleに */
-      cursor: pointer;
-    }
-
-    /* ── 動画：fixed で画面全体を覆う ── */
-    .biz-grid__cell-video {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 100;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-
-    /* ── ホバー時：動画を全画面表示 ── */
-    .biz-grid__cell:hover .biz-grid__cell-video {
-      opacity: 1;
-    }
-
-    /* ── ホバー時：タイトルとサブタイトルを薄く＆白文字で表示 ── */
-    .biz-grid__cell:hover .biz-grid__title,
-    .biz-grid__cell:hover .biz-grid__sub {
-      opacity: 0.85;
-      color: #ffffff !important;
-      transition: opacity 0.3s ease, color 0.3s ease;
-    }
-    .biz-grid__cell:hover .biz-grid__desc,
-    .biz-grid__cell:hover .biz-grid__link {
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    /* ── タグのみ最前面に表示 ── */
-    .biz-grid__cell:hover .biz-grid__tag {
-      opacity: 1 !important;
-      display: inline-flex !important;
-      position: absolute;  /* 各カード（セル）の中央に表示するためにabsoluteに変更 */
-      z-index: 200;       /* 動画より前面 */
-      color: #ffffff;
-      font-size: 1.35rem;  /* サイズを少し大きく表示 */
-      padding: 6px 20px;
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
-      background: rgba(255, 255, 255, 0.15);
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    /* ── ホバーしているセルを最前面に ── */
-    .biz-grid__cell:hover {
-      z-index: 101;
-    }
-
-    /* ── ホバー時：コンテンツの重ね順を動画より上に ── */
-    .biz-grid__cell:hover .biz-grid__content {
-      z-index: 150;
-    }
-
-    /* ── オーバーレイは非表示 ── */
-    .biz-grid__cell:hover .biz-grid__cell-overlay {
-      opacity: 0;
-    }
-
-    /* ── ホバー時：4分割の境界線（白線）を表示 ── */
-    .biz-grid__dividers {
-      position: absolute;
-      inset: 0;
-      z-index: 120; /* ビデオ(100)やセルホバー(101)より上 */
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    /* グリッドセクションにホバーしている間だけ線を表示 */
-    .biz-grid-section:hover .biz-grid__dividers {
-      opacity: 1;
-    }
-    .biz-grid__divider-v {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 1px;
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateX(-50%);
-    }
-    .biz-grid__divider-h {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-50%);
-    }
-  </style>
 </head>
 
 <body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
@@ -310,60 +193,40 @@
 
     <section class="biz-grid-section" aria-label="事業一覧">
       <div class="biz-grid__videos" aria-hidden="true">
-        <img class="biz-grid__video" data-video="division1" src="assets/images/business/0624_Crestix_1.mp4" alt="">
-        <img class="biz-grid__video" data-video="hd" src="assets/images/business/0624_Crestix_2.mp4" alt="">
-        <img class="biz-grid__video" data-video="ai-sales" src="assets/images/business/0624_Crestix_3.mp4" alt="">
-        <img class="biz-grid__video" data-video="future" src="assets/images/business/0624_Crestix_4.mp4" alt="">
+        <video class="biz-grid__video" data-video="division1" src="assets/images/business/0624_Crestix_1.mp4" muted loop playsinline preload="none"></video>
+        <video class="biz-grid__video" data-video="hd" src="assets/images/business/0624_Crestix_2.mp4" muted loop playsinline preload="none"></video>
+        <video class="biz-grid__video" data-video="ai-sales" src="assets/images/business/0624_Crestix_3.mp4" muted loop playsinline preload="none"></video>
+        <video class="biz-grid__video" data-video="future" src="assets/images/business/0624_Crestix_4.mp4" muted loop playsinline preload="none"></video>
         <div class="biz-grid__overlay"></div>
       </div>
 
       <div class="biz-grid__cells">
-        <a href="service-division1.html" class="biz-grid__cell" data-target="division1" style="--poster:url('assets/images/division1/第一事業部.png');">
-          <video class="biz-grid__cell-video" src="assets/images/business/0624_Crestix_1.mp4" muted loop playsinline preload="none"></video>
-          <div class="biz-grid__cell-overlay"></div>
+        <a href="service-division1.html" class="biz-grid__cell" data-target="division1">
           <div class="biz-grid__content">
             <h3 class="biz-grid__title">第1営業部</h3>
             <span class="biz-grid__sub">メイン事業</span>
-            <p class="biz-grid__desc">AIとマーケティングの力で、医療機関の集客と運営進化を支援する事業部です。</p>
-            <span class="biz-grid__link">詳しく見る →</span>
           </div>
         </a>
 
-        <a href="service-hd.html" class="biz-grid__cell" data-target="hd" style="--poster:url('assets/images/HD/hd-sales.png');">
-          <video class="biz-grid__cell-video" src="assets/images/business/0624_Crestix_2.mp4" muted loop playsinline preload="none"></video>
-          <div class="biz-grid__cell-overlay"></div>
+        <a href="service-hd.html" class="biz-grid__cell" data-target="hd">
           <div class="biz-grid__content">
             <h3 class="biz-grid__title">HD事業部</h3>
             <span class="biz-grid__sub">メイン事業</span>
-            <p class="biz-grid__desc">地域の店舗に向けて、ブランディング・Web集客・SNS支援を提供します。</p>
-            <span class="biz-grid__link">詳しく見る →</span>
           </div>
         </a>
 
-        <a href="ai-sales.html" class="biz-grid__cell" data-target="ai-sales" style="--poster:url('assets/images/aisales/ai:sales-enablement.selesflow.png');">
-          <video class="biz-grid__cell-video" src="assets/images/business/0624_Crestix_3.mp4" muted loop playsinline preload="none"></video>
-          <div class="biz-grid__cell-overlay"></div>
+        <a href="ai-sales.html" class="biz-grid__cell" data-target="ai-sales">
           <div class="biz-grid__content">
             <h3 class="biz-grid__title">AI Sales Enablement</h3>
             <span class="biz-grid__sub">メイン事業</span>
-            <p class="biz-grid__desc">営業代行 / 営業支援事業。成果創出を支える横断的な仕組みを提供します。</p>
-            <span class="biz-grid__link">詳しく見る →</span>
           </div>
         </a>
 
-        <div class="biz-grid__cell biz-grid__cell--future" data-target="future" style="--poster:url('assets/images/office/crestix.png');">
-          <video class="biz-grid__cell-video" src="assets/images/business/0624_Crestix_4.mp4" muted loop playsinline preload="none"></video>
-          <div class="biz-grid__cell-overlay"></div>
+        <div class="biz-grid__cell biz-grid__cell--future" data-target="future">
           <div class="biz-grid__content">
             <h3 class="biz-grid__title">新規事業</h3>
             <span class="biz-grid__sub">メイン事業</span>
           </div>
-        </div>
-
-        <!-- Grid Dividers (Visible on hover to preserve quadrant grid lines over fullscreen video) -->
-        <div class="biz-grid__dividers" aria-hidden="true">
-          <div class="biz-grid__divider-v"></div>
-          <div class="biz-grid__divider-h"></div>
         </div>
       </div>
     </section>

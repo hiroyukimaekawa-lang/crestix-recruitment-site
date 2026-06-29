@@ -798,21 +798,24 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   business.html split hover video grid
+   Business Grid — 非ホバー: 白地に薄文字 / ホバー: 全画面背景動画
    ========================================================================== */
 .biz-grid-section {
     position: relative;
     width: 100%;
-    height: 80vh;
-    min-height: 520px;
-    overflow: hidden;
+    min-height: 100vh;
     background: #fff;
+    overflow: hidden;
 }
 
+/* 全画面背景レイヤー */
 .biz-grid__videos {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+    background: #fff;
 }
 
 .biz-grid__video {
@@ -821,296 +824,141 @@ input:focus, select:focus, textarea:focus {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-    display: block;
+    visibility: hidden;
+    transform: scale(1.04);
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease,
+        transform 1.2s ease;
 }
 
-.biz-grid__video.is-active {
+.biz-grid__video.is-visible {
     opacity: 1;
+    visibility: visible;
+    transform: scale(1);
 }
 
 .biz-grid__overlay {
     position: absolute;
     inset: 0;
-    z-index: 1;
-    background: rgba(10, 30, 60, 0.5);
-    transition: background 0.5s ease;
+    z-index: 2;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.12) 0%,
+        rgba(0, 0, 0, 0.48) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.45s ease;
 }
 
-.biz-grid-section.is-hovered .biz-grid__overlay {
-    background: rgba(10, 30, 60, 0.35);
+.biz-grid-section.is-hovering .biz-grid__overlay {
+    opacity: 1;
 }
 
+/* 4分割セル */
 .biz-grid__cells {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    height: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 100vh;
 }
 
 .biz-grid__cell {
     position: relative;
+    min-height: 50vh;
+    overflow: hidden;
+    text-decoration: none;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 0;
-    padding: clamp(26px, 3vw, 48px);
-    color: #0A1E3C;
-    text-decoration: none;
+    background: rgba(255, 255, 255, 0.98);
+    border-right: 1px solid rgba(15, 23, 42, 0.1);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+    transition: background 0.45s ease, border-color 0.45s ease;
+}
+
+/* ホバー時はセル背景を透明にして全体背景を見せる */
+.biz-grid-section.is-hovering .biz-grid__cell {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* テキスト */
+.biz-grid__content {
+    position: relative;
+    z-index: 4;
     text-align: center;
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    cursor: pointer;
-    overflow: visible;
-    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    padding: 24px;
+    transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-.biz-grid-section.is-hovered .biz-grid__cell {
-    opacity: 1;
-}
-
-.biz-grid-section.is-hovered .biz-grid__cell.is-active-cell {
-    opacity: 1;
-}
-
-.biz-grid__cell::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background-image: var(--poster);
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transform: scale(1.03);
-    transition: opacity 0.35s ease, transform 0.55s ease;
-}
-
-.biz-grid__cell::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: transparent;
-    transition: background 0.35s ease;
-}
-
-.biz-grid-section.is-hovered .biz-grid__cell::before {
-    opacity: 0;
-}
-
-.biz-grid__cell:hover::after,
-.biz-grid__cell:focus-visible::after {
-    background: transparent;
-}
-
-.biz-grid__cell:hover::before,
-.biz-grid__cell:focus-visible::before {
-    transform: scale(1.08);
-}
-
-.biz-grid__cell--future {
-    opacity: 1;
-    cursor: default;
-}
-
-.biz-grid__tag {
-    display: flex;
-    opacity: 0;
-    align-items: center;
-    align-self: flex-start;
-    margin-bottom: 14px;
-    padding: 4px 12px;
-    border: 1px solid rgba(255, 92, 0, 0.45);
-    border-radius: 9999px;
-    background: rgba(255, 92, 0, 0.14);
-    color: #FF5C00;
-    font-family: 'Poppins', sans-serif;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    transition: opacity 0.2s ease, color 0.2s ease;
-}
-
+/* 非ホバー時：事業名を黒で表示 */
 .biz-grid__title {
-    margin: 0;
-    color: #111827;
-    font-family: 'Poppins', 'Noto Sans JP', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 3.5rem);
+    font-size: clamp(38px, 5vw, 72px);
     font-weight: 900;
-    line-height: 1.18;
-    letter-spacing: 0;
-    text-align: center;
-    word-break: keep-all;
-    overflow-wrap: break-word;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    color: #0f172a;
+    text-shadow: none;
+    transition:
+        color 0.45s ease,
+        text-shadow 0.45s ease,
+        transform 0.45s ease;
 }
 
-.biz-grid__desc {
-    display: none;
+.biz-grid__sub {
+    display: block;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: 900;
+    color: rgba(15, 23, 42, 0.6);
+    transition: color 0.45s ease;
 }
 
-.biz-grid__link {
-    display: none;
+/* ホバー中のアクティブカード */
+.biz-grid__cell.is-active .biz-grid__content {
+    transform: translateY(-4px);
 }
 
+.biz-grid__cell.is-active .biz-grid__title {
+    color: #fff;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    transform: scale(1.02);
+}
+
+.biz-grid__cell.is-active .biz-grid__sub {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ホバー中の非アクティブカード */
+.biz-grid__cell.is-dimmed .biz-grid__content {
+    opacity: 0.18;
+}
+
+.biz-grid__cell.is-dimmed .biz-grid__title {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.biz-grid__cell.is-dimmed .biz-grid__sub {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* スマホ対応 */
 @media (max-width: 768px) {
-    .biz-grid-section {
-        height: auto;
-        min-height: unset;
-    }
-
-    .biz-grid__videos,
-    .biz-grid__video {
-        display: none;
-    }
-
     .biz-grid__cells {
         grid-template-columns: 1fr;
-        grid-template-rows: none;
     }
 
     .biz-grid__cell {
-        min-height: 260px;
-        padding: 26px 22px;
-    }
-
-    .biz-grid-section.is-hovered .biz-grid__cell::before {
-        opacity: 0.52;
+        min-height: 38vh;
     }
 
     .biz-grid__title {
-        font-size: 2rem;
+        font-size: clamp(32px, 11vw, 52px);
     }
-}
 
-/* biz-grid per-cell video + sub-text */
-.biz-grid__sub {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #111827;
-    margin-top: 0.5rem;
-    letter-spacing: 0.05em;
-    transition: color 0.25s ease;
-}
-
-/* ── 動画：fixed で画面全体を覆う ── */
-.biz-grid__cell-video {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
-
-/* ── オーバーレイ：非表示（動画があれば不要） ── */
-.biz-grid__cell-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.25);
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-}
-
-/* ── コンテンツ ── */
-.biz-grid__content {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* ── biz-grid: テキスト opacity（JS inline style で上書き） ── */
-.biz-grid__cell .biz-grid__content {
-    opacity: 1;
-    transition: opacity 0.4s ease;
-}
-
-/* ── ホバー時：動画を全画面表示 ── */
-.biz-grid__cell:hover .biz-grid__cell-video {
-    opacity: 1;
-}
-
-/* ── ホバー時：ホバーセルを最前面に ── */
-.biz-grid__cell:hover {
-    z-index: 101;
-}
-
-/* ── ホバー時：コンテンツの重ね順を動画より上に ── */
-.biz-grid__cell:hover .biz-grid__content {
-    z-index: 150;
-}
-
-/* ── ホバー時のタイトル/サブ/desc/link は JS が inline style で制御するため CSS ルールを削除 ── */
-
-/* ── ホバー時：タグのみ各カード（セル）中央に白文字で大きく表示 ── */
-.biz-grid__cell:hover .biz-grid__tag {
-    opacity: 1 !important;
-    position: absolute;  /* 各カード（セル）の中央に表示するためにabsoluteに変更 */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 200;
-    color: #fff;
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.15);
-    font-size: 1.35rem;  /* サイズを少し大きく表示 */
-    padding: 6px 20px;
-    font-weight: 900;
-    letter-spacing: 0.2em;
-    pointer-events: none;
-    white-space: nowrap;
-}
-
-/* ── ホバー時：4分割の境界線（白線）を表示 ── */
-.biz-grid__dividers {
-    position: absolute;
-    inset: 0;
-    z-index: 120; /* ビデオ(100)やセルホバー(101)より上 */
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-/* グリッドセクションにホバーしている間だけ線を表示 */
-.biz-grid-section:hover .biz-grid__dividers {
-    opacity: 1;
-}
-.biz-grid__divider-v {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(-50%);
-}
-.biz-grid__divider-h {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-50%);
-}
-
-
-/* service-img-wrap SP override */
-@media (max-width: 768px) {
     .service-img-wrap {
         width: 100% !important;
         height: 220px !important;

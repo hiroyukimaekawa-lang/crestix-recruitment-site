@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第一 FSリーダー候補 | Crestix Careers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/css/components/navbar.css">
+<script>tailwind.config={theme:{extend:{colors:{crestix:{orange:'#FF5C00',orangeDark:'#E65200',navy:'#1A2B4C',charcoal:'#333333',border:'#E5E7EB',textDim:'#6B7280'}},fontFamily:{sans:['Noto Sans JP','sans-serif'],poppins:['Poppins','sans-serif']}}}}</script>
+<style>
+body{font-family:'Noto Sans JP',sans-serif;color:#111827;-webkit-font-smoothing:antialiased;}
+.job-hero{background:linear-gradient(135deg,#0A1E3C 0%,#1A2B4C 60%,#1f3560 100%);padding:9rem 1.5rem 4rem;position:relative;overflow:hidden;}
+.job-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(255,92,0,0.08) 0%,transparent 60%);pointer-events:none;}
+.req-row{display:flex;border-bottom:1px solid #F3F4F6;padding:1rem 0;gap:1rem;}
+.req-label{flex:0 0 120px;font-weight:700;font-size:13px;color:#6B7280;padding-top:2px;}
+.req-value{flex:1;font-size:14px;color:#111827;line-height:1.7;}
+.job-ul{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px;}
+.job-ul li{display:flex;gap:10px;font-size:14px;line-height:1.7;color:#374151;}
+.job-ul li::before{content:'';display:block;flex-shrink:0;width:4px;height:4px;border-radius:50%;background:#FF5C00;margin-top:9px;}
+@media(max-width:768px){.req-label{flex:0 0 90px;font-size:12px;}.req-value{font-size:13px;}}
+</style>
+</head>
+<body class="bg-white">
+
+<div id="fullscreen-menu">
+  <div class="fm-topbar"><div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div><button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">CLOSE <span class="fm-close-icon"><i></i><i></i><i></i></span></button></div>
+  <nav class="fm-nav">
+    <div class="fm-nav-group"><a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a></div>
+    <div class="fm-nav-group"><a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a><div class="fm-nav-sub"><a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a><a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a><a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a></div></div>
+    <div class="fm-nav-group"><a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a><div class="fm-nav-sub"><a href="business.html" onclick="cxToggleMenu()">事業一覧</a><a href="service-division1.html" onclick="cxToggleMenu()">第1営業部（クリニック特化）</a><a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a><a href="ai-sales.html" onclick="cxToggleMenu()">AI Sales Enablement</a></div></div>
+    <div class="fm-nav-group"><a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a><div class="fm-nav-sub"><a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a><a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a><a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a><a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a></div></div>
+    <div class="fm-nav-group"><a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a></div>
+    <div class="fm-nav-group"><a href="b2b-contact.html" class="fm-nav-item fm-item-6" onclick="cxToggleMenu()">Contact</a></div>
+  </nav>
+  <div class="fm-footer"><a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">Entry / Careers</a><span class="fm-copy">&copy; 2026 Crestix Inc.</span></div>
+</div>
+
+<nav id="cx-navbar" aria-label="グローバルナビゲーション">
+  <div class="cx-nav-left"><a href="index.html" class="cx-nav-logo-link"><img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix" onerror="this.style.display='none'"></a></div>
+  <div class="cx-nav-center" id="cx-nav-links">
+    <div class="cx-mega-trigger" data-mega="mega-corporate"><a href="corporate.html" class="cx-nav-link">Corporate</a><div class="cx-mega-menu" id="mega-corporate"><div class="cx-mega-container"><div class="cx-mega-header"><h3 class="cx-mega-title">CORPORATE</h3><p class="cx-mega-subtitle">会社を知る</p></div><div class="cx-mega-grid"><a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a><a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a><a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a></div></div></div></div>
+    <div class="cx-mega-trigger" data-mega="mega-service"><a href="business.html" class="cx-nav-link cx-nav-link--active">Service</a><div class="cx-mega-menu" id="mega-service"><div class="cx-mega-container"><div class="cx-mega-header"><h3 class="cx-mega-title">SERVICE</h3><p class="cx-mega-subtitle">事業を知る</p></div><div class="mega-service"><div class="mega-service__overview"><a href="business.html" class="mega-service__overview-link">事業一覧<span class="mega-service__arrow">→</span></a></div><div class="mega-service__list"><a href="service-division1.html" class="mega-service__item"><span class="mega-service__item-label">第1営業部</span><span class="mega-service__item-arrow">→</span></a><a href="service-hd.html" class="mega-service__item"><span class="mega-service__item-label">HD事業部</span><span class="mega-service__item-arrow">→</span></a><a href="ai-sales.html" class="mega-service__item"><span class="mega-service__item-label">AI Sales Enablement</span><span class="mega-service__item-arrow">→</span></a></div></div></div></div></div>
+    <a href="members.html" class="cx-nav-link">Members</a>
+    <a href="https://crestory.crestix.jp/" class="cx-nav-link">Crestory</a>
+  </div>
+  <div class="cx-nav-right"><a href="entry.html" class="cx-nav-entry-btn">Entry</a><button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false"><span class="cx-ham-lines" id="cx-ham-lines"><span></span><span></span><span></span></span></button></div>
+</nav>
+
+<main>
+  <section class="job-hero">
+    <div style="max-width:900px;margin:0 auto;position:relative;z-index:1;">
+      <a href="service-division1.html" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.5);font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;margin-bottom:2rem;transition:color 0.2s;" onmouseover="this.style.color='#FF5C00'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><i class="fa-solid fa-arrow-left" style="font-size:10px;"></i> 第一営業部のページへ戻る</a>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;flex-wrap:wrap;">
+        <span style="display:inline-flex;background:#1A2B4C;color:#fff;font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.2em;padding:5px 14px;border-radius:99px;border:1px solid rgba(255,255,255,0.3);">FS</span>
+        <span style="display:inline-flex;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;">第一営業部</span>
+      </div>
+      <h1 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:white;line-height:1.3;letter-spacing:-0.02em;margin-bottom:1.5rem;">第一 FSリーダー候補</h1>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;">
+        <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.65);font-size:13px;"><i class="fa-solid fa-briefcase" style="color:#FF5C00;font-size:12px;"></i>正社員</div>
+        <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.65);font-size:13px;"><i class="fa-solid fa-location-dot" style="color:#FF5C00;font-size:12px;"></i>東京</div>
+        <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.65);font-size:13px;"><i class="fa-solid fa-yen-sign" style="color:#FF5C00;font-size:12px;"></i>月給25万円＋インセンティブ</div>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:900px;margin:0 auto;padding:4rem 1.5rem 6rem;">
+    <section style="margin-bottom:4rem;">
+      <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:#FF5C00;margin-bottom:0.75rem;">Requirements</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-size:1.5rem;font-weight:900;color:#1A2B4C;margin-bottom:2rem;">募集要項</h2>
+      <div style="background:#FAFAFA;border:1px solid #E5E7EB;border-radius:16px;padding:0 1.5rem;">
+        <div class="req-row"><div class="req-label">職種</div><div class="req-value">第一 FSリーダー候補</div></div>
+        <div class="req-row"><div class="req-label">事業部</div><div class="req-value">第一営業部</div></div>
+        <div class="req-row"><div class="req-label">雇用形態</div><div class="req-value">正社員</div></div>
+        <div class="req-row"><div class="req-label">給与</div><div class="req-value">月給25万円＋インセンティブ</div></div>
+        <div class="req-row"><div class="req-label">勤務地</div><div class="req-value">東京</div></div>
+        <div class="req-row"><div class="req-label">必須スキル</div><div class="req-value">不問（未経験歓迎）</div></div>
+        <div class="req-row"><div class="req-label">歓迎スキル</div><div class="req-value">営業経験・マネジメント経験・チームワークを大切にできる方</div></div>
+        <div class="req-row" style="border-bottom:none;"><div class="req-label">選考フロー</div><div class="req-value">書類選考 → 一次面接 → 最終面接 → 内定</div></div>
+      </div>
+    </section>
+
+    <section style="margin-bottom:4rem;">
+      <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:#FF5C00;margin-bottom:0.75rem;">Job Description</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-size:1.5rem;font-weight:900;color:#1A2B4C;margin-bottom:1.5rem;">仕事内容</h2>
+      <div style="font-size:15px;line-height:1.9;color:#374151;">
+        <p style="margin-bottom:1.5rem;">第一営業部のフィールドセールス組織のリーダー候補として、まずはプレーヤーとしてクリニック・医療機関向け商談の現場や商材理解を深めていただきながら、徐々にメンバー育成、商談管理、営業戦略の実行をお任せしていきます。</p>
+        <p style="margin-bottom:1.5rem;">単にクリニック向けにサービスを販売するのではなく、集患課題、予約導線、口コミ対策、Web導線、患者対応、業務効率化などの課題を正しく捉え、MEO、SEO、AIO、HP・LP制作、AIチャットボット、LINE導線、営業カルテなどを組み合わせながら、医院にとって最適な提案を行うポジションです。</p>
+        <p style="margin-bottom:1.5rem;">フィールドセールスリーダー候補として、個人の受注成果だけではなく、受注率・受注単価の向上、商談品質の改善、メンバー育成、再現性のある受注パターンの構築まで担っていただきます。</p>
+        <p style="font-weight:700;margin-bottom:1rem;">【業務内容（一例）】</p>
+        <ul class="job-ul">
+          <li>インサイドセールスが獲得したクリニック・医療機関向け商談への対応</li>
+          <li>クリニックの集患課題、予約課題、口コミ課題、Web導線課題のヒアリング</li>
+          <li>MEO、SEO、AIO、HP・LP制作、AIチャットボット、LINE導線等を組み合わせた課題解決提案</li>
+          <li>Googleビジネスプロフィール、口コミ、HP、LP、予約導線などの改善提案</li>
+          <li>患者様からの問い合わせ、予約、来院までの導線改善に向けた提案</li>
+          <li>受注率、受注単価向上に向けた商談設計</li>
+          <li>商談内容の振り返りおよび改善施策の実行</li>
+          <li>営業資料、提案資料、トーク内容のブラッシュアップ</li>
+          <li>メンバーの商談同席、フィードバック、育成</li>
+          <li>日次、週次、月次での売上・受注KPI管理</li>
+          <li>インサイドセールス、カスタマーサクセス、制作・運用担当との連携強化</li>
+          <li>クリニックからの要望、断り理由、ニーズの収集および分析</li>
+          <li>再現性のある受注パターンの構築</li>
+          <li>第一営業部FS組織の拡大に向けたマネジメント体制の整備</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="background:linear-gradient(135deg,#1A2B4C,#0A1E3C);border-radius:16px;padding:2rem 1.75rem;margin-bottom:4rem;">
+      <p style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;">Position</p>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:1.1rem;font-weight:900;color:white;margin-bottom:0.5rem;">第一営業部 / FSリーダー候補</p>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;">クリニック・医療機関への提案営業を仕組みで強くする、第一営業部の受注成果を担うポジションです。</p>
+    </section>
+
+    <section style="text-align:center;padding:2rem 0;">
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:#6B7280;margin-bottom:1.5rem;">この職種に興味をお持ちですか？まずはエントリーから。</p>
+      <a href="entry.html?job=%E7%AC%AC%E4%B8%80%20FS%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E5%80%99%E8%A3%9C"
+         style="display:inline-flex;align-items:center;gap:14px;background:#FF5C00;color:#fff;font-family:'Poppins',sans-serif;font-weight:900;font-size:12px;letter-spacing:0.3em;text-transform:uppercase;padding:1.2rem 3rem;border-radius:9999px;text-decoration:none;box-shadow:0 16px 40px rgba(255,92,0,0.35);transition:all 0.25s ease;"
+         onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 24px 50px rgba(255,92,0,0.5)'"
+         onmouseout="this.style.transform='';this.style.boxShadow='0 16px 40px rgba(255,92,0,0.35)'">
+        この職種に応募する <i class="fa-solid fa-arrow-right-long"></i>
+      </a>
+      <div style="margin-top:1.5rem;"><a href="service-division1.html" style="color:#6B7280;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='#FF5C00'" onmouseout="this.style.color='#6B7280'"><i class="fa-solid fa-arrow-left" style="font-size:11px;"></i> 第一営業部のページへ戻る</a></div>
+    </section>
+  </div>
+</main>
+
+<footer class="bg-black text-white select-none p-0">
+  <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
+    <a href="index.html" style="display:block;text-align:center;"><img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:82px;width:auto;filter:brightness(0) invert(1);display:inline-block;"></a>
+    <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80"><a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a><a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a><a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a><a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a></nav>
+    <div class="mt-8 flex items-center justify-center gap-4"><a href="https://crestory.crestix.jp/" aria-label="CRESTORY" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-solid fa-book-open text-sm"></i></a><a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a><a href="entry.html" aria-label="Entry" class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a></div>
+    <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p>
+  </div>
+</footer>
+<script src="assets/js/navbar.js"></script>
+</body>
+</html>
