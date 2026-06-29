@@ -941,7 +941,7 @@ input:focus, select:focus, textarea:focus {
 
 .biz-grid__title {
     margin: 0;
-    color: #ffffff;
+    color: #111827;
     font-family: 'Poppins', 'Noto Sans JP', sans-serif;
     font-size: clamp(1.8rem, 3vw, 3.5rem);
     font-weight: 900;
@@ -995,7 +995,7 @@ input:focus, select:focus, textarea:focus {
     display: block;
     font-size: 0.85rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.75);
+    color: #111827;
     margin-top: 0.5rem;
     letter-spacing: 0.05em;
     transition: color 0.25s ease;
@@ -1055,18 +1055,7 @@ input:focus, select:focus, textarea:focus {
     z-index: 150;
 }
 
-/* ── ホバー時：タイトルとサブタイトルを薄く＆白文字で表示 ── */
-.biz-grid__cell:hover .biz-grid__title,
-.biz-grid__cell:hover .biz-grid__sub {
-    opacity: 0.85;
-    color: #ffffff !important;
-    transition: opacity 0.3s ease, color 0.3s ease;
-}
-.biz-grid__cell:hover .biz-grid__desc,
-.biz-grid__cell:hover .biz-grid__link {
-    opacity: 0;
-    transition: opacity 0.15s ease;
-}
+/* ── ホバー時のタイトル/サブ/desc/link は JS が inline style で制御するため CSS ルールを削除 ── */
 
 /* ── ホバー時：タグのみ各カード（セル）中央に白文字で大きく表示 ── */
 .biz-grid__cell:hover .biz-grid__tag {

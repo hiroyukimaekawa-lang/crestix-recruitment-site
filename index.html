@@ -366,7 +366,8 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            opacity: 0;          /* ← デフォルトは非表示 */
+            opacity: 0;
+            /* ← デフォルトは非表示 */
             z-index: 0;
         }
 
@@ -1884,15 +1885,20 @@
             aspect-ratio: 4 / 3;
             border-radius: 8px;
             background:
-                linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.1), rgba(255,255,255,0.04)),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
                 #1a2b4c;
             background-size: 220% 100%;
             animation: crestoryThumbLoading 1.4s ease-in-out infinite;
         }
 
         @keyframes crestoryThumbLoading {
-            0% { background-position: 120% 0; }
-            100% { background-position: -120% 0; }
+            0% {
+                background-position: 120% 0;
+            }
+
+            100% {
+                background-position: -120% 0;
+            }
         }
 
         @media (max-width: 1024px) {
@@ -2350,7 +2356,7 @@
                             Crestixを知る
                         </h3> -->
                         <p class="cx-card-detail text-gray-200 text-xs leading-relaxed">
-                            ミッション、ビジョン、6つのバリューを解説。私たちが目指す世界をご紹介します。
+                            ミッション、ビジョン、5つのバリューを解説。私たちが目指す世界をご紹介します。
                         </p>
                         <div class="cx-view-more-box text-white text-xs font-black tracking-widest uppercase mt-2">
                             <span>Read More</span>
@@ -2599,18 +2605,18 @@
         ];
 
         // ── 定数（この2つだけ変更すれば全体に反映）──
-        const DISPLAY_MS  = 5000;  // 各スライドの表示時間
-        const TRANSIT_MS  = 400;   // フェードのトランジション時間（CSSと必ず合わせる）
+        const DISPLAY_MS = 5000;  // 各スライドの表示時間
+        const TRANSIT_MS = 400;   // フェードのトランジション時間（CSSと必ず合わせる）
 
         // ── 状態 ──
-        let currentSlide  = 0;
+        let currentSlide = 0;
         let transitioning = false;
-        let rafId         = null;
-        let slideStart    = null;  // 現在スライドの表示開始時刻
+        let rafId = null;
+        let slideStart = null;  // 現在スライドの表示開始時刻
 
         function initHeroSlideshow() {
             const slides = document.querySelectorAll('.hero-slide');
-            const dots   = document.querySelectorAll('.slide-dot');
+            const dots = document.querySelectorAll('.slide-dot');
 
             // ドットクリック
             dots.forEach((dot, i) => {
@@ -2625,7 +2631,7 @@
             // 最初のスライドを確実に表示
             slides.forEach((s, i) => {
                 s.style.transition = 'none';
-                s.style.opacity    = i === 0 ? '1' : '0';
+                s.style.opacity = i === 0 ? '1' : '0';
             });
             updateDots(0);
             updateText(0);
@@ -2649,7 +2655,7 @@
             // DISPLAY_MS 経過したら次へ
             if (now - slideStart >= DISPLAY_MS) {
                 const slides = document.querySelectorAll('.hero-slide');
-                const next   = (currentSlide + 1) % slides.length;
+                const next = (currentSlide + 1) % slides.length;
                 doTransition(next);
             }
             rafId = requestAnimationFrame(tick);
@@ -2665,12 +2671,12 @@
             // 旧スライドをフェードアウト
             const oldSlide = slides[currentSlide];
             oldSlide.style.opacity = '0';
-            oldSlide.style.zIndex  = '1';
+            oldSlide.style.zIndex = '1';
 
             // 新スライドをフェードイン
             const newSlide = slides[idx];
             newSlide.style.opacity = '0';
-            newSlide.style.zIndex  = '2';
+            newSlide.style.zIndex = '2';
 
             // 1フレーム待ってからopacityを変える（確実にトランジションを発火させる）
             requestAnimationFrame(() => {
@@ -2685,11 +2691,11 @@
 
             // トランジション完了後に状態を更新
             setTimeout(() => {
-                oldSlide.style.zIndex  = '0';
-                newSlide.style.zIndex  = '1';
-                currentSlide  = idx;
+                oldSlide.style.zIndex = '0';
+                newSlide.style.zIndex = '1';
+                currentSlide = idx;
                 transitioning = false;
-                slideStart    = performance.now(); // 表示開始時刻をリセット
+                slideStart = performance.now(); // 表示開始時刻をリセット
             }, TRANSIT_MS);
         }
 
@@ -2718,12 +2724,12 @@
 
         // ── テキスト更新 ──
         function updateText(idx) {
-            const data     = SLIDES_DATA[idx];
-            const tag      = document.getElementById('slide-tag');
+            const data = SLIDES_DATA[idx];
+            const tag = document.getElementById('slide-tag');
             const headline = document.getElementById('slide-headline');
-            const sub      = document.getElementById('slide-sub');
+            const sub = document.getElementById('slide-sub');
 
-            if (tag)      tag.textContent  = data.tag;
+            if (tag) tag.textContent = data.tag;
             if (headline) {
                 headline.classList.remove('visible');
                 setTimeout(() => {

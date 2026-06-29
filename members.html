@@ -67,20 +67,46 @@
     .member-card:hover .member-photo {
         transform: scale(1.05);
     }
-    .members-grid {
+    /* 上段：4カラムグリッド */
+    .members-grid-top {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    @media (min-width: 640px) {
+        .members-grid-top {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+    @media (min-width: 1024px) {
+        .members-grid-top {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+    }
+
+    /* 上段カードの写真高さ調整 */
+    .members-grid-top .member-photo-wrap {
+        height: clamp(220px, 20vw, 280px);
+    }
+
+    /* 下段：3カラムグリッド */
+    .members-grid-bottom {
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    @media (min-width: 768px) {
-        .members-grid {
+    @media (min-width: 640px) {
+        .members-grid-bottom {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 2.5rem;
         }
     }
     @media (min-width: 1024px) {
-        .members-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+        .members-grid-bottom {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.5rem;
+            align-items: stretch;
         }
     }
     .member-info {
@@ -321,7 +347,8 @@
     <!-- STORIES GRID -->
     <section class="pb-32 bg-white px-6 lg:px-14">
         <div class="max-w-7xl mx-auto">
-            <div class="members-grid">
+            <!-- 上段：4カラム -->
+            <div class="members-grid-top">
                 <!-- Card 1: 西田 (Nishida) -->
                 <div class="member-card reveal">
                     <div class="member-photo-wrap">
@@ -381,7 +408,10 @@
                         </a>
                     </div>
                 </div>
+            </div>
 
+            <!-- 下段：3カラム -->
+            <div class="members-grid-bottom">
                 <!-- Card 5: 水柿 (Mizugaki) -->
                 <div class="member-card reveal reveal-d1">
                     <div class="member-photo-wrap">
@@ -412,31 +442,64 @@
                     </div>
                 </div>
 
-                <!-- CTA CARD -->
-                <div class="col-span-full mt-12 reveal">
-                    <a href="https://hiroyukimaekawa-lang.github.io/crestix-recruitment-site/jobs.html" class="group block w-full relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-[#1A2B4C] to-[#0A0F1E] py-12 md:py-16 px-8 md:px-16 border border-white/5 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-                        <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-crestix-orange/15 rounded-full blur-3xl group-hover:bg-crestix-orange/25 transition-all duration-700"></div>
-                        <div class="absolute left-10 top-0 w-40 h-40 bg-blue-500/5 rounded-full blur-2xl"></div>
-                        
-                        <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
-                            <div class="space-y-3 text-center md:text-left">
-                                <span class="inline-block bg-crestix-orange/10 text-crestix-orange border border-crestix-orange/20 font-black text-[10px] px-4 py-1 rounded-full font-mono tracking-widest uppercase">
-                                    Career Openings
-                                </span>
-                                <h2 class="text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight leading-none">
-                                    すべての職種を見る
-                                </h2>
-                                <p class="text-sm text-white/60 font-medium">
-                                    Crestixの第二創業期を共に創り上げる、多様なポジションを募集中です。
-                                </p>
-                            </div>
-                            
-                            <div class="flex items-center gap-3 bg-white/5 border border-white/10 group-hover:border-crestix-orange/50 rounded-full px-6 py-4 transition-all">
-                                <span class="text-xs font-black text-white group-hover:text-crestix-orange tracking-[0.2em] uppercase transition-colors">VIEW ALL JOBS</span>
-                                <i class="fa-solid fa-arrow-right text-crestix-orange text-sm transform group-hover:translate-x-2 transition-transform duration-300"></i>
-                            </div>
+                <!-- CTA CARD（背景画像は assets/images/office/crestix.png を使用。差し替え時はsrc属性を変更すること） -->
+                <div class="member-card reveal" style="grid-column: span 2;">
+                    <div class="member-photo-wrap" style="position: relative;">
+                        <!-- 背景画像（差し替え時はsrc属性を変更すること） -->
+                        <img
+                            src="assets/images/office/crestix.png"
+                            class="member-photo"
+                            alt="全職種を見る"
+                        >
+                        <!-- テキストオーバーレイ -->
+                        <div style="
+                            position: absolute;
+                            inset: 0;
+                            z-index: 10;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            background: rgba(26, 43, 76, 0.6);
+                            padding: 2rem;
+                            text-align: center;
+                        ">
+                            <span style="
+                                font-family: 'Poppins', sans-serif;
+                                font-size: 10px;
+                                font-weight: 800;
+                                letter-spacing: 0.35em;
+                                text-transform: uppercase;
+                                color: #FF5C00;
+                                margin-bottom: 14px;
+                            ">All Our Roles</span>
+                            <p style="
+                                font-family: 'Poppins', sans-serif;
+                                font-size: clamp(1.2rem, 2vw, 1.75rem);
+                                font-weight: 900;
+                                color: white;
+                                line-height: 1.35;
+                                letter-spacing: -0.02em;
+                                margin-bottom: 10px;
+                            ">すべての職種を見る →</p>
+                            <p style="
+                                font-size: 13px;
+                                color: rgba(255,255,255,0.7);
+                                line-height: 1.7;
+                            ">Crestixの第二創業期を共に<br>創り上げるポジションを募集中</p>
                         </div>
-                    </a>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">全職種を見る</h3>
+                        <p class="member-tagline">
+                            Crestixの第二創業期を<br>共に創り上げる仲間を募集中
+                        </p>
+                        <a href="https://hiroyukimaekawa-lang.github.io/crestix-recruitment-site/jobs.html"
+                           class="member-entry-btn">
+                            View All Jobs
+                            <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -50,7 +50,13 @@ $categories = get_terms([
     <?php get_sidebar('left'); ?>
 
     <div class="note-main">
-      <?php // get_template_part('template-parts/hero'); ?>
+      <section class="crestory-hero">
+        <img
+          src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/priceless-hero.png"
+          alt="本気の挑戦を、Pricelessに変える。"
+          class="crestory-hero__img"
+        >
+      </section>
 
       <section class="note-articles-section" id="articles">
 

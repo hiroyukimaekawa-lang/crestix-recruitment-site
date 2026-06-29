@@ -12,12 +12,18 @@
     content.style.color = color;
     content.querySelectorAll(TEXT_SEL).forEach(el => {
       el.style.color = color;
-      el.style.opacity = '';  // 子要素の個別 opacity を解除（親に委ねる）
+      el.style.opacity = '';
+      if (color === 'white') {
+        el.style.textShadow = '0 1px 4px rgba(0,0,0,0.5)';
+      } else {
+        el.style.textShadow = '';
+      }
     });
   }
 
   function resetAll() {
     contents.forEach(content => applyStyle(content, '#111827', '1'));
+    cells.forEach(c => { c.style.background = ''; });
   }
 
   // transition を初期設定
@@ -45,11 +51,16 @@
           }
         });
         video.currentTime = 0;
-        video.play().catch(() => {});
+        video.play().catch(() => { });
       }
 
+      // 非ホバーカード → ダーク背景（白テキストの視認性確保）
+      cells.forEach((c, j) => {
+        c.style.background = j === i ? '' : 'rgba(10, 20, 40, 0.85)';
+      });
+
       // 全カード → 白・薄く
-      contents.forEach(content => applyStyle(content, 'white', '0.25'));
+      contents.forEach(content => applyStyle(content, 'white', '0.65'));
       // ホバーカード → 白・濃く
       applyStyle(contents[i], 'white', '1');
     });
