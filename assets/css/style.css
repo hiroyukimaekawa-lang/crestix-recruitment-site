@@ -941,7 +941,7 @@ input:focus, select:focus, textarea:focus {
 
 .biz-grid__title {
     margin: 0;
-    color: #0A1E3C;
+    color: #ffffff;
     font-family: 'Poppins', 'Noto Sans JP', sans-serif;
     font-size: clamp(1.8rem, 3vw, 3.5rem);
     font-weight: 900;
@@ -995,7 +995,7 @@ input:focus, select:focus, textarea:focus {
     display: block;
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--text-sub, #6b7280);
+    color: rgba(255, 255, 255, 0.75);
     margin-top: 0.5rem;
     letter-spacing: 0.05em;
     transition: color 0.25s ease;
@@ -1032,6 +1032,12 @@ input:focus, select:focus, textarea:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* ── biz-grid: テキスト opacity（JS inline style で上書き） ── */
+.biz-grid__cell .biz-grid__content {
+    opacity: 1;
+    transition: opacity 0.4s ease;
 }
 
 /* ── ホバー時：動画を全画面表示 ── */

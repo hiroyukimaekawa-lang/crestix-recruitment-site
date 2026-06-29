@@ -978,6 +978,20 @@
         body.menu-open {
             overflow: hidden;
         }
+
+        /* ai-sales: サービス画像エリア拡大 */
+        #service .service-detail-section__image {
+            width: 580px;
+            max-width: 58%;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            #service .service-detail-section__image {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -1215,11 +1229,8 @@
                     <!-- ① 牛くんずAI -->
                     <div class="service-detail-section reveal reveal-delay-1">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap"
-                                style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
-                                <img src="assets/images/aisales/service1.png" alt="営業代行" loading="lazy"
-                                    style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
-                            </div>
+                            <img src="assets/images/aisales/service1.png" alt="営業代行" loading="lazy"
+                                style="width: 100%; height: 100%; display: block; border-radius: 12px;">
                         </div>
                         <div class="service-detail-section__text">
                             <span
@@ -1238,11 +1249,8 @@
                     <!-- ② Chatbot AI -->
                     <div class="service-detail-section reveal reveal-delay-2">
                         <div class="service-detail-section__image">
-                            <div class="service-img-wrap"
-                                style="width: 500px; height: 300px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
-                                <img src="assets/images/aisales/service2.png" alt="AI活用" loading="lazy"
-                                    style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
-                            </div>
+                            <img src="assets/images/aisales/service2.png" alt="AI活用" loading="lazy"
+                                style="width: 100%; height: auto; display: block; border-radius: 12px;">
                         </div>
                         <div class="service-detail-section__text">
                             <span
@@ -1409,14 +1417,14 @@
                     </p>
                 </div>
 
-                <!-- IS -->
+                <!-- MG -->
                 <div class="jobs-category reveal reveal-delay-1">
-                    <p class="jobs-category-title">Inside Sales / インサイドセールス</p>
-                    <div class="accordion-item" id="jobs-is">
+                    <p class="jobs-category-title">Management / マネジメント</p>
+                    <div class="accordion-item" id="jobs-mg">
                         <button class="accordion-trigger" onclick="toggleAccordion(this)">
                             <div class="acc-left">
-                                <span class="acc-badge badge-consulting">IS</span>
-                                <span class="acc-title">医療向け インサイドセールス（IS）</span>
+                                <span class="acc-badge badge-consulting">MG</span>
+                                <span class="acc-title">AI Sales Enablement事業部 MG候補</span>
                             </div>
                             <div class="acc-right">
                                 <span class="acc-meta">正社員 · 東京</span>
@@ -1428,49 +1436,39 @@
                                 <div>
                                     <p class="acc-detail-label">仕事内容</p>
                                     <p class="acc-detail-text">
-                                        クリニックや医療機関に対し、Web集客やCRMツール、電子カルテ周辺の業務改善ソリューションの提案機会（商談）を創出するポジションです。</p>
+                                        AI Sales
+                                        Enablement事業部のマネージャー候補として、営業組織の成果最大化に向けた戦略設計、業務設計、AI活用、仕組み化、メンバーマネジメントを担っていただきます。<br><br>
+                                        単にAIツールを導入するのではなく、営業現場の課題を正しく捉え、リスト作成、トークスクリプト、商談分析、CRM運用、ナレッジ共有、数値管理、育成体制などを改善し、成果が出る営業組織を再現性のある形でつくるポジションです。<br><br>
+                                        営業現場で得られる定量データ・顧客の反応・商談内容・メンバーの行動をもとに、AIやSales
+                                        Opsの仕組みを活用しながら、Crestix全体の営業力を引き上げていただきます。<br><br>
+                                        【業務内容（一例）】<br>
+                                        ・営業組織の課題分析および改善施策の設計<br>
+                                        ・営業活動におけるAI活用方針の策定<br>
+                                        ・営業リスト、トークスクリプト、メール文面、商談資料などの改善<br>
+                                        ・商談内容、受注理由、失注理由、顧客ニーズの分析<br>
+                                        ・CRM、SFA、管理シート等を活用した営業データの可視化<br>
+                                        ・営業KPIの設計、進捗管理、改善施策の実行<br>
+                                        ・営業ナレッジの蓄積、共有、標準化<br>
+                                        ・AIチャットボット、営業カルテ、業務効率化ツール等を活用した提案設計<br>
+                                        ・各事業部のIS、FS、CSとの連携による営業プロセス改善<br>
+                                        ・メンバーの行動管理、フィードバック、育成<br>
+                                        ・成果が出る営業手法の型化および再現性の構築<br>
+                                        ・新規サービスや新規プロダクトの検証、改善、事業化支援<br>
+                                        ・AI Sales Enablement事業部の拡大に向けた組織体制の整備
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">AI Sales Enablement / 医療向け
-                                        インサイドセールス（IS）<br><br>医療業界のDX・業務効率化をリードし、顧客の売上最大化のファーストコンタクトを担う重要ポジションです。</p>
-                                </div>
-                            </div>
-                            <a href="job-ai-medical-inside-sales.html" class="acc-entry-link">応募詳細ページへ <i
-                                    class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FS -->
-                <div class="jobs-category reveal reveal-delay-2">
-                    <p class="jobs-category-title">Field Sales / フィールドセールス</p>
-                    <div class="accordion-item" id="jobs-fs">
-                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                            <div class="acc-left">
-                                <span class="acc-badge badge-sales">FS</span>
-                                <span class="acc-title">医療向け フィールドセールス（FS）</span>
-                            </div>
-                            <div class="acc-right">
-                                <span class="acc-meta">正社員 · 東京</span>
-                                <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
-                            </div>
-                        </button>
-                        <div class="acc-body">
-                            <div class="acc-content">
-                                <div>
-                                    <p class="acc-detail-label">仕事内容</p>
                                     <p class="acc-detail-text">
-                                        クローズドな医療業界の課題に深く向き合い、集客最大化や院内運営改善のための具体的なソリューション提案・受注までを一気通貫で牽引します。</p>
-                                </div>
-                                <div>
-                                    <p class="acc-detail-label">ポジション</p>
-                                    <p class="acc-detail-text">AI Sales Enablement / 医療向け
-                                        フィールドセールス（FS）<br><br>単なる物売りではなく、クリニックのパートナーとして医療DXを推進し、集患力アップにコミットします。</p>
+                                        AI Sales Enablement事業部 / マネージャー候補<br><br>
+                                        営業組織をAIと仕組みで強くする、Crestixの横断的な成果創出を担うポジションです。
+                                    </p>
                                 </div>
                             </div>
-                            <a href="job-ai-medical-field-sales.html" class="acc-entry-link">応募詳細ページへ <i
-                                    class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                            <!-- TODO: 専用応募ページが確定したら href を更新すること -->
+                            <a href="entry.html" class="acc-entry-link">応募詳細ページへ
+                                <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

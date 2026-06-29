@@ -1,23 +1,46 @@
 (function () {
-  const cells = document.querySelectorAll('.biz-grid__cell');
+  const grid = document.querySelector('.biz-grid__cells');
+  const cells = Array.from(document.querySelectorAll('.biz-grid__cell'));
+  const contents = cells.map(cell => cell.querySelector('.biz-grid__content'));
 
-  cells.forEach(cell => {
+  function resetOpacity() {
+    contents.forEach(content => {
+      if (content) content.style.opacity = '1';
+    });
+  }
+
+  cells.forEach((cell, i) => {
     const video = cell.querySelector('.biz-grid__cell-video');
-    if (!video) return;
-
-    video.preload = 'auto';
 
     cell.addEventListener('mouseenter', () => {
-      document.querySelectorAll('.biz-grid__cell-video').forEach(v => {
-        if (v !== video) { v.pause(); v.currentTime = 0; }
+      // video
+      if (video) {
+        cells.forEach((c, j) => {
+          if (j !== i) {
+            const v = c.querySelector('.biz-grid__cell-video');
+            if (v) { v.pause(); v.currentTime = 0; }
+          }
+        });
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      }
+
+      // opacity: ホバーカード→1、他→0.25
+      contents.forEach((content, j) => {
+        if (content) content.style.opacity = (j === i) ? '1' : '0.25';
       });
-      video.currentTime = 0;
-      video.play().catch(() => {});
     });
 
     cell.addEventListener('mouseleave', () => {
-      video.pause();
-      video.currentTime = 0;
+      if (video) { video.pause(); video.currentTime = 0; }
     });
   });
+
+  // グリッド全体からカーソルが外れたときだけリセット
+  if (grid) {
+    grid.addEventListener('mouseleave', resetOpacity);
+  }
+
+  // 初期状態をセット
+  resetOpacity();
 }());
