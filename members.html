@@ -123,6 +123,16 @@
             }
         }
 
+        .members-cta-card {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 1023px) {
+            .members-cta-card {
+                grid-column: auto;
+            }
+        }
+
         .member-info {
             padding: 24px 24px 32px;
             width: 100%;
@@ -388,12 +398,12 @@
             <div class="max-w-7xl mx-auto">
                 <!-- 上段：4カラム -->
                 <div class="members-grid-top">
-                    <!-- Card 1: 西田 (Nishida) -->
+                    <!-- Card 1: 役員 | 西田 翔 -->
                     <div class="member-card reveal">
                         <div class="member-photo-wrap">
                             <div class="member-role-top">Executive</div>
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop"
-                                class="member-photo" alt="西田 翔">
+                            <img src="assets/images/wordpress/sho-nishita.png"
+                                class="member-photo" alt="役員 | 西田 翔">
                         </div>
                         <div class="member-info">
                             <h3 class="member-name">役員 | 西田 翔</h3>
@@ -404,12 +414,12 @@
                         </div>
                     </div>
 
-                    <!-- Card 2: 前川 (Maekawa) -->
+                    <!-- Card 2: CTO | 前川 裕之 -->
                     <div class="member-card reveal reveal-d1">
                         <div class="member-photo-wrap">
                             <div class="member-role-top">CTO</div>
-                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop"
-                                class="member-photo" alt="前川 裕之">
+                            <img src="assets/images/wordpress/maekawa.png"
+                                class="member-photo" alt="CTO | 前川 裕之">
                         </div>
                         <div class="member-info">
                             <h3 class="member-name">CTO | 前川 裕之</h3>
@@ -420,33 +430,33 @@
                         </div>
                     </div>
 
-                    <!-- Card 3: 高原 (Takahara) -->
+                    <!-- Card 3: 第一営業部 Sales | 松岡龍士 -->
                     <div class="member-card reveal reveal-d2">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">Sales Manager</div>
-                            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop"
-                                class="member-photo" alt="髙原 一真">
+                            <div class="member-role-top">Division Manager</div>
+                            <img src="assets/images/division1/division1-matuoka.jpg"
+                                class="member-photo" alt="第一営業部 Sales | 松岡龍士">
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">営業IS統括 | 髙原 一真</h3>
-                            <p class="member-tagline">営業を科学する<br>圧倒的成果を創出するプロ</p>
-                            <a href="https://crestory.crestix.jp/takahara-interview/" class="member-entry-btn">
+                            <h3 class="member-name">第一営業部 Sales | 松岡龍士</h3>
+                            <p class="member-tagline">医療機関の成長を支える<br>クライアントワークの要</p>
+                            <a href="https://crestory.crestix.jp/matsuoka-interview/" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Card 4: 魚井 (Uoi) -->
+                    <!-- Card 4: 第一営業部 Marketing | 髙原一真 -->
                     <div class="member-card reveal">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">HD Manager</div>
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
-                                class="member-photo" alt="魚井 風太">
+                            <div class="member-role-top">Marketing</div>
+                            <img src="assets/images/division1/division1-takahara.jpg"
+                                class="member-photo" alt="第一営業部 Marketing | 髙原一真">
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">HD統括 | 魚井 風太</h3>
-                            <p class="member-tagline">ゼロから組織を創る<br>組織開発のスペシャリスト</p>
-                            <a href="https://crestory.crestix.jp/uoi-interview/" class="member-entry-btn">
+                            <h3 class="member-name">第一営業部 Marketing | 髙原一真</h3>
+                            <p class="member-tagline">地域医療の集患支援を通じて<br>医院の成長に伴走する</p>
+                            <a href="service-division1.html" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
                             </a>
                         </div>
@@ -455,43 +465,61 @@
 
                 <!-- 下段：3カラム -->
                 <div class="members-grid-bottom">
-                    <!-- Card 5: 水柿 (Mizugaki) -->
+                    <!-- Card 5: HD事業部 Sales | 山田 翔 -->
                     <div class="member-card reveal reveal-d1">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">Product Manager</div>
-                            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop"
-                                class="member-photo" alt="水柿 誠">
+                            <div class="member-role-top">HD Sales</div>
+                            <img src="assets/images/HD/hd-uoi.jpg"
+                                class="member-photo" alt="HD事業部 Sales | 山田 翔">
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">プロダクトマネージャー | 水柿 由佳</h3>
-                            <p class="member-tagline">ユーザー体験の価値を極大化し<br>プロダクトの未来を描く</p>
-                            <a href="https://crestory.crestix.jp/mizugaki-interview/" class="member-entry-btn">
+                            <h3 class="member-name">HD事業部 Sales | 山田 翔</h3>
+                            <p class="member-tagline">地域店舗の売上成長を支援し<br>オーナーの挑戦に伴走する</p>
+                            <a href="service-hd.html" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Card 6: 松岡 (Matsuoka) -->
+                    <!-- Card 6: HD事業部 Web Designer | 中村 彩 -->
                     <div class="member-card reveal reveal-d2">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">Division Manager</div>
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop"
-                                class="member-photo" alt="松岡 龍士">
+                            <div class="member-role-top">Web Designer</div>
+                            <img src="assets/images/HD/hd-imahuku.jpg"
+                                class="member-photo" alt="HD事業部 Web Designer | 中村 彩">
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">第一営業部統括 | 松岡 龍士</h3>
-                            <p class="member-tagline">売上を作る最前線へ<br>クライアントワークの要</p>
-                            <a href="https://crestory.crestix.jp/matsuoka-interview/" class="member-entry-btn">
+                            <h3 class="member-name">HD事業部 Web Designer | 中村 彩</h3>
+                            <p class="member-tagline">飲食店の魅力を伝える<br>ブランド体験をデザインする</p>
+                            <a href="service-hd.html" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- CTA CARD（背景画像は assets/images/office/crestix.png を使用。差し替え時はsrc属性を変更すること） -->
-                    <div class="member-card reveal" style="grid-column: span 2;">
+                    <!-- Card 7: HD事業部 CS | 松本 健 -->
+                    <div class="member-card reveal reveal-d3">
+                        <div class="member-photo-wrap">
+                            <div class="member-role-top">HD CS</div>
+                            <img src="assets/images/HD/mizugaki.jpg"
+                                class="member-photo" alt="HD事業部 CS | 松本 健">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">HD事業部 CS | 松本 健</h3>
+                            <p class="member-tagline">顧客の成功体験をつくり<br>店舗の成果に向き合う</p>
+                            <a href="service-hd.html" class="member-entry-btn">
+                                More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- CTA CARD（背景動画は assets/images/business/0624_Crestix_4.mp4 を使用。差し替え時はsource属性を変更すること） -->
+                    <div class="member-card reveal members-cta-card">
                         <div class="member-photo-wrap" style="position: relative;">
-                            <!-- 背景画像（差し替え時はsrc属性を変更すること） -->
-                            <img src="assets/images/office/crestix.png" class="member-photo" alt="全職種を見る">
+                            <!-- 背景動画（差し替え時はsource属性を変更すること） -->
+                            <video class="member-photo" autoplay muted loop playsinline preload="metadata" aria-label="全職種を見る">
+                                <source src="assets/images/business/0624_Crestix_4.mp4" type="video/mp4">
+                            </video>
                             <!-- テキストオーバーレイ -->
                             <div style="
                             position: absolute;
@@ -535,8 +563,7 @@
                             <p class="member-tagline">
                                 Crestixの第二創業期を<br>共に創り上げる仲間を募集中
                             </p>
-                            <a href="https://hiroyukimaekawa-lang.github.io/crestix-recruitment-site/jobs.html"
-                                class="member-entry-btn">
+                            <a href="jobs.html" class="member-entry-btn">
                                 View All Jobs
                                 <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
                             </a>
