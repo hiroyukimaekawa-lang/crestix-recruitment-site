@@ -468,13 +468,6 @@
     line-height: 1;
   }
 
-  .mega-service__divider {
-    width: 65%;
-    height: 1px;
-    background: #e0e0e0;
-    margin: 0 auto;
-  }
-
   .mega-service__list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -489,8 +482,6 @@
     min-height: 74px;
     padding: 16px 24px;
     border: none;
-    border-top: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
     color: #0A1E3C;
     background: transparent;
     font-family: 'Noto Sans JP', sans-serif;
@@ -499,10 +490,6 @@
     line-height: 1.4;
     text-decoration: none;
     transition: color 0.2s ease, background 0.2s ease;
-  }
-
-  .cx-mega-menu a.mega-service__item:last-child {
-    border-right: none;
   }
 
   .cx-mega-menu a.mega-service__item:hover {

@@ -1122,7 +1122,6 @@
                                     事業一覧
                                     <span class="mega-service__arrow">→</span>
                                 </a>
-                                <div class="mega-service__divider"></div>
                             </div>
                             <div class="mega-service__list">
                                 <a href="service-division1.html" class="mega-service__item">
@@ -1707,6 +1706,7 @@
             }
 
             window.scrollTo({ top: 0, behavior: 'instant' });
+            history.replaceState(null, '', window.location.pathname + hash);
 
             target.classList.add('cx-highlight');
             setTimeout(() => {
