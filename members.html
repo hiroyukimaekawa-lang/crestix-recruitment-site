@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Members | Crestix Careers — 最高速度で共鳴するプロフェッショナルたち</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="assets/js/tailwind-config.js"></script>
@@ -14,152 +17,185 @@
     <link rel="stylesheet" href="assets/css/components/hero.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-    /* ── Global ── */
-    body {
-        font-family: 'Noto Sans JP', 'Poppins', sans-serif;
-        color: #333333;
-        background: #fff;
-        -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
-    }
+        /* ── Global ── */
+        body {
+            font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+            color: #333333;
+            background: #fff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
 
-    /* ── Member Cards — Goodpatch Style ── */
-    .member-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #fafafa;
-        border-radius: 1rem;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none;
-    }
-    .member-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 32px -8px rgba(0,0,0,0.1);
-    }
-    .member-photo-wrap {
-        position: relative;
-        width: 100%;
-        height: clamp(280px, 26vw, 320px);
-        background: #edf2f7;
-        overflow: hidden;
-    }
-    .member-role-top {
-        position: absolute;
-        top: 24px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        color: #FF5C00;
-        z-index: 10;
-    }
-    .member-photo {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        transition: transform 0.5s ease;
-    }
-    .member-card:hover .member-photo {
-        transform: scale(1.05);
-    }
-    /* 上段：4カラムグリッド */
-    .members-grid-top {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-    @media (min-width: 640px) {
+        /* ── Member Cards — Goodpatch Style ── */
+        .member-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fafafa;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .member-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-photo-wrap {
+            position: relative;
+            width: 100%;
+            height: clamp(280px, 26vw, 320px);
+            background: #edf2f7;
+            overflow: hidden;
+        }
+
+        .member-role-top {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #FF5C00;
+            z-index: 10;
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.5s ease;
+        }
+
+        .member-card:hover .member-photo {
+            transform: scale(1.05);
+        }
+
+        /* 上段：4カラムグリッド */
         .members-grid-top {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-    }
-    @media (min-width: 1024px) {
-        .members-grid-top {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1.5rem;
+
+        @media (min-width: 640px) {
+            .members-grid-top {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
-    }
 
-    /* 上段カードの写真高さ調整 */
-    .members-grid-top .member-photo-wrap {
-        height: clamp(220px, 20vw, 280px);
-    }
+        @media (min-width: 1024px) {
+            .members-grid-top {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 1.5rem;
+            }
+        }
 
-    /* 下段：3カラムグリッド */
-    .members-grid-bottom {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    @media (min-width: 640px) {
+        /* 上段カードの写真高さ調整 */
+        .members-grid-top .member-photo-wrap {
+            height: clamp(220px, 20vw, 280px);
+        }
+
+        /* 下段：3カラムグリッド */
         .members-grid-bottom {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
-    }
-    @media (min-width: 1024px) {
-        .members-grid-bottom {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1.5rem;
-            align-items: stretch;
-        }
-    }
-    .member-info {
-        padding: 24px 24px 32px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .member-name {
-        font-family: 'Noto Sans JP', sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        color: #333;
-        margin-bottom: 12px;
-    }
-    .member-tagline {
-        font-size: 12px;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 24px;
-        min-height: 38px;
-    }
-    .member-entry-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        background: #FF5C00;
-        color: white;
-        font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        padding: 10px 40px;
-        border-radius: 99px;
-        margin-bottom: 16px;
-        transition: background 0.2s;
-    }
-    .member-entry-btn:hover {
-        background: #E65200;
-    }
-.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.1s; }
-    .reveal-d2 { transition-delay: 0.2s; }
-    .reveal-d3 { transition-delay: 0.3s; }
 
+        @media (min-width: 640px) {
+            .members-grid-bottom {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .members-grid-bottom {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 1.5rem;
+                align-items: stretch;
+            }
+        }
+
+        .member-info {
+            padding: 24px 24px 32px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .member-name {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .member-tagline {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            min-height: 38px;
+        }
+
+        .member-entry-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #FF5C00;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 10px 40px;
+            border-radius: 99px;
+            margin-bottom: 16px;
+            transition: background 0.2s;
+        }
+
+        .member-entry-btn:hover {
+            background: #E65200;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-d1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-d2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-d3 {
+            transition-delay: 0.3s;
+        }
     </style>
 </head>
+
 <body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
 
-<!--
+    <!--
   ═══════════════════════════════════════════════════════
   Crestix — Universal Navigation Header
   使い方: 全ページの <body> 直下に貼り付ける
@@ -167,7 +203,7 @@
   ═══════════════════════════════════════════════════════
 -->
 
-<!-- ═══ FULLSCREEN MENU ═══ -->
+    <!-- ═══ FULLSCREEN MENU ═══ -->
     <div id="fullscreen-menu">
         <div class="fm-topbar">
             <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
@@ -182,7 +218,7 @@
             <div class="fm-nav-group">
                 <a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a>
             </div>
-            
+
             <div class="fm-nav-group">
                 <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
                 <div class="fm-nav-sub">
@@ -203,23 +239,24 @@
             </div>
 
             <div class="fm-nav-group">
-    <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
-    <div class="fm-nav-sub">
-        <a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a>
-        <a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a>
-        <a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a>
-        <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a>
-    </div>
-</div>
+                <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
+                <div class="fm-nav-sub">
+                    <a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a>
+                    <a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a>
+                    <a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a>
+                    <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a>
+                </div>
+            </div>
 
             <div class="fm-nav-group">
-    <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
-    <div class="fm-nav-sub">
-        <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORYトップ</a>
-        <a href="message.html" onclick="cxToggleMenu()">代表メッセージ</a>
-        <a href="members.html" onclick="cxToggleMenu()">メンバーインタビュー</a>
-    </div>
-</div>
+                <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5"
+                    onclick="cxToggleMenu()">Crestory</a>
+                <div class="fm-nav-sub">
+                    <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORYトップ</a>
+                    <a href="message.html" onclick="cxToggleMenu()">代表メッセージ</a>
+                    <a href="members.html" onclick="cxToggleMenu()">メンバーインタビュー</a>
+                </div>
+            </div>
 
             <div class="fm-nav-group">
                 <a href="b2b-contact.html" class="fm-nav-item fm-item-6" onclick="cxToggleMenu()">Contact</a>
@@ -231,228 +268,232 @@
         </div>
     </div>
     <!-- ═══ NAVIGATION ═══ -->
-<nav id="cx-navbar" aria-label="グローバルナビゲーション">
+    <nav id="cx-navbar" aria-label="グローバルナビゲーション">
 
-  <!-- LEFT: Logo -->
-  <div class="cx-nav-left">
-    <a href="index.html" class="cx-nav-logo-link">
-      <img id="cx-nav-logo"
-           src="assets/images/office/crestix-header.png"
-           alt="Crestix"
-           onerror="this.style.display='none'">
-    </a>
-  </div>
-
-  <!-- CENTER: Nav links -->
-  <div class="cx-nav-center" id="cx-nav-links">
-
-        <div class="cx-mega-trigger" data-mega="mega-corporate">
-      <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
-      <div class="cx-mega-menu" id="mega-corporate">
-        <div class="cx-mega-container">
-          <div class="cx-mega-header">
-            <h3 class="cx-mega-title">CORPORATE</h3>
-            <p class="cx-mega-subtitle">会社を知る</p>
-          </div>
-          <div class="cx-mega-grid">
-            <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-            <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
-          </div>
+        <!-- LEFT: Logo -->
+        <div class="cx-nav-left">
+            <a href="index.html" class="cx-nav-logo-link">
+                <img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"
+                    onerror="this.style.display='none'">
+            </a>
         </div>
-      </div>
-    </div>
 
-        <div class="cx-mega-trigger" data-mega="mega-service">
-      <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
-      <div class="cx-mega-menu" id="mega-service">
-        <div class="cx-mega-container">
-          <div class="cx-mega-header">
-            <h3 class="cx-mega-title">SERVICE</h3>
-            <p class="cx-mega-subtitle">事業を知る</p>
-          </div>
-          <div class="mega-service">
-            <div class="mega-service__overview">
-              <a href="business.html" class="mega-service__overview-link">
-                事業一覧
-                <span class="mega-service__arrow">→</span>
-              </a>
-            </div>
-            <div class="mega-service__list">
-              <a href="service-division1.html" class="mega-service__item">
-                <span class="mega-service__item-label">第1営業部</span>
-                <span class="mega-service__item-arrow">→</span>
-              </a>
-              <a href="service-hd.html" class="mega-service__item">
-                <span class="mega-service__item-label">HD事業部</span>
-                <span class="mega-service__item-arrow">→</span>
-              </a>
-              <a href="ai-sales.html" class="mega-service__item">
-                <span class="mega-service__item-label">AI Sales Enablement（営業代行 / 営業支援事業）</span>
-                <span class="mega-service__item-arrow">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        <!-- CENTER: Nav links -->
+        <div class="cx-nav-center" id="cx-nav-links">
 
-    <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
-    <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
-
-  </div>
-
-  <!-- RIGHT: CTA + Hamburger -->
-  <div class="cx-nav-right">
-    <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
-    <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
-      <span class="cx-ham-lines" id="cx-ham-lines">
-        <span></span><span></span><span></span>
-      </span>
-    </button>
-  </div>
-
-</nav>
-
-
-
-
-<main>
-    <!-- HERO -->
-    <div class="corp-hero flex flex-col justify-end pt-40">
-        <div class="max-w-7xl mx-auto px-6 lg:px-14 pb-12 w-full reveal visible">
-            <p class="text-white/70 text-xs font-black tracking-[0.4em] uppercase mb-4 font-poppins">
-                Crestix / Stories
-            </p>
-            <h1 class="text-5xl lg:text-7xl font-black font-poppins tracking-tighter uppercase leading-none text-white drop-shadow-lg mb-4">
-                Stories
-            </h1>
-            <p class="text-white/90 text-lg font-bold">
-                社員の数だけ、挑戦の物語がある。
-            </p>
-        </div>
-    </div>
-
-    <!-- LEAD -->
-    <section class="py-24 bg-white px-6">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <p class="text-xl md:text-2xl font-bold leading-loose text-gray-800 tracking-wide">
-                Crestixで働くメンバーがどのような意思決定をし、<br class="hidden md:block">
-                どんな挑戦をしているのか。<br>
-                そのリアルなストーリーを紹介します。
-            </p>
-        </div>
-    </section>
-
-    <!-- STORIES GRID -->
-    <section class="pb-32 bg-white px-6 lg:px-14">
-        <div class="max-w-7xl mx-auto">
-            <!-- 上段：4カラム -->
-            <div class="members-grid-top">
-                <!-- Card 1: 西田 (Nishida) -->
-                <div class="member-card reveal">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">Executive</div>
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="西田 翔">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">役員 | 西田 翔</h3>
-                        <p class="member-tagline">プレイヤーから経営へ<br>事業成長を牽引する</p>
-                        <a href="https://crestory.crestix.jp/nishida-interview/" class="member-entry-btn">
-                            More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 2: 前川 (Maekawa) -->
-                <div class="member-card reveal reveal-d1">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">CTO</div>
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="前川 裕之">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">CTO | 前川 裕之</h3>
-                        <p class="member-tagline">技術とビジネスを高次元で融合し<br>強固なプロダクトを創造する</p>
-                        <a href="https://crestory.crestix.jp/maekawa-interview/" class="member-entry-btn">
-                            More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 3: 高原 (Takahara) -->
-                <div class="member-card reveal reveal-d2">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">Sales Manager</div>
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="髙原 一真">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">営業IS統括 | 髙原 一真</h3>
-                        <p class="member-tagline">営業を科学する<br>圧倒的成果を創出するプロ</p>
-                        <a href="https://crestory.crestix.jp/takahara-interview/" class="member-entry-btn">
-                            More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 4: 魚井 (Uoi) -->
-                <div class="member-card reveal">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">HD Manager</div>
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="魚井 風太">
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">HD統括 | 魚井 風太</h3>
-                        <p class="member-tagline">ゼロから組織を創る<br>組織開発のスペシャリスト</p>
-                        <a href="https://crestory.crestix.jp/uoi-interview/" class="member-entry-btn">
-                            More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
+            <div class="cx-mega-trigger" data-mega="mega-corporate">
+                <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+                <div class="cx-mega-menu" id="mega-corporate">
+                    <div class="cx-mega-container">
+                        <div class="cx-mega-header">
+                            <h3 class="cx-mega-title">CORPORATE</h3>
+                            <p class="cx-mega-subtitle">会社を知る</p>
+                        </div>
+                        <div class="cx-mega-grid">
+                            <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i
+                                    class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+                            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i
+                                    class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+                            <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i
+                                    class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 下段：3カラム -->
-            <div class="members-grid-bottom">
-                <!-- Card 5: 水柿 (Mizugaki) -->
-                <div class="member-card reveal reveal-d1">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">Product Manager</div>
-                        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="水柿 誠">
+            <div class="cx-mega-trigger" data-mega="mega-service">
+                <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+                <div class="cx-mega-menu" id="mega-service">
+                    <div class="cx-mega-container">
+                        <div class="cx-mega-header">
+                            <h3 class="cx-mega-title">SERVICE</h3>
+                            <p class="cx-mega-subtitle">事業を知る</p>
+                        </div>
+                        <div class="mega-service">
+                            <div class="mega-service__overview">
+                                <a href="business.html" class="mega-service__overview-link">
+                                    事業一覧
+                                    <span class="mega-service__arrow">→</span>
+                                </a>
+                            </div>
+                            <div class="mega-service__list">
+                                <a href="service-division1.html" class="mega-service__item">
+                                    <span class="mega-service__item-label">第1営業部</span>
+                                    <span class="mega-service__item-arrow">→</span>
+                                </a>
+                                <a href="service-hd.html" class="mega-service__item">
+                                    <span class="mega-service__item-label">HD事業部</span>
+                                    <span class="mega-service__item-arrow">→</span>
+                                </a>
+                                <a href="ai-sales.html" class="mega-service__item">
+                                    <span class="mega-service__item-label">AI Sales Enablement（営業代行 / 営業支援事業）</span>
+                                    <span class="mega-service__item-arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">プロダクトマネージャー | 水柿 誠</h3>
-                        <p class="member-tagline">ユーザー体験の価値を極大化し<br>プロダクトの未来を描く</p>
-                        <a href="https://crestory.crestix.jp/mizugaki-interview/" class="member-entry-btn">
-                            More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
+                </div>
+            </div>
+
+            <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+            <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
+
+        </div>
+
+        <!-- RIGHT: CTA + Hamburger -->
+        <div class="cx-nav-right">
+            <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
+            <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+                <span class="cx-ham-lines" id="cx-ham-lines">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
+
+    </nav>
+
+
+
+
+    <main>
+        <!-- HERO -->
+        <div class="corp-hero flex flex-col justify-end pt-40">
+            <div class="max-w-7xl mx-auto px-6 lg:px-14 pb-12 w-full reveal visible">
+                <p class="text-white/70 text-xs font-black tracking-[0.4em] uppercase mb-4 font-poppins">
+                    Crestix / Stories
+                </p>
+                <h1
+                    class="text-5xl lg:text-7xl font-black font-poppins tracking-tighter uppercase leading-none text-white drop-shadow-lg mb-4">
+                    Stories
+                </h1>
+                <p class="text-white/90 text-lg font-bold">
+                    社員の数だけ、挑戦の物語がある。
+                </p>
+            </div>
+        </div>
+
+        <!-- LEAD -->
+        <section class="py-24 bg-white px-6">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <p class="text-xl md:text-2xl font-bold leading-loose text-gray-800 tracking-wide">
+                    Crestixで働くメンバーがどのような意思決定をし、<br class="hidden md:block">
+                    どんな挑戦をしているのか。<br>
+                    そのリアルなストーリーを紹介します。
+                </p>
+            </div>
+        </section>
+
+        <!-- STORIES GRID -->
+        <section class="pb-32 bg-white px-6 lg:px-14">
+            <div class="max-w-7xl mx-auto">
+                <!-- 上段：4カラム -->
+                <div class="members-grid-top">
+                    <!-- Card 1: 西田 (Nishida) -->
+                    <div class="member-card reveal">
+                        <div class="member-photo-wrap">
+                            <div class="member-role-top">Executive</div>
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop"
+                                class="member-photo" alt="西田 翔">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">役員 | 西田 翔</h3>
+                            <p class="member-tagline">プレイヤーから経営へ<br>事業成長を牽引する</p>
+                            <a href="https://crestory.crestix.jp/nishida-interview/" class="member-entry-btn">
+                                More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: 前川 (Maekawa) -->
+                    <div class="member-card reveal reveal-d1">
+                        <div class="member-photo-wrap">
+                            <div class="member-role-top">CTO</div>
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop"
+                                class="member-photo" alt="前川 裕之">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">CTO | 前川 裕之</h3>
+                            <p class="member-tagline">技術とビジネスを高次元で融合し<br>強固なプロダクトを創造する</p>
+                            <a href="https://crestory.crestix.jp/maekawa-interview/" class="member-entry-btn">
+                                More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: 高原 (Takahara) -->
+                    <div class="member-card reveal reveal-d2">
+                        <div class="member-photo-wrap">
+                            <div class="member-role-top">Sales Manager</div>
+                            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop"
+                                class="member-photo" alt="髙原 一真">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">営業IS統括 | 髙原 一真</h3>
+                            <p class="member-tagline">営業を科学する<br>圧倒的成果を創出するプロ</p>
+                            <a href="https://crestory.crestix.jp/takahara-interview/" class="member-entry-btn">
+                                More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: 魚井 (Uoi) -->
+                    <div class="member-card reveal">
+                        <div class="member-photo-wrap">
+                            <div class="member-role-top">HD Manager</div>
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+                                class="member-photo" alt="魚井 風太">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">HD統括 | 魚井 風太</h3>
+                            <p class="member-tagline">ゼロから組織を創る<br>組織開発のスペシャリスト</p>
+                            <a href="https://crestory.crestix.jp/uoi-interview/" class="member-entry-btn">
+                                More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 6: 松岡 (Matsuoka) -->
-                <div class="member-card reveal reveal-d2">
-                    <div class="member-photo-wrap">
-                        <div class="member-role-top">Division Manager</div>
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop" class="member-photo" alt="松岡 龍士">
+                <!-- 下段：3カラム -->
+                <div class="members-grid-bottom">
+                    <!-- Card 5: 水柿 (Mizugaki) -->
+                    <div class="member-card reveal reveal-d1">
+                        <div class="member-photo-wrap">
+                            <div class="member-role-top">Product Manager</div>
+                            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop"
+                                class="member-photo" alt="水柿 誠">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">プロダクトマネージャー | 水柿 由佳</h3>
+                            <p class="member-tagline">ユーザー体験の価値を極大化し<br>プロダクトの未来を描く</p>
+                            <a href="https://crestory.crestix.jp/mizugaki-interview/" class="member-entry-btn">
+                                More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">第一営業部統括 | 松岡 龍士</h3>
-                        <p class="member-tagline">売上を作る最前線へ<br>クライアントワークの要</p>
-                        <a href="https://crestory.crestix.jp/matsuoka-interview/" class="member-entry-btn">
-                            More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
 
-                <!-- CTA CARD（背景画像は assets/images/office/crestix.png を使用。差し替え時はsrc属性を変更すること） -->
-                <div class="member-card reveal" style="grid-column: span 2;">
-                    <div class="member-photo-wrap" style="position: relative;">
-                        <!-- 背景画像（差し替え時はsrc属性を変更すること） -->
-                        <img
-                            src="assets/images/office/crestix.png"
-                            class="member-photo"
-                            alt="全職種を見る"
-                        >
-                        <!-- テキストオーバーレイ -->
-                        <div style="
+                    <!-- Card 6: 松岡 (Matsuoka) -->
+                    <div class="member-card reveal reveal-d2">
+                        <div class="member-photo-wrap">
+                            <div class="member-role-top">Division Manager</div>
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop"
+                                class="member-photo" alt="松岡 龍士">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">第一営業部統括 | 松岡 龍士</h3>
+                            <p class="member-tagline">売上を作る最前線へ<br>クライアントワークの要</p>
+                            <a href="https://crestory.crestix.jp/matsuoka-interview/" class="member-entry-btn">
+                                More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- CTA CARD（背景画像は assets/images/office/crestix.png を使用。差し替え時はsrc属性を変更すること） -->
+                    <div class="member-card reveal" style="grid-column: span 2;">
+                        <div class="member-photo-wrap" style="position: relative;">
+                            <!-- 背景画像（差し替え時はsrc属性を変更すること） -->
+                            <img src="assets/images/office/crestix.png" class="member-photo" alt="全職種を見る">
+                            <!-- テキストオーバーレイ -->
+                            <div style="
                             position: absolute;
                             inset: 0;
                             z-index: 10;
@@ -464,7 +505,7 @@
                             padding: 2rem;
                             text-align: center;
                         ">
-                            <span style="
+                                <span style="
                                 font-family: 'Poppins', sans-serif;
                                 font-size: 10px;
                                 font-weight: 800;
@@ -473,7 +514,7 @@
                                 color: #FF5C00;
                                 margin-bottom: 14px;
                             ">All Our Roles</span>
-                            <p style="
+                                <p style="
                                 font-family: 'Poppins', sans-serif;
                                 font-size: clamp(1.2rem, 2vw, 1.75rem);
                                 font-weight: 900;
@@ -482,66 +523,85 @@
                                 letter-spacing: -0.02em;
                                 margin-bottom: 10px;
                             ">すべての職種を見る →</p>
-                            <p style="
+                                <p style="
                                 font-size: 13px;
                                 color: rgba(255,255,255,0.7);
                                 line-height: 1.7;
                             ">Crestixの第二創業期を共に<br>創り上げるポジションを募集中</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">全職種を見る</h3>
-                        <p class="member-tagline">
-                            Crestixの第二創業期を<br>共に創り上げる仲間を募集中
-                        </p>
-                        <a href="https://hiroyukimaekawa-lang.github.io/crestix-recruitment-site/jobs.html"
-                           class="member-entry-btn">
-                            View All Jobs
-                            <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
-                        </a>
+                        <div class="member-info">
+                            <h3 class="member-name">全職種を見る</h3>
+                            <p class="member-tagline">
+                                Crestixの第二創業期を<br>共に創り上げる仲間を募集中
+                            </p>
+                            <a href="https://hiroyukimaekawa-lang.github.io/crestix-recruitment-site/jobs.html"
+                                class="member-entry-btn">
+                                View All Jobs
+                                <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-</main>
+    </main>
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="bg-black text-white select-none p-0">
-    <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
-        <a href="index.html" class="footer-logo font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline" style="display:block; text-align:center;"><img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:82px; width:auto; filter:brightness(0) invert(1); display:inline-block;"></a>
-        <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
-            <a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
-            <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
-            <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
-            <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
-        </nav>
-        <div class="mt-8 flex items-center justify-center gap-4">
-            <a href="https://crestory.crestix.jp/" aria-label="CRESTORY" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-solid fa-book-open text-sm"></i></a>
-            <a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
-            <a href="entry.html" aria-label="Entry" class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
+        <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
+            <a href="index.html"
+                class="footer-logo font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline"
+                style="display:block; text-align:center;"><img src="assets/images/office/crestix-header.png"
+                    alt="Crestix"
+                    style="height:82px; width:auto; filter:brightness(0) invert(1); display:inline-block;"></a>
+            <nav
+                class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
+                <a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
+                <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
+                <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
+                <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
+            </nav>
+            <div class="mt-8 flex items-center justify-center gap-4">
+                <a href="https://crestory.crestix.jp/" aria-label="CRESTORY"
+                    class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i
+                        class="fa-solid fa-book-open text-sm"></i></a>
+                <a href="https://www.youtube.com/" aria-label="YouTube"
+                    class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i
+                        class="fa-brands fa-youtube text-sm"></i></a>
+                <a href="entry.html" aria-label="Entry"
+                    class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
+            </div>
+            <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.
+            </p>
         </div>
-        <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p>
-    </div>
-</footer>
+    </footer>
 
     <!-- MODAL FOR B2B CONTACT -->
     <div id="contact-modal" class="modal-overlay fixed inset-0 hidden z-[200] overflow-y-auto p-4 lg:p-24 select-none">
-        <div class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
-            <div class="sticky top-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
+        <div
+            class="bg-white text-crestix-charcoal w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col relative max-h-[90vh] modal-content-anim">
+            <div
+                class="sticky top-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 px-10 py-6 flex justify-between items-center z-50">
                 <span class="font-poppins font-black text-2xl tracking-widest uppercase">Crestix Partners</span>
-                <button class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <button
+                    class="modal-close-btn w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-600 transition-all hover:rotate-90"><i
+                        class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="overflow-y-auto flex-1 p-10 lg:p-20 bg-gray-50/50">
                 <div class="max-w-2xl mx-auto space-y-12">
                     <div class="text-center space-y-3">
-                        <span class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB Inquiry</span>
+                        <span
+                            class="text-[11px] font-black text-crestix-orange font-poppins tracking-[0.4em] uppercase">BtoB
+                            Inquiry</span>
                         <h2 class="text-4xl font-black tracking-tight">企業様向けお問い合わせ</h2>
                     </div>
                     <div class="bg-white rounded-[2.5rem] p-10 lg:p-14 border border-crestix-border">
                         <form onsubmit="triggerB2bFormSubmit(event)" id="contact-inner-form" class="space-y-8">
-                            <button type="submit" class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all active:scale-95">Send Inquiry ➔</button>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-crestix-orange to-[#E65200] text-white py-5 rounded-[1.5rem] font-black text-xs tracking-[0.4em] uppercase shadow-2xl transition-all active:scale-95">Send
+                                Inquiry ➔</button>
                         </form>
                     </div>
                 </div>
@@ -557,4 +617,5 @@
 
     <script src="assets/js/navbar.js"></script>
 </body>
+
 </html>
