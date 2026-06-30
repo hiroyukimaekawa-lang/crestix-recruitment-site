@@ -1803,23 +1803,28 @@ input:focus, select:focus, textarea:focus {
     max-width: 320px;
     margin: 0 auto;
 }
-#sec-diagnostic .diag-step--roles > .grid {
+#sec-diagnostic .diag-step--roles > .grid,
+#sec-diagnostic .diag-step--positions > .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 860px;
     margin-inline: auto;
 }
-#sec-diagnostic .diag-step--roles .diag-option-card {
-    min-height: 132px;
-    padding: 28px 24px !important;
+#sec-diagnostic .diag-step--roles .diag-option-card,
+#sec-diagnostic .diag-step--positions .diag-option-card {
+    min-height: 200px;
+    padding: 42px 36px !important;
 }
-#sec-diagnostic .diag-step--roles .diag-title {
-    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+#sec-diagnostic .diag-step--roles .diag-title,
+#sec-diagnostic .diag-step--positions .diag-title {
+    font-size: clamp(1.15rem, 1.7vw, 1.45rem);
 }
-#sec-diagnostic .diag-step--roles .diag-desc {
-    display: none;
+#sec-diagnostic .diag-step--roles .diag-desc,
+#sec-diagnostic .diag-step--positions .diag-desc {
+    display: block;
 }
-#sec-diagnostic .diag-step--roles .diag-underline {
-    margin-bottom: 0;
+#sec-diagnostic .diag-step--roles .diag-underline,
+#sec-diagnostic .diag-step--positions .diag-underline {
+    margin: 14px auto 16px;
 }
 #sec-diagnostic #diag-footer {
     margin-top: 52px;
@@ -1913,25 +1918,36 @@ input:focus, select:focus, textarea:focus {
         padding: 22px 20px !important;
         border-radius: 16px !important;
     }
-    #sec-diagnostic .diag-step--roles > .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    #sec-diagnostic .diag-step--roles > .grid,
+    #sec-diagnostic .diag-step--positions > .grid {
+        grid-template-columns: 1fr !important;
         gap: 12px !important;
-        max-width: 390px !important;
+        max-width: 365px !important;
+        margin-inline: auto !important;
     }
-    #sec-diagnostic .diag-step--roles .diag-option-card {
-        min-height: 96px !important;
-        height: auto !important;
-        padding: 20px 12px !important;
+    #sec-diagnostic .diag-step--roles .diag-option-card,
+    #sec-diagnostic .diag-step--positions .diag-option-card {
+        min-height: auto !important;
+        padding: 16px 20px !important;
+        border-radius: 16px !important;
     }
-    #sec-diagnostic .diag-step--roles .diag-title {
+    #sec-diagnostic .diag-step--roles .diag-title,
+    #sec-diagnostic .diag-step--positions .diag-title {
         font-size: 0.95rem !important;
         line-height: 1.35 !important;
     }
-    #sec-diagnostic .diag-step--roles .diag-underline {
+    #sec-diagnostic .diag-step--roles .diag-underline,
+    #sec-diagnostic .diag-step--positions .diag-underline {
         display: block !important;
-        width: 24px;
-        height: 2px;
-        margin: 10px auto 0 !important;
+        width: 34px !important;
+        height: 2px !important;
+        margin: 4px auto 8px !important;
+    }
+    #sec-diagnostic .diag-step--roles .diag-desc,
+    #sec-diagnostic .diag-step--positions .diag-desc {
+        display: block !important;
+        font-size: 0.8rem !important;
+        line-height: 1.5 !important;
     }
     #sec-diagnostic #diag-footer {
         margin-top: 28px !important;

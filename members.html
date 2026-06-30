@@ -46,7 +46,7 @@
         .member-photo-wrap {
             position: relative;
             width: 100%;
-            height: clamp(280px, 26vw, 320px);
+            height: clamp(400px, 32vw, 400px);
             background: #edf2f7;
             overflow: hidden;
         }
@@ -68,8 +68,17 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center 65%;
             transition: transform 0.5s ease;
+        }
+
+        /* 動画カードでもimgと同じ表示になるよう display:block を明示 */
+        .member-photo-wrap video.member-photo {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 65%;
         }
 
         .member-card:hover .member-photo {
@@ -99,7 +108,7 @@
 
         /* 上段カードの写真高さ調整 */
         .members-grid-top .member-photo-wrap {
-            height: clamp(220px, 20vw, 280px);
+            height: clamp(430px, 20vw, 280px);
         }
 
         /* 下段：3カラムグリッド */
@@ -394,19 +403,22 @@
         </section>
 
         <!-- STORIES GRID -->
-        <section class="pb-32 bg-white px-6 lg:px-14">
+        <section class="pb-30 bg-white px-6 lg:px-14">
             <div class="max-w-7xl mx-auto">
                 <!-- 上段：4カラム -->
                 <div class="members-grid-top">
                     <!-- Card 1: 役員 | 西田 翔 -->
                     <div class="member-card reveal">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">Executive</div>
-                            <img src="assets/images/wordpress/sho-nishita.png"
-                                class="member-photo" alt="役員 | 西田 翔">
+                            <!-- <div class="member-role-top">Executive</div> -->
+                            <video class="member-photo" autoplay muted loop playsinline preload="metadata"
+                                poster="assets/images/poster/oni.jpg">
+                                <source src="assets/images/video/nishita.mp4" type="video/mp4">
+                            </video>
+
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">役員 | 西田 翔</h3>
+                            <h3 class="member-name">COO | 西田 翔</h3>
                             <p class="member-tagline">プレイヤーから経営へ<br>事業成長を牽引する</p>
                             <a href="https://crestory.crestix.jp/nishida-interview/" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
@@ -417,12 +429,14 @@
                     <!-- Card 2: CTO | 前川 裕之 -->
                     <div class="member-card reveal reveal-d1">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">CTO</div>
-                            <img src="assets/images/wordpress/maekawa.png"
-                                class="member-photo" alt="CTO | 前川 裕之">
+                            <!-- <div class="member-role-top">CTO</div> -->
+                            <video class="member-photo" autoplay muted loop playsinline preload="metadata"
+                                poster="assets/images/poster/oni.jpg">
+                                <source src="assets/images/video/mae1.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">CTO | 前川 裕之</h3>
+                            <h3 class="member-name">CTO | 前川 弘行</h3>
                             <p class="member-tagline">技術とビジネスを高次元で融合し<br>強固なプロダクトを創造する</p>
                             <a href="https://crestory.crestix.jp/maekawa-interview/" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
@@ -433,12 +447,14 @@
                     <!-- Card 3: 第一営業部 Sales | 松岡龍士 -->
                     <div class="member-card reveal reveal-d2">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">Division Manager</div>
-                            <img src="assets/images/division1/division1-matuoka.jpg"
-                                class="member-photo" alt="第一営業部 Sales | 松岡龍士">
+                            <!-- <div class="member-role-top">Division Manager</div> -->
+                            <video class="member-photo" autoplay muted loop playsinline preload="metadata"
+                                poster="assets/images/poster/oni.jpg">
+                                <source src="assets/images/video/matuoka.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">第一営業部 Sales | 松岡龍士</h3>
+                            <h3 class="member-name">第一営業部 FS| 松岡龍士</h3>
                             <p class="member-tagline">医療機関の成長を支える<br>クライアントワークの要</p>
                             <a href="https://crestory.crestix.jp/matsuoka-interview/" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
@@ -449,12 +465,14 @@
                     <!-- Card 4: 第一営業部 Marketing | 髙原一真 -->
                     <div class="member-card reveal">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">Marketing</div>
-                            <img src="assets/images/division1/division1-takahara.jpg"
-                                class="member-photo" alt="第一営業部 Marketing | 髙原一真">
+                            <!-- <div class="member-role-top">Marketing</div> -->
+                            <video class="member-photo" autoplay muted loop playsinline preload="metadata"
+                                poster="assets/images/poster/oni.jpg">
+                                <source src="assets/images/video/kazumatakahara.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">第一営業部 Marketing | 髙原一真</h3>
+                            <h3 class="member-name">Marketing MG | 髙原一真</h3>
                             <p class="member-tagline">地域医療の集患支援を通じて<br>医院の成長に伴走する</p>
                             <a href="service-division1.html" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
@@ -468,12 +486,14 @@
                     <!-- Card 5: HD事業部 Sales | 山田 翔 -->
                     <div class="member-card reveal reveal-d1">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">HD Sales</div>
-                            <img src="assets/images/HD/hd-uoi.jpg"
-                                class="member-photo" alt="HD事業部 Sales | 山田 翔">
+                            <!-- <div class="member-role-top">HD Sales</div> -->
+                            <video class="member-photo" autoplay muted loop playsinline preload="metadata"
+                                poster="assets/images/poster/oni.jpg">
+                                <source src="assets/images/video/uoi.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">HD事業部 Sales | 山田 翔</h3>
+                            <h3 class="member-name">HD事業部 FS| 魚井風太</h3>
                             <p class="member-tagline">地域店舗の売上成長を支援し<br>オーナーの挑戦に伴走する</p>
                             <a href="service-hd.html" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
@@ -482,11 +502,11 @@
                     </div>
 
                     <!-- Card 6: HD事業部 Web Designer | 中村 彩 -->
-                    <div class="member-card reveal reveal-d2">
+                    <!-- <div class="member-card reveal reveal-d2">
                         <div class="member-photo-wrap">
                             <div class="member-role-top">Web Designer</div>
-                            <img src="assets/images/HD/hd-imahuku.jpg"
-                                class="member-photo" alt="HD事業部 Web Designer | 中村 彩">
+                            <img src="assets/images/HD/hd-imahuku.jpg" class="member-photo"
+                                alt="HD事業部 Web Designer | 中村 彩">
                         </div>
                         <div class="member-info">
                             <h3 class="member-name">HD事業部 Web Designer | 中村 彩</h3>
@@ -495,17 +515,19 @@
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Card 7: HD事業部 CS | 松本 健 -->
                     <div class="member-card reveal reveal-d3">
                         <div class="member-photo-wrap">
-                            <div class="member-role-top">HD CS</div>
-                            <img src="assets/images/HD/mizugaki.jpg"
-                                class="member-photo" alt="HD事業部 CS | 松本 健">
+                            <!-- <div class="member-role-top">HD CS</div> -->
+                            <video class="member-photo" autoplay muted loop playsinline preload="metadata"
+                                poster="assets/images/poster/oni.jpg">
+                                <source src="assets/images/video/mizugaki.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <div class="member-info">
-                            <h3 class="member-name">HD事業部 CS | 松本 健</h3>
+                            <h3 class="member-name">HD事業部 CS | 水柿裕香</h3>
                             <p class="member-tagline">顧客の成功体験をつくり<br>店舗の成果に向き合う</p>
                             <a href="service-hd.html" class="member-entry-btn">
                                 More <i class="fa-solid fa-arrow-up-right ml-1 text-[10px]"></i>
@@ -517,8 +539,9 @@
                     <div class="member-card reveal members-cta-card">
                         <div class="member-photo-wrap" style="position: relative;">
                             <!-- 背景動画（差し替え時はsource属性を変更すること） -->
-                            <video class="member-photo" autoplay muted loop playsinline preload="metadata" aria-label="全職種を見る">
-                                <source src="assets/images/business/0624_Crestix_4.mp4" type="video/mp4">
+                            <video class="member-photo" autoplay muted loop playsinline preload="metadata"
+                                aria-label="全職種を見る">
+                                <source src="assets/images/video/zentai.mp4" type="video/mp4">
                             </video>
                             <!-- テキストオーバーレイ -->
                             <div style="
@@ -533,15 +556,15 @@
                             padding: 2rem;
                             text-align: center;
                         ">
-                                <span style="
+                                <!-- <span style="
                                 font-family: 'Poppins', sans-serif;
                                 font-size: 10px;
                                 font-weight: 800;
                                 letter-spacing: 0.35em;
                                 text-transform: uppercase;
                                 color: #FF5C00;
-                                margin-bottom: 14px;
-                            ">All Our Roles</span>
+                                margin-bottom: 150px;
+                            ">All Our Roles</span> -->
                                 <p style="
                                 font-family: 'Poppins', sans-serif;
                                 font-size: clamp(1.2rem, 2vw, 1.75rem);
@@ -549,13 +572,13 @@
                                 color: white;
                                 line-height: 1.35;
                                 letter-spacing: -0.02em;
-                                margin-bottom: 10px;
+                                margin-bottom: 150px;
                             ">すべての職種を見る →</p>
                                 <p style="
                                 font-size: 13px;
                                 color: rgba(255,255,255,0.7);
                                 line-height: 1.7;
-                            ">Crestixの第二創業期を共に<br>創り上げるポジションを募集中</p>
+                            ">
                             </div>
                         </div>
                         <div class="member-info">

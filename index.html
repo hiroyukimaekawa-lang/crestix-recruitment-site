@@ -956,7 +956,9 @@
 
             /* Grids for steps */
             .diag-step--categories>.grid,
-            .diag-step--stages>.grid {
+            .diag-step--stages>.grid,
+            .diag-step--roles>.grid,
+            .diag-step--positions>.grid {
                 display: grid !important;
                 grid-template-columns: 1fr !important;
                 gap: 12px !important;
@@ -964,17 +966,11 @@
                 margin: 0 auto;
             }
 
-            .diag-step--roles>.grid {
-                display: grid !important;
-                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-                gap: 12px !important;
-                max-width: 100% !important;
-                margin: 0 auto;
-            }
-
-            /* Card standard styles on mobile (Step 1 and Step 3) */
+            /* Card standard styles on mobile (Step 1, Step 2, and Step 3) */
             .diag-step--categories .diag-option-card,
-            .diag-step--stages .diag-option-card {
+            .diag-step--stages .diag-option-card,
+            .diag-step--roles .diag-option-card,
+            .diag-step--positions .diag-option-card {
                 width: 100% !important;
                 min-height: auto !important;
                 padding: 16px 20px !important;
@@ -982,57 +978,35 @@
             }
 
             .diag-step--categories .diag-abbr,
-            .diag-step--stages .diag-abbr {
+            .diag-step--stages .diag-abbr,
+            .diag-step--roles .diag-abbr,
+            .diag-step--positions .diag-abbr {
                 font-size: 2.2rem !important;
             }
 
             .diag-step--categories .diag-title,
-            .diag-step--stages .diag-title {
+            .diag-step--stages .diag-title,
+            .diag-step--roles .diag-title,
+            .diag-step--positions .diag-title {
                 font-size: 0.95rem !important;
                 margin-top: 8px !important;
             }
 
             .diag-step--categories .diag-underline,
-            .diag-step--stages .diag-underline {
+            .diag-step--stages .diag-underline,
+            .diag-step--roles .diag-underline,
+            .diag-step--positions .diag-underline {
+                display: block !important;
                 margin: 4px auto 8px !important;
             }
 
             .diag-step--categories .diag-desc,
-            .diag-step--stages .diag-desc {
+            .diag-step--stages .diag-desc,
+            .diag-step--roles .diag-desc,
+            .diag-step--positions .diag-desc {
+                display: block !important;
                 font-size: 0.8rem !important;
                 line-height: 1.5 !important;
-            }
-
-            /* Card Step 2 compact layout on mobile */
-            .diag-step--roles .diag-option-card {
-                width: 100% !important;
-                height: 72px !important;
-                min-height: 72px !important;
-                padding: 12px 10px !important;
-                border-radius: 12px !important;
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: center !important;
-                align-items: center !important;
-            }
-
-            .diag-step--roles .diag-abbr {
-                font-size: 0.75rem !important;
-                margin-bottom: 2px !important;
-            }
-
-            .diag-step--roles .diag-title {
-                font-size: 0.9rem !important;
-                margin-top: 0 !important;
-                line-height: 1.2 !important;
-            }
-
-            .diag-step--roles .diag-underline {
-                display: none !important;
-            }
-
-            .diag-step--roles .diag-desc {
-                display: none !important;
             }
 
             .diag-step--roles .diag-check-tab {
@@ -1449,7 +1423,8 @@
 
         #sec-diagnostic .diag-step--categories>.grid,
         #sec-diagnostic .diag-step--stages>.grid,
-        #sec-diagnostic .diag-step--roles>.grid {
+        #sec-diagnostic .diag-step--roles>.grid,
+        #sec-diagnostic .diag-step--positions>.grid {
             max-width: 1180px;
             margin-inline: auto;
             gap: clamp(1.4rem, 3vw, 2.25rem);
@@ -1507,27 +1482,32 @@
             margin: 0 auto;
         }
 
-        #sec-diagnostic .diag-step--roles>.grid {
+        #sec-diagnostic .diag-step--roles>.grid,
+        #sec-diagnostic .diag-step--positions>.grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             max-width: 900px;
             margin-inline: auto;
         }
 
-        #sec-diagnostic .diag-step--roles .diag-option-card {
-            min-height: 142px;
-            padding: 30px 26px !important;
+        #sec-diagnostic .diag-step--roles .diag-option-card,
+        #sec-diagnostic .diag-step--positions .diag-option-card {
+            min-height: 200px;
+            padding: 42px 36px !important;
         }
 
-        #sec-diagnostic .diag-step--roles .diag-title {
-            font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+        #sec-diagnostic .diag-step--roles .diag-title,
+        #sec-diagnostic .diag-step--positions .diag-title {
+            font-size: clamp(1.3rem, 1.75vw, 1.65rem);
         }
 
-        #sec-diagnostic .diag-step--roles .diag-desc {
-            display: none;
+        #sec-diagnostic .diag-step--roles .diag-desc,
+        #sec-diagnostic .diag-step--positions .diag-desc {
+            display: block;
         }
 
-        #sec-diagnostic .diag-step--roles .diag-underline {
-            margin-bottom: 0;
+        #sec-diagnostic .diag-step--roles .diag-underline,
+        #sec-diagnostic .diag-step--positions .diag-underline {
+            margin: 16px auto 18px;
         }
 
         #sec-diagnostic #diag-footer {
@@ -1667,12 +1647,12 @@
             letter-spacing: .2em !important;
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-shell {
+        #sec-diagnostic #diag-step-4 .diag-result-shell {
             max-width: 860px;
             margin: 0 auto;
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-title {
+        #sec-diagnostic #diag-step-4 .diag-result-title {
             font-size: clamp(2rem, 4.6vw, 3.8rem) !important;
             line-height: 1.18 !important;
             letter-spacing: -0.04em !important;
@@ -1682,7 +1662,7 @@
             text-align: center;
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-lead {
+        #sec-diagnostic #diag-step-4 .diag-result-lead {
             color: #6b7280;
             font-size: clamp(1rem, 1.25vw, 1.18rem);
             line-height: 1.9;
@@ -1692,7 +1672,7 @@
             margin: 0 auto;
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-division-card {
+        #sec-diagnostic #diag-step-4 .diag-result-division-card {
             background: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(255, 92, 0, 0.24);
             border-radius: 22px;
@@ -1703,7 +1683,7 @@
             box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-division-name {
+        #sec-diagnostic #diag-step-4 .diag-result-division-name {
             color: #FF5C00;
             font-family: 'Poppins', sans-serif;
             font-size: clamp(.82rem, 1vw, 1rem);
@@ -1713,21 +1693,21 @@
             line-height: 1.5;
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-division-sub {
+        #sec-diagnostic #diag-step-4 .diag-result-division-sub {
             color: #0A1E3C;
             font-size: clamp(1.25rem, 1.7vw, 1.62rem);
             line-height: 1.55;
             font-weight: 900;
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-division-label {
+        #sec-diagnostic #diag-step-4 .diag-result-division-label {
             color: #6b7280;
             font-size: clamp(.9rem, 1.05vw, 1.05rem);
             line-height: 1.7;
             font-weight: 700;
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-division-link {
+        #sec-diagnostic #diag-step-4 .diag-result-division-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1744,7 +1724,7 @@
             transition: transform .2s ease, background .2s ease;
         }
 
-        #sec-diagnostic #diag-step-3 .diag-result-division-link:hover {
+        #sec-diagnostic #diag-step-4 .diag-result-division-link:hover {
             background: #E65200;
             transform: translateY(-2px);
         }
@@ -2243,74 +2223,76 @@
                         </span>
                         <!-- 2. Step表示 -->
                         <span class="diag-step-number">
-                            STEP 1 / 4
+                            STEP 1 / 3
                         </span>
                         <!-- 3. メイン見出し -->
                         <h3 class="diag-step-title">
-                            希望する職種カテゴリ
+                            希望する事業部
                         </h3>
+                        <p class="diag-step-desc text-gray-500 text-sm mt-3" style="font-family:'Noto Sans JP',sans-serif;font-weight:700;">興味のある事業領域を選択してください。</p>
                     </div>
 
                     <!-- 選択カード 3枚 -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
-                        <!-- Card: 営業・事業職 -->
+                        <!-- Card: AI Sales Enablement事業部 -->
                         <div class="diag-option-card relative bg-white rounded-2xl p-9 lg:p-10 min-h-[190px] flex flex-col items-center justify-center text-center border-2 border-slate-200 cursor-pointer transition-all duration-300 hover:shadow-[0_16px_38px_rgba(15,23,42,0.08)]"
-                            onclick="selectDiagnosticOption(1,'sales')" onkeydown="handleCardKeyDown(event, 1,'sales')"
-                            data-option="sales" role="button" tabindex="0" aria-pressed="false">
+                            onclick="selectDiagnosticOption(1,'ai')" onkeydown="handleCardKeyDown(event, 1,'ai')"
+                            data-option="ai" role="button" tabindex="0" aria-pressed="false">
                             <!-- 選択時チェックタブ（右上） -->
                             <div
                                 class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
                                 <i class="fa-solid fa-check text-white text-xs"></i>
                             </div>
                             <!-- 日本語タイトル -->
-                            <span class="diag-title">営業・事業職</span>
+                            <span class="diag-title">AI Sales Enablement事業部</span>
                             <!-- 下線 -->
                             <div class="diag-underline transition-colors duration-300"></div>
                             <!-- 説明テキスト -->
                             <p class="diag-desc">
-                                顧客と向き合い事業成長を前線から支える職種です
+                                AIと営業支援の仕組みを活用し、営業組織の成果最大化を支援する事業部です。
                             </p>
                         </div>
 
-                        <!-- Card: プロダクト開発職 -->
+                        <!-- Card: 第一営業部 -->
                         <div class="diag-option-card relative bg-white rounded-2xl p-9 lg:p-10 min-h-[190px] flex flex-col items-center justify-center text-center border-2 border-slate-200 cursor-pointer transition-all duration-300 hover:shadow-[0_16px_38px_rgba(15,23,42,0.08)]"
-                            onclick="selectDiagnosticOption(1,'product')"
-                            onkeydown="handleCardKeyDown(event, 1,'product')" data-option="product" role="button"
+                            onclick="selectDiagnosticOption(1,'division1')"
+                            onkeydown="handleCardKeyDown(event, 1,'division1')" data-option="division1" role="button"
                             tabindex="0" aria-pressed="false">
                             <div
                                 class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
                                 <i class="fa-solid fa-check text-white text-xs"></i>
                             </div>
-                            <span class="diag-title">プロダクト開発職</span>
+                            <span class="diag-title">第一営業部</span>
                             <div class="diag-underline transition-colors duration-300"></div>
                             <p class="diag-desc">
-                                サービスや仕組みをつくり価値を形にする職種です
+                                医療機関向けに、マーケティング・集客支援を提供する事業部です。
                             </p>
                         </div>
 
-                        <!-- Card: コーポレート職 -->
+                        <!-- Card: HD事業部 -->
                         <div class="diag-option-card relative bg-white rounded-2xl p-9 lg:p-10 min-h-[190px] flex flex-col items-center justify-center text-center border-2 border-slate-200 cursor-pointer transition-all duration-300 hover:shadow-[0_16px_38px_rgba(15,23,42,0.08)]"
-                            onclick="selectDiagnosticOption(1,'corporate')"
-                            onkeydown="handleCardKeyDown(event, 1,'corporate')" data-option="corporate" role="button"
+                            onclick="selectDiagnosticOption(1,'hd')"
+                            onkeydown="handleCardKeyDown(event, 1,'hd')" data-option="hd" role="button"
                             tabindex="0" aria-pressed="false">
                             <div
                                 class="diag-check-tab absolute top-0 right-0 w-10 h-10 bg-[#FF5C00] rounded-bl-xl rounded-tr-xl flex items-center justify-center opacity-0 transition-opacity duration-300">
                                 <i class="fa-solid fa-check text-white text-xs"></i>
                             </div>
-                            <span class="diag-title">コーポレート職</span>
+                            <span class="diag-title">HD事業部</span>
                             <div class="diag-underline transition-colors duration-300"></div>
                             <p class="diag-desc">
-                                組織運営を支え、会社の成長基盤をつくる職種です。
+                                飲食店・地域店舗向けに、DX・集客・運用支援を提供する事業部です。
                             </p>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- STEP 2〜3（JSで動的レンダリング） -->
+                <!-- STEP 2〜4（JSで動的レンダリング） -->
                 <div id="diag-step-2" class="diag-step--roles hidden opacity-0 transition-all duration-500"></div>
-                <div id="diag-step-3" class="diag-step--result hidden opacity-0 transition-all duration-500"></div>
+                <div id="diag-step-3" class="diag-step--positions hidden opacity-0 transition-all duration-500"></div>
+                <div id="diag-step-4" class="diag-step--result hidden opacity-0 transition-all duration-500"></div>
 
                 <!-- フッター：プログレスバー＋戻るボタン -->
                 <div id="diag-footer" class="mt-16 pt-8 border-t border-gray-200 flex items-end justify-between">
@@ -2351,7 +2333,7 @@
                                 02</span>
                             <span
                                 style="font-family:'Noto Sans JP',sans-serif;font-size:0.75rem;font-weight:700;color:#9CA3AF;margin-top:4px;white-space:nowrap;">
-                                <span class="hidden md:inline">職種を選択</span>
+                                <span class="hidden md:inline">役割を選択</span>
                                 <span class="inline md:hidden">02</span>
                             </span>
                         </div>
@@ -2366,7 +2348,7 @@
                                 03</span>
                             <span
                                 style="font-family:'Noto Sans JP',sans-serif;font-size:0.75rem;font-weight:700;color:#9CA3AF;margin-top:4px;white-space:nowrap;">
-                                <span class="hidden md:inline">結果を見る</span>
+                                <span class="hidden md:inline">ポジションを選択</span>
                                 <span class="inline md:hidden">03</span>
                             </span>
                         </div>
