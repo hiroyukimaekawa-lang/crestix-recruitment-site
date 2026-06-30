@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西田 翔とカジュアル面談 | Crestix Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/member-casual.css">
+</head>
+<body class="casual-page" data-member="nishida">
+    <div id="fullscreen-menu">
+        <div class="fm-topbar">
+            <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
+            <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">CLOSE<span class="fm-close-icon"><i></i><i></i><i></i></span></button>
+        </div>
+        <nav class="fm-nav">
+            <div class="fm-nav-group"><a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a></div>
+            <div class="fm-nav-group"><a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a></div>
+            <div class="fm-nav-group"><a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a></div>
+            <div class="fm-nav-group"><a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a></div>
+            <div class="fm-nav-group"><a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a></div>
+        </nav>
+        <div class="fm-footer"><a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">Entry / Careers</a><span class="fm-copy">&copy; 2026 Crestix Inc.</span></div>
+    </div>
+    <nav id="cx-navbar" aria-label="グローバルナビゲーション">
+        <div class="cx-nav-left"><a href="index.html" class="cx-nav-logo-link"><img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"></a></div>
+        <div class="cx-nav-center" id="cx-nav-links">
+            <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+            <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+            <div class="cx-mega-trigger" data-mega="mega-members">
+      <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+      <div class="cx-mega-menu" id="mega-members">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">MEMBERS</h3>
+            <p class="cx-mega-subtitle">人を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="members.html" class="cx-mega-item"><span>メンバー一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="jobs.html" class="cx-mega-item"><span>職種一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+            <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
+        </div>
+        <div class="cx-nav-right"><a href="entry.html" class="cx-nav-entry-btn">Entry</a><button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false"><span class="cx-ham-lines" id="cx-ham-lines"><span></span><span></span><span></span></span></button></div>
+    </nav>
+
+    <main class="casual-main">
+        <div class="casual-shell">
+            <article>
+                <header class="casual-section" id="top">
+                    <p class="casual-kicker">Casual Talk</p>
+                    <h1 class="casual-title"><span data-casual-name></span>と<br>カジュアル面談</h1>
+                    <p class="casual-lead"><span data-casual-role></span>としての仕事、Crestixのカルチャー、これからの挑戦について、気軽に話せるページです。</p>
+                    <div class="casual-profile-line"><span class="casual-pill" data-casual-role></span><span class="casual-pill" data-casual-area></span></div>
+                </header>
+                <section class="casual-section" id="talk"><h2 class="casual-section-title">🙌こんなことを話したい</h2><ul class="casual-list" id="talk-list"></ul></section>
+                <section class="casual-section" id="target"><h2 class="casual-section-title">🎉こんな人と話したい</h2><ul class="casual-list" id="target-list"></ul></section>
+                <section class="casual-section" id="profile"><h2 class="casual-section-title">📝自己紹介</h2><div class="casual-about"><div class="casual-media" id="casual-media"></div><div><p class="casual-about-text" data-casual-intro></p><div class="casual-actions" id="interview-action"></div></div></div></section>
+                <section class="casual-section" id="form"><h2 class="casual-section-title">📮応募フォーム</h2><p class="casual-lead" id="form-title"></p><form class="casual-form" action="https://formspree.io/f/mnnvqnbd" method="POST"><input type="hidden" name="member_name" value=""><input type="hidden" name="_next" value=""><div class="casual-field"><label for="name">お名前</label><input id="name" name="name" type="text" required autocomplete="name"></div><div class="casual-field"><label for="email">メールアドレス</label><input id="email" name="email" type="email" required autocomplete="email"></div><div class="casual-field"><label for="organization">所属</label><input id="organization" name="organization" type="text" autocomplete="organization"></div><div class="casual-field"><label for="message">自己紹介・応募理由</label><textarea id="message" name="message" required></textarea></div><button class="casual-btn casual-submit" type="submit">送信する <i class="fa-solid fa-arrow-right"></i></button></form></section>
+            </article>
+            <aside class="casual-index" aria-label="ページ内目次"><p class="casual-index-title">Index</p><a href="#talk" class="is-active">🙌こんなことを話したい</a><a href="#target">🎉こんな人と話したい</a><a href="#profile">📝自己紹介</a><a href="#form">📮応募フォーム</a></aside>
+        </div>
+    </main>
+
+    <footer class="casual-footer bg-black text-white select-none p-0"><div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center"><a href="index.html" class="footer-logo" style="display:block;text-align:center;"><img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:82px;width:auto;filter:brightness(0) invert(1);display:inline-block;"></a><nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80"><a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a><a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a><a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a><a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a></nav><p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p></div></footer>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/member-casual.js"></script>
+</body>
+</html>

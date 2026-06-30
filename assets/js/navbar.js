@@ -81,6 +81,7 @@
       'business'        : 'business',
       'service-hd'      : 'business',   /* service pages → business active */
       'service-division': 'business',
+      'member-'         : 'members',    /* member casual pages → members active */
       'members'         : 'members',
       'news'            : 'news',
       'jobs'            : 'news',        /* jobs → Crestory section */

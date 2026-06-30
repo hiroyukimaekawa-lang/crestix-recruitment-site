@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご応募ありがとうございます | Crestix Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/member-casual.css">
+</head>
+<body class="casual-page">
+    <nav id="cx-navbar" aria-label="グローバルナビゲーション">
+        <div class="cx-nav-left"><a href="index.html" class="cx-nav-logo-link"><img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"></a></div>
+        <div class="cx-nav-center" id="cx-nav-links"><a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a><a href="business.html" class="cx-nav-link" data-page="business">Service</a><div class="cx-mega-trigger" data-mega="mega-members">
+      <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+      <div class="cx-mega-menu" id="mega-members">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">MEMBERS</h3>
+            <p class="cx-mega-subtitle">人を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="members.html" class="cx-mega-item"><span>メンバー一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="jobs.html" class="cx-mega-item"><span>職種一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div><a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a></div>
+        <div class="cx-nav-right"><a href="entry.html" class="cx-nav-entry-btn">Entry</a></div>
+    </nav>
+    <main class="thanks-shell">
+        <section class="thanks-card">
+            <p class="casual-kicker" style="justify-content:center;">Thank You</p>
+            <h1>ご応募ありがとうございます</h1>
+            <p><span id="thanks-name">担当者</span>より別途ご連絡いたします。</p>
+            <p>内容を確認のうえ、担当者より順次ご連絡いたします。しばらくお待ちください。</p>
+            <div class="casual-actions" style="justify-content:center;"><a href="members.html" class="casual-btn">メンバー一覧へ戻る <i class="fa-solid fa-arrow-right"></i></a></div>
+        </section>
+    </main>
+    <footer class="casual-footer bg-black text-white select-none p-0"><div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center"><a href="index.html" class="footer-logo" style="display:block;text-align:center;"><img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:82px;width:auto;filter:brightness(0) invert(1);display:inline-block;"></a><p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p></div></footer>
+    <script src="assets/js/navbar.js"></script>
+    <script>
+      (function () {
+        var name = new URLSearchParams(window.location.search).get('name');
+        document.getElementById('thanks-name').textContent = name || '担当者';
+      })();
+    </script>
+</body>
+</html>
