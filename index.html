@@ -2183,7 +2183,7 @@
             <p class="cx-mega-subtitle">人を知る</p>
           </div>
           <div class="cx-mega-grid">
-            <a href="members.html" class="cx-mega-item"><span>メンバー一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="members.html" class="cx-mega-item"><span>カジュアル面談</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
             <a href="jobs.html" class="cx-mega-item"><span>職種一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
           </div>
         </div>
@@ -2256,7 +2256,7 @@
                         style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(0.75rem,1.2vw,1rem);color:rgba(255,255,255,0.65);max-width:440px;line-height:1.9;font-weight:500;border-left:2px solid #FF5C00;padding-left:1.25rem;">
                         メンバー全員の手に社会を本質的に前進させるミッションがあります。失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。
                     </p>
-                    <a href="https://crestory.crestix.jp/"
+                    <a id="slide-cta" href="https://crestory.crestix.jp/recruit-selection-guide/"
                         style="display:inline-flex;align-items:center;gap:1rem;background:#FF5C00;color:white;font-family:'Poppins',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;padding:1.1rem 2.5rem;border-radius:9999px;text-decoration:none;box-shadow:0 20px 40px rgba(255,92,0,0.3);transition:all 0.2s ease;white-space:nowrap;"
                         onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 28px 50px rgba(255,92,0,0.45)'"
                         onmouseout="this.style.transform='';this.style.boxShadow='0 20px 40px rgba(255,92,0,0.3)'">
@@ -2730,17 +2730,20 @@
             {
                 tag: 'Careers 2026',
                 headline: '常識の枠を超え、<br>大胆な挑戦を。',
-                sub: 'メンバー全員の手に社会を本質的に前進させるミッションがあります。失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。'
+                sub: 'メンバー全員の手に社会を本質的に前進させるミッションがあります。失敗を恐れず、常に一歩先へ進み続ける情熱をここに集結させます。',
+                url: 'https://crestory.crestix.jp/recruit-selection-guide/'
             },
             {
                 tag: 'Our Mission',
                 headline: '人の可能性を、<br>解き放つ。',
-                sub: '閉塞した日本の産業構造に風穴を開ける。テクノロジーと人の熱量を掛け合わせ、世界と戦える次世代組織へ。'
+                sub: '閉塞した日本の産業構造に風穴を開ける。テクノロジーと人の熱量を掛け合わせ、世界と戦える次世代組織へ。',
+                url: 'https://crestory.crestix.jp/culture-speed/'
             },
             {
                 tag: 'Join the Team',
                 headline: '共に、世界へ。<br>挑戦集団。',
-                sub: '小手先の改善ではなく、産業の本質的なアップデートを。最前線で闘うメンバーと、ともに歴史を塗り替えよう。'
+                sub: '小手先の改善ではなく、産業の本質的なアップデートを。最前線で闘うメンバーと、ともに歴史を塗り替えよう。',
+                url: 'https://crestory.crestix.jp/business-growth-story/'
             }
         ];
 
@@ -2868,8 +2871,10 @@
             const tag = document.getElementById('slide-tag');
             const headline = document.getElementById('slide-headline');
             const sub = document.getElementById('slide-sub');
+            const cta = document.getElementById('slide-cta');
 
             if (tag) tag.textContent = data.tag;
+            if (cta && data.url) cta.href = data.url;
             if (headline) {
                 headline.classList.remove('visible');
                 setTimeout(() => {

@@ -2225,3 +2225,50 @@ body.single-crestory .crestory-single-meta {
     margin-bottom: 24px;
   }
 }
+
+/* 投稿・固定ページ内 カジュアル面談CTA */
+.casual-interview-button-wrap {
+  text-align: center;
+  margin: 32px 0;
+}
+
+.casual-interview-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background-color: #f47b20;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(244, 123, 32, 0.25);
+}
+
+.casual-interview-button:hover {
+  background-color: #d96513;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(244, 123, 32, 0.35);
+}
+
+.casual-interview-button:visited {
+  color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .casual-interview-button {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  .casual-interview-button-wrap {
+    margin: 24px 0;
+    padding: 0 16px;
+  }
+}
