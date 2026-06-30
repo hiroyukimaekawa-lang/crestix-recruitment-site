@@ -434,45 +434,6 @@
                         </div>
 
                         <div class="entry-section">
-                            <h3 class="entry-section-title">書類アップロード</h3>
-                            <p class="entry-help">生年月日と経歴がわかるものを添付してください。ご用意がない場合は、「その他リンク」欄に経歴がわかるURLを入力してください。</p>
-                            <label class="entry-upload" for="entry-file">
-                                <i class="fa-solid fa-cloud-arrow-up text-3xl text-crestix-orange"></i>
-                                <span class="font-black text-gray-800">ここに資料をドロップしてください</span>
-                                <span class="entry-help">最大100MBまで。スマートフォン端末ではファイルアップロード機能がご利用いただけない場合があります。</span>
-                                <span class="entry-primary-btn" style="min-height:48px;min-width:220px;">添付資料を選択</span>
-                                <input id="entry-file" name="document" type="file" class="entry-hidden" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip,.jpg,.jpeg,.png">
-                                <span id="entry-file-name" class="entry-help"></span>
-                            </label>
-                        </div>
-
-                        <div class="entry-section">
-                            <h3 class="entry-section-title">ソーシャルメディア / リンク</h3>
-                            <div class="grid gap-6 md:grid-cols-2">
-                                <div class="space-y-2">
-                                    <label class="entry-label" for="entry-x">X</label>
-                                    <div class="entry-prefix-field"><span>https://x.com/</span><input id="entry-x" name="x" type="text" placeholder="例）crestix" class="form-input"></div>
-                                </div>
-                                <div class="space-y-2">
-                                    <label class="entry-label" for="entry-github">GitHub</label>
-                                    <div class="entry-prefix-field"><span>https://github.com/</span><input id="entry-github" name="github" type="text" placeholder="例）crestix" class="form-input"></div>
-                                </div>
-                                <div class="space-y-2 md:col-span-2">
-                                    <label class="entry-label" for="entry-linkedin">LinkedIn</label>
-                                    <div class="entry-prefix-field"><span>https://www.linkedin.com/in/</span><input id="entry-linkedin" name="linkedin" type="text" placeholder="例）crestix" class="form-input"></div>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <label class="entry-label">その他リンク</label>
-                                <p class="entry-help">ポートフォリオ、インタビュー記事、note、SNS、その他あなたのこと・キャリア・得意なことが確認できるものを入力してください。形式は問いません。複数入力も可能です。</p>
-                                <div id="entry-other-links" class="space-y-3">
-                                    <input name="otherLinks[]" type="url" placeholder="https://" class="form-input">
-                                </div>
-                                <button type="button" id="entry-add-link" class="entry-secondary-btn" style="min-height:46px;min-width:180px;">項目を追加</button>
-                            </div>
-                        </div>
-
-                        <div class="entry-section">
                             <h3 class="entry-section-title">応募理由</h3>
                             <div class="space-y-2">
                                 <label class="entry-label" for="entry-motivation">応募の背景を教えてください<span class="entry-required">必須</span></label>
@@ -607,10 +568,6 @@
         const heading = document.getElementById('entry-step-heading');
         const lead = document.getElementById('entry-step-lead');
         const jobSelect = document.getElementById('entry-job');
-        const fileInput = document.getElementById('entry-file');
-        const fileName = document.getElementById('entry-file-name');
-        const addLinkButton = document.getElementById('entry-add-link');
-        const otherLinks = document.getElementById('entry-other-links');
         const editButton = document.getElementById('entry-edit');
         const sendButton = document.getElementById('entry-send');
 
@@ -660,25 +617,12 @@
             return el ? el.value.trim() : '';
         }
 
-        function prefixedValue(id, prefix) {
-            const value = valueById(id);
-            if (!value) return '';
-            return /^https?:\/\//i.test(value) ? value : prefix + value.replace(/^\/+/, '');
-        }
-
         function selectedText(select) {
             return select && select.selectedOptions.length ? select.selectedOptions[0].textContent.trim() : '';
         }
 
         function selectedMedia() {
             return Array.from(form.querySelectorAll('input[name="media"]:checked')).map(input => input.value).join('、');
-        }
-
-        function collectOtherLinks() {
-            return Array.from(form.querySelectorAll('input[name="otherLinks[]"]'))
-                .map(input => input.value.trim())
-                .filter(Boolean)
-                .join('\n');
         }
 
         function addConfirmRow(label, value) {
@@ -702,35 +646,12 @@
             addConfirmRow('名前（ローマ字）', valueById('entry-roman-name'));
             addConfirmRow('メールアドレス', valueById('entry-email'));
             addConfirmRow('電話番号', valueById('entry-phone'));
-            addConfirmRow('添付資料名', fileInput && fileInput.files.length ? fileInput.files[0].name : '');
-            addConfirmRow('X', prefixedValue('entry-x', 'https://x.com/'));
-            addConfirmRow('GitHub', prefixedValue('entry-github', 'https://github.com/'));
-            addConfirmRow('LinkedIn', prefixedValue('entry-linkedin', 'https://www.linkedin.com/in/'));
-            addConfirmRow('その他リンク', collectOtherLinks());
             addConfirmRow('応募の背景', valueById('entry-motivation'));
             addConfirmRow('気になること / 質問', valueById('entry-questions'));
             addConfirmRow('選考プロセスに関する確認事項', valueById('entry-process-note'));
             addConfirmRow('閲覧メディア / 参加イベント', selectedMedia());
             addConfirmRow('参考になったコンテンツ', valueById('entry-reference'));
             addConfirmRow('同意事項', document.getElementById('entry-privacy')?.checked ? '同意済み' : '');
-        }
-
-        if (fileInput && fileName) {
-            fileInput.addEventListener('change', () => {
-                fileName.textContent = fileInput.files.length ? `選択中：${fileInput.files[0].name}` : '';
-            });
-        }
-
-        if (addLinkButton && otherLinks) {
-            addLinkButton.addEventListener('click', () => {
-                const input = document.createElement('input');
-                input.name = 'otherLinks[]';
-                input.type = 'url';
-                input.placeholder = 'https://';
-                input.className = 'form-input';
-                otherLinks.appendChild(input);
-                input.focus();
-            });
         }
 
         form.addEventListener('submit', event => {

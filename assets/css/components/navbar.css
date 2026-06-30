@@ -360,6 +360,13 @@
     width: 100%;
   }
 
+  /* MEMBERS mega menu: two centered columns */
+  #mega-members .cx-mega-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
   /* Discard old group wrappers */
   .cx-mega-group {
     display: contents;
