@@ -1816,7 +1816,7 @@ input:focus, select:focus, textarea:focus {
 }
 #sec-diagnostic .diag-step--roles .diag-title,
 #sec-diagnostic .diag-step--positions .diag-title {
-    font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+    font-size: clamp(1.12rem, 1.45vw, 1.38rem);
 }
 #sec-diagnostic .diag-step--roles .diag-desc,
 #sec-diagnostic .diag-step--positions .diag-desc {

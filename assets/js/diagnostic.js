@@ -9,17 +9,17 @@
 const diagCategories = [
   {
     value: 'q1_is',
-    title: '新しい顧客に切り込み、突破口をつくる瞬間',
+    title: '新しい顧客に切り込み、<br>突破口をつくる瞬間',
     description: '新規開拓に燃える'
   },
   {
     value: 'q1_fs',
-    title: '顧客の課題を見抜き、商談で勝ち切る瞬間',
+    title: '顧客の課題を見抜き、<br>商談で勝ち切る瞬間',
     description: '提案で勝ち切る'
   },
   {
     value: 'q1_cs',
-    title: '顧客に伴走し、成果が出るまで向き合う瞬間',
+    title: '顧客に伴走し、<br>成果が出るまで向き合う瞬間',
     description: '成果まで伴走する'
   }
 ];
@@ -28,17 +28,17 @@ const diagCategories = [
 const diagRoles = [
   {
     value: 'q2_hd',
-    title: '地域の店舗・ローカルビジネスの成長を支えたい',
+    title: '地域の店舗・<br>ローカルビジネスの成長を支えたい',
     description: '店舗の成長を支える'
   },
   {
     value: 'q2_first',
-    title: 'クリニック・医療領域の集患や経営課題を支えたい',
+    title: 'クリニック・医療領域の<br>集患や経営課題を支えたい',
     description: '医療領域を支える'
   },
   {
     value: 'q2_ai',
-    title: 'AIを活用して、営業組織の生産性を変えたい',
+    title: 'AIを活用して、<br>営業組織の生産性を変えたい',
     description: '営業組織を変える'
   }
 ];
