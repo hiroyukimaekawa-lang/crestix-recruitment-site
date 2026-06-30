@@ -7,9 +7,6 @@ if (!$hero_image_url) {
         $hero_image_url = get_the_post_thumbnail_url($latest[0], 'large') ?: '';
     }
 }
-$recruit_url = defined('CRESTIX_RECRUIT_SITE_URL')
-    ? CRESTIX_RECRUIT_SITE_URL
-    : 'https://hiroyukimaekawa-lang.github.io/crestix-recruitment-site';
 ?>
 <section class="cx-hero">
   <div class="cx-hero__text">

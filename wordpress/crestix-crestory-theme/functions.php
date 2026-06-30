@@ -124,7 +124,7 @@ function crestix_crestory_first_term($post_id = null) { $terms = crestix_crestor
 function crestix_crestory_tag_terms($post_id = null) { return get_the_terms($post_id ?: get_the_ID(), "crestory_tag") ?: []; }
 
 function crestix_crestory_recruit_url($path = "") {
-  $base = defined("CRESTIX_RECRUIT_SITE_URL") ? CRESTIX_RECRUIT_SITE_URL : "https://hiroyukimaekawa-lang.github.io/crestix-recruitment-site";
+  $base = "https://www.crestix.jp";
   return rtrim($base, "/") . "/" . ltrim($path, "/");
 }
 

@@ -1,7 +1,5 @@
 <?php
-$site_url         = defined('CRESTIX_RECRUIT_SITE_URL')
-    ? CRESTIX_RECRUIT_SITE_URL
-    : 'https://hiroyukimaekawa-lang.github.io/crestix-recruitment-site';
+$site_url         = 'https://www.crestix.jp/';
 $site_url_display = rtrim(str_replace(['https://', 'http://'], '', $site_url), '/');
 
 $sns_x        = get_option('crestory_sns_x', '');
