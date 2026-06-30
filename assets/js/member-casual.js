@@ -9,17 +9,24 @@
       media: 'assets/images/video/nishita.mp4',
       interview: 'https://crestory.crestix.jp/nishida-interview/',
       lead: 'Crestixの事業づくり・組織づくりについて何でも話します',
-      talk: [
-        'COOとしての事業づくり・組織づくりのリアルについて',
-        'Crestixがこれからどんな会社を目指していくのかについて',
-        '若いうちから裁量を持って挑戦する働き方について'
+      talkParagraphs: [
+        'Crestixは、「世界一挑戦し続ける会社へ」というVisionを掲げ、営業代行、集客支援、AI/DX、新規事業、キャリア教育など、複数の領域に挑戦している会社です。\n完成された会社というより、まだまだ未完成。だからこそ、事業も組織もカルチャーも、自分たちの手でつくっていける面白さがあります。',
+        '僕自身、もともと自分の会社を持っていました。そんな中で代表から何度も誘われ、「お前、しつこいな」と思うくらい声をかけられ続けたことが、Crestixに関わるきっかけの一つです。',
+        '今はCOOとして、事業推進、組織づくり、採用、育成など、会社全体に関わっています。',
+        'なぜ自分の会社を持っていた人間がCrestixに参画したのか。未完成な会社をつくるリアル、若手が裁量を持つ環境、Crestixがこれから目指す未来など、ざっくばらんに話せたら嬉しいです。'
       ],
       target: [
         '完成された環境に入るより、会社や事業を一緒につくっていくことにワクワクする方。',
         '若いうちから裁量を持ちたい方。',
         'Crestixのリアルな組織づくりや、これからの成長可能性について聞いてみたい方。'
       ],
-      intro: 'COOとして経営・事業推進を担当しています。Crestixの事業づくり、組織づくり、これからの成長可能性について、飾らずにお話しできれば嬉しいです。'
+      introParagraphs: [
+        '株式会社Crestix COO／副代表。\n代表の近くで、事業づくり・組織づくり・採用・育成など、会社全体の推進を担っています。',
+        '現在も別で2社の会社の代表を務めていますが、それでもCrestixの可能性や代表の熱量、そしてこの会社を一緒につくっていく面白さに惹かれ、COOとして参画しました。',
+        'もともとは代表から何度も誘われ、「お前、しつこいな」と思うほど声をかけられていたのですが、話を重ねる中で、Crestixが目指す未来に本気で向き合いたいと思うようになりました。',
+        '今は、Crestixを「世界一挑戦し続ける会社」にするために、事業と組織の両面から会社づくりに向き合っています。',
+        '堅い面談というより、Crestixの良いところも、まだまだこれからなところも、リアルに話せたらと思っています。'
+      ]
     },
     maekawa: {
       name: '前川 弘行',
@@ -47,10 +54,11 @@
       media: 'assets/images/video/matuoka.mp4',
       interview: 'https://crestory.crestix.jp/matsuoka-interview/',
       lead: 'Crestixのクリニック向け営業と、営業として成長するリアルを話します',
-      talk: [
-        'クリニック向け営業のリアルについて',
-        '顧客に本気で向き合う営業スタイルについて',
-        '成長途中の会社で営業として挑戦する面白さについて'
+      talkParagraphs: [
+        'Crestixは、営業代行や集客支援、AI/DXなどを通じて、顧客の事業成長に向き合っている会社です。\n僕は第一営業部のFSリーダーとして、クリニック向けの集客支援営業を担当しています。',
+        '以前は某上場企業の営業として働いていました。安定した環境ではありましたが、どこかで「もっとできるはず」という気持ちがありました。\n自分の可能性を証明したい。営業としてもっと強くなりたい。そう思ってCrestixに入りました。',
+        'ただ、Crestixに入ってすぐに感じたのは、営業は勢いだけでは通用しないということです。入社2カ月で「お客さんを舐めるな」と突きつけられたような経験もありました。',
+        '顧客に本気で向き合うとはどういうことか。営業として成果を出すために何が必要なのか。大きな会社から成長途中の会社に移って、何が変わったのか。そんな話ができたら嬉しいです。'
       ],
       target: [
         '今の環境に大きな不満はないけれど、「もっとできるはず」と感じている方。',
@@ -58,7 +66,11 @@
         '顧客に本気で向き合う営業をしたい方。',
         '成長途中の会社で、自分の可能性を試してみたい方。'
       ],
-      intro: '第一営業部のフィールドセールスとして、医療機関向けの営業を担当しています。クリニックの課題にどう向き合うのか、営業としてどう成長していくのか、現場のリアルをそのまま話せたら嬉しいです。'
+      introParagraphs: [
+        '株式会社Crestix 第一営業部 FSリーダー。\nクリニック向けの集客支援営業を担当し、顧客の課題に向き合いながら、成果につながる提案を行っています。',
+        '上場企業の会社を辞めて、Crestixへ入社しました。\nCrestixに来てから、営業の厳しさも、面白さも、顧客に本気で向き合う大切さも、日々学んでいます。',
+        '「もっとできるはず」と思っている人と、同じ目線で話せたら嬉しいです。'
+      ]
     },
     takahara: {
       name: '髙原 一真',
@@ -66,10 +78,11 @@
       area: 'マーケティング・集患支援',
       media: 'assets/images/video/kazumatakahara.mp4',
       lead: 'Crestixのマーケティング/IS組織と、量も質も追う営業について何でも話します',
-      talk: [
-        'マーケティング/IS組織の立ち上げと運用について',
-        '量と質の両方を追う営業・ISの考え方について',
-        '行動を成果に変えるための基準値について'
+      talkParagraphs: [
+        'Crestixは、「世界一挑戦し続ける会社へ」というVisionのもと、営業代行、集客支援、AI/DX、新規事業など、複数の事業に挑戦している会社です。\n僕はIS統括責任者として、HD事業部と第一事業部のISを中心に、全体管理やマネジメントを担っています。',
+        'ISで成果を出すために大切なのは、ただ量をこなすことではありません。もちろん量は必要です。でも、それ以上に大事なのは、考えて、動いて、数字を見て、改善して、成果に変えることです。',
+        '僕自身、金融系の仕事やフリーターを経て、2025年7月にCrestixへ入社しました。\n以前は、どこかで「60％の力で80点を取る自分」がいました。でもCrestixに来てからは、120％で最高点を取りにいくことの面白さを感じています。',
+        '頭を使い、誰よりも量を追う。そんなロジカル体育会系の働き方や、IS組織づくり、数字の見方、基準値の上げ方について話せたら嬉しいです。'
       ],
       target: [
         '営業・ISとして本気で成長したい方。',
@@ -77,7 +90,12 @@
         '今の自分の基準値を上げたい方。',
         '考えるだけで終わらず、行動して成果に変えたい方。'
       ],
-      intro: 'Marketing MGとして、マーケティングとIS領域を担当しています。量をやり切る力と、質を高める改善の両方を大切にしながら、成果につながる営業組織づくりに向き合っています。'
+      introParagraphs: [
+        '株式会社Crestix リーダー／Marketing MG\nHD事業部と第一事業部のISを中心に、全体管理・数字管理・改善・マネジメントを担当しています。',
+        '金融系の仕事、フリーターを経て、2025年7月にCrestixへ入社しました。\n大切にしているのは、頭を使うことと、誰よりも行動量を追うこと。',
+        'ただ頑張るだけではなく、考えて、動いて、改善して、成果に変える。そんなIS組織をつくっていきたいと思っています。',
+        '営業として本気で成長したい人と、ぜひ話してみたいです。'
+      ]
     },
     uoi: {
       name: '魚井 風太',
@@ -110,6 +128,7 @@
 
   const intro = member.intro || `${member.role}として${member.area}を担当。日々の業務や挑戦について気軽に話せたら嬉しいです。`;
   const encodedName = encodeURIComponent(member.name);
+  const paragraphs = items => items.map(item => `<p>${item}</p>`).join('');
 
   const setText = (selector, text) => {
     document.querySelectorAll(selector).forEach(el => {
@@ -120,7 +139,6 @@
   setText('[data-casual-name]', member.name);
   setText('[data-casual-role]', member.role);
   setText('[data-casual-area]', member.area);
-  setText('[data-casual-intro]', intro);
   document.title = `${member.name}とカジュアル面談 | Crestix Careers`;
 
   const heroLead = document.querySelector('#top .casual-lead');
@@ -128,12 +146,32 @@
 
   const talkList = document.getElementById('talk-list');
   if (talkList) {
-    talkList.innerHTML = talkItems.map(item => `<li>${item}</li>`).join('');
+    if (member.talkParagraphs) {
+      const talkBody = document.createElement('div');
+      talkBody.id = 'talk-list';
+      talkBody.className = 'casual-paragraphs';
+      talkBody.innerHTML = paragraphs(member.talkParagraphs);
+      talkList.replaceWith(talkBody);
+    } else {
+      talkList.innerHTML = talkItems.map(item => `<li>${item}</li>`).join('');
+    }
   }
 
   const targetList = document.getElementById('target-list');
   if (targetList) {
     targetList.innerHTML = targetItems.map(item => `<li>${item}</li>`).join('');
+  }
+
+  const introEl = document.querySelector('[data-casual-intro]');
+  if (introEl) {
+    if (member.introParagraphs) {
+      const introBody = document.createElement('div');
+      introBody.className = 'casual-about-text casual-paragraphs';
+      introBody.innerHTML = paragraphs(member.introParagraphs);
+      introEl.replaceWith(introBody);
+    } else {
+      introEl.textContent = intro;
+    }
   }
 
   const mediaWrap = document.getElementById('casual-media');

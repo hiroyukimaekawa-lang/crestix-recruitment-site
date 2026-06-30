@@ -1805,8 +1805,8 @@ input:focus, select:focus, textarea:focus {
 }
 #sec-diagnostic .diag-step--roles > .grid,
 #sec-diagnostic .diag-step--positions > .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 860px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 1180px;
     margin-inline: auto;
 }
 #sec-diagnostic .diag-step--roles .diag-option-card,
@@ -1992,9 +1992,23 @@ input:focus, select:focus, textarea:focus {
     white-space: nowrap !important;
 }
 
+#sec-diagnostic #diag-step-4 .diag-result-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    align-items: stretch;
+}
+
 @media (max-width: 768px) {
     #sec-diagnostic #diag-step-4 .diag-result-title {
         font-size: clamp(28px, 8vw, 38px) !important;
+    }
+
+    #sec-diagnostic #diag-step-4 .diag-result-cards {
+        grid-template-columns: 1fr;
+        gap: 18px;
     }
 }
 

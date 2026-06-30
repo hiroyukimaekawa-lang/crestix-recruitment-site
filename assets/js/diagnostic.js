@@ -393,7 +393,9 @@ function buildResult() {
         <p class="diag-result-lead">3つの回答から、Crestixで力を発揮しやすいポジションを選びました。</p>
       </div>
 
-      ${resultCards}
+      <div class="diag-result-cards">
+        ${resultCards}
+      </div>
 
       <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;padding-top:0.5rem;">
         <button onclick="resetDiagnostic()"

@@ -369,7 +369,25 @@
 
   #mega-members .cx-mega-item {
     flex: 0 0 auto;
-    min-width: 240px;
+    width: 260px;
+    min-width: 260px;
+    color: #111827;
+    justify-content: space-between;
+  }
+
+  #mega-members .cx-mega-item > span {
+    display: block;
+    flex: 0 1 auto;
+    width: auto;
+    min-width: max-content;
+    max-width: none;
+    overflow: visible;
+    text-overflow: clip;
+    color: currentColor;
+    opacity: 1;
+    visibility: visible;
+    font-size: 15px;
+    line-height: 1.4;
   }
 
   /* Discard old group wrappers */

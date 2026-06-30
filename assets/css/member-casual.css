@@ -98,20 +98,34 @@ body.casual-page {
 
 .casual-list {
     display: grid;
-    gap: 16px;
+    gap: 12px;
+    padding-left: 1.25rem;
 }
 
 .casual-list li {
-    list-style: none;
-    padding: 20px 22px;
-    border: 1px solid var(--casual-line);
-    border-left: 4px solid var(--casual-orange);
-    border-radius: 12px;
-    background: #fff;
+    list-style: disc;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
     color: #374151;
     font-size: 1rem;
-    font-weight: 800;
-    line-height: 1.8;
+    font-weight: 700;
+    line-height: 2;
+}
+
+.casual-paragraphs {
+    display: grid;
+    gap: 18px;
+}
+
+.casual-paragraphs p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 2.05;
+    font-weight: 700;
+    white-space: pre-line;
 }
 
 .casual-about {
