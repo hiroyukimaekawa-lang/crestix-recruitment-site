@@ -1535,6 +1535,48 @@
                 <!-- FS -->
                 <div class="jobs-category reveal reveal-delay-2">
                     <p class="jobs-category-title">Field Sales / フィールドセールス</p>
+                    <div class="accordion-item" id="jobs-fs-member">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-left">
+                                <span class="acc-badge badge-sales">FS</span>
+                                <span class="acc-title">第一 FSメンバー</span>
+                            </div>
+                            <div class="acc-right">
+                                <span class="acc-meta">正社員 · 東京</span>
+                                <span class="acc-icon"><i class="fa-solid fa-plus"></i></span>
+                            </div>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-content">
+                                <div>
+                                    <p class="acc-detail-label">仕事内容</p>
+                                    <p class="acc-detail-text">
+                                        第一営業部のフィールドセールスメンバーとして、クリニック・医療機関向けの商談対応を中心に担っていただきます。<br><br>
+                                        インサイドセールスが獲得したアポイントに対し、院長先生・事務長への提案・クロージングを行うのがメインミッションです。単にサービスを売るのではなく、各クリニックの集患課題・予約導線・口コミ対策・Web活用の現状をヒアリングし、MEO・SEO・HP制作・AIチャットボット・LINE導線などを組み合わせた最適解を提案します。<br><br>
+                                        入社後はまず商材・提案ノウハウを習得し、先輩のロールプレイやフィードバックを受けながら商談力を磨きます。成果を出しながら再現性ある勝ちパターンを身につけていく環境です。<br><br>
+                                        【業務内容（一例）】<br>
+                                        ・インサイドセールスが獲得したクリニック・医療機関向け商談への対応<br>
+                                        ・クリニックの集患課題、予約課題、口コミ課題、Web導線課題のヒアリング<br>
+                                        ・MEO、SEO、HP・LP制作、AIチャットボット、LINE導線等を組み合わせた課題解決提案<br>
+                                        ・Googleビジネスプロフィール、口コミ、HP、予約導線などの改善提案<br>
+                                        ・受注率・受注単価向上に向けた商談設計の習得<br>
+                                        ・営業資料・提案資料の活用およびブラッシュアップ<br>
+                                        ・商談振り返りと改善施策の実行<br>
+                                        ・日次・週次KPIの把握と達成に向けた行動管理
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="acc-detail-label">ポジション</p>
+                                    <p class="acc-detail-text">
+                                        第一営業部 / FSメンバー<br><br>
+                                        クリニック・医療機関への提案営業を担い、受注成果を通じて自分の市場価値を高められるポジションです。
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="job-division1-field-sales.html" class="acc-entry-link">応募詳細ページへ <i
+                                    class="fa-solid fa-arrow-right" style="font-size:10px;"></i></a>
+                        </div>
+                    </div>
                     <div class="accordion-item" id="jobs-fs">
                         <button class="accordion-trigger" onclick="toggleAccordion(this)">
                             <div class="acc-left">
@@ -1786,23 +1828,22 @@
 
         /* ── Anchor jump from Job Diagnosis ── */
         (function () {
-            const hash = window.location.hash; // e.g. #jobs-is
-            if (!hash) return;
-            const target = document.querySelector(hash);
+            // クエリパラメータ方式（診断結果からの遷移）
+            const params = new URLSearchParams(window.location.search);
+            const jobId = params.get('job');
+            // ハッシュ方式（既存リンクとの後方互換）
+            const hash = window.location.hash ? window.location.hash.slice(1) : null;
+            const targetId = jobId || hash;
+            if (!targetId) return;
+            const target = document.getElementById(targetId);
             if (!target) return;
 
-            // Open the accordion
             target.classList.add('open');
             const body = target.querySelector('.acc-body');
             if (body) {
                 body.style.maxHeight = (body.scrollHeight + 80) + "px";
             }
 
-            // Show from top of page
-            window.scrollTo({ top: 0, behavior: 'instant' });
-            history.replaceState(null, '', window.location.pathname + hash);
-
-            // Highlight
             target.classList.add('cx-highlight');
             setTimeout(() => {
                 target.classList.remove('cx-highlight');

@@ -68,6 +68,7 @@ const activeJobs = {
     title: "HD FSメンバー",
     catch: "地域店舗の成長を、商談の最前線からつくる。",
     entryUrl: "entry.html?job=hd-fs-member",
+    applyUrl: "service-hd.html?job=jobs-fs",
     detailUrl: "job-hd-fs-member.html",
     division: "HD事業部",
     description: "飲食店や地域店舗に対して、集客・ホームページ制作・運用支援などの提案および受注を担うポジションです。"
@@ -76,6 +77,7 @@ const activeJobs = {
     title: "HD CSメンバー",
     catch: "顧客に伴走し、店舗の成果が出るまで向き合う。",
     entryUrl: "entry.html?job=hd-cs-member",
+    applyUrl: "service-hd.html?job=jobs-cs",
     detailUrl: "job-hd-cs-member.html",
     division: "HD事業部",
     description: "ご契約いただいた店舗に伴走し、サービスの導入・運用支援、成果最大化を担うカスタマーサクセス職です。"
@@ -83,6 +85,7 @@ const activeJobs = {
   hd_is_leader: {
     title: "HD ISリーダー候補",
     entryUrl: "entry.html?job=hd-is-leader",
+    applyUrl: "service-hd.html?job=jobs-is-leader",
     detailUrl: "job-hd-inside-sales-leader.html",
     division: "HD事業部",
     catch: "新しい顧客接点をつくり、チームで突破口を広げる。",
@@ -91,6 +94,7 @@ const activeJobs = {
   hd_fs_leader: {
     title: "HD FSリーダー候補",
     entryUrl: "entry.html?job=hd-fs-leader",
+    applyUrl: "service-hd.html?job=jobs-fs-leader",
     detailUrl: "job-hd-fs-leader.html",
     division: "HD事業部",
     catch: "店舗ビジネスの課題を見抜き、勝てる営業チームをつくる。",
@@ -99,6 +103,7 @@ const activeJobs = {
   hd_cs_leader: {
     title: "HD CSリーダー候補",
     entryUrl: "entry.html?job=hd-cs-leader",
+    applyUrl: "service-hd.html?job=jobs-cs-leader",
     detailUrl: "job-hd-cs-leader.html",
     division: "HD事業部",
     catch: "顧客成果に向き合い、成功体験をチームで再現する。",
@@ -108,6 +113,7 @@ const activeJobs = {
     title: "医療向け フィールドセールス（FS）",
     catch: "医療機関の課題を見抜き、集患と経営成長を前に進める。",
     entryUrl: "entry.html?job=division1-fs",
+    applyUrl: "service-division1.html?job=jobs-fs-member",
     detailUrl: "job-division1-field-sales.html",
     division: "第一営業部",
     description: "クリニック・医療機関に対して、マーケティング・集客支援の提案から導入・成果創出までを担うポジションです。"
@@ -116,6 +122,7 @@ const activeJobs = {
     title: "医療向け インサイドセールス（IS）",
     catch: "医療領域の新しい接点をつくり、商談機会を生み出す。",
     entryUrl: "entry.html?job=division1-is",
+    applyUrl: "service-division1.html?job=jobs-is",
     detailUrl: "job-division1-is-leader.html",
     division: "第一営業部",
     description: "クリニック・医療機関に対し、Web集客やCRMツールなどの提案機会を創出するインサイドセールス職です。"
@@ -124,6 +131,7 @@ const activeJobs = {
     title: "医療向け フィールドセールス（FS）リーダー候補",
     catch: "医療マーケットで勝ち切る営業組織をつくる。",
     entryUrl: "entry.html?job=division1-fs-leader",
+    applyUrl: "service-division1.html?job=jobs-fs",
     detailUrl: "job-division1-fs-leader.html",
     division: "第一営業部",
     description: "医療機関向けの提案活動を牽引しながら、営業戦略・KPI管理・育成にも関わるリーダー候補です。"
@@ -132,6 +140,7 @@ const activeJobs = {
     title: "【AI Sales Enablement事業部 MG候補】",
     catch: "AIを活用し、営業組織の生産性を変える。",
     entryUrl: "entry.html?job=ai-sales-mg",
+    applyUrl: "ai-sales.html?job=jobs-mg",
     detailUrl: "job-ai-sales-mg.html",
     division: "AI Sales Enablement事業部",
     description: "営業代行・営業支援事業を推進し、AIを活用した営業組織づくり・マネジメントを担うポジションです。"
@@ -376,7 +385,7 @@ function buildResult() {
         <p class="diag-result-division-sub">${item.job.title}</p>
         <p class="diag-result-division-label">${item.job.catch}<br>${item.job.description}</p>
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:1.5rem;">
-          <a href="${item.job.entryUrl}" class="diag-result-division-link">この職種に応募する</a>
+          <a href="${item.job.applyUrl}" class="diag-result-division-link">この職種に応募する</a>
           <a href="${item.job.detailUrl}" class="diag-result-division-link" style="background:white;color:#FF5C00;border:2px solid #FF5C00 !important;box-shadow:none;">募集要項を見る</a>
         </div>
       </div>

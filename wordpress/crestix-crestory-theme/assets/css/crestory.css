@@ -90,26 +90,16 @@ button {
 
 .crestory-site-logo {
   display: flex;
-  flex-direction: column;
-  gap: 1px;
-  line-height: 1;
-  color: var(--color-ink);
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
 }
 
-.crestory-logo-main {
-  font-family: var(--font-poppins);
-  font-size: 1.25rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-}
-
-.crestory-logo-sub {
-  color: var(--color-orange);
-  font-family: var(--font-poppins);
-  font-size: 0.55rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.crestory-logo-img {
+  display: block;
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
 
 .crestory-site-nav {

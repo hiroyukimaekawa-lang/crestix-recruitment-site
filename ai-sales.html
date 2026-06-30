@@ -1702,23 +1702,22 @@
 
         /* ── Anchor jump from Job Diagnosis ── */
         (function () {
-            const hash = window.location.hash; // e.g. #jobs-is
-            if (!hash) return;
-            const target = document.querySelector(hash);
+            // クエリパラメータ方式（診断結果からの遷移）
+            const params = new URLSearchParams(window.location.search);
+            const jobId = params.get('job');
+            // ハッシュ方式（既存リンクとの後方互換）
+            const hash = window.location.hash ? window.location.hash.slice(1) : null;
+            const targetId = jobId || hash;
+            if (!targetId) return;
+            const target = document.getElementById(targetId);
             if (!target) return;
 
-            // Open the accordion
             target.classList.add('open');
             const body = target.querySelector('.acc-body');
             if (body) {
                 body.style.maxHeight = (body.scrollHeight + 80) + "px";
             }
 
-            // Show from top of page
-            window.scrollTo({ top: 0, behavior: 'instant' });
-            history.replaceState(null, '', window.location.pathname + hash);
-
-            // Highlight
             target.classList.add('cx-highlight');
             setTimeout(() => {
                 target.classList.remove('cx-highlight');
