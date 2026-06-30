@@ -2,8 +2,79 @@
 <html lang="ja">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>魚井 風太とカジュアル面談 | Crestix Careers</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><script src="https://cdn.tailwindcss.com"></script><script src="assets/js/tailwind-config.js"></script><link rel="stylesheet" href="assets/css/components/navbar.css"><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/member-casual.css"></head>
 <body class="casual-page" data-member="uoi">
-    <div id="fullscreen-menu"><div class="fm-topbar"><div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div><button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">CLOSE<span class="fm-close-icon"><i></i><i></i><i></i></span></button></div><nav class="fm-nav"><div class="fm-nav-group"><a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a></div><div class="fm-nav-group"><a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a></div><div class="fm-nav-group"><a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a></div><div class="fm-nav-group"><a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a></div><div class="fm-nav-group"><a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a></div></nav><div class="fm-footer"><a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">Entry / Careers</a><span class="fm-copy">&copy; 2026 Crestix Inc.</span></div></div>
-    <nav id="cx-navbar" aria-label="グローバルナビゲーション"><div class="cx-nav-left"><a href="index.html" class="cx-nav-logo-link"><img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"></a></div><div class="cx-nav-center" id="cx-nav-links"><a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a><a href="business.html" class="cx-nav-link" data-page="business">Service</a><div class="cx-mega-trigger" data-mega="mega-members">
+    <div id="fullscreen-menu">
+    <div class="fm-topbar">
+        <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
+        <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">CLOSE<span class="fm-close-icon"><i></i><i></i><i></i></span></button>
+    </div>
+    <nav class="fm-nav">
+        <div class="fm-nav-group"><a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a></div>
+        <div class="fm-nav-group">
+            <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
+            <div class="fm-nav-sub">
+                <a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a>
+                <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
+                <a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a>
+            </div>
+        </div>
+        <div class="fm-nav-group">
+            <a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a>
+            <div class="fm-nav-sub">
+                <a href="business.html" onclick="cxToggleMenu()">事業一覧</a>
+                <a href="service-division1.html" onclick="cxToggleMenu()">第1営業部（クリニック特化）</a>
+                <a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a>
+                <a href="ai-sales.html" onclick="cxToggleMenu()">AI Sales Enablement</a>
+            </div>
+        </div>
+        <div class="fm-nav-group">
+            <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
+            <div class="fm-nav-sub">
+                <a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a>
+                <a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a>
+                <a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a>
+                <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a>
+            </div>
+        </div>
+        <div class="fm-nav-group"><a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a></div>
+    </nav>
+    <div class="fm-footer"><a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">Entry / Careers</a><span class="fm-copy">&copy; 2026 Crestix Inc.</span></div>
+</div>
+    <nav id="cx-navbar" aria-label="グローバルナビゲーション"><div class="cx-nav-left"><a href="index.html" class="cx-nav-logo-link"><img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix"></a></div><div class="cx-nav-center" id="cx-nav-links"><div class="cx-mega-trigger" data-mega="mega-corporate">
+      <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+      <div class="cx-mega-menu" id="mega-corporate">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">CORPORATE</h3>
+            <p class="cx-mega-subtitle">会社を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div><div class="cx-mega-trigger" data-mega="mega-service">
+      <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+      <div class="cx-mega-menu" id="mega-service">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">SERVICE</h3>
+            <p class="cx-mega-subtitle">事業を知る</p>
+          </div>
+          <div class="mega-service">
+            <div class="mega-service__overview">
+              <a href="business.html" class="mega-service__overview-link">事業一覧<span class="mega-service__arrow">→</span></a>
+            </div>
+            <div class="mega-service__list">
+              <a href="service-division1.html" class="mega-service__item"><span class="mega-service__item-label">第1営業部</span><span class="mega-service__item-arrow">→</span></a>
+              <a href="service-hd.html" class="mega-service__item"><span class="mega-service__item-label">HD事業部</span><span class="mega-service__item-arrow">→</span></a>
+              <a href="ai-sales.html" class="mega-service__item"><span class="mega-service__item-label">AI Sales Enablement（営業代行 / 営業支援事業）</span><span class="mega-service__item-arrow">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="cx-mega-trigger" data-mega="mega-members">
       <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
       <div class="cx-mega-menu" id="mega-members">
         <div class="cx-mega-container">
