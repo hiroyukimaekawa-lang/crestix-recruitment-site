@@ -2014,3 +2014,214 @@ button {
   display: block;
   object-fit: cover;
 }
+
+/* ==========================================================================
+   投稿詳細ページ（single-crestory）専用スタイル
+   body.single-crestory にスコープ。トップ・一覧・固定ページには影響しない。
+   ========================================================================== */
+
+/* ── アイキャッチ ── */
+body.single-crestory .crestory-single-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-bottom: 28px;
+  border-radius: 6px;
+}
+
+body.single-crestory .crestory-single-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── 記事ヘッダー ── */
+body.single-crestory .crestory-single-header {
+  margin-bottom: 32px;
+}
+
+body.single-crestory .crestory-single-cat {
+  margin-bottom: 12px;
+}
+
+body.single-crestory .crestory-single-cat a {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid rgba(255, 92, 0, 0.4);
+  border-radius: 9999px;
+  background: rgba(255, 92, 0, 0.08);
+  color: #FF5C00;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+body.single-crestory .crestory-single-title {
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1.35;
+  color: #0A1E3C;
+  margin: 12px 0 10px;
+}
+
+body.single-crestory .crestory-single-meta {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ── 右サイドバー（cx-sidebar-right）専用ウィジェット ── */
+
+.cx-sidebar-right {
+  border-left: 1px solid var(--note-border, #e5e7eb);
+  padding-left: 28px;
+}
+
+.cx-sidebar-section {
+  margin-bottom: 32px;
+}
+
+.cx-sidebar-heading {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0A1E3C;
+  border-left: 3px solid #FF5C00;
+  padding-left: 10px;
+  margin: 0 0 14px;
+}
+
+/* 新着記事 / おすすめ記事 */
+.cx-sidebar-posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cx-sidebar-post a {
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
+  align-items: flex-start;
+}
+
+.cx-sidebar-post a:hover .cx-sidebar-post-title {
+  text-decoration: underline;
+}
+
+.cx-sidebar-thumb {
+  width: 72px;
+  height: 54px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f3f4f6;
+}
+
+.cx-sidebar-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cx-sidebar-post-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0A1E3C;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* カテゴリ一覧 */
+.cx-sidebar-cats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cx-sidebar-cats li {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.cx-sidebar-cats a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: #374151;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.cx-sidebar-cats a:hover { color: #FF5C00; }
+
+.cx-sidebar-cat-count {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* 採用CTA */
+.cx-sidebar-cta {
+  margin-top: 8px;
+}
+
+.cx-sidebar-cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.cx-sidebar-btn {
+  display: block;
+  text-align: center;
+  padding: 11px 16px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.cx-sidebar-btn:hover { opacity: 0.8; }
+
+.cx-sidebar-btn--primary {
+  background: #FF5C00;
+  color: #fff;
+}
+
+.cx-sidebar-btn--outline {
+  border: 2px solid #0A1E3C;
+  color: #0A1E3C;
+}
+
+/* ── レスポンシブ ── */
+@media (max-width: 767px) {
+  .cx-sidebar-right {
+    border-left: none;
+    border-top: 1px solid var(--note-border, #e5e7eb);
+    padding-left: 0;
+    padding-top: 28px;
+    margin-top: 8px;
+  }
+
+  .cx-sidebar-section {
+    margin-bottom: 24px;
+  }
+}
