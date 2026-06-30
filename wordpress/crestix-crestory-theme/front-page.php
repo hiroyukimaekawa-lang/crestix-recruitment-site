@@ -5,11 +5,15 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'new';
 if (!in_array($tab, ['new', 'popular'], true)) $tab = 'new';
 
 $cat_slug = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : '';
-$paged    = max(1, (int) ($_GET['paged'] ?? 1));
+$paged    = isset($_GET['paged'])
+    ? (int) $_GET['paged']
+    : (int) (get_query_var('paged') ?: get_query_var('page') ?: 1);
+$paged    = max(1, $paged);
 
 $query_args = [
     'post_type'           => 'crestory',
-    'posts_per_page'      => 9,
+    'post_status'         => 'publish',
+    'posts_per_page'      => 5,
     'paged'               => $paged,
     'ignore_sticky_posts' => true,
     'orderby'             => 'date',
@@ -31,6 +35,14 @@ if ($cat_slug && $cat_slug !== 'all') {
 }
 
 $loop = new WP_Query($query_args);
+
+if (
+    (defined('CRESTORY_DEBUG_QUERY') && CRESTORY_DEBUG_QUERY)
+    || (isset($_GET['crestory_debug']) && current_user_can('manage_options'))
+) {
+    error_log('[CRESTORY front-page] query_args=' . wp_json_encode($query_args, JSON_UNESCAPED_UNICODE));
+    error_log('[CRESTORY front-page] found_posts=' . (int) $loop->found_posts . ' post_ids=' . implode(',', wp_list_pluck($loop->posts, 'ID')));
+}
 
 $sort_tabs = [
     'new'     => '新着',
