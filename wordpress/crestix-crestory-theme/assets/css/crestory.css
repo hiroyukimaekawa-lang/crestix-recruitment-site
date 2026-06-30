@@ -97,9 +97,15 @@ button {
 
 .crestory-logo-img {
   display: block;
-  height: 36px;
+  height: 32px;
   width: auto;
   object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .crestory-logo-img {
+    height: 26px;
+  }
 }
 
 .crestory-site-nav {

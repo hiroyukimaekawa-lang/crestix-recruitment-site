@@ -10,7 +10,7 @@
 <header class="crestory-site-header" id="cx-header">
   <div class="crestory-header-inner">
     <a class="crestory-site-logo" href="<?php echo esc_url(home_url("/")); ?>" aria-label="CRESTORY トップへ">
-      <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/crestory-word.png'); ?>" alt="CRESTORY" class="crestory-logo-img">
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/crestory.png'); ?>" alt="CRESTORY" class="crestory-logo-img">
     </a>
     <nav class="crestory-site-nav" aria-label="グローバルナビゲーション">
       <a href="<?php echo esc_url(crestix_crestory_recruit_url("corporate.html")); ?>">Corporate</a>
