@@ -1,4 +1,6 @@
 *.MOV
 *.mov
-assets/images/video/*.MOV
-assets/images/video/*.mov
+*.mp4
+*.MP4
+assets/images/video/
+assets/images/business/*.mp4
