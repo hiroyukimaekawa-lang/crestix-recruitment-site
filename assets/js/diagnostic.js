@@ -300,29 +300,27 @@ function renderStep(stepNum) {
   let gridColsClass = 'grid-cols-1 md:grid-cols-3';
 
   if (stepNum === 1) {
-    stepTitle = '希望する事業部';
-    stepHelpText = '興味のある事業領域を選択してください。';
+    stepTitle = 'どんな瞬間に、一番燃えますか?';
+    stepHelpText = '直感に近いものを選んでください。';
     options = diagCategories;
     currentValue = diagState.business;
   } else if (stepNum === 2) {
-    stepTitle = '希望する役割';
-    stepHelpText = '興味のある業務領域を選択してください。';
+    stepTitle = 'どんな領域に挑戦したいですか?';
+    stepHelpText = 'Crestixで挑戦したい領域を選んでください。';
     options = diagRoles;
     currentValue = diagState.role;
-    gridColsClass = 'grid-cols-1 md:grid-cols-2';
   } else if (stepNum === 3) {
-    stepTitle = '希望するポジション';
-    stepHelpText = '希望する役割の関わり方を選択してください。';
+    stepTitle = '今のあなたに一番近い挑戦ステージはどれですか?';
+    stepHelpText = '今の挑戦意欲に一番近いものを選んでください。';
     options = diagPositions;
     currentValue = diagState.position;
-    gridColsClass = 'grid-cols-1 md:grid-cols-2';
   } else {
     return;
   }
 
   el.innerHTML = `
     <div class="diag-step-header text-center mb-12">
-      <span class="diag-step-subtitle">あなたに合う募集職種</span>
+      <span class="diag-step-subtitle">あなたが燃える挑戦診断</span>
       <span class="diag-step-number">STEP ${stepNum} / 3</span>
       <h3 class="diag-step-title">${stepTitle}</h3>
       <p class="diag-step-desc text-gray-500 text-sm mt-3" style="font-family:'Noto Sans JP',sans-serif;font-weight:700;">${stepHelpText}</p>
@@ -367,8 +365,22 @@ function transitionTo(fromNum, toNum, renderFn) {
 }
 
 function buildResult() {
-  const result = getDiagnosisResult(diagState.business, diagState.role, diagState.position);
-  const job = activeJobs[result.job] || activeJobs["ai-sales-mg"];
+  const results = getDiagnosisResults(diagState.business, diagState.role, diagState.position);
+  const [primary, secondary] = results.map(result => activeJobs[result.key]).filter(Boolean);
+  const resultCards = [
+    { label: '一番おすすめ', job: primary },
+    { label: '次点でおすすめ', job: secondary }
+  ].filter(item => item.job).map(item => `
+      <div class="diag-result-division-card">
+        <p class="diag-result-division-name">${item.label} / ${item.job.division}</p>
+        <p class="diag-result-division-sub">${item.job.title}</p>
+        <p class="diag-result-division-label">${item.job.catch}<br>${item.job.description}</p>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:1.5rem;">
+          <a href="${item.job.entryUrl}" class="diag-result-division-link">この職種に応募する</a>
+          <a href="${item.job.detailUrl}" class="diag-result-division-link" style="background:white;color:#FF5C00;border:2px solid #FF5C00 !important;box-shadow:none;">募集要項を見る</a>
+        </div>
+      </div>
+    `).join('');
 
   return `
     <div class="diag-result-shell" style="display:flex;flex-direction:column;gap:2rem;animation:diagFadeUp 0.5s ease both;">
@@ -377,18 +389,11 @@ function buildResult() {
         <span style="display:inline-flex;align-items:center;background:#FF5C00;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.12em;padding:5px 18px;border-radius:99px;">診断結果</span>
       </div>
       <div style="text-align:center;">
-        <h3 class="diag-result-title">あなたにおすすめの職種</h3>
+        <h3 class="diag-result-title">あなたが一番燃えられる挑戦</h3>
+        <p class="diag-result-lead">3つの回答から、Crestixで力を発揮しやすいポジションを選びました。</p>
       </div>
-      
-      <div class="diag-result-division-card">
-        <p class="diag-result-division-name">${job.division}</p>
-        <p class="diag-result-division-sub">${job.title}</p>
-        <p class="diag-result-division-label">${job.description}</p>
-        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:1.5rem;">
-          <a href="${job.entryUrl}" class="diag-result-division-link">この職種に応募する</a>
-          <a href="${job.detailUrl}" class="diag-result-division-link" style="background:white;color:#FF5C00;border:2px solid #FF5C00 !important;box-shadow:none;">募集要項を見る</a>
-        </div>
-      </div>
+
+      ${resultCards}
 
       <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;padding-top:0.5rem;">
         <button onclick="resetDiagnostic()"

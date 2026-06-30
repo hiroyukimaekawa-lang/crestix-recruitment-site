@@ -60,7 +60,7 @@ $categories = get_terms([
 
   <section class="crestory-hero">
     <img
-      src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/priceless-hero.png"
+      src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/priceless-hero-v2.png"
       alt="本気の挑戦を、Pricelessに変える。"
       class="crestory-hero__img"
     >
