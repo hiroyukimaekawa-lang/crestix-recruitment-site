@@ -1,196 +1,215 @@
 /**
  * Crestix — Job Diagnosis Engine
- * 現在募集中の職種だけを診断結果に表示する
+ * 表示デザインは維持し、質問テキストと判定ロジックだけを管理する
  */
 
 'use strict';
 
-// STEP 1: Hope Business (希望する事業部)
+// STEP 1: Burning Moment
 const diagCategories = [
   {
-    value: 'ai',
-    title: 'AI Sales Enablement事業部',
-    description: 'AIと営業支援の仕組みを活用し、営業組織の成果最大化を支援する事業部です。'
+    value: 'q1_is',
+    title: '新しい顧客に切り込み、突破口をつくる瞬間',
+    description: '新規開拓に燃える'
   },
   {
-    value: 'division1',
-    title: '第一営業部',
-    description: '医療機関向けに、マーケティング・集客支援を提供する事業部です。'
+    value: 'q1_fs',
+    title: '顧客の課題を見抜き、商談で勝ち切る瞬間',
+    description: '提案で勝ち切る'
   },
   {
-    value: 'hd',
-    title: 'HD事業部',
-    description: '飲食店・地域店舗向けに、DX・集客・運用支援を提供する事業部です。'
+    value: 'q1_cs',
+    title: '顧客に伴走し、成果が出るまで向き合う瞬間',
+    description: '成果まで伴走する'
   }
 ];
 
-// STEP 2: Hope Role (希望する役割)
+// STEP 2: Challenge Area
 const diagRoles = [
   {
-    value: 'is',
-    title: 'インサイドセールス（IS）',
-    description: '新規顧客へのアプローチや商談機会の創出に関わる役割です。'
+    value: 'q2_hd',
+    title: '地域の店舗・ローカルビジネスの成長を支えたい',
+    description: '店舗の成長を支える'
   },
   {
-    value: 'fs',
-    title: 'フィールドセールス（FS）',
-    description: '顧客への提案・商談・受注創出に関わる役割です。'
+    value: 'q2_first',
+    title: 'クリニック・医療領域の集患や経営課題を支えたい',
+    description: '医療領域を支える'
   },
   {
-    value: 'cs',
-    title: 'カスタマーサクセス（CS）',
-    description: '受注後の顧客に伴走し、導入・運用・成果創出を支援する役割です。'
-  },
-  {
-    value: 'marketing',
-    title: 'マーケティング / 事業推進',
-    description: '集客施策、営業戦略、事業成長の仕組みづくりに関わる役割です。'
+    value: 'q2_ai',
+    title: 'AIを活用して、営業組織の生産性を変えたい',
+    description: '営業組織を変える'
   }
 ];
 
-// STEP 3: Hope Position (希望するポジション)
+// STEP 3: Challenge Stage
 const diagPositions = [
   {
-    value: 'member',
-    title: 'メンバーとして成果を出したい',
-    description: 'まずはプレイヤーとして現場で成果を出していきたい方に向いています。'
+    value: 'q3_member',
+    title: 'まずはプレイヤーとして、誰よりも成果を出したい',
+    description: '成果で突き抜ける'
   },
   {
-    value: 'leader',
-    title: 'リーダー・MG候補として組織づくりに関わりたい',
-    description: '成果創出だけでなく、チームづくりやKPI管理にも関わりたい方に向いています。'
+    value: 'q3_leader',
+    title: 'プレイヤーで終わらず、早期にチームを率いたい',
+    description: 'チームを率いる'
+  },
+  {
+    value: 'q3_mg',
+    title: '営業経験を武器に、事業や仕組みをつくる側に回りたい',
+    description: '仕組みをつくる'
   }
 ];
 
-// Active Job openings matching the user request mapping format
+// Diagnosis target jobs
 const activeJobs = {
-  "ai-sales-mg": {
-    title: "【AI Sales Enablement事業部 MG候補】",
-    entryUrl: "entry.html?job=ai-sales-mg",
-    detailUrl: "job-ai-sales-mg.html",
-    division: "AI Sales Enablement事業部",
-    description: "営業代行・営業支援事業を推進し、AIを活用した営業組織づくり・マネジメントを担うポジションです。"
-  },
-  "division1-is": {
-    title: "医療向け インサイドセールス（IS）",
-    entryUrl: "entry.html?job=division1-is",
-    detailUrl: "job-division1-inside-sales.html",
-    division: "第一営業部",
-    description: "医療機関（クリニック等）向けに、マーケティング・集客支援サービスの新規提案機会を創出するインサイドセールス職です。"
-  },
-  "division1-fs": {
-    title: "医療向け フィールドセールス（FS）",
-    entryUrl: "entry.html?job=division1-fs",
-    detailUrl: "job-division1-field-sales.html",
-    division: "第一営業部",
-    description: "医療機関（クリニック等）に対して、マーケティング・集客支援の提案から導入・成果創出までを担う営業職です。"
-  },
-  "hd-is-leader": {
-    title: "HD ISリーダー候補",
-    entryUrl: "entry.html?job=hd-is-leader",
-    detailUrl: "job-hd-is-leader.html",
-    division: "HD事業部",
-    description: "飲食店や地域店舗に向けて、DX・集客支援サービスの提案を行うインサイドセールスチームのマネジメント候補ポジションです。"
-  },
-  "hd-fs-member": {
+  hd_fs_member: {
     title: "HD FSメンバー",
+    catch: "地域店舗の成長を、商談の最前線からつくる。",
     entryUrl: "entry.html?job=hd-fs-member",
     detailUrl: "job-hd-fs-member.html",
     division: "HD事業部",
-    description: "飲食店や地域店舗に対して、集客・ホームページ制作・運用支援などの提案および受注を担う営業職です。"
+    description: "飲食店や地域店舗に対して、集客・ホームページ制作・運用支援などの提案および受注を担うポジションです。"
   },
-  "hd-fs-leader": {
+  hd_cs_member: {
+    title: "HD CSメンバー",
+    catch: "顧客に伴走し、店舗の成果が出るまで向き合う。",
+    entryUrl: "entry.html?job=hd-cs-member",
+    detailUrl: "job-hd-cs-member.html",
+    division: "HD事業部",
+    description: "ご契約いただいた店舗に伴走し、サービスの導入・運用支援、成果最大化を担うカスタマーサクセス職です。"
+  },
+  hd_is_leader: {
+    title: "HD ISリーダー候補",
+    entryUrl: "entry.html?job=hd-is-leader",
+    detailUrl: "job-hd-inside-sales-leader.html",
+    division: "HD事業部",
+    catch: "新しい顧客接点をつくり、チームで突破口を広げる。",
+    description: "飲食店や地域店舗に向けて、DX・集客支援サービスの提案機会を創出し、インサイドセールスチームを牽引する候補ポジションです。"
+  },
+  hd_fs_leader: {
     title: "HD FSリーダー候補",
     entryUrl: "entry.html?job=hd-fs-leader",
     detailUrl: "job-hd-fs-leader.html",
     division: "HD事業部",
+    catch: "店舗ビジネスの課題を見抜き、勝てる営業チームをつくる。",
     description: "飲食店・地域店舗向け営業チームにおいて、プレイヤーとしての成果創出およびチームの数値管理・育成を担うリーダー候補です。"
   },
-  "hd-cs-member": {
-    title: "HD CSメンバー",
-    entryUrl: "entry.html?job=hd-cs-member",
-    detailUrl: "job-hd-cs-member.html",
-    division: "HD事業部",
-    description: "ご契約いただいた飲食店・店舗に伴走し、ホームページ制作や集客サービスの導入・運用支援、成果最大化を担うカスタマーサクセス職です。"
-  },
-  "hd-cs-leader": {
+  hd_cs_leader: {
     title: "HD CSリーダー候補",
     entryUrl: "entry.html?job=hd-cs-leader",
     detailUrl: "job-hd-cs-leader.html",
     division: "HD事業部",
+    catch: "顧客成果に向き合い、成功体験をチームで再現する。",
     description: "店舗向けカスタマーサクセスチームにおいて、解約防止やアップセル施策の立案、メンバーの育成およびKPI管理を担うリーダー候補です。"
+  },
+  first_fs_member: {
+    title: "医療向け フィールドセールス（FS）",
+    catch: "医療機関の課題を見抜き、集患と経営成長を前に進める。",
+    entryUrl: "entry.html?job=division1-fs",
+    detailUrl: "job-division1-field-sales.html",
+    division: "第一営業部",
+    description: "クリニック・医療機関に対して、マーケティング・集客支援の提案から導入・成果創出までを担うポジションです。"
+  },
+  first_is_leader: {
+    title: "医療向け インサイドセールス（IS）",
+    catch: "医療領域の新しい接点をつくり、商談機会を生み出す。",
+    entryUrl: "entry.html?job=division1-is",
+    detailUrl: "job-division1-is-leader.html",
+    division: "第一営業部",
+    description: "クリニック・医療機関に対し、Web集客やCRMツールなどの提案機会を創出するインサイドセールス職です。"
+  },
+  first_fs_leader: {
+    title: "医療向け フィールドセールス（FS）リーダー候補",
+    catch: "医療マーケットで勝ち切る営業組織をつくる。",
+    entryUrl: "entry.html?job=division1-fs-leader",
+    detailUrl: "job-division1-fs-leader.html",
+    division: "第一営業部",
+    description: "医療機関向けの提案活動を牽引しながら、営業戦略・KPI管理・育成にも関わるリーダー候補です。"
+  },
+  ai_mg: {
+    title: "【AI Sales Enablement事業部 MG候補】",
+    catch: "AIを活用し、営業組織の生産性を変える。",
+    entryUrl: "entry.html?job=ai-sales-mg",
+    detailUrl: "job-ai-sales-mg.html",
+    division: "AI Sales Enablement事業部",
+    description: "営業代行・営業支援事業を推進し、AIを活用した営業組織づくり・マネジメントを担うポジションです。"
   }
 };
 
-// Diagnosis logic mapping
-const diagnosisMap = {
-  ai: {
-    is: {
-      member: { title: "【AI Sales Enablement事業部 MG候補】", job: "ai-sales-mg" },
-      leader: { title: "【AI Sales Enablement事業部 MG候補】", job: "ai-sales-mg" }
-    },
-    fs: {
-      member: { title: "【AI Sales Enablement事業部 MG候補】", job: "ai-sales-mg" },
-      leader: { title: "【AI Sales Enablement事業部 MG候補】", job: "ai-sales-mg" }
-    },
-    cs: {
-      member: { title: "【AI Sales Enablement事業部 MG候補】", job: "ai-sales-mg" },
-      leader: { title: "【AI Sales Enablement事業部 MG候補】", job: "ai-sales-mg" }
-    },
-    marketing: {
-      member: { title: "【AI Sales Enablement事業部 MG候補】", job: "ai-sales-mg" },
-      leader: { title: "【AI Sales Enablement事業部 MG候補】", job: "ai-sales-mg" }
-    }
-  },
+const tieBreakPriority = [
+  'ai_mg',
+  'first_fs_leader',
+  'hd_fs_leader',
+  'hd_cs_leader',
+  'first_is_leader',
+  'hd_is_leader',
+  'first_fs_member',
+  'hd_fs_member',
+  'hd_cs_member'
+];
 
-  division1: {
-    is: {
-      member: { title: "医療向け インサイドセールス（IS）", job: "division1-is" },
-      leader: { title: "医療向け インサイドセールス（IS）", job: "division1-is" }
-    },
-    fs: {
-      member: { title: "医療向け フィールドセールス（FS）", job: "division1-fs" },
-      leader: { title: "医療向け フィールドセールス（FS）", job: "division1-fs" }
-    },
-    cs: {
-      member: { title: "医療向け フィールドセールス（FS）", job: "division1-fs" },
-      leader: { title: "医療向け フィールドセールス（FS）", job: "division1-fs" }
-    },
-    marketing: {
-      member: { title: "医療向け フィールドセールス（FS）", job: "division1-fs" },
-      leader: { title: "医療向け フィールドセールス（FS）", job: "division1-fs" }
-    }
-  },
-
-  hd: {
-    is: {
-      member: { title: "HD FSメンバー", job: "hd-fs-member" },
-      leader: { title: "HD ISリーダー候補", job: "hd-is-leader" }
-    },
-    fs: {
-      member: { title: "HD FSメンバー", job: "hd-fs-member" },
-      leader: { title: "HD FSリーダー候補", job: "hd-fs-leader" }
-    },
-    cs: {
-      member: { title: "HD CSメンバー", job: "hd-cs-member" },
-      leader: { title: "HD CSリーダー候補", job: "hd-cs-leader" }
-    },
-    marketing: {
-      member: { title: "HD FSメンバー", job: "hd-fs-member" },
-      leader: { title: "HD FSリーダー候補", job: "hd-fs-leader" }
-    }
-  }
+const jobProfiles = {
+  hd_fs_member: { domain: 'q2_hd', role: 'q1_fs', stage: 'q3_member' },
+  hd_cs_member: { domain: 'q2_hd', role: 'q1_cs', stage: 'q3_member' },
+  hd_is_leader: { domain: 'q2_hd', role: 'q1_is', stage: 'q3_leader' },
+  hd_fs_leader: { domain: 'q2_hd', role: 'q1_fs', stage: 'q3_leader' },
+  hd_cs_leader: { domain: 'q2_hd', role: 'q1_cs', stage: 'q3_leader' },
+  first_fs_member: { domain: 'q2_first', role: 'q1_fs', stage: 'q3_member' },
+  first_is_leader: { domain: 'q2_first', role: 'q1_is', stage: 'q3_leader' },
+  first_fs_leader: { domain: 'q2_first', role: 'q1_fs', stage: 'q3_leader' },
+  ai_mg: { domain: 'q2_ai', role: 'q1_fs', stage: 'q3_mg' }
 };
 
-function getDiagnosisResult(business, role, position) {
-  const result = diagnosisMap?.[business]?.[role]?.[position];
-  if (!result) {
-    return {
-      title: "【AI Sales Enablement事業部 MG候補】",
-      job: "ai-sales-mg"
-    };
+function getDiagnosisResults(q1, q2, q3) {
+  const scores = Object.keys(activeJobs).reduce((acc, key) => {
+    acc[key] = 0;
+    return acc;
+  }, {});
+
+  Object.entries(jobProfiles).forEach(([key, profile]) => {
+    if (profile.role === q1) scores[key] += 5;
+    if (profile.domain === q2) scores[key] += 6;
+    if (profile.stage === q3) scores[key] += 4;
+  });
+
+  if (q1 === 'q1_is') {
+    scores.hd_is_leader += 2;
+    scores.first_is_leader += 2;
   }
-  return result;
+  if (q1 === 'q1_fs') {
+    scores.hd_fs_member += 1;
+    scores.first_fs_member += 1;
+  }
+  if (q1 === 'q1_cs') {
+    scores.hd_cs_member += 2;
+    scores.hd_cs_leader += 2;
+  }
+
+  if (q2 === 'q2_ai') scores.ai_mg += 8;
+  if (q3 === 'q3_mg') scores.ai_mg += 8;
+  if (q3 === 'q3_leader') {
+    scores.hd_is_leader += 1;
+    scores.hd_fs_leader += 1;
+    scores.hd_cs_leader += 1;
+    scores.first_is_leader += 1;
+    scores.first_fs_leader += 1;
+  }
+
+  // Exceptions: keep the result useful when a direct opening does not exist.
+  if (q1 === 'q1_cs' && q2 === 'q2_first') scores.first_fs_member += 4;
+  if (q1 === 'q1_is' && q2 === 'q2_hd' && q3 === 'q3_member') scores.hd_is_leader += 5;
+  if (q2 === 'q2_ai' && q3 === 'q3_mg') scores.ai_mg += 6;
+
+  return Object.keys(activeJobs)
+    .sort((a, b) => {
+      const scoreDiff = scores[b] - scores[a];
+      if (scoreDiff !== 0) return scoreDiff;
+      return tieBreakPriority.indexOf(a) - tieBreakPriority.indexOf(b);
+    })
+    .slice(0, 2)
+    .map((key, index) => ({ key, rank: index + 1, score: scores[key] }));
 }
 
 const diagState = {
