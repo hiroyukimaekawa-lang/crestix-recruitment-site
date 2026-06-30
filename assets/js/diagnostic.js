@@ -9,17 +9,17 @@
 const diagCategories = [
   {
     value: 'q1_is',
-    title: '新しい顧客に切り込み、<br>突破口をつくる瞬間',
+    title: '新しい顧客に切り込み、<br>突破口をつくりたい',
     description: '新規開拓に燃える'
   },
   {
     value: 'q1_fs',
-    title: '顧客の課題を見抜き、<br>商談で勝ち切る瞬間',
+    title: '顧客の課題を見抜き、<br>商談で勝ち切りたい',
     description: '提案で勝ち切る'
   },
   {
     value: 'q1_cs',
-    title: '顧客に伴走し、<br>成果が出るまで向き合う瞬間',
+    title: '顧客に伴走し、<br>成果まで向き合いたい',
     description: '成果まで伴走する'
   }
 ];
@@ -28,17 +28,17 @@ const diagCategories = [
 const diagRoles = [
   {
     value: 'q2_hd',
-    title: '地域の店舗・<br>ローカルビジネスの成長を支えたい',
+    title: '地域店舗・ローカル事業の<br>成長を支えたい',
     description: '店舗の成長を支える'
   },
   {
     value: 'q2_first',
-    title: 'クリニック・医療領域の<br>集患や経営課題を支えたい',
+    title: 'クリニック・医療領域の<br>成長を支えたい',
     description: '医療領域を支える'
   },
   {
     value: 'q2_ai',
-    title: 'AIを活用して、<br>営業組織の生産性を変えたい',
+    title: 'AIを活用して、<br>営業組織を変えたい',
     description: '営業組織を変える'
   }
 ];
@@ -47,17 +47,17 @@ const diagRoles = [
 const diagPositions = [
   {
     value: 'q3_member',
-    title: 'まずはプレイヤーとして、誰よりも成果を出したい',
+    title: 'プレイヤーとして、<br>誰よりも成果を出したい',
     description: '成果で突き抜ける'
   },
   {
     value: 'q3_leader',
-    title: 'プレイヤーで終わらず、早期にチームを率いたい',
+    title: 'プレイヤーで終わらず、<br>早期にチームを率いたい',
     description: 'チームを率いる'
   },
   {
     value: 'q3_mg',
-    title: '営業経験を武器に、事業や仕組みをつくる側に回りたい',
+    title: '営業経験を武器に、<br>仕組みづくりに挑戦したい',
     description: '仕組みをつくる'
   }
 ];

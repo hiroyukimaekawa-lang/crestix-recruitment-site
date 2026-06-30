@@ -389,8 +389,7 @@ ARTICLE;
     }
   }
 
-  crestix_crestory_seed_matsuoka_interview();
-  crestix_crestory_seed_note_style_articles();
+  // Do not auto-seed articles here; deleted posts should stay deleted.
 
   flush_rewrite_rules();
 }
@@ -417,8 +416,6 @@ add_action("wp", function () {
 
 function crestix_crestory_maybe_finalize_home() {
   if (!current_user_can("manage_options")) return;
-  crestix_crestory_seed_matsuoka_interview();
-  crestix_crestory_seed_note_style_articles();
   if (get_option("crestix_crestory_home_finalized") === "1") return;
 
   $front_page = get_page_by_path("crestory-top", OBJECT, "page");

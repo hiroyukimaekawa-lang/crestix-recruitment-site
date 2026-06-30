@@ -16,6 +16,42 @@ body.casual-page {
     overflow-x: hidden;
 }
 
+body.casual-page #cx-navbar {
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom-color: rgba(17, 24, 39, 0.08);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+body.casual-page #cx-navbar.cx-scrolled {
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom-color: rgba(17, 24, 39, 0.1);
+}
+
+body.casual-page #cx-nav-logo {
+    filter: none;
+}
+
+body.casual-page .cx-nav-link {
+    color: rgba(17, 24, 39, 0.74);
+}
+
+body.casual-page .cx-nav-link:hover,
+body.casual-page .cx-nav-link.cx-active {
+    color: #111827;
+}
+
+body.casual-page .cx-mega-menu,
+body.casual-page .cx-mega-menu a.cx-mega-item,
+body.casual-page .cx-mega-menu a.cx-mega-item span {
+    color: #111827;
+}
+
+body.casual-page .cx-ham-lines span {
+    background: #111827;
+}
+
 .font-poppins {
     font-family: 'Poppins', sans-serif;
 }
