@@ -114,7 +114,7 @@
 
         @media(min-width: 1024px) {
             .page-grid {
-                grid-template-columns: 200px 1fr;
+                grid-template-columns: 200px minmax(0, 1fr);
             }
         }
 
@@ -201,6 +201,8 @@
         /* ── MAIN CONTENT ── */
         .main-content {
             padding: 0;
+            min-width: 0;
+            overflow-x: hidden;
         }
 
         /* ── SECTION BASE ── */
@@ -980,6 +982,8 @@
             flex-shrink: 0;
             /* 縮まないよう固定 */
             width: 440px;
+            max-width: 100%;
+            overflow: hidden;
             position: relative;
             /* absoluteの子がいる場合のコンテナ */
             z-index: 0;
@@ -1221,9 +1225,9 @@
             </section>
 
             <!-- HD IMAGE -->
-            <div class="reveal" style="max-height:800px; overflow:hidden;">
-                <img src="assets/images/HD/hd-sales.png" alt="HD事業部" class="w-full h-full object-cover"
-                    style="object-fit:cover;">
+            <div class="reveal" style="max-height:800px; overflow:hidden; width:100%;">
+                <img src="assets/images/HD/hd-sales.png" alt="HD事業部"
+                    style="width:100%; height:auto; display:block; object-fit:cover;">
             </div>
 
             <!-- ② SERVICE -->
@@ -1241,7 +1245,7 @@
                     <div class="service-detail-section reveal reveal-delay-1 group">
                         <div class="service-detail-section__image">
                             <div class="service-img-wrap"
-                                style="width: 500px; height: auto; overflow: visible; border-radius: 12px; flex-shrink: 0;">
+                                style="width: 100%; height: auto; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
                                 <img src="assets/images/HD/hp-works.png" alt="HP制作" loading="lazy"
                                     style="width: 100%; height: auto; display: block; border-radius: 12px;">
                             </div>
@@ -1263,7 +1267,7 @@
                     <div class="service-detail-section reveal reveal-delay-2 group">
                         <div class="service-detail-section__image">
                             <div class="service-img-wrap"
-                                style="width: 500px; height: auto; overflow: visible; border-radius: 12px; flex-shrink: 0;">
+                                style="width: 100%; height: auto; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
                                 <img src="assets/images/HD/meo-seo-.png" alt="MEO／SEO／AIO対策" loading="lazy"
                                     style="width: 100%; height: auto; display: block; border-radius: 12px;">
                             </div>
@@ -1286,7 +1290,7 @@
                     <div class="service-detail-section reveal reveal-delay-3 group">
                         <div class="service-detail-section__image">
                             <div class="service-img-wrap"
-                                style="width: 500px; height: auto; overflow: visible; border-radius: 12px; flex-shrink: 0; background: none; padding: 0;">
+                                style="width: 100%; height: auto; overflow: hidden; border-radius: 12px; flex-shrink: 0; background: none; padding: 0;">
                                 <img src="assets/images/HD/sns-works.png" alt="SNS集客支援" loading="lazy"
                                     style="width: 100%; height: auto; display: block; border-radius: 12px;">
                             </div>

@@ -112,7 +112,7 @@
 
         @media(min-width: 1024px) {
             .page-grid {
-                grid-template-columns: 200px 1fr;
+                grid-template-columns: 200px minmax(0, 1fr);
             }
         }
 
@@ -199,6 +199,8 @@
         /* ── MAIN CONTENT ── */
         .main-content {
             padding: 0;
+            min-width: 0;
+            overflow-x: hidden;
         }
 
         /* ── SECTION BASE ── */
