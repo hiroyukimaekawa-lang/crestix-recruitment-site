@@ -205,6 +205,9 @@
   const next = document.querySelector('input[name="_next"]');
   if (next) next.value = `https://crestix.jp/thanks.html?name=${encodedName}`;
 
+  const subject = document.querySelector('input[name="_subject"]');
+  if (subject) subject.value = `【Crestix】カジュアル面談希望：${member.name}`;
+
   const formTitle = document.getElementById('form-title');
   if (formTitle) formTitle.textContent = `${member.name}と話してみる`;
 

@@ -225,30 +225,35 @@
                     <p class="text-sm text-gray-500 font-bold leading-relaxed">営業支援、店舗グロース、クリニック向けマーケティングなど、法人向けサービスのご相談はこちらからお問い合わせください。</p>
                 </div>
 
-                <form onsubmit="event.preventDefault(); alert('お問い合わせを受け付けました。担当者より追ってご連絡いたします。'); location.href='index.html';" class="space-y-8 bg-gray-50/50 p-8 lg:p-12 rounded-[2.5rem] border border-crestix-border">
+                <form action="https://formspree.io/f/mnnvqnbd" method="POST" class="space-y-8 bg-gray-50/50 p-8 lg:p-12 rounded-[2.5rem] border border-crestix-border">
+                    <input type="hidden" name="_subject" value="【Crestix】法人お問い合わせ">
+                    <input type="hidden" name="source_page" value="https://www.crestix.jp/b2b-contact.html">
+                    <input type="hidden" name="_next" value="https://www.crestix.jp/thanks.html?name=b2b-contact">
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
                     <div class="space-y-2">
                         <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">会社名 (必須)</label>
-                        <input type="text" required placeholder="株式会社Crestix" class="form-input">
+                        <input type="text" name="company" required placeholder="株式会社Crestix" class="form-input">
                     </div>
 
                     <div class="space-y-2">
                         <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">ご担当者名 (必須)</label>
-                        <input type="text" required placeholder="山田 太郎" class="form-input">
+                        <input type="text" name="name" required placeholder="山田 太郎" class="form-input">
                     </div>
 
                     <div class="space-y-2">
                         <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">メールアドレス (必須)</label>
-                        <input type="email" required placeholder="example@crestix.com" class="form-input">
+                        <input type="email" name="email" required placeholder="example@crestix.com" class="form-input">
                     </div>
 
                     <div class="space-y-2">
                         <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">電話番号 (任意)</label>
-                        <input type="tel" placeholder="03-0000-0000" class="form-input">
+                        <input type="tel" name="phone" placeholder="03-0000-0000" class="form-input">
                     </div>
 
                     <div class="space-y-2">
                         <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">ご相談内容 (必須)</label>
-                        <select required class="form-input">
+                        <select name="inquiry_type" required class="form-input">
                             <option value="">ご相談内容を選択してください</option>
                             <option value="営業代行・営業支援">営業代行・営業支援</option>
                             <option value="AI Sales Enablement">AI Sales Enablement</option>
@@ -261,7 +266,7 @@
 
                     <div class="space-y-2">
                         <label class="block text-xs font-black text-gray-500 uppercase tracking-widest">お問い合わせ内容 (必須)</label>
-                        <textarea rows="6" required placeholder="ご相談の背景、課題感、ご希望の支援内容などをご記入ください。" class="form-input" style="resize: none;"></textarea>
+                        <textarea name="message" rows="6" required placeholder="ご相談の背景、課題感、ご希望の支援内容などをご記入ください。" class="form-input" style="resize: none;"></textarea>
                     </div>
 
                     <div class="pt-6">

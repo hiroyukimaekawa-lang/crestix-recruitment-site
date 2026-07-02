@@ -383,12 +383,13 @@
                 </div>
 
                 <form id="entry-form" class="entry-card space-y-12" novalidate>
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
                     <div id="entry-input-view" class="space-y-12">
                         <div class="entry-section">
                             <h3 class="entry-section-title">応募職種</h3>
                             <div class="space-y-2">
                                 <label class="entry-label" for="entry-job">応募職種<span class="entry-required">必須</span></label>
-                                <select id="entry-job" name="job" required class="form-input">
+                                <select id="entry-job" name="job_type" required class="form-input">
                                     <option value="">応募職種を選択してください</option>
                                     <optgroup label="AI Sales Enablement（営業代行 / 営業支援事業）">
                                         <option value="ai-sales-mg">【AI Sales Enablement事業部 MG候補】</option>
@@ -418,7 +419,7 @@
                                 </div>
                                 <div class="space-y-2">
                                     <label class="entry-label" for="entry-roman-name">名前（ローマ字）<span class="entry-required">必須</span></label>
-                                    <input id="entry-roman-name" name="romanName" type="text" required placeholder="例）Taro Yamada" class="form-input">
+                                    <input id="entry-roman-name" name="name_romaji" type="text" required placeholder="例）Taro Yamada" class="form-input">
                                 </div>
                                 <div class="space-y-2">
                                     <label class="entry-label" for="entry-email">メールアドレス<span class="entry-required">必須</span></label>
@@ -456,29 +457,29 @@
                             <div class="space-y-2">
                                 <label class="entry-label" for="entry-process-note">選考プロセスを進めるにあたっての確認事項</label>
                                 <p class="entry-help">以下について共有事項があれば記載してください。<br>就業開始希望時期の目安 / 面接時間帯で配慮が必要なポイント / 稼働イメージ / 長期インターン、パートタイム、時短勤務希望の場合の稼働可能日数・時間 / 働き方、雇用形態、勤務形態についての希望 / 面接プロセスの早期化希望 / その他共有事項</p>
-                                <textarea id="entry-process-note" name="processNote" rows="5" placeholder="例）平日19時以降での面接を希望します。入社可能時期は2026年4月以降です。" class="form-input" style="resize:vertical;"></textarea>
+                                <textarea id="entry-process-note" name="process_notes" rows="5" placeholder="例）平日19時以降での面接を希望します。入社可能時期は2026年4月以降です。" class="form-input" style="resize:vertical;"></textarea>
                             </div>
                         </div>
 
                         <div class="entry-section">
                             <h3 class="entry-section-title">閲覧メディア / 参加イベント</h3>
                             <div class="entry-choice-grid">
-                                <label class="entry-choice"><input type="checkbox" name="media" value="Crestix採用サイト">Crestix採用サイト</label>
-                                <label class="entry-choice"><input type="checkbox" name="media" value="CRESTORY">CRESTORY</label>
-                                <label class="entry-choice"><input type="checkbox" name="media" value="note">note</label>
-                                <label class="entry-choice"><input type="checkbox" name="media" value="Xアカウント">Xアカウント</label>
-                                <label class="entry-choice"><input type="checkbox" name="media" value="YouTube">YouTube</label>
-                                <label class="entry-choice"><input type="checkbox" name="media" value="社員インタビュー">社員インタビュー</label>
-                                <label class="entry-choice"><input type="checkbox" name="media" value="採用イベント">採用イベント</label>
-                                <label class="entry-choice"><input type="checkbox" name="media" value="知人 / 社員からの紹介">知人 / 社員からの紹介</label>
-                                <label class="entry-choice"><input type="checkbox" name="media" value="その他">その他</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="Crestix採用サイト">Crestix採用サイト</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="CRESTORY">CRESTORY</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="note">note</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="Xアカウント">Xアカウント</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="YouTube">YouTube</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="社員インタビュー">社員インタビュー</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="採用イベント">採用イベント</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="知人 / 社員からの紹介">知人 / 社員からの紹介</label>
+                                <label class="entry-choice"><input type="checkbox" name="media_source" value="その他">その他</label>
                             </div>
                         </div>
 
                         <div class="entry-section">
                             <h3 class="entry-section-title">参考になったコンテンツ</h3>
                             <label class="entry-label" for="entry-reference">特に参考になったコンテンツ・イベント等があれば、ご回答ください</label>
-                            <textarea id="entry-reference" name="reference" rows="4" placeholder="例）代表メッセージ、事業紹介ページ、社員インタビュー記事" class="form-input" style="resize:vertical;"></textarea>
+                            <textarea id="entry-reference" name="reference_content" rows="4" placeholder="例）代表メッセージ、事業紹介ページ、社員インタビュー記事" class="form-input" style="resize:vertical;"></textarea>
                         </div>
 
                         <div class="entry-section">
@@ -622,7 +623,7 @@
         }
 
         function selectedMedia() {
-            return Array.from(form.querySelectorAll('input[name="media"]:checked')).map(input => input.value).join('、');
+            return Array.from(form.querySelectorAll('input[name="media_source"]:checked')).map(input => input.value).join('、');
         }
 
         function addConfirmRow(label, value) {
@@ -673,9 +674,46 @@
         }
 
         if (sendButton) {
-            sendButton.addEventListener('click', () => {
-                setStep('送信完了', 'ご応募ありがとうございました。');
-                showView('complete');
+            sendButton.addEventListener('click', async () => {
+                sendButton.disabled = true;
+                sendButton.textContent = '送信中…';
+
+                const jobText = selectedText(jobSelect);
+                const fd = new FormData();
+                fd.append('_subject', `【Crestix】採用エントリー：${jobText}`);
+                fd.append('source_page', 'https://www.crestix.jp/entry.html');
+                fd.append('job_type', jobSelect ? jobSelect.value : '');
+                fd.append('job_type_label', jobText);
+                fd.append('name', valueById('entry-name'));
+                fd.append('name_romaji', valueById('entry-roman-name'));
+                fd.append('email', valueById('entry-email'));
+                fd.append('phone', valueById('entry-phone'));
+                fd.append('motivation', valueById('entry-motivation'));
+                fd.append('questions', valueById('entry-questions'));
+                fd.append('process_notes', valueById('entry-process-note'));
+                fd.append('media_source', selectedMedia());
+                fd.append('reference_content', valueById('entry-reference'));
+
+                try {
+                    const res = await fetch('https://formspree.io/f/mnnvqnbd', {
+                        method: 'POST',
+                        body: fd,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (res.ok) {
+                        setStep('送信完了', 'ご応募ありがとうございました。');
+                        showView('complete');
+                    } else {
+                        const data = await res.json().catch(() => ({}));
+                        alert('送信に失敗しました。時間をおいて再度お試しください。\n' + (data.error || ''));
+                        sendButton.disabled = false;
+                        sendButton.textContent = '送信する';
+                    }
+                } catch (err) {
+                    alert('ネットワークエラーが発生しました。接続を確認してから再度お試しください。');
+                    sendButton.disabled = false;
+                    sendButton.textContent = '送信する';
+                }
             });
         }
     })();
