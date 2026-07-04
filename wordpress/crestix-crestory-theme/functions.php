@@ -123,6 +123,14 @@ function crestix_crestory_terms($post_id = null) { return get_the_terms($post_id
 function crestix_crestory_first_term($post_id = null) { $terms = crestix_crestory_terms($post_id); return $terms ? $terms[0] : null; }
 function crestix_crestory_tag_terms($post_id = null) { return get_the_terms($post_id ?: get_the_ID(), "crestory_tag") ?: []; }
 
+function crestix_crestory_category_home_url($term = null) {
+  if (!$term) return home_url("/#articles");
+  if (is_numeric($term)) $term = get_term((int) $term, "crestory_category");
+  if (is_string($term)) $term = get_term_by("slug", $term, "crestory_category");
+  if (!$term || is_wp_error($term) || empty($term->slug)) return home_url("/#articles");
+  return add_query_arg(["cat" => $term->slug], home_url("/")) . "#articles";
+}
+
 function crestix_crestory_recruit_url($path = "") {
   $base = "https://www.crestix.jp";
   return rtrim($base, "/") . "/" . ltrim($path, "/");

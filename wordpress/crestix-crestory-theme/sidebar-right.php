@@ -93,7 +93,7 @@ $sns_youtube  = get_option('crestory_sns_youtube', '');
       <ul class="cx-sidebar-cats">
         <?php foreach ($categories as $cat): ?>
           <li>
-            <a href="<?php echo esc_url(get_term_link($cat)); ?>">
+            <a href="<?php echo esc_url(crestix_crestory_category_home_url($cat)); ?>">
               <span><?php echo esc_html($cat->name); ?></span>
               <span class="cx-sidebar-cat-count"><?php echo (int) $cat->count; ?></span>
             </a>

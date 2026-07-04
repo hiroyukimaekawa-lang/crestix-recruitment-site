@@ -51,7 +51,7 @@ $member_cta_url = add_query_arg(
         <div class="crestory-single-header crestory-container">
           <?php if ($term): ?>
             <div class="crestory-single-cat">
-              <a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html($term->name); ?></a>
+              <a href="<?php echo esc_url(crestix_crestory_category_home_url($term)); ?>"><?php echo esc_html($term->name); ?></a>
             </div>
           <?php endif; ?>
           <h1 class="crestory-single-title"><?php the_title(); ?></h1>
