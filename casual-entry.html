@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カジュアル面談応募フォーム | Crestix Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
+    <link rel="stylesheet" href="assets/css/components/hero.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .form-input {
+            width: 100%;
+            background: #fff;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            background: #fff;
+            border-color: #FF5C00;
+            box-shadow: 0 0 0 4px rgba(255, 92, 0, 0.1);
+        }
+        .entry-label {
+            display: block;
+            color: #1A2B4C;
+            font-size: 0.86rem;
+            font-weight: 900;
+        }
+        .entry-card {
+            background: rgba(249, 250, 251, 0.72);
+            border: 1px solid #e5e7eb;
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+        }
+        .entry-primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            min-width: min(100%, 240px);
+            min-height: 58px;
+            border-radius: 999px;
+            border: 0;
+            background: #FF5C00;
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .entry-primary-btn:hover {
+            background: #E65200;
+            transform: translateY(-2px);
+        }
+        .entry-hidden {
+            display: none !important;
+        }
+        .casual-form-shell {
+            border-top: 1px solid rgba(255, 92, 0, 0.18);
+        }
+    </style>
+</head>
+<body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
+
+<nav id="cx-navbar" aria-label="グローバルナビゲーション">
+  <div class="cx-nav-left">
+    <a href="index.html" class="cx-nav-logo-link">
+      <img id="cx-nav-logo" src="assets/images/office/crestix-header.png" alt="Crestix" onerror="this.style.display='none'">
+    </a>
+  </div>
+  <div class="cx-nav-center" id="cx-nav-links">
+    <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+    <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+    <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+    <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
+  </div>
+  <div class="cx-nav-right">
+    <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
+    <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+      <span class="cx-ham-lines" id="cx-ham-lines"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+    <section class="casual-form-shell py-24 lg:py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-14">
+            <div class="space-y-12">
+                <div class="space-y-4">
+                    <h1 class="text-4xl lg:text-5xl font-black text-crestix-navy tracking-tight">
+                        <span aria-hidden="true">📮</span>応募フォーム
+                    </h1>
+                    <p id="casual-member-lead" class="text-lg font-black text-gray-500">カジュアル面談に申し込む</p>
+                </div>
+
+                <form id="casual-entry-form" class="entry-card space-y-8" novalidate>
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                    <input id="casual-member-name" type="hidden" name="member_name" value="">
+                    <input id="casual-member-title" type="hidden" name="member_title" value="">
+                    <input id="casual-source-url" type="hidden" name="source_url" value="">
+
+                    <div id="casual-input-view" class="space-y-8">
+                        <div class="space-y-2">
+                            <label class="entry-label" for="casual-name">お名前</label>
+                            <input id="casual-name" name="name" type="text" required autocomplete="name" class="form-input">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="entry-label" for="casual-email">メールアドレス</label>
+                            <input id="casual-email" name="email" type="email" required autocomplete="email" class="form-input">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="entry-label" for="casual-message">自己紹介・応募理由</label>
+                            <textarea id="casual-message" name="message" rows="7" required class="form-input" style="resize:vertical;"></textarea>
+                        </div>
+                        <div class="pt-2">
+                            <button id="casual-send" type="submit" class="entry-primary-btn">
+                                送信する
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="casual-complete-view" class="entry-hidden text-center py-14 space-y-6">
+                        <div class="mx-auto w-16 h-16 rounded-full bg-orange-50 text-crestix-orange flex items-center justify-center">
+                            <i class="fa-solid fa-check text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-black text-crestix-charcoal">送信ありがとうございます。</h2>
+                        <p class="text-gray-500 font-bold leading-relaxed">内容を確認のうえ、担当者よりご連絡いたします。</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-black text-white select-none">
+    <div class="max-w-5xl mx-auto px-6 py-8 text-center">
+        <p class="font-poppins text-xs font-black tracking-wide text-white/75">(C) Crestix Inc.</p>
+    </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/navbar.js"></script>
+<script>
+    (function () {
+        'use strict';
+
+        const params = new URLSearchParams(window.location.search);
+        const member = (params.get('member') || '').trim();
+        const title = (params.get('title') || '').trim();
+        const source = (params.get('source') || '').trim();
+        const displayMember = member || '担当者';
+        const talkText = `${displayMember}と話してみる`;
+
+        document.title = `${displayMember}とカジュアル面談 | Crestix Careers`;
+        document.getElementById('casual-member-lead').textContent = talkText;
+        document.getElementById('casual-member-name').value = member;
+        document.getElementById('casual-member-title').value = title;
+        document.getElementById('casual-source-url').value = source || document.referrer || location.href;
+
+        const form = document.getElementById('casual-entry-form');
+        const inputView = document.getElementById('casual-input-view');
+        const completeView = document.getElementById('casual-complete-view');
+        const sendButton = document.getElementById('casual-send');
+
+        const valueById = (id) => {
+            const el = document.getElementById(id);
+            return el ? el.value.trim() : '';
+        };
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            sendButton.disabled = true;
+            sendButton.textContent = '送信中...';
+
+            const fd = new FormData();
+            fd.append('_subject', `【Crestix】カジュアル面談希望：${displayMember}`);
+            fd.append('source_page', 'https://www.crestix.jp/casual-entry.html');
+            fd.append('member_name', member);
+            fd.append('member_title', title);
+            fd.append('source_url', source || document.referrer || location.href);
+            fd.append('name', valueById('casual-name'));
+            fd.append('email', valueById('casual-email'));
+            fd.append('message', valueById('casual-message'));
+
+            try {
+                const res = await fetch('https://formspree.io/f/mnnvqnbd', {
+                    method: 'POST',
+                    body: fd,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    inputView.classList.add('entry-hidden');
+                    completeView.classList.remove('entry-hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    alert('送信に失敗しました。時間をおいて再度お試しください。');
+                    sendButton.disabled = false;
+                    sendButton.innerHTML = '送信する <i class="fa-solid fa-arrow-right"></i>';
+                }
+            } catch (error) {
+                alert('ネットワークエラーが発生しました。接続を確認してから再度お試しください。');
+                sendButton.disabled = false;
+                sendButton.innerHTML = '送信する <i class="fa-solid fa-arrow-right"></i>';
+            }
+        });
+    }());
+</script>
+</body>
+</html>

@@ -2036,6 +2036,37 @@
             border-radius: 0;
         }
 
+        .corp-crestory__meta {
+            position: absolute;
+            inset: auto 0 0 0;
+            z-index: 2;
+            padding: 56px 24px 22px;
+            background: linear-gradient(180deg, transparent 0%, rgba(10, 15, 30, 0.88) 70%, rgba(10, 15, 30, 0.96) 100%);
+            color: #fff;
+        }
+
+        .corp-crestory__label {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #FF5C00;
+            font-family: 'Poppins', sans-serif;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+        }
+
+        .corp-crestory__title {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(0.92rem, 1.5vw, 1.18rem);
+            font-weight: 900;
+            line-height: 1.55;
+            letter-spacing: 0;
+            text-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+        }
+
         .media-scroll-item.yt-card {
             margin: 0;
         }
@@ -2628,15 +2659,39 @@
 
                 <!-- CRESTORY latest posts + YouTube動画（横スクロール統一） -->
                 <div class="media-scroll-row">
-                    <a class="media-scroll-item corp-crestory__card" href="https://crestory.crestix.jp/141/" target="_blank" rel="noopener noreferrer" aria-label="CRESTORY">
+                    <a class="media-scroll-item corp-crestory__card" href="https://crestory.crestix.jp/141/" target="_blank" rel="noopener noreferrer" aria-label="会社に入るな。会社をつくりに来い。Crestixが「世界一挑戦し続ける会社」を本気で掲げる理由の記事を読む">
                         <div class="corp-crestory__thumb">
-                            <img src="public_html/crestory.crestix.jp/assets/images/renshi.shimatani.png" alt="CRESTORY 採用メディア" loading="lazy">
+                            <img src="assets/images/wordpress/renshi.shimatani.png" alt="会社に入るな。会社をつくりに来い。Crestixが「世界一挑戦し続ける会社」を本気で掲げる理由" loading="lazy">
+                        </div>
+                        <div class="corp-crestory__meta">
+                            <span class="corp-crestory__label">CRESTORY</span>
+                            <h3 class="corp-crestory__title">会社に入るな。会社をつくりに来い。</h3>
+                        </div>
+                    </a>
+                    <a class="media-scroll-item corp-crestory__card" href="https://crestory.crestix.jp/%e3%80%8c%e3%81%8a%e5%89%8d%e3%80%81%e3%81%97%e3%81%a4%e3%81%93%e3%81%84%e3%81%aa%e3%80%8d%e8%87%aa%e5%88%86%e3%81%ae%e4%bc%9a%e7%a4%be%e3%82%92%e6%8c%81%e3%81%a4%e5%83%95%e3%81%8c%e3%80%81crestix/" target="_blank" rel="noopener noreferrer" aria-label="「お前、しつこいな」自分の会社を持つ僕が、Crestixの取締役になった理由の記事を読む">
+                        <div class="corp-crestory__thumb">
+                            <img src="assets/images/wordpress/sho-nishita.png" alt="「お前、しつこいな」自分の会社を持つ僕が、Crestixの取締役になった理由" loading="lazy">
+                        </div>
+                        <div class="corp-crestory__meta">
+                            <span class="corp-crestory__label">CRESTORY</span>
+                            <h3 class="corp-crestory__title">「お前、しつこいな」自分の会社を持つ僕が、Crestixの取締役になった理由</h3>
+                        </div>
+                    </a>
+                    <a class="media-scroll-item corp-crestory__card" href="https://crestory.crestix.jp/%e3%80%8c%e3%82%82%e3%81%a3%e3%81%a8%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%af%e3%81%9a%e3%80%8d%e3%82%92%e8%a8%bc%e6%98%8e%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ab%e3%80%81%e5%83%95%e3%81%af%e4%b8%8a/" target="_blank" rel="noopener noreferrer" aria-label="「もっとできるはず」を証明するために、僕は上場企業を辞めた。の記事を読む">
+                        <div class="corp-crestory__thumb">
+                            <img src="assets/images/wordpress/ryuushi-matsuoka.png" alt="「もっとできるはず」を証明するために、僕は上場企業を辞めた。" loading="lazy">
+                        </div>
+                        <div class="corp-crestory__meta">
+                            <span class="corp-crestory__label">CRESTORY</span>
+                            <h3 class="corp-crestory__title">「もっとできるはず」を証明するために、僕は上場企業を辞めた。</h3>
                         </div>
                     </a>
                     <div class="media-scroll-item yt-card">
                         <iframe
-                            src="https://www.youtube.com/embed/-3YIEpd3fVE"
-                            title="Crestix 動画1"
+                            src="https://www.youtube.com/embed/21BOWD8eFgU?si=FudqanZN5wdCl1p1"
+                            title="Crestix 動画"
+                            frameborder="0"
+                            referrerpolicy="strict-origin-when-cross-origin"
                             loading="lazy"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>

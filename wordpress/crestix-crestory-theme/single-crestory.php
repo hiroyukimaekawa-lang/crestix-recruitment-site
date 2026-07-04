@@ -5,6 +5,36 @@ the_post();
 $term     = crestix_crestory_first_term();
 $yt_url   = crestix_crestory_meta('crestory_youtube_url');
 $yt_embed = $yt_url ? crestory_get_youtube_embed($yt_url) : '';
+$show_member_cta = has_term('メンバー', 'crestory_category', get_the_ID());
+$member_cta_name = trim((string) crestix_crestory_meta('crestory_author_name'));
+$member_cta_title = trim((string) crestix_crestory_meta('crestory_author_title'));
+$member_profile_source = wp_strip_all_tags(get_the_content(null, false, get_the_ID()));
+
+if (!$member_cta_name || in_array($member_cta_name, ['Crestix編集部', '採用広報'], true)) {
+  if (preg_match('/プロフィール\s*([^\r\n｜|]+?)\s*[｜|]\s*([^\r\n]+)/u', $member_profile_source, $matches)) {
+    $member_cta_name = trim($matches[1]);
+    $member_cta_title = $member_cta_title ?: trim($matches[2]);
+  }
+}
+
+if (!$member_cta_name) {
+  foreach (['西田 翔', '前川 弘行', '松岡 龍士', '髙原 一真', '高原 一真', '魚井 風太', '水柿 裕香', '縞谷 廉史'] as $candidate_name) {
+    if (strpos(get_the_title() . $member_profile_source, $candidate_name) !== false) {
+      $member_cta_name = $candidate_name;
+      break;
+    }
+  }
+}
+
+$member_cta_label = $member_cta_name ? $member_cta_name . 'とカジュアル面談を申し込む' : 'カジュアル面談に申し込む';
+$member_cta_url = add_query_arg(
+  array_filter([
+    'member' => $member_cta_name,
+    'title'  => $member_cta_title,
+    'source' => get_permalink(),
+  ]),
+  crestix_crestory_recruit_url('casual-entry.html')
+);
 ?>
 <main class="crestory-page note-layout" id="cx-main">
   <div class="note-wrapper">
@@ -94,4 +124,11 @@ $yt_embed = $yt_url ? crestory_get_youtube_embed($yt_url) : '';
 
   </div>
 </main>
+<?php if ($show_member_cta): ?>
+  <a class="crestory-floating-casual-cta"
+     href="<?php echo esc_url($member_cta_url); ?>"
+     aria-label="<?php echo esc_attr($member_cta_label); ?>">
+    <?php echo esc_html($member_cta_label); ?>
+  </a>
+<?php endif; ?>
 <?php get_footer(); ?>
