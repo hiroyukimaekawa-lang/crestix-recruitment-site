@@ -183,7 +183,7 @@
         if (type === 'casual') {
           document.title = name + 'とカジュアル面談 | Crestix Careers';
           primary.textContent = name + 'よりご連絡させていただきます。';
-          secondary.textContent = 'カジュアル面談のお申し込みありがとうございます。日程調整について、担当者より順次ご連絡いたします。';
+          secondary.innerHTML = 'カジュアル面談のお申し込みありがとうございます。<br>日程調整について、担当者より順次ご連絡いたします。';
           returnLink.href = 'https://crestory.crestix.jp/';
           returnLink.innerHTML = 'CRESTORYへ戻る <i class="fa-solid fa-arrow-right"></i>';
         }
