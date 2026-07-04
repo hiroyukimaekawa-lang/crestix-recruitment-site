@@ -25,4 +25,14 @@
       tab.classList.add("is-active");
     });
   });
+
+  const floatingCasualCta = document.querySelector(".crestory-floating-casual-cta");
+  if (floatingCasualCta) {
+    const toggleFloatingCta = () => {
+      document.body.classList.toggle("crestory-has-scrolled", window.scrollY > 120);
+    };
+
+    toggleFloatingCta();
+    window.addEventListener("scroll", toggleFloatingCta, { passive: true });
+  }
 })();

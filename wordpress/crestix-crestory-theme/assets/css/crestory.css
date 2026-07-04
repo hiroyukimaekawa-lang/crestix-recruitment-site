@@ -2272,7 +2272,7 @@ body.single-crestory .crestory-single-meta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: min(720px, calc(100vw - 48px));
+  width: min(560px, calc(100vw - 48px));
   min-height: 64px;
   padding: 0 28px;
   border: 1px solid var(--color-orange);
@@ -2285,9 +2285,18 @@ body.single-crestory .crestory-single-meta {
   letter-spacing: 0.04em;
   text-decoration: none;
   text-align: center;
-  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(18px);
   box-shadow: 0 18px 44px rgba(255, 92, 0, 0.28);
-  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease;
+  transition: opacity 0.24s ease, transform 0.24s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease;
+}
+
+body.crestory-has-scrolled .crestory-floating-casual-cta,
+.crestory-floating-casual-cta:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%);
 }
 
 .crestory-floating-casual-cta:hover,
@@ -2325,12 +2334,17 @@ body.single-crestory .crestory-single-meta {
     right: max(16px, env(safe-area-inset-right));
     bottom: max(10px, env(safe-area-inset-bottom));
     left: max(16px, env(safe-area-inset-left));
-    transform: none;
+    transform: translateY(18px);
     width: auto;
     min-height: 58px;
     padding: 0 18px;
     border-radius: 8px;
     font-size: 0.9rem;
+  }
+
+  body.crestory-has-scrolled .crestory-floating-casual-cta,
+  .crestory-floating-casual-cta:focus-visible {
+    transform: none;
   }
 
   .crestory-floating-casual-cta:hover,

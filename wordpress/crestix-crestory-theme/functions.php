@@ -19,8 +19,8 @@ add_action("after_setup_theme", "crestix_crestory_setup");
 function crestix_crestory_assets() {
   wp_enqueue_style("crestix-crestory-fonts", "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap", [], null);
   wp_enqueue_style("crestix-crestory-icons", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css", [], "6.5.1");
-  wp_enqueue_style("crestix-crestory-style", get_template_directory_uri() . "/assets/css/main.css", ["crestix-crestory-fonts", "crestix-crestory-icons"], "1.2.4");
-  wp_enqueue_script("crestix-crestory-main", get_template_directory_uri() . "/assets/js/main.js", [], "1.0.0", true);
+  wp_enqueue_style("crestix-crestory-style", get_template_directory_uri() . "/assets/css/main.css", ["crestix-crestory-fonts", "crestix-crestory-icons"], "1.2.5");
+  wp_enqueue_script("crestix-crestory-main", get_template_directory_uri() . "/assets/js/main.js", [], "1.0.1", true);
 }
 add_action("wp_enqueue_scripts", "crestix_crestory_assets");
 
