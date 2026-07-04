@@ -622,6 +622,15 @@
             border-color: rgba(255, 92, 0, 0.25);
         }
 
+        @media(max-width: 640px) {
+            #members .section-title {
+                font-size: clamp(1.35rem, 5.4vw, 1.55rem);
+                line-height: 1.25;
+                letter-spacing: -0.02em;
+                white-space: nowrap;
+            }
+        }
+
         /* ── メンバーカード ホバー画像切り替え ── */
         .page-grid>.sidebar+.main-content #members .member-img {
             aspect-ratio: 2 / 3 !important;

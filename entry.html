@@ -175,6 +175,31 @@
             display: none !important;
         }
         @media (max-width: 640px) {
+            main {
+                overflow-x: hidden;
+            }
+
+            .entry-card {
+                padding: 1.25rem;
+                border-radius: 1.5rem;
+            }
+
+            .entry-section,
+            .entry-card .space-y-2 {
+                min-width: 0;
+            }
+
+            .form-input {
+                min-width: 0;
+                padding: 0.9rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .entry-help,
+            .entry-label {
+                overflow-wrap: anywhere;
+            }
+
             .entry-choice-grid,
             .entry-confirm-row {
                 grid-template-columns: 1fr;

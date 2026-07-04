@@ -14,7 +14,41 @@
     <link rel="stylesheet" href="assets/css/components/hero.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-</style>
+        @media (max-width: 640px) {
+            #job-list {
+                overflow-x: hidden;
+            }
+
+            #job-list .max-w-5xl {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            #job-list h2 {
+                align-items: flex-start;
+                min-width: 0;
+                font-size: clamp(1.22rem, 5.6vw, 1.45rem);
+                line-height: 1.35;
+                overflow-wrap: anywhere;
+                word-break: normal;
+            }
+
+            #job-list h2 > span {
+                flex: 0 0 auto;
+                margin-top: 0.12em;
+            }
+
+            #job-list .group {
+                border-radius: 1.6rem;
+                padding: 1.55rem;
+            }
+
+            #job-list p,
+            #job-list h4 {
+                overflow-wrap: anywhere;
+            }
+        }
+    </style>
 </head>
 <body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
 
