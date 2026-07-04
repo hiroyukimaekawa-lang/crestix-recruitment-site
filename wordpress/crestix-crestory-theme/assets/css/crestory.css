@@ -2266,26 +2266,27 @@ body.single-crestory .crestory-single-meta {
 
 .crestory-floating-casual-cta {
   position: fixed;
-  left: max(28px, env(safe-area-inset-left));
-  bottom: max(28px, env(safe-area-inset-bottom));
+  left: 50%;
+  bottom: max(22px, env(safe-area-inset-bottom));
   z-index: 950;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: min(320px, calc(100vw - 56px));
-  min-height: 46px;
-  padding: 0 18px;
+  width: min(720px, calc(100vw - 48px));
+  min-height: 64px;
+  padding: 0 28px;
   border: 1px solid var(--color-orange);
-  border-radius: 5px;
+  border-radius: 10px;
   background: var(--color-orange);
   color: #fff;
-  font-size: 0.78rem;
+  font-size: clamp(0.9rem, 1.4vw, 1.08rem);
   font-weight: 900;
   line-height: 1.4;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 14px 28px rgba(255, 92, 0, 0.18);
+  transform: translateX(-50%);
+  box-shadow: 0 18px 44px rgba(255, 92, 0, 0.28);
   transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease;
 }
 
@@ -2294,8 +2295,8 @@ body.single-crestory .crestory-single-meta {
   background: var(--color-orange-dark);
   border-color: var(--color-orange-dark);
   color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 18px 36px rgba(255, 92, 0, 0.24);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 22px 52px rgba(255, 92, 0, 0.34);
 }
 
 .crestory-floating-casual-cta:visited {
@@ -2324,9 +2325,16 @@ body.single-crestory .crestory-single-meta {
     right: max(16px, env(safe-area-inset-right));
     bottom: max(10px, env(safe-area-inset-bottom));
     left: max(16px, env(safe-area-inset-left));
+    transform: none;
     width: auto;
-    min-height: 48px;
-    padding: 0 14px;
-    font-size: 0.76rem;
+    min-height: 58px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .crestory-floating-casual-cta:hover,
+  .crestory-floating-casual-cta:focus-visible {
+    transform: translateY(-2px);
   }
 }

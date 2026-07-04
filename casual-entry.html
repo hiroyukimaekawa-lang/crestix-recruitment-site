@@ -346,9 +346,11 @@
                 });
 
                 if (res.ok) {
-                    inputView.classList.add('entry-hidden');
-                    completeView.classList.remove('entry-hidden');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    const thanksParams = new URLSearchParams({
+                        type: 'casual',
+                        name: displayMember
+                    });
+                    window.location.href = `thanks.html?${thanksParams.toString()}`;
                 } else {
                     alert('送信に失敗しました。時間をおいて再度お試しください。');
                     sendButton.disabled = false;
