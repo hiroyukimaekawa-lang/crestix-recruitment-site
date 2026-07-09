@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handling of Personal Information | Crestix — 個人情報の取り扱いについて</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
+    <link rel="stylesheet" href="assets/css/components/hero.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        body {
+            font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+            color: #171717;
+            background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .privacy-handling-hero {
+            padding: 150px 24px 72px;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .privacy-handling-inner {
+            width: min(calc(100% - 40px), 1060px);
+            margin: 0 auto;
+        }
+
+        .privacy-handling-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            color: #8a8f98;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: .12em;
+        }
+
+        .privacy-handling-breadcrumb a {
+            color: #171717;
+            text-decoration: none;
+        }
+
+        .privacy-handling-title-en {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.8rem, 7vw, 6.5rem);
+            font-weight: 900;
+            line-height: .95;
+            letter-spacing: -.05em;
+            color: #0f172a;
+        }
+
+        .privacy-handling-title-ja {
+            margin-top: 18px;
+            font-size: clamp(1.1rem, 2.6vw, 1.75rem);
+            font-weight: 900;
+            color: #ff5c00;
+            letter-spacing: .04em;
+        }
+
+        .privacy-handling-main {
+            padding: 76px 0 110px;
+            background: #fff;
+        }
+
+        .privacy-handling-document {
+            max-width: 860px;
+        }
+
+        .privacy-handling-meta {
+            margin-bottom: 42px;
+            color: #262626;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 2;
+        }
+
+        .privacy-handling-lead {
+            margin-bottom: 54px;
+            color: #374151;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 2.15;
+        }
+
+        .privacy-handling-section {
+            padding-top: 36px;
+            margin-top: 36px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .privacy-handling-section h2 {
+            margin-bottom: 18px;
+            color: #111827;
+            font-size: 1.35rem;
+            font-weight: 900;
+            line-height: 1.55;
+            letter-spacing: .01em;
+        }
+
+        .privacy-handling-section h3 {
+            margin-top: 28px;
+            margin-bottom: 12px;
+            color: #1f2937;
+            font-size: 1.05rem;
+            font-weight: 900;
+            line-height: 1.7;
+        }
+
+        .privacy-handling-section p,
+        .privacy-handling-section li,
+        .privacy-handling-address {
+            color: #4b5563;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 2.05;
+        }
+
+        .privacy-handling-section ul {
+            display: grid;
+            gap: 6px;
+            margin: 12px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .privacy-handling-section li {
+            position: relative;
+            padding-left: 1.2em;
+        }
+
+        .privacy-handling-section li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: .95em;
+            width: 5px;
+            height: 5px;
+            border-radius: 999px;
+            background: #ff5c00;
+        }
+
+        .privacy-handling-numbered {
+            display: grid;
+            gap: 4px;
+            margin-top: 12px;
+        }
+
+        .privacy-handling-address {
+            padding: 22px 26px;
+            background: #f8fafc;
+            border-left: 5px solid #ff5c00;
+        }
+
+        .privacy-handling-back {
+            margin-top: 74px;
+            padding-top: 34px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 640px) {
+            .privacy-handling-hero {
+                padding: 126px 0 54px;
+            }
+
+            .privacy-handling-inner {
+                width: min(calc(100% - 28px), 1060px);
+            }
+
+            .privacy-handling-breadcrumb {
+                margin-bottom: 34px;
+            }
+
+            .privacy-handling-main {
+                padding: 56px 0 82px;
+            }
+
+            .privacy-handling-section {
+                padding-top: 30px;
+                margin-top: 30px;
+            }
+
+            .privacy-handling-section h2 {
+                font-size: 1.2rem;
+            }
+
+            .privacy-handling-section p,
+            .privacy-handling-section li,
+            .privacy-handling-address {
+                font-size: 14px;
+                line-height: 2;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-crestix-charcoal font-sans selection:bg-crestix-orange selection:text-white">
+
+<!-- ═══ FULLSCREEN MENU ═══ -->
+    <div id="fullscreen-menu">
+        <div class="fm-topbar">
+            <div class="fm-logo" onclick="location.href='index.html'">CRESTIX</div>
+            <button class="fm-close-btn" onclick="cxToggleMenu()" aria-label="メニューを閉じる">
+                CLOSE
+                <span class="fm-close-icon">
+                    <i></i><i></i><i></i>
+                </span>
+            </button>
+        </div>
+        <nav class="fm-nav">
+            <div class="fm-nav-group">
+                <a href="index.html" class="fm-nav-item fm-item-1" onclick="cxToggleMenu()">Top / Home</a>
+            </div>
+            <div class="fm-nav-group">
+                <a href="corporate.html" class="fm-nav-item fm-item-2" onclick="cxToggleMenu()">Corporate</a>
+                <div class="fm-nav-sub">
+                    <a href="message.html" onclick="cxToggleMenu()">トップメッセージ</a>
+                    <a href="corporate.html#profile" onclick="cxToggleMenu()">会社概要</a>
+                    <a href="mvv.html" onclick="cxToggleMenu()">Vision / Mission / Value</a>
+                </div>
+            </div>
+            <div class="fm-nav-group">
+                <a href="business.html" class="fm-nav-item fm-item-3" onclick="cxToggleMenu()">Service</a>
+                <div class="fm-nav-sub">
+                    <a href="business.html" onclick="cxToggleMenu()">事業一覧</a>
+                    <a href="service-division1.html" onclick="cxToggleMenu()">第1営業部（クリニック特化）</a>
+                    <a href="service-hd.html" onclick="cxToggleMenu()">HD事業部（店舗グロース）</a>
+                    <a href="ai-sales.html" onclick="cxToggleMenu()">AI Sales Enablement</a>
+                </div>
+            </div>
+            <div class="fm-nav-group">
+                <a href="members.html" class="fm-nav-item fm-item-4" onclick="cxToggleMenu()">Members</a>
+                <div class="fm-nav-sub">
+                    <a href="members.html" onclick="cxToggleMenu()">メンバー一覧</a>
+                    <a href="message.html" onclick="cxToggleMenu()">代表インタビュー</a>
+                    <a href="mvv.html" onclick="cxToggleMenu()">働く環境 / カルチャー</a>
+                    <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORY</a>
+                </div>
+            </div>
+            <div class="fm-nav-group">
+                <a href="https://crestory.crestix.jp/" class="fm-nav-item fm-item-5" onclick="cxToggleMenu()">Crestory</a>
+                <div class="fm-nav-sub">
+                    <a href="https://crestory.crestix.jp/" onclick="cxToggleMenu()">CRESTORYトップ</a>
+                    <a href="message.html" onclick="cxToggleMenu()">代表メッセージ</a>
+                    <a href="members.html" onclick="cxToggleMenu()">メンバーインタビュー</a>
+                </div>
+            </div>
+            <div class="fm-nav-group">
+                <a href="b2b-contact.html" class="fm-nav-item fm-item-6" onclick="cxToggleMenu()">Contact</a>
+            </div>
+        </nav>
+        <div class="fm-footer">
+            <a href="entry.html" onclick="cxToggleMenu()" class="fm-cta-btn">Entry / Careers</a>
+            <span class="fm-copy">&copy; 2026 Crestix Inc.</span>
+        </div>
+    </div>
+
+    <!-- ═══ NAVIGATION ═══ -->
+<nav id="cx-navbar" aria-label="グローバルナビゲーション">
+  <div class="cx-nav-left">
+    <a href="index.html" class="cx-nav-logo-link">
+      <img id="cx-nav-logo"
+           src="assets/images/office/crestix-header.png"
+           alt="Crestix"
+           onerror="this.style.display='none'">
+    </a>
+  </div>
+
+  <div class="cx-nav-center" id="cx-nav-links">
+    <div class="cx-mega-trigger" data-mega="mega-corporate">
+      <a href="corporate.html" class="cx-nav-link" data-page="corporate">Corporate</a>
+      <div class="cx-mega-menu" id="mega-corporate">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">CORPORATE</h3>
+            <p class="cx-mega-subtitle">会社を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="message.html" class="cx-mega-item"><span>トップメッセージ</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="corporate.html#profile" class="cx-mega-item"><span>会社概要</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="mvv.html" class="cx-mega-item"><span>Vision / Mission / Value</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cx-mega-trigger" data-mega="mega-service">
+      <a href="business.html" class="cx-nav-link" data-page="business">Service</a>
+      <div class="cx-mega-menu" id="mega-service">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">SERVICE</h3>
+            <p class="cx-mega-subtitle">事業を知る</p>
+          </div>
+          <div class="mega-service">
+            <div class="mega-service__overview">
+              <a href="business.html" class="mega-service__overview-link">
+                事業一覧
+                <span class="mega-service__arrow">→</span>
+              </a>
+            </div>
+            <div class="mega-service__list">
+              <a href="service-division1.html" class="mega-service__item">
+                <span class="mega-service__item-label">第1営業部</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+              <a href="service-hd.html" class="mega-service__item">
+                <span class="mega-service__item-label">HD事業部</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+              <a href="ai-sales.html" class="mega-service__item">
+                <span class="mega-service__item-label">AI Sales Enablement（営業代行 / 営業支援事業）</span>
+                <span class="mega-service__item-arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cx-mega-trigger" data-mega="mega-members">
+      <a href="members.html" class="cx-nav-link" data-page="members">Members</a>
+      <div class="cx-mega-menu" id="mega-members">
+        <div class="cx-mega-container">
+          <div class="cx-mega-header">
+            <h3 class="cx-mega-title">MEMBERS</h3>
+            <p class="cx-mega-subtitle">人を知る</p>
+          </div>
+          <div class="cx-mega-grid">
+            <a href="members.html" class="cx-mega-item"><span>カジュアル面談</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+            <a href="jobs.html" class="cx-mega-item"><span>職種一覧</span><i class="fa-solid fa-arrow-right cx-mega-arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="https://crestory.crestix.jp/" class="cx-nav-link" data-page="news">Crestory</a>
+  </div>
+
+  <div class="cx-nav-right">
+    <a href="entry.html" class="cx-nav-entry-btn">Entry</a>
+    <button id="cx-hamburger" onclick="cxToggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+      <span class="cx-ham-lines" id="cx-ham-lines">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<main>
+    <section class="privacy-handling-hero">
+        <div class="privacy-handling-inner">
+            <div class="privacy-handling-breadcrumb">
+                <a href="index.html"><i class="fa-solid fa-house"></i></a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span>個人情報の取り扱いについて</span>
+            </div>
+            <h1 class="privacy-handling-title-en">Handling of Personal Information</h1>
+            <p class="privacy-handling-title-ja">個人情報の取り扱いについて</p>
+        </div>
+    </section>
+
+    <section class="privacy-handling-main">
+        <div class="privacy-handling-inner">
+            <article class="privacy-handling-document">
+                <div class="privacy-handling-meta">
+                    <p>2026年7月9日制定</p>
+                    <p>株式会社Crestix</p>
+                    <p>代表取締役　縞谷 蓮志</p>
+                </div>
+
+                <p class="privacy-handling-lead">株式会社Crestix（以下「当社」といいます）は、当社の事業活動、各種サービス、Webサイト、SNS、YouTubeチャンネル、イベント、採用活動、お問い合わせ対応等を通じて取得する個人情報の重要性を認識し、個人情報の保護に関する法律その他関連法令を遵守するとともに、以下のとおり個人情報を適切に取り扱います。</p>
+
+                <section class="privacy-handling-section">
+                    <h2>1．用語の定義</h2>
+                    <p>本書における「個人情報」とは、個人情報の保護に関する法律に定める個人情報をいいます。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>2．個人情報の利用目的</h2>
+                    <p>当社は、取得した個人情報を、以下の目的の範囲内で利用します。</p>
+                    <h3>(1) お問い合わせ・ご相談に関する情報</h3>
+                    <ul>
+                        <li>お問い合わせ内容への回答、連絡、確認のため</li>
+                        <li>タイアップ、媒体資料請求、ご出演相談、取材相談等への対応のため</li>
+                        <li>資料送付、打ち合わせ日程調整、各種ご案内のため</li>
+                        <li>お問い合わせ履歴の管理、対応品質向上のため</li>
+                    </ul>
+                    <h3>(2) 「青くて、熱い。」その他当社が運営するメディア・チャンネルに関する情報</h3>
+                    <ul>
+                        <li>出演希望企業様、タイアップ希望企業様、取材対象者様との連絡のため</li>
+                        <li>企画内容、出演可否、取材条件、掲載内容等の確認のため</li>
+                        <li>番組、記事、動画、SNS投稿、広告配信等の制作・運営・改善のため</li>
+                        <li>媒体資料、企画書、サービス案内等の送付のため</li>
+                        <li>メディア運営に関する広報・営業活動のため</li>
+                    </ul>
+                    <h3>(3) お取引先様・見込み顧客に関する情報</h3>
+                    <ul>
+                        <li>当社サービスの提案、案内、提供、契約、請求、入金管理、サポートのため</li>
+                        <li>商談、打ち合わせ、契約手続、業務連絡のため</li>
+                        <li>当社サービスの利用状況、ニーズ、課題等の把握のため</li>
+                        <li>サービス品質向上、新サービス開発、マーケティング活動のため</li>
+                        <li>セミナー、イベント、キャンペーン、メールマガジン等のご案内のため</li>
+                    </ul>
+                    <h3>(4) 採用応募者に関する情報</h3>
+                    <ul>
+                        <li>採用選考、面接日程調整、選考結果の連絡のため</li>
+                        <li>応募者情報の管理、本人確認、適性確認のため</li>
+                        <li>入社手続、雇用条件の確認、入社後の人事管理のため</li>
+                        <li>採用活動の改善、採用広報、応募者対応品質向上のため</li>
+                    </ul>
+                    <h3>(5) 従業員・退職者に関する情報</h3>
+                    <ul>
+                        <li>雇用管理、人事労務管理、給与計算、社会保険、税務、福利厚生、健康管理のため</li>
+                        <li>社内連絡、業務管理、評価、配置、教育研修、キャリア支援のため</li>
+                        <li>退職後の諸手続、連絡、法令上必要な対応のため</li>
+                    </ul>
+                    <h3>(6) イベント・セミナー等で取得する情報</h3>
+                    <ul>
+                        <li>イベント、セミナー、説明会等の運営管理のため</li>
+                        <li>参加者への連絡、資料送付、アンケート依頼のため</li>
+                        <li>当社サービス、メディア、採用、広報活動に関するご案内のため</li>
+                    </ul>
+                    <h3>(7) Webサイト・フォーム・SNS等で取得する情報</h3>
+                    <ul>
+                        <li>Webサイト、フォーム、SNS、広告等の運営、改善、分析のため</li>
+                        <li>アクセス解析、広告効果測定、利便性向上のため</li>
+                        <li>不正利用、迷惑行為、セキュリティリスクへの対応のため</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>3．個人情報提供の任意性</h2>
+                    <p>個人情報の当社への提供は任意です。ただし、必要な情報をご提供いただけない場合、お問い合わせへの回答、資料送付、商談対応、採用選考、各種サービスの提供等ができない場合があります。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>4．個人情報の第三者提供</h2>
+                    <p>当社は、原則として、本人の同意なく個人情報を第三者に提供することはありません。</p>
+                    <p>ただし、以下の場合には、本人の同意なく個人情報を提供することがあります。</p>
+                    <div class="privacy-handling-numbered">
+                        <p>(1) 法令に基づく場合</p>
+                        <p>(2) 人の生命、身体または財産の保護のために必要があり、本人の同意を得ることが困難な場合</p>
+                        <p>(3) 公衆衛生の向上または児童の健全な育成の推進のために特に必要があり、本人の同意を得ることが困難な場合</p>
+                        <p>(4) 国の機関、地方公共団体、またはその委託を受けた者が法令の定める事務を遂行することに協力する必要があり、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合</p>
+                        <p>(5) 事業承継、合併、会社分割、事業譲渡その他の理由により、当社の事業の全部または一部が承継される場合</p>
+                    </div>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>5．個人情報の委託</h2>
+                    <p>当社は、利用目的の達成に必要な範囲で、個人情報の取り扱いを外部事業者に委託することがあります。</p>
+                    <p>この場合、当社は、委託先に対して適切な管理体制を求めるとともに、契約等により個人情報の適正管理、秘密保持、漏えい防止等に必要な事項を定め、適切に監督します。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>6．共同利用</h2>
+                    <p>現時点において、当社は個人情報の共同利用を予定していません。</p>
+                    <p>今後、グループ会社、提携会社、関連事業者等との間で個人情報を共同利用する場合には、共同利用する個人情報の項目、共同利用者の範囲、利用目的、管理責任者等をあらかじめ公表します。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>7．第三者提供に関する免責事項</h2>
+                    <p>以下の場合、第三者による個人情報の取得について、当社は当社に故意または過失がある場合を除き、責任を負いません。</p>
+                    <div class="privacy-handling-numbered">
+                        <p>(1) 本人自らが、当社サービス、外部サービス、SNS、フォーム、メール、その他の手段を通じて第三者に個人情報を提供した場合</p>
+                        <p>(2) 本人が公開した情報、投稿した情報、または本人の行動履歴等により、第三者が本人を識別できるに至った場合</p>
+                        <p>(3) 当社Webサイト、SNS、メール等からリンクされる外部サイトにおいて、本人が個人情報を提供した場合</p>
+                        <p>(4) 本人以外の者が、本人を識別できる情報、ID、パスワード等を入手・使用した場合</p>
+                        <p>(5) 当社の責めに帰すべき事由がない場合</p>
+                    </div>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>8．Cookie等の利用</h2>
+                    <p>当社は、Webサイトの利便性向上、アクセス解析、広告効果測定、サービス改善、マーケティング活動のために、Cookie、広告識別子、アクセスログ、JavaScript等の技術を利用する場合があります。</p>
+                    <p>これにより取得する情報には、閲覧ページ、アクセス日時、利用環境、参照元、広告接触情報等が含まれる場合がありますが、単体で個人を特定するものではありません。</p>
+                    <p>Cookieの利用を希望されない場合、ブラウザの設定によりCookieを拒否することができます。ただし、その場合、Webサイトまたは各種サービスの一部機能が利用できない場合があります。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>9．アクセス解析ツール等の利用</h2>
+                    <p>当社は、Webサイトやフォーム等の利用状況の把握、改善、広告効果測定のため、Google Analyticsその他のアクセス解析ツール、広告配信ツール、フォーム管理ツール等を利用する場合があります。</p>
+                    <p>これらのツールにより収集される情報は、各ツール提供事業者のプライバシーポリシーに基づき管理されます。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>10．応対記録の保存</h2>
+                    <p>当社は、お問い合わせ対応、商談、打ち合わせ、面接、オンライン会議、電話対応等において、応対内容の正確な記録、品質向上、トラブル防止、社内確認のため、録音、録画、議事録作成、チャットログ保存等を行う場合があります。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>11．統計データの利用</h2>
+                    <p>当社は、取得した情報をもとに、個人を特定できない形で統計データ、分析データ、レポート等を作成することがあります。</p>
+                    <p>当社は、これらの個人を特定できない統計データを、サービス改善、事業開発、営業活動、採用活動、広報活動、資料作成等の目的で利用することがあります。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>12．安全管理措置</h2>
+                    <p>当社は、個人情報の漏えい、滅失、毀損、不正アクセス、改ざん等を防止するため、必要かつ適切な安全管理措置を講じます。</p>
+                    <h3>(1) 組織的安全管理措置</h3>
+                    <ul>
+                        <li>個人情報の取り扱いに関する責任者を定めます。</li>
+                        <li>個人情報の取り扱い状況を確認し、必要に応じて運用を見直します。</li>
+                        <li>漏えい等の事故が発生した場合の報告・対応体制を整備します。</li>
+                    </ul>
+                    <h3>(2) 人的安全管理措置</h3>
+                    <ul>
+                        <li>従業員に対して、個人情報の適切な取り扱いに関する教育・周知を行います。</li>
+                        <li>業務上知り得た個人情報について、秘密保持を徹底します。</li>
+                    </ul>
+                    <h3>(3) 物理的安全管理措置</h3>
+                    <ul>
+                        <li>個人情報を取り扱う機器、書類、電子媒体等について、盗難、紛失、漏えいを防止するための管理を行います。</li>
+                        <li>必要に応じて、入退室管理、施錠管理、廃棄時の適切な処理等を行います。</li>
+                    </ul>
+                    <h3>(4) 技術的安全管理措置</h3>
+                    <ul>
+                        <li>個人情報へのアクセス権限を必要最小限に制限します。</li>
+                        <li>不正アクセス、マルウェア、情報漏えい等を防止するため、必要なセキュリティ対策を実施します。</li>
+                        <li>クラウドサービス、業務ツール等を利用する場合、適切なアクセス管理、認証管理、権限管理を行います。</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>13．外国にある第三者・クラウドサービスの利用</h2>
+                    <p>当社は、業務上必要な範囲で、外国にサーバーを有するクラウドサービス、業務管理ツール、フォーム管理ツール、解析ツール等を利用する場合があります。</p>
+                    <p>その場合、当社は、利用するサービスの安全管理体制、プライバシーポリシー、セキュリティ対策等を確認し、必要に応じて適切な措置を講じます。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>14．開示、訂正、利用停止等の求めに応じる手続</h2>
+                    <p>本人から、当社が保有する個人情報について、利用目的の通知、開示、訂正、追加、削除、利用停止、消去、第三者提供の停止等の請求があった場合、当社は、本人確認を行った上で、法令に基づき合理的な範囲で速やかに対応します。</p>
+                    <p>ただし、本人または第三者の生命、身体、財産その他の権利利益を害するおそれがある場合、当社の業務遂行に著しい支障を及ぼすおそれがある場合、または法令に違反する場合には、請求に応じられない場合があります。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>15．本書の変更</h2>
+                    <p>当社は、法令の変更、事業内容の変更、サービス内容の変更、運用改善等に応じて、本書の内容を変更することがあります。</p>
+                    <p>変更後の内容は、当社Webサイトへの掲載、フォーム上での表示、その他当社が適切と判断する方法により公表します。</p>
+                </section>
+
+                <section class="privacy-handling-section">
+                    <h2>16．個人情報保護管理者およびお問い合わせ先</h2>
+                    <p>当社は、個人情報を適切かつ安全に管理するため、以下のとおり個人情報に関する問い合わせ窓口を設置します。</p>
+                    <div class="privacy-handling-address">
+                        <p>株式会社Crestix</p>
+                        <p>個人情報保護管理者：代表取締役　縞谷 蓮志</p>
+                        <p>住所：〒101-0054</p>
+                        <p>東京都千代田区神田錦町1-21-2</p>
+                        <p>大手町モダンビルディング4F</p>
+                    </div>
+                    <p class="mt-5">個人情報に関するお問い合わせ、苦情、相談、開示等の請求については、上記住所宛に書面にてご連絡ください。</p>
+                    <p>なお、開示等の請求にあたっては、本人確認のために必要な書類の提出をお願いする場合があります。</p>
+                </section>
+
+                <div class="privacy-handling-back">
+                    <a href="index.html" class="text-crestix-orange font-black tracking-widest uppercase text-sm">← Back to Top</a>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="bg-black text-white select-none p-0">
+    <div class="max-w-5xl mx-auto px-6 py-16 lg:py-20 text-center">
+        <a href="index.html" class="footer-logo font-poppins font-black text-4xl lg:text-5xl tracking-tighter uppercase text-white no-underline" style="display:block; text-align:center;"><img src="assets/images/office/crestix-header.png" alt="Crestix" style="height:82px; width:auto; filter:brightness(0) invert(1); display:inline-block;"></a>
+        <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs font-black tracking-[0.12em] text-white/80">
+            <a href="sitemap.html" class="hover:text-crestix-orange transition-colors">サイトマップ</a>
+            <a href="privacy.html" class="hover:text-crestix-orange transition-colors">プライバシーポリシー</a>
+            <a href="terms.html" class="hover:text-crestix-orange transition-colors">サイト利用規約</a>
+            <a href="b2b-contact.html" class="hover:text-crestix-orange transition-colors">お問い合わせ</a>
+        </nav>
+        <div class="mt-4 text-center">
+            <a href="privacyhandling.html" class="text-[10px] font-bold tracking-normal text-white/40 hover:text-white/70 transition-colors">個人情報の取り扱いについて</a>
+        </div>
+        <div class="mt-8 flex items-center justify-center gap-4">
+            <a href="https://crestory.crestix.jp/" aria-label="CRESTORY" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-solid fa-book-open text-sm"></i></a>
+            <a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white text-black inline-flex items-center justify-center hover:bg-crestix-orange hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
+            <a href="entry.html" aria-label="Entry" class="h-10 px-6 rounded-full border-2 border-white text-white inline-flex items-center justify-center text-sm font-black hover:border-crestix-orange hover:text-crestix-orange transition-colors">Entry</a>
+        </div>
+        <p class="mt-10 font-poppins text-xs font-black tracking-wide text-white/75">Copyright &copy; Crestix Inc.</p>
+    </div>
+</footer>
+
+    <script src="assets/js/modals.js"></script>
+    <script src="assets/js/navbar.js"></script>
+</body>
+</html>
