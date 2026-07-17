@@ -31,6 +31,15 @@ add_filter("show_admin_bar", "__return_false");
 add_filter("excerpt_length", fn() => 80);
 add_filter("excerpt_more", fn() => "...");
 
+function crestix_crestory_legacy_redirects() {
+  $request_path = trim(parse_url($_SERVER["REQUEST_URI"] ?? "", PHP_URL_PATH) ?? "", "/");
+  if ($request_path === "matsuoka-interview") {
+    wp_safe_redirect("https://crestory.crestix.jp/%e3%80%8c%e3%82%82%e3%81%a3%e3%81%a8%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%af%e3%81%9a%e3%80%8d%e3%82%92%e8%a8%bc%e6%98%8e%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ab%e3%80%81%e5%83%95%e3%81%af%e4%b8%8a/", 301);
+    exit;
+  }
+}
+add_action("template_redirect", "crestix_crestory_legacy_redirects", 1);
+
 function crestix_register_crestory() {
   register_post_type("crestory", [
     "labels" => [
