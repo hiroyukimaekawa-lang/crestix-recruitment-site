@@ -33,8 +33,14 @@ add_filter("excerpt_more", fn() => "...");
 
 function crestix_crestory_legacy_redirects() {
   $request_path = trim(parse_url($_SERVER["REQUEST_URI"] ?? "", PHP_URL_PATH) ?? "", "/");
-  if ($request_path === "matsuoka-interview") {
-    wp_safe_redirect("https://crestory.crestix.jp/%e3%80%8c%e3%82%82%e3%81%a3%e3%81%a8%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%af%e3%81%9a%e3%80%8d%e3%82%92%e8%a8%bc%e6%98%8e%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ab%e3%80%81%e5%83%95%e3%81%af%e4%b8%8a/", 301);
+  $legacy_redirects = [
+    "nishida-interview" => "https://crestory.crestix.jp/%e3%80%8c%e3%81%8a%e5%89%8d%e3%80%81%e3%81%97%e3%81%a4%e3%81%93%e3%81%84%e3%81%aa%e3%80%8d%e8%87%aa%e5%88%86%e3%81%ae%e4%bc%9a%e7%a4%be%e3%82%92%e6%8c%81%e3%81%a4%e5%83%95%e3%81%8c%e3%80%81crestix/",
+    "maekawa-interview" => "https://crestory.crestix.jp/%e3%80%8c%e3%82%84%e3%82%89%e3%81%9a%e3%81%ab%e8%ab%a6%e3%82%81%e3%82%8b%e3%81%aa%e3%82%89%e3%80%81%e3%82%84%e3%81%a3%e3%81%a6%e3%81%8b%e3%82%89%e8%ab%a6%e3%82%81%e3%82%8c%e3%81%b0%e3%81%84%e3%81%84/",
+    "matsuoka-interview" => "https://crestory.crestix.jp/%e3%80%8c%e3%82%82%e3%81%a3%e3%81%a8%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%af%e3%81%9a%e3%80%8d%e3%82%92%e8%a8%bc%e6%98%8e%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ab%e3%80%81%e5%83%95%e3%81%af%e4%b8%8a/",
+    "takahara-interview" => "https://crestory.crestix.jp/%e9%a0%ad%e3%82%92%e4%bd%bf%e3%81%84%e3%80%81%e8%aa%b0%e3%82%88%e3%82%8a%e3%82%82%e9%87%8f%e3%82%92%e8%bf%bd%e3%81%86%e3%80%82crestix%e3%81%ae%e3%83%ad%e3%82%b8%e3%82%ab%e3%83%ab%e4%bd%93/",
+  ];
+  if (isset($legacy_redirects[$request_path])) {
+    wp_safe_redirect($legacy_redirects[$request_path], 301);
     exit;
   }
 }
