@@ -7,7 +7,7 @@
       role: 'COO',
       area: '経営・事業推進',
       media: 'assets/images/video/nishita.mp4',
-      interview: 'https://crestory.crestix.jp/nishida-interview/',
+      interview: 'https://crestory.crestix.jp/%e3%80%8c%e3%81%8a%e5%89%8d%e3%80%81%e3%81%97%e3%81%a4%e3%81%93%e3%81%84%e3%81%aa%e3%80%8d%e8%87%aa%e5%88%86%e3%81%ae%e4%bc%9a%e7%a4%be%e3%82%92%e6%8c%81%e3%81%a4%e5%83%95%e3%81%8c%e3%80%81crestix/',
       lead: 'Crestixの事業づくり・組織づくりについて何でも話します',
       talkParagraphs: [
         'Crestixは、「世界一挑戦し続ける会社へ」というVisionを掲げ、営業代行、集客支援、AI/DX、新規事業、キャリア教育など、複数の領域に挑戦している会社です。\n完成された会社というより、まだまだ未完成。だからこそ、事業も組織もカルチャーも、自分たちの手でつくっていける面白さがあります。',
@@ -33,7 +33,7 @@
       role: '取締役',
       area: 'DX責任者／ISリーダー',
       media: 'assets/images/video/mae1.mp4',
-      interview: 'https://crestory.crestix.jp/maekawa-interview/',
+      interview: 'https://crestory.crestix.jp/%e3%80%8c%e3%82%84%e3%82%89%e3%81%9a%e3%81%ab%e8%ab%a6%e3%82%81%e3%82%8b%e3%81%aa%e3%82%89%e3%80%81%e3%82%84%e3%81%a3%e3%81%a6%e3%81%8b%e3%82%89%e8%ab%a6%e3%82%81%e3%82%8c%e3%81%b0%e3%81%84%e3%81%84/',
       lead: 'CrestixのDXについて何でも話します',
       talkParagraphs: [
         'Crestixは、「本気の挑戦がPricelessを届ける」という考え方を大切にしている会社です。\n僕は2025年4月にCrestixへ参画し、現在は取締役として、DX責任者／ISリーダーを担っています。\n主にHD事業部のIS組織を中心に、数値管理、施策立案、改善、仕組み化、メンバーのマネジメントを見ています。',
@@ -59,7 +59,7 @@
       role: '第一営業部 FS',
       area: '医療機関向けフィールドセールス',
       media: 'assets/images/video/matuoka.mp4',
-      interview: 'https://crestory.crestix.jp/matsuoka-interview/',
+      interview: 'https://crestory.crestix.jp/%e3%80%8c%e3%82%82%e3%81%a3%e3%81%a8%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%af%e3%81%9a%e3%80%8d%e3%82%92%e8%a8%bc%e6%98%8e%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ab%e3%80%81%e5%83%95%e3%81%af%e4%b8%8a/',
       lead: 'Crestixのクリニック向け営業と、営業として成長するリアルを話します',
       talkParagraphs: [
         'Crestixは、営業代行や集客支援、AI/DXなどを通じて、顧客の事業成長に向き合っている会社です。\n僕は第一営業部のFSリーダーとして、クリニック向けの集客支援営業を担当しています。',
@@ -84,6 +84,7 @@
       role: 'Marketing MG',
       area: 'マーケティング・集患支援',
       media: 'assets/images/video/kazumatakahara.mp4',
+      interview: 'https://crestory.crestix.jp/%e9%a0%ad%e3%82%92%e4%bd%bf%e3%81%84%e3%80%81%e8%aa%b0%e3%82%88%e3%82%8a%e3%82%82%e9%87%8f%e3%82%92%e8%bf%bd%e3%81%86%e3%80%82crestix%e3%81%ae%e3%83%ad%e3%82%b8%e3%82%ab%e3%83%ab%e4%bd%93/',
       lead: 'Crestixのマーケティング/IS組織と、量も質も追う営業について何でも話します',
       talkParagraphs: [
         'Crestixは、「世界一挑戦し続ける会社へ」というVisionのもと、営業代行、集客支援、AI/DX、新規事業など、複数の事業に挑戦している会社です。\n僕はIS統括責任者として、HD事業部と第一事業部のISを中心に、全体管理やマネジメントを担っています。',
