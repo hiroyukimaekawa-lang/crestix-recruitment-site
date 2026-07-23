@@ -1262,6 +1262,33 @@ input:focus, select:focus, textarea:focus {
     overflow-wrap: break-word;
 }
 
+.service-detail-section__text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: fit-content;
+    margin-top: 1.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid currentColor;
+    color: var(--orange);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.service-detail-section__text-link:hover {
+    gap: 0.9rem;
+    color: #d94e00;
+}
+
+.service-detail-section__text-link:focus-visible {
+    outline: 3px solid rgba(255, 92, 0, 0.3);
+    outline-offset: 4px;
+}
+
 @keyframes crestoryThumbLoading {
     0% { background-position: 120% 0; }
     100% { background-position: -120% 0; }
