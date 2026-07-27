@@ -38,7 +38,7 @@ $ogp_image = crestix_crestory_meta('crestory_ogp_image');
 
     <div class="note-card-thumb">
       <?php if (has_post_thumbnail()): ?>
-        <?php the_post_thumbnail('crestory-card'); ?>
+        <?php the_post_thumbnail('crestory-hero'); ?>
       <?php elseif ($ogp_image): ?>
         <img src="<?php echo esc_url($ogp_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" loading="lazy">
       <?php else: ?>
