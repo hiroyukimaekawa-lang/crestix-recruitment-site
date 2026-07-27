@@ -1031,9 +1031,9 @@ button {
 }
 
 .note-profile-head .custom-logo-link {
-  width: 64px;
+  width: 96px;
   height: 64px;
-  flex: 0 0 64px;
+  flex: 0 0 96px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1044,7 +1044,7 @@ button {
   display: block;
   width: 100%;
   height: 100%;
-  max-width: 64px;
+  max-width: 96px;
   max-height: 64px;
   object-fit: contain;
 }
@@ -1707,16 +1707,25 @@ button {
   .note-sidebar-posts { display: none; }
 
   .note-profile-block {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    align-items: flex-start;
+    display: block;
   }
 
-  .note-profile-head { flex: 0 0 auto; }
+  .note-profile-head,
   .note-profile-desc,
-  .note-profile-url  { flex: 0 0 100%; margin-bottom: 0; }
-  .note-profile-divider { display: none; }
+  .note-profile-url,
+  .note-sns-links,
+  .note-profile-divider,
+  .sidebar-youtube {
+    display: none;
+  }
+
+  .note-sidebar-cta {
+    margin-top: 0;
+  }
+
+  .note-sidebar-cta + .note-sidebar-cta {
+    margin-top: 12px;
+  }
 }
 
 @media (max-width: 767px) {
