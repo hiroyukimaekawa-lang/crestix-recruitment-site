@@ -1030,6 +1030,25 @@ button {
   margin-bottom: 14px;
 }
 
+.note-profile-head .custom-logo-link {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.note-profile-head .custom-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 64px;
+  max-height: 64px;
+  object-fit: contain;
+}
+
 .note-profile-logo-text {
   width: 64px;
   height: 64px;
@@ -1045,7 +1064,11 @@ button {
   flex-shrink: 0;
 }
 
-.note-profile-logo-text + .note-profile-name { flex: 1; }
+.note-profile-logo-text + .note-profile-name,
+.note-profile-head .custom-logo-link + .note-profile-name {
+  flex: 1;
+  min-width: 0;
+}
 
 .note-profile-name strong {
   display: block;
