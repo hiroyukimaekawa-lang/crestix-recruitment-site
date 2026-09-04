@@ -61,11 +61,12 @@ node scripts/seo.mjs selftest     # UI保護と品質ゲートの動作確認（
 | `siteName` / `companyName` / `baseUrl` | og:site_name / JSON-LD / canonical の生成元 |
 | `searchConsoleVerification` | `null` ならタグを出力しない。値があれば `index.html` に1つだけ出力 |
 | `ogImage` / `logo` | OGP画像・Organizationロゴ（サイトルートからの相対パス） |
+| | OGP画像は 1200×630 / 1MB未満を推奨。逸脱すると `seo:verify` がWARNを出します |
 | `organization` | 住所（Organization / JobPosting.jobLocation に使用） |
 | `noindex` | `noindex, follow` を付与し、canonicalとsitemapから除外するページ |
 | `exclude` | スキャン対象外ディレクトリ |
 | `pages` | ページ個別の `description` / `canonical` の手動指定 |
-| `jobs` | 求人ごとのメタデータ（`datePosted` / `validThrough` / `status` / `baseSalary`） |
+| `jobs` | 求人ごとのメタデータ（`status` / `datePosted` / `validThrough` / `baseSalary`） |
 
 ### canonical
 
@@ -116,7 +117,28 @@ Reason: datePosted missing
 }
 ```
 
-`status` に `draft` / `duplicate` / `inactive` / `closed` を指定すると `sitemap-jobs.xml` から除外されます。
+### 求人の掲載ステータス（sitemap-jobs.xml の対象）
+
+`sitemap-jobs.xml` には **`status: "active"` が明示された求人だけ** を掲載します。
+正式求人が未確定の求人ページを検索エンジンへ送らないための仕様です。
+
+| status | sitemap-jobs.xml | 自動noindex | seo:jobs |
+|---|---|---|---|
+| `active` | 掲載する | しない | 掲載中として表示 |
+| 未指定（= `unknown`） | **載せない** | **しない** | **要確認求人として報告** |
+| `draft` / `duplicate` / `inactive` / `closed` | 載せない | しない | その他として表示 |
+
+`status: "active"` の求人が0件のとき、`sitemap-jobs.xml` は空で生成され、
+`sitemap.xml`（Sitemap Index）からは除外されます（Search Consoleの「空のサイトマップ」エラー回避）。
+
+```json
+"jobs": {
+  "job-ai-medical-field-sales.html": { "status": "active", "datePosted": "2026-04-01" },
+  "job-hd-cs-leader.html":           { "status": "duplicate", "datePosted": null }
+}
+```
+
+重複候補の統合・削除・canonical変更は、status を変えても自動では行いません。
 
 ## 求人ページの重複について
 

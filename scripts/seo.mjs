@@ -619,9 +619,15 @@ function hasCrossOriginCanonical(rel, cfg) {
 function sitemapPages(cfg, htmlFiles) {
   return htmlFiles.filter((f) => !isNoindex(f, cfg) && !isJobPage(f) && !hasCrossOriginCanonical(f, cfg));
 }
+/**
+ * 求人の掲載ステータス。seo.config.json の jobs["<file>"].status に明示が無ければ "unknown"。
+ * unknown はsitemapに載せず、自動noindexもしない（seo:jobs で要確認として報告する）。
+ */
+const jobStatus = (rel, cfg) => String(cfg.jobs?.[rel]?.status || 'unknown').toLowerCase();
+
 function sitemapJobs(cfg, htmlFiles) {
   return htmlFiles.filter((f) => isJobPage(f) && !isNoindex(f, cfg) && !hasCrossOriginCanonical(f, cfg) &&
-    !['draft', 'duplicate', 'inactive', 'closed'].includes((cfg.jobs?.[f]?.status || 'active').toLowerCase()));
+    jobStatus(f, cfg) === 'active');
 }
 function urlsetXml(cfg, files) {
   const rows = files.map((f) => {
@@ -643,9 +649,12 @@ function plannedSiteFiles(cfg, htmlFiles) {
   const out = {};
   out['robots.txt'] = buildRobots(cfg);
   if (cfg.siteType === 'recruitment') {
+    const jobs = sitemapJobs(cfg, htmlFiles);
     out['sitemap-pages.xml'] = urlsetXml(cfg, sitemapPages(cfg, htmlFiles));
-    out['sitemap-jobs.xml'] = urlsetXml(cfg, sitemapJobs(cfg, htmlFiles));
-    out['sitemap.xml'] = sitemapIndexXml(cfg, ['sitemap-pages.xml', 'sitemap-jobs.xml']);
+    out['sitemap-jobs.xml'] = urlsetXml(cfg, jobs);
+    // status:"active" の求人が0件のときは空のsitemapをindexに載せない
+    out['sitemap.xml'] = sitemapIndexXml(cfg,
+      jobs.length ? ['sitemap-pages.xml', 'sitemap-jobs.xml'] : ['sitemap-pages.xml']);
   } else {
     out['sitemap.xml'] = urlsetXml(cfg, sitemapPages(cfg, htmlFiles));
   }
@@ -661,6 +670,32 @@ function analyzePage(rel, cfg) {
   const ctx = { head, body, jobSkip: null };
   const plan = desiredTags(rel, html, cfg, ctx);
   return { rel, html, head, body, ctx, plan };
+}
+
+/**
+ * 全ページを解析し、自動生成descriptionの重複を解消する。
+ * 定型プロフィール文などが複数ページで同一になる場合、その説明文は出力せずWARNにする
+ * （手動指定 = source 'config' は対象外）。
+ */
+function analyzeAll(cfg, htmlFiles = listHtml(cfg)) {
+  const pages = htmlFiles.map((f) => analyzePage(f, cfg));
+  const DESC_KEYS = ['meta[name=description]', 'meta[property=og:description]', 'meta[name=twitter:description]'];
+  const byText = new Map();
+  for (const p of pages) {
+    const d = p.plan.description;
+    if (!d || !d.text || d.source === 'config') continue;
+    byText.set(d.text, (byText.get(d.text) || []).concat(p));
+  }
+  for (const [text, group] of byText) {
+    if (group.length < 2) continue;
+    for (const p of group) {
+      p.plan.items = p.plan.items.filter((it) => !DESC_KEYS.includes(it.key));
+      p.plan.description = null;
+      p.plan.warnings.push(
+        `他ページと同一の説明文のため description を出力しません（${group.length}ページで重複）: ${truncW(text, 40)}`);
+    }
+  }
+  return pages;
 }
 
 function internalLinkTargets(rel, body) {
@@ -814,7 +849,7 @@ function jobAnalysis(cfg, pages) {
       employmentType: jp.employmentType || null,
       jobLocation: jp.locationRaw || null,
       inSitemap: sitemapJobs(cfg, pages.map((x) => x.rel)).includes(p.rel),
-      status: (cfg.jobs?.[p.rel]?.status || 'active'),
+      status: jobStatus(p.rel, cfg),
     };
   });
 
@@ -861,7 +896,7 @@ function jobAnalysis(cfg, pages) {
 
 function cmdAudit(cfg) {
   const htmlFiles = listHtml(cfg);
-  const pages = htmlFiles.map((f) => analyzePage(f, cfg));
+  const pages = analyzeAll(cfg, htmlFiles);
 
   section(`SEO監査: ${pages.length} ページ / baseUrl = ${cfg.baseUrl}`);
   const rows = pages.map((p) => {
@@ -992,7 +1027,7 @@ function groupLabels(labels) {
 function cmdApply(cfg) {
   const dry = flags.dryRun;
   const htmlFiles = listHtml(cfg);
-  const pages = htmlFiles.map((f) => analyzePage(f, cfg));
+  const pages = analyzeAll(cfg, htmlFiles);
 
   section(dry ? 'seo:apply --dry-run（ファイルは変更しません）' : 'seo:apply');
 
@@ -1125,12 +1160,30 @@ function cmdApply(cfg) {
 
 function cmdJobs(cfg) {
   if (cfg.siteType !== 'recruitment') die('siteType が recruitment ではありません');
-  const pages = listHtml(cfg).map((f) => analyzePage(f, cfg));
+  const pages = analyzeAll(cfg);
   const j = jobAnalysis(cfg, pages);
   const inSitemap = sitemapJobs(cfg, pages.map((p) => p.rel));
 
   section(`求人ページ一覧: ${j.rows.length} 件`);
-  table(['求人ページ', 'H1', 'status', 'sitemap-jobs'], j.rows.map((r) => [r.file, r.title, r.status, flag(inSitemap.includes(r.file))]), [36, 34, 10, 12]);
+  table(['求人ページ', 'H1', 'status', 'sitemap-jobs'],
+    j.rows.map((r) => [r.file, r.title, r.status === 'unknown' ? yellow('unknown') : r.status, flag(inSitemap.includes(r.file))]),
+    [36, 34, 10, 12]);
+
+  const byStatus = { active: [], unknown: [], other: [] };
+  for (const r of j.rows) (byStatus[r.status] ? byStatus[r.status] : byStatus.other).push(r.file);
+  section('掲載ステータス');
+  console.log(`  active (sitemap-jobs.xml に掲載): ${byStatus.active.length ? green(String(byStatus.active.length)) : red('0')} 件`);
+  for (const f of byStatus.active) console.log('    ' + f);
+  console.log(`  ${yellow('unknown（要確認: 正式求人か未確定）')}: ${byStatus.unknown.length} 件 ${dim('※sitemap未掲載 / 自動noindexもしません')}`);
+  for (const f of byStatus.unknown) console.log('    ' + f);
+  if (byStatus.other.length) {
+    console.log(`  その他 (draft/duplicate/inactive/closed): ${byStatus.other.length} 件`);
+    for (const f of byStatus.other) console.log(`    ${f} (${jobStatus(f, cfg)})`);
+  }
+  if (!byStatus.active.length) {
+    console.log(dim('\n  正式求人が確定したら seo.config.json で status を active にしてください:'));
+    console.log(dim('    "jobs": { "job-xxx.html": { "status": "active", "datePosted": "2026-04-01" } }'));
+  }
 
   section('jobs.html との導線');
   console.log(`  jobs.html から詳細ページへリンクされている求人: ${j.linkedFromJobs.length} 件`);
@@ -1190,7 +1243,7 @@ function recommendation(file, size, dim) {
 }
 
 function cmdImages(cfg) {
-  const pages = listHtml(cfg).map((f) => analyzePage(f, cfg));
+  const pages = analyzeAll(cfg);
   const media = collectMediaIssues(pages, cfg);
 
   // HTML / CSS / JS からの参照ページを収集
@@ -1255,7 +1308,7 @@ function cmdVerify(cfg) {
   const results = [];
   const add = (status, name, detail = '') => { results.push({ status, name, detail }); };
   const htmlFiles = listHtml(cfg);
-  const pages = htmlFiles.map((f) => analyzePage(f, cfg));
+  const pages = analyzeAll(cfg, htmlFiles);
 
   section('ローカル検証');
 
@@ -1298,7 +1351,8 @@ function cmdVerify(cfg) {
     const p = pages.find((x) => x.rel === rel);
     if (!p) { noindexBad.push(`${rel}: ファイルなし`); continue; }
     if (!p.head.robots.some((r) => /noindex/i.test(r))) noindexBad.push(`${rel}: robots未設定`);
-    if (p.head.canonical.length) noindexBad.push(`${rel}: canonicalが付与されています`);
+    // 別ドメインを指す既存canonical（転送用スタブ等）は意図的な指定として許容する
+    if (p.head.canonical.some((h) => h.startsWith(cfg.baseUrl + '/'))) noindexBad.push(`${rel}: 自己参照canonicalが付与されています`);
   }
   const noindexInSitemap = [];
   add(noindexBad.length ? 'FAIL' : 'OK', 'noindex 対象', noindexBad.join(' / '));
@@ -1355,6 +1409,20 @@ function cmdVerify(cfg) {
   } else {
     const any = pages.filter((p) => p.head.verification.length).map((p) => p.rel);
     add(any.length ? 'WARN' : 'OK', 'Search Console 認証タグ（config未設定）', any.join(', '));
+  }
+
+  // 7.4 sitemap-jobs.xml には status:"active" の求人のみ
+  if (cfg.siteType === 'recruitment') {
+    const jobFiles = htmlFiles.filter(isJobPage);
+    const active = jobFiles.filter((f) => jobStatus(f, cfg) === 'active');
+    const unknown = jobFiles.filter((f) => jobStatus(f, cfg) === 'unknown');
+    const abs = path.join(ROOT, 'sitemap-jobs.xml');
+    const locs = fs.existsSync(abs)
+      ? [...fs.readFileSync(abs, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]) : [];
+    const unexpected = locs.filter((l) => !active.some((f) => urlFor(f, cfg) === l));
+    add(unexpected.length ? 'FAIL' : 'OK', 'sitemap-jobs.xml は status:"active" の求人のみ', unexpected.join(', '));
+    if (unknown.length) add('WARN', `status未確定(unknown)の求人`, `${unknown.length} 件（sitemap未掲載・要確認）`);
+    if (!active.length) add('WARN', 'status:"active" の求人が0件', 'sitemap-jobs.xml は空・sitemap.xml のindexからも除外されます');
   }
 
   // 7.5 OGP画像の実用性（サイズ・解像度）
