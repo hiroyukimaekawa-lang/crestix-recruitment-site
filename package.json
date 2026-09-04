@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seo:audit": "node scripts/seo.mjs audit",
+    "seo:apply": "node scripts/seo.mjs apply",
+    "seo:verify": "node scripts/seo.mjs verify",
+    "seo:jobs": "node scripts/seo.mjs jobs",
+    "seo:images": "node scripts/seo.mjs images"
   },
   "repository": {
     "type": "git",

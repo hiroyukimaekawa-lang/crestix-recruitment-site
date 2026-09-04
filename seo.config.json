@@ -1,0 +1,64 @@
+{
+  "siteType": "recruitment",
+  "siteName": "Crestix Careers",
+  "companyName": "株式会社Crestix",
+  "baseUrl": "https://www.crestix.jp",
+  "locale": "ja_JP",
+  "searchConsoleVerification": "UNyO-UTaqbr3afFl_OWU4kolCwGKpYLiM_ZBcjvelAo",
+  "ogImage": "assets/images/office/top.jpg",
+  "logo": "assets/images/office/crestix-header.png",
+  "organization": {
+    "postalCode": "101-0054",
+    "region": "東京都",
+    "locality": "千代田区",
+    "streetAddress": "神田錦町1丁目21-2 大手町モダンビルディング4F",
+    "country": "JP"
+  },
+  "noindex": [
+    "entry.html",
+    "casual-entry.html",
+    "b2b-contact.html",
+    "thanks.html"
+  ],
+  "exclude": [
+    "node_modules",
+    "wordpress",
+    "public_html",
+    "reports",
+    ".git",
+    ".github"
+  ],
+  "pages": {
+    "index.html": {
+      "description": "株式会社Crestixの採用サイト。医療機関向けマーケティング、店舗DX、AI営業支援の3事業で、常識の枠を超える挑戦を続ける仲間を募集しています。事業・カルチャー・募集職種はこちらから。"
+    },
+    "jobs.html": {
+      "description": "Crestixの募集職種一覧。AI Sales Enablement、第一営業部（医療機関向けマーケティング）、HD事業部（飲食店DX）の各ポジションの募集内容と応募方法をご案内します。"
+    },
+    "business.html": {
+      "description": "Crestixの事業紹介。第1営業部（クリニック特化のマーケティング支援）、HD事業部（店舗グロース）、AI Sales Enablement（営業代行・営業支援）、新規事業の4領域で事業を展開しています。"
+    },
+    "member-maekawa.html": {
+      "description": "前川 弘行とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-matsuoka.html": {
+      "description": "松岡 龍士とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-mizugaki.html": {
+      "description": "水柿 裕香とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-nishida.html": {
+      "description": "西田 翔とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-takahara.html": {
+      "description": "髙原 一真とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-uoi.html": {
+      "description": "魚井 風太とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "story-matsuoka.html": {
+      "description": null
+    }
+  },
+  "jobs": {}
+}
