@@ -9,3 +9,7 @@ assets/images/business/*.mp4
 node_modules/
 reports/seo-report.json
 reports/seo-report.md
+
+# ローカルの本番アップロード用（Git管理対象外）
+deploy/
+deploy-upload/
