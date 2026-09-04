@@ -27,7 +27,9 @@
     "public_html",
     "reports",
     ".git",
-    ".github"
+    ".github",
+    "deploy",
+    "deploy-upload"
   ],
   "pages": {
     "index.html": {
