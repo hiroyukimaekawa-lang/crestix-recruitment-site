@@ -4,3 +4,8 @@
 *.MP4
 assets/images/video/
 assets/images/business/*.mp4
+
+# SEO CLI
+node_modules/
+reports/seo-report.json
+reports/seo-report.md

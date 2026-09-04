@@ -1,0 +1,173 @@
+{
+  "siteType": "recruitment",
+  "siteName": "Crestix Careers",
+  "companyName": "株式会社Crestix",
+  "baseUrl": "https://www.crestix.jp",
+  "locale": "ja_JP",
+  "searchConsoleVerification": "UNyO-UTaqbr3afFl_OWU4kolCwGKpYLiM_ZBcjvelAo",
+  "ogImage": "assets/images/og/crestix-careers-og.jpg",
+  "logo": "assets/images/office/crestix-header.png",
+  "organization": {
+    "postalCode": "101-0054",
+    "region": "東京都",
+    "locality": "千代田区",
+    "streetAddress": "神田錦町1丁目21-2 大手町モダンビルディング4F",
+    "country": "JP"
+  },
+  "noindex": [
+    "entry.html",
+    "casual-entry.html",
+    "b2b-contact.html",
+    "thanks.html",
+    "story-matsuoka.html"
+  ],
+  "exclude": [
+    "node_modules",
+    "wordpress",
+    "public_html",
+    "reports",
+    ".git",
+    ".github"
+  ],
+  "pages": {
+    "index.html": {
+      "description": "株式会社Crestixの採用サイト。医療機関向けマーケティング、店舗DX、AI営業支援の3事業で、常識の枠を超える挑戦を続ける仲間を募集しています。事業・カルチャー・募集職種はこちらから。"
+    },
+    "jobs.html": {
+      "description": "Crestixの募集職種一覧。AI Sales Enablement、第一営業部（医療機関向けマーケティング）、HD事業部（飲食店DX）の各ポジションの募集内容と応募方法をご案内します。"
+    },
+    "business.html": {
+      "description": "Crestixの事業紹介。第1営業部（クリニック特化のマーケティング支援）、HD事業部（店舗グロース）、AI Sales Enablement（営業代行・営業支援）、新規事業の4領域で事業を展開しています。"
+    },
+    "member-maekawa.html": {
+      "description": "前川 弘行とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-matsuoka.html": {
+      "description": "松岡 龍士とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-mizugaki.html": {
+      "description": "水柿 裕香とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-nishida.html": {
+      "description": "西田 翔とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-takahara.html": {
+      "description": "髙原 一真とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "member-uoi.html": {
+      "description": "魚井 風太とのカジュアル面談ページ。仕事内容、Crestixのカルチャー、これからの挑戦について、選考前に気軽に話せます。"
+    },
+    "story-matsuoka.html": {
+      "description": null
+    },
+    "story-imafuku.html": {
+      "description": "「現場で最速成長する方法」HD FSメンバー 今福 裕也のインタビュー。Crestixでの仕事とキャリアのリアルを紹介します。"
+    },
+    "story-nishida.html": {
+      "description": "「プレイヤーから経営へ」役員 西田 翔のインタビュー。Crestixでの仕事とキャリアのリアルを紹介します。"
+    },
+    "story-renshi.html": {
+      "description": "「日本で最も挑戦できる会社を創る」代表取締役 縞谷 蓮志のインタビュー。Crestixでの仕事とキャリアのリアルを紹介します。"
+    },
+    "story-takahara.html": {
+      "description": "「営業を科学する」営業IS統括 髙原 一真のインタビュー。Crestixでの仕事とキャリアのリアルを紹介します。"
+    },
+    "story-uoi.html": {
+      "description": "「ゼロから組織を創る」HD統括 魚井 風太のインタビュー。Crestixでの仕事とキャリアのリアルを紹介します。"
+    }
+  },
+  "jobs": {
+    "job-ai-medical-field-sales.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-ai-medical-inside-sales.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-ai-sales-mg.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-bizdev.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-designer.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-division1-field-sales.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-division1-fs-leader.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-division1-inside-sales.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-division1-is-leader.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-cs-leader.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-cs-member.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-customer-success-leader.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-customer-success.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-field-sales-leader.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-field-sales.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-fs-leader.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-fs-member.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-inside-sales-leader.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-inside-sales.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hd-is-leader.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-hr.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-marketing.html": {
+      "status": "unknown",
+      "datePosted": null
+    },
+    "job-software-engineer.html": {
+      "status": "unknown",
+      "datePosted": null
+    }
+  }
+}
